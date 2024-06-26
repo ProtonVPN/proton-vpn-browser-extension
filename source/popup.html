@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title></title>
+    <link href="css/popup.css" type="text/css" rel="stylesheet" />
+</head>
+<body class="main-modal">
+	<!--<iframe id="account-frame"></iframe>-->
+	<div class="main-area">
+		<div id="spinner">
+			<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+		</div>
+		<div id="sign-in-view" class="top-section">
+			<img src="img/vpn-welcome-image-dark@2x.png" alt="" class="welcome-background">
+			<div class="content">
+				<h1 class="text-center mxauto">
+					<img src="img/vpn-logo.svg" alt="Proton VPN" width="195" height="34">
+				</h1>
+				<p></p>
+				<div class="text-center">
+					<button class="sign-in-button"></button>
+				</div>
+				<p></p>
+				<div class="text-center" style="margin-top: -15px; margin-bottom: 10px;">
+					<button class="sign-up-button"></button>
+				</div>
+			</div>
+		</div>
+		<div id="logged-view">
+			<header class="top-bar">
+				<svg viewBox="0 0 98 18" class="text-intense" focusable="none" role="img" aria-label="Proton VPN">
+					<path d="M25.9172 11.3626V14.0065H27.7734V11.478C27.7734 11.2326 27.8703 10.9954 28.0456 10.8222C28.2189 10.649 28.456 10.55 28.7015 10.55H30.605C31.4919 10.55 32.3436 10.1973 32.9706 9.56828C33.5976 8.94131 33.9502 8.08954 33.9502 7.20272C33.9502 6.31589 33.5976 5.46413 32.9706 4.8351C32.3436 4.20814 31.4919 3.85547 30.603 3.85547H25.9172V7.15941H27.7734V5.60231H30.4792C30.9 5.60231 31.3021 5.76936 31.5991 6.06635C31.8961 6.36333 32.0631 6.76549 32.0631 7.18622C32.0631 7.60695 31.8961 8.00911 31.5991 8.3061C31.3021 8.60308 30.9 8.77013 30.4792 8.77013H28.5138C28.1735 8.77013 27.8353 8.83613 27.5218 8.96812C27.2062 9.09805 26.9216 9.28985 26.6803 9.53115C26.439 9.77245 26.2493 10.0591 26.1173 10.3726C25.9832 10.684 25.9172 11.0223 25.9172 11.3626Z" fill="currentColor"/>
+					<path d="M34.2371 14.0068V9.97896C34.2371 8.33524 35.1961 7.02769 37.1161 7.02769C37.4234 7.02356 37.7307 7.05656 38.0318 7.12874V8.78484C37.8132 8.7704 37.6256 8.7704 37.5369 8.7704C36.5201 8.7704 36.0829 9.2365 36.0829 10.1811V14.0068H34.2371V14.0068Z" fill="currentColor"/>
+					<path d="M38.5845 10.5915C38.5845 8.57039 40.1106 7.02979 42.2349 7.02979C44.3571 7.02979 45.8853 8.57039 45.8853 10.5915C45.8853 12.6127 44.3592 14.1677 42.2349 14.1677C40.1106 14.1677 38.5845 12.6106 38.5845 10.5915ZM44.0663 10.5915C44.0663 9.44277 43.295 8.62813 42.2349 8.62813C41.1728 8.62813 40.4035 9.44071 40.4035 10.5915C40.4035 11.7547 41.1748 12.5549 42.2349 12.5549C43.295 12.5549 44.0663 11.7526 44.0663 10.5915Z" fill="currentColor"/>
+					<path d="M51.7856 10.5915C51.7856 8.57039 53.3118 7.02979 55.4361 7.02979C57.5603 7.02979 59.0844 8.57039 59.0844 10.5915C59.0844 12.6127 57.5583 14.1677 55.4361 14.1677C53.3139 14.1677 51.7856 12.6106 51.7856 10.5915ZM57.2675 10.5915C57.2675 9.44277 56.4961 8.62813 55.4361 8.62813C54.376 8.62813 53.6047 9.44071 53.6047 10.5915C53.6047 11.7547 54.376 12.5549 55.4361 12.5549C56.4961 12.5549 57.2675 11.7526 57.2675 10.5915Z" fill="currentColor"/>
+					<path d="M60.0457 14.0065V10.125C60.0457 8.32252 61.1944 7.02734 63.2444 7.02734C65.28 7.02734 66.4287 8.32046 66.4287 10.125V14.0065H64.5973V10.2694C64.5973 9.26709 64.1457 8.64013 63.2444 8.64013C62.3432 8.64013 61.8915 9.26503 61.8915 10.2694V14.0065H60.0457Z" fill="currentColor"/>
+					<path d="M51.2351 8.64217H49.2428V11.1872C49.2428 12.074 49.5625 12.4803 50.4782 12.4803C50.5648 12.4803 50.7834 12.4803 51.0598 12.4658V13.9631C50.6823 14.0642 50.3482 14.124 49.9832 14.124C48.4426 14.124 47.3949 13.1939 47.3949 11.4346V8.64217H46.1575V7.17375H46.4648C46.5864 7.17375 46.7081 7.149 46.8195 7.10363C46.9329 7.05619 47.034 6.98814 47.1206 6.90152C47.2072 6.8149 47.2753 6.71384 47.3227 6.60041C47.3702 6.48698 47.3928 6.36736 47.3928 6.24568V4.86182H49.2387V7.17375H51.2309V8.64217H51.2351Z" fill="currentColor"/>
+					<path d="M84.9387 3.88428H80.2529V14.0333H82.1091V11.5069C82.1091 11.2614 82.206 11.0243 82.3813 10.851C82.5546 10.6778 82.7917 10.5788 83.0372 10.5788H84.9387C85.8255 10.5788 86.6752 10.2261 87.3001 9.60121C87.9271 8.97424 88.2777 8.12454 88.2777 7.23978C88.2797 6.80049 88.1952 6.36326 88.0281 5.95697C87.8611 5.55068 87.6156 5.17946 87.3042 4.86804C86.9928 4.55662 86.6257 4.30913 86.2194 4.14001C85.8152 3.9709 85.38 3.88428 84.9387 3.88428ZM86.4009 7.21297C86.4009 7.42127 86.3597 7.62751 86.2792 7.81931C86.1988 8.01111 86.0833 8.18641 85.9348 8.33284C85.7884 8.47927 85.6131 8.59683 85.4213 8.6752C85.2295 8.75563 85.0232 8.79482 84.8149 8.79482H82.1008V5.63318H84.8149C85.0232 5.63318 85.2295 5.67443 85.4233 5.75486C85.6151 5.83529 85.7904 5.95285 85.9369 6.09928C86.0833 6.24777 86.2009 6.42307 86.2792 6.61487C86.3576 6.80874 86.3988 7.01498 86.3968 7.22328L86.4009 7.21297Z" fill="currentColor"/>
+					<path d="M73.7337 13.9962L69.9946 3.85547H72.1065L74.5669 11.113C74.6639 11.3729 74.734 11.641 74.7752 11.9153H74.7959C74.8268 11.6389 74.8969 11.3687 75.0042 11.113L77.4728 3.85547H79.5991L75.8415 13.9962H73.7337Z" fill="currentColor"/>
+					<path d="M88.9727 13.9963V3.85352H90.5999L95.3887 10.1438C95.562 10.3603 95.7105 10.5934 95.8363 10.8409H95.8652C95.8322 10.5356 95.8177 10.2283 95.8198 9.92105V3.85352H97.7378V13.9943H96.1106L91.3073 7.70399C91.1382 7.48538 90.9897 7.25233 90.8618 7.0069H90.8453C90.8721 7.31214 90.8824 7.61943 90.8762 7.92673V13.9943H88.9727V13.9963Z" fill="currentColor"/>
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M8.0643 16.0685C8.73183 17.2779 10.4461 17.3434 11.204 16.1885L18.2708 5.41913C19.0202 4.27707 18.3032 2.7459 16.9461 2.59028L3.05609 0.997511C1.57521 0.827698 0.520818 2.40139 1.24111 3.70639L8.0643 16.0685Z" fill="url(#top-bar-inner-gradient)"/>
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M8.0643 16.0685C8.73183 17.2779 10.4461 17.3434 11.204 16.1885L18.2708 5.41913C19.0202 4.27707 18.3032 2.7459 16.9461 2.59028L3.05609 0.997511C1.57521 0.827698 0.520818 2.40139 1.24111 3.70639L8.0643 16.0685Z" fill="url(#top-bar-inner-radial-gradient)" id="top-bar-inner-radial-gradient-path" style="opacity: 0;"/>
+					<path d="M9.08943 13.9979L8.46226 14.9406C8.20815 15.3226 7.63952 15.299 7.41783 14.8974L8.0643 16.0686C8.17956 16.2775 8.32605 16.4522 8.49342 16.5924L8.49346 16.5923C9.29538 17.2641 10.577 17.1439 11.204 16.1884L18.2708 5.41913C19.0202 4.27706 18.3032 2.74591 16.9461 2.59031L3.0561 0.997507C1.57521 0.827722 0.520818 2.40142 1.24111 3.7064L1.29593 3.80573L13.1187 5.17367C13.8723 5.26087 14.2698 6.11147 13.8533 6.74554L9.08943 13.9979Z" fill="url(#top-bar-outer-gradient)"/>
+					<defs>
+						<linearGradient id="top-bar-inner-gradient" x1="0.480127" y1="-4.44321" x2="14.8829" y2="18.5955" gradientUnits="userSpaceOnUse">
+							<stop offset="0" stop-color="#1C1B24" />
+							<stop offset="0.988838" stop-color="#A7A4B5" />
+						</linearGradient>
+						<radialGradient id="top-bar-inner-radial-gradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(10.9226 -6.154) rotate(93.6599) scale(25.3962 31.9235)">
+							<stop offset="0.403126" stop-color="#6D4AFF"/>
+							<stop offset="0.9944" stop-color="#00F0C3"/>
+						</radialGradient>
+						<linearGradient id="top-bar-outer-gradient" x1="16.8924" y1="16.0677" x2="5.45846" y2="-3.49766" gradientUnits="userSpaceOnUse">
+							<stop offset="0.0660125" stop-color="#8EFFEE"/>
+							<stop offset="0.4499" stop-color="#C9C7FF"/>
+							<stop offset="1" stop-color="#7341FF"/>
+						</linearGradient>
+					</defs>
+				</svg>
+			</header>
+			<main class="central-view">
+				<nav class="sidebar">
+					<div>
+						<button class="side-button active" data-go-to="world" title="Countries" aria-label="Countries" data-context="Menu">
+							<svg viewBox="0 0 24 24">
+								<path fill-rule="evenodd" d="M20.9 13.345C20.251 17.677 16.514 21 12 21c-4.417 0-8.091-3.182-8.855-7.38a3.75 3.75 0 0 0 3.356.995l.54-.108a.75.75 0 0 1 .868.53l.906 3.17a2.225 2.225 0 0 0 4.3-.07l.222-.893a.75.75 0 0 1 .312-.442l1.436-.957a2.25 2.25 0 0 0 .764-.866l.088-.177a2.25 2.25 0 0 0-.421-2.597L14.47 11.16a2.25 2.25 0 0 0-1.591-.659h-1.34a.751.751 0 0 1-.279-.054l-1.934-.774A.349.349 0 0 1 9.456 9h1.55a1.783 1.783 0 0 0 1.26-3.044L11.312 5l1.808-.3a2.25 2.25 0 0 0 1.665-1.26 9.001 9.001 0 0 1 3.64 2.26l-1.097.548A2.25 2.25 0 0 0 16.2 8.971l.813 2.44a2.25 2.25 0 0 0 1.693 1.495l2.194.439Zm-1.494-6.46A8.956 8.956 0 0 1 21 11.835l-1.998-.4a.75.75 0 0 1-.565-.498l-.813-2.44A.75.75 0 0 1 18 7.589l1.407-.704ZM12 3c.407 0 .807.027 1.2.08a.748.748 0 0 1-.327.14l-1.809.3c-1.203.201-1.677 1.678-.814 2.54l.956.957a.283.283 0 0 1-.2.483h-1.55a1.849 1.849 0 0 0-.687 3.565l1.934.774c.266.106.55.161.836.161h1.34a.75.75 0 0 1 .53.22l1.046 1.046a.75.75 0 0 1 .14.866l-.088.176a.75.75 0 0 1-.255.289l-1.436.957a2.25 2.25 0 0 0-.934 1.327l-.223.891a.726.726 0 0 1-1.402.024l-.906-3.172a2.25 2.25 0 0 0-2.605-1.588l-.54.108a2.25 2.25 0 0 1-2.24-.857l-.918-1.223A9.001 9.001 0 0 1 12 3Zm0 19.5c5.799 0 10.5-4.701 10.5-10.5S17.799 1.5 12 1.5 1.5 6.201 1.5 12 6.201 22.5 12 22.5Z" clip-rule="evenodd"/>
+							</svg>
+						</button>
+						<button class="side-button features-button" data-go-to="features" title="Features" aria-label="Features" data-context="Menu">
+							<svg viewBox="0 0 24 24">
+								<path fill-rule="evenodd" d="M17.25 3H6.75a3.75 3.75 0 1 0 0 7.5h10.5a3.75 3.75 0 1 0 0-7.5ZM6.75 1.5a5.25 5.25 0 0 0 0 10.5h10.5a5.25 5.25 0 1 0 0-10.5H6.75Z" clip-rule="evenodd"/>
+								<path d="M9 6.75a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/>
+								<path fill-rule="evenodd" d="M6 13.5a4.5 4.5 0 1 0 0 9h12a4.5 4.5 0 1 0 0-9H6ZM18 21a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd"/>
+							</svg>
+						</button>
+					</div>
+					<div>
+						<button class="side-button" data-go-to="help" title="Help" aria-label="Help" data-context="Menu">
+							<svg viewBox="0 0 24 24">
+								<path fill-rule="evenodd" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 1.5c5.799 0 10.5-4.701 10.5-10.5S17.799 1.5 12 1.5 1.5 6.201 1.5 12 6.201 22.5 12 22.5Zm-.75-5.25a.75.75 0 0 1 .75-.75h.015a.75.75 0 1 1 0 1.5H12a.75.75 0 0 1-.75-.75Zm-1.5-7.277A2.25 2.25 0 0 1 12 7.723h.222c1.12 0 2.028.908 2.028 2.027 0 .376-.177.73-.478.956l-1.022.767a3.75 3.75 0 0 0-1.5 3 .75.75 0 0 0 1.5 0c0-.709.333-1.375.9-1.8l1.022-.767A2.695 2.695 0 0 0 15.75 9.75a3.528 3.528 0 0 0-3.528-3.527H12a3.75 3.75 0 0 0-3.75 3.75.75.75 0 1 0 1.5 0Z" clip-rule="evenodd"/>
+							</svg>
+						</button>
+						<button class="side-button" data-go-to="settings" title="Settings" aria-label="Settings" data-context="Menu">
+							<svg viewBox="0 0 24 24">
+								<path fill-rule="evenodd" d="m1.919 14.065 1.676.532c.297.094.528.323.648.61.12.289.12.617-.025.894l-.814 1.566a.6.6 0 0 0 .107.701l2.118 2.119a.6.6 0 0 0 .701.108l1.565-.815c.277-.144.605-.146.894-.025.286.12.515.351.608.647l.532 1.68a.6.6 0 0 0 .572.418h2.985a.6.6 0 0 0 .572-.419l.532-1.679c.093-.296.322-.527.608-.647.289-.12.617-.12.894.025l1.565.815a.6.6 0 0 0 .701-.108l2.117-2.119a.6.6 0 0 0 .108-.7l-.816-1.57a1.048 1.048 0 0 1-.025-.888 1.05 1.05 0 0 1 .65-.607l1.686-.523a.6.6 0 0 0 .422-.573V10.52a.6.6 0 0 0-.419-.572l-1.676-.532a1.059 1.059 0 0 1-.648-.61c-.12-.289-.12-.617.025-.894l.814-1.566a.6.6 0 0 0-.108-.701l-2.117-2.119a.6.6 0 0 0-.701-.108l-1.566.815a1.052 1.052 0 0 1-.892.025 1.055 1.055 0 0 1-.608-.647l-.533-1.691a.6.6 0 0 0-.572-.42h-2.985a.6.6 0 0 0-.572.419l-.532 1.68a1.057 1.057 0 0 1-.608.646c-.289.12-.617.12-.894-.025l-1.564-.815a.6.6 0 0 0-.7.107L3.513 5.63a.6.6 0 0 0-.11.702L4.218 7.9c.144.277.146.605.025.894-.12.287-.351.516-.648.61l-1.676.532a.6.6 0 0 0-.419.572v2.986a.6.6 0 0 0 .419.572ZM21 11.18l-1.049-.333a2.558 2.558 0 0 1-1.578-1.462 2.555 2.555 0 0 1 .078-2.164l.51-.981-1.184-1.186-.98.51a2.551 2.551 0 0 1-2.164.08 2.554 2.554 0 0 1-1.46-1.581L12.84 3h-1.666l-.333 1.051c-.24.76-.81 1.306-1.46 1.578a2.554 2.554 0 0 1-2.165-.079l-.98-.51L5.04 6.226l.509.98c.37.71.352 1.508.078 2.164a2.558 2.558 0 0 1-1.578 1.462L3 11.165v1.67l1.049.332c.76.241 1.307.812 1.578 1.462a2.555 2.555 0 0 1-.078 2.165l-.51.98 1.184 1.186.979-.51a2.554 2.554 0 0 1 2.165-.079c.65.272 1.22.819 1.46 1.578L11.16 21h1.667l.333-1.051c.24-.76.81-1.306 1.46-1.578a2.554 2.554 0 0 1 2.165.079l.979.51 1.184-1.186-.512-.984a2.548 2.548 0 0 1-.078-2.158 2.55 2.55 0 0 1 1.59-1.462L21 12.844v-1.665Z" clip-rule="evenodd"/>
+								<path fill-rule="evenodd" d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-4.5 3a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0Z" clip-rule="evenodd"/>
+							</svg>
+						</button>
+					</div>
+				</nav>
+				<div class="page-view" tabindex="-1">
+					<div data-page="world" class="selected-page">
+						<div id="status">
+							<div class="top-icons">
+								<div class="notifications" aria-live="polite" aria-atomic="true"></div>
+								<!--
+								<div><a class="ip-me" href="https://ip.me/" title="Show the IP location"><svg fill="currentColor" viewBox="0 0 24 24">
+									<path fill-rule="evenodd" d="M12 3C8.675 3 6 5.67 6 8.94c0 1.66.47 3.29 1.36 4.7l4.392 6.972a16.527 16.527 0 0 0 .248.386l.018-.026c.05-.076.117-.181.23-.36l4.393-6.972A8.815 8.815 0 0 0 18 8.94C18 5.67 15.325 3 12 3ZM6.09 14.44a10.315 10.315 0 0 1-1.59-5.5C4.5 4.83 7.858 1.5 12 1.5c4.142 0 7.5 3.33 7.5 7.44 0 1.945-.55 3.85-1.59 5.5l-4.393 6.972c-.215.341-.323.512-.423.618a1.508 1.508 0 0 1-2.188 0c-.1-.106-.208-.277-.423-.619L6.09 14.44Z" clip-rule="evenodd"/>
+									<path fill-rule="evenodd" d="M12 10.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm0 1.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd"/>
+								</svg></a></div>
+								-->
+							</div>
+
+							<div class="connection-status" aria-live="polite" aria-atomic="true"></div>
+							<div><button class="disconnection-button"></button></div>
+							<div><button class="quick-connect-button primary-button"></button></div>
+							<!--
+							<div class="quick-connect-button-incentive" data-trans>
+								the fastest server for you
+							</div>
+							-->
+							<div class="error-slot"></div>
+						</div>
+						<div id="menu">
+							<div class="filters-bar">
+								<div class="search-box">
+									<label for="search-input" title="Search">
+										<svg aria-label="Search" class="search-icon" viewBox="0 0 24 24">
+											<path fill-rule="evenodd" d="M16.5 9.75a6.75 6.75 0 1 1-13.5 0 6.75 6.75 0 0 1 13.5 0Zm-1.47 6.34a8.25 8.25 0 1 1 1.06-1.06l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69Z" clip-rule="evenodd"/>
+										</svg>
+									</label>
+									<input type="search" id="search-input" autofocus>
+									<button title="Clear search" class="reset-button"><svg aria-label="Clear search" role="img" class="reset-button-icon" viewBox="0 0 512 512">
+										<path d="M256,33C132.3,33,32,133.3,32,257c0,123.7,100.3,224,224,224c123.7,0,224-100.3,224-224C480,133.3,379.7,33,256,33z    M364.3,332.5c1.5,1.5,2.3,3.5,2.3,5.6c0,2.1-0.8,4.2-2.3,5.6l-21.6,21.7c-1.6,1.6-3.6,2.3-5.6,2.3c-2,0-4.1-0.8-5.6-2.3L256,289.8   l-75.4,75.7c-1.5,1.6-3.6,2.3-5.6,2.3c-2,0-4.1-0.8-5.6-2.3l-21.6-21.7c-1.5-1.5-2.3-3.5-2.3-5.6c0-2.1,0.8-4.2,2.3-5.6l75.7-76   l-75.9-75c-3.1-3.1-3.1-8.2,0-11.3l21.6-21.7c1.5-1.5,3.5-2.3,5.6-2.3c2.1,0,4.1,0.8,5.6,2.3l75.7,74.7l75.7-74.7   c1.5-1.5,3.5-2.3,5.6-2.3c2.1,0,4.1,0.8,5.6,2.3l21.6,21.7c3.1,3.1,3.1,8.2,0,11.3l-75.9,75L364.3,332.5z"/>
+									</svg></button>
+								</div>
+								<div class="secure-core-container">
+									<button class="secure-core-button" title="Secure Core">
+										<svg class="small-icon" aria-label="Secure Core" viewBox="0 0 20 20">
+											<path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z"/>
+										</svg>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div id="servers"></div>
+						<div id="modal-error">
+							<div>
+								<button aria-label="Close" class="close-button small-button">
+									<svg fill="currentColor" viewBox="0 0 20 20">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M10 18.7502C14.8325 18.7502 18.75 14.8327 18.75 10.0002C18.75 5.16769 14.8325 1.25018 10 1.25018C5.16751 1.25018 1.25 5.16769 1.25 10.0002C1.25 14.8327 5.16751 18.7502 10 18.7502ZM13.5669 13.5671C13.3229 13.8112 12.9271 13.8112 12.6831 13.5671L10 10.8841L7.31694 13.5671C7.07286 13.8112 6.67714 13.8112 6.43306 13.5671C6.18898 13.323 6.18898 12.9273 6.43306 12.6832L9.11612 10.0002L6.43306 7.31712C6.18898 7.07305 6.18898 6.67732 6.43306 6.43324C6.67714 6.18916 7.07286 6.18916 7.31694 6.43324L10 9.1163L12.6831 6.43324C12.9271 6.18916 13.3229 6.18916 13.5669 6.43324C13.811 6.67732 13.811 7.07305 13.5669 7.31712L10.8839 10.0002L13.5669 12.6832C13.811 12.9273 13.811 13.323 13.5669 13.5671Z" />
+									</svg>
+								</button>
+							</div>
+							<div class="modal-error-slot"></div>
+							<div></div>
+						</div>
+					</div>
+					<div data-page="region">
+						<h1 class="page-title flex items-center mt-small">
+							<button title="Back" class="back-button button-light-hover"><svg class="sm-icon" aria-label="Back" viewBox="0 0 24 24" fill="currentColor">
+								<path fill-rule="evenodd" d="M16.255 20.805a.75.75 0 0 0 .05-1.06L9.264 12l7.041-7.745a.75.75 0 0 0-1.11-1.01l-7.5 8.25a.75.75 0 0 0 0 1.01l7.5 8.25a.75.75 0 0 0 1.06.05Z" clip-rule="evenodd"/>
+							</svg></button>
+							<div class="name flex items-center"></div>
+						</h1>
+						<div class="region-content"></div>
+					</div>
+					<div data-page="features">
+						<h1 class="page-title" data-trans>VPN Features</h1>
+
+						<div class="action-block secure-core-action-block">
+							<div class="action-description">
+								<svg class="action-icon small-icon" viewBox="0 0 24 24" role="img" focusable="false" aria-hidden="true">
+									<path d="M14.625 11.625c0 .43-.241.803-.595.993l.49 1.963a.338.338 0 0 1-.327.419h-1.386a.338.338 0 0 1-.327-.42l.49-1.962a1.125 1.125 0 1 1 1.655-.993Z"/>
+									<path fill-rule="evenodd" d="M9 6v.029c-.588.036-1.006.116-1.362.298a3 3 0 0 0-1.311 1.311c-.184.362-.265.786-.3 1.39-.603.034-1.027.115-1.389.299a3 3 0 0 0-1.311 1.311C3 11.28 3 12.12 3 13.8v1.98c0 2.352 0 3.528.458 4.427a4.2 4.2 0 0 0 1.835 1.835c.899.458 2.075.458 4.427.458h3.48c1.68 0 2.52 0 3.162-.327a3 3 0 0 0 1.311-1.311c.184-.362.265-.786.3-1.39.603-.034 1.027-.115 1.389-.299a3 3 0 0 0 1.311-1.311C21 17.22 21 16.38 21 14.7v-3.9c0-1.68 0-2.52-.327-3.162a3 3 0 0 0-1.311-1.311c-.356-.182-.774-.262-1.362-.298V6a4.5 4.5 0 1 0-9 0Zm1.5 0h6a3 3 0 1 0-6 0ZM8.952 7.536C9.377 7.5 9.935 7.5 10.8 7.5h5.4c.865 0 1.423.001 1.848.036.408.033.559.09.633.127a1.5 1.5 0 0 1 .655.656c.038.074.095.225.128.633.035.425.036.983.036 1.848v3.9c0 .865-.001 1.423-.036 1.848-.033.408-.09.559-.127.633a1.5 1.5 0 0 1-.656.655c-.074.038-.225.095-.633.128-.425.035-.983.036-1.848.036h-5.4c-.865 0-1.423-.001-1.848-.036-.408-.033-.559-.09-.633-.127a1.5 1.5 0 0 1-.656-.656c-.037-.074-.094-.225-.127-.633-.035-.425-.036-.983-.036-1.848v-3.9c0-.865.001-1.423.036-1.848.033-.408.09-.559.127-.633a1.5 1.5 0 0 1 .656-.656c.074-.037.225-.094.633-.127ZM6 10.532l-.048.004c-.408.033-.559.09-.633.128a1.5 1.5 0 0 0-.656.655c-.037.074-.094.225-.127.633-.035.425-.036.983-.036 1.848v1.98c0 1.2.001 2.011.052 2.636.05.608.14.907.242 1.11a2.7 2.7 0 0 0 1.18 1.18c.203.103.502.192 1.11.242.625.05 1.435.052 2.636.052h3.48c.865 0 1.423-.001 1.848-.036.408-.033.559-.09.633-.127a1.5 1.5 0 0 0 .656-.656c.037-.074.094-.225.127-.633l.004-.048H10.8c-1.68 0-2.52 0-3.162-.327a3 3 0 0 1-1.311-1.311C6 17.22 6 16.38 6 14.7v-4.168Z" clip-rule="evenodd"/>
+								</svg>
+
+								<div class="action-text">
+									<div><strong data-trans>
+										Secure Core
+									</strong></div>
+
+									<div class="weak-text" data-trans data-comment="Description for the Secure Core option toggle">
+										Extra protection for people with advanced privacy needs
+									</div>
+								</div>
+
+								<button class="toggle secure-core-button" title="Secure Core"></button>
+							</div>
+						</div>
+
+						<div class="action-block auto-connect-action-block">
+							<div class="action-description">
+								<svg class="action-icon small-icon" viewBox="0 0 24 24" role="img" focusable="false" aria-hidden="true">
+									<path fill-rule="evenodd" d="M12.75 2.25a.75.75 0 0 0-1.5 0v10.5a.75.75 0 0 0 1.5 0V2.25ZM7.745 5.895a.75.75 0 1 0-.767-1.29C4.15 6.289 2.25 9.356 2.25 12.866c0 5.33 4.374 9.635 9.75 9.635s9.75-4.304 9.75-9.634c0-3.51-1.9-6.578-4.728-8.26a.75.75 0 0 0-.767 1.289c2.399 1.426 3.995 4.017 3.995 6.97C20.25 17.35 16.566 21 12 21s-8.25-3.651-8.25-8.134c0-2.954 1.597-5.545 3.995-6.971Z" clip-rule="evenodd"/>
+								</svg>
+
+								<div class="action-text">
+									<div><strong data-trans data-context="Label" data-comment="Title above the toggle to auto-connect">
+										Auto connect
+									</strong></div>
+
+									<div class="weak-text" data-trans data-comment="Description for the Auto connect option toggle">
+										Automatically reconnect to Proton VPN when you open your browser.
+									</div>
+								</div>
+
+								<button class="toggle auto-connect-button" title="Auto connect" data-context="Action" data-comment="Tooltip of the toggle to auto-connect"></button>
+							</div>
+						</div>
+
+						<div class="action-block split-tunneling-action-block">
+							<div class="action-description">
+								<svg class="action-icon small-icon" viewBox="0 0 24 24" role="img" focusable="false" aria-hidden="true">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M7.06066 3L10.5533 3C10.9675 3 11.3033 2.66421 11.3033 2.25C11.3033 1.83579 10.9675 1.5 10.5533 1.5H5.55C4.9701 1.5 4.5 1.9701 4.5 2.55V7.5533C4.5 7.96751 4.83579 8.3033 5.25 8.3033C5.66421 8.3033 6 7.96751 6 7.5533L6 4.06066L13.409 11.4697C13.7019 11.7626 13.7019 12.2374 13.409 12.5303L4.71967 21.2197C4.42678 21.5126 4.42678 21.9874 4.71967 22.2803C5.01256 22.5732 5.48744 22.5732 5.78033 22.2803L14.4697 13.591C15.3483 12.7123 15.3484 11.2877 14.4697 10.409L7.06066 3ZM18.75 1.5C19.1642 1.5 19.5 1.83579 19.5 2.25V21.75C19.5 22.1642 19.1642 22.5 18.75 22.5C18.3358 22.5 18 22.1642 18 21.75V2.25C18 1.83579 18.3358 1.5 18.75 1.5Z" />
+								</svg>
+
+								<div class="action-text">
+									<div><strong data-trans data-context="Label" data-comment="Title above the toggle for the WebRTC setting">
+										Split tunneling
+									</strong></div>
+
+									<div class="weak-text" data-trans data-comment="Description for the Split tunneling option button">
+										Disable VPN for selected websites.
+									</div>
+								</div>
+
+								<button data-go-to="split-tunneling" title="Exclude websites from the tunnel" data-context="Action" data-comment="Tooltip of the Split tunneling setting" class="enter-setting" tabindex="0">
+									<svg class="sm-icon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+										<path fill-rule="evenodd" d="M7.745 20.805a.75.75 0 0 1-.05-1.06L14.736 12 7.695 4.255a.75.75 0 1 1 1.11-1.01l7.5 8.25a.75.75 0 0 1 0 1.01l-7.5 8.25a.75.75 0 0 1-1.06.05Z" clip-rule="evenodd"/>
+									</svg>
+								</button>
+							</div>
+						</div>
+
+						<div class="action-block prevent-webrtc-leak-action-block">
+							<div class="action-description">
+								<svg class="action-icon small-icon" viewBox="0 0 24 24" role="img" focusable="false" aria-hidden="true">
+									<path fill-rule="evenodd" d="M12.75 2.25a.75.75 0 0 0-1.5 0v10.5a.75.75 0 0 0 1.5 0V2.25ZM7.745 5.895a.75.75 0 1 0-.767-1.29C4.15 6.289 2.25 9.356 2.25 12.866c0 5.33 4.374 9.635 9.75 9.635s9.75-4.304 9.75-9.634c0-3.51-1.9-6.578-4.728-8.26a.75.75 0 0 0-.767 1.289c2.399 1.426 3.995 4.017 3.995 6.97C20.25 17.35 16.566 21 12 21s-8.25-3.651-8.25-8.134c0-2.954 1.597-5.545 3.995-6.971Z" clip-rule="evenodd"/>
+								</svg>
+
+								<div class="action-text">
+									<div><strong data-trans data-context="Label" data-comment="Title above the toggle for the WebRTC setting">
+										WebRTC leak protection
+									</strong></div>
+
+									<div class="weak-text" data-trans data-comment="Description for the WebRTC leak protection option toggle">
+										Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.
+									</div>
+								</div>
+
+								<button class="toggle prevent-webrtc-leak-button" title="Prevent WebRTC leak" data-context="Action" data-comment="Tooltip of the WebRTC setting toggle"></button>
+							</div>
+						</div>
+
+						<div class="action-block notifications-enabled-action-block">
+							<div class="action-description">
+								<svg class="action-icon small-icon" viewBox="0 0 512 512" role="img" focusable="false" aria-hidden="true" fill="currentColor">
+									<path d="M470.346 403.26C468.655 400.18 466.169 397.611 463.146 395.82L441.487 382.82C433.033 377.737 426.038 370.553 421.183 361.967C416.327 353.381 413.776 343.684 413.777 333.82V216.66C413.756 182.674 402.73 149.609 382.347 122.414C361.964 95.2185 333.321 75.3562 300.707 65.8C299.296 65.3984 298.054 64.5512 297.165 63.3849C296.277 62.2187 295.79 60.7962 295.777 59.33C295.777 48.899 291.633 38.8953 284.257 31.5195C276.881 24.1437 266.877 20 256.447 20C246.016 20 236.012 24.1437 228.636 31.5195C221.26 38.8953 217.116 48.899 217.116 59.33C217.102 60.7957 216.614 62.2175 215.726 63.3834C214.837 64.5493 213.596 65.397 212.186 65.8C179.572 75.3562 150.929 95.2185 130.546 122.414C110.163 149.609 99.1367 182.674 99.1164 216.66V333.8C99.1173 343.664 96.566 353.361 91.7104 361.947C86.8548 370.533 79.8601 377.717 71.4065 382.8L49.7465 395.8C46.0067 398.033 43.0981 401.426 41.4629 405.463C39.8276 409.501 39.5551 413.961 40.6867 418.168C41.8184 422.374 44.2922 426.096 47.7324 428.767C51.1726 431.439 55.3911 432.915 59.7465 432.97H453.086C456.534 432.888 459.903 431.923 462.871 430.165C465.839 428.408 468.305 425.918 470.034 422.934C471.764 419.95 472.698 416.572 472.747 413.124C472.797 409.676 471.96 406.272 470.317 403.24L470.346 403.26Z" />
+									<path d="M222.447 481.12C229.872 486.373 238.414 489.832 247.402 491.225C256.39 492.619 265.579 491.908 274.246 489.15C282.913 486.392 290.822 481.661 297.351 475.329C303.881 468.998 308.853 461.238 311.876 452.66H200.987C205.035 464.132 212.53 474.073 222.447 481.12Z" />
+								</svg>
+
+								<div class="action-text">
+									<div><strong data-trans data-context="Label" data-comment="Title of the setting to enable or disable system notifications on connection/disconnection event">
+										Notifications
+									</strong></div>
+
+									<div class="weak-text" data-trans data-comment="Description for the system notifications option toggle">
+										Emit system notifications on connection and disconnection events.
+									</div>
+								</div>
+
+								<button class="toggle notifications-enabled-button" title="Enable/disable notifications" data-context="Action" data-comment="Tooltip of system notifications setting toggle"></button>
+							</div>
+						</div>
+					</div>
+					<div data-page="split-tunneling">
+						<h1 class="page-title flex items-center mt-small">
+							<button data-go-to="features" title="Back" class="back-button button-light-hover"><svg class="sm-icon" aria-label="Back" viewBox="0 0 24 24" fill="currentColor">
+								<path fill-rule="evenodd" d="M16.255 20.805a.75.75 0 0 0 .05-1.06L9.264 12l7.041-7.745a.75.75 0 0 0-1.11-1.01l-7.5 8.25a.75.75 0 0 0 0 1.01l7.5 8.25a.75.75 0 0 0 1.06.05Z" clip-rule="evenodd"/>
+							</svg></button>
+							<div class="name flex items-center" data-trans>Split tunneling</div>
+						</h1>
+						<p class="fade-text my1" data-trans>Select websites to exclude from your VPN connection.</p>
+						<div class="split-tunneling-exclusion-add">
+							<button data-st-action="add-website" class="primary-button" data-trans data-context="Action">Add website</button>
+						</div>
+						<div class="split-tunneling-exclusion-form">
+							<div class="my1">
+								<input type="text" class="split-tunneling-exclusion" placeholder="domain.com" pattern="^[\x20-\x7E]+$">
+							</div>
+							<label class="flex">
+								<input type="checkbox" class="with-subdomains" checked>
+								<span data-trans>Also exclude subdomains of this website</span>
+								<span aria-label="For example, news.example.com is a subdomain of example.com." tabindex="0" class="hover-tooltip">
+									<svg class="open-button" height="16" viewBox="0 0 16 16" width="16" fill="currentColor">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M8 14C11.3137 14 14 11.3137 14 8C14 4.68629 11.3137 2 8 2C4.68629 2 2 4.68629 2 8C2 11.3137 4.68629 14 8 14ZM8 15C11.866 15 15 11.866 15 8C15 4.13401 11.866 1 8 1C4.13401 1 1 4.13401 1 8C1 11.866 4.13401 15 8 15ZM9.74995 11C9.74995 11.3038 9.50371 11.55 9.19995 11.55H8.19995H7.19995C6.89619 11.55 6.64995 11.3038 6.64995 11C6.64995 10.6962 6.89619 10.45 7.19995 10.45H7.64995L7.64995 7.55H7.49994C7.19618 7.55 6.94994 7.30376 6.94994 7C6.94994 6.69624 7.19618 6.45 7.49994 6.45H8.19995C8.34582 6.45 8.48571 6.50795 8.58886 6.61109C8.69201 6.71424 8.74995 6.85413 8.74995 7L8.74995 10.45H9.19995C9.50371 10.45 9.74995 10.6962 9.74995 11ZM8 5.40002C8.3866 5.40002 8.7 5.08662 8.7 4.70002C8.7 4.31343 8.3866 4.00002 8 4.00002C7.6134 4.00002 7.3 4.31343 7.3 4.70002C7.3 5.08662 7.6134 5.40002 8 5.40002Z" />
+									</svg>
+								</span>
+							</label>
+							<div class="flex space-between my1">
+								<button data-st-action="cancel" class="tertiary-button" data-trans data-context="Action">Cancel</button>
+								<button data-st-action="add" class="primary-button" data-trans data-context="Action" disabled>Add</button>
+							</div>
+						</div>
+						<div class="split-tunneling-exclusions">
+							<p data-trans class="fade-text">Websites that do not use VPN:</p>
+							<div class="exclusions-list"></div>
+						</div>
+					</div>
+					<div data-page="help">
+						<h1 class="page-title" data-trans>Help</h1>
+
+						<div class="action-block">
+							<div class="action-description">
+								<svg class="action-icon small-icon" viewBox="0 0 24 24" role="img" focusable="false" aria-hidden="true">
+									<path fill-rule="evenodd" d="M16.537 12.927a6 6 0 1 0-9.074 0c.795.917 1.69 2.125 2.083 3.573h4.908c.393-1.448 1.288-2.656 2.083-3.573ZM8.25 18c0-1.55-.906-2.92-1.92-4.091a7.5 7.5 0 1 1 11.341 0C16.656 15.079 15.75 16.45 15.75 18v.75c0 1.233-.454 2.196-1.194 2.842-.723.631-1.66.908-2.556.908-.896 0-1.832-.277-2.556-.908-.74-.646-1.194-1.61-1.194-2.842V18Zm1.5.75V18h4.5v.75c0 .838-.296 1.375-.68 1.712-.402.35-.966.538-1.57.538-.604 0-1.168-.188-1.57-.538-.384-.337-.68-.874-.68-1.712ZM9 8.25A2.25 2.25 0 0 1 11.25 6a.75.75 0 0 0 0-1.5A3.75 3.75 0 0 0 7.5 8.25a.75.75 0 0 0 1.5 0Z" clip-rule="evenodd"/>
+								</svg>
+
+								<div class="action-text">
+									<div><strong data-trans data-context="Label" data-comment="Title above support link">
+										Want to know more?
+									</strong></div>
+
+									<div class="weak-text" data-trans>
+										Browse through the Support Center and find answers to frequently asked questions.
+									</div>
+
+									<a class="primary-button" href="https://protonvpn.com/support/" data-trans data-context="Action" data-comment="Link to support center">
+										Visit Support Center
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="action-block">
+							<div class="action-description">
+								<svg class="action-icon small-icon" viewBox="0 0 24 24" role="img" focusable="false" aria-hidden="true">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M13.6289 16.4934H19.5C20.3291 16.4934 21 15.8218 21 14.9947V5.99868C21 5.1716 20.3291 4.5 19.5 4.5H4.5C3.67095 4.5 3 5.1716 3 5.99868V14.9947C3 15.8218 3.67095 16.4934 4.5 16.4934H10.5V19.6209L13.6289 16.4934ZM9.89623 22.3452C9.5655 22.6758 9 22.4417 9 21.9742V17.9934H4.5C2.84315 17.9934 1.5 16.6508 1.5 14.9947V5.99868C1.5 4.34255 2.84315 3 4.5 3H19.5C21.1569 3 22.5 4.34255 22.5 5.99868V14.9947C22.5 16.6508 21.1569 17.9934 19.5 17.9934H14.25L9.89623 22.3452Z" />
+								</svg>
+
+								<div class="action-text">
+									<div><strong data-trans data-context="Label" data-comment="Title above contact button">
+										Need help?
+									</strong></div>
+
+									<div class="weak-text" data-trans>
+										Contact our Customer Support agents to help you out with Proton VPN.
+									</div>
+
+									<a
+										class="primary-button"
+										href="https://protonvpn.com/support-form"
+										data-hash-seed='["clientVersion", "username", "email", "platform"]'
+										data-locale-support='["fr"]'
+										data-trans data-context="Action"
+									>
+										Contact us
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div data-page="settings">
+						<div class="scrollable-view">
+							<h1 class="page-title" data-trans data-context="Label">Settings</h1>
+
+							<div class="pm-user-bar">
+								<div>
+									<svg class="user-icon" aria-labelledby="user-icon-title" viewBox="0 0 24 24" width="24" height="24">
+										<title id="user-icon-title">User</title>
+										<ellipse cx="12" cy="8" rx="5" ry="6"/>
+										<path d="M21.8,19.1c-0.9-1.8-2.6-3.3-4.8-4.2c-0.6-0.2-1.3-0.2-1.8,0.1c-1,0.6-2,0.9-3.2,0.9s-2.2-0.3-3.2-0.9    C8.3,14.8,7.6,14.7,7,15c-2.2,0.9-3.9,2.4-4.8,4.2C1.5,20.5,2.6,22,4.1,22h15.8C21.4,22,22.5,20.5,21.8,19.1z"/>
+									</svg>
+								</div>
+								<div class="flex-1"><div class="pm-user-name"></div></div>
+							</div>
+
+							<div class="pm-plan"></div>
+
+							<button data-open-account-page="vpn" class="primary-button" data-trans data-context="Action" data-comment="Button to go to account dashboard">
+								Manage subscription
+							</button>
+
+							<div class="action-block telemetry-block">
+								<div class="action-description">
+									<div class="action-text">
+										<div><strong data-trans data-comment="Title for telemetry option">
+											Help us fight censorship
+										</strong></div>
+									</div>
+								</div>
+
+								<div class="action-description">
+									<div class="action-text">
+										<div>
+											<span data-trans>Share anonymous usage statistics</span><br />
+											<span class="sub-action-text" data-trans>Usage data helps us overcome VPN blocks and improve app performance.</span>
+										</div>
+									</div>
+
+									<button class="toggle telemetry-button" title="Telemetry" data-comment="Toggle button to opt-in to share anonymous usage statistics"></button>
+								</div>
+
+								<div class="action-description">
+									<div class="action-text">
+										<div>
+											<span data-trans>Share anonymous usage crash reports</span><br />
+											<span class="sub-action-text" data-trans>Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.</span>
+										</div>
+									</div>
+
+									<button class="toggle crash-button" title="Crash" data-comment="Toggle button to opt-out to share anonymous crash reports"></button>
+								</div>
+
+								<div class="action-description">
+									<div class="action-text">
+										<div class="sub-action-text">
+											<span data-trans>Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties</span>
+											<a data-trans class="text-link" href="https://proton.me/legal/privacy">Learn more</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="action-block debug-block">
+								<label>Max tier <input type="number" id="max-tier" value="2" min="0" max="9"></label>
+							</div>
+						</div>
+
+						<div class="user-buttons-bar">
+							<button class="sign-out-button small-button">
+								<span id="logout-label" data-trans data-context="Action">Sign out</span>
+								<svg fill="currentColor" role="img" focusable="false" aria-hidden="true" viewBox="0 0 24 24">
+									<path fill-rule="evenodd" d="M11.25 1.5h8.25a3 3 0 0 1 3 3v15a3 3 0 0 1-3 3h-8.25a3 3 0 0 1-3-3V18h1.5v1.5a1.5 1.5 0 0 0 1.5 1.5h8.25a1.5 1.5 0 0 0 1.5-1.5v-15A1.5 1.5 0 0 0 19.5 3h-8.25a1.5 1.5 0 0 0-1.5 1.5V6h-1.5V4.5a3 3 0 0 1 3-3ZM9.97 7.72a.75.75 0 0 1 1.06 0l3.538 3.538a1.049 1.049 0 0 1 0 1.485L11.03 16.28a.75.75 0 1 1-1.06-1.06l2.47-2.47H2.25a.75.75 0 0 1 0-1.5h10.19L9.97 8.78a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/>
+								</svg>
+							</button>
+							<button class="switch-account-button small-button">
+								<span id="switch-account-label" data-trans data-context="Action">Switch account</span>
+								<svg fill="currentColor" role="img" focusable="false" aria-hidden="true" viewBox="0 0 24 24">
+									<path fill-rule="evenodd" d="M11.25 1.5h8.25a3 3 0 0 1 3 3v15a3 3 0 0 1-3 3h-8.25a3 3 0 0 1-3-3V18h1.5v1.5a1.5 1.5 0 0 0 1.5 1.5h8.25a1.5 1.5 0 0 0 1.5-1.5v-15A1.5 1.5 0 0 0 19.5 3h-8.25a1.5 1.5 0 0 0-1.5 1.5V6h-1.5V4.5a3 3 0 0 1 3-3ZM9.97 7.72a.75.75 0 0 1 1.06 0l3.538 3.538a1.049 1.049 0 0 1 0 1.485L11.03 16.28a.75.75 0 1 1-1.06-1.06l2.47-2.47H2.25a.75.75 0 0 1 0-1.5h10.19L9.97 8.78a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/>
+								</svg>
+							</button>
+						</div>
+					</div>
+					<div data-page="upgrade">
+						<div class="page-header gradient-background">
+							<button aria-label="Close" data-go-to="world" class="corner-button small-button">
+								<svg fill="currentColor" viewBox="0 0 20 20">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M10 18.7502C14.8325 18.7502 18.75 14.8327 18.75 10.0002C18.75 5.16769 14.8325 1.25018 10 1.25018C5.16751 1.25018 1.25 5.16769 1.25 10.0002C1.25 14.8327 5.16751 18.7502 10 18.7502ZM13.5669 13.5671C13.3229 13.8112 12.9271 13.8112 12.6831 13.5671L10 10.8841L7.31694 13.5671C7.07286 13.8112 6.67714 13.8112 6.43306 13.5671C6.18898 13.323 6.18898 12.9273 6.43306 12.6832L9.11612 10.0002L6.43306 7.31712C6.18898 7.07305 6.18898 6.67732 6.43306 6.43324C6.67714 6.18916 7.07286 6.18916 7.31694 6.43324L10 9.1163L12.6831 6.43324C12.9271 6.18916 13.3229 6.18916 13.5669 6.43324C13.811 6.67732 13.811 7.07305 13.5669 7.31712L10.8839 10.0002L13.5669 12.6832C13.811 12.9273 13.811 13.323 13.5669 13.5671Z" />
+								</svg>
+							</button>
+
+							<div class="text-center v-margin">
+								<img src="/img/worldwide-coverage.png" alt="Location icon connected to many cities worldwide" width="248" height="178" />
+							</div>
+
+							<h1 class="page-title text-center mt-small access-sentence" data-trans>
+								Access over 5000 secure servers in 63 countries
+							</h1>
+						</div>
+
+						<!-- Uncomment this block when the GitHub repository is finalized //
+						<div class="action-block squeezed">
+							<div class="action-description">
+								<svg class="paid-feature-icon small-icon" viewBox="0 0 20 20" role="img" focusable="false" aria-hidden="true">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M11.8697 5.15162C11.954 4.81675 11.749 4.47741 11.4117 4.39369C11.0744 4.30997 10.7326 4.51356 10.6483 4.84843L8.13025 14.8483C8.04592 15.1832 8.25098 15.5225 8.58826 15.6062C8.92554 15.69 9.26732 15.4864 9.35164 15.1515L11.8697 5.15162ZM6.09712 5.37533C6.30572 5.09919 6.24935 4.70744 5.97122 4.50033C5.69309 4.29322 5.29852 4.34919 5.08993 4.62533L1.42626 9.47533C1.19125 9.78644 1.19125 10.2142 1.42626 10.5253L5.08993 15.3753C5.29852 15.6515 5.69309 15.7074 5.97122 15.5003C6.24935 15.2932 6.30572 14.9015 6.09712 14.6253L2.60342 10.0003L6.09712 5.37533ZM14.9101 4.62533C14.7015 4.34919 14.3069 4.29322 14.0288 4.50033C13.7506 4.70744 13.6943 5.09919 13.9029 5.37533L17.3966 10.0003L13.9029 14.6253C13.6943 14.9015 13.7506 15.2932 14.0288 15.5003C14.3069 15.7074 14.7015 15.6515 14.9101 15.3753L18.5737 10.5253C18.8088 10.2142 18.8088 9.78644 18.5737 9.47533L14.9101 4.62533Z" />
+								</svg>
+
+								<div class="action-text" data-trans>
+									Open source VPN
+								</div>
+							</div>
+						</div>
+						// -->
+
+						<div class="action-block squeezed">
+							<div class="action-description">
+								<svg class="paid-feature-icon small-icon" viewBox="0 0 20 20" role="img" focusable="false" aria-hidden="true">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M13.75 8.12518C13.75 11.2318 11.2316 13.7502 8.125 13.7502C5.0184 13.7502 2.5 11.2318 2.5 8.12518C2.5 5.01858 5.0184 2.50018 8.125 2.50018C11.2316 2.50018 13.75 5.01858 13.75 8.12518ZM12.5244 13.4085C11.3322 14.4023 9.79844 15.0002 8.125 15.0002C4.32804 15.0002 1.25 11.9221 1.25 8.12518C1.25 4.32823 4.32804 1.25018 8.125 1.25018C11.922 1.25018 15 4.32823 15 8.12518C15 9.79862 14.4021 11.3324 13.4083 12.5246L17.3169 16.4332C17.561 16.6773 17.561 17.073 17.3169 17.3171C17.0729 17.5612 16.6771 17.5612 16.4331 17.3171L12.5244 13.4085Z" />
+								</svg>
+
+								<div class="action-text" data-trans>
+									Audited by independent security experts
+								</div>
+							</div>
+						</div>
+
+						<div class="action-block squeezed">
+							<div class="action-description">
+								<svg class="paid-feature-icon small-icon" viewBox="0 0 20 20" role="img" focusable="false" aria-hidden="true">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M12.0977 2.70574C13.515 2.09428 15.1423 2.9006 15.5144 4.39867L16.7512 9.37904H18.125C18.4702 9.37904 18.75 9.65887 18.75 10.004C18.75 10.3492 18.4702 10.629 18.125 10.629H1.875C1.52982 10.629 1.25 10.3492 1.25 10.004C1.25 9.65887 1.52982 9.37904 1.875 9.37904H3.24879L4.48564 4.39867C4.85767 2.90061 6.48498 2.09428 7.90227 2.70574L9.25725 3.29032C9.7313 3.49484 10.2687 3.49484 10.7428 3.29032L12.0977 2.70574ZM14.3012 4.69994C14.1152 3.95091 13.3015 3.54775 12.5929 3.85348L11.2379 4.43806C10.4478 4.77892 9.55216 4.77892 8.76208 4.43806L7.4071 3.85348C6.69846 3.54775 5.8848 3.95091 5.69879 4.69995L4.5492 9.32895H15.4508L14.3012 4.69994Z" />
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M8.21451 12.6292C7.6527 11.7994 6.70254 11.254 5.625 11.254C3.89911 11.254 2.5 12.6532 2.5 14.379C2.5 16.1049 3.89911 17.504 5.625 17.504C7.35089 17.504 8.75 16.1049 8.75 14.379C8.75 13.6887 9.30964 13.129 10 13.129C10.6904 13.129 11.25 13.6887 11.25 14.379C11.25 16.1049 12.6491 17.504 14.375 17.504C16.1009 17.504 17.5 16.1049 17.5 14.379C17.5 12.6532 16.1009 11.254 14.375 11.254C13.2975 11.254 12.3473 11.7994 11.7855 12.6292C11.3317 12.1663 10.6994 11.879 10 11.879C9.30058 11.879 8.66825 12.1663 8.21451 12.6292ZM7.5 14.379C7.5 15.4146 6.66053 16.254 5.625 16.254C4.58947 16.254 3.75 15.4146 3.75 14.379C3.75 13.3435 4.58947 12.504 5.625 12.504C6.66053 12.504 7.5 13.3435 7.5 14.379ZM12.5 14.379C12.5 15.4146 13.3395 16.254 14.375 16.254C15.4105 16.254 16.25 15.4146 16.25 14.379C16.25 13.3435 15.4105 12.504 14.375 12.504C13.3395 12.504 12.5 13.3435 12.5 14.379Z" />
+								</svg>
+
+								<div class="action-text" data-trans>
+									Bypass censorship with advanced security and privacy features
+								</div>
+							</div>
+						</div>
+
+						<div><button class="primary-button open-upgrade-page" data-trans>Upgrade</button></div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+    <script src="js/browser-polyfill.min.js"></script>
+    <script src="js/popup.js"></script>
+</body>
+</html>

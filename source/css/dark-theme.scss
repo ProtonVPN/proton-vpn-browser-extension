@@ -1,0 +1,163 @@
+@import "./sizes";
+
+@mixin dark-theme {
+	#modal-error,
+	&.main-modal {
+		color: #eee;
+		background: #16141c; // #1c1b24, #34343d
+	}
+
+	.connected-list-item::after {
+		border-color: #126550;
+	}
+
+	.text-intense {
+		color: white;
+	}
+
+	.not-found,
+	.search-box input {
+		color: var(--primary-contrast);
+	}
+
+	.expanded-tooltip {
+		border: 1px solid var(--dark-gray);
+		background: #16141c;
+
+		.close-button {
+			fill: var(--light-gray);
+		}
+	}
+
+	.streaming-info {
+		color: var(--light-gray);
+
+		h4,
+		.tooltip-row-icon {
+			color: var(--primary-contrast);
+		}
+	}
+
+	.error-message {
+		color: rgb(240, 143, 164);
+
+		.close-button {
+			background: var(--gray);
+
+			&:hover {
+				background: var(--middle-gray);
+			}
+		}
+	}
+
+	.connection-status {
+		&.success .protection-icon,
+		&.success .protection-status {
+			color: rgb(45, 220, 204);
+			fill: rgb(45, 220, 204);
+		}
+
+		&.success::after {
+			box-shadow: 0 0 $shadow-width $shadow-height rgba(45, 220, 204, 0.5);
+		}
+
+		&.danger .protection-icon,
+		&.danger .protection-status {
+			color: rgb(240, 143, 164);
+			fill: rgb(240, 143, 164);
+		}
+
+		&.danger::after {
+			box-shadow: 0 0 $shadow-width $shadow-height rgba(240, 143, 164, 0.5);
+		}
+	}
+
+	input[type="text"]:focus {
+		border-color: var(--primary-color-faded);
+	}
+
+	.search-box .search-icon,
+	.search-box .reset-button-icon {
+		fill: var(--light-gray);
+	}
+
+	.weak-text,
+	.not-found small {
+		color: var(--light-gray);
+	}
+
+	.hover-tooltip::after {
+		background-color: var(--dark-gray);
+		color: var(--primary-contrast);
+	}
+
+	.secure-core-button:not(.activated, .toggle),
+	.small-button:not(.sign-out-button, .switch-account-button, .delete-button, .corner-button) {
+		background: #484848;
+	}
+
+	.side-button,
+	.top-icons button,
+	.top-icons a {
+		color: var(--light-gray);
+
+		&.active {
+			background: #403f47;
+			color: white;
+		}
+
+		&:not(.active):hover {
+			background: var(--middle-gray);
+			background: #313138;
+		}
+	}
+
+	.country-block {
+		border-bottom-color: rgba(0, 0, 0, 0.1);
+	}
+
+	.city-name {
+		opacity: 0.65;
+	}
+
+	.connection-status .current-server-name {
+		color: var(--light-gray);
+	}
+
+	.connection-status .incentive {
+		color: var(--primary-contrast);
+	}
+
+	.lds-ring div {
+		border-top-color: var(--light-gray);
+	}
+
+	.switch-account-button.small-button,
+	.sign-out-button.small-button {
+		color: var(--light-gray);
+	}
+
+	.action-block .action-description .action-icon {
+		fill: #fff;
+	}
+
+	.disconnection-button {
+		color: var(--primary-contrast);
+
+		&:not(.danger-hover) {
+			&:focus,
+			&:hover {
+				background: var(--dark-gray);
+				color: white;
+			}
+		}
+	}
+
+	.circle-bg {
+		stroke: var(--dark-gray);
+	}
+
+	.sign-up-button, {
+		color: var(--primary-color-lighted);
+	}
+}
