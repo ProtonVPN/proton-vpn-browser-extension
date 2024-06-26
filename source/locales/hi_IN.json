@@ -1,0 +1,424 @@
+{
+	"headers": {
+		"plural-forms": "nplurals=2; plural=(n != 1);",
+		"language": "hi_IN"
+	},
+	"contexts": {
+		"Action": {
+			"${linkDescription} (New tab)": [
+				"${linkDescription} (नए टैब में खोलें)"
+			],
+			"Add": [
+				"जोड़ें"
+			],
+			"Add website": [
+				"वेबसाइट जोड़ें"
+			],
+			"Auto connect": [
+				"अपनेआप-जुड़ें"
+			],
+			"Cancel": [
+				"रद्द करें"
+			],
+			"Connect": [
+				"जुड़े"
+			],
+			"Contact us": [
+				"हमें संपर्क करें"
+			],
+			"Create an account": [
+				"खाता बनाएं"
+			],
+			"Disconnect": [
+				"कनेक्शन तोड़ें"
+			],
+			"Enable/disable notifications": [
+				"सूचना सक्षम/अक्षम करें"
+			],
+			"Exclude websites from the tunnel": [
+				"टनल में से वेबसाइटों को निकालें"
+			],
+			"Log in with Proton": [
+				"Proton से लॉगइन करें"
+			],
+			"Manage subscription": [
+				"सदस्यता संभालें"
+			],
+			"New to Proton?": [
+				"Proton में नए?"
+			],
+			"Next": [
+				"अगला"
+			],
+			"Prevent WebRTC leak": [
+				"WebRTC लीक से बचें"
+			],
+			"Quick connect": [
+				"तुरंत जुड़ें"
+			],
+			"Remove ${domain}": [
+				"${domain} को निकालें"
+			],
+			"Select a city in ${exitCountryName}": [
+				"${exitCountryName} का शहर चुनें"
+			],
+			"Select a server in ${cityName}": [
+				"${cityName} का सर्वर चुनें"
+			],
+			"Select entry country with exit in ${exitCountryName}": [
+				"प्रवेश देश चुने जब ${exitCountryName} निकास देश है"
+			],
+			"Sign in": [
+				"साइन इन"
+			],
+			"Sign out": [
+				"साइनआउट करें"
+			],
+			"Subscribe to connect more devices": [
+				"ज़्यादा डिवाइस जोड़ने के लिए सदस्यता लें"
+			],
+			"Subscribe to enable Browser Extension": [
+				"ब्राउज़र एक्सटेंशन सक्षम करने के लिए सदस्यता लें"
+			],
+			"Switch account": [
+				"खाता बदलें"
+			],
+			"Update": [
+				"अपडेट करें"
+			],
+			"Upgrade": [
+				"अपग्रेड करें"
+			],
+			"Visit Support Center": [
+				"मदद केंद्र पे जाएं"
+			]
+		},
+		"Action: City-level button": {
+			"Connect to ${cityName}": [
+				"${cityName} से जुड़ें"
+			]
+		},
+		"Action: Country-level button": {
+			"Connect to ${exitCountryName}": [
+				"${exitCountryName} से जुड़ें"
+			]
+		},
+		"Action: Server-level button": {
+			"Connect to ${serverName}": [
+				"${serverName} से जुड़ें"
+			]
+		},
+		"Confirm": {
+			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
+				"ऐप से लॉगआउट होने से सक्रिय वीपीएन कनेक्शन टूट जाएगा। जारी रखें?"
+			]
+		},
+		"Error": {
+			"${countries} country": [
+				"${countries} देश",
+				"${countries} देश"
+			],
+			"${servers}+ secure server": [
+				"${servers}+ सुरक्षित सर्वर",
+				"${servers}+ सुरक्षित सर्वर"
+			],
+			"Bypass online censorship with advanced security and privacy features": [
+				"एडवांस सुरक्षा और निजता सुविधाओं के साथ ऑनलाइन सेंसरशिप से बचें।"
+			],
+			"Network error.": [
+				"नेटवर्क गड़बड़।"
+			],
+			"Network is unreachable": [
+				"नेटवर्क से संपर्क नहीं हुआ"
+			],
+			"No results found": [
+				"कोई नतीजा नहीं मिला"
+			],
+			"Not able to control the browser network settings, possibly a permission is missing": [
+				"ब्राउज़र नेटवर्क सेटिंग पे कंट्रोल नहीं, शायद कोई अनुमति गुम है"
+			],
+			"Please check your connectivity": [
+				"अपना कनेक्शन देखें"
+			],
+			"Please try a different keyword": [
+				"कोई दूसरा शब्द आज़माएं"
+			],
+			"Server not found": [
+				"सर्वर नहीं मिला"
+			],
+			"Service temporarily unavailable": [
+				"सेवा कुछ समय के लिए मौजूद नहीं"
+			],
+			"Something went wrong. If the problem persists, please try to re-install the extension": [
+				"कुछ गलत हो गया। अगर समस्या बनी रहती है, तो एक्सटेंशन को वापस इंस्टॉल करें"
+			],
+			"Unable to load the list": [
+				"लिस्ट लोड नहीं कर सके"
+			],
+			"Unable to login": [
+				"लॉगइन नहीं कर सके"
+			],
+			"Unable to reach the server, please try to reconnect, or to log out and log in again if the problem persists": [
+				"सर्वर से संपर्क नहीं कर पा रहे। अगर समस्या बनी रहती है तो जुड़ने की वापस कोशिश करके या लॉगआउट और लॉगइन करके देखें।"
+			],
+			"Unlock ${servers} in ${countries}": [
+				"${countries} में अनलॉक करें ${servers}"
+			],
+			"Unlock global streaming services": [
+				"दुनियाभर की स्ट्रीमिंग सेवाएं अनलॉक करें"
+			]
+		},
+		"Info": {
+			"Access Proton VPN via this icon": [
+				"इस आइकन से Proton VPN एक्सेस करें"
+			],
+			"Allow VPN permissions": [
+				"वीपीएन अनुमतियां दें"
+			],
+			"Also exclude subdomains of this website": [
+				"इस वेबसाइट के उपडोमेन भी छोड़ दें"
+			],
+			"and more": [
+				"और बहुत सारे"
+			],
+			"Auto-selected from": [
+				"इनमें से अपनेआप चुना"
+			],
+			"Automatically reconnect to Proton VPN when you open your browser.": [
+				"Proton VPN से अपनेआप जुड़े जब आपका ब्राउज़र खुलता है।"
+			],
+			"Back": [
+				"वापस जाएं"
+			],
+			"Browse through the Support Center and find answers to frequently asked questions.": [
+				"मदद केंद्र में जाएं और कई बार पूछे गए सवालों का जवाब पाएं।"
+			],
+			"Clear search": [
+				"खोज इतिहास साफ करें"
+			],
+			"Close": [
+				"बंद करें"
+			],
+			"Connect to a Plus server in this country to start streaming.\n\nHint: Clear the cache of the streaming apps to ensure new content appears.": [
+				"स्ट्रीम शुरू करने के लिए इस देश के किसी Plus सर्वर से जुड़ें।\n\nसलाह: पक्का करने के लिए कि आपको सिर्फ नया कंटेंट मिले, अपने स्ट्रीमिंग ऐप का कैश साफ करें।"
+			],
+			"Connected": [
+				"जुड़े हुए"
+			],
+			"Connected to ${name}": [
+				"${name} से जुड़े"
+			],
+			"Connected to ${name} in ${city}": [
+				"${city} में ${name} से जुड़े"
+			],
+			"Connecting...": [
+				"जुड़ रहे..."
+			],
+			"Contact our Customer Support agents to help you out with Proton VPN.": [
+				"Proton VPN की समस्या को सुलझाने के लिए हमारे ग्राहक मदद एजेंट से संपर्क करें।"
+			],
+			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
+				"क्रेश रिपोर्ट हमें बग ठीक करने, फायरवॉल का पता लगाने, और वीपीएन ब्लॉक से बचने में मदद करता है।"
+			],
+			"Disable VPN for selected websites.": [
+				"वीपीएन चुने गए वेबसाइटों के लिए अक्षम करें।"
+			],
+			"Disconnected": [
+				"कनेक्शन टूटा"
+			],
+			"Extra protection for people with advanced privacy needs": [
+				"ज़्यादा सुरक्षा उन लोगो के लिए जिन्हें ज़्यादा निजता की ज़रूरत है"
+			],
+			"Fastest free server": [
+				"सबसे तेज़ फ्री सर्वर"
+			],
+			"Follow these simple steps to get the best experience using Proton VPN": [
+				"Proton VPN से बेहतरीन अनुभव लेने के लिए इन आसान चीज़ो को करें"
+			],
+			"For example, news.example.com is a subdomain of example.com.": [
+				"उदाहरण के लिए, khabar.udaharan.in udaharan.in का उपडोमेन है।"
+			],
+			"Help": [
+				"मदद"
+			],
+			"Help us fight censorship": [
+				"सेंसरशिप से लड़ाई में हमारी मदद करें"
+			],
+			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
+				"बढ़िया प्रदर्शन वाला स्विस वीपीएन जो बचाएं आपकी निजता। अधिकतम सुरक्षा, ${count} से ज़्यादा सर्वर और कोई रोक नहीं।",
+				"बढ़िया प्रदर्शन वाला स्विस वीपीएन जो बचाएं आपकी निजता। अधिकतम सुरक्षा, ${count} से ज़्यादा सर्वर और कोई रोक नहीं।"
+			],
+			"Learn more": [
+				"और जानें"
+			],
+			"Logged out": [
+				"लॉगआउट हो गए"
+			],
+			"Open the Extensions menu": [
+				"एक्सटेंशन मेन्यू खोलें"
+			],
+			"Open the Proton VPN browser extension to continue": [
+				"जारी रखने के लिए Proton VPN ब्राउज़र एक्सटेंशन खोलें"
+			],
+			"Pin Proton VPN to your toolbar": [
+				"Proton VPN को अपने टूलबार में पिन करें"
+			],
+			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
+				"दबाएं <b>अगला</b>, फिर अपने ब्राउज़र के पॉपअप में दबाएं <b>अनुमति दें</b>।"
+			],
+			"Proton VPN Browser Extension": [
+				"Proton VPN ब्राउज़र एक्सटेंशन"
+			],
+			"Search": [
+				"खोजें"
+			],
+			"Select websites to exclude from your VPN connection.": [
+				"अपने वीपीएन कनेक्शन से वेबसाइट निकालने को चुनें"
+			],
+			"Share anonymous usage statistics": [
+				"अनजान इस्तेमाल आंकड़े शेयर करें"
+			],
+			"Split tunneling": [
+				"स्प्लिट टनलिंग"
+			],
+			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
+				"अपने ब्राउज़र को आपका आईपी पता WebRTC इस्तेमाल करती वेबसाइटों और ऐपों को लीक करने से रोके। ये वीडियो कॉल या लाइव-स्ट्रीमिंग के प्रदर्शन पे असर डाल सकता है।"
+			],
+			"Telemetry": [
+				"टेलीमेटरी"
+			],
+			"Thank you for installing Proton VPN": [
+				"Proton VPN इंस्टॉल करने के लिए शुक्रिया"
+			],
+			"Then just click the Proton VPN icon to sign in.": [
+				"फिर साइनइन करने के लिए बस Proton VPN का आइकन दबाएं।"
+			],
+			"To get started, you’ll need to enable VPN permissions on your browser.": [
+				"शुरू करने के लिए, आपको अपने ब्राउज़र में वीपीएन अनुमतियों को सक्षम करना होगा।"
+			],
+			"Usage data helps us overcome VPN blocks and improve app performance.": [
+				"इस्तेमाल डाटा हमें वीपीएन ब्लॉक से बचने और ऐप प्रदर्शन को बेहतर करने में मदद करता है।"
+			],
+			"User": [
+				"यूज़र"
+			],
+			"VPN Features": [
+				"वीपीएन विशेषताएं"
+			],
+			"Websites that do not use VPN:": [
+				"वेबसाइट जो वीपीएन इस्तेमाल नहीं करते:"
+			],
+			"You're signed in": [
+				"आप साइनइन हैं"
+			]
+		},
+		"Label": {
+			"And all its subdomains": [
+				"और इसके सारे उपडोमेन"
+			],
+			"Auto connect": [
+				"अपनेआप-जुड़ें"
+			],
+			"Cities": [
+				"शहर"
+			],
+			"City": [
+				"शहर",
+				"शहर"
+			],
+			"Connecting": [
+				"जुड़ रहे"
+			],
+			"Countries, cities, servers": [
+				"देश, शहर, सर्वर"
+			],
+			"Country": [
+				"देश",
+				"देश"
+			],
+			"Entry country": [
+				"प्रवेश देश",
+				"प्रवेश देश"
+			],
+			"Free servers": [
+				"Free सर्वर"
+			],
+			"Free servers (${count})": [
+				"Free सर्वर (${count})"
+			],
+			"Internal servers (${count})": [
+				"आंतरिक सर्वर (${count})"
+			],
+			"Need help?": [
+				"मदद चाहिए?"
+			],
+			"Notifications": [
+				"सूचनाएं"
+			],
+			"Offer": [
+				"ऑफर"
+			],
+			"Other": [
+				"अन्य"
+			],
+			"Plus servers (${count})": [
+				"Plus सर्वर (${count})"
+			],
+			"Protected": [
+				"सुरक्षित"
+			],
+			"Server": [
+				"सर्वर",
+				"सर्वर"
+			],
+			"Settings": [
+				"सेटिंग"
+			],
+			"Split tunneling": [
+				"स्प्लिट टनलिंग"
+			],
+			"Unprotected": [
+				"असुरक्षित"
+			],
+			"Via": [
+				", होकर"
+			],
+			"Want to know more?": [
+				"और जानें?"
+			],
+			"WebRTC leak protection": [
+				"WebRTC लीक सुरक्षा"
+			]
+		},
+		"Menu": {
+			"Countries": [
+				"देश"
+			],
+			"Features": [
+				"विशेषताएं"
+			],
+			"Help": [
+				"मदद"
+			],
+			"Settings": [
+				"सेटिंग"
+			]
+		},
+		"Status": {
+			"Connecting to ${serverName}": [
+				"${serverName} से जुड़ रहे"
+			],
+			"Proton VPN: ${status}": [
+				"Proton VPN: ${status}"
+			]
+		},
+		"Title": {
+			"Features": [
+				"विशेषताएं"
+			],
+			"Streaming": [
+				"स्ट्रीमिंग"
+			]
+		}
+	}
+}

@@ -1,0 +1,442 @@
+{
+	"headers": {
+		"plural-forms": "nplurals=2; plural=(n > 1);",
+		"language": "tr_TR"
+	},
+	"contexts": {
+		"Action": {
+			"${linkDescription} (New tab)": [
+				"${linkDescription} (Yeni sekmede)"
+			],
+			"Add": [
+				"Ekle"
+			],
+			"Add website": [
+				"Site ekle"
+			],
+			"Auto connect": [
+				"Otomatik bağlantı"
+			],
+			"Cancel": [
+				"İptal"
+			],
+			"Connect": [
+				"Bağlan"
+			],
+			"Contact us": [
+				"Bize ulaşın"
+			],
+			"Create an account": [
+				"Hesap açın"
+			],
+			"Disconnect": [
+				"Bağlantıyı kes"
+			],
+			"Enable/disable notifications": [
+				"Bildirimleri aç/kapat"
+			],
+			"Exclude websites from the tunnel": [
+				"Sitelerin tünele katılmasını engeller"
+			],
+			"Log in with Proton": [
+				"Proton ile oturum açın"
+			],
+			"Manage subscription": [
+				"Abonelik yönetimi"
+			],
+			"New to Proton?": [
+				"Yeni bir Proton kullanıcısı mısınız?"
+			],
+			"Next": [
+				"İleri"
+			],
+			"Prevent WebRTC leak": [
+				"WebRTC sızıntısını engelle"
+			],
+			"Quick connect": [
+				"Hızlı bağlan"
+			],
+			"Remove ${domain}": [
+				"${domain} etki alanı katılmasın"
+			],
+			"Select a city in ${exitCountryName}": [
+				"${exitCountryName} içinden bir il seçin"
+			],
+			"Select a server in ${cityName}": [
+				"${cityName} içinden bir sunucu seçin"
+			],
+			"Select entry country with exit in ${exitCountryName}": [
+				"${exitCountryName} üzerinden çıkacak giriş ülkesini seçin"
+			],
+			"Sign in": [
+				"Oturum aç"
+			],
+			"Sign out": [
+				"Oturumu kapat"
+			],
+			"Subscribe to connect more devices": [
+				"Daha fazla aygıt ile bağlantı kurmak için abone olun"
+			],
+			"Subscribe to enable Browser Extension": [
+				"Tarayıcı eklentisini kullanıma almak için abone olun"
+			],
+			"Switch account": [
+				"Hesap değiştir"
+			],
+			"Update": [
+				"Güncelle"
+			],
+			"Upgrade": [
+				"Yükselt"
+			],
+			"Visit Support Center": [
+				"Destek merkezine git"
+			]
+		},
+		"Action: City-level button": {
+			"Connect to ${cityName}": [
+				"${cityName} ile bağlantı kur"
+			]
+		},
+		"Action: Country-level button": {
+			"Connect to ${exitCountryName}": [
+				"${exitCountryName} ile bağlantı kur"
+			]
+		},
+		"Action: Server-level button": {
+			"Connect to ${serverName}": [
+				"${serverName} ile bağlantı kur"
+			]
+		},
+		"Confirm": {
+			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
+				"Uygulama oturumunu kapatmak, etkin VPN bağlantısını kesecek. İlerlemek istiyor musunuz?"
+			]
+		},
+		"Error": {
+			"${countries} country": [
+				"${countries} ülke",
+				"${countries} ülke"
+			],
+			"${servers}+ secure server": [
+				"${servers}+ güvenli sunucu",
+				"${servers}+ güvenli sunucu"
+			],
+			"Bypass online censorship with advanced security and privacy features": [
+				"Gelişmiş güvenlik ve gizlilik özellikleriyle çevrim içi engelleri aşın"
+			],
+			"Connect from your browser with ${planName}": [
+				"${planName} ile tarayıcınızdan bağlantı kurun"
+			],
+			"Network error.": [
+				"Ağ sorunu."
+			],
+			"Network is unreachable": [
+				"Ağa erişilemiyor"
+			],
+			"No results found": [
+				"Herhangi bir sonuç bulunamadı"
+			],
+			"Not able to control the browser network settings, possibly a permission is missing": [
+				"Tarayıcının ağ ayarları denetlenemedi. Büyük olasılıkla verilmesi gereken bir izin verilmemiş"
+			],
+			"Please check your connectivity": [
+				"Lütfen bağlantınızı denetleyin"
+			],
+			"Please try a different keyword": [
+				"Lütfen başka bir anahtar sözcük deneyin"
+			],
+			"Server not found": [
+				"Sunucu bulunamadı"
+			],
+			"Service temporarily unavailable": [
+				"Hizmet geçici olarak kullanılamıyor"
+			],
+			"Something went wrong. If the problem persists, please try to re-install the extension": [
+				"Bir sorun çıktı. Sorun sürerse, lütfen eklentiyi yeniden kurmayı deneyin"
+			],
+			"Unable to find appropriate server, try to logout and login again if it persists": [
+				"Uygun bir sunucu bulunamadı. Sorun sürerse oturumu kapatıp yeniden açmayı deneyin"
+			],
+			"Unable to load the list": [
+				"Liste yüklenemedi"
+			],
+			"Unable to login": [
+				"Oturum açılamadı"
+			],
+			"Unable to reach the server, please try to reconnect, or to log out and log in again if the problem persists": [
+				"Sunucuya erişilemedi. Lütfen yeniden bağlantı kurmayı deneyin. Sorun sürerse oturumunuzu kapatıp açın ve yeniden bağlantı kurmayı deneyin"
+			],
+			"Unlock ${servers} in ${countries}": [
+				"${countries} ülkede ${servers}ya erişin"
+			],
+			"Unlock global streaming services": [
+				"Tüm dünyaradaki yayın akışı hizmetlerine erişin"
+			]
+		},
+		"Info": {
+			"Access Proton VPN via this icon": [
+				"Proton VPN için bu simgeyi kullanın"
+			],
+			"Allow VPN permissions": [
+				"VPN izinlerini verin"
+			],
+			"Also exclude subdomains of this website": [
+				"Bu sitenin alt etki alanları da katılmasın"
+			],
+			"and more": [
+				"ve daha fazlası"
+			],
+			"Auto-selected from": [
+				"Şuradan otomatik seçildi"
+			],
+			"Automatically reconnect to Proton VPN when you open your browser.": [
+				"Tarayıcınızı açtığınızda Proton VPN otomatik olarak yeniden bağlanır."
+			],
+			"Back": [
+				"Geri"
+			],
+			"Browse through the Support Center and find answers to frequently asked questions.": [
+				"Destek merkezine giderek sık sorulan soruların yanıtlarına bakın."
+			],
+			"Clear search": [
+				"Aramayı temizle"
+			],
+			"Close": [
+				"Kapat"
+			],
+			"Connect to a Plus server in this country to start streaming.\n\nHint: Clear the cache of the streaming apps to ensure new content appears.": [
+				"Yayın akışını başlatmak için bu ülkedeki bir Plus sunucusuna bağlanın.\n\nNot: Yeni içeriğin görüntülenmesini sağlamak için yayın akışı uygulamalarının ön belleğini temizleyin."
+			],
+			"Connected": [
+				"Bağlı"
+			],
+			"Connected to ${name}": [
+				"${name} ile bağlantı kuruldu"
+			],
+			"Connected to ${name} in ${city}": [
+				"${city} içinde ${name} ile bağlantı kuruldu"
+			],
+			"Connecting...": [
+				"Bağlantı kuruluyor..."
+			],
+			"Contact our Customer Support agents to help you out with Proton VPN.": [
+				"Proton VPN hakkında yardım almak için müşteri desteği temsilcilerimizle görüşün."
+			],
+			"Crash": [
+				"Çökme"
+			],
+			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
+				"Çökme bildirimleri sorunları gidermemize, güvenlik duvarlarını algılamamıza ve VPN engellemelerini aşmamıza yardımcı olur."
+			],
+			"Disable VPN for selected websites.": [
+				"Seçilmiş siteler için VPN kullanılmasını engeller."
+			],
+			"Disconnected": [
+				"Bağlı değil"
+			],
+			"Emit system notifications on connection and disconnection events.": [
+				"Bağlantı kurulma ve kesilme durumlarında sistem bildirimleri gönderilsin."
+			],
+			"Extra protection for people with advanced privacy needs": [
+				"Gelişmiş gizlilik gereksinimleri olan kişiler için ek koruma"
+			],
+			"Fastest free server": [
+				"En hızlı Free sunucusu"
+			],
+			"Follow these simple steps to get the best experience using Proton VPN": [
+				"Bu basit adımları izleyerek en iyi Proton VPN deneyimini elde edin"
+			],
+			"For example, news.example.com is a subdomain of example.com.": [
+				"Örneğin haber.orneksite.com, orneksite.com sitesinin bir alt etki alanıdır."
+			],
+			"Help": [
+				"Yardım"
+			],
+			"Help us fight censorship": [
+				"Sansüre karşı koymamıza yardımcı olun"
+			],
+			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
+				"Gizliliğinizi koruyan başarımı yüksek İsviçre'li VPN. En yüksek güvenlik, ${count} üzerinde sunucu ve sınırlamasız.",
+				"Gizliliğinizi koruyan başarımı yüksek İsviçre'li VPN. En yüksek güvenlik, ${count} üzerinde sunucu ve sınırlamasız."
+			],
+			"Learn more": [
+				"Ayrıntılı bilgi alın"
+			],
+			"Logged out": [
+				"Oturum kapatıldı"
+			],
+			"Open the Extensions menu": [
+				"Eklenti menüsünü açın"
+			],
+			"Open the Proton VPN browser extension to continue": [
+				"İlerlemek için Proton VPN tarayıcı eklentisini açın"
+			],
+			"Pin Proton VPN to your toolbar": [
+				"Araçlar menünüze Proton VPN ekleyin"
+			],
+			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
+				"Tarayıcınızda açılan pencerede <b>Sonraki</b> ve <b>İzin ver</b> üzerine tıklayın."
+			],
+			"Proton VPN Browser Extension": [
+				"Proton VPN tarayıcı eklentisi"
+			],
+			"Search": [
+				"Arama"
+			],
+			"Select websites to exclude from your VPN connection.": [
+				"VPN bağlantınıza katılmayacak siteleri seçin."
+			],
+			"Share anonymous usage crash reports": [
+				"Anonim çökme bildirimleri paylaşılsın"
+			],
+			"Share anonymous usage statistics": [
+				"Anonim kullanım istatistikleri paylaşılsın"
+			],
+			"Split tunneling": [
+				"Ayrılmış tünelleme"
+			],
+			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
+				"Tarayıcınızın IP adresinizi sitelere ve WebRTC kullanan uygulamalara sızdırmasını engeller. Bu özellik kullanıldığında bazı sitelerde görüntülü görüşme ya da yayın akışı başarımı olumsuz etkilenebilir."
+			],
+			"Telemetry": [
+				"Telemetri"
+			],
+			"Thank you for installing Proton VPN": [
+				"Proton VPN uygulamasını indirdiğiniz için teşekkürler"
+			],
+			"Then just click the Proton VPN icon to sign in.": [
+				"Ardından oturum açmak için Proton VPN simgesine tıklayın."
+			],
+			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
+				"Bu istatistiklerde IP adresiniz bulunmaz ve kim olduğunuzu belirlemek için kullanılamaz. Bu verileri asla üçüncü taraflar ile paylaşmayız"
+			],
+			"To get started, you’ll need to enable VPN permissions on your browser.": [
+				"Başlamak için tarayıcınızda VPN izinlerini vermeniz gerekir."
+			],
+			"Usage data helps us overcome VPN blocks and improve app performance.": [
+				"Kullanım verileri VPN engellemelerini aşmamıza ve uygulamanın başarımını artırmamıza yardımcı olur."
+			],
+			"User": [
+				"Kullanıcı"
+			],
+			"VPN Features": [
+				"VPN özellikleri"
+			],
+			"Websites that do not use VPN:": [
+				"VPN kullanmayan siteler:"
+			],
+			"You're signed in": [
+				"Oturum açtınız"
+			]
+		},
+		"Label": {
+			"And all its subdomains": [
+				"Ve tüm alt etki alanları"
+			],
+			"Auto connect": [
+				"Otomatik bağlantı"
+			],
+			"Cities": [
+				"İller"
+			],
+			"City": [
+				"İl",
+				"İl"
+			],
+			"Connecting": [
+				"Bağlantı kuruluyor"
+			],
+			"Countries, cities, servers": [
+				"Ülkeler, iller, sunucular"
+			],
+			"Country": [
+				"Ülke",
+				"Ülke"
+			],
+			"Entry country": [
+				"Giriş ülkesi",
+				"Giriş ülkeleri"
+			],
+			"Free servers": [
+				"Free sunucuları"
+			],
+			"Free servers (${count})": [
+				"Free sunucuları (${count})"
+			],
+			"Internal servers (${count})": [
+				"İç sunucular (${count})"
+			],
+			"Need help?": [
+				"Yardım mı gerekiyor?"
+			],
+			"Notifications": [
+				"Bildirimler"
+			],
+			"Offer": [
+				"Teklif"
+			],
+			"Other": [
+				"Diğer"
+			],
+			"Plus servers (${count})": [
+				"Plus sunucuları (${count})"
+			],
+			"Protected": [
+				"Korunuyor"
+			],
+			"Server": [
+				"Sunucu",
+				"Sunucu"
+			],
+			"Settings": [
+				"Ayarlar"
+			],
+			"Split tunneling": [
+				"Ayrılmış tünelleme"
+			],
+			"Unprotected": [
+				"Korunmuyor"
+			],
+			"Via": [
+				"ile şuradan:"
+			],
+			"Want to know more?": [
+				"Ayrıntılı bilgi almak ister misiniz?"
+			],
+			"WebRTC leak protection": [
+				"WebRTC sızıntı koruması"
+			]
+		},
+		"Menu": {
+			"Countries": [
+				"Ülkeler"
+			],
+			"Features": [
+				"Özellikler"
+			],
+			"Help": [
+				"Yardım"
+			],
+			"Settings": [
+				"Ayarlar"
+			]
+		},
+		"Status": {
+			"Connecting to ${serverName}": [
+				"${serverName} ile bağlantı kuruluyor"
+			],
+			"Proton VPN: ${status}": [
+				"Proton VPN: ${status}"
+			]
+		},
+		"Title": {
+			"Features": [
+				"Özellikler"
+			],
+			"Streaming": [
+				"Yayın akışı"
+			]
+		}
+	}
+}

@@ -1,0 +1,442 @@
+{
+	"headers": {
+		"plural-forms": "nplurals=2; plural=(n != 1);",
+		"language": "el_GR"
+	},
+	"contexts": {
+		"Action": {
+			"${linkDescription} (New tab)": [
+				"${linkDescription} (Νέα καρτέλα)"
+			],
+			"Add": [
+				"Προσθήκη"
+			],
+			"Add website": [
+				"Προσθήκη ιστοσελίδας"
+			],
+			"Auto connect": [
+				"Αυτόματη σύνδεση"
+			],
+			"Cancel": [
+				"Ακύρωση"
+			],
+			"Connect": [
+				"Σύνδεση"
+			],
+			"Contact us": [
+				"Επικοινωνήστε μαζί μας"
+			],
+			"Create an account": [
+				"Δημιουργία λογαριασμού"
+			],
+			"Disconnect": [
+				"Αποσύνδεση"
+			],
+			"Enable/disable notifications": [
+				"Απ/ενεργοποίηση ειδοποιήσεων"
+			],
+			"Exclude websites from the tunnel": [
+				"Εξαίρεση ιστότοπων από τη σήραγγα"
+			],
+			"Log in with Proton": [
+				"Είσοδος με Proton"
+			],
+			"Manage subscription": [
+				"Διαχείριση συνδρομής"
+			],
+			"New to Proton?": [
+				"Νέοι στο Proton;"
+			],
+			"Next": [
+				"Επόμενο"
+			],
+			"Prevent WebRTC leak": [
+				"Αποτροπή διαρροής WebRTC"
+			],
+			"Quick connect": [
+				"Γρήγορη σύνδεση"
+			],
+			"Remove ${domain}": [
+				"Αφαίρεση ${domain}"
+			],
+			"Select a city in ${exitCountryName}": [
+				"Επιλέξτε μία πόλη στη ${exitCountryName}"
+			],
+			"Select a server in ${cityName}": [
+				"Επιλέξτε ένα διακομιστή στη ${cityName}"
+			],
+			"Select entry country with exit in ${exitCountryName}": [
+				"Επιλέξτε χώρα εισόδου με έξοδο στη ${exitCountryName}"
+			],
+			"Sign in": [
+				"Είσοδος"
+			],
+			"Sign out": [
+				"Αποσύνδεση"
+			],
+			"Subscribe to connect more devices": [
+				"Για σύνδεση περισσότερων συσκευών, εγγραφείτε"
+			],
+			"Subscribe to enable Browser Extension": [
+				"Για ενεργοποίηση Επέκτασης Περιηγητή, εγγραφείτε"
+			],
+			"Switch account": [
+				"Εναλλαγή λογαριασμού"
+			],
+			"Update": [
+				"Ενημέρωση"
+			],
+			"Upgrade": [
+				"Αναβάθμιση"
+			],
+			"Visit Support Center": [
+				"Επισκεφτείτε το Κέντρο Υποστήριξης"
+			]
+		},
+		"Action: City-level button": {
+			"Connect to ${cityName}": [
+				"Συνδεθήτε στη ${cityName}"
+			]
+		},
+		"Action: Country-level button": {
+			"Connect to ${exitCountryName}": [
+				"Συνδεθήτε στη ${exitCountryName}"
+			]
+		},
+		"Action: Server-level button": {
+			"Connect to ${serverName}": [
+				"Συνδεθήτε σε ${serverName}"
+			]
+		},
+		"Confirm": {
+			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
+				"Η έξοδος από την εφαρμογή θα αποσυνδέσει την ενεργή συνεδρία VPN. Θέλετε να συνεχίσετε;"
+			]
+		},
+		"Error": {
+			"${countries} country": [
+				"${countries} χώρα",
+				"${countries} χώρες"
+			],
+			"${servers}+ secure server": [
+				"${servers}+ διασφαλισμένος διακομιστής",
+				"${servers}+ διασφαλισμένοι διακομιστές"
+			],
+			"Bypass online censorship with advanced security and privacy features": [
+				"Παράκαμψη της λογοκρισίας στο διαδίκτυο με προηγμένες λειτουργίες ασφάλειας και απορρήτου"
+			],
+			"Connect from your browser with ${planName}": [
+				"Συνδεθείτε από το πρόγραμμα περιήγησής σας με το ${planName}"
+			],
+			"Network error.": [
+				"Σφάλμα δικτύου."
+			],
+			"Network is unreachable": [
+				"Απρόσιτο δίκτυο"
+			],
+			"No results found": [
+				"Κανένα αποτέλεσμα"
+			],
+			"Not able to control the browser network settings, possibly a permission is missing": [
+				"Δεν είναι δυνατός ο έλεγχος των ρυθμίσεων δικτύου του προγράμματος περιήγησης, πιθανώς λείπει μια άδεια"
+			],
+			"Please check your connectivity": [
+				"Παρακαλούμε ελέγξτε τη συνδεσιμότητά σας"
+			],
+			"Please try a different keyword": [
+				"Παρακαλούμε δοκιμάστε διαφορετική λέξη"
+			],
+			"Server not found": [
+				"Δε βρέθηκε ο διακομιστής"
+			],
+			"Service temporarily unavailable": [
+				"Προσωρινά μη διαθέσιμη υπηρεσία"
+			],
+			"Something went wrong. If the problem persists, please try to re-install the extension": [
+				"Κάτι πήγε στραβά. Εάν το πρόβλημα παραμένει, δοκιμάστε να εγκαταστήσετε ξανά την επέκταση"
+			],
+			"Unable to find appropriate server, try to logout and login again if it persists": [
+				"Δεν είναι δυνατή η εύρεση κατάλληλου διακομιστή, προσπαθήστε να αποσυνδεθείτε και να συνδεθείτε ξανά εάν παραμένει"
+			],
+			"Unable to load the list": [
+				"Αδυναμία φόρτωσης της λίστας"
+			],
+			"Unable to login": [
+				"Αδυναμία εισόδου"
+			],
+			"Unable to reach the server, please try to reconnect, or to log out and log in again if the problem persists": [
+				"Δεν είναι δυνατή η επικοινωνία με το διακομιστή, προσπαθήστε να επανασυνδεθείτε ή να αποσυνδεθείτε και να συνδεθείτε ξανά εάν το πρόβλημα παραμένει"
+			],
+			"Unlock ${servers} in ${countries}": [
+				"Ξεκλειδώστε ${servers} σε ${countries}"
+			],
+			"Unlock global streaming services": [
+				"Ξεκλειδώστε παγκόσμιες υπηρεσίες μετάδοσης"
+			]
+		},
+		"Info": {
+			"Access Proton VPN via this icon": [
+				"Αποκτήστε πρόσβαση στο Proton VPN μέσω αυτού του εικονιδίου"
+			],
+			"Allow VPN permissions": [
+				"Επιτρέψτε τα δικαιώματα VPN"
+			],
+			"Also exclude subdomains of this website": [
+				"Επίσης, εξαιρέστε τους υποτομείς αυτού του ιστότοπου"
+			],
+			"and more": [
+				"και άλλα"
+			],
+			"Auto-selected from": [
+				"Επιλέχθηκε αυτόματα από"
+			],
+			"Automatically reconnect to Proton VPN when you open your browser.": [
+				"Επανασυνδεθείτε αυτόματα στο Proton VPN όταν ανοίγετε το πρόγραμμα περιήγησής σας."
+			],
+			"Back": [
+				"Πίσω"
+			],
+			"Browse through the Support Center and find answers to frequently asked questions.": [
+				"Περιηγηθείτε στο Κέντρο υποστήριξης και βρείτε απαντήσεις σε συνήθεις ερωτήσεις."
+			],
+			"Clear search": [
+				"Εκκαθάριση αναζήτησης"
+			],
+			"Close": [
+				"Κλείσιμο"
+			],
+			"Connect to a Plus server in this country to start streaming.\n\nHint: Clear the cache of the streaming apps to ensure new content appears.": [
+				"Συνδεθείτε σε ένα διακομιστή \"Plus\" σε αυτή τη χώρα και ξεκινήστε τη \"ροή\".\n\nΥπαινιγμός: Διαγράψτε την προσωρινή μνήμη των εφαρμογών \"ροής\" για τη σίγουρη εμφάνιση νέου περιεχομένου."
+			],
+			"Connected": [
+				"Συνδεδεμένο"
+			],
+			"Connected to ${name}": [
+				"Συνδέθηκε σε ${name}"
+			],
+			"Connected to ${name} in ${city}": [
+				"Σύνδεση στο ${name} στη ${city}"
+			],
+			"Connecting...": [
+				"Γίνεται σύνδεση..."
+			],
+			"Contact our Customer Support agents to help you out with Proton VPN.": [
+				"Επικοινωνήστε με τους αντιπροσώπους υποστήριξης πελατών μας για να σας βοηθήσουμε με το Proton VPN."
+			],
+			"Crash": [
+				"Ατύχημα"
+			],
+			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
+				"Οι αναφορές σφαλμάτων μάς βοηθούν να διορθώνουμε σφάλματα, να εντοπίζουμε τείχη προστασίας και να αποφεύγουμε τα μπλοκαρίσματα VPN."
+			],
+			"Disable VPN for selected websites.": [
+				"Απενεργοποιήστε το VPN για επιλεγμένους ιστότοπους."
+			],
+			"Disconnected": [
+				"Αποσυνδεδεμένο"
+			],
+			"Emit system notifications on connection and disconnection events.": [
+				"Εκπέμπει ειδοποιήσεις συστήματος για συμβάντα σύνδεσης και αποσύνδεσης."
+			],
+			"Extra protection for people with advanced privacy needs": [
+				"Επιπλέον προστασία για άτομα με προηγμένες ανάγκες απορρήτου"
+			],
+			"Fastest free server": [
+				"Ο ταχύτερος δωρεάν διακομιστής"
+			],
+			"Follow these simple steps to get the best experience using Proton VPN": [
+				"Ακολουθήστε αυτά τα απλά βήματα για να έχετε την καλύτερη εμπειρία χρησιμοποιώντας το Proton VPN"
+			],
+			"For example, news.example.com is a subdomain of example.com.": [
+				"Για παράδειγμα, news.example.com είναι ένας υποτομέας του example.com."
+			],
+			"Help": [
+				"Βοήθεια"
+			],
+			"Help us fight censorship": [
+				"Βοηθήστε μας να καταπολεμήσουμε τη λογοκρισία"
+			],
+			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
+				"Ελβετικό VPN υψηλής απόδοσης που προστατεύει την ιδιωτικότητά σας. Μέγιστη διασφάλιση, άνω του ${count} διακομιστή, και χωρίς περιορισμούς.",
+				"Ελβετικό VPN υψηλής απόδοσης που προστατεύει την ιδιωτικότητά σας. Μέγιστη διασφάλιση, άνω του ${count} διακομιστές, και χωρίς περιορισμούς."
+			],
+			"Learn more": [
+				"Μάθετε περισσότερα"
+			],
+			"Logged out": [
+				"Αποσυνδεδεμένος"
+			],
+			"Open the Extensions menu": [
+				"Άνοιγμα του μενού \"Επεκτάσεις\""
+			],
+			"Open the Proton VPN browser extension to continue": [
+				"Ανοίξτε την επέκταση του προγράμματος περιήγησης Proton VPN για να συνεχίσετε"
+			],
+			"Pin Proton VPN to your toolbar": [
+				"Καρφιτσώστε το Proton VPN στη γραμμή εργαλείων σας"
+			],
+			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
+				"Πατήστε <b>Επόμενο</b> και στη συνέχεια, κάντε κλικ στην επιλογή <b>Να επιτρέπεται</b> στο αναδυόμενο παράθυρο από το πρόγραμμα περιήγησής σας."
+			],
+			"Proton VPN Browser Extension": [
+				"Επέκταση προγράμματος περιήγησης Proton VPN"
+			],
+			"Search": [
+				"Αναζήτηση"
+			],
+			"Select websites to exclude from your VPN connection.": [
+				"Επιλέξτε ιστότοπους που θέλετε να εξαιρέσετε από τη σύνδεσή σας VPN."
+			],
+			"Share anonymous usage crash reports": [
+				"Κοινή χρήση ανώνυμων αναφορών σφαλμάτων χρήσης"
+			],
+			"Share anonymous usage statistics": [
+				"Κοινοποιήστε ανώνυμα στατιστικά χρήσης"
+			],
+			"Split tunneling": [
+				"Διαίρεση σήραγγας"
+			],
+			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
+				"Εμποδίζει το πρόγραμμα περιήγησής σας να διαρρεύσει τη διεύθυνση IP σας σε ιστότοπους και εφαρμογές που χρησιμοποιούν WebRTC. Αυτό μπορεί να επηρεάσει την απόδοση των βιντεοκλήσεων ή της ζωντανής ροής σε ορισμένους ιστότοπους."
+			],
+			"Telemetry": [
+				"Τηλεμετρία"
+			],
+			"Thank you for installing Proton VPN": [
+				"Σας ευχαριστούμε που εγκαταστήσατε το Proton VPN"
+			],
+			"Then just click the Proton VPN icon to sign in.": [
+				"Στη συνέχεια, απλώς κάντε κλικ στο εικονίδιο Proton VPN για να συνδεθείτε."
+			],
+			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
+				"Αυτά τα στατιστικά στοιχεία δεν περιέχουν τη διεύθυνση IP σας και δεν μπορούν να χρησιμοποιηθούν για την αναγνώρισή σας. Δε θα τα κοινοποιήσουμε ποτέ σε τρίτους"
+			],
+			"To get started, you’ll need to enable VPN permissions on your browser.": [
+				"Για να ξεκινήσετε, θα πρέπει να ενεργοποιήσετε τα δικαιώματα VPN στο πρόγραμμα περιήγησής σας."
+			],
+			"Usage data helps us overcome VPN blocks and improve app performance.": [
+				"Τα δεδομένα χρήσης μας βοηθούν να ξεπεράσουμε τα μπλοκαρίσματα VPN και να βελτιώσουμε την απόδοση των εφαρμογών."
+			],
+			"User": [
+				"Χρήστης"
+			],
+			"VPN Features": [
+				"Χαρακτηριστικά VPN"
+			],
+			"Websites that do not use VPN:": [
+				"Ιστότοποι που δε χρησιμοποιούν VPN:"
+			],
+			"You're signed in": [
+				"Είστε συνδεδεμένοι"
+			]
+		},
+		"Label": {
+			"And all its subdomains": [
+				"Και όλοι οι υποτομείς του"
+			],
+			"Auto connect": [
+				"Αυτόματη σύνδεση"
+			],
+			"Cities": [
+				"Πόλεις"
+			],
+			"City": [
+				"Πόλη",
+				"Πόλεις"
+			],
+			"Connecting": [
+				"Γίνεται σύνδεση"
+			],
+			"Countries, cities, servers": [
+				"Χώρες, πόλεις, διακομιστές"
+			],
+			"Country": [
+				"Χώρα",
+				"Χώρες"
+			],
+			"Entry country": [
+				"Χώρα εισόδου",
+				"Χώρες εισόδου"
+			],
+			"Free servers": [
+				"Δωρεάν διακομιστές"
+			],
+			"Free servers (${count})": [
+				"Δωρεάν διακομιστές (${count})"
+			],
+			"Internal servers (${count})": [
+				"Εσωτερικοί διακομιστές (${count})"
+			],
+			"Need help?": [
+				"Χρειάζεστε βοήθεια;"
+			],
+			"Notifications": [
+				"Ειδοποιήσεις"
+			],
+			"Offer": [
+				"Προσφορά"
+			],
+			"Other": [
+				"Άλλο"
+			],
+			"Plus servers (${count})": [
+				"Διακομιστές Plus (${count})"
+			],
+			"Protected": [
+				"Προστατευμένοι"
+			],
+			"Server": [
+				"Διακομιστής",
+				"Διακομιστές"
+			],
+			"Settings": [
+				"Ρυθμίσεις"
+			],
+			"Split tunneling": [
+				"Split tunneling"
+			],
+			"Unprotected": [
+				"Χωρίς προστασία"
+			],
+			"Via": [
+				"Μέσω"
+			],
+			"Want to know more?": [
+				"Θέλετε να μάθετε περισσότερα;"
+			],
+			"WebRTC leak protection": [
+				"Προστασία από διαρροές WebRTC"
+			]
+		},
+		"Menu": {
+			"Countries": [
+				"Χώρες"
+			],
+			"Features": [
+				"Χαρακτηριστικά"
+			],
+			"Help": [
+				"Βοήθεια"
+			],
+			"Settings": [
+				"Ρυθμίσεις"
+			]
+		},
+		"Status": {
+			"Connecting to ${serverName}": [
+				"Σύνδεση σε ${serverName}"
+			],
+			"Proton VPN: ${status}": [
+				"Proton VPN: ${status}"
+			]
+		},
+		"Title": {
+			"Features": [
+				"Χαρακτηριστικά"
+			],
+			"Streaming": [
+				"Μετάδοση"
+			]
+		}
+	}
+}

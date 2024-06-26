@@ -1,0 +1,435 @@
+{
+	"headers": {
+		"plural-forms": "nplurals=1; plural=0;",
+		"language": "id_ID"
+	},
+	"contexts": {
+		"Action": {
+			"${linkDescription} (New tab)": [
+				"${linkDescription} (Tab baru)"
+			],
+			"Add": [
+				"Tambah"
+			],
+			"Add website": [
+				"Tambah situs web"
+			],
+			"Auto connect": [
+				"Hubungkan otomatis"
+			],
+			"Cancel": [
+				"Batal"
+			],
+			"Connect": [
+				"Hubungkan"
+			],
+			"Contact us": [
+				"Hubungi kami"
+			],
+			"Create an account": [
+				"Buat akun"
+			],
+			"Disconnect": [
+				"Putuskan"
+			],
+			"Enable/disable notifications": [
+				"Aktifkan/nonaktifkan notifikasi"
+			],
+			"Exclude websites from the tunnel": [
+				"Kecualikan situs web dari tunnel"
+			],
+			"Log in with Proton": [
+				"Masuk dengan Proton"
+			],
+			"Manage subscription": [
+				"Kelola langganan"
+			],
+			"New to Proton?": [
+				"Baru di Proton?"
+			],
+			"Next": [
+				"Selanjutnya"
+			],
+			"Prevent WebRTC leak": [
+				"Cegah kebocoran WebRTC"
+			],
+			"Quick connect": [
+				"Quick connect"
+			],
+			"Remove ${domain}": [
+				"Hapus ${domain}"
+			],
+			"Select a city in ${exitCountryName}": [
+				"Pilih kota di ${exitCountryName}"
+			],
+			"Select a server in ${cityName}": [
+				"Pilih server di ${cityName}"
+			],
+			"Select entry country with exit in ${exitCountryName}": [
+				"Pilih negara tujuan awal yang akan disandingkan dengan titik ujung di ${exitCountryName}"
+			],
+			"Sign in": [
+				"Masuk"
+			],
+			"Sign out": [
+				"Keluar"
+			],
+			"Subscribe to connect more devices": [
+				"Aktifkan paket berlangganan untuk menghubungkan lebih banyak perangkat"
+			],
+			"Subscribe to enable Browser Extension": [
+				"Aktifkan paket berlangganan untuk menggunakan fitur Browser Extension"
+			],
+			"Switch account": [
+				"Ganti akun"
+			],
+			"Update": [
+				"Perbarui"
+			],
+			"Upgrade": [
+				"Tingkatkan"
+			],
+			"Visit Support Center": [
+				"Kunjungi Pusat Bantuan"
+			]
+		},
+		"Action: City-level button": {
+			"Connect to ${cityName}": [
+				"Hubungkan ke ${cityName}"
+			]
+		},
+		"Action: Country-level button": {
+			"Connect to ${exitCountryName}": [
+				"Hubungkan ke ${exitCountryName}"
+			]
+		},
+		"Action: Server-level button": {
+			"Connect to ${serverName}": [
+				"Hubungkan ke ${serverName}"
+			]
+		},
+		"Confirm": {
+			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
+				"Dengan keluar dari aplikasi, koneksi VPN yang sedang aktif akan terputus. Apakah Anda ingin melanjutkan?"
+			]
+		},
+		"Error": {
+			"${countries} country": [
+				"${countries} negara"
+			],
+			"${servers}+ secure server": [
+				"${servers}+ server aman"
+			],
+			"Bypass online censorship with advanced security and privacy features": [
+				"Taklukkan sensor online dengan fitur keamanan dan privasi tingkat lanjut"
+			],
+			"Connect from your browser with ${planName}": [
+				"Hubungkan dari browser Anda dengan ${planName}"
+			],
+			"Network error.": [
+				"Kesalahan jaringan."
+			],
+			"Network is unreachable": [
+				"Jaringan tidak dapat dijangkau"
+			],
+			"No results found": [
+				"Tidak ada hasil yang ditemukan"
+			],
+			"Not able to control the browser network settings, possibly a permission is missing": [
+				"Pengaturan jaringan browser tidak dapat dikendalikan. Terdapat perizinan yang kemungkinan hilang"
+			],
+			"Please check your connectivity": [
+				"Mohon periksa koneksi internet Anda"
+			],
+			"Please try a different keyword": [
+				"Mohon coba kata kunci pencarian yang berbeda"
+			],
+			"Server not found": [
+				"Server tidak ditemukan"
+			],
+			"Service temporarily unavailable": [
+				"Layanan untuk sementara tidak tersedia"
+			],
+			"Something went wrong. If the problem persists, please try to re-install the extension": [
+				"Terdapat suatu kesalahan. Apabila masalah ini terus berlanjut, cobalah untuk menginstal ulang ekstensi"
+			],
+			"Unable to find appropriate server, try to logout and login again if it persists": [
+				"Server yang sesuai tidak dapat ditemukan. Cobalah untuk keluar akun dan masuk kembali apabila masalah ini terus muncul"
+			],
+			"Unable to load the list": [
+				"Daftar tidak dapat dimuat"
+			],
+			"Unable to login": [
+				"Tidak dapat masuk"
+			],
+			"Unable to reach the server, please try to reconnect, or to log out and log in again if the problem persists": [
+				"Server tidak dapat dijangkau. Cobalah untuk menghubungkan ulang koneksi VPN, atau untuk keluar dari akun dan masuk kembali apabila masalah terus berlanjut"
+			],
+			"Unlock ${servers} in ${countries}": [
+				"Buka akses menuju ${servers} di ${countries}"
+			],
+			"Unlock global streaming services": [
+				"Akses berbagai layanan streaming global"
+			]
+		},
+		"Info": {
+			"Access Proton VPN via this icon": [
+				"Akses Proton VPN melalui ikon ini"
+			],
+			"Allow VPN permissions": [
+				"Perkenankan izin VPN"
+			],
+			"Also exclude subdomains of this website": [
+				"Turut kecualikan subdomain milik situs web ini"
+			],
+			"and more": [
+				"dan masih banyak lagi"
+			],
+			"Auto-selected from": [
+				"Terpilih secara otomatis dari"
+			],
+			"Automatically reconnect to Proton VPN when you open your browser.": [
+				"Hubungkan diri Anda ke Proton VPN secara otomatis setiap kali Anda membuka browser."
+			],
+			"Back": [
+				"Kembali"
+			],
+			"Browse through the Support Center and find answers to frequently asked questions.": [
+				"Jelajahi Pusat Bantuan kami dan temukan jawaban atas berbagai pertanyaan yang sering diajukan."
+			],
+			"Clear search": [
+				"Hapus pencarian"
+			],
+			"Close": [
+				"Tutup"
+			],
+			"Connect to a Plus server in this country to start streaming.\n\nHint: Clear the cache of the streaming apps to ensure new content appears.": [
+				"Hubungkan diri Anda ke server Plus untuk memulai streaming.\n\nTips: Bersihkan cache aplikasi streaming Anda untuk memastikan kemunculan konten baru."
+			],
+			"Connected": [
+				"Terhubung"
+			],
+			"Connected to ${name}": [
+				"Terhubung ke ${name}"
+			],
+			"Connected to ${name} in ${city}": [
+				"Terhubung ke ${name} di ${city}"
+			],
+			"Connecting...": [
+				"Menghubungkan..."
+			],
+			"Contact our Customer Support agents to help you out with Proton VPN.": [
+				"Hubungi agen Layanan Dukungan kami untuk memperoleh bantuan seputar Proton VPN."
+			],
+			"Crash": [
+				"Crash"
+			],
+			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
+				"Laporan crash membantu kami dalam memperbaiki bug, mendeteksi firewall, dan menangkal pemblokiran VPN."
+			],
+			"Disable VPN for selected websites.": [
+				"Menonaktifkan VPN untuk website tertentu."
+			],
+			"Disconnected": [
+				"Terputus"
+			],
+			"Emit system notifications on connection and disconnection events.": [
+				"Tampilkan notifikasi sistem pada saat terhubung atau terputus."
+			],
+			"Extra protection for people with advanced privacy needs": [
+				"Perlindungan ekstra bagi mereka yang membutuhkan fitur privasi tingkat lanjut"
+			],
+			"Fastest free server": [
+				"Server Free tercepat"
+			],
+			"Follow these simple steps to get the best experience using Proton VPN": [
+				"Ikuti langkah-langkah mudah berikut untuk memperoleh pengalaman Proton VPN yang mumpuni"
+			],
+			"For example, news.example.com is a subdomain of example.com.": [
+				"Sebagai contoh, news.example.com merupakan subdomain dari example.com."
+			],
+			"Help": [
+				"Bantuan"
+			],
+			"Help us fight censorship": [
+				"Bantu kami melawan sensor"
+			],
+			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
+				"VPN Swiss berkecepatan tinggi yang melindungi privasi Anda. Berkeamanan maksimum, dengan lebih dari ${count} server, dan tanpa batasan apapun."
+			],
+			"Learn more": [
+				"Pelajari lebih lanjut"
+			],
+			"Logged out": [
+				"Keluar"
+			],
+			"Open the Extensions menu": [
+				"Buka menu Ekstensi"
+			],
+			"Open the Proton VPN browser extension to continue": [
+				"Buka ekstensi browser Proton VPN untuk melanjutkan"
+			],
+			"Pin Proton VPN to your toolbar": [
+				"Sematkan Proton VPN ke toolbar Anda"
+			],
+			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
+				"Klik tombol <b>Selanjutnya</b> di bawah ini, lalu pilih <b>Izinkan</b> pada jendela pop-up yang muncul pada browser Anda."
+			],
+			"Proton VPN Browser Extension": [
+				"Ekstensi Browser Proton VPN"
+			],
+			"Search": [
+				"Pencarian"
+			],
+			"Select websites to exclude from your VPN connection.": [
+				"Pilih situs web mana saja yang akan dikecualikan dari sambungan VPN Anda."
+			],
+			"Share anonymous usage crash reports": [
+				"Bagikan laporan kemogokan penggunaan anonim"
+			],
+			"Share anonymous usage statistics": [
+				"Bagikan statistik pemakaian anonim"
+			],
+			"Split tunneling": [
+				"Split tunneling"
+			],
+			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
+				"Mencegah browser Anda untuk dapat membocorkan alamat IP Anda kepada situs web dan aplikasi yang dikunjungi melalui API WebRTC. Hal ini dapat memengaruhi kualitas panggilan video atau tayangan livestream pada situs web tertentu."
+			],
+			"Telemetry": [
+				"Telemetri"
+			],
+			"Thank you for installing Proton VPN": [
+				"Terima kasih telah menginstal Proton VPN"
+			],
+			"Then just click the Proton VPN icon to sign in.": [
+				"Setelahnya, Anda hanya perlu mengeklik ikon Proton VPN untuk masuk."
+			],
+			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
+				"Statistik ini tidak mengandung alamat IP Anda dan tidak dapat digunakan untuk mengenali diri Anda. Kami tidak akan pernah membagikan statistik ini kepada pihak ketiga"
+			],
+			"To get started, you’ll need to enable VPN permissions on your browser.": [
+				"Untuk memulai, Anda perlu untuk memperkenankan izin VPN pada browser Anda."
+			],
+			"Usage data helps us overcome VPN blocks and improve app performance.": [
+				"Statistik pemakaian membantu kami dalam menangkal pemblokiran VPN dan meningkatkan performa aplikasi."
+			],
+			"User": [
+				"Pengguna"
+			],
+			"VPN Features": [
+				"Fitur VPN"
+			],
+			"Websites that do not use VPN:": [
+				"Situs web yang tidak menggunakan VPN:"
+			],
+			"You're signed in": [
+				"Anda telah masuk"
+			]
+		},
+		"Label": {
+			"And all its subdomains": [
+				"Dan seluruh subdomain di bawahnya"
+			],
+			"Auto connect": [
+				"Hubungkan otomatis"
+			],
+			"Cities": [
+				"Kota"
+			],
+			"City": [
+				"Kota"
+			],
+			"Connecting": [
+				"Menghubungkan"
+			],
+			"Countries, cities, servers": [
+				"Negara, kota, server"
+			],
+			"Country": [
+				"Negara"
+			],
+			"Entry country": [
+				"Negara tujuan awal"
+			],
+			"Free servers": [
+				"Server Free"
+			],
+			"Free servers (${count})": [
+				"Server Free (${count})"
+			],
+			"Internal servers (${count})": [
+				"Server internal (${count})"
+			],
+			"Need help?": [
+				"Butuh bantuan?"
+			],
+			"Notifications": [
+				"Notifikasi"
+			],
+			"Offer": [
+				"Penawaran"
+			],
+			"Other": [
+				"Lainnya"
+			],
+			"Plus servers (${count})": [
+				"Server Plus (${count})"
+			],
+			"Protected": [
+				"Terlindung"
+			],
+			"Server": [
+				"Server"
+			],
+			"Settings": [
+				"Pengaturan"
+			],
+			"Split tunneling": [
+				"Split tunneling"
+			],
+			"Unprotected": [
+				"Tidak Terlindung"
+			],
+			"Via": [
+				"Melalui"
+			],
+			"Want to know more?": [
+				"Ingin mengetahui lebih lanjut?"
+			],
+			"WebRTC leak protection": [
+				"Perlindungan kebocoran WebRTC"
+			]
+		},
+		"Menu": {
+			"Countries": [
+				"Negara"
+			],
+			"Features": [
+				"Fitur"
+			],
+			"Help": [
+				"Bantuan"
+			],
+			"Settings": [
+				"Pengaturan"
+			]
+		},
+		"Status": {
+			"Connecting to ${serverName}": [
+				"Menghubungkan ke ${serverName}"
+			],
+			"Proton VPN: ${status}": [
+				"Proton VPN: ${status}"
+			]
+		},
+		"Title": {
+			"Features": [
+				"Fitur"
+			],
+			"Streaming": [
+				"Streaming"
+			]
+		}
+	}
+}

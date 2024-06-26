@@ -1,0 +1,415 @@
+{
+	"headers": {
+		"plural-forms": "nplurals=2; plural=(n != 1);",
+		"language": "no_NO"
+	},
+	"contexts": {
+		"Action": {
+			"${linkDescription} (New tab)": [
+				"${linkDescription} (Ny fane)"
+			],
+			"Add": [
+				"Legg til"
+			],
+			"Add website": [
+				"Legg til nettsted"
+			],
+			"Auto connect": [
+				"Auto-tilkobling"
+			],
+			"Cancel": [
+				"Avbryt"
+			],
+			"Connect": [
+				"Koble til"
+			],
+			"Contact us": [
+				"Kontakt oss"
+			],
+			"Create an account": [
+				"Opprett en konto"
+			],
+			"Disconnect": [
+				"Koble fra"
+			],
+			"Enable/disable notifications": [
+				"Aktiver/deaktiver varslinger"
+			],
+			"Exclude websites from the tunnel": [
+				"Ekskluder nettsteder fra tunnelen"
+			],
+			"Log in with Proton": [
+				"Logg på med Proton"
+			],
+			"Manage subscription": [
+				"Behandle abonnement"
+			],
+			"New to Proton?": [
+				"Ny på Proton?"
+			],
+			"Next": [
+				"Neste"
+			],
+			"Prevent WebRTC leak": [
+				"Forhindre WebRTC-lekkasje"
+			],
+			"Quick connect": [
+				"Hurtigtilkobling"
+			],
+			"Remove ${domain}": [
+				"Fjern ${domain}"
+			],
+			"Select a city in ${exitCountryName}": [
+				"Velg en by i ${exitCountryName}"
+			],
+			"Select a server in ${cityName}": [
+				"Velg en tjener i ${cityName}"
+			],
+			"Select entry country with exit in ${exitCountryName}": [
+				"Velg innreiseland med utreise i ${exitCountryName}"
+			],
+			"Sign in": [
+				"Logg på"
+			],
+			"Sign out": [
+				"Logg av"
+			],
+			"Subscribe to connect more devices": [
+				"Abonner for å koble til flere enheter"
+			],
+			"Subscribe to enable Browser Extension": [
+				"Abonner for å aktivere nettleserutvidelse"
+			],
+			"Upgrade": [
+				"Oppgrader"
+			],
+			"Visit Support Center": [
+				"Besøk hjelpesenteret"
+			]
+		},
+		"Action: City-level button": {
+			"Connect to ${cityName}": [
+				"Koble til ${cityName}"
+			]
+		},
+		"Action: Country-level button": {
+			"Connect to ${exitCountryName}": [
+				"Koble til ${exitCountryName}"
+			]
+		},
+		"Action: Server-level button": {
+			"Connect to ${serverName}": [
+				"Koble til ${serverName}"
+			]
+		},
+		"Confirm": {
+			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
+				"Hvis du logger av programmet, kobles den aktive VPN-tilkoblingen fra. Vil du fortsette?"
+			]
+		},
+		"Error": {
+			"${countries} country": [
+				"${countries} land",
+				"${countries} land"
+			],
+			"${servers}+ secure server": [
+				"${servers}+ sikker tjener",
+				"${servers}+ sikre tjenere"
+			],
+			"Bypass online censorship with advanced security and privacy features": [
+				"Omgå sensur på nettet med avanserte sikkerhets- og personvernfunksjoner"
+			],
+			"Connect from your browser with ${planName}": [
+				"Koble til fra din nettleser med ${planName}"
+			],
+			"Network error.": [
+				"Nettverksfeil."
+			],
+			"Network is unreachable": [
+				"Nettverket er utilgjengelig"
+			],
+			"No results found": [
+				"Ingen resultater funnet"
+			],
+			"Not able to control the browser network settings, possibly a permission is missing": [
+				"Kan ikke kontrollere nettleserens nettverksinnstillinger, mangler muligens en tillatelse"
+			],
+			"Please check your connectivity": [
+				"Vennligst sjekk tilkoblingen din."
+			],
+			"Please try a different keyword": [
+				"Vennligst forsøk et annet nøkkelord"
+			],
+			"Server not found": [
+				"Tjener ikke funnet"
+			],
+			"Service temporarily unavailable": [
+				"Tjenesten er midlertidig utilgjengelig"
+			],
+			"Something went wrong. If the problem persists, please try to re-install the extension": [
+				"Noe gikk galt. Hvis problemet vedvarer, kan du prøve å installere utvidelsen på nytt"
+			],
+			"Unable to load the list": [
+				"Kunne ikke laste inn listen"
+			],
+			"Unable to login": [
+				"Kan ikke logge på"
+			],
+			"Unable to reach the server, please try to reconnect, or to log out and log in again if the problem persists": [
+				"Ikke i stand til å nå tjeneren, vennligst prøv å koble til på nytt, eller logge av og logge på igjen hvis problemet vedvarer"
+			],
+			"Unlock ${servers} in ${countries}": [
+				"Lås opp ${servers} i ${countries}"
+			],
+			"Unlock global streaming services": [
+				"Lås opp globale strømmetjenester"
+			]
+		},
+		"Info": {
+			"Access Proton VPN via this icon": [
+				"Få tilgang til Proton VPN via dette ikonet"
+			],
+			"Allow VPN permissions": [
+				"Tillat VPN-tillatelser"
+			],
+			"Also exclude subdomains of this website": [
+				"Også ekskluder underdomener til dette nettstedet"
+			],
+			"and more": [
+				"og mer"
+			],
+			"Automatically reconnect to Proton VPN when you open your browser.": [
+				"Koble automatisk til Proton VPN på nytt når du åpner nettleseren din."
+			],
+			"Back": [
+				"Tilbake"
+			],
+			"Browse through the Support Center and find answers to frequently asked questions.": [
+				"Bla gjennom Hjelpesenteret og finn svar på vanlige spørsmål."
+			],
+			"Clear search": [
+				"Tøm søk"
+			],
+			"Close": [
+				"Lukk"
+			],
+			"Connect to a Plus server in this country to start streaming.\n\nHint: Clear the cache of the streaming apps to ensure new content appears.": [
+				"Koble til en Plus-tjener i dette landet for å starte strømming.\n\nTips: Tøm hurtigbufferen til strømmeappene for å sikre at nytt innhold vises."
+			],
+			"Connected": [
+				"Tilkoblet"
+			],
+			"Connected to ${name}": [
+				"Koblet til ${name}"
+			],
+			"Connected to ${name} in ${city}": [
+				"Koblet til ${name} i ${city}"
+			],
+			"Connecting...": [
+				"Kobler til..."
+			],
+			"Contact our Customer Support agents to help you out with Proton VPN.": [
+				"Kontakt våre kundestøtteagenter for å hjelpe deg med Proton VPN."
+			],
+			"Disable VPN for selected websites.": [
+				"Deaktiver VPN for valgte nettsteder."
+			],
+			"Disconnected": [
+				"Frakoblet"
+			],
+			"Emit system notifications on connection and disconnection events.": [
+				"Send systemvarsler om tilkoblings- og frakoblingshendelser."
+			],
+			"Extra protection for people with advanced privacy needs": [
+				"Ekstra beskyttelse for personer med avanserte personvernbehov"
+			],
+			"Follow these simple steps to get the best experience using Proton VPN": [
+				"Følg disse enkle trinnene for å få den beste opplevelsen av å bruke Proton VPN"
+			],
+			"For example, news.example.com is a subdomain of example.com.": [
+				"For eksempel, nyheter.eksempel.no er et underdomene til eksempel.no"
+			],
+			"Help": [
+				"Hjelp"
+			],
+			"Help us fight censorship": [
+				"Hjelp oss å bekjempe sensur"
+			],
+			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
+				"Høy-hastighets sveitsisk VPN som ivaretar ditt personvern. Maksimum sikkerhet, mer enn ${count} tjener og ingen restriksjoner.",
+				"Høy-hastighets sveitsisk VPN som ivaretar ditt personvern. Maksimum sikkerhet, mer enn ${count} tjenere og ingen restriksjoner."
+			],
+			"Learn more": [
+				"Lær mer"
+			],
+			"Logged out": [
+				"Logget av"
+			],
+			"Open the Extensions menu": [
+				"Åpne utvidelsesmenyen"
+			],
+			"Open the Proton VPN browser extension to continue": [
+				"Åpne Proton VPN-nettleserutvidelsen for å fortsette"
+			],
+			"Pin Proton VPN to your toolbar": [
+				"Fest Proton VPN til verktøylinjen din"
+			],
+			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
+				"Trykk på <b>Neste</b>, og klikk deretter <b>Tillat</b> i sprett-opp-vinduet fra nettleseren."
+			],
+			"Proton VPN Browser Extension": [
+				"Proton VPN-Nettleserutvidelse"
+			],
+			"Search": [
+				"Søk"
+			],
+			"Select websites to exclude from your VPN connection.": [
+				"Velg hvilke nettsteder du ønsker å ekskludere fra din VPN-forbindelse."
+			],
+			"Share anonymous usage statistics and crash reports to help us defeat online censorship and improve Proton VPN.": [
+				"Del anonym bruksstatistikk og krasjrapporter for å hjelpe oss med å beseire sensur på nettet og forbedre Proton VPN."
+			],
+			"Split tunneling": [
+				"Delt tunnelering"
+			],
+			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
+				"Stopper nettleseren din fra å lekke IP-adressen din til nettsteder og apper som bruker WebRTC. Dette kan påvirke videosamtaler eller direktestrømming på enkelte nettsteder."
+			],
+			"Telemetry": [
+				"Telemetri"
+			],
+			"Thank you for installing Proton VPN": [
+				"Takk for at du installerte Proton VPN"
+			],
+			"Then just click the Proton VPN icon to sign in.": [
+				"Deretter bare klikk Proton VPN-ikonet for å logge på."
+			],
+			"To get started, you’ll need to enable VPN permissions on your browser.": [
+				"For å komme i gang må du aktivere VPN-tillatelser i nettleseren din."
+			],
+			"User": [
+				"Bruker"
+			],
+			"VPN Features": [
+				"VPN-funksjoner"
+			],
+			"Websites that do not use VPN:": [
+				"Nettsteder som ikke bruker VPN:"
+			],
+			"You're signed in": [
+				"Du er logget på"
+			]
+		},
+		"Label": {
+			"And all its subdomains": [
+				"Og alle dets underdomener"
+			],
+			"Auto connect": [
+				"Auto-tilkobling"
+			],
+			"Cities": [
+				"Byer"
+			],
+			"City": [
+				"By",
+				"Byer"
+			],
+			"Connecting": [
+				"Kobler til"
+			],
+			"Countries, cities, servers": [
+				"Land, byer, tjenere"
+			],
+			"Country": [
+				"Land",
+				"Land"
+			],
+			"Entry country": [
+				"Innreiseland",
+				"Innreiseland"
+			],
+			"Free servers": [
+				"Gratis tjenere"
+			],
+			"Free servers (${count})": [
+				"Gratis tjenere (${count})"
+			],
+			"Internal servers (${count})": [
+				"Interne tjenere (${count})"
+			],
+			"Need help?": [
+				"Trenger du hjelp?"
+			],
+			"Notifications": [
+				"Varsler"
+			],
+			"Offer": [
+				"Tilbud"
+			],
+			"Other": [
+				"Annet"
+			],
+			"Plus servers (${count})": [
+				"Plus-tjenere (${count})"
+			],
+			"Protect yourself online": [
+				"Beskytt deg selv på nettet"
+			],
+			"Protected": [
+				"Beskyttet"
+			],
+			"Server": [
+				"Tjener",
+				"Tjenere"
+			],
+			"Settings": [
+				"Innstillinger"
+			],
+			"Split tunneling": [
+				"Delt tunnelering"
+			],
+			"Unprotected": [
+				"Ubeskyttet"
+			],
+			"Via": [
+				"Via"
+			],
+			"Want to know more?": [
+				"Vil du lære mer?"
+			],
+			"WebRTC leak protection": [
+				"WebRTC-lekkasjebeskyttelse"
+			]
+		},
+		"Menu": {
+			"Countries": [
+				"Land"
+			],
+			"Features": [
+				"Funksjoner"
+			],
+			"Help": [
+				"Hjelp"
+			],
+			"Settings": [
+				"Innstillinger"
+			]
+		},
+		"Status": {
+			"Connecting to ${serverName}": [
+				"Kobler til ${serverName}"
+			],
+			"Proton VPN: ${status}": [
+				"Proton VPN: ${status}"
+			]
+		},
+		"Title": {
+			"Features": [
+				"Funksjoner"
+			],
+			"Streaming": [
+				"Strømming"
+			]
+		}
+	}
+}

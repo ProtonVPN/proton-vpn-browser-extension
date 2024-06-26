@@ -1,0 +1,456 @@
+{
+	"headers": {
+		"plural-forms": "nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;",
+		"language": "sk_SK"
+	},
+	"contexts": {
+		"Action": {
+			"${linkDescription} (New tab)": [
+				"${linkDescription} (Nová záložka)"
+			],
+			"Add": [
+				"Pridať"
+			],
+			"Add website": [
+				"Pridať webovú stránku"
+			],
+			"Auto connect": [
+				"Automatické pripojenie"
+			],
+			"Cancel": [
+				"Zrušiť"
+			],
+			"Connect": [
+				"Pripojiť"
+			],
+			"Contact us": [
+				"Kontaktujte nás"
+			],
+			"Create an account": [
+				"Vytvoriť účet"
+			],
+			"Disconnect": [
+				"Odpojiť"
+			],
+			"Enable/disable notifications": [
+				"Povoliť/zakázať notifikácie"
+			],
+			"Exclude websites from the tunnel": [
+				"Vylúčiť webové stránky z tunelu"
+			],
+			"Log in with Proton": [
+				"Prihlásiť sa s Protonom"
+			],
+			"Manage subscription": [
+				"Spravovať predplatné"
+			],
+			"New to Proton?": [
+				"Noví v Protone?"
+			],
+			"Next": [
+				"Ďalej"
+			],
+			"Prevent WebRTC leak": [
+				"Zabráňte WebRTC úniku"
+			],
+			"Quick connect": [
+				"Rýchle pripojenie"
+			],
+			"Remove ${domain}": [
+				"Odstrániť ${domain}"
+			],
+			"Select a city in ${exitCountryName}": [
+				"Vyberte mesto v štáte ${exitCountryName}"
+			],
+			"Select a server in ${cityName}": [
+				"Vyberte server v meste ${cityName}"
+			],
+			"Select entry country with exit in ${exitCountryName}": [
+				"Vyberte vstupnú krajinu s výstupom v štáte ${exitCountryName}"
+			],
+			"Sign in": [
+				"Prihlásiť sa"
+			],
+			"Sign out": [
+				"Odhlásiť sa"
+			],
+			"Subscribe to connect more devices": [
+				"Pre pripojenie viacerých zariadení si kúpte predplatné"
+			],
+			"Subscribe to enable Browser Extension": [
+				"Pre zapnutie rozšírenia do prehliadača si kúpte predplatné"
+			],
+			"Switch account": [
+				"Prepnúť účet"
+			],
+			"Update": [
+				"Aktualizovať"
+			],
+			"Upgrade": [
+				"Prejsť na platený plán"
+			],
+			"Visit Support Center": [
+				"Navštíviť Centrum podpory"
+			]
+		},
+		"Action: City-level button": {
+			"Connect to ${cityName}": [
+				"Pripojiť do mesta ${cityName}"
+			]
+		},
+		"Action: Country-level button": {
+			"Connect to ${exitCountryName}": [
+				"Pripojiť cez ${exitCountryName}"
+			]
+		},
+		"Action: Server-level button": {
+			"Connect to ${serverName}": [
+				"Pripojiť k ${serverName}"
+			]
+		},
+		"Confirm": {
+			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
+				"Odhlásením z aplikácie sa odpojí aktívne VPN pripojenie. Chcete pokračovať?"
+			]
+		},
+		"Error": {
+			"${countries} country": [
+				"${countries} krajina",
+				"${countries} krajiny",
+				"${countries} krajín",
+				"${countries} krajín"
+			],
+			"${servers}+ secure server": [
+				"${servers}+ zabezpečený server",
+				"${servers}+ zabezpečené servery",
+				"${servers}+ zabezpečených serverov",
+				"${servers}+ zabezpečených serverov"
+			],
+			"Bypass online censorship with advanced security and privacy features": [
+				"Obchádzanie cenzúry online pomocou pokročilých funkcií zabezpečenia a ochrany súkromia"
+			],
+			"Connect from your browser with ${planName}": [
+				"Prihláste sa z vášho prehliadača zmenou predplatného na ${planName}."
+			],
+			"Network error.": [
+				"Chyba siete."
+			],
+			"Network is unreachable": [
+				"Sieť je nedostupná"
+			],
+			"No results found": [
+				"Neboli nájdené žiadne výsledky"
+			],
+			"Not able to control the browser network settings, possibly a permission is missing": [
+				"Nie je možné ovládať sieťové nastavenia prehliadača, pravdepodobne chýba povolenie"
+			],
+			"Please check your connectivity": [
+				"Skontrolujte svoje pripojenie"
+			],
+			"Please try a different keyword": [
+				"Skúste iné kľúčové slovo, prosím"
+			],
+			"Server not found": [
+				"Server nebol nájdený"
+			],
+			"Service temporarily unavailable": [
+				"Služba je dočasne nedostupná"
+			],
+			"Something went wrong. If the problem persists, please try to re-install the extension": [
+				"Niečo sa pokazilo. Ak problém pretrváva, skúste rozšírenie nainštalovať znova"
+			],
+			"Unable to find appropriate server, try to logout and login again if it persists": [
+				"Nie je možné nájsť príslušný server, skúste sa odhlásiť a znovu prihlásiť, ak to pretrváva"
+			],
+			"Unable to load the list": [
+				"Nie je možné načítať zoznam"
+			],
+			"Unable to login": [
+				"Nie je možné prihlásiť sa"
+			],
+			"Unable to reach the server, please try to reconnect, or to log out and log in again if the problem persists": [
+				"Nie je možné pripojiť sa k serveru, ak problém pretrváva skúste sa znovu pripojiť alebo sa odhlásiť a znovu prihlásiť."
+			],
+			"Unlock ${servers} in ${countries}": [
+				"Odomknúť ${servers} v ${countries}"
+			],
+			"Unlock global streaming services": [
+				"Odomknite globálne streamovacie služby"
+			]
+		},
+		"Info": {
+			"Access Proton VPN via this icon": [
+				"Pristupujte k Proton VPN prostredníctvom tejto ikony"
+			],
+			"Allow VPN permissions": [
+				"Povoliť VPN oprávnenia"
+			],
+			"Also exclude subdomains of this website": [
+				"Vynechať aj subdomény tejto webovej stránky"
+			],
+			"and more": [
+				"a viac"
+			],
+			"Auto-selected from": [
+				"Automatický výber z"
+			],
+			"Automatically reconnect to Proton VPN when you open your browser.": [
+				"Automatické opätovné pripojenie k sieti Proton VPN po otvorení prehliadača."
+			],
+			"Back": [
+				"Späť"
+			],
+			"Browse through the Support Center and find answers to frequently asked questions.": [
+				"Navštívte Centrum podpory a nájdite odpovede na často kladené otázky."
+			],
+			"Clear search": [
+				"Vyčistiť vyhľadávanie"
+			],
+			"Close": [
+				"Zavrieť"
+			],
+			"Connect to a Plus server in this country to start streaming.\n\nHint: Clear the cache of the streaming apps to ensure new content appears.": [
+				"Ak chcete spustiť streamovanie, pripojte sa k serveru Plus v tejto krajine.\n\nTip: Vymažte vyrovnávaciu pamäť streamovacích aplikácií, aby sa nový obsah skutočne zobrazil."
+			],
+			"Connected": [
+				"Pripojené"
+			],
+			"Connected to ${name}": [
+				"Pripojené k ${name}"
+			],
+			"Connected to ${name} in ${city}": [
+				"Pripojené k ${name} v meste ${city}"
+			],
+			"Connecting...": [
+				"Pripájanie..."
+			],
+			"Contact our Customer Support agents to help you out with Proton VPN.": [
+				"Kontaktujte našich pracovníkov zákazníckej podpory, ktorí vám pomôžu s Proton VPN."
+			],
+			"Crash": [
+				"Pád"
+			],
+			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
+				"Hlásenia o pádoch nám pomáhajú opravovať chyby, detekovať firewally a vyhýbať sa blokovaniu VPN."
+			],
+			"Disable VPN for selected websites.": [
+				"Vypnúť VPN pre vybrané stránky."
+			],
+			"Disconnected": [
+				"Odpojené"
+			],
+			"Emit system notifications on connection and disconnection events.": [
+				"Vysielať systémové notifikácie pri udalostiach pripojení a odpojení."
+			],
+			"Extra protection for people with advanced privacy needs": [
+				"Doplnková ochrana pre osoby s vyššími nárokmi na ochranu súkromia"
+			],
+			"Fastest free server": [
+				"Najrýchlejší bezplatný server"
+			],
+			"Follow these simple steps to get the best experience using Proton VPN": [
+				"Pre čo najlepší zážitok z používania siete Proton VPN postupujte podľa týchto jednoduchých krokov"
+			],
+			"For example, news.example.com is a subdomain of example.com.": [
+				"Napríklad news.example.com je subdoména example.com."
+			],
+			"Help": [
+				"Nápoveda"
+			],
+			"Help us fight censorship": [
+				"Pomôžte nám bojovať s cenzúrou"
+			],
+			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
+				"Vysoko výkonná švajčiarska VPN, ktorá chráni vaše súkromie. Maximálne zabezpečenie, viac než ${count} server a žiadne obmedzenia.",
+				"Vysoko výkonná švajčiarska VPN, ktorá chráni vaše súkromie. Maximálne zabezpečenie, viac než ${count} servery a žiadne obmedzenia.",
+				"Vysoko výkonná švajčiarska VPN, ktorá chráni vaše súkromie. Maximálne zabezpečenie, viac než ${count} serverov a žiadne obmedzenia.",
+				"Vysoko výkonná švajčiarska VPN, ktorá chráni vaše súkromie. Maximálne zabezpečenie, viac než ${count} serverov a žiadne obmedzenia."
+			],
+			"Learn more": [
+				"Zistiť viac"
+			],
+			"Logged out": [
+				"Odhlásené"
+			],
+			"Open the Extensions menu": [
+				"Otvorte menu rozšírenia"
+			],
+			"Open the Proton VPN browser extension to continue": [
+				"Otvorte rozšírenie prehliadača Proton VPN a pokračujte"
+			],
+			"Pin Proton VPN to your toolbar": [
+				"Pripnite si Proton VPN na vašu nástrojovú lištu"
+			],
+			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
+				"Stlačte tlačidlo <b>Ďalej</b> a potom kliknite na <b>Povoliť</b> vo vyskakovacom okne prehliadača."
+			],
+			"Proton VPN Browser Extension": [
+				"Proton VPN rozšírenie prehliadača"
+			],
+			"Search": [
+				"Hľadať"
+			],
+			"Select websites to exclude from your VPN connection.": [
+				"Vyberte si internetové stránky, ktoré chcete vylúčiť z pripojenia VPN."
+			],
+			"Share anonymous usage crash reports": [
+				"Zdieľajte anonymné hlásenia o chybách pri používaní"
+			],
+			"Share anonymous usage statistics": [
+				"Zdieľajte anonymné štatistiky o používaní"
+			],
+			"Split tunneling": [
+				"Split tunneling"
+			],
+			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
+				"Zabráni prehliadaču v úniku vašej IP adresy na webové stránky a do aplikácií využívajúcich WebRTC. Môže to ovplyvniť výkon videohovorov alebo živého vysielania na niektorých webových stránkach."
+			],
+			"Telemetry": [
+				"Telemetria"
+			],
+			"Thank you for installing Proton VPN": [
+				"Ďakujeme vám za inštaláciu Proton VPN"
+			],
+			"Then just click the Proton VPN icon to sign in.": [
+				"Potom sa stačí kliknutím na ikonu Proton VPN prihlásiť."
+			],
+			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
+				"Tieto štatistiky neobsahujú vašu IP adresu a nemôžu byť použité na vašu identifikáciu. Nikdy ich nebudeme zdieľať s tretími stranami"
+			],
+			"To get started, you’ll need to enable VPN permissions on your browser.": [
+				"Ak chcete začať, musíte v prehliadači povoliť oprávnenia VPN."
+			],
+			"Usage data helps us overcome VPN blocks and improve app performance.": [
+				"Údaje o používaní nám pomáhajú obchádzať blokovanie VPN a vylepšovať výkon aplikácie."
+			],
+			"User": [
+				"Používateľ"
+			],
+			"VPN Features": [
+				"Funkcie VPN"
+			],
+			"Websites that do not use VPN:": [
+				"Stránky, ktoré nepoužívajú VPN:"
+			],
+			"You're signed in": [
+				"Ste prihlásený"
+			]
+		},
+		"Label": {
+			"And all its subdomains": [
+				"A všetky jej subdomény"
+			],
+			"Auto connect": [
+				"Automaticky pripojiť"
+			],
+			"Cities": [
+				"Mestá"
+			],
+			"City": [
+				"Mesto",
+				"Mestá",
+				"Miest",
+				"Miest"
+			],
+			"Connecting": [
+				"Pripájanie"
+			],
+			"Countries, cities, servers": [
+				"Krajiny, mestá, servery"
+			],
+			"Country": [
+				"Krajina",
+				"Krajiny",
+				"Krajín",
+				"Krajín"
+			],
+			"Entry country": [
+				"Vstupná krajina",
+				"Vstupné krajiny",
+				"Vstupných krajín",
+				"Vstupných krajín"
+			],
+			"Free servers": [
+				"Bezplatné servery"
+			],
+			"Free servers (${count})": [
+				"Bezplatné servery (${count})"
+			],
+			"Internal servers (${count})": [
+				"Interné servery (${count})"
+			],
+			"Need help?": [
+				"Potrebujete pomôcť?"
+			],
+			"Notifications": [
+				"Notifikácie"
+			],
+			"Offer": [
+				"Ponuka"
+			],
+			"Other": [
+				"Iné"
+			],
+			"Plus servers (${count})": [
+				"Plus servery (${count})"
+			],
+			"Protected": [
+				"Chránené"
+			],
+			"Server": [
+				"Server",
+				"Servery",
+				"Serverov",
+				"Serverov"
+			],
+			"Settings": [
+				"Nastavenia"
+			],
+			"Split tunneling": [
+				"Split tunneling"
+			],
+			"Unprotected": [
+				"Nechránené"
+			],
+			"Via": [
+				"Cez"
+			],
+			"Want to know more?": [
+				"Chcete sa dozvedieť viac?"
+			],
+			"WebRTC leak protection": [
+				"Ochrana proti WebRTC úniku"
+			]
+		},
+		"Menu": {
+			"Countries": [
+				"Krajiny"
+			],
+			"Features": [
+				"Funkcie"
+			],
+			"Help": [
+				"Nápoveda"
+			],
+			"Settings": [
+				"Nastavenia"
+			]
+		},
+		"Status": {
+			"Connecting to ${serverName}": [
+				"Pripája sa k serveru ${serverName}"
+			],
+			"Proton VPN: ${status}": [
+				"Proton VPN: ${status}"
+			]
+		},
+		"Title": {
+			"Features": [
+				"Funkcie"
+			],
+			"Streaming": [
+				"Streamovanie"
+			]
+		}
+	}
+}

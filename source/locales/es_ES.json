@@ -1,0 +1,442 @@
+{
+	"headers": {
+		"plural-forms": "nplurals=2; plural=(n != 1);",
+		"language": "es_ES"
+	},
+	"contexts": {
+		"Action": {
+			"${linkDescription} (New tab)": [
+				"${linkDescription} (pestaña nueva)"
+			],
+			"Add": [
+				"Añadir"
+			],
+			"Add website": [
+				"Añadir un sitio web"
+			],
+			"Auto connect": [
+				"Conectar automáticamente"
+			],
+			"Cancel": [
+				"Cancelar"
+			],
+			"Connect": [
+				"Conectar"
+			],
+			"Contact us": [
+				"Contacta con nosotros"
+			],
+			"Create an account": [
+				"Crear una cuenta"
+			],
+			"Disconnect": [
+				"Desconectar"
+			],
+			"Enable/disable notifications": [
+				"Activar/desactivar las notificaciones"
+			],
+			"Exclude websites from the tunnel": [
+				"Excluir sitios web del túnel"
+			],
+			"Log in with Proton": [
+				"Iniciar sesión con Proton"
+			],
+			"Manage subscription": [
+				"Administrar la suscripción"
+			],
+			"New to Proton?": [
+				"¿Primera vez en Proton?"
+			],
+			"Next": [
+				"Siguiente"
+			],
+			"Prevent WebRTC leak": [
+				"Evitar filtraciones de WebRTC"
+			],
+			"Quick connect": [
+				"Conexión rápida"
+			],
+			"Remove ${domain}": [
+				"Borrar ${domain}"
+			],
+			"Select a city in ${exitCountryName}": [
+				"Seleciona una ciudad en ${exitCountryName}"
+			],
+			"Select a server in ${cityName}": [
+				"Selecciona un servidor en ${cityName}"
+			],
+			"Select entry country with exit in ${exitCountryName}": [
+				"Selecciona un país de entrada con salida en ${exitCountryName}"
+			],
+			"Sign in": [
+				"Iniciar sesión"
+			],
+			"Sign out": [
+				"Cerrar sesión"
+			],
+			"Subscribe to connect more devices": [
+				"Suscríbete para conectar más dispositivos"
+			],
+			"Subscribe to enable Browser Extension": [
+				"Suscríbete para activar la extensión de navegador"
+			],
+			"Switch account": [
+				"Cambiar de cuenta"
+			],
+			"Update": [
+				"Actualizar"
+			],
+			"Upgrade": [
+				"Cambiar de plan"
+			],
+			"Visit Support Center": [
+				"Visita el centro de soporte"
+			]
+		},
+		"Action: City-level button": {
+			"Connect to ${cityName}": [
+				"Conectar a ${cityName}"
+			]
+		},
+		"Action: Country-level button": {
+			"Connect to ${exitCountryName}": [
+				"Conectar a ${exitCountryName}"
+			]
+		},
+		"Action: Server-level button": {
+			"Connect to ${serverName}": [
+				"Conectar a ${serverName}"
+			]
+		},
+		"Confirm": {
+			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
+				"Cerrar la sesión de la aplicación desconectará la conexión VPN activa. ¿Deseas continuar?"
+			]
+		},
+		"Error": {
+			"${countries} country": [
+				"${countries} país",
+				"${countries} países"
+			],
+			"${servers}+ secure server": [
+				"Más de ${servers} servidor seguro",
+				"Más de ${servers} servidores seguros"
+			],
+			"Bypass online censorship with advanced security and privacy features": [
+				"Evita la censura en línea con funciones avanzadas de seguridad y privacidad."
+			],
+			"Connect from your browser with ${planName}": [
+				"Conéctate desde tu navegador con ${planName}"
+			],
+			"Network error.": [
+				"Error de red."
+			],
+			"Network is unreachable": [
+				"Red inaccesible"
+			],
+			"No results found": [
+				"No se han encontrado resultados"
+			],
+			"Not able to control the browser network settings, possibly a permission is missing": [
+				"No se puede controlar la configuración de red del navegador, posiblemente falta un permiso"
+			],
+			"Please check your connectivity": [
+				"Verifica tu conexión"
+			],
+			"Please try a different keyword": [
+				"Intenta una palabra clave diferente."
+			],
+			"Server not found": [
+				"Servidor no encontrado"
+			],
+			"Service temporarily unavailable": [
+				"El servicio no está disponible temporalmente"
+			],
+			"Something went wrong. If the problem persists, please try to re-install the extension": [
+				"Se ha producido un error. Si el problema persiste, intenta reinstalar la extensión."
+			],
+			"Unable to find appropriate server, try to logout and login again if it persists": [
+				"No se encuentra un servidor apropiado. Intenta cerrar la sesión y volver a iniciarla si el problema persiste."
+			],
+			"Unable to load the list": [
+				"No se puede cargar la lista."
+			],
+			"Unable to login": [
+				"No se puede iniciar sesión."
+			],
+			"Unable to reach the server, please try to reconnect, or to log out and log in again if the problem persists": [
+				"No se puede conectar al servidor. Intenta reconectar o vuelve a iniciar sesión si el problema persiste."
+			],
+			"Unlock ${servers} in ${countries}": [
+				"Desbloquea ${servers} en ${countries}."
+			],
+			"Unlock global streaming services": [
+				"Desbloquea servicios de streaming en todo el mundo"
+			]
+		},
+		"Info": {
+			"Access Proton VPN via this icon": [
+				"Accede a Proton VPN a través de este icono."
+			],
+			"Allow VPN permissions": [
+				"Conceder permisos de VPN"
+			],
+			"Also exclude subdomains of this website": [
+				"Excluir también subdominios de este sitio web"
+			],
+			"and more": [
+				"y más"
+			],
+			"Auto-selected from": [
+				"Selección automática desde"
+			],
+			"Automatically reconnect to Proton VPN when you open your browser.": [
+				"Vuelve a conectarte automáticamente a Proton VPN cuando inicies tu navegador."
+			],
+			"Back": [
+				"Atrás"
+			],
+			"Browse through the Support Center and find answers to frequently asked questions.": [
+				"Navega en el centro de soporte y encuentra respuestas a preguntas frecuentes."
+			],
+			"Clear search": [
+				"Borrar la búsqueda"
+			],
+			"Close": [
+				"Cerrar"
+			],
+			"Connect to a Plus server in this country to start streaming.\n\nHint: Clear the cache of the streaming apps to ensure new content appears.": [
+				"Conéctate a un servidor Plus en este país para empezar el streaming.\n\nSugerencia: Borra la caché de las aplicaciones de streaming para asegurar que los nuevos contenidos aparezcan."
+			],
+			"Connected": [
+				"Conectado"
+			],
+			"Connected to ${name}": [
+				"Conectado a ${name}"
+			],
+			"Connected to ${name} in ${city}": [
+				"Conectado a ${name} en ${city}"
+			],
+			"Connecting...": [
+				"Conectando..."
+			],
+			"Contact our Customer Support agents to help you out with Proton VPN.": [
+				"Contacta con nuestros agentes de atención al cliente para ayudarte con Proton VPN."
+			],
+			"Crash": [
+				"Error"
+			],
+			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
+				"Los informes de errores nos ayudan a corregir errores, detectar cortafuegos y evitar bloqueos de VPN."
+			],
+			"Disable VPN for selected websites.": [
+				"Desactiva la VPN para sitios web seleccionados."
+			],
+			"Disconnected": [
+				"Desconectado"
+			],
+			"Emit system notifications on connection and disconnection events.": [
+				"Enviar notificaciones del sistema para conexiones y desconexiones."
+			],
+			"Extra protection for people with advanced privacy needs": [
+				"Protección adicional para personas con necesidades de privacidad avanzadas"
+			],
+			"Fastest free server": [
+				"Servidor gratuito más rápido"
+			],
+			"Follow these simple steps to get the best experience using Proton VPN": [
+				"Sigue estos pasos para obtener la mejor experiencia utilizando Proton VPN"
+			],
+			"For example, news.example.com is a subdomain of example.com.": [
+				"Por ejemplo, noticias.ejemplo.com es un subdominio de ejemplo.com."
+			],
+			"Help": [
+				"Ayuda"
+			],
+			"Help us fight censorship": [
+				"Ayúdanos a luchar contra la censura"
+			],
+			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
+				"VPN suiza de alto rendimiento que protege tu privacidad. Máxima seguridad, más de ${count} servidor y sin restricciones.",
+				"VPN suiza de alto rendimiento que protege tu privacidad. Máxima seguridad, más de ${count} servidores y sin restricciones."
+			],
+			"Learn more": [
+				"Más información"
+			],
+			"Logged out": [
+				"Desconectado"
+			],
+			"Open the Extensions menu": [
+				"Abre el menú de extensiones"
+			],
+			"Open the Proton VPN browser extension to continue": [
+				"Abre la extensión de navegador de Proton VPN para continuar"
+			],
+			"Pin Proton VPN to your toolbar": [
+				"Fija Proton VPN a tu barra de herramientas"
+			],
+			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
+				"Presiona <b>Siguiente</b>, y haz clic en <b>Permitir</b> en la ventana emergente de tu navegador."
+			],
+			"Proton VPN Browser Extension": [
+				"Extensión de navegador Proton VPN"
+			],
+			"Search": [
+				"Buscar"
+			],
+			"Select websites to exclude from your VPN connection.": [
+				"Selecciona sitios web para excluir de la conexión VPN."
+			],
+			"Share anonymous usage crash reports": [
+				"Compartir informes de errores anónimos"
+			],
+			"Share anonymous usage statistics": [
+				"Compartir estadísticas anónimas de uso"
+			],
+			"Split tunneling": [
+				"Túnel dividido"
+			],
+			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
+				"Evite que tu navegador filtre tu dirección IP a sitios web que utilizan WebRTC. Esta configuración puede afectar las videollamadas y la transmisión en vivo en algunos sitios web."
+			],
+			"Telemetry": [
+				"Telemetría"
+			],
+			"Thank you for installing Proton VPN": [
+				"¡Gracias por instalar Proton VPN!"
+			],
+			"Then just click the Proton VPN icon to sign in.": [
+				"Luego pulsa el icono de Proton VPN para iniciar sesión."
+			],
+			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
+				"Las estadísticas no contienen tu dirección IP y no pueden usarse para identificarte. Nunca las compartiremos con terceros"
+			],
+			"To get started, you’ll need to enable VPN permissions on your browser.": [
+				"Para comenzar, necesitas activar los permisos de VPN en tu navegador."
+			],
+			"Usage data helps us overcome VPN blocks and improve app performance.": [
+				"Los datos de uso nos ayudan a evitar bloqueos de VPN y mejorar el rendimiento de la aplicación."
+			],
+			"User": [
+				"Usuario"
+			],
+			"VPN Features": [
+				"Funciones de VPN"
+			],
+			"Websites that do not use VPN:": [
+				"Sitios web que no utilizan la VPN:"
+			],
+			"You're signed in": [
+				"Has iniciado sesión"
+			]
+		},
+		"Label": {
+			"And all its subdomains": [
+				"Y todos sus subdominios"
+			],
+			"Auto connect": [
+				"Conectar automáticamente"
+			],
+			"Cities": [
+				"Ciudades"
+			],
+			"City": [
+				"Ciudad",
+				"Ciudades"
+			],
+			"Connecting": [
+				"Conectando"
+			],
+			"Countries, cities, servers": [
+				"Países, ciudades, servidores"
+			],
+			"Country": [
+				"País",
+				"Países"
+			],
+			"Entry country": [
+				"País de entrada",
+				"Países de entrada"
+			],
+			"Free servers": [
+				"Servidores gratuitos"
+			],
+			"Free servers (${count})": [
+				"Servidores gratuitos (${count})"
+			],
+			"Internal servers (${count})": [
+				"Servidores internos (${count})"
+			],
+			"Need help?": [
+				"¿Necesitas ayuda?"
+			],
+			"Notifications": [
+				"Notificaciones"
+			],
+			"Offer": [
+				"Oferta"
+			],
+			"Other": [
+				"Otros"
+			],
+			"Plus servers (${count})": [
+				"Servidores Plus (${count})"
+			],
+			"Protected": [
+				"Protegido"
+			],
+			"Server": [
+				"Servidor",
+				"Servidores"
+			],
+			"Settings": [
+				"Configuración"
+			],
+			"Split tunneling": [
+				"Túnel dividido"
+			],
+			"Unprotected": [
+				"No protegido"
+			],
+			"Via": [
+				"Vía"
+			],
+			"Want to know more?": [
+				"¿Quieres saber más?"
+			],
+			"WebRTC leak protection": [
+				"Protección contra filtraciones de WebRTC"
+			]
+		},
+		"Menu": {
+			"Countries": [
+				"Países"
+			],
+			"Features": [
+				"Funcionalidades"
+			],
+			"Help": [
+				"Ayuda"
+			],
+			"Settings": [
+				"Configuración"
+			]
+		},
+		"Status": {
+			"Connecting to ${serverName}": [
+				"Conectando a ${serverName}"
+			],
+			"Proton VPN: ${status}": [
+				"Proton VPN: ${status}"
+			]
+		},
+		"Title": {
+			"Features": [
+				"Funcionalidades"
+			],
+			"Streaming": [
+				"Streaming"
+			]
+		}
+	}
+}

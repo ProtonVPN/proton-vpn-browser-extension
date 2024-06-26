@@ -1,0 +1,442 @@
+{
+	"headers": {
+		"plural-forms": "nplurals=2; plural=(n != 1);",
+		"language": "fi_FI"
+	},
+	"contexts": {
+		"Action": {
+			"${linkDescription} (New tab)": [
+				"${linkDescription} (uusi välilehti)"
+			],
+			"Add": [
+				"Lisää"
+			],
+			"Add website": [
+				"Lisää verkkosivusto"
+			],
+			"Auto connect": [
+				"Automaattiyhteys"
+			],
+			"Cancel": [
+				"Peruuta"
+			],
+			"Connect": [
+				"Yhdistä"
+			],
+			"Contact us": [
+				"Ota yhteyttä"
+			],
+			"Create an account": [
+				"Luo tili"
+			],
+			"Disconnect": [
+				"Katkaise yhteys"
+			],
+			"Enable/disable notifications": [
+				"Ota ilmoitukset käyttöön/poista ne käytöstä"
+			],
+			"Exclude websites from the tunnel": [
+				"Sulje verkkosivustoja tunnelin ulkopuolelle"
+			],
+			"Log in with Proton": [
+				"Kirjaudu Protonilla"
+			],
+			"Manage subscription": [
+				"Hallitse tilausta"
+			],
+			"New to Proton?": [
+				"Oletko uusi Proton-käyttäjä?"
+			],
+			"Next": [
+				"Seuraava"
+			],
+			"Prevent WebRTC leak": [
+				"Estä WebRTC-vuoto"
+			],
+			"Quick connect": [
+				"Pikayhteys"
+			],
+			"Remove ${domain}": [
+				"Poista ${domain}"
+			],
+			"Select a city in ${exitCountryName}": [
+				"Valitse kaupunki maasta ${exitCountryName}"
+			],
+			"Select a server in ${cityName}": [
+				"Valitse palvelin kaupungista ${cityName}"
+			],
+			"Select entry country with exit in ${exitCountryName}": [
+				"Valitse maa, josta poistutaan maan ${exitCountryName} kautta"
+			],
+			"Sign in": [
+				"Kirjaudu sisään"
+			],
+			"Sign out": [
+				"Kirjaudu ulos"
+			],
+			"Subscribe to connect more devices": [
+				"Yhdistä lisää laitteita tilaamalla palvelu"
+			],
+			"Subscribe to enable Browser Extension": [
+				"Käytä selainlaajennusta tilaamalla palvelu"
+			],
+			"Switch account": [
+				"Vaihda tiliä"
+			],
+			"Update": [
+				"Päivitä"
+			],
+			"Upgrade": [
+				"Päivitä tilaus"
+			],
+			"Visit Support Center": [
+				"Avaa Tukikeskus"
+			]
+		},
+		"Action: City-level button": {
+			"Connect to ${cityName}": [
+				"Yhdistä kaupunkiin ${cityName}"
+			]
+		},
+		"Action: Country-level button": {
+			"Connect to ${exitCountryName}": [
+				"Yhdistä maahan ${exitCountryName}"
+			]
+		},
+		"Action: Server-level button": {
+			"Connect to ${serverName}": [
+				"Yhdistä palvelimeen ${serverName}"
+			]
+		},
+		"Confirm": {
+			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
+				"Sovelluksen uloskirjaaminen katkaisee aktiivisen VPN-yhteyden. Haluatko jatkaa?"
+			]
+		},
+		"Error": {
+			"${countries} country": [
+				"${countries} maasta",
+				"${countries} maasta"
+			],
+			"${servers}+ secure server": [
+				"${servers}+ palvelin",
+				"${servers}+ palvelinta"
+			],
+			"Bypass online censorship with advanced security and privacy features": [
+				"Ohita verkkosensuuri kehittyneillä tietoturvaa ja yksityisyyttä tehostavilla ominaisuuksilla"
+			],
+			"Connect from your browser with ${planName}": [
+				"Yhdistä selaimestasi ${planName} -tilauksella"
+			],
+			"Network error.": [
+				"Verkkovirhe."
+			],
+			"Network is unreachable": [
+				"Verkkoa ei tavoiteta"
+			],
+			"No results found": [
+				"Tuloksia ei löytynyt"
+			],
+			"Not able to control the browser network settings, possibly a permission is missing": [
+				"Selaimen verkkoasetusten hallinta ei onnistu, mahdollisen käyttöoikeuspuutteen vuoksi"
+			],
+			"Please check your connectivity": [
+				"Tarkista yhteytesi"
+			],
+			"Please try a different keyword": [
+				"Kokeile eri hakusanaa"
+			],
+			"Server not found": [
+				"Palvelinta ei löytynyt"
+			],
+			"Service temporarily unavailable": [
+				"Palvelu on tilapäisesti pois käytöstä."
+			],
+			"Something went wrong. If the problem persists, please try to re-install the extension": [
+				"Jotain meni pieleen. Jos ongelma jatkuu, asenna laajennus uudelleen."
+			],
+			"Unable to find appropriate server, try to logout and login again if it persists": [
+				"Sopivaa palvelinta ei löydy, yritä kirjautua ulos ja takaisin sisään, jos ongelma jatkuu"
+			],
+			"Unable to load the list": [
+				"Listan lataus ei onnistu"
+			],
+			"Unable to login": [
+				"Kirjautuminen ei onnistu"
+			],
+			"Unable to reach the server, please try to reconnect, or to log out and log in again if the problem persists": [
+				"Palvelinta ei tavoiteta. Yritä muodostaa yhteys uudelleen tai kirjaudu ongelman jatkuessa ulos ja takaisin sisään."
+			],
+			"Unlock ${servers} in ${countries}": [
+				"Avaa ${servers} ${countries}"
+			],
+			"Unlock global streaming services": [
+				"Käytä suoratoistopalveluita eri puolilta maailmaa"
+			]
+		},
+		"Info": {
+			"Access Proton VPN via this icon": [
+				"Käytä Proton VPN:ää tästä kuvakkeesta"
+			],
+			"Allow VPN permissions": [
+				"Myönnä VPN -laajennuksen tarvitsemat käyttöoikeudet"
+			],
+			"Also exclude subdomains of this website": [
+				"Sisällytä myös tämän verkkosivuston aliverkkotunnukset"
+			],
+			"and more": [
+				"ja monia muita"
+			],
+			"Auto-selected from": [
+				"Valittu automaattisesti seuraavista"
+			],
+			"Automatically reconnect to Proton VPN when you open your browser.": [
+				"Yhdistä Proton VPN automaattisesti, kun avaat selaimen."
+			],
+			"Back": [
+				"Takaisin"
+			],
+			"Browse through the Support Center and find answers to frequently asked questions.": [
+				"Selaa Tukikeskusta ja löydä vastauksia yleisimpiin kysymyksiin."
+			],
+			"Clear search": [
+				"Tyhjennä haku"
+			],
+			"Close": [
+				"Sulje"
+			],
+			"Connect to a Plus server in this country to start streaming.\n\nHint: Clear the cache of the streaming apps to ensure new content appears.": [
+				"Aloita suoratoisto yhdistämällä tässä maassa olevaan Plus-palvelimeen.\n\nVinkki: Tyhjennä suoratoistosovellusten välimuistit varmistaaksesi uuden sisällön näkymisen."
+			],
+			"Connected": [
+				"Yhdistetty"
+			],
+			"Connected to ${name}": [
+				"Yhdistetty palvelimeen ${name}"
+			],
+			"Connected to ${name} in ${city}": [
+				"Yhdistetty palvelimeen ${name} kaupungissa ${city}"
+			],
+			"Connecting...": [
+				"Yhdistetään..."
+			],
+			"Contact our Customer Support agents to help you out with Proton VPN.": [
+				"Pyydä apua Proton VPN:n käyttöön asiakaspalvelustamme."
+			],
+			"Crash": [
+				"Kaatuminen"
+			],
+			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
+				"Virheraportit auttavat meitä korjaaman vikoja, havaitsemaan palomuureja ja kiertämään VPN-estoja."
+			],
+			"Disable VPN for selected websites.": [
+				"Sulje seuraavat sivustot VPN-yhteyden ulkopuolelle."
+			],
+			"Disconnected": [
+				"Ei yhdistetty"
+			],
+			"Emit system notifications on connection and disconnection events.": [
+				"Lähetä järjestelmäilmoituksia yhteyden muodostus- ja katkaisutapahtumista."
+			],
+			"Extra protection for people with advanced privacy needs": [
+				"Lisäsuojaa korkeampaa yksityisyyttä tarvitseville"
+			],
+			"Fastest free server": [
+				"Nopein ilmainen palvelin"
+			],
+			"Follow these simple steps to get the best experience using Proton VPN": [
+				"Noudata näitä yksinkertaisia ohjeita parasta Proton VPN -kokemusta varten"
+			],
+			"For example, news.example.com is a subdomain of example.com.": [
+				"Esimerkiksi uutiset.esimerkki.fi on verkkotunnuksen esimerkki.fi aliverkkotunnus."
+			],
+			"Help": [
+				"Tuki"
+			],
+			"Help us fight censorship": [
+				"Auta meitä taistelemaan sensuuria vastaan"
+			],
+			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
+				"Erittäin suorituskykyinen Sveitsiläinen VPN, joka suojaa yksityisyyttäsi. Parasta tietoturvaa ja yli ${count} palvelinta, rajoituksetta.",
+				"Erittäin suorituskykyinen Sveitsiläinen VPN, joka suojaa yksityisyyttäsi. Parasta tietoturvaa ja yli ${count} palvelinta, rajoituksetta."
+			],
+			"Learn more": [
+				"Lue lisää"
+			],
+			"Logged out": [
+				"Kirjattu ulos"
+			],
+			"Open the Extensions menu": [
+				"Avaa laajennusvalikko"
+			],
+			"Open the Proton VPN browser extension to continue": [
+				"Jatka avaamalla Proton VPN -selainlaajennus"
+			],
+			"Pin Proton VPN to your toolbar": [
+				"Kiinnitä Proton VPN työkalupalkkiisi"
+			],
+			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
+				"Paina <b>Seuraava</b> ja sitten selaimesi ponnahduksesta <b>Salli</b>."
+			],
+			"Proton VPN Browser Extension": [
+				"Proton VPN -selainlaajennus"
+			],
+			"Search": [
+				"Haku"
+			],
+			"Select websites to exclude from your VPN connection.": [
+				"Valitse VPN-yhteyden ulkopuolelle suljettavat verkkosivustot."
+			],
+			"Share anonymous usage crash reports": [
+				"Jaa anonyymejä kaatumisraportteja"
+			],
+			"Share anonymous usage statistics": [
+				"Jaa anonyymejä käyttötilastoja"
+			],
+			"Split tunneling": [
+				"Jaettu tunnelointi"
+			],
+			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
+				"Estää selaintasi vuotamasta IP-osoitettasi WebRTC-rajapintaa käyttäville verkkosivustoille ja sovelluksille. Tämä voi vaikuttaa videopuheluiden ja joidenkin sivustojen live-suoratoistojen toimintaan."
+			],
+			"Telemetry": [
+				"Telemetria"
+			],
+			"Thank you for installing Proton VPN": [
+				"Kiitos Proton VPN:n asennuksesta"
+			],
+			"Then just click the Proton VPN icon to sign in.": [
+				"Kirjaudu sitten sisään painamalla Proron VPN -kuvaketta."
+			],
+			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
+				"Nämä tilastot eivät sisällä IP-osoitettasi, eikä sinua ole mahdollista tunnistaa niiden perusteella. Emme koskaa jaa niitä ulkopuolisille tahoille"
+			],
+			"To get started, you’ll need to enable VPN permissions on your browser.": [
+				"Aloita myöntämällä VPN -laajennuksen tarvitsemat käyttöoikeudet selaimestasi."
+			],
+			"Usage data helps us overcome VPN blocks and improve app performance.": [
+				"Käyttötilastot auttavat meitä kiertämään VPN-estoja ja parantamaan sovelluksen suorituskykyä."
+			],
+			"User": [
+				"Käyttäjä"
+			],
+			"VPN Features": [
+				"VPN:n ominaisuudet"
+			],
+			"Websites that do not use VPN:": [
+				"Verkkosivut, jotka eivät käytä VPN:ää:"
+			],
+			"You're signed in": [
+				"Olet kirjautunut"
+			]
+		},
+		"Label": {
+			"And all its subdomains": [
+				"Ja kaikki sen aliverkkotunnukset"
+			],
+			"Auto connect": [
+				"Automaattiyhteys"
+			],
+			"Cities": [
+				"Kaupungit"
+			],
+			"City": [
+				"Kaupunki",
+				"Kaupungit"
+			],
+			"Connecting": [
+				"Yhdistetään"
+			],
+			"Countries, cities, servers": [
+				"Maat, kaupungit, palvelimet"
+			],
+			"Country": [
+				"Maa",
+				"Maat"
+			],
+			"Entry country": [
+				"Lähtömaa",
+				"Lähtömaat"
+			],
+			"Free servers": [
+				"Ilmaispalvelimet"
+			],
+			"Free servers (${count})": [
+				"Ilmaispalvelimet (${count})"
+			],
+			"Internal servers (${count})": [
+				"Sisäiset palvelimet (${count})"
+			],
+			"Need help?": [
+				"Tarvitsetko apua?"
+			],
+			"Notifications": [
+				"Ilmoitukset"
+			],
+			"Offer": [
+				"Tarjous"
+			],
+			"Other": [
+				"Muu"
+			],
+			"Plus servers (${count})": [
+				"Plus-palvelimet (${count})"
+			],
+			"Protected": [
+				"Suojattu"
+			],
+			"Server": [
+				"Palvelin",
+				"Palvelimet"
+			],
+			"Settings": [
+				"Asetukset"
+			],
+			"Split tunneling": [
+				"Jaettu tunnelointi"
+			],
+			"Unprotected": [
+				"Suojaamaton"
+			],
+			"Via": [
+				"Kautta"
+			],
+			"Want to know more?": [
+				"Tarvitseko lisätietoja?"
+			],
+			"WebRTC leak protection": [
+				"WebRTC-vuotosuojaus"
+			]
+		},
+		"Menu": {
+			"Countries": [
+				"Maat"
+			],
+			"Features": [
+				"Ominaisuudet"
+			],
+			"Help": [
+				"Tuki"
+			],
+			"Settings": [
+				"Asetukset"
+			]
+		},
+		"Status": {
+			"Connecting to ${serverName}": [
+				"Yhdistetään palvelimeen ${serverName}"
+			],
+			"Proton VPN: ${status}": [
+				"Proton VPN: ${status}"
+			]
+		},
+		"Title": {
+			"Features": [
+				"Ominaisuudet"
+			],
+			"Streaming": [
+				"Suoratoisto"
+			]
+		}
+	}
+}

@@ -1,0 +1,423 @@
+{
+	"headers": {
+		"plural-forms": "nplurals=1; plural=0;",
+		"language": "ja_JP"
+	},
+	"contexts": {
+		"Action": {
+			"${linkDescription} (New tab)": [
+				"${linkDescription} (新規タブ)"
+			],
+			"Add": [
+				"追加"
+			],
+			"Add website": [
+				"ウェブサイトを追加"
+			],
+			"Auto connect": [
+				"自動接続"
+			],
+			"Cancel": [
+				"キャンセル"
+			],
+			"Connect": [
+				"接続"
+			],
+			"Contact us": [
+				"お問い合わせ"
+			],
+			"Create an account": [
+				"アカウントを作成"
+			],
+			"Disconnect": [
+				"接続解除"
+			],
+			"Enable/disable notifications": [
+				"通知を有効または無効にする"
+			],
+			"Exclude websites from the tunnel": [
+				"ウェブサイトをトンネルから除外する"
+			],
+			"Log in with Proton": [
+				"Proton でログイン"
+			],
+			"Manage subscription": [
+				"サブスクリプションを管理"
+			],
+			"New to Proton?": [
+				"Proton を初めて利用しますか？"
+			],
+			"Next": [
+				"次へ"
+			],
+			"Prevent WebRTC leak": [
+				"WebRTC 漏洩防止"
+			],
+			"Quick connect": [
+				"クイック接続"
+			],
+			"Remove ${domain}": [
+				"${domain} を削除"
+			],
+			"Select a city in ${exitCountryName}": [
+				"${exitCountryName} の都市を選択"
+			],
+			"Select a server in ${cityName}": [
+				"${cityName} のサーバーを選択"
+			],
+			"Select entry country with exit in ${exitCountryName}": [
+				"${exitCountryName} が出口の入口国を選択"
+			],
+			"Sign in": [
+				"サインイン"
+			],
+			"Sign out": [
+				"サインアウト"
+			],
+			"Subscribe to connect more devices": [
+				"登録して、さらに多くのデバイスを接続します"
+			],
+			"Subscribe to enable Browser Extension": [
+				"登録して、ブラウザ拡張機能を有効にします"
+			],
+			"Switch account": [
+				"アカウントを切り替え"
+			],
+			"Update": [
+				"更新"
+			],
+			"Upgrade": [
+				"アップグレード"
+			],
+			"Visit Support Center": [
+				"サポートセンターを開く"
+			]
+		},
+		"Action: City-level button": {
+			"Connect to ${cityName}": [
+				"${cityName} に接続"
+			]
+		},
+		"Action: Country-level button": {
+			"Connect to ${exitCountryName}": [
+				"${exitCountryName} に接続"
+			]
+		},
+		"Action: Server-level button": {
+			"Connect to ${serverName}": [
+				"${serverName} に接続"
+			]
+		},
+		"Confirm": {
+			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
+				"アプリケーションからログアウトすると、現在有効な VPN 接続が解除されます。続行しますか？"
+			]
+		},
+		"Error": {
+			"${countries} country": [
+				"${countries} か国"
+			],
+			"${servers}+ secure server": [
+				"${servers} 台以上の安全なサーバー"
+			],
+			"Bypass online censorship with advanced security and privacy features": [
+				"高度なセキュリティとプライバシー機能で、オンライン検閲を回避します。"
+			],
+			"Connect from your browser with ${planName}": [
+				"${planName} を使用してブラウザから接続します"
+			],
+			"Network error.": [
+				"ネットワークエラーが発生しました。"
+			],
+			"Network is unreachable": [
+				"ネットワークに接続できません"
+			],
+			"No results found": [
+				"該当する項目がありません"
+			],
+			"Not able to control the browser network settings, possibly a permission is missing": [
+				"ブラウザのネットワーク設定を制御できません。権限が不足している可能性があります。"
+			],
+			"Please check your connectivity": [
+				"接続状況をご確認ください"
+			],
+			"Please try a different keyword": [
+				"別のキーワードをお試しください"
+			],
+			"Server not found": [
+				"サーバーが見つかりません"
+			],
+			"Service temporarily unavailable": [
+				"サービスが一時的に利用できません"
+			],
+			"Something went wrong. If the problem persists, please try to re-install the extension": [
+				"なにかが間違っています。問題が解決しない場合は、拡張機能の再インストールをお試しください。"
+			],
+			"Unable to load the list": [
+				"リストを読み込めません"
+			],
+			"Unable to login": [
+				"ログインできません"
+			],
+			"Unable to reach the server, please try to reconnect, or to log out and log in again if the problem persists": [
+				"サーバーに接続できません。再接続しても問題が解決しない場合は、一度ログアウトしてから再度ログインしてください。"
+			],
+			"Unlock ${servers} in ${countries}": [
+				"${countries} の ${servers} を利用可能にする"
+			],
+			"Unlock global streaming services": [
+				"グローバルなストリーミングサービスを利用可能にする"
+			]
+		},
+		"Info": {
+			"Access Proton VPN via this icon": [
+				"このアイコンから Proton VPN にアクセス"
+			],
+			"Allow VPN permissions": [
+				"VPN 権限の許可"
+			],
+			"Also exclude subdomains of this website": [
+				"このウェブサイトのサブドメインも除外します"
+			],
+			"and more": [
+				"など"
+			],
+			"Auto-selected from": [
+				"から自動選択"
+			],
+			"Automatically reconnect to Proton VPN when you open your browser.": [
+				"ブラウザを開いた際に Proton VPN に自動で再接続します。"
+			],
+			"Back": [
+				"戻る"
+			],
+			"Browse through the Support Center and find answers to frequently asked questions.": [
+				"サポートセンターで、よくある質問とその回答を確認できます。"
+			],
+			"Clear search": [
+				"検索をクリア"
+			],
+			"Close": [
+				"閉じる"
+			],
+			"Connect to a Plus server in this country to start streaming.\n\nHint: Clear the cache of the streaming apps to ensure new content appears.": [
+				"この国の Plus サーバーに接続して、ストリーミング視聴を開始します。\n\nヒント: 新しいコンテンツを反映させるには、ストリーミングアプリのキャッシュをクリアします。"
+			],
+			"Connected": [
+				"接続完了"
+			],
+			"Connected to ${name}": [
+				"${name} に接続完了"
+			],
+			"Connected to ${name} in ${city}": [
+				"${city} の ${name} に接続完了"
+			],
+			"Connecting...": [
+				"接続中..."
+			],
+			"Contact our Customer Support agents to help you out with Proton VPN.": [
+				"Proton VPN のカスタマーサポートに問い合わせます。"
+			],
+			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
+				"クラッシュレポートはバグを修正し、ファイアウォールを検出し、VPN 検閲を回避するために使用されます。"
+			],
+			"Disable VPN for selected websites.": [
+				"選択したウェブサイトで VPN を無効にします。"
+			],
+			"Disconnected": [
+				"接続解除されました"
+			],
+			"Emit system notifications on connection and disconnection events.": [
+				"接続や接続解除が発生した際にシステム通知を表示します。"
+			],
+			"Extra protection for people with advanced privacy needs": [
+				"高度なプライバシー保護を必要とする人々のための追加の保護"
+			],
+			"Fastest free server": [
+				"最速の無料サーバー"
+			],
+			"Follow these simple steps to get the best experience using Proton VPN": [
+				"以下の手順で、Proton VPN が使いやすくなります。"
+			],
+			"For example, news.example.com is a subdomain of example.com.": [
+				"例えば、news.example.com は example.com のサブドメインです。"
+			],
+			"Help": [
+				"ヘルプ"
+			],
+			"Help us fight censorship": [
+				"検閲への対抗を助ける"
+			],
+			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
+				"高パフォーマンスなスイスの VPN でプライバシーを保護します。最大限のセキュリティを備えた制限のない ${count} 台以上のサーバーがあります。"
+			],
+			"Learn more": [
+				"詳細"
+			],
+			"Logged out": [
+				"ログアウトしました"
+			],
+			"Open the Extensions menu": [
+				"拡張機能メニューを開く"
+			],
+			"Open the Proton VPN browser extension to continue": [
+				"Proton VPN ブラウザ拡張機能を開いてください"
+			],
+			"Pin Proton VPN to your toolbar": [
+				"ツールバーに Proton VPN をピン留め"
+			],
+			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
+				"<b>次へ</b>を押し、ブラウザのポップアップで<b>許可</b>をクリックします。"
+			],
+			"Proton VPN Browser Extension": [
+				"Proton VPN ブラウザ拡張機能"
+			],
+			"Search": [
+				"検索"
+			],
+			"Select websites to exclude from your VPN connection.": [
+				"VPN 接続から除外するウェブサイトを選択します。"
+			],
+			"Share anonymous usage statistics": [
+				"匿名の使用統計を共有"
+			],
+			"Split tunneling": [
+				"スプリットトンネル"
+			],
+			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
+				"WebRTC を使用しているウェブサイトやアプリに、ブラウザから IP アドレスが漏洩するのを防止します。これにより、一部のウェブサイトのビデオ通話やライブストリーミングのパフォーマンスに影響が出る場合があります。"
+			],
+			"Telemetry": [
+				"テレメトリ"
+			],
+			"Thank you for installing Proton VPN": [
+				"Proton VPN をインストールしていただき、ありがとうございます"
+			],
+			"Then just click the Proton VPN icon to sign in.": [
+				"そして、Proton VPN アイコンをクリックしてサインインします。"
+			],
+			"To get started, you’ll need to enable VPN permissions on your browser.": [
+				"まず、ブラウザの VPN 権限を有効にする必要があります。"
+			],
+			"Usage data helps us overcome VPN blocks and improve app performance.": [
+				"使用状況データは VPN 検閲に打ち勝ち、アプリのパフォーマンスを改善するために使用されます。"
+			],
+			"User": [
+				"ユーザー"
+			],
+			"VPN Features": [
+				"VPN 機能"
+			],
+			"Websites that do not use VPN:": [
+				"VPN を使用しないウェブサイト:"
+			],
+			"You're signed in": [
+				"サインインしました"
+			]
+		},
+		"Label": {
+			"And all its subdomains": [
+				"およびそのすべてのサブドメイン"
+			],
+			"Auto connect": [
+				"自動接続"
+			],
+			"Cities": [
+				"都市"
+			],
+			"City": [
+				"都市"
+			],
+			"Connecting": [
+				"接続中"
+			],
+			"Countries, cities, servers": [
+				"国、都市、サーバー"
+			],
+			"Country": [
+				"国"
+			],
+			"Entry country": [
+				"経由国"
+			],
+			"Free servers": [
+				"Free サーバー"
+			],
+			"Free servers (${count})": [
+				"Free サーバー (${count})"
+			],
+			"Internal servers (${count})": [
+				"内部サーバー (${count})"
+			],
+			"Need help?": [
+				"お困りですか？"
+			],
+			"Notifications": [
+				"通知"
+			],
+			"Offer": [
+				"オファー"
+			],
+			"Other": [
+				"その他"
+			],
+			"Plus servers (${count})": [
+				"Plus サーバー (${count})"
+			],
+			"Protected": [
+				"保護されています"
+			],
+			"Server": [
+				"サーバー"
+			],
+			"Settings": [
+				"設定"
+			],
+			"Split tunneling": [
+				"スプリットトンネル"
+			],
+			"Unprotected": [
+				"保護されていません"
+			],
+			"Via": [
+				"経由国"
+			],
+			"Want to know more?": [
+				"詳しく知りたいですか？"
+			],
+			"WebRTC leak protection": [
+				"WebRTC 漏洩防止"
+			]
+		},
+		"Menu": {
+			"Countries": [
+				"国"
+			],
+			"Features": [
+				"機能"
+			],
+			"Help": [
+				"ヘルプ"
+			],
+			"Settings": [
+				"設定"
+			]
+		},
+		"Status": {
+			"Connecting to ${serverName}": [
+				"${serverName} に接続中"
+			],
+			"Proton VPN: ${status}": [
+				"Proton VPN: ${status}"
+			]
+		},
+		"Title": {
+			"Features": [
+				"機能"
+			],
+			"Streaming": [
+				"ストリーミング"
+			]
+		}
+	}
+}

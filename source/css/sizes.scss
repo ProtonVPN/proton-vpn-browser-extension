@@ -1,0 +1,17 @@
+$top-bar-height: 44px;
+$page-width: 300px;
+$page-padding: 10px;
+$icon-size: 24px;
+$small-icon-size: 16px;
+$side-bar-width: 36px;
+$sidebar-padding: 4px;
+$side-bar-outer-width: $side-bar-width + 2 * $sidebar-padding;
+$central-view-width: $page-width + $side-bar-outer-width + 2 * $page-padding;
+$scrollbar-width: 8px;
+$body-width: $central-view-width + 6px;
+$body-height: 560px;
+$shadow-width: 80px;
+$shadow-height: 60px;
+$border-radius: 8px;
+$toggle-width: 44px;
+$toggle-height: 24px;

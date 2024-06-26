@@ -1,0 +1,449 @@
+{
+	"headers": {
+		"plural-forms": "nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2);",
+		"language": "ro_RO"
+	},
+	"contexts": {
+		"Action": {
+			"${linkDescription} (New tab)": [
+				"${linkDescription} (filă nouă)"
+			],
+			"Add": [
+				"Adăugare"
+			],
+			"Add website": [
+				"Adăugare site"
+			],
+			"Auto connect": [
+				"Autoconectare"
+			],
+			"Cancel": [
+				"Anulare"
+			],
+			"Connect": [
+				"Conectare"
+			],
+			"Contact us": [
+				"Contactați-ne"
+			],
+			"Create an account": [
+				"Creare cont"
+			],
+			"Disconnect": [
+				"Deconectare"
+			],
+			"Enable/disable notifications": [
+				"Activați/dezactivați notificările."
+			],
+			"Exclude websites from the tunnel": [
+				"Excludere pagini web de la tunel"
+			],
+			"Log in with Proton": [
+				"Conectare cu Proton"
+			],
+			"Manage subscription": [
+				"Gestionare abonament"
+			],
+			"New to Proton?": [
+				"Sunteți utilizator Proton nou?"
+			],
+			"Next": [
+				"Înainte"
+			],
+			"Prevent WebRTC leak": [
+				"Prevenire divulgări prin WebRTC"
+			],
+			"Quick connect": [
+				"Conectare rapidă"
+			],
+			"Remove ${domain}": [
+				"Eliminare ${domain}"
+			],
+			"Select a city in ${exitCountryName}": [
+				"Selectare un oraș din ${exitCountryName}"
+			],
+			"Select a server in ${cityName}": [
+				"Selectare server din ${cityName}"
+			],
+			"Select entry country with exit in ${exitCountryName}": [
+				"Selectare țară de intrare cu ieșire prin ${exitCountryName}"
+			],
+			"Sign in": [
+				"Autentificare"
+			],
+			"Sign out": [
+				"Deconectare"
+			],
+			"Subscribe to connect more devices": [
+				"Abonați-vă pentru a conecta mai multe dispozitive"
+			],
+			"Subscribe to enable Browser Extension": [
+				"Abonați-vă pentru a activa extensia pentru navigator"
+			],
+			"Switch account": [
+				"Comutare cont"
+			],
+			"Update": [
+				"Actualizare"
+			],
+			"Upgrade": [
+				"Modificare"
+			],
+			"Visit Support Center": [
+				"Vizitați centrul de asistență"
+			]
+		},
+		"Action: City-level button": {
+			"Connect to ${cityName}": [
+				"Conectare la ${cityName}"
+			]
+		},
+		"Action: Country-level button": {
+			"Connect to ${exitCountryName}": [
+				"Conectare la ${exitCountryName}"
+			]
+		},
+		"Action: Server-level button": {
+			"Connect to ${serverName}": [
+				"Conectare la ${serverName}"
+			]
+		},
+		"Confirm": {
+			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
+				"Deconectându-vă din aplicație veți deconecta conexiunea VPN activă. Doriți să continuați?"
+			]
+		},
+		"Error": {
+			"${countries} country": [
+				"${countries} țară",
+				"${countries} țări",
+				"${countries} de țări"
+			],
+			"${servers}+ secure server": [
+				"Peste ${servers} server securizat",
+				"Peste ${servers} servere securizate",
+				"Peste ${servers} de servere securizate"
+			],
+			"Bypass online censorship with advanced security and privacy features": [
+				"Depășiți cenzura online cu securitate avansată și funcții de confidențialitate"
+			],
+			"Connect from your browser with ${planName}": [
+				"Conectați-vă din navigatorul web cu ${planName}."
+			],
+			"Network error.": [
+				"Eroare de rețea."
+			],
+			"Network is unreachable": [
+				"Rețeaua nu este accesibilă."
+			],
+			"No results found": [
+				"Nu s-au găsit rezultate."
+			],
+			"Not able to control the browser network settings, possibly a permission is missing": [
+				"Nu se pot controla setările de rețea ale navigatorului. Probabil lipsește o permisiune."
+			],
+			"Please check your connectivity": [
+				"Verificați-vă conexiunea."
+			],
+			"Please try a different keyword": [
+				"Încercați alt cuvânt cheie."
+			],
+			"Server not found": [
+				"Server negăsit"
+			],
+			"Service temporarily unavailable": [
+				"Serviciu indisponibil temporar."
+			],
+			"Something went wrong. If the problem persists, please try to re-install the extension": [
+				"Ceva nu a funcționat bine. Dacă problema persistă, încercați reinstalarea extensiei."
+			],
+			"Unable to find appropriate server, try to logout and login again if it persists": [
+				"Nu se poate găsi serverul adecvat. Deconectați-vă și reconectați-vă dacă eroarea persistă."
+			],
+			"Unable to load the list": [
+				"Nu se poate încărca lista."
+			],
+			"Unable to login": [
+				"Nu se poate autentifica."
+			],
+			"Unable to reach the server, please try to reconnect, or to log out and log in again if the problem persists": [
+				"Nu se poate contacta serverul. Încercați reconectarea sau deconectați-vă și reautentificați-vă dacă problema persistă."
+			],
+			"Unlock ${servers} in ${countries}": [
+				"Deblocați ${servers} din ${countries}"
+			],
+			"Unlock global streaming services": [
+				"Deblocați serviciile globale de transmisii în flux."
+			]
+		},
+		"Info": {
+			"Access Proton VPN via this icon": [
+				"Accesați Proton VPN cu această pictogramă"
+			],
+			"Allow VPN permissions": [
+				"Acordați permisiuni pentru VPN"
+			],
+			"Also exclude subdomains of this website": [
+				"Excludere și subdomenii ale acestui site web"
+			],
+			"and more": [
+				"și mai multe"
+			],
+			"Auto-selected from": [
+				"Autoselectată din"
+			],
+			"Automatically reconnect to Proton VPN when you open your browser.": [
+				"Reconectare automată la Proton VPN când se deschide navigatorul."
+			],
+			"Back": [
+				"Înapoi"
+			],
+			"Browse through the Support Center and find answers to frequently asked questions.": [
+				"Răsfoiți centrul de asistență și găsiți răspunsurile la întrebările puse frecvent."
+			],
+			"Clear search": [
+				"Golire căutare"
+			],
+			"Close": [
+				"Închidere"
+			],
+			"Connect to a Plus server in this country to start streaming.\n\nHint: Clear the cache of the streaming apps to ensure new content appears.": [
+				"Conectați-vă la un server Plus din această țară pentru a viziona transmisii în flux.\n\nIndiciu: Ștergeți bufferul aplicațiilor de transmisii în flux pentru a vă asigura că apare un conținut nou."
+			],
+			"Connected": [
+				"Conectat"
+			],
+			"Connected to ${name}": [
+				"Conectat la ${name}"
+			],
+			"Connected to ${name} in ${city}": [
+				"Conectat la ${name} în ${city}"
+			],
+			"Connecting...": [
+				"Se conectează..."
+			],
+			"Contact our Customer Support agents to help you out with Proton VPN.": [
+				"Contactați asistența pentru clienți pentru a vă ajuta cu Proton VPN."
+			],
+			"Crash": [
+				"Eroare"
+			],
+			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
+				"Rapoartele de erori ne ajută să reparăm erorile, să detectăm paravanele de protecție și să evităm blocările VPN-ului."
+			],
+			"Disable VPN for selected websites.": [
+				"Dezactivare VPN pentru pagini web selectate."
+			],
+			"Disconnected": [
+				"Deconectat"
+			],
+			"Emit system notifications on connection and disconnection events.": [
+				"Emitere notificări de sistem privind evenimentele de conectare și deconectare."
+			],
+			"Extra protection for people with advanced privacy needs": [
+				"Protecție suplimentară pentru cei care necesită intimitate sporită."
+			],
+			"Fastest free server": [
+				"Cel mai rapid server gratuit"
+			],
+			"Follow these simple steps to get the best experience using Proton VPN": [
+				"Urmați acești pași simpli pentru a avea cea mai bună experiență cu Proton VPN"
+			],
+			"For example, news.example.com is a subdomain of example.com.": [
+				"De exemplu, stiri.exemplu.com este un subdomeniu al exemplu.com."
+			],
+			"Help": [
+				"Ajutor"
+			],
+			"Help us fight censorship": [
+				"Ajutați-ne să luptăm cu cenzura"
+			],
+			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
+				"VPN elvețian de înaltă performanță care vă protejează intimitatea. Securitate maximă, mai mult de ${count} server și fără restricții.",
+				"VPN elvețian de înaltă performanță care vă protejează intimitatea. Securitate maximă, peste ${count} servere și fără restricții.",
+				"VPN elvețian de înaltă performanță care vă protejează intimitatea. Securitate maximă, peste ${count} de servere și fără restricții."
+			],
+			"Learn more": [
+				"Detalii"
+			],
+			"Logged out": [
+				"Deconectat"
+			],
+			"Open the Extensions menu": [
+				"Deschideți meniul de extensii"
+			],
+			"Open the Proton VPN browser extension to continue": [
+				"Deschideți extensia de navigator Proton VPN pentru a continua."
+			],
+			"Pin Proton VPN to your toolbar": [
+				"Fixați în bara de unelte Proton VPN"
+			],
+			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
+				"Apăsați pe <b>Înainte</b>, apoi clic pe <b>Permitere</b> în fereastra flotantă din navigator."
+			],
+			"Proton VPN Browser Extension": [
+				"Extensie navigator Proton VPN"
+			],
+			"Search": [
+				"Căutare"
+			],
+			"Select websites to exclude from your VPN connection.": [
+				"Selectați pagini web pentru a fi excluse de la conexiunea VPN."
+			],
+			"Share anonymous usage crash reports": [
+				"Partajare anonimă rapoarte de erori"
+			],
+			"Share anonymous usage statistics": [
+				"Partajare anonimă statistici de utilizare"
+			],
+			"Split tunneling": [
+				"Divizare trafic"
+			],
+			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
+				"Împiedicați navigatorul să divulge adresa IP către pagini web sau aplicații folosind WebRTC. Aceasta ar putea afecta apelurile video sau performanța de redare în flux pe unele pagini web."
+			],
+			"Telemetry": [
+				"Telemetrie"
+			],
+			"Thank you for installing Proton VPN": [
+				"Vă mulțumim că ați instalat Proton VPN"
+			],
+			"Then just click the Proton VPN icon to sign in.": [
+				"Apoi doar faceți clic pe pictograma Proton VPN pentru autentificare."
+			],
+			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
+				"Statisticile nu vă conțin adresa IP și nu pot fi utilizate să vă identifice. Nu le vom partaja cu terțe părți"
+			],
+			"To get started, you’ll need to enable VPN permissions on your browser.": [
+				"Pentru a începe, trebuie să acordați permisiuni pentru VPN în navigator."
+			],
+			"Usage data helps us overcome VPN blocks and improve app performance.": [
+				"Datele de utilizare ne ajută să depășim blocările VPN-ului și să îmbunătățim performanța aplicației."
+			],
+			"User": [
+				"Utilizator"
+			],
+			"VPN Features": [
+				"Funcții VPN"
+			],
+			"Websites that do not use VPN:": [
+				"Pagini web care nu folosesc VPN:"
+			],
+			"You're signed in": [
+				"V-ați autentificat"
+			]
+		},
+		"Label": {
+			"And all its subdomains": [
+				"Și toate subdomeniile sale"
+			],
+			"Auto connect": [
+				"Autoconectare"
+			],
+			"Cities": [
+				"Orașe"
+			],
+			"City": [
+				"Oraș",
+				"Orașe",
+				"Orașe"
+			],
+			"Connecting": [
+				"Se conectează"
+			],
+			"Countries, cities, servers": [
+				"Țări, orașe, servere"
+			],
+			"Country": [
+				"Țara",
+				"Țări",
+				"Țări"
+			],
+			"Entry country": [
+				"Țară de intrare",
+				"Țări de intrare",
+				"Țări de intrare"
+			],
+			"Free servers": [
+				"Servere gratuite"
+			],
+			"Free servers (${count})": [
+				"Servere gratuite (${count})"
+			],
+			"Internal servers (${count})": [
+				"Servere interne (${count})"
+			],
+			"Need help?": [
+				"Doriți ajutor?"
+			],
+			"Notifications": [
+				"Notificări"
+			],
+			"Offer": [
+				"Ofertă"
+			],
+			"Other": [
+				"Alt motiv"
+			],
+			"Plus servers (${count})": [
+				"Servere Plus (${count})"
+			],
+			"Protected": [
+				"Protejat"
+			],
+			"Server": [
+				"Server",
+				"Servere",
+				"Servere"
+			],
+			"Settings": [
+				"Setări"
+			],
+			"Split tunneling": [
+				"Divizare trafic"
+			],
+			"Unprotected": [
+				"Neprotejat"
+			],
+			"Via": [
+				"prin"
+			],
+			"Want to know more?": [
+				"Doriți să știți mai multe?"
+			],
+			"WebRTC leak protection": [
+				"Protejare divulgare prin WebRTC"
+			]
+		},
+		"Menu": {
+			"Countries": [
+				"Țări"
+			],
+			"Features": [
+				"Funcții"
+			],
+			"Help": [
+				"Ajutor"
+			],
+			"Settings": [
+				"Setări"
+			]
+		},
+		"Status": {
+			"Connecting to ${serverName}": [
+				"Se conectează la ${serverName}"
+			],
+			"Proton VPN: ${status}": [
+				"Proton VPN: ${status}"
+			]
+		},
+		"Title": {
+			"Features": [
+				"Funcții"
+			],
+			"Streaming": [
+				"Transmisie în flux"
+			]
+		}
+	}
+}

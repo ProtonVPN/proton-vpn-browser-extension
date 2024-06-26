@@ -1,0 +1,423 @@
+{
+	"headers": {
+		"plural-forms": "nplurals=2; plural=(n > 1);",
+		"language": "zh_TW"
+	},
+	"contexts": {
+		"Action": {
+			"${linkDescription} (New tab)": [
+				"${linkDescription} (開新分頁)"
+			],
+			"Add": [
+				"加入"
+			],
+			"Add website": [
+				"加入網站"
+			],
+			"Auto connect": [
+				"自動連線"
+			],
+			"Cancel": [
+				"取消"
+			],
+			"Connect": [
+				"連線"
+			],
+			"Contact us": [
+				"聯絡我們"
+			],
+			"Create an account": [
+				"創建新帳號"
+			],
+			"Disconnect": [
+				"中斷連線"
+			],
+			"Enable/disable notifications": [
+				"啟用/停用 通知"
+			],
+			"Exclude websites from the tunnel": [
+				"從通道中排除網站"
+			],
+			"Log in with Proton": [
+				"以 Proton 登入"
+			],
+			"Manage subscription": [
+				"管理訂購授權"
+			],
+			"New to Proton?": [
+				"初來 Proton 嗎？"
+			],
+			"Next": [
+				"下一個"
+			],
+			"Prevent WebRTC leak": [
+				"防止 WebRTC 洩露"
+			],
+			"Quick connect": [
+				"快速連線"
+			],
+			"Remove ${domain}": [
+				"移除 ${domain}"
+			],
+			"Select a city in ${exitCountryName}": [
+				"選擇${exitCountryName}的一個城市"
+			],
+			"Select a server in ${cityName}": [
+				"選擇${cityName}中的一個伺服器"
+			],
+			"Select entry country with exit in ${exitCountryName}": [
+				"選擇終點於${exitCountryName}的起點國家"
+			],
+			"Sign in": [
+				"登入"
+			],
+			"Sign out": [
+				"登出"
+			],
+			"Subscribe to connect more devices": [
+				"訂購授權連上更多裝置"
+			],
+			"Subscribe to enable Browser Extension": [
+				"訂購授權以啟用瀏覽器擴充功能"
+			],
+			"Switch account": [
+				"切換帳號"
+			],
+			"Update": [
+				"更新"
+			],
+			"Upgrade": [
+				"升級"
+			],
+			"Visit Support Center": [
+				"前往支援中心"
+			]
+		},
+		"Action: City-level button": {
+			"Connect to ${cityName}": [
+				"連線到${cityName}"
+			]
+		},
+		"Action: Country-level button": {
+			"Connect to ${exitCountryName}": [
+				"連線到${exitCountryName}"
+			]
+		},
+		"Action: Server-level button": {
+			"Connect to ${serverName}": [
+				"連線到 ${serverName}"
+			]
+		},
+		"Confirm": {
+			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
+				"登出應用程式將中斷 VPN 連線。是否確定繼續？"
+			]
+		},
+		"Error": {
+			"${countries} country": [
+				"${countries} 個國家"
+			],
+			"${servers}+ secure server": [
+				"${servers}+ 臺安全伺服器"
+			],
+			"Bypass online censorship with advanced security and privacy features": [
+				"以進階的安全與隱私功能繞過網路審查"
+			],
+			"Connect from your browser with ${planName}": [
+				"從瀏覽器連接至${planName}"
+			],
+			"Network error.": [
+				"網路錯誤。"
+			],
+			"Network is unreachable": [
+				"無法連線至網路"
+			],
+			"No results found": [
+				"未找到任何結果"
+			],
+			"Not able to control the browser network settings, possibly a permission is missing": [
+				"無法控制瀏覽器網路設定，可能缺少所需權限"
+			],
+			"Please check your connectivity": [
+				"請檢查您的網路連線"
+			],
+			"Please try a different keyword": [
+				"請嘗試其他關鍵字"
+			],
+			"Server not found": [
+				"找不到伺服器"
+			],
+			"Service temporarily unavailable": [
+				"暫時無法提供服務"
+			],
+			"Something went wrong. If the problem persists, please try to re-install the extension": [
+				"糟糕，發生了一點錯誤。如果錯誤持續出現，請嘗試重新安裝擴充功能"
+			],
+			"Unable to load the list": [
+				"無法載入清單"
+			],
+			"Unable to login": [
+				"無法登入"
+			],
+			"Unable to reach the server, please try to reconnect, or to log out and log in again if the problem persists": [
+				"無法連線到伺服器，請嘗試重新連線。若問題持續發生，請登出後再重新登入"
+			],
+			"Unlock ${servers} in ${countries}": [
+				"解鎖${countries}中的${servers}"
+			],
+			"Unlock global streaming services": [
+				"解鎖全球串流服務"
+			]
+		},
+		"Info": {
+			"Access Proton VPN via this icon": [
+				"由此圖示進入 Proton VPN"
+			],
+			"Allow VPN permissions": [
+				"允許 VPN 權限"
+			],
+			"Also exclude subdomains of this website": [
+				"同時排除此網站的子網域"
+			],
+			"and more": [
+				"以及更多"
+			],
+			"Auto-selected from": [
+				"自動選擇自"
+			],
+			"Automatically reconnect to Proton VPN when you open your browser.": [
+				"開啟瀏覽器時，自動重新連線 Proton VPN。"
+			],
+			"Back": [
+				"返回"
+			],
+			"Browse through the Support Center and find answers to frequently asked questions.": [
+				"前往支援中心並查看常見問答。"
+			],
+			"Clear search": [
+				"清除搜尋"
+			],
+			"Close": [
+				"關閉"
+			],
+			"Connect to a Plus server in this country to start streaming.\n\nHint: Clear the cache of the streaming apps to ensure new content appears.": [
+				"連線到此國家的 Plus 伺服器以開始串流。\n\n提示：清除串流應用程式的快取，以確保新內容得以出現。"
+			],
+			"Connected": [
+				"已連線"
+			],
+			"Connected to ${name}": [
+				"已連線至 ${name}"
+			],
+			"Connected to ${name} in ${city}": [
+				"已連線至位於${city}的 ${name}"
+			],
+			"Connecting...": [
+				"正在連線..."
+			],
+			"Contact our Customer Support agents to help you out with Proton VPN.": [
+				"聯絡我們的客戶支援專員，協助您有關 Proton VPN 的問題。"
+			],
+			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
+				"錯誤報告有助於我們修復程式錯誤、偵測防火牆和避免 VPN 封鎖。"
+			],
+			"Disable VPN for selected websites.": [
+				"為選定的網站停用 VPN。"
+			],
+			"Disconnected": [
+				"已中斷連線"
+			],
+			"Emit system notifications on connection and disconnection events.": [
+				"發出關於連線與斷線事件的系統通知。"
+			],
+			"Extra protection for people with advanced privacy needs": [
+				"為有進階隱私需要的人提供額外保障"
+			],
+			"Fastest free server": [
+				"最快速的免費伺服器"
+			],
+			"Follow these simple steps to get the best experience using Proton VPN": [
+				"只需簡單幾步，即可盡享 Proton VPN 最佳體驗"
+			],
+			"For example, news.example.com is a subdomain of example.com.": [
+				"舉例來說，news.example.com 是 example.com 的子網域。"
+			],
+			"Help": [
+				"說明"
+			],
+			"Help us fight censorship": [
+				"助我們一臂之力抵抗審查"
+			],
+			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
+				"具備高效能的瑞士設計 VPN，保障您的線上隱私。最全面的安全保護，擁有超過 ${count} 臺伺服器，讓您無拘無束遨遊網際。"
+			],
+			"Learn more": [
+				"瞭解詳情"
+			],
+			"Logged out": [
+				"已登出"
+			],
+			"Open the Extensions menu": [
+				"開啟擴充功能選單"
+			],
+			"Open the Proton VPN browser extension to continue": [
+				"開啟 Proton VPN 瀏覽器擴充功能以繼續"
+			],
+			"Pin Proton VPN to your toolbar": [
+				"釘選 Proton VPN 至工具列"
+			],
+			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
+				"按「<b>下一步</b>」，然後在您的瀏覽器彈出視窗中按一下「<b>允許</b>」。"
+			],
+			"Proton VPN Browser Extension": [
+				"Proton VPN 瀏覽器擴充功能"
+			],
+			"Search": [
+				"搜尋"
+			],
+			"Select websites to exclude from your VPN connection.": [
+				"選取網站以從您的 VPN 連線排除。"
+			],
+			"Share anonymous usage statistics": [
+				"分享匿名使用統計資料"
+			],
+			"Split tunneling": [
+				"分隔通道"
+			],
+			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
+				"阻止您的瀏覽器將您的 IP 位址洩露給使用 WebRTC 的網站與應用程式。這可能會影響某些網站上的視訊通話或直播效能。"
+			],
+			"Telemetry": [
+				"遙測"
+			],
+			"Thank you for installing Proton VPN": [
+				"感謝您安裝 Proton VPN"
+			],
+			"Then just click the Proton VPN icon to sign in.": [
+				"之後就按一下 Proton VPN 圖示以登入。"
+			],
+			"To get started, you’ll need to enable VPN permissions on your browser.": [
+				"您需要在您的瀏覽器中啟用 VPN 權限，以便開始使用。"
+			],
+			"Usage data helps us overcome VPN blocks and improve app performance.": [
+				"使用資料有助於我們克服 VPN 封鎖器和改善應用程式效能。"
+			],
+			"User": [
+				"使用者"
+			],
+			"VPN Features": [
+				"VPN 功能"
+			],
+			"Websites that do not use VPN:": [
+				"不使用 VPN 的網站："
+			],
+			"You're signed in": [
+				"您已登入"
+			]
+		},
+		"Label": {
+			"And all its subdomains": [
+				"與所有其子網域"
+			],
+			"Auto connect": [
+				"自動連接"
+			],
+			"Cities": [
+				"城市"
+			],
+			"City": [
+				"城市"
+			],
+			"Connecting": [
+				"正在連線"
+			],
+			"Countries, cities, servers": [
+				"國家、城市、伺服器"
+			],
+			"Country": [
+				"國家"
+			],
+			"Entry country": [
+				"通道入口國家"
+			],
+			"Free servers": [
+				"免費伺服器"
+			],
+			"Free servers (${count})": [
+				"Free 伺服器 (${count} 個)"
+			],
+			"Internal servers (${count})": [
+				"內部伺服器 (${count} 個)"
+			],
+			"Need help?": [
+				"需要協助嗎？"
+			],
+			"Notifications": [
+				"通知"
+			],
+			"Offer": [
+				"優惠"
+			],
+			"Other": [
+				"其他"
+			],
+			"Plus servers (${count})": [
+				"Plus 伺服器 (${count} 個)"
+			],
+			"Protected": [
+				"受保護"
+			],
+			"Server": [
+				"伺服器"
+			],
+			"Settings": [
+				"設定"
+			],
+			"Split tunneling": [
+				"分隔通道"
+			],
+			"Unprotected": [
+				"未受保護"
+			],
+			"Via": [
+				"中轉"
+			],
+			"Want to know more?": [
+				"想知道更多？"
+			],
+			"WebRTC leak protection": [
+				"WebRTC 洩漏保護"
+			]
+		},
+		"Menu": {
+			"Countries": [
+				"國家"
+			],
+			"Features": [
+				"功能"
+			],
+			"Help": [
+				"說明"
+			],
+			"Settings": [
+				"設定"
+			]
+		},
+		"Status": {
+			"Connecting to ${serverName}": [
+				"正在連線到 ${serverName}"
+			],
+			"Proton VPN: ${status}": [
+				"Proton VPN：${status}"
+			]
+		},
+		"Title": {
+			"Features": [
+				"功能"
+			],
+			"Streaming": [
+				"串流"
+			]
+		}
+	}
+}

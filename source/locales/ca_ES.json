@@ -1,0 +1,439 @@
+{
+	"headers": {
+		"plural-forms": "nplurals=2; plural=(n != 1);",
+		"language": "ca_ES"
+	},
+	"contexts": {
+		"Action": {
+			"${linkDescription} (New tab)": [
+				"${linkDescription} (Pestanya nova)"
+			],
+			"Add": [
+				"Afegeix"
+			],
+			"Add website": [
+				"Afegeix un lloc web"
+			],
+			"Auto connect": [
+				"Connexió automàtica"
+			],
+			"Cancel": [
+				"Cancel·la"
+			],
+			"Connect": [
+				"Conecta"
+			],
+			"Contact us": [
+				"Contacteu amb nosaltres"
+			],
+			"Create an account": [
+				"Crea un compte"
+			],
+			"Disconnect": [
+				"Desconnecta"
+			],
+			"Enable/disable notifications": [
+				"Activa/desactiva les notificacions"
+			],
+			"Exclude websites from the tunnel": [
+				"Exclou llocs web del túnel"
+			],
+			"Log in with Proton": [
+				"Inicia la sessió amb Proton"
+			],
+			"Manage subscription": [
+				"Gestiona la subscripció"
+			],
+			"New to Proton?": [
+				"Nou a Proton?"
+			],
+			"Next": [
+				"Següent"
+			],
+			"Prevent WebRTC leak": [
+				"Evita fuita de WebRTC"
+			],
+			"Quick connect": [
+				"Connexió ràpida"
+			],
+			"Remove ${domain}": [
+				"Esborra ${domain}"
+			],
+			"Select a city in ${exitCountryName}": [
+				"Selecciona una ciutat a ${exitCountryName}"
+			],
+			"Select a server in ${cityName}": [
+				"Selecciona un servidor a ${cityName}"
+			],
+			"Select entry country with exit in ${exitCountryName}": [
+				"Seleccioneu un país d'entrada amb sortida a ${exitCountryName}"
+			],
+			"Sign in": [
+				"Inicia la sessió"
+			],
+			"Sign out": [
+				"Tanca la sessió"
+			],
+			"Subscribe to connect more devices": [
+				"Subscriu-te per connectar més dispositius"
+			],
+			"Subscribe to enable Browser Extension": [
+				"Subscriu-te per activar l'Extensió del Navegador"
+			],
+			"Switch account": [
+				"Canvia de compte"
+			],
+			"Update": [
+				"Actualitza"
+			],
+			"Upgrade": [
+				"Millora"
+			],
+			"Visit Support Center": [
+				"Visiteu el Centre de Suport"
+			]
+		},
+		"Action: City-level button": {
+			"Connect to ${cityName}": [
+				"Connecta't a ${cityName}"
+			]
+		},
+		"Action: Country-level button": {
+			"Connect to ${exitCountryName}": [
+				"Connecta't a ${exitCountryName}"
+			]
+		},
+		"Action: Server-level button": {
+			"Connect to ${serverName}": [
+				"Connecta't a ${serverName}"
+			]
+		},
+		"Confirm": {
+			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
+				"Tancar l'aplicació desconnectarà la connexió VPN activa. Voleu continuar?"
+			]
+		},
+		"Error": {
+			"${countries} country": [
+				"${countries} país",
+				"${countries} països"
+			],
+			"${servers}+ secure server": [
+				"Més d'${servers} servidor segur",
+				"Més de ${servers} servidors segurs"
+			],
+			"Bypass online censorship with advanced security and privacy features": [
+				"Eviteu la censura en línia amb funcions avançades de seguretat i privadesa"
+			],
+			"Network error.": [
+				"Error de xarxa."
+			],
+			"Network is unreachable": [
+				"No es pot accedir a la xarxa"
+			],
+			"No results found": [
+				"No s'ha trobat cap resultat."
+			],
+			"Not able to control the browser network settings, possibly a permission is missing": [
+				"No es poden controlar els paràmetres de xarxa del navegador. Possiblement falta un permís."
+			],
+			"Please check your connectivity": [
+				"Comproveu la connexió a internet"
+			],
+			"Please try a different keyword": [
+				"Proveu una paraula clau diferent."
+			],
+			"Server not found": [
+				"No s'ha trobat el servidor"
+			],
+			"Service temporarily unavailable": [
+				"El servei no està disponible temporalment."
+			],
+			"Something went wrong. If the problem persists, please try to re-install the extension": [
+				"Alguna cosa ha anat malament. Si el problema persisteix, intenteu reinstal·lar l'extensió."
+			],
+			"Unable to find appropriate server, try to logout and login again if it persists": [
+				"No es pot trobar el servidor adequat. Proveu de tancar i tornar a iniciar la sessió si persisteix"
+			],
+			"Unable to load the list": [
+				"No s'ha pogut carregar la llista"
+			],
+			"Unable to login": [
+				"No es pot iniciar sessió"
+			],
+			"Unable to reach the server, please try to reconnect, or to log out and log in again if the problem persists": [
+				"No es pot connectar al servidor. Intenteu reconnectar o tornar a iniciar sessió si el problema persisteix."
+			],
+			"Unlock ${servers} in ${countries}": [
+				"Desbloquegeu ${servers} a ${countries}"
+			],
+			"Unlock global streaming services": [
+				"Desbloquegeu els serveis globals d'estríming"
+			]
+		},
+		"Info": {
+			"Access Proton VPN via this icon": [
+				"Accedeix a Proton VPN via aquesta icona"
+			],
+			"Allow VPN permissions": [
+				"Permet permisos VPN"
+			],
+			"Also exclude subdomains of this website": [
+				"Exclou també subdominis d'aquest lloc web"
+			],
+			"and more": [
+				"i més"
+			],
+			"Auto-selected from": [
+				"Selecció automàtica des de"
+			],
+			"Automatically reconnect to Proton VPN when you open your browser.": [
+				"Reconnecta automàticament a Proton VPN quan obriu el navegador."
+			],
+			"Back": [
+				"Torna"
+			],
+			"Browse through the Support Center and find answers to frequently asked questions.": [
+				"Navegueu al centre de suport i troba respostes a preguntes freqüents."
+			],
+			"Clear search": [
+				"Esborra la cerca"
+			],
+			"Close": [
+				"Tanca"
+			],
+			"Connect to a Plus server in this country to start streaming.\n\nHint: Clear the cache of the streaming apps to ensure new content appears.": [
+				"Connecteu-vos a un servidor Plus d’aquest país per iniciar l'estríming.\n\nNota: Esborreu la memòria cau de les aplicacions d'estríming per a assegurar-vos que aparegui contingut nou."
+			],
+			"Connected": [
+				"Connectat"
+			],
+			"Connected to ${name}": [
+				"Connectat a ${name}"
+			],
+			"Connected to ${name} in ${city}": [
+				"Connectat a ${name} a ${city}"
+			],
+			"Connecting...": [
+				"Connectant..."
+			],
+			"Contact our Customer Support agents to help you out with Proton VPN.": [
+				"Contacteu amb els nostres agents d´atenció al client per ajudar-us amb Proton VPN."
+			],
+			"Crash": [
+				"Error"
+			],
+			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
+				"Els informes d'errors ens ajuden a corregir errors, detectar tallafocs i evitar els bloquejos de VPN."
+			],
+			"Disable VPN for selected websites.": [
+				"Inhabiliteu la VPN per a llocs web seleccionats."
+			],
+			"Disconnected": [
+				"Desconnectat"
+			],
+			"Emit system notifications on connection and disconnection events.": [
+				"Envia notificacions del sistema per a connexions i desconnexions."
+			],
+			"Extra protection for people with advanced privacy needs": [
+				"Protecció addicional per a persones amb necessitats de privadesa avançades"
+			],
+			"Fastest free server": [
+				"El servidor gratuït més ràpid"
+			],
+			"Follow these simple steps to get the best experience using Proton VPN": [
+				"Seguiu aquests passos per obtenir la millor experiència usant Proton VPN"
+			],
+			"For example, news.example.com is a subdomain of example.com.": [
+				"Per exemple, notícies.exemple.com és un subdomini d'exemple.com."
+			],
+			"Help": [
+				"Ajuda"
+			],
+			"Help us fight censorship": [
+				"Ajudeu-nos a lluitar contra la censura"
+			],
+			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
+				"La VPN suïssa d'alt rendiment que protegeix la vostra privacitat. Màxima seguretat, més d'${count} servidor i sense restriccions.",
+				"La VPN suïssa d'alt rendiment que protegeix la vostra privacitat. Màxima seguretat, més de ${count} servidors i sense restriccions."
+			],
+			"Learn more": [
+				"Més informació"
+			],
+			"Logged out": [
+				"Desconnectat"
+			],
+			"Open the Extensions menu": [
+				"Obre el menú d'Extensions"
+			],
+			"Open the Proton VPN browser extension to continue": [
+				"Obre l'extensió del navegador de Proton VPN per continuar"
+			],
+			"Pin Proton VPN to your toolbar": [
+				"Fixeu Proton VPN a la barra d'eines."
+			],
+			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
+				"Prem <b>Següent</b>, llavors prem <b>Permet</b> a la finestra emergent del navegador."
+			],
+			"Proton VPN Browser Extension": [
+				"Extensió del Navegador de Proton VPN"
+			],
+			"Search": [
+				"Cerca"
+			],
+			"Select websites to exclude from your VPN connection.": [
+				"Seleccioneu llocs web per excloure de la connexió VPN."
+			],
+			"Share anonymous usage crash reports": [
+				"Compartiu informes d'error anònims"
+			],
+			"Share anonymous usage statistics": [
+				"Comparteix estadístiques d'ús de forma anònima"
+			],
+			"Split tunneling": [
+				"Tunelització dividida"
+			],
+			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
+				"S'evita que el vostre navegador filtri la vostra adreça IP a llocs web que usen WebRTC. Això pot afectar les trucades de vídeo i la transmissió en viu en alguns llocs web."
+			],
+			"Telemetry": [
+				"Telemetria"
+			],
+			"Thank you for installing Proton VPN": [
+				"Gràcies per instal·lar Proton VPN"
+			],
+			"Then just click the Proton VPN icon to sign in.": [
+				"Després premeu la icona de Proton VPN per iniciar sessió."
+			],
+			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
+				"Aquestes estadístiques no contenen la vostra adreça IP i no es poden utilitzar per identificar-vos. Mai els compartirem amb tercers"
+			],
+			"To get started, you’ll need to enable VPN permissions on your browser.": [
+				"Per començar, necessiteu activar els permisos de VPN al vostre navegador."
+			],
+			"Usage data helps us overcome VPN blocks and improve app performance.": [
+				"Les dades d'ús ens ajuden a evitar els bloquejos de VPN i millorar el rendiment de l'aplicació."
+			],
+			"User": [
+				"Usuari"
+			],
+			"VPN Features": [
+				"Característiques VPN"
+			],
+			"Websites that do not use VPN:": [
+				"Llocs web que no fan servir la VPN:"
+			],
+			"You're signed in": [
+				"Has iniciat sessió"
+			]
+		},
+		"Label": {
+			"And all its subdomains": [
+				"I tots els seus subdominis"
+			],
+			"Auto connect": [
+				"Connexió automàtica"
+			],
+			"Cities": [
+				"Ciutats"
+			],
+			"City": [
+				"Ciutat",
+				"Ciutats"
+			],
+			"Connecting": [
+				"Connectant"
+			],
+			"Countries, cities, servers": [
+				"Països ciutats, servidors"
+			],
+			"Country": [
+				"País",
+				"Països"
+			],
+			"Entry country": [
+				"País d'entrada",
+				"Països d'entrada"
+			],
+			"Free servers": [
+				"Servidors gratuïts"
+			],
+			"Free servers (${count})": [
+				"Servidors gratuïts (${count})"
+			],
+			"Internal servers (${count})": [
+				"Servidors interns (${count})"
+			],
+			"Need help?": [
+				"Necessiteu ajuda?"
+			],
+			"Notifications": [
+				"Notificacions"
+			],
+			"Offer": [
+				"Oferta"
+			],
+			"Other": [
+				"Altres"
+			],
+			"Plus servers (${count})": [
+				"Servidors Plus (${count})"
+			],
+			"Protected": [
+				"Protegit"
+			],
+			"Server": [
+				"Servidor",
+				"Servidors"
+			],
+			"Settings": [
+				"Preferències"
+			],
+			"Split tunneling": [
+				"Tunelització dividida"
+			],
+			"Unprotected": [
+				"Desprotegit"
+			],
+			"Via": [
+				"Via"
+			],
+			"Want to know more?": [
+				"Voleu saber-ne més?"
+			],
+			"WebRTC leak protection": [
+				"Protecció contra fuites de WebRTC"
+			]
+		},
+		"Menu": {
+			"Countries": [
+				"Països"
+			],
+			"Features": [
+				"Característiques"
+			],
+			"Help": [
+				"Ajuda"
+			],
+			"Settings": [
+				"Preferències"
+			]
+		},
+		"Status": {
+			"Connecting to ${serverName}": [
+				"Connectant a ${serverName}"
+			],
+			"Proton VPN: ${status}": [
+				"Proton VPN: ${status}"
+			]
+		},
+		"Title": {
+			"Features": [
+				"Característiques"
+			],
+			"Streaming": [
+				"Estríming"
+			]
+		}
+	}
+}
