@@ -227,6 +227,9 @@
 			"Contact our Customer Support agents to help you out with Proton VPN.": [
 				"Свяжитесь с нашей Службой поддержки для помощи с Proton VPN."
 			],
+			"Crash": [
+				"Сбой"
+			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Отчёты об ошибках помогают нам исправлять ошибки, обнаруживать брандмауэры и избегать блокировки VPN."
 			],
@@ -290,6 +293,9 @@
 			"Select websites to exclude from your VPN connection.": [
 				"Выберите веб-сайты, которые следует исключить из VPN-соединения."
 			],
+			"Share anonymous usage crash reports": [
+				"Поделиться анонимными отчетами об ошибках"
+			],
 			"Share anonymous usage statistics": [
 				"Делиться анонимной статистикой использования"
 			],
@@ -307,6 +313,9 @@
 			],
 			"Then just click the Proton VPN icon to sign in.": [
 				"Затем просто нажмите иконку Proton VPN для входа."
+			],
+			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
+				"Эти статистические данные не содержат вашего адреса IP и не могут быть использованы для вашей идентификации. Мы никогда не передадим их третьим лицам."
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Для начала работы вам необходимо включить разрешения VPN в браузере."

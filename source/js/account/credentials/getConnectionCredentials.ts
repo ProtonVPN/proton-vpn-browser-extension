@@ -116,7 +116,7 @@ const fetchConnectionCredentialsRequest = async (sessionUid: string | undefined,
 			credentialsFetchingRetries--;
 			await refreshToken();
 
-			return await fetchConnectionCredentialsRequest(sessionUid, false);
+			return fetchConnectionCredentialsRequest(sessionUid, false);
 		}
 
 		try {
@@ -141,7 +141,7 @@ const fetchConnectionCredentialsRequest = async (sessionUid: string | undefined,
 
 const fetchConnectionCredentials = async (sessionUid: string | undefined): Promise<Credentials|undefined> => {
 	if (credentialsFetching) {
-		return await new Promise((resolve, reject) => {
+		return new Promise((resolve, reject) => {
 			waitingCredentialsPromises.push([resolve, reject]);
 		});
 	}
@@ -201,7 +201,7 @@ export const loadCredentials = async (): Promise<Credentials | undefined> => {
 
 	if (age < 0 && !credentialsFetching) {
 		if (age < milliSeconds.fromSeconds(-20) || !credentials) {
-			return await fetchConnectionCredentials((await readSession())?.uid);
+			return fetchConnectionCredentials((await readSession())?.uid);
 		}
 
 		triggerPromise(fetchConnectionCredentials((await readSession())?.uid));
@@ -224,7 +224,7 @@ export const getCredentials = async (tryReAuthentication = false): Promise<Crede
 			const savedCredentials = await loadCachedCredentials();
 
 			if ((savedCredentials?.time || 0) < Date.now()) {
-				return await fetchConnectionCredentials(sessionUid);
+				return fetchConnectionCredentials(sessionUid);
 			}
 
 			return savedCredentials?.credentials;
@@ -243,7 +243,7 @@ export const getCredentials = async (tryReAuthentication = false): Promise<Crede
 
 	await refreshToken(); // Refresh the token and re-try if it expired
 
-	return await getCredentials();
+	return getCredentials();
 };
 
 export const getSynchronousCredentials = (): Credentials|undefined => {

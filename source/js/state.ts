@@ -655,15 +655,19 @@ export function isCurrentStateConnected(): boolean {
 export async function checkAutoConnect(): Promise<void> {
 	const storedAutoConnect = storage.item<{ value: boolean }>('auto-connect');
 	const storedSecureCore = storage.item<{value: boolean}>('secure-core');
+	const user = await getUser();
+
+	if (!user) {
+		return;
+	}
+
 	const [
-		user,
 		initialChoice,
 		logicals,
 		autoConnect,
 		splitTunneling,
 		secureCore,
 	] = await Promise.all([
-		getUser(),
 		getLastChoice(),
 		getSortedLogicals(),
 		storedAutoConnect.getDefined({value: true}),

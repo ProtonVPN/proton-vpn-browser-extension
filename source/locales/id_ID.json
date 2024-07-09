@@ -117,8 +117,14 @@
 			"${countries} country": [
 				"${countries} negara"
 			],
+			"${rounderServersCount} secure server": [
+				"${rounderServersCount} server aman"
+			],
 			"${servers}+ secure server": [
 				"${servers}+ server aman"
+			],
+			"Access over ${servers} in ${countries}": [
+				"Akses lebih dari ${servers} di ${countries}"
 			],
 			"Bypass online censorship with advanced security and privacy features": [
 				"Taklukkan sensor online dengan fitur keamanan dan privasi tingkat lanjut"
@@ -173,6 +179,9 @@
 			]
 		},
 		"Info": {
+			"Access over 5000 secure servers in 63 countries": [
+				"Akses lebih dari 5000 server aman di 63 negara"
+			],
 			"Access Proton VPN via this icon": [
 				"Akses Proton VPN melalui ikon ini"
 			],
@@ -185,6 +194,9 @@
 			"and more": [
 				"dan masih banyak lagi"
 			],
+			"Audited by independent security experts": [
+				"Teraudit oleh pakar keamanan independen"
+			],
 			"Auto-selected from": [
 				"Terpilih secara otomatis dari"
 			],
@@ -196,6 +208,9 @@
 			],
 			"Browse through the Support Center and find answers to frequently asked questions.": [
 				"Jelajahi Pusat Bantuan kami dan temukan jawaban atas berbagai pertanyaan yang sering diajukan."
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"Lewati sensor dengan berbagai fitur keamanan dan privasi lanjutan"
 			],
 			"Clear search": [
 				"Hapus pencarian"
@@ -310,6 +325,9 @@
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Untuk memulai, Anda perlu untuk memperkenankan izin VPN pada browser Anda."
+			],
+			"Upgrade": [
+				"Tingkatkan"
 			],
 			"Usage data helps us overcome VPN blocks and improve app performance.": [
 				"Statistik pemakaian membantu kami dalam menangkal pemblokiran VPN dan meningkatkan performa aplikasi."

@@ -114,18 +114,6 @@
 			]
 		},
 		"Error": {
-			"${countries} country": [
-				"${countries} country",
-				"${countries} countries"
-			],
-			"${rounderServersCount} secure server": [
-				"${rounderServersCount} secure server",
-				"${rounderServersCount} secure servers"
-			],
-			"${servers}+ secure server": [
-				"${servers}+ secure server",
-				"${servers}+ secure servers"
-			],
 			"Access over ${servers} in ${countries}": [
 				"Access over ${servers} in ${countries}"
 			],
@@ -272,10 +260,6 @@
 			"Help us fight censorship": [
 				"Help us fight censorship"
 			],
-			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
-				"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.",
-				"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} servers and no restrictions."
-			],
 			"Learn more": [
 				"Learn more"
 			],
@@ -310,7 +294,7 @@
 				"Select websites to exclude from your VPN connection."
 			],
 			"Share anonymous usage crash reports": [
-				"Share anonymous usage crash reports"
+				"Share anonymous crash reports"
 			],
 			"Share anonymous usage statistics": [
 				"Share anonymous usage statistics"
@@ -365,23 +349,11 @@
 			"Cities": [
 				"Cities"
 			],
-			"City": [
-				"City",
-				"Cities"
-			],
 			"Connecting": [
 				"Connecting"
 			],
 			"Countries, cities, servers": [
 				"Countries, cities, servers"
-			],
-			"Country": [
-				"Country",
-				"Countries"
-			],
-			"Entry country": [
-				"Entry country",
-				"Entry countries"
 			],
 			"Free": [
 				"Free"
@@ -412,10 +384,6 @@
 			],
 			"Protected": [
 				"Protected"
-			],
-			"Server": [
-				"Server",
-				"Servers"
 			],
 			"Settings": [
 				"Settings"

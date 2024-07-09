@@ -120,11 +120,20 @@
 				"${countries} краін",
 				"${countries} краіны"
 			],
+			"${rounderServersCount} secure server": [
+				"${rounderServersCount} бяспечны сервер",
+				"${rounderServersCount} бяспечныя серверы",
+				"${rounderServersCount} бяспечных сервераў",
+				"${rounderServersCount} бяспечных сервераў"
+			],
 			"${servers}+ secure server": [
 				"Больш за ${servers} бяспечны сервер",
 				"Больш за ${servers} бяспечныя серверы",
 				"Больш за ${servers} бяспечных сервераў",
 				"Больш за ${servers} бяспечныя серверы"
+			],
+			"Access over ${servers} in ${countries}": [
+				"Доступ праз ${servers} у ${countries}"
 			],
 			"Bypass online censorship with advanced security and privacy features": [
 				"Абыходзьце цэнзуру ў інтэрнэце з пашыранымі функцыямі бяспекі і прыватнасці"
@@ -179,6 +188,9 @@
 			]
 		},
 		"Info": {
+			"Access over 5000 secure servers in 63 countries": [
+				"Доступ да больш як 5000 сервераў у 63 краінах"
+			],
 			"Access Proton VPN via this icon": [
 				"Атрымаць доступ да Proton VPN праз значок праграмы"
 			],
@@ -191,6 +203,9 @@
 			"and more": [
 				"і іншыя"
 			],
+			"Audited by independent security experts": [
+				"Праверана незалежнымі экспертамі ў галіне бяспекі"
+			],
 			"Auto-selected from": [
 				"Аўтаматычна выбрана з"
 			],
@@ -202,6 +217,9 @@
 			],
 			"Browse through the Support Center and find answers to frequently asked questions.": [
 				"Зазірніце ў наш цэнтр падтрымкі і атрымайце адказы на самыя распаўсюджаныя пытанні."
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"Абыходзьце цэнзуру з пашыранымі функцыямі бяспекі і прыватнасці"
 			],
 			"Clear search": [
 				"Ачысціць пошук"
@@ -319,6 +337,9 @@
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Для таго, каб пачаць працу вам неабходна ўключыць дазволы VPN у вашым браўзеры."
+			],
+			"Upgrade": [
+				"Палепшыць"
 			],
 			"Usage data helps us overcome VPN blocks and improve app performance.": [
 				"Даныя аб выкарыстанні дапамагаюць нам пераадольваць блакіроўкі VPN і паляпшаць прадукцыйнасць праграмы."

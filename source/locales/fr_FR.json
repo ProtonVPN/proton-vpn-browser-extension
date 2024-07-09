@@ -118,9 +118,16 @@
 				"${countries} pays",
 				"${countries} pays"
 			],
+			"${rounderServersCount} secure server": [
+				"${rounderServersCount} serveur sécurisé",
+				"${rounderServersCount} serveurs sécurisés"
+			],
 			"${servers}+ secure server": [
 				"plus de ${servers} serveur sécurisé",
 				"plus de ${servers} serveurs sécurisés"
+			],
+			"Access over ${servers} in ${countries}": [
+				"Accédez à plus de ${servers} dans ${countries}"
 			],
 			"Bypass online censorship with advanced security and privacy features": [
 				"Contournez la censure en ligne avec des fonctionnalités avancées de sécurité et de confidentialité."
@@ -175,6 +182,9 @@
 			]
 		},
 		"Info": {
+			"Access over 5000 secure servers in 63 countries": [
+				"Accédez à plus de 5000 serveurs dans 63 pays"
+			],
 			"Access Proton VPN via this icon": [
 				"Accédez à Proton VPN via cette icône"
 			],
@@ -187,6 +197,9 @@
 			"and more": [
 				"et bien d'autres"
 			],
+			"Audited by independent security experts": [
+				"Audité par des experts indépendants en sécurité"
+			],
 			"Auto-selected from": [
 				"Sélection automatique depuis"
 			],
@@ -198,6 +211,9 @@
 			],
 			"Browse through the Support Center and find answers to frequently asked questions.": [
 				"Consultez l'espace Aide & Support pour trouver les réponses aux questions fréquentes."
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"Contourner la censure grâce à des fonctions de sécurité et de confidentialité avancées"
 			],
 			"Clear search": [
 				"Effacer la recherche"
@@ -313,6 +329,9 @@
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Pour commencer, vous devez donner à votre navigateur les autorisations nécessaires pour le VPN."
+			],
+			"Upgrade": [
+				"Améliorer votre abonnement"
 			],
 			"Usage data helps us overcome VPN blocks and improve app performance.": [
 				"Les données d'utilisation nous aident à contourner les blocages VPN et à améliorer les performances de l'application."

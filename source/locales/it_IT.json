@@ -118,9 +118,16 @@
 				"${countries} paese",
 				"${countries} paesi"
 			],
+			"${rounderServersCount} secure server": [
+				"${rounderServersCount} server sicuro",
+				"${rounderServersCount} server sicuri"
+			],
 			"${servers}+ secure server": [
 				"${servers}+ server sicuro",
 				"${servers}+ server sicuri"
+			],
+			"Access over ${servers} in ${countries}": [
+				"Accedi a oltre ${servers} in ${countries}"
 			],
 			"Bypass online censorship with advanced security and privacy features": [
 				"Evita la censura online con funzioni di sicurezza e privacy avanzate"
@@ -175,6 +182,9 @@
 			]
 		},
 		"Info": {
+			"Access over 5000 secure servers in 63 countries": [
+				"Accedi a oltre 5000 server sicuri in 63 paesi"
+			],
 			"Access Proton VPN via this icon": [
 				"Accedi a Proton VPN attraverso questa icona"
 			],
@@ -187,6 +197,9 @@
 			"and more": [
 				"e altro"
 			],
+			"Audited by independent security experts": [
+				"Controllato da esperti di sicurezza indipendenti"
+			],
 			"Auto-selected from": [
 				"Selezionato automaticamente tra"
 			],
@@ -198,6 +211,9 @@
 			],
 			"Browse through the Support Center and find answers to frequently asked questions.": [
 				"Naviga nel centro di supporto e trova risposte alle domande frequenti."
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"Evita la censura con funzionalità avanzate di sicurezza e privacy"
 			],
 			"Clear search": [
 				"Cancella ricerca"
@@ -313,6 +329,9 @@
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Per iniziare, devi abilitare le autorizzazioni VPN sul tuo browser."
+			],
+			"Upgrade": [
+				"Effettua l'upgrade"
 			],
 			"Usage data helps us overcome VPN blocks and improve app performance.": [
 				"I dati sull'utilizzo ci aiutano a superare i blocchi VPN e a migliorare le prestazioni dell'app."

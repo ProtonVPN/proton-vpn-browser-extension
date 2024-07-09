@@ -1134,6 +1134,15 @@ input[type="text"]:invalid {
 	}
 }
 
+.auto-select-label {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-wrap: nowrap;
+	display: block;
+	float: left;
+	width: 160px;
+}
+
 .servers-list {
 	background: rgba(127, 127, 127, 0.1);
 	padding-right: 0.25em;

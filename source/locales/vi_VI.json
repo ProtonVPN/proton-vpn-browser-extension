@@ -153,6 +153,9 @@
 			"Something went wrong. If the problem persists, please try to re-install the extension": [
 				"Có lỗi đã xảy ra. Nếu vấn đề không được khắc phục, vui lòng cài đặt lại tiện ích mở rộng"
 			],
+			"Unable to find appropriate server, try to logout and login again if it persists": [
+				"Không thể tìm thấy máy chủ phù hợp, hãy thử đăng xuất và đăng nhập lại nếu còn tiếp diễn"
+			],
 			"Unable to load the list": [
 				"Không thể tải danh sách"
 			],
@@ -181,6 +184,9 @@
 			],
 			"and more": [
 				"và hơn nữa"
+			],
+			"Auto-selected from": [
+				"Tự động chọn từ"
 			],
 			"Automatically reconnect to Proton VPN when you open your browser.": [
 				"Tự động kết nối vào Proton VPN khi bạn mở trình duyệt."
@@ -215,6 +221,9 @@
 			"Contact our Customer Support agents to help you out with Proton VPN.": [
 				"Liên hệ với Trung tâm chăm sóc khác hàng để được trợ giúp về Proton VPN."
 			],
+			"Crash": [
+				"Sự cố"
+			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Báo cáo sự cố giúp chúng tôi sửa lỗi, phát hiện tường lửa và tránh bị chặn VPN."
 			],
@@ -229,6 +238,9 @@
 			],
 			"Extra protection for people with advanced privacy needs": [
 				"Bảo vệ bổ sung cho những người có nhu cầu riêng tư nâng cao"
+			],
+			"Fastest free server": [
+				"Máy chủ miễn phí nhanh nhất"
 			],
 			"Follow these simple steps to get the best experience using Proton VPN": [
 				"Hãy làm theo các bước đơn giản sau đây để có được trải nghiệm sử dụng Proton VPN tốt nhất:"
@@ -272,6 +284,9 @@
 			"Select websites to exclude from your VPN connection.": [
 				"Chọn các trang web không kết nối thông qua VPN"
 			],
+			"Share anonymous usage crash reports": [
+				"Chia sẽ báo cáo sự cố ẩn danh"
+			],
 			"Share anonymous usage statistics": [
 				"Chia sẽ dữ liệu sử dụng ẩn danh"
 			],
@@ -289,6 +304,9 @@
 			],
 			"Then just click the Proton VPN icon to sign in.": [
 				"Sau đó chỉ cần nhấp vào biểu tượng Proton VPN để đăng nhập"
+			],
+			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
+				"Những thống kê này không chứa địa chỉ IP của bạn và chúng không thể được sử dụng để nhận dạng bạn. Chúng tôi sẽ không bao giờ chia sẻ chúng với bên thứ ba"
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Để bắt đầu, bạn cần cấp quyền sử dụng VPN cho trình duyệt"

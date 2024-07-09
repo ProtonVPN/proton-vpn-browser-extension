@@ -118,9 +118,16 @@
 				"${countries} país",
 				"${countries} países"
 			],
+			"${rounderServersCount} secure server": [
+				"${rounderServersCount} servidor seguro",
+				"${rounderServersCount} servidores seguros"
+			],
 			"${servers}+ secure server": [
 				"${servers} servidor seguro",
 				"${servers} servidores seguros"
+			],
+			"Access over ${servers} in ${countries}": [
+				"Acesso acima de ${servers} em ${countries}"
 			],
 			"Bypass online censorship with advanced security and privacy features": [
 				"Ignore a censura online com recursos avançados de segurança e privacidade"
@@ -172,6 +179,9 @@
 			]
 		},
 		"Info": {
+			"Access over 5000 secure servers in 63 countries": [
+				"Acesse 5000 servidores seguros em 63 países"
+			],
 			"Access Proton VPN via this icon": [
 				"Acesse a VPN Proton através deste ícone"
 			],
@@ -184,6 +194,9 @@
 			"and more": [
 				"e mais"
 			],
+			"Audited by independent security experts": [
+				"Auditoria por espertos de segurança independentes"
+			],
 			"Auto-selected from": [
 				"Seleção automática de"
 			],
@@ -195,6 +208,9 @@
 			],
 			"Browse through the Support Center and find answers to frequently asked questions.": [
 				"Navegue pelo Centro de Suporte e encontre respostas para perguntas frequentes."
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"Ignore a censura com recursos avançados de segurança e privacidade"
 			],
 			"Clear search": [
 				"Limpar pesquisa"
@@ -220,8 +236,11 @@
 			"Contact our Customer Support agents to help you out with Proton VPN.": [
 				"Entre em contato com nossos agentes de suporte ao cliente para ajudá-lo com o Proton VPN."
 			],
+			"Crash": [
+				"Falha"
+			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
-				"Os relatórios de erros nos ajudam a corrigir erros, detectar firewalls e evitar bloqueios de VPN."
+				"Os relatórios de falhas nos ajudam a corrigir erros, detectar firewalls e evitar bloqueios de VPN."
 			],
 			"Disable VPN for selected websites.": [
 				"Desative a VPN para os sites selecionados."
@@ -301,6 +320,9 @@
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Para começar, terá de ativar as permissões VPN no seu navegador."
+			],
+			"Upgrade": [
+				"Fazer upgrade"
 			],
 			"Usage data helps us overcome VPN blocks and improve app performance.": [
 				"Dados de uso nos ajudam a superar bloqueios de VPN e a melhorar o aplicativo."

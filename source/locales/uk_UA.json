@@ -159,6 +159,9 @@
 			"Something went wrong. If the problem persists, please try to re-install the extension": [
 				"Щось пішло не так. Якщо проблема не зникне, спробуйте перевстановити розширення"
 			],
+			"Unable to find appropriate server, try to logout and login again if it persists": [
+				"Не вдалося знайти відповідний сервер. Якщо проблема не зникне, спробуйте вийти з системи та увійти знову."
+			],
 			"Unable to load the list": [
 				"Не вдається завантажити список"
 			],
@@ -224,6 +227,9 @@
 			"Contact our Customer Support agents to help you out with Proton VPN.": [
 				"Зверніться до агентів нашої клієнтської підтримки для отримання допомоги з Proton VPN."
 			],
+			"Crash": [
+				"Збій"
+			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Звіти про збої допомагають нам виправляти помилки, виявляти мережеві екрани та уникати блокування VPN."
 			],
@@ -287,6 +293,9 @@
 			"Select websites to exclude from your VPN connection.": [
 				"Виберіть вебсайти, які не потребують VPN-з'єднання."
 			],
+			"Share anonymous usage crash reports": [
+				"Надсилати анонімні звіти про використання під час збоїв"
+			],
 			"Share anonymous usage statistics": [
 				"Анонімна статистика використання"
 			],
@@ -304,6 +313,9 @@
 			],
 			"Then just click the Proton VPN icon to sign in.": [
 				"Потім просто натисніть піктограму Proton VPN, щоб увійти."
+			],
+			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
+				"Ці дані не містять вашої IP-адреси та інформації, за допомогою якої можна вас ідентифікувати. Ми ніколи не передаємо ці дані третім сторонам"
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Для початку роботи потрібно надати дозволи для VPN у вашому браузері."

@@ -179,6 +179,9 @@
 			]
 		},
 		"Info": {
+			"Access over 5000 secure servers in 63 countries": [
+				"Dostęp do ponad 5000 bezpiecznych serwerów w 63 krajach"
+			],
 			"Access Proton VPN via this icon": [
 				"Uzyskaj dostęp do Proton VPN za pomocą tej ikony"
 			],
@@ -191,6 +194,9 @@
 			"and more": [
 				"i wiele więcej"
 			],
+			"Audited by independent security experts": [
+				"Aplikacje zweryfikowane przez niezależnych ekspertów ds. bezpieczeństwa"
+			],
 			"Auto-selected from": [
 				"Automatycznie wybrany z"
 			],
@@ -202,6 +208,9 @@
 			],
 			"Browse through the Support Center and find answers to frequently asked questions.": [
 				"Sprawdź centrum pomocy i znajdź odpowiedzi na najczęstsze pytania."
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"Omiń cenzurę za pomocą zaawansowanych funkcji bezpieczeństwa i prywatności"
 			],
 			"Clear search": [
 				"Wyczyść wyszukiwanie"
@@ -319,6 +328,9 @@
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Aby rozpocząć, musisz włączyć uprawnienia VPN w przeglądarce."
+			],
+			"Upgrade": [
+				"Ulepsz"
 			],
 			"Usage data helps us overcome VPN blocks and improve app performance.": [
 				"Dane użytkowania pomagają nam ominąć blokady VPN i poprawić wydajność aplikacji."

@@ -404,6 +404,70 @@ const start = async () => {
 			});
 		});
 
+		const handleLeavingAction = (url: string, forget: boolean) => {
+			leaveWindowForTab(window, url);
+
+			if (forget) {
+				forgetAccount();
+			}
+		};
+
+		const triggerLinkButton = async (link: string, button: HTMLElement) => {
+			const hashSeed = getHashSeed(button.dataset);
+			const forget = !!(button.classList.contains('upgrade-button') || Number(button.getAttribute('data-forget-account')));
+			const linkHashSeed = await getHashSeedValues(hashSeed);
+			const href = link + (linkHashSeed ? '#' + linkHashSeed : '');
+
+			if (Number(button.getAttribute('data-direct-upgrade'))) {
+				handleLeavingAction(await appendUpgradeParams(href), forget);
+
+				return;
+			}
+
+			if (Number(button.getAttribute('data-upgrade'))) {
+				goTo('upgrade');
+				const page = document.querySelector<HTMLDivElement>('[data-page="upgrade"]');
+
+				if (page) {
+					page.querySelectorAll('.open-upgrade-page').forEach(button => {
+						button.setAttribute('data-href', href);
+						button.setAttribute('data-direct-upgrade', '1');
+					});
+					configureButtons(page);
+					const url = await appendUpgradeParams(href);
+					page.querySelectorAll('.open-upgrade-page').forEach(button => {
+						button.setAttribute('data-href', url);
+						button.removeAttribute('data-direct-upgrade');
+					});
+					configureButtons(page);
+
+					const {
+						Servers: servers,
+						Countries: countries,
+					} = await getServersCount();
+
+					const rounderServersCount = Math.floor(servers / 100) * 100;
+
+					page.querySelectorAll<HTMLElement>('.access-sentence').forEach(paragraph => {
+						paragraph.innerText = getAccessSentence(
+							/**
+							 * 	translator: ${servers} is a number so output is like "1900 secure servers" and this goes in sentence such as "Access over 5000 secure servers in 63 countries"
+							 */
+							c('Error').plural(rounderServersCount, msgid`${rounderServersCount} secure server`, `${rounderServersCount} secure servers`),
+							/**
+							 * 	translator: ${countries} is a number so output is like "63 countries" and this goes in sentence such as "Access over 5000 secure servers in 63 countries"
+							 */
+							c('Error').plural(countries, msgid`${countries} country`, `${countries} countries`),
+						);
+					});
+				}
+
+				return;
+			}
+
+			handleLeavingAction(href, forget);
+		};
+
 		(area || document.getElementById('servers') || document).querySelectorAll<HTMLButtonElement>('.open-upgrade-page, button:not(.close-button), .connect-clickable, .server:not(.in-maintenance)').forEach(button => {
 			onClick(button, async (event) => {
 				event.stopPropagation();
@@ -413,54 +477,7 @@ const start = async () => {
 				const href = button.getAttribute('data-href');
 
 				if (href) {
-					if (Number(button.getAttribute('data-direct-upgrade'))) {
-						leaveWindowForTab(window, await appendUpgradeParams(href));
-
-						return;
-					}
-
-					if (Number(button.getAttribute('data-upgrade'))) {
-						goTo('upgrade');
-						const page = document.querySelector<HTMLDivElement>('[data-page="upgrade"]');
-
-						if (page) {
-							page.querySelectorAll('.open-upgrade-page').forEach(button => {
-								button.setAttribute('data-href', href);
-								button.setAttribute('data-direct-upgrade', '1');
-							});
-							configureButtons(page);
-							const url = await appendUpgradeParams(href);
-							page.querySelectorAll('.open-upgrade-page').forEach(button => {
-								button.setAttribute('data-href', url);
-								button.removeAttribute('data-direct-upgrade');
-							});
-							configureButtons(page);
-
-							const {
-								Servers: servers,
-								Countries: countries,
-							} = await getServersCount();
-
-							const rounderServersCount = Math.floor(servers / 100) * 100;
-
-							page.querySelectorAll<HTMLElement>('.access-sentence').forEach(paragraph => {
-								paragraph.innerText = getAccessSentence(
-									/**
-									 * 	translator: ${servers} is a number so output is like "1900 secure servers" and this goes in sentence such as "Access over 5000 secure servers in 63 countries"
-									 */
-									c('Error').plural(rounderServersCount, msgid`${rounderServersCount} secure server`, `${rounderServersCount} secure servers`),
-									/**
-									 * 	translator: ${countries} is a number so output is like "63 countries" and this goes in sentence such as "Access over 5000 secure servers in 63 countries"
-									 */
-									c('Error').plural(countries, msgid`${countries} country`, `${countries} countries`),
-								);
-							});
-						}
-
-						return;
-					}
-
-					leaveWindowForTab(window, href);
+					triggerPromise(triggerLinkButton(href, button));
 
 					return;
 				}
@@ -523,20 +540,12 @@ const start = async () => {
 					if (url) {
 						const localeSupport = getLocaleSupport(button.dataset);
 						const primaryLanguage = getPrimaryLanguage();
-						const hashSeed = getHashSeed(button.dataset);
 						const link = localeSupport.indexOf(primaryLanguage) !== -1
 							? url.replace(/^(https:\/\/protonvpn\.com\/)/, '$1' + primaryLanguage + '/')
 							: url;
 						event.preventDefault();
 						event.stopPropagation();
-						const forget = (button.classList.contains('upgrade-button') || Number(button.getAttribute('data-forget-account')));
-						getHashSeedValues(hashSeed).then(linkHashSeed => {
-							leaveWindowForTab(window, link + (linkHashSeed ? '#' + linkHashSeed : ''));
-
-							if (forget) {
-								forgetAccount();
-							}
-						});
+						triggerLinkButton(link, button);
 					}
 				});
 			});
@@ -1014,7 +1023,7 @@ const start = async () => {
 							<div class="fastest-server">
 								<div class="current-server-country incentive">${c('Info').t`Fastest free server`}</div>
 								<div class="current-server-name">
-									${c('Info').t`Auto-selected from`}
+									<span class="auto-select-label">${c('Info').t`Auto-selected from`}</span>
 									${freeCountriesList.length <= 3
 										? getCountryFlagGroup(freeCountriesList)
 										: getCountryFlagGroup(freeCountriesList.slice(0, 3)) + ' +' + (freeCountriesList.length - 3)}

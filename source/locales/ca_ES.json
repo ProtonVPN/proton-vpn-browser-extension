@@ -118,12 +118,22 @@
 				"${countries} país",
 				"${countries} països"
 			],
+			"${rounderServersCount} secure server": [
+				"${rounderServersCount} servidor segur",
+				"${rounderServersCount} servidors segurs"
+			],
 			"${servers}+ secure server": [
 				"Més d'${servers} servidor segur",
 				"Més de ${servers} servidors segurs"
 			],
+			"Access over ${servers} in ${countries}": [
+				"Accés més de ${servers} a ${countries}"
+			],
 			"Bypass online censorship with advanced security and privacy features": [
 				"Eviteu la censura en línia amb funcions avançades de seguretat i privadesa"
+			],
+			"Connect from your browser with ${planName}": [
+				"Connecteu des del vostre navegador amb ${planName}"
 			],
 			"Network error.": [
 				"Error de xarxa."
@@ -172,6 +182,9 @@
 			]
 		},
 		"Info": {
+			"Access over 5000 secure servers in 63 countries": [
+				"Accediu a més de 5.000 servidors en 63 països"
+			],
 			"Access Proton VPN via this icon": [
 				"Accedeix a Proton VPN via aquesta icona"
 			],
@@ -184,6 +197,9 @@
 			"and more": [
 				"i més"
 			],
+			"Audited by independent security experts": [
+				"Auditat per experts en seguretat independents"
+			],
 			"Auto-selected from": [
 				"Selecció automàtica des de"
 			],
@@ -195,6 +211,9 @@
 			],
 			"Browse through the Support Center and find answers to frequently asked questions.": [
 				"Navegueu al centre de suport i troba respostes a preguntes freqüents."
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"Eviteu la censura amb funcions avançades de seguretat i privadesa"
 			],
 			"Clear search": [
 				"Esborra la cerca"
@@ -310,6 +329,9 @@
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Per començar, necessiteu activar els permisos de VPN al vostre navegador."
+			],
+			"Upgrade": [
+				"Millora"
 			],
 			"Usage data helps us overcome VPN blocks and improve app performance.": [
 				"Les dades d'ús ens ajuden a evitar els bloquejos de VPN i millorar el rendiment de l'aplicació."

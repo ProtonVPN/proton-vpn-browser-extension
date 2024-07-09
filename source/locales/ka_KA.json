@@ -155,6 +155,9 @@
 			"Something went wrong. If the problem persists, please try to re-install the extension": [
 				"რაღაც არასწორად წავიდა. თუ პრობლემა არ გაქრება, გაფართოება თავიდან დააყენეთ"
 			],
+			"Unable to find appropriate server, try to logout and login again if it persists": [
+				"შესატყვისი სერვისი ვერ ვიპოვე. თუ პრობლემა მალე არ გაქრა, სცადეთ, გახვიდეთ და თავიდან შემოხვიდეთ"
+			],
 			"Unable to load the list": [
 				"სიის ჩატვირთვის შეცდომა"
 			],

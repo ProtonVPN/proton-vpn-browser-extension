@@ -66,7 +66,7 @@ const fetchLogicals = async (cache?: LogicalServersCache) => {
 			lastModified: string | null, // From Last-Modified response header
 		}, { LogicalServers: Logical[] }>(
 			'vpn/v1/logicals',
-			{headers: {'If-Modified-Since': ifModifiedSince || 'Wed, 01 Jan 2020 00:00:00 GMT'}},
+			{headers: {'If-Modified-Since': ifModifiedSince || 'Thu, 01 Jan 1970 00:00:00 GMT'}},
 			(response, data: { LogicalServers: Logical[] }) => ({
 				logicals: data?.LogicalServers,
 				lastModified: response.headers.get('Last-Modified'),

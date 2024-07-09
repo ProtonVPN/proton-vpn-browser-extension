@@ -218,6 +218,9 @@
 			"Contact our Customer Support agents to help you out with Proton VPN.": [
 				"聯絡我們的客戶支援專員，協助您有關 Proton VPN 的問題。"
 			],
+			"Crash": [
+				"當機"
+			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"錯誤報告有助於我們修復程式錯誤、偵測防火牆和避免 VPN 封鎖。"
 			],
@@ -277,6 +280,9 @@
 			],
 			"Select websites to exclude from your VPN connection.": [
 				"選取網站以從您的 VPN 連線排除。"
+			],
+			"Share anonymous usage crash reports": [
+				"分享匿名錯誤報告"
 			],
 			"Share anonymous usage statistics": [
 				"分享匿名使用統計資料"
