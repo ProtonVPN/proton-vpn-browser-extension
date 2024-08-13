@@ -1,3 +1,15 @@
+# 1.2.2
+
+- Shorten title to "Proton VPN: Fast & Secure"
+- Update default number of servers
+
+# 1.2.1
+
+- Re-ask for permission in Firefox if http is missing (happens if permissions were set in an early version)
+- Exclude local network from the tunnel using IP range matching
+- Improve search sorting and UX
+- Update translations
+
 # 1.2.0
 
 - Fix bug that prompted user/pass form in some case

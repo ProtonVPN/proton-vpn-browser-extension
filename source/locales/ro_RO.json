@@ -119,10 +119,18 @@
 				"${countries} țări",
 				"${countries} de țări"
 			],
+			"${rounderServersCount} secure server": [
+				"${rounderServersCount} server securizat",
+				"${rounderServersCount} servere securizate",
+				"${rounderServersCount} de servere securizate"
+			],
 			"${servers}+ secure server": [
 				"Peste ${servers} server securizat",
 				"Peste ${servers} servere securizate",
 				"Peste ${servers} de servere securizate"
+			],
+			"Access over ${servers} in ${countries}": [
+				"Accesați peste ${servers} în ${countries}"
 			],
 			"Bypass online censorship with advanced security and privacy features": [
 				"Depășiți cenzura online cu securitate avansată și funcții de confidențialitate"
@@ -177,6 +185,9 @@
 			]
 		},
 		"Info": {
+			"Access over 5000 secure servers in 63 countries": [
+				"Accesați peste 5000 de servere sigure din 63 de țări"
+			],
 			"Access Proton VPN via this icon": [
 				"Accesați Proton VPN cu această pictogramă"
 			],
@@ -189,6 +200,9 @@
 			"and more": [
 				"și mai multe"
 			],
+			"Audited by independent security experts": [
+				"Auditat de experți independenți în securitate"
+			],
 			"Auto-selected from": [
 				"Autoselectată din"
 			],
@@ -200,6 +214,9 @@
 			],
 			"Browse through the Support Center and find answers to frequently asked questions.": [
 				"Răsfoiți centrul de asistență și găsiți răspunsurile la întrebările puse frecvent."
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"Depășiți cenzura cu securitate avansată și funcții de confidențialitate"
 			],
 			"Clear search": [
 				"Golire căutare"
@@ -269,6 +286,9 @@
 			"Logged out": [
 				"Deconectat"
 			],
+			"Open source VPN": [
+				"VPN cu sursa publică"
+			],
 			"Open the Extensions menu": [
 				"Deschideți meniul de extensii"
 			],
@@ -316,6 +336,9 @@
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Pentru a începe, trebuie să acordați permisiuni pentru VPN în navigator."
+			],
+			"Upgrade": [
+				"Modificare"
 			],
 			"Usage data helps us overcome VPN blocks and improve app performance.": [
 				"Datele de utilizare ne ajută să depășim blocările VPN-ului și să îmbunătățim performanța aplicației."

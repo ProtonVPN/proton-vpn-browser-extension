@@ -81,11 +81,16 @@ export const fetchWithNetZone = async <T, D = any>(
 	init?: RequestInit,
 	resultBuilder?: (response: Response, data: D) => T,
 ): Promise<T> => {
-	const netZone = (await getLocation())?.IP;
+	const location = await getLocation();
+	const netZone = location?.IP;
 
 	if (netZone) {
 		init || (init = {});
-		init.headers = {...init.headers, 'x-pm-netzone': netZone};
+		init.headers = {
+			...init.headers,
+			'x-pm-netzone': netZone.replace(/\.\d+$/, '.0'),
+			'x-pm-country': location?.Country,
+		};
 	}
 
 	return await fetchJson<T, D>(url, init, undefined, resultBuilder);

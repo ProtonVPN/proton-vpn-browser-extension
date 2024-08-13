@@ -82,9 +82,10 @@ import {storedSplitTunneling} from './vpn/storedSplitTunneling';
 import {warn} from './log/log';
 import {storedNotificationsEnabled} from './notifications/notificationsEnabled';
 import {RefreshTokenError} from './account/RefreshTokenError';
+import {InitUserError} from './account/InitUserError';
+import {requireUser} from './account/requireUser';
 import {pickServerInLogical} from './vpn/pickServerInLogical';
 import {milliSeconds} from './tools/milliSeconds';
-import {InitUserError} from './account/InitUserError';
 import {appendUrlParams} from './tools/appendUrlParams';
 import {crashReportOptIn, getCrashReportOptIn, handleError} from './tools/sentry';
 import {getServersCount} from './vpn/getServersCount';
@@ -595,16 +596,7 @@ const start = async () => {
 	let user: User | undefined;
 
 	try {
-		user = await timeoutAfter(
-			getInfoFromBackground(BackgroundData.USER),
-			milliSeconds.fromSeconds(30),
-			'User info loading timed out',
-			InitUserError,
-		);
-
-		if (!user) {
-			throw new InitUserError(c('Error').t`Unable to login`);
-		}
+		user = await requireUser();
 	} catch (e) {
 		if (e instanceof RefreshTokenError ||
 			(e as RefreshTokenError).logout ||
@@ -1304,8 +1296,25 @@ const start = async () => {
 				}
 			}
 		};
-		refresh = setUpSearch(search, searchText => {
+		let lastSearchStart = 0;
+		refresh = setUpSearch(search, async searchText => {
+			const searchStart = Date.now();
+			lastSearchStart = searchStart;
 			const searching = (searchText !== '');
+
+			if (!servers.querySelector(':scope > .spinner')) {
+				servers.innerHTML = `<div class="spinner">
+					<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+				</div>`;
+			}
+
+			// Wait a bit for consecutive letters typed
+			await delay(searching ? 300 : 1);
+
+			if (lastSearchStart !== searchStart) {
+				return;
+			}
+
 			servers.innerHTML = searching
 				? getSearchResult(countries, searchText, userTier, secureCore)
 				: countryList(countries, userTier, secureCore) || `<p class="not-found">

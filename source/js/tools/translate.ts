@@ -226,11 +226,22 @@ export const getHashSeed = (data: DOMStringMap | undefined): string[] => {
 const getLocaleForLanguage = (language: string): string => {
 	return ({
 		be: 'be_BY',
+		ca: 'ca_ES',
 		cs: 'cs_CZ',
+		el: 'el_GR',
 		en: 'en_US',
 		hi: 'hi_IN',
+		ja: 'ja_JP',
+		ka: 'ka_GE',
+		ko: 'ko_KR',
+		nb: 'nb_NO',
+		nn: 'nb_NO',
+		no: 'nb_NO',
 		pt: 'pt_BR',
+		sl: 'sl_SI',
+		sv: 'sv_SE',
 		uk: 'uk_UA',
+		vi: 'vi_VN',
 	})[language] || (language + '_' + language.toUpperCase());
 };
 

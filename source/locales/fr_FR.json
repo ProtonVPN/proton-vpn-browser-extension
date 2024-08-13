@@ -183,7 +183,7 @@
 		},
 		"Info": {
 			"Access over 5000 secure servers in 63 countries": [
-				"Accédez à plus de 5000 serveurs dans 63 pays"
+				"Accédez à plus de 5 000 serveurs dans 63 pays"
 			],
 			"Access Proton VPN via this icon": [
 				"Accédez à Proton VPN via cette icône"
@@ -213,7 +213,7 @@
 				"Consultez l'espace Aide & Support pour trouver les réponses aux questions fréquentes."
 			],
 			"Bypass censorship with advanced security and privacy features": [
-				"Contourner la censure grâce à des fonctions de sécurité et de confidentialité avancées"
+				"Contournez la censure avec des fonctionnalités avancées de sécurité et de confidentialité"
 			],
 			"Clear search": [
 				"Effacer la recherche"
@@ -243,7 +243,7 @@
 				"Erreur"
 			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
-				"Les rapports de plantage nous aident à corriger les bugs, à détecter les pare-feux et à éviter le blocage de VPN."
+				"Les rapports de plantage nous aident à corriger les bugs, à détecter les pare-feux et à éviter les blocages du VPN."
 			],
 			"Disable VPN for selected websites.": [
 				"Désactiver le VPN pour les sites internet sélectionnés."
@@ -281,6 +281,9 @@
 			],
 			"Logged out": [
 				"Déconnecté"
+			],
+			"Open source VPN": [
+				"VPN open source"
 			],
 			"Open the Extensions menu": [
 				"Ouvrez le menu des extensions"

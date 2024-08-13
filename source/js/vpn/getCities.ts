@@ -12,7 +12,7 @@ type CitiesCacheItem = CacheWrappedValue<Cities>;
 let localCitiesCaching = {} as Record<string, CitiesCacheItem>;
 
 const fetchCities = async (languageKey: string, cacheKey: string): Promise<Cities> => {
-	const data = await fetchJson('vpn/cities/names');
+	const data = await fetchJson('vpn/v1/cities/names');
 	const { Cities: cities }: { Cities: Cities } = data as any;
 
 	if (cities) {

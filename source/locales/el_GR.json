@@ -118,9 +118,16 @@
 				"${countries} χώρα",
 				"${countries} χώρες"
 			],
+			"${rounderServersCount} secure server": [
+				"${rounderServersCount} διασφαλισμένος διακομιστής",
+				"${rounderServersCount} διασφαλισμένοι διακομιστές"
+			],
 			"${servers}+ secure server": [
 				"${servers}+ διασφαλισμένος διακομιστής",
 				"${servers}+ διασφαλισμένοι διακομιστές"
+			],
+			"Access over ${servers} in ${countries}": [
+				"Έχετε πρόσβαση σε πάνω από ${servers} σε ${countries}"
 			],
 			"Bypass online censorship with advanced security and privacy features": [
 				"Παράκαμψη της λογοκρισίας στο διαδίκτυο με προηγμένες λειτουργίες ασφάλειας και απορρήτου"
@@ -175,6 +182,9 @@
 			]
 		},
 		"Info": {
+			"Access over 5000 secure servers in 63 countries": [
+				"Αποκτήστε πρόσβαση σε περισσότερους από 5000 ασφαλείς διακομιστές σε 63 χώρες"
+			],
 			"Access Proton VPN via this icon": [
 				"Αποκτήστε πρόσβαση στο Proton VPN μέσω αυτού του εικονιδίου"
 			],
@@ -187,6 +197,9 @@
 			"and more": [
 				"και άλλα"
 			],
+			"Audited by independent security experts": [
+				"Ελεγμένο από ανεξάρτητους ειδικούς διασφάλισης"
+			],
 			"Auto-selected from": [
 				"Επιλέχθηκε αυτόματα από"
 			],
@@ -198,6 +211,9 @@
 			],
 			"Browse through the Support Center and find answers to frequently asked questions.": [
 				"Περιηγηθείτε στο Κέντρο υποστήριξης και βρείτε απαντήσεις σε συνήθεις ερωτήσεις."
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"Παράκαμψη της λογοκρισίας στο διαδίκτυο με προηγμένες λειτουργίες ασφάλειας και απορρήτου"
 			],
 			"Clear search": [
 				"Εκκαθάριση αναζήτησης"
@@ -266,6 +282,9 @@
 			"Logged out": [
 				"Αποσυνδεδεμένος"
 			],
+			"Open source VPN": [
+				"VPN ανοιχτού κώδικα"
+			],
 			"Open the Extensions menu": [
 				"Άνοιγμα του μενού \"Επεκτάσεις\""
 			],
@@ -313,6 +332,9 @@
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Για να ξεκινήσετε, θα πρέπει να ενεργοποιήσετε τα δικαιώματα VPN στο πρόγραμμα περιήγησής σας."
+			],
+			"Upgrade": [
+				"Αναβάθμιση"
 			],
 			"Usage data helps us overcome VPN blocks and improve app performance.": [
 				"Τα δεδομένα χρήσης μας βοηθούν να ξεπεράσουμε τα μπλοκαρίσματα VPN και να βελτιώσουμε την απόδοση των εφαρμογών."

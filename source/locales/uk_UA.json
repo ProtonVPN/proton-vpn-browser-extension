@@ -120,11 +120,20 @@
 				"${countries} країн",
 				"${countries} країн"
 			],
+			"${rounderServersCount} secure server": [
+				"${rounderServersCount} захищений сервер",
+				"${rounderServersCount} захищені сервери",
+				"${rounderServersCount} захищених серверів",
+				"${rounderServersCount} захищених серверів"
+			],
 			"${servers}+ secure server": [
 				"${servers}+ захищений сервер",
 				"${servers}+ захищені сервери",
 				"${servers}+ захищених серверів",
 				"${servers}+ захищених серверів"
+			],
+			"Access over ${servers} in ${countries}": [
+				"Доступ до понад ${servers} у ${countries}"
 			],
 			"Bypass online censorship with advanced security and privacy features": [
 				"Обходьте цензуру онлайн завдяки розширеним функціям безпеки та приватності"
@@ -179,6 +188,9 @@
 			]
 		},
 		"Info": {
+			"Access over 5000 secure servers in 63 countries": [
+				"Доступ до понад 5000 серверів у 63 країнах"
+			],
 			"Access Proton VPN via this icon": [
 				"Доступ до Proton VPN через цю піктограму"
 			],
@@ -191,6 +203,9 @@
 			"and more": [
 				"та інше"
 			],
+			"Audited by independent security experts": [
+				"Перевірено незалежними експертами з безпеки"
+			],
 			"Auto-selected from": [
 				"Автоматично вибрано з"
 			],
@@ -202,6 +217,9 @@
 			],
 			"Browse through the Support Center and find answers to frequently asked questions.": [
 				"Перегляньте матеріали довідкового центру та знайдіть відповіді на часті запитання."
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"Обходьте цензуру за допомогою розширених функцій безпеки та приватності"
 			],
 			"Clear search": [
 				"Очистити пошук"
@@ -272,6 +290,9 @@
 			"Logged out": [
 				"Ви вийшли"
 			],
+			"Open source VPN": [
+				"VPN із відкритим програмним кодом"
+			],
 			"Open the Extensions menu": [
 				"Відкрити меню розширень"
 			],
@@ -319,6 +340,9 @@
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Для початку роботи потрібно надати дозволи для VPN у вашому браузері."
+			],
+			"Upgrade": [
+				"Покращити"
 			],
 			"Usage data helps us overcome VPN blocks and improve app performance.": [
 				"Дані про використання допомагають нам обходити блокування VPN і вдосконалювати швидкодію програми."

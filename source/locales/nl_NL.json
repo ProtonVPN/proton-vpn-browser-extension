@@ -118,9 +118,16 @@
 				"${countries} land",
 				"${countries} landen"
 			],
+			"${rounderServersCount} secure server": [
+				"${rounderServersCount} beveiligde server",
+				"${rounderServersCount} beveiligde servers"
+			],
 			"${servers}+ secure server": [
 				"${servers}+ veilige server",
 				"${servers}+ veilige servers"
+			],
+			"Access over ${servers} in ${countries}": [
+				"Toegang tot meer dan ${servers} in ${countries}"
 			],
 			"Bypass online censorship with advanced security and privacy features": [
 				"Omzeil online censuur met geavanceerde beveiligings- en privacyfuncties"
@@ -155,6 +162,9 @@
 			"Something went wrong. If the problem persists, please try to re-install the extension": [
 				"Er is iets fout gegaan. Als het probleem aanhoudt, probeer de extensie opnieuw te installeren"
 			],
+			"Unable to find appropriate server, try to logout and login again if it persists": [
+				"Kan de juiste server niet vinden, probeer opnieuw uit- en in te loggen als het zich voor blijft doen."
+			],
 			"Unable to load the list": [
 				"Kan de lijst niet laden"
 			],
@@ -172,6 +182,9 @@
 			]
 		},
 		"Info": {
+			"Access over 5000 secure servers in 63 countries": [
+				"Toegang tot meer dan 5000 servers in 63 landen"
+			],
 			"Access Proton VPN via this icon": [
 				"Toegang tot Proton VPN via dit icoon"
 			],
@@ -184,6 +197,9 @@
 			"and more": [
 				"en meer"
 			],
+			"Audited by independent security experts": [
+				"Gecontroleerd door onafhankelijke beveiligingsexperts"
+			],
 			"Auto-selected from": [
 				"Automatisch geselecteerd uit"
 			],
@@ -195,6 +211,9 @@
 			],
 			"Browse through the Support Center and find answers to frequently asked questions.": [
 				"Browse door ons helpcentrum en vind antwoorden op vaak gestelde vragen."
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"Omzeil censuur met geavanceerde beveiligings- en privacyfuncties"
 			],
 			"Clear search": [
 				"Zoekveld leegmaken"
@@ -219,6 +238,9 @@
 			],
 			"Contact our Customer Support agents to help you out with Proton VPN.": [
 				"Neem contact op met onze klantenondersteuningsagenten om u te helpen met Proton VPN."
+			],
+			"Crash": [
+				"Crash"
 			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Crashrapporten helpen ons om bugs op te lossen, firewalls te detecteren en VPN-blokkeringen te vermijden."
@@ -260,6 +282,9 @@
 			"Logged out": [
 				"Uitgelogd"
 			],
+			"Open source VPN": [
+				"Open source VPN"
+			],
 			"Open the Extensions menu": [
 				"Open het Extensie-menu"
 			],
@@ -281,6 +306,9 @@
 			"Select websites to exclude from your VPN connection.": [
 				"Selecteer websites om uit te sluiten van uw VPN-verbindingen."
 			],
+			"Share anonymous usage crash reports": [
+				"Deel anonieme crashrapporten"
+			],
 			"Share anonymous usage statistics": [
 				"Anonieme gebruiksstatistieken delen"
 			],
@@ -299,8 +327,14 @@
 			"Then just click the Proton VPN icon to sign in.": [
 				"Klik daarna op het Proton VPN-icoon om in te loggen."
 			],
+			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
+				"Deze statistieken bevatten uw IP-adres niet, en kunnen niet gebruikt worden om u te identificeren. We zullen deze gegevens nooit delen met derden"
+			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Om te starten, moet u VPN-machtigingen inschakelen in uw browser."
+			],
+			"Upgrade": [
+				"Upgraden"
 			],
 			"Usage data helps us overcome VPN blocks and improve app performance.": [
 				"Gebruiksgegevens helpen ons om VPN-blokkering te omzeilen en de prestaties van de app te verbeteren."

@@ -145,7 +145,7 @@
 				"No se han encontrado resultados"
 			],
 			"Not able to control the browser network settings, possibly a permission is missing": [
-				"No se puede controlar la configuración de red del navegador, posiblemente falta un permiso"
+				"No se puede controlar la configuración de red del navegador. Posiblemente falta un permiso"
 			],
 			"Please check your connectivity": [
 				"Verifica tu conexión"
@@ -261,7 +261,7 @@
 				"Servidor gratuito más rápido"
 			],
 			"Follow these simple steps to get the best experience using Proton VPN": [
-				"Sigue estos pasos para obtener la mejor experiencia utilizando Proton VPN"
+				"Sigue estos pasos para obtener la mejor experiencia usando Proton VPN."
 			],
 			"For example, news.example.com is a subdomain of example.com.": [
 				"Por ejemplo, noticias.ejemplo.com es un subdominio de ejemplo.com."
@@ -281,6 +281,9 @@
 			],
 			"Logged out": [
 				"Desconectado"
+			],
+			"Open source VPN": [
+				"VPN de código abierto"
 			],
 			"Open the Extensions menu": [
 				"Abre el menú de extensiones"

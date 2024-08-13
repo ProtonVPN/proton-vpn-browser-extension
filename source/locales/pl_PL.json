@@ -120,11 +120,20 @@
 				"${countries} krajach",
 				"${countries} krajach"
 			],
+			"${rounderServersCount} secure server": [
+				"${rounderServersCount} bezpieczny serwer",
+				"${rounderServersCount} bezpieczne serwery",
+				"${rounderServersCount} bezpiecznych serwerów",
+				"${rounderServersCount} bezpiecznych serwerów"
+			],
 			"${servers}+ secure server": [
 				"ponad ${servers} bezpieczny serwer",
 				"ponad ${servers} bezpieczne serwery",
 				"ponad ${servers} bezpiecznych serwerów",
 				"ponad ${servers} bezpiecznych serwerów"
+			],
+			"Access over ${servers} in ${countries}": [
+				"Dostęp przez ${servers} w ${countries}"
 			],
 			"Bypass online censorship with advanced security and privacy features": [
 				"Omiń cenzurę online za pomocą zaawansowanych funkcji bezpieczeństwa i prywatności"
@@ -280,6 +289,9 @@
 			],
 			"Logged out": [
 				"Wylogowano"
+			],
+			"Open source VPN": [
+				"Otwarty kod źródłowy aplikacji VPN"
 			],
 			"Open the Extensions menu": [
 				"Otwórz menu rozszerzenia"

@@ -127,7 +127,7 @@
 				"${servers} servidores seguros"
 			],
 			"Access over ${servers} in ${countries}": [
-				"Acesso acima de ${servers} em ${countries}"
+				"Acesse mais de ${servers} em ${countries}"
 			],
 			"Bypass online censorship with advanced security and privacy features": [
 				"Ignore a censura online com recursos avançados de segurança e privacidade"
@@ -162,6 +162,9 @@
 			"Something went wrong. If the problem persists, please try to re-install the extension": [
 				"Ocorreu um erro. Se o problema persistir tente reinstalar a extensão"
 			],
+			"Unable to find appropriate server, try to logout and login again if it persists": [
+				"Não é possível encontrar o servidor apropriado. Tente fazer desconectar e iniciar a sessão novamente se o problema persistir."
+			],
 			"Unable to load the list": [
 				"Não foi possível carregar a lista"
 			],
@@ -195,7 +198,7 @@
 				"e mais"
 			],
 			"Audited by independent security experts": [
-				"Auditoria por espertos de segurança independentes"
+				"Auditado por especialistas independentes em segurança"
 			],
 			"Auto-selected from": [
 				"Seleção automática de"
@@ -279,6 +282,9 @@
 			"Logged out": [
 				"Sessão encerrada"
 			],
+			"Open source VPN": [
+				"Uma VPN de código aberto"
+			],
 			"Open the Extensions menu": [
 				"Abrir o menu de extensões"
 			],
@@ -291,14 +297,23 @@
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Pressione <b>Avançar</b> e clique em <b>Permitir</b> no pop-up do seu navegador."
 			],
+			"Proton VPN": [
+				"Proton VPN"
+			],
 			"Proton VPN Browser Extension": [
 				"Extensão do Proton VPN para navegador"
 			],
 			"Search": [
 				"Pesquisar"
 			],
+			"Secure Core": [
+				"Secure Core"
+			],
 			"Select websites to exclude from your VPN connection.": [
 				"Selecione os sites para excluir da sua conexão de VPN."
+			],
+			"Share anonymous usage crash reports": [
+				"Compartilhe relatórios de falhas de uso anônimos"
 			],
 			"Share anonymous usage statistics": [
 				"Compartilhar estatísticas anônimas de uso"
@@ -317,6 +332,9 @@
 			],
 			"Then just click the Proton VPN icon to sign in.": [
 				"Depois basta clicar no ícone Proton VPN para iniciar a sessão."
+			],
+			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
+				"Essas estatísticas não contêm seu endereço IP e não podem ser usadas para identificar você. Nunca as compartilharemos com terceiros"
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Para começar, terá de ativar as permissões VPN no seu navegador."
@@ -367,6 +385,9 @@
 			"Entry country": [
 				"País de entrada",
 				"Países de entrada"
+			],
+			"Free": [
+				"Free"
 			],
 			"Free servers": [
 				"Servidores gratuitos"

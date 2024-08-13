@@ -120,11 +120,20 @@
 				"${countries} стран",
 				"${countries} стран"
 			],
+			"${rounderServersCount} secure server": [
+				"${rounderServersCount} защищённый сервер",
+				"${rounderServersCount} защищённых серверов",
+				"${rounderServersCount} защищённый сервер",
+				"${rounderServersCount} защищённых сервера"
+			],
 			"${servers}+ secure server": [
 				"${servers}+ защищённый сервер",
 				"${servers}+ защищённых сервера",
 				"${servers}+ защищённых серверов",
 				"${servers}+ защищённых серверов"
+			],
+			"Access over ${servers} in ${countries}": [
+				"Доступ через ${servers} к ${countries}"
 			],
 			"Bypass online censorship with advanced security and privacy features": [
 				"Обходите интернет-цензуру с помощью продвинутых функций безопасности и конфиденциальности"
@@ -179,6 +188,9 @@
 			]
 		},
 		"Info": {
+			"Access over 5000 secure servers in 63 countries": [
+				"Доступ к более чем 5000 защищенным серверам в 63 странах"
+			],
 			"Access Proton VPN via this icon": [
 				"Подключитесь к Proton VPN через эту иконку"
 			],
@@ -191,6 +203,9 @@
 			"and more": [
 				"и др."
 			],
+			"Audited by independent security experts": [
+				"Проверена независимыми специалистами по безопасности"
+			],
 			"Auto-selected from": [
 				"Автоматически выбрано из"
 			],
@@ -202,6 +217,9 @@
 			],
 			"Browse through the Support Center and find answers to frequently asked questions.": [
 				"Перейдите в Центр поддержки, чтобы найти ответы на часто задаваемые вопросы."
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"Обходите цензуру с помощью передовых функций безопасности и приватности"
 			],
 			"Clear search": [
 				"Очистить поиск"
@@ -272,6 +290,9 @@
 			"Logged out": [
 				"Выход выполнен"
 			],
+			"Open source VPN": [
+				"VPN с открытым исходным кодом"
+			],
 			"Open the Extensions menu": [
 				"Откройте меню Расширения"
 			],
@@ -319,6 +340,9 @@
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Для начала работы вам необходимо включить разрешения VPN в браузере."
+			],
+			"Upgrade": [
+				"Улучшить"
 			],
 			"Usage data helps us overcome VPN blocks and improve app performance.": [
 				"Данные об использовании помогают нам преодолевать блокировки VPN и повышать производительность приложения."

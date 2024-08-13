@@ -118,9 +118,16 @@
 				"${countries} maasta",
 				"${countries} maasta"
 			],
+			"${rounderServersCount} secure server": [
+				"${rounderServersCount} turvallisen palvelimen",
+				"${rounderServersCount} turvallista palvelinta"
+			],
 			"${servers}+ secure server": [
 				"${servers}+ palvelin",
 				"${servers}+ palvelinta"
+			],
+			"Access over ${servers} in ${countries}": [
+				"Käytä yli ${servers} ${countries}"
 			],
 			"Bypass online censorship with advanced security and privacy features": [
 				"Ohita verkkosensuuri kehittyneillä tietoturvaa ja yksityisyyttä tehostavilla ominaisuuksilla"
@@ -175,6 +182,9 @@
 			]
 		},
 		"Info": {
+			"Access over 5000 secure servers in 63 countries": [
+				"Pääsy yli 5000 turvalliselle palvelimelle 63 maassa"
+			],
 			"Access Proton VPN via this icon": [
 				"Käytä Proton VPN:ää tästä kuvakkeesta"
 			],
@@ -187,6 +197,9 @@
 			"and more": [
 				"ja monia muita"
 			],
+			"Audited by independent security experts": [
+				"Riippumattomien tietoturva-asiantuntijoiden tarkastama"
+			],
 			"Auto-selected from": [
 				"Valittu automaattisesti seuraavista"
 			],
@@ -198,6 +211,9 @@
 			],
 			"Browse through the Support Center and find answers to frequently asked questions.": [
 				"Selaa Tukikeskusta ja löydä vastauksia yleisimpiin kysymyksiin."
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"Ohita sensuuri kehittyneillä tietoturva- ja yksityisyysominaisuuksilla"
 			],
 			"Clear search": [
 				"Tyhjennä haku"
@@ -266,6 +282,9 @@
 			"Logged out": [
 				"Kirjattu ulos"
 			],
+			"Open source VPN": [
+				"Avoimen lähdekoodin VPN"
+			],
 			"Open the Extensions menu": [
 				"Avaa laajennusvalikko"
 			],
@@ -313,6 +332,9 @@
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Aloita myöntämällä VPN -laajennuksen tarvitsemat käyttöoikeudet selaimestasi."
+			],
+			"Upgrade": [
+				"Päivitä"
 			],
 			"Usage data helps us overcome VPN blocks and improve app performance.": [
 				"Käyttötilastot auttavat meitä kiertämään VPN-estoja ja parantamaan sovelluksen suorituskykyä."

@@ -1,7 +1,6 @@
 import {Credentials} from './Credentials';
 import {
 	ApiError,
-	fetchJson,
 	isForbiddenError,
 	isInvalidTokenError,
 	isRetriableError,
@@ -27,6 +26,7 @@ import {tokenDuration} from '../../config';
 import {isIdle} from '../../tools/idle';
 import {initAuthInterceptor} from '../../vpn/initAuthInterceptor';
 import {getCredentialsData} from './getCredentialsData';
+import {fetchWithUserInfo} from '../fetchWithUserInfo';
 
 backgroundOnly('credentials');
 
@@ -72,7 +72,7 @@ const fetchConnectionCredentialsRequest = async (sessionUid: string | undefined,
 			await delay(Math.pow(2, credentialsFetchingRetries - 2) * (500 + 1500 * Math.random()));
 		}
 
-		const credentials = await fetchJson<Credentials | undefined>('vpn/v1/browser/token?Duration=' + tokenDuration, {
+		const credentials = await fetchWithUserInfo<Credentials | undefined>('vpn/v1/browser/token?Duration=' + tokenDuration, {
 			headers: {
 				'x-pm-try-number': `${credentialsFetchingRetries}`,
 			},

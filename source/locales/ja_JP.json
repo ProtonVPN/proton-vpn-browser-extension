@@ -117,8 +117,14 @@
 			"${countries} country": [
 				"${countries} か国"
 			],
+			"${rounderServersCount} secure server": [
+				"${rounderServersCount} 台の安全なサーバー"
+			],
 			"${servers}+ secure server": [
 				"${servers} 台以上の安全なサーバー"
+			],
+			"Access over ${servers} in ${countries}": [
+				"${countries} の ${servers} 経由でアクセス"
 			],
 			"Bypass online censorship with advanced security and privacy features": [
 				"高度なセキュリティとプライバシー機能で、オンライン検閲を回避します。"
@@ -182,6 +188,9 @@
 			"and more": [
 				"など"
 			],
+			"Audited by independent security experts": [
+				"独立したセキュリティ専門家による監査"
+			],
 			"Auto-selected from": [
 				"から自動選択"
 			],
@@ -193,6 +202,9 @@
 			],
 			"Browse through the Support Center and find answers to frequently asked questions.": [
 				"サポートセンターで、よくある質問とその回答を確認できます。"
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"高度なセキュリティとプライバシー機能で検閲を回避"
 			],
 			"Clear search": [
 				"検索をクリア"
@@ -257,6 +269,9 @@
 			"Logged out": [
 				"ログアウトしました"
 			],
+			"Open source VPN": [
+				"オープンソースVPN"
+			],
 			"Open the Extensions menu": [
 				"拡張機能メニューを開く"
 			],
@@ -298,6 +313,9 @@
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"まず、ブラウザの VPN 権限を有効にする必要があります。"
+			],
+			"Upgrade": [
+				"アップグレード"
 			],
 			"Usage data helps us overcome VPN blocks and improve app performance.": [
 				"使用状況データは VPN 検閲に打ち勝ち、アプリのパフォーマンスを改善するために使用されます。"

@@ -94,12 +94,16 @@ button {
 	color: inherit;
 }
 
+.spinner {
+	padding: 40px;
+	text-align: center;
+}
+
 #spinner {
 	padding: ($body-height / 2 - 40px) 50px;
 	min-width: $body-width;
 	min-height: $body-height;
 	width: 100%;
-	text-align: center;
 }
 
 .feature-row {

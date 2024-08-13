@@ -118,9 +118,16 @@
 				"${countries} Land",
 				"${countries} Länder"
 			],
+			"${rounderServersCount} secure server": [
+				"${rounderServersCount} sicherer Server",
+				"${rounderServersCount} sichere Server"
+			],
 			"${servers}+ secure server": [
 				"${servers} sicherer Server",
 				"${servers}+ sichere Server"
+			],
+			"Access over ${servers} in ${countries}": [
+				"Greife auf über ${servers} in ${countries} zu"
 			],
 			"Bypass online censorship with advanced security and privacy features": [
 				"Umgehe Online-Zensur mit fortgeschrittenen Sicherheits- und Privatsphäre-Funktionen."
@@ -175,6 +182,9 @@
 			]
 		},
 		"Info": {
+			"Access over 5000 secure servers in 63 countries": [
+				"Zugriff auf über 5.000 sichere Server in 63 Ländern"
+			],
 			"Access Proton VPN via this icon": [
 				"Greife über dieses Symbol auf Proton VPN zu"
 			],
@@ -187,6 +197,9 @@
 			"and more": [
 				"und mehr"
 			],
+			"Audited by independent security experts": [
+				"Geprüft durch unabhängige Sicherheitsexperten"
+			],
 			"Auto-selected from": [
 				"Automatisch ausgewählt aus"
 			],
@@ -198,6 +211,9 @@
 			],
 			"Browse through the Support Center and find answers to frequently asked questions.": [
 				"Sieh dich im Support-Center um und finde Antworten auf häufig gestellte Fragen."
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"Umgehe die Zensur mit erweiterten Sicherheits- und Datenschutzfunktionen"
 			],
 			"Clear search": [
 				"Suche löschen"
@@ -266,6 +282,9 @@
 			"Logged out": [
 				"Abgemeldet"
 			],
+			"Open source VPN": [
+				"Open Source-VPN"
+			],
 			"Open the Extensions menu": [
 				"Öffne das Erweiterungen-Menü"
 			],
@@ -286,6 +305,9 @@
 			],
 			"Select websites to exclude from your VPN connection.": [
 				"Wähle die Websites aus, die von der VPN-Verbindung ausgeschlossen werden sollen."
+			],
+			"Share anonymous usage crash reports": [
+				"Anonyme Absturzberichte teilen"
 			],
 			"Share anonymous usage statistics": [
 				"Anonyme Nutzungsstatistiken teilen"
@@ -310,6 +332,9 @@
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Um zu beginnen, musst du VPN-Berechtigungen in deinem Browser aktivieren."
+			],
+			"Upgrade": [
+				"Upgrade"
 			],
 			"Usage data helps us overcome VPN blocks and improve app performance.": [
 				"Nutzungsdaten helfen uns, VPN-Sperren zu überwinden und die Leistung der App zu verbessern."

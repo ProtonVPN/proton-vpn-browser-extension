@@ -120,11 +120,20 @@
 				"${countries} krajín",
 				"${countries} krajín"
 			],
+			"${rounderServersCount} secure server": [
+				"${rounderServersCount} bezpečný server",
+				"${rounderServersCount} bezpečné servery",
+				"${rounderServersCount} bezpečných serverov",
+				"${rounderServersCount} bezpečných serverov"
+			],
 			"${servers}+ secure server": [
 				"${servers}+ zabezpečený server",
 				"${servers}+ zabezpečené servery",
 				"${servers}+ zabezpečených serverov",
 				"${servers}+ zabezpečených serverov"
+			],
+			"Access over ${servers} in ${countries}": [
+				"Prístup cez ${servers} v ${countries}"
 			],
 			"Bypass online censorship with advanced security and privacy features": [
 				"Obchádzanie cenzúry online pomocou pokročilých funkcií zabezpečenia a ochrany súkromia"
@@ -179,6 +188,9 @@
 			]
 		},
 		"Info": {
+			"Access over 5000 secure servers in 63 countries": [
+				"Prístup k viac ako 5000 zabezpečeným serverom v 63 krajinách"
+			],
 			"Access Proton VPN via this icon": [
 				"Pristupujte k Proton VPN prostredníctvom tejto ikony"
 			],
@@ -191,6 +203,9 @@
 			"and more": [
 				"a viac"
 			],
+			"Audited by independent security experts": [
+				"Auditované nezávislými bezpečnostnými expertmi"
+			],
 			"Auto-selected from": [
 				"Automatický výber z"
 			],
@@ -202,6 +217,9 @@
 			],
 			"Browse through the Support Center and find answers to frequently asked questions.": [
 				"Navštívte Centrum podpory a nájdite odpovede na často kladené otázky."
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"Obchádzajte cenzúru pomocou pokročilých funkcií zabezpečenia a ochrany súkromia"
 			],
 			"Clear search": [
 				"Vyčistiť vyhľadávanie"
@@ -272,6 +290,9 @@
 			"Logged out": [
 				"Odhlásené"
 			],
+			"Open source VPN": [
+				"Open source VPN"
+			],
 			"Open the Extensions menu": [
 				"Otvorte menu rozšírenia"
 			],
@@ -319,6 +340,9 @@
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Ak chcete začať, musíte v prehliadači povoliť oprávnenia VPN."
+			],
+			"Upgrade": [
+				"Navýšiť predplatné"
 			],
 			"Usage data helps us overcome VPN blocks and improve app performance.": [
 				"Údaje o používaní nám pomáhajú obchádzať blokovanie VPN a vylepšovať výkon aplikácie."

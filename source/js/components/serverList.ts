@@ -44,7 +44,13 @@ const sortByScore = (logicals: Logical[]) => {
 	return sortedLogicals;
 };
 
-export const serverList = (userTier: number, logicals: Logical[], upperTitle: string, secureCore: boolean) => sortByScore(logicals).map(logical => {
+export const serverList = (
+	userTier: number,
+	logicals: Logical[],
+	upperTitle: string,
+	secureCore: boolean,
+	skipSorting: boolean = false,
+) => (skipSorting ? logicals : sortByScore(logicals)).map(logical => {
 	const up = isLogicalUp(logical);
 	const serverName = logical.Name;
 	const connectionsAttributes: Record<string, string | number> = secureCore

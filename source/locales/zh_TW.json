@@ -117,8 +117,14 @@
 			"${countries} country": [
 				"${countries} 個國家"
 			],
+			"${rounderServersCount} secure server": [
+				"${rounderServersCount} 臺安全防護伺服器"
+			],
 			"${servers}+ secure server": [
 				"${servers}+ 臺安全伺服器"
+			],
+			"Access over ${servers} in ${countries}": [
+				"存取超過 ${servers}，分布於 ${countries}"
 			],
 			"Bypass online censorship with advanced security and privacy features": [
 				"以進階的安全與隱私功能繞過網路審查"
@@ -304,6 +310,9 @@
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"您需要在您的瀏覽器中啟用 VPN 權限，以便開始使用。"
+			],
+			"Upgrade": [
+				"升級"
 			],
 			"Usage data helps us overcome VPN blocks and improve app performance.": [
 				"使用資料有助於我們克服 VPN 封鎖器和改善應用程式效能。"

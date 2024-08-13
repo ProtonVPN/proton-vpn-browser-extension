@@ -15,18 +15,18 @@ import {Counts} from '../vpn/Counts';
 
 let serverCount: number | undefined = undefined;
 let serverCountLastCheck = 0;
-const serverTruncateFactor = 50;
+const serverTruncateFactor = 100;
 
 const truncateBy = (number: number, factor: number): number => {
 	const truncatedCount = Math.floor(number / factor) * factor;
 
 	return truncatedCount === serverCount
-		? truncatedCount - 50
+		? truncatedCount - serverTruncateFactor
 		: truncatedCount;
 };
 
 const refreshIncentiveParagraph = (area?: HTMLElement) => {
-	serverCount || (serverCount = 1936);
+	serverCount || (serverCount = 6553);
 
 	const truncatedCount = truncateBy(serverCount, serverTruncateFactor);
 	const count = getNumberFormatter().format(truncatedCount);

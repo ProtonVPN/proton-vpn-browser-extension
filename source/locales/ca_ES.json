@@ -75,7 +75,7 @@
 				"Tanca la sessió"
 			],
 			"Subscribe to connect more devices": [
-				"Subscriu-te per connectar més dispositius"
+				"Subscriviu-vos per a connectar més dispositius"
 			],
 			"Subscribe to enable Browser Extension": [
 				"Subscriu-te per activar l'Extensió del Navegador"
@@ -186,13 +186,13 @@
 				"Accediu a més de 5.000 servidors en 63 països"
 			],
 			"Access Proton VPN via this icon": [
-				"Accedeix a Proton VPN via aquesta icona"
+				"Accedeix a Proton VPN mitjançant aquesta icona"
 			],
 			"Allow VPN permissions": [
 				"Permet permisos VPN"
 			],
 			"Also exclude subdomains of this website": [
-				"Exclou també subdominis d'aquest lloc web"
+				"Exclou també els subdominis d'aquest lloc web"
 			],
 			"and more": [
 				"i més"
@@ -282,6 +282,9 @@
 			"Logged out": [
 				"Desconnectat"
 			],
+			"Open source VPN": [
+				"VPN de codi obert"
+			],
 			"Open the Extensions menu": [
 				"Obre el menú d'Extensions"
 			],
@@ -319,10 +322,10 @@
 				"Telemetria"
 			],
 			"Thank you for installing Proton VPN": [
-				"Gràcies per instal·lar Proton VPN"
+				"Gràcies per instal·lar el Proton VPN"
 			],
 			"Then just click the Proton VPN icon to sign in.": [
-				"Després premeu la icona de Proton VPN per iniciar sessió."
+				"Després premeu la icona del Proton VPN per a iniciar sessió."
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"Aquestes estadístiques no contenen la vostra adreça IP i no es poden utilitzar per identificar-vos. Mai els compartirem amb tercers"

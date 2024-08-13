@@ -4,6 +4,7 @@ import {readSession} from './account/readSession';
 import {getAuthHeaders} from './account/getAuthHeaders';
 import {Session} from './account/Session';
 import {refreshToken} from './account/refreshToken';
+import {isHostExcludedByIpMask} from './tools/ip';
 import {c} from './tools/translate';
 import {milliSeconds} from './tools/milliSeconds';
 import {broadcastMessage, ExtensionUpdate} from './tools/broadcastMessage';
@@ -232,6 +233,10 @@ export const isExcludedFromProxy = (
 			return (new RegExp(
 				exclusion.replace('.', '\\.') + '$'
 			)).test(callHostname);
+		}
+
+		if (isHostExcludedByIpMask(callHostname, exclusion)) {
+			return true;
 		}
 
 		if (/[*\\/]/.test(exclusion)) {

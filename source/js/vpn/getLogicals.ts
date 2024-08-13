@@ -61,7 +61,7 @@ const fetchLogicals = async (cache?: LogicalServersCache) => {
 	try {
 		// Use last raw string obtained from Last-Modified header if available
 		const ifModifiedSince = cache?.lastModified;
-		const {logicals, lastModified} = await fetchWithUserInfo<{
+		const { logicals, lastModified } = await fetchWithUserInfo<{
 			logicals: Logical[], // From LogicalServers in the JSON response
 			lastModified: string | null, // From Last-Modified response header
 		}, { LogicalServers: Logical[] }>(
@@ -122,22 +122,26 @@ const getLogicals = async () => {
 
 const sortLogicals = (logicals: Logical[]) => {
 	logicals.sort((a, b) => {
-		if (a.ExitCountry === b.ExitCountry) {
-			const [aPrefix, aSuffix] = a.Name.split('#', 2);
-			const [bPrefix, bSuffix] = b.Name.split('#', 2);
-
-			if (aPrefix === bPrefix) {
-				if (/^\d+$/.test(aSuffix || '0') && /^\d+$/.test(bSuffix || '0')) {
-					return comp(parseInt(aSuffix || '0', 10), parseInt(bSuffix || '0', 10));
-				}
-
-				return comp(aSuffix, bSuffix);
-			}
-
-			return comp(aPrefix, bPrefix);
+		if (a.SearchScore !== b.SearchScore) {
+			return comp(b.SearchScore, a.SearchScore);
 		}
 
-		return comp(a.ExitCountry, b.ExitCountry);
+		if (a.ExitCountry !== b.ExitCountry) {
+			return comp(a.ExitCountry, b.ExitCountry);
+		}
+
+		const [aPrefix, aSuffix] = a.Name.split('#', 2);
+		const [bPrefix, bSuffix] = b.Name.split('#', 2);
+
+		if (aPrefix === bPrefix) {
+			if (/^\d+$/.test(aSuffix || '0') && /^\d+$/.test(bSuffix || '0')) {
+				return comp(parseInt(aSuffix || '0', 10), parseInt(bSuffix || '0', 10));
+			}
+
+			return comp(aSuffix, bSuffix);
+		}
+
+		return comp(aPrefix, bPrefix);
 	});
 };
 

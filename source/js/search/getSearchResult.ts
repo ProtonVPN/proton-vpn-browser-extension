@@ -5,7 +5,9 @@ import {cityList} from '../components/cityList';
 import {formatGroup, torIcon} from '../components/serverGroup';
 import {Logical} from '../vpn/Logical';
 import {Feature} from '../vpn/Feature';
+import {comp} from '../tools/comp';
 import {getWords} from '../tools/getWords';
+import {getSearchWordsScore} from '../tools/getSearchScore';
 import {each} from '../tools/each';
 import {simplifiedUi} from '../config';
 
@@ -62,13 +64,24 @@ const getLogicalListSearch = (
 		(logical.Features & Feature.SECURE_CORE) === expectedFeature &&
 		logical.Name.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
 	));
+
 	const count = logicals.length;
 
 	if (!count) {
 		return '';
 	}
 
-	return formatGroup(userTier, logicals, secureCore, {}, 'logicals-search');
+	if (searchText) {
+		const searchWords = getWords(searchText);
+		logicals.sort((a, b) => comp(
+			getSearchWordsScore(searchWords, [b.Name]),
+			getSearchWordsScore(searchWords, [a.Name]),
+		));
+
+		return formatGroup(userTier, logicals, secureCore, {}, true, 'logicals-search');
+	}
+
+	return formatGroup(userTier, logicals, secureCore, {}, false, 'logicals-search');
 };
 
 export const getSearchResult = (

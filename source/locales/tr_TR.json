@@ -118,9 +118,16 @@
 				"${countries} ülke",
 				"${countries} ülke"
 			],
+			"${rounderServersCount} secure server": [
+				"${rounderServersCount} güvenli sunucu",
+				"${rounderServersCount} güvenli sunucu"
+			],
 			"${servers}+ secure server": [
 				"${servers}+ güvenli sunucu",
 				"${servers}+ güvenli sunucu"
+			],
+			"Access over ${servers} in ${countries}": [
+				"Plus tarifesi ile ${countries} bulunan ${servers}ya erişin"
 			],
 			"Bypass online censorship with advanced security and privacy features": [
 				"Gelişmiş güvenlik ve gizlilik özellikleriyle çevrim içi engelleri aşın"
@@ -175,6 +182,9 @@
 			]
 		},
 		"Info": {
+			"Access over 5000 secure servers in 63 countries": [
+				"63 ülkede bulunan 5.000 üzerindeki sunucuya erişin"
+			],
 			"Access Proton VPN via this icon": [
 				"Proton VPN için bu simgeyi kullanın"
 			],
@@ -187,6 +197,9 @@
 			"and more": [
 				"ve daha fazlası"
 			],
+			"Audited by independent security experts": [
+				"Bağımsız güvenlik uzmanları tarafından denetlenmiştir"
+			],
 			"Auto-selected from": [
 				"Şuradan otomatik seçildi"
 			],
@@ -198,6 +211,9 @@
 			],
 			"Browse through the Support Center and find answers to frequently asked questions.": [
 				"Destek merkezine giderek sık sorulan soruların yanıtlarına bakın."
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"Gelişmiş güvenlik ve gizlilik özellikleriyle engelleri aşın"
 			],
 			"Clear search": [
 				"Aramayı temizle"
@@ -266,6 +282,9 @@
 			"Logged out": [
 				"Oturum kapatıldı"
 			],
+			"Open source VPN": [
+				"Açık kaynak kodlu VPN"
+			],
 			"Open the Extensions menu": [
 				"Eklenti menüsünü açın"
 			],
@@ -313,6 +332,9 @@
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Başlamak için tarayıcınızda VPN izinlerini vermeniz gerekir."
+			],
+			"Upgrade": [
+				"Yükselt"
 			],
 			"Usage data helps us overcome VPN blocks and improve app performance.": [
 				"Kullanım verileri VPN engellemelerini aşmamıza ve uygulamanın başarımını artırmamıza yardımcı olur."

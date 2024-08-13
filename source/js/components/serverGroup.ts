@@ -19,6 +19,7 @@ export const formatGroup = (
 	logicals: Logical[],
 	secureCore: boolean,
 	extraAttributes: Record<string, string | number> = {},
+	skipSorting = false,
 	className = '',
 ): string => {
 	const count = logicals.length;
@@ -40,7 +41,7 @@ export const formatGroup = (
 			${simplifiedUi && (userTier <= 0) ? upgradeAttributes : connectionAttributes(extraAttributes)}
 		>
 			<div class="server-type group-section">${title}</div>
-			<div class="server-items">${serverList(userTier, logicals, title, secureCore)}</div>
+			<div class="server-items">${serverList(userTier, logicals, title, secureCore, skipSorting)}</div>
 		</div>
 	`;
 };
