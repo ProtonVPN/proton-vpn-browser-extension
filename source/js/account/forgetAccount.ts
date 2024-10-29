@@ -14,6 +14,6 @@ export const forgetAccount = (): void => {
 	triggerPromise(sendMessageToBackground(BackgroundAction.FORGET_ERROR));
 
 	setTimeout(() => {
-		window.close();
+		window?.close();
 	}, 1);
 };

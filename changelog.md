@@ -1,3 +1,8 @@
+# 1.2.3
+
+- Improve crash reports
+- [Fix error message handling](https://github.com/ProtonVPN/proton-vpn-browser-extension/issues/2)
+
 # 1.2.2
 
 - Shorten title to "Proton VPN: Fast & Secure"

@@ -51,7 +51,7 @@
 				"Següent"
 			],
 			"Prevent WebRTC leak": [
-				"Evita fuita de WebRTC"
+				"Evita fuites de WebRTC"
 			],
 			"Quick connect": [
 				"Connexió ràpida"
@@ -78,7 +78,7 @@
 				"Subscriviu-vos per a connectar més dispositius"
 			],
 			"Subscribe to enable Browser Extension": [
-				"Subscriu-te per activar l'Extensió del Navegador"
+				"Subscriviu-vos per a activar l'extensió del navegador"
 			],
 			"Switch account": [
 				"Canvia de compte"
@@ -127,13 +127,13 @@
 				"Més de ${servers} servidors segurs"
 			],
 			"Access over ${servers} in ${countries}": [
-				"Accés més de ${servers} a ${countries}"
+				"Accés a més de ${servers} a ${countries}"
 			],
 			"Bypass online censorship with advanced security and privacy features": [
 				"Eviteu la censura en línia amb funcions avançades de seguretat i privadesa"
 			],
 			"Connect from your browser with ${planName}": [
-				"Connecteu des del vostre navegador amb ${planName}"
+				"Connecteu-vos des del vostre navegador amb ${planName}"
 			],
 			"Network error.": [
 				"Error de xarxa."
@@ -289,13 +289,13 @@
 				"Obre el menú d'Extensions"
 			],
 			"Open the Proton VPN browser extension to continue": [
-				"Obre l'extensió del navegador de Proton VPN per continuar"
+				"Obriu l'extensió del navegador de Proton VPN per a continuar"
 			],
 			"Pin Proton VPN to your toolbar": [
 				"Fixeu Proton VPN a la barra d'eines."
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
-				"Prem <b>Següent</b>, llavors prem <b>Permet</b> a la finestra emergent del navegador."
+				"Premeu <b>Següent</b>i després <b>Permet</b> a la finestra emergent del navegador."
 			],
 			"Proton VPN Browser Extension": [
 				"Extensió del Navegador de Proton VPN"
@@ -331,7 +331,7 @@
 				"Aquestes estadístiques no contenen la vostra adreça IP i no es poden utilitzar per identificar-vos. Mai els compartirem amb tercers"
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
-				"Per començar, necessiteu activar els permisos de VPN al vostre navegador."
+				"Per a començar, necessiteu activar els permisos de VPN al navegador."
 			],
 			"Upgrade": [
 				"Millora"
@@ -346,7 +346,7 @@
 				"Característiques VPN"
 			],
 			"Websites that do not use VPN:": [
-				"Llocs web que no fan servir la VPN:"
+				"Llocs web que no utilitzen VPN:"
 			],
 			"You're signed in": [
 				"Has iniciat sessió"

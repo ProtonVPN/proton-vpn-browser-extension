@@ -10,8 +10,9 @@ import {getServerCountsDisplayTTL} from '../intervals';
 import {getUpdateError} from '../tools/update';
 import {openTab} from '../tools/openTab';
 import {getBrowser} from '../tools/getBrowser';
-import {ApiError} from '../api';
 import {Counts} from '../vpn/Counts';
+import {getErrorAsString} from '../tools/getErrorMessage';
+import {handleError} from '../tools/sentry';
 
 let serverCount: number | undefined = undefined;
 let serverCountLastCheck = 0;
@@ -85,13 +86,19 @@ export const showSigningView = (
 		});
 	}
 
-	const showUpdateError = (error: ApiError) => {
+	const showUpdateError = (context: string) => (error: any) => {
+		if (!error) {
+			return;
+		}
+
 		signIn.classList.add('update-extension');
 		signIn.innerHTML = c('Action').t`Update`;
 
+		const errorMessage = error?.Error || getErrorAsString(error);
+
 		if (paragraphs[0]) {
 			paragraphs[0].classList.remove('incentive-paragraph');
-			paragraphs[0].innerHTML = '⚠️ ' + error.Error;
+			paragraphs[0].innerHTML = '⚠️ ' + errorMessage;
 		}
 
 		if (paragraphs[1]) {
@@ -101,9 +108,13 @@ export const showSigningView = (
 		if (signUp) {
 			signUp.style.display = 'none';
 		}
-	}
 
-	prepareSigningView()?.catch(showUpdateError);
+		const report = new Error(context + ': ' + errorMessage);
+		(report as any).previous = error;
+		handleError(report);
+	};
+
+	prepareSigningView()?.catch(showUpdateError('prepareSigningView'));
 
 	signInView.style.display = 'block';
 	loggedView.style.display = 'none';
@@ -193,13 +204,9 @@ export const showSigningView = (
 
 		signUp.addEventListener('click', async () => {
 			await openForkTab('signup');
-			window.close();
+			window?.close();
 		});
 	}
 
-	getUpdateError().then(error => {
-		if (error) {
-			showUpdateError(error);
-		}
-	});
+	getUpdateError().then(showUpdateError('getUpdateError'));
 };
