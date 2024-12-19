@@ -150,8 +150,8 @@ export const getSortedLogicals = async () => {
 		logical => (
 			// Only servers up to tier 2 support HTTP proxy
 			logical.Tier <= ((global as any).logicalMaxTier || 2) &&
-			// Remove when TOR will be supported
-			(torEnabled || (logical.Features & Feature.TOR) === 0)
+			// Remove when/if TOR/B2B will be supported
+			(torEnabled || (logical.Features & (Feature.TOR | Feature.RESTRICTED)) === 0)
 		),
 	);
 	sortLogicals(logicals);

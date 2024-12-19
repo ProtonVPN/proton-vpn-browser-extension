@@ -119,7 +119,7 @@
 				"${countries} maasta"
 			],
 			"${rounderServersCount} secure server": [
-				"${rounderServersCount} turvallisen palvelimen",
+				"${rounderServersCount} turvallinen palvelin",
 				"${rounderServersCount} turvallista palvelinta"
 			],
 			"${servers}+ secure server": [
@@ -163,7 +163,7 @@
 				"Jotain meni pieleen. Jos ongelma jatkuu, asenna laajennus uudelleen."
 			],
 			"Unable to find appropriate server, try to logout and login again if it persists": [
-				"Sopivaa palvelinta ei löydy, yritä kirjautua ulos ja takaisin sisään, jos ongelma jatkuu"
+				"Sopivaa palvelinta ei löydy. Kokeile ongelman jatkuessa auttaako kirjautuminen ulos ja takaisin sisään."
 			],
 			"Unable to load the list": [
 				"Listan lataus ei onnistu"

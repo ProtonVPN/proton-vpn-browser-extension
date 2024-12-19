@@ -1,3 +1,8 @@
+# 1.2.4
+
+- Prevent showing servers that the user is not able to connect to
+- Add updated translations
+
 # 1.2.3
 
 - Improve crash reports

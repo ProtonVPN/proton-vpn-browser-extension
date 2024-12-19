@@ -114,6 +114,18 @@
 			]
 		},
 		"Error": {
+			"${countries} country": [
+				"${countries} pays",
+				"${countries} pays"
+			],
+			"${rounderServersCount} secure server": [
+				"${rounderServersCount} serveur sécurisé",
+				"${rounderServersCount} serveurs sécurisés"
+			],
+			"${servers}+ secure server": [
+				"plus de ${servers} serveur sécurisé",
+				"plus de ${servers} serveurs sécurisés"
+			],
 			"Access over ${servers} in ${countries}": [
 				"Accédez à plus de ${servers} dans ${countries}"
 			],
@@ -260,6 +272,10 @@
 			"Help us fight censorship": [
 				"Aidez-nous à combattre la censure."
 			],
+			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
+				"VPN suisse performant qui protège votre vie privée. Sécurité maximum, plus de ${count} serveur et aucune restriction.",
+				"VPN suisse performant qui protège votre vie privée. Sécurité maximum, plus de ${count} serveurs et aucune restriction."
+			],
 			"Learn more": [
 				"En savoir plus"
 			],
@@ -281,17 +297,11 @@
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Cliquez sur <b>Suivant</b>, puis sur <b>Autoriser</b> dans la fenêtre pop-up de votre navigateur."
 			],
-			"Proton VPN": [
-				"Proton VPN"
-			],
 			"Proton VPN Browser Extension": [
 				"Extension de navigateur Proton VPN"
 			],
 			"Search": [
 				"Recherche"
-			],
-			"Secure Core": [
-				"Secure Core"
 			],
 			"Select websites to exclude from your VPN connection.": [
 				"Sélectionner des sites internet à exclure de la connexion VPN."
@@ -352,14 +362,23 @@
 			"Cities": [
 				"Villes"
 			],
+			"City": [
+				"Ville",
+				"Villes"
+			],
 			"Connecting": [
 				"Connexion en cours"
 			],
 			"Countries, cities, servers": [
 				"Pays, villes, serveurs"
 			],
-			"Free": [
-				"Free"
+			"Country": [
+				"Pays",
+				"Pays"
+			],
+			"Entry country": [
+				"Pays d'entrée",
+				"Pays d'entrée"
 			],
 			"Free servers": [
 				"Serveurs Free"
@@ -387,6 +406,10 @@
 			],
 			"Protected": [
 				"Protégé"
+			],
+			"Server": [
+				"Serveur",
+				"Serveurs"
 			],
 			"Settings": [
 				"Paramètres"

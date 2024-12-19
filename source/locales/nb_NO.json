@@ -148,10 +148,10 @@
 				"Kan ikke kontrollere nettleserens nettverksinnstillinger, mangler muligens en tillatelse"
 			],
 			"Please check your connectivity": [
-				"Vennligst sjekk tilkoblingen din."
+				"Sjekk tilkoblingen din."
 			],
 			"Please try a different keyword": [
-				"Vennligst forsøk et annet nøkkelord"
+				"Forsøk et annet nøkkelord"
 			],
 			"Server not found": [
 				"Tjener ikke funnet"
@@ -183,7 +183,7 @@
 		},
 		"Info": {
 			"Access over 5000 secure servers in 63 countries": [
-				"Få tilgang til over 5000 sikre servere i 63 land"
+				"Få tilgang til over 5000 sikre tjenere i 63 land"
 			],
 			"Access Proton VPN via this icon": [
 				"Få tilgang til Proton VPN via dette ikonet"

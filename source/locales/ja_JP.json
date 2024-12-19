@@ -159,6 +159,9 @@
 			"Something went wrong. If the problem persists, please try to re-install the extension": [
 				"なにかが間違っています。問題が解決しない場合は、拡張機能の再インストールをお試しください。"
 			],
+			"Unable to find appropriate server, try to logout and login again if it persists": [
+				"しばらく問題が解決しない場合は、一度ログアウトして再度ログインし、適切なサーバーを探してください。"
+			],
 			"Unable to load the list": [
 				"リストを読み込めません"
 			],
@@ -176,6 +179,9 @@
 			]
 		},
 		"Info": {
+			"Access over 5000 secure servers in 63 countries": [
+				"63ヶ国の5000以上のセキュアなサーバーにアクセス"
+			],
 			"Access Proton VPN via this icon": [
 				"このアイコンから Proton VPN にアクセス"
 			],
@@ -229,6 +235,9 @@
 			],
 			"Contact our Customer Support agents to help you out with Proton VPN.": [
 				"Proton VPN のカスタマーサポートに問い合わせます。"
+			],
+			"Crash": [
+				"クラッシュ"
 			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"クラッシュレポートはバグを修正し、ファイアウォールを検出し、VPN 検閲を回避するために使用されます。"
@@ -293,6 +302,9 @@
 			"Select websites to exclude from your VPN connection.": [
 				"VPN 接続から除外するウェブサイトを選択します。"
 			],
+			"Share anonymous usage crash reports": [
+				"匿名の使用状況クラッシュ レポートを共有する"
+			],
 			"Share anonymous usage statistics": [
 				"匿名の使用統計を共有"
 			],
@@ -310,6 +322,9 @@
 			],
 			"Then just click the Proton VPN icon to sign in.": [
 				"そして、Proton VPN アイコンをクリックしてサインインします。"
+			],
+			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
+				"これらの統計にはあなたの IP アドレスは含まれていないため、個人を特定するために使用することはできません。第三者と共有することはありません"
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"まず、ブラウザの VPN 権限を有効にする必要があります。"
