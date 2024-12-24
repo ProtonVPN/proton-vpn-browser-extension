@@ -1,0 +1,465 @@
+{
+	"headers": {
+		"plural-forms": "nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);",
+		"language": "sl_SI"
+	},
+	"contexts": {
+		"Action": {
+			"${linkDescription} (New tab)": [
+				"${linkDescription} (Nov zavihek)"
+			],
+			"Add": [
+				"Dodaj"
+			],
+			"Add website": [
+				"Dodaj spletno mesto"
+			],
+			"Auto connect": [
+				"Samodejna povezava"
+			],
+			"Cancel": [
+				"Prekliči"
+			],
+			"Connect": [
+				"Poveži"
+			],
+			"Contact us": [
+				"Kontaktirajte nas"
+			],
+			"Create an account": [
+				"Ustvarite račun"
+			],
+			"Disconnect": [
+				"Prekini povezavo"
+			],
+			"Enable/disable notifications": [
+				"Omogoči/onemogoči obvestila"
+			],
+			"Exclude websites from the tunnel": [
+				"Izključite spletna mesta iz tunela"
+			],
+			"Log in with Proton": [
+				"Prijavite se s Protonom"
+			],
+			"Manage subscription": [
+				"Upravljanje z naročnino"
+			],
+			"New to Proton?": [
+				"Ste novi pri Protonu?"
+			],
+			"Next": [
+				"Naprej"
+			],
+			"Prevent WebRTC leak": [
+				"Preprečite uhajanje WebRTC"
+			],
+			"Quick connect": [
+				"Hitro povezovanje"
+			],
+			"Remove ${domain}": [
+				"Odstrani ${domain}"
+			],
+			"Select a city in ${exitCountryName}": [
+				"Izberite mesto v ${exitCountryName}"
+			],
+			"Select a server in ${cityName}": [
+				"Izberite strežnik v ${cityName}"
+			],
+			"Select entry country with exit in ${exitCountryName}": [
+				"Izberite vstopno državo z izstopom v ${exitCountryName}"
+			],
+			"Sign in": [
+				"Prijava"
+			],
+			"Sign out": [
+				"Odjava"
+			],
+			"Subscribe to connect more devices": [
+				"Naročite se, da lahko povežete več naprav"
+			],
+			"Subscribe to enable Browser Extension": [
+				"Naročite se, da omogočite razširitev brskalnika"
+			],
+			"Switch account": [
+				"Preklopi račun"
+			],
+			"Update": [
+				"Posodobi"
+			],
+			"Upgrade": [
+				"Nadgradi"
+			],
+			"Visit Support Center": [
+				"Obiščite center za podporo"
+			]
+		},
+		"Action: City-level button": {
+			"Connect to ${cityName}": [
+				"Povežite se z ${cityName}"
+			]
+		},
+		"Action: Country-level button": {
+			"Connect to ${exitCountryName}": [
+				"Povežite se z ${exitCountryName}"
+			]
+		},
+		"Action: Server-level button": {
+			"Connect to ${serverName}": [
+				"Povežite se z ${serverName}"
+			]
+		},
+		"Confirm": {
+			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
+				"Odjava iz aplikacije bo prekinila aktivno povezavo VPN. Želite nadaljevati?"
+			]
+		},
+		"Error": {
+			"${countries} country": [
+				"${countries} država",
+				"${countries} državi",
+				"${countries} države",
+				"${countries} držav"
+			],
+			"${rounderServersCount} secure server": [
+				"${rounderServersCount} varen strežnik",
+				"${rounderServersCount} varna strežnika",
+				"${rounderServersCount} varni strežniki",
+				"${rounderServersCount} varnih strežnikov"
+			],
+			"${servers}+ secure server": [
+				"${servers}+ varen strežnik",
+				"${servers}+ varna strežnika",
+				"${servers}+ varni strežniki",
+				"${servers}+ varnih strežnikov"
+			],
+			"Access over ${servers} in ${countries}": [
+				"Dostop do ${servers} v ${countries}"
+			],
+			"Bypass online censorship with advanced security and privacy features": [
+				"Zaobidite spletno cenzuro z naprednimi funkcijami varnosti in zasebnosti"
+			],
+			"Connect from your browser with ${planName}": [
+				"Povežite se iz brskalnika z ${planName}"
+			],
+			"Network error.": [
+				"Napaka v omrežju."
+			],
+			"Network is unreachable": [
+				"Omrežje je nedosegljivo"
+			],
+			"No results found": [
+				"Ni najdenih rezultatov"
+			],
+			"Not able to control the browser network settings, possibly a permission is missing": [
+				"Ni mogoče nadzorovati omrežnih nastavitev brskalnika, morda manjka dovoljenje"
+			],
+			"Please check your connectivity": [
+				"Preverite svojo povezavo."
+			],
+			"Please try a different keyword": [
+				"Poskusite z drugo ključno besedo."
+			],
+			"Server not found": [
+				"Strežnika ni mogoče najti"
+			],
+			"Service temporarily unavailable": [
+				"Storitev trenutno ni na voljo"
+			],
+			"Something went wrong. If the problem persists, please try to re-install the extension": [
+				"Nekaj ​​je šlo narobe. Če težave ne odpravite, poskusite znova namestiti razširitev."
+			],
+			"Unable to load the list": [
+				"Ni mogoče naložiti seznama"
+			],
+			"Unable to login": [
+				"Prijava ni mogoča"
+			],
+			"Unable to reach the server, please try to reconnect, or to log out and log in again if the problem persists": [
+				"Strežnika ni mogoče doseči, poskusite znova vzpostaviti povezavo ali se odjaviti in znova prijaviti, če se težava ponovi."
+			],
+			"Unlock ${servers} in ${countries}": [
+				"Odkleni ${servers} v ${countries}"
+			],
+			"Unlock global streaming services": [
+				"Odklenite globalne storitve pretakanja"
+			]
+		},
+		"Info": {
+			"Access Proton VPN via this icon": [
+				"Dostopajte do Proton VPN prek te ikone"
+			],
+			"Allow VPN permissions": [
+				"Omogoči VPN dovoljenja"
+			],
+			"Also exclude subdomains of this website": [
+				"Izključite tudi poddomene te spletne strani"
+			],
+			"and more": [
+				"in več"
+			],
+			"Audited by independent security experts": [
+				"Revidirano s strani neodvisnih varnostnih strokovnjakov"
+			],
+			"Auto-selected from": [
+				"Samodejno izbrano med"
+			],
+			"Automatically reconnect to Proton VPN when you open your browser.": [
+				"Samodejno se znova povežite s Proton VPN, ko odprete brskalnik."
+			],
+			"Back": [
+				"Nazaj"
+			],
+			"Browse through the Support Center and find answers to frequently asked questions.": [
+				"Brskajte po centru za podporo in poiščite odgovore na pogosto zastavljena vprašanja."
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"Zaobidite cenzuro z naprednimi funkcijami varnosti in zasebnosti"
+			],
+			"Clear search": [
+				"Počisti iskanje"
+			],
+			"Close": [
+				"Zapri"
+			],
+			"Connect to a Plus server in this country to start streaming.\n\nHint: Clear the cache of the streaming apps to ensure new content appears.": [
+				"Za začetek pretakanja se povežite s strežnikom Plus v tej državi.\n\nNamig: počistite predpomnilnik aplikacij za pretakanje, da zagotovite prikaz nove vsebine."
+			],
+			"Connected": [
+				"Povezano"
+			],
+			"Connected to ${name}": [
+				"Povezano z ${name}"
+			],
+			"Connected to ${name} in ${city}": [
+				"Povezan z ${name} v ${city}"
+			],
+			"Connecting...": [
+				"Povezujem ..."
+			],
+			"Contact our Customer Support agents to help you out with Proton VPN.": [
+				"Obrnite se na naše agente za podporo strankam, da vam bodo pomagali pri Proton VPN."
+			],
+			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
+				"Poročila o zrušitvah nam pomagajo odpraviti napake, zaznati požarne zidove in se izogniti blokadam VPN."
+			],
+			"Disable VPN for selected websites.": [
+				"Onemogoči VPN za izbrana spletna mesta."
+			],
+			"Disconnected": [
+				"Povezava je prekinjena"
+			],
+			"Emit system notifications on connection and disconnection events.": [
+				"Oddajanje sistemskih obvestil o dogodkih povezave in prekinitve povezave."
+			],
+			"Extra protection for people with advanced privacy needs": [
+				"Dodatna zaščita za ljudi z naprednimi potrebami glede zasebnosti"
+			],
+			"Fastest free server": [
+				"Najhitrejši brezplačen strežnik"
+			],
+			"Follow these simple steps to get the best experience using Proton VPN": [
+				"Sledite tem preprostim korakom za najboljšo izkušnjo z uporabo Proton VPN"
+			],
+			"For example, news.example.com is a subdomain of example.com.": [
+				"Na primer, novice.primer.com je pod domena primer.com."
+			],
+			"Help": [
+				"Pomoč"
+			],
+			"Help us fight censorship": [
+				"Pomagajte nam v boju proti cenzuri"
+			],
+			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
+				"Hitri švicarski VPN, ki varuje vašo zasebnost. Največja varnost, več kot ${count} strežnik in brez omejitev.",
+				"Hitri švicarski VPN, ki varuje vašo zasebnost. Največja varnost, več kot ${count} strežnika in brez omejitev.",
+				"Hitri švicarski VPN, ki varuje vašo zasebnost. Največja varnost, več kot ${count} strežniki in brez omejitev.",
+				"Hitri švicarski VPN, ki varuje vašo zasebnost. Največja varnost, več kot ${count} strežnikov in brez omejitev."
+			],
+			"Learn more": [
+				"Več o tem"
+			],
+			"Logged out": [
+				"Odjavljen"
+			],
+			"Open source VPN": [
+				"Odprtokoden VPN"
+			],
+			"Open the Extensions menu": [
+				"Odprite meni Razširitve"
+			],
+			"Open the Proton VPN browser extension to continue": [
+				"Za nadaljevanje odprite razširitev brskalnika Proton VPN"
+			],
+			"Pin Proton VPN to your toolbar": [
+				"Pripnite Proton VPN v orodno vrstico"
+			],
+			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
+				"Pritisnite <b>Naprej</b>, nato kliknite <b>Dovoli</b> na pojavnem oknu v brskalniku."
+			],
+			"Proton VPN Browser Extension": [
+				"Proton VPN razširitev za spletni brskalnik"
+			],
+			"Search": [
+				"Išči"
+			],
+			"Select websites to exclude from your VPN connection.": [
+				"Izberite spletna mesta, ki jih želite izključiti iz povezave VPN."
+			],
+			"Share anonymous usage statistics": [
+				"Deli anonimne podatke o uporabi?"
+			],
+			"Split tunneling": [
+				"Razdeljeno tuneliranje"
+			],
+			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
+				"Prepreči, da vaš brskalnik posreduje vaš naslov IP spletnim mestom in aplikacijam, ki uporabljajo WebRTC. To lahko vpliva na učinkovitost video klicev ali pretakanja v živo na nekaterih spletnih mestih."
+			],
+			"Telemetry": [
+				"Telemetrija"
+			],
+			"Thank you for installing Proton VPN": [
+				"Hvala, ker ste namestili Proton VPN"
+			],
+			"Then just click the Proton VPN icon to sign in.": [
+				"Nato samo kliknite ikono Proton VPN, da se prijavite."
+			],
+			"To get started, you’ll need to enable VPN permissions on your browser.": [
+				"Če želite začeti, morate v brskalniku omogočiti dovoljenja VPN."
+			],
+			"Upgrade": [
+				"Prehod na plačljiv paket"
+			],
+			"Usage data helps us overcome VPN blocks and improve app performance.": [
+				"Podatki o uporabi nam pomagajo premagati blokade VPN in izboljšati delovanje aplikacije."
+			],
+			"User": [
+				"Uporabnik"
+			],
+			"VPN Features": [
+				"Funkcije VPN"
+			],
+			"Websites that do not use VPN:": [
+				"Spletna mesta, ki ne uporabljajo VPN:"
+			],
+			"You're signed in": [
+				"Prijavljeni ste"
+			]
+		},
+		"Label": {
+			"And all its subdomains": [
+				"In vse pod domene"
+			],
+			"Auto connect": [
+				"Samodejna povezava"
+			],
+			"Cities": [
+				"Mesta"
+			],
+			"City": [
+				"Mesto",
+				"Mesti",
+				"Mesta",
+				"Mest"
+			],
+			"Connecting": [
+				"Povezovanje"
+			],
+			"Countries, cities, servers": [
+				"Države, mesta, strežniki"
+			],
+			"Country": [
+				"Država",
+				"Državi",
+				"Države",
+				"Držav"
+			],
+			"Entry country": [
+				"Država vstopa",
+				"Državi vstopa",
+				"Države vstopa",
+				"Držav vstopa"
+			],
+			"Free servers": [
+				"Brezplačni strežniki"
+			],
+			"Free servers (${count})": [
+				"Brezplačni strežniki (${count})"
+			],
+			"Internal servers (${count})": [
+				"Notranji strežniki (${count})"
+			],
+			"Need help?": [
+				"Potrebujete pomoč?"
+			],
+			"Notifications": [
+				"Obvestila"
+			],
+			"Offer": [
+				"Ponudba"
+			],
+			"Other": [
+				"Drugo"
+			],
+			"Plus servers (${count})": [
+				"Plus strežniki (${count})"
+			],
+			"Protected": [
+				"Zaščiteni"
+			],
+			"Server": [
+				"Strežnik",
+				"Strežnika",
+				"Strežniki",
+				"Strežnikov"
+			],
+			"Settings": [
+				"Nastavitve"
+			],
+			"Split tunneling": [
+				"Razdeljeno tuneliranje"
+			],
+			"Unprotected": [
+				"Nezaščiten"
+			],
+			"Via": [
+				"Preko"
+			],
+			"Want to know more?": [
+				"Si želite izvedeti več?"
+			],
+			"WebRTC leak protection": [
+				"Zaščita pred uhajanjem WebRTC"
+			]
+		},
+		"Menu": {
+			"Countries": [
+				"Države"
+			],
+			"Features": [
+				"Funkcije"
+			],
+			"Help": [
+				"Pomoč"
+			],
+			"Settings": [
+				"Nastavitve"
+			]
+		},
+		"Status": {
+			"Connecting to ${serverName}": [
+				"Povezovanje z ${serverName}"
+			],
+			"Proton VPN: ${status}": [
+				"Proton VPN: ${status}"
+			]
+		},
+		"Title": {
+			"Features": [
+				"Funkcije"
+			],
+			"Streaming": [
+				"Pretočni prenos"
+			]
+		}
+	}
+}

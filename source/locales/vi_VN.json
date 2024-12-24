@@ -1,0 +1,456 @@
+{
+	"headers": {
+		"plural-forms": "nplurals=1; plural=0;",
+		"language": "vi_VN"
+	},
+	"contexts": {
+		"Action": {
+			"${linkDescription} (New tab)": [
+				"${linkDescription} (Thẻ mới)"
+			],
+			"Add": [
+				"Thêm"
+			],
+			"Add website": [
+				"Thêm trang web"
+			],
+			"Auto connect": [
+				"Tự động kết nối"
+			],
+			"Cancel": [
+				"Hủy"
+			],
+			"Connect": [
+				"Kết nối"
+			],
+			"Contact us": [
+				"Liên hệ"
+			],
+			"Create an account": [
+				"Tạo một tài khoản"
+			],
+			"Disconnect": [
+				"Ngắt kết nối"
+			],
+			"Enable/disable notifications": [
+				"Bật/tắt thông báo"
+			],
+			"Exclude websites from the tunnel": [
+				"Các trang web không thông qua kết nối"
+			],
+			"Log in with Proton": [
+				"Đăng nhập bằng tài khoản Proton"
+			],
+			"Manage subscription": [
+				"Quản lý gói đăng ký"
+			],
+			"New to Proton?": [
+				"Chưa có tài khoản Proton?"
+			],
+			"Next": [
+				"Tiếp theo"
+			],
+			"Prevent WebRTC leak": [
+				"Ngăn chặn lỗ hổng WebRTC"
+			],
+			"Quick connect": [
+				"Kết nối nhanh"
+			],
+			"Remove ${domain}": [
+				"Xóa ${domain}"
+			],
+			"Select a city in ${exitCountryName}": [
+				"Chọn thành phố ở ${exitCountryName}"
+			],
+			"Select a server in ${cityName}": [
+				"Chọn máy chủ ở ${cityName}"
+			],
+			"Select entry country with exit in ${exitCountryName}": [
+				"Chọn quốc gia đầu vào với đầu ra là quốc gia ${exitCountryName}"
+			],
+			"Sign in": [
+				"Đăng nhập"
+			],
+			"Sign out": [
+				"Đăng xuất"
+			],
+			"Subscribe to connect more devices": [
+				"Nâng cấp để có thể kết nối trên nhiều thiếc bị"
+			],
+			"Subscribe to enable Browser Extension": [
+				"Nâng cấp để có thể sử dụng tiện ích mở rộng cho trình duyệt"
+			],
+			"Switch account": [
+				"Chuyển đổi tài khoản"
+			],
+			"Update": [
+				"Cập nhật"
+			],
+			"Upgrade": [
+				"Nâng cấp"
+			],
+			"Visit Support Center": [
+				"Truy cập Trung tâm hỗ trợ"
+			]
+		},
+		"Action: City-level button": {
+			"Connect to ${cityName}": [
+				"Kết nối đến thành phố ${cityName}"
+			]
+		},
+		"Action: Country-level button": {
+			"Connect to ${exitCountryName}": [
+				"Kết nối đến quốc gia ${exitCountryName}"
+			]
+		},
+		"Action: Server-level button": {
+			"Connect to ${serverName}": [
+				"Kết nối đến máy chủ ${serverName}"
+			]
+		},
+		"Confirm": {
+			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
+				"Đăng xuất khỏi ứng dụng sẽ hủy kết nối VPN hiện hành. Bạn có muốn tiếp tục?"
+			]
+		},
+		"Error": {
+			"${countries} country": [
+				"${countries} quốc gia"
+			],
+			"${rounderServersCount} secure server": [
+				"${rounderServersCount} máy chủ bảo mật"
+			],
+			"${servers}+ secure server": [
+				"${servers} máy chủ bảo mật"
+			],
+			"Access over ${servers} in ${countries}": [
+				"Truy cập hơn ${servers} ở ${countries} quốc gia khác nhau"
+			],
+			"Bypass online censorship with advanced security and privacy features": [
+				"Thoát khỏi kiểm duyệt online với các tính năng an toàn và bảo mật nâng cao"
+			],
+			"Connect from your browser with ${planName}": [
+				"Kết nối từ trình duyệt với ${planName}"
+			],
+			"Network error.": [
+				"Lỗi kết nối mạng."
+			],
+			"Network is unreachable": [
+				"Không thể truy cập mạng"
+			],
+			"No results found": [
+				"Không tìm thấy kết quả nào"
+			],
+			"Not able to control the browser network settings, possibly a permission is missing": [
+				"Không thể kiếm soát tùy chỉnh kết nối mạng của trình duyệt, có thể do chưa được cấp phép"
+			],
+			"Please check your connectivity": [
+				"Vui lòng kiểm tra kết nối của bạn."
+			],
+			"Please try a different keyword": [
+				"Vui lòng thử một từ khóa khác"
+			],
+			"Server not found": [
+				"Không tìm thấy máy chủ"
+			],
+			"Service temporarily unavailable": [
+				"Dịch vụ tạm thời không khả dụng"
+			],
+			"Something went wrong. If the problem persists, please try to re-install the extension": [
+				"Có lỗi đã xảy ra. Nếu vấn đề không được khắc phục, vui lòng cài đặt lại tiện ích mở rộng"
+			],
+			"Unable to find appropriate server, try to logout and login again if it persists": [
+				"Không thể tìm thấy máy chủ phù hợp, hãy thử đăng xuất và đăng nhập lại nếu còn tiếp diễn"
+			],
+			"Unable to load the list": [
+				"Không thể tải danh sách"
+			],
+			"Unable to login": [
+				"Không thể đăng nhập"
+			],
+			"Unable to reach the server, please try to reconnect, or to log out and log in again if the problem persists": [
+				"Không thể kết nối đến máy chủ, vui lòng thử lại. Nếu lỗi vẫn xảy ra, đăng xuất rồi đăng nhập lại."
+			],
+			"Unlock ${servers} in ${countries}": [
+				"Mở khóa ${servers} máy chủ ở ${countries} quốc gia"
+			],
+			"Unlock global streaming services": [
+				"Mở khóa các dịch vụ phát trực tuyến toàn cầu"
+			]
+		},
+		"Info": {
+			"Access over 5000 secure servers in 63 countries": [
+				"Truy cập hơn 5000 máy chủ được bảo mật ở 63 quốc gia khác nhau"
+			],
+			"Access Proton VPN via this icon": [
+				"Truy cập vào Proton VPN bằng biểu tượng này"
+			],
+			"Allow VPN permissions": [
+				"Cấp phép sử dụng VPN"
+			],
+			"Also exclude subdomains of this website": [
+				"Bỏ qua các tên miền phụ của trang web này"
+			],
+			"and more": [
+				"và hơn nữa"
+			],
+			"Audited by independent security experts": [
+				"Được kiểm nghiệm bởi các chuyên gia về bảo mật"
+			],
+			"Auto-selected from": [
+				"Tự động chọn từ"
+			],
+			"Automatically reconnect to Proton VPN when you open your browser.": [
+				"Tự động kết nối vào Proton VPN khi bạn mở trình duyệt."
+			],
+			"Back": [
+				"Trở lại"
+			],
+			"Browse through the Support Center and find answers to frequently asked questions.": [
+				"Xem các câu hỏi thường gặp và tìm kiếm câu trả lời từ Trung tâm hỗ trợ"
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"Loại bỏ mối lo ngại về kiểm duyệt vói các tính năng nâng cao về mặt bảo mật và riêng tư"
+			],
+			"Clear search": [
+				"Xóa tìm kiếm"
+			],
+			"Close": [
+				"Đóng"
+			],
+			"Connect to a Plus server in this country to start streaming.\n\nHint: Clear the cache of the streaming apps to ensure new content appears.": [
+				"Kết nối đến máy chủ có phí của quốc gia này để bắt đầu phát trực tuyến\n\nGợi ý: Xóa bộ nhớ đệm của các ứng dụng phát trực tuyến để có thể thấy nội dung mới"
+			],
+			"Connected": [
+				"Đã kết nối"
+			],
+			"Connected to ${name}": [
+				"Đã kết nối đến ${name}"
+			],
+			"Connected to ${name} in ${city}": [
+				"Kết nối đến máy chủ ${name} ở thành phố ${city}"
+			],
+			"Connecting...": [
+				"Đang kết nối..."
+			],
+			"Contact our Customer Support agents to help you out with Proton VPN.": [
+				"Liên hệ với Trung tâm chăm sóc khác hàng để được trợ giúp về Proton VPN."
+			],
+			"Crash": [
+				"Sự cố"
+			],
+			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
+				"Báo cáo sự cố giúp chúng tôi sửa lỗi, phát hiện tường lửa và tránh bị chặn VPN."
+			],
+			"Disable VPN for selected websites.": [
+				"Vô hiệu hóa VPN cho các trang web được chọn."
+			],
+			"Disconnected": [
+				"Ngắt kết nối"
+			],
+			"Emit system notifications on connection and disconnection events.": [
+				"Thông báo khi kết nối và ngắt kết nối"
+			],
+			"Extra protection for people with advanced privacy needs": [
+				"Bảo vệ bổ sung cho những người có nhu cầu riêng tư nâng cao"
+			],
+			"Fastest free server": [
+				"Máy chủ miễn phí nhanh nhất"
+			],
+			"Follow these simple steps to get the best experience using Proton VPN": [
+				"Hãy làm theo các bước đơn giản sau đây để có được trải nghiệm sử dụng Proton VPN tốt nhất:"
+			],
+			"For example, news.example.com is a subdomain of example.com.": [
+				"Ví dụ news.example.com là một tên miền phụ của example.com"
+			],
+			"Help": [
+				"Hỗ trợ"
+			],
+			"Help us fight censorship": [
+				"Hãy giúp chúng tôi chống lại sự kiểm duyệt"
+			],
+			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
+				"VPN Thụy Sĩ tốc độ cao bảo vệ sự riêng tư của bạn. Bảo mật tối đa, hơn ${count} máy chủ, và không hạn chế."
+			],
+			"Learn more": [
+				"Tìm hiểu thêm"
+			],
+			"Logged out": [
+				"Đã đăng xuất"
+			],
+			"Open source VPN": [
+				"VPN mã nguồn mở"
+			],
+			"Open the Extensions menu": [
+				"Mở danh sách tùy chọn của các tiện ích mở rộng"
+			],
+			"Open the Proton VPN browser extension to continue": [
+				"Mở tiện ích mở rộng trình duyệt Proton VPN để tiếp tục"
+			],
+			"Pin Proton VPN to your toolbar": [
+				"Ghim Proton VPN vào thanh công cụ"
+			],
+			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
+				"Nhấn <b>Kế tiếp</b>, sau đó chọn <b>Cho phép</b> khi được trình duyệt hỏi"
+			],
+			"Proton VPN Browser Extension": [
+				"Tiện ích mở rộng trên trình duyệt Proton VPN"
+			],
+			"Search": [
+				"Tìm kiếm"
+			],
+			"Select websites to exclude from your VPN connection.": [
+				"Chọn các trang web không kết nối thông qua VPN"
+			],
+			"Share anonymous usage crash reports": [
+				"Chia sẽ báo cáo sự cố ẩn danh"
+			],
+			"Share anonymous usage statistics": [
+				"Chia sẽ dữ liệu sử dụng ẩn danh"
+			],
+			"Split tunneling": [
+				"Phân luồng"
+			],
+			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
+				"Ngăn trình duyệt gửi địa chỉ IP của bạn đến các trang web và ứng dụng sử dụng công nghệ WebRTC. Điều này có thể ảnh hưởng đến chất lượng các cuộc gọi video và dịch vụ phát trực tuyến trên một vài trang web."
+			],
+			"Telemetry": [
+				"Thu thập dữ liệu từ xa"
+			],
+			"Thank you for installing Proton VPN": [
+				"Cảm ơn đã cài đặt Proton VPN"
+			],
+			"Then just click the Proton VPN icon to sign in.": [
+				"Sau đó chỉ cần nhấp vào biểu tượng Proton VPN để đăng nhập"
+			],
+			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
+				"Những thống kê này không chứa địa chỉ IP của bạn và chúng không thể được sử dụng để nhận dạng bạn. Chúng tôi sẽ không bao giờ chia sẻ chúng với bên thứ ba"
+			],
+			"To get started, you’ll need to enable VPN permissions on your browser.": [
+				"Để bắt đầu, bạn cần cấp quyền sử dụng VPN cho trình duyệt"
+			],
+			"Upgrade": [
+				"Nâng cấp"
+			],
+			"Usage data helps us overcome VPN blocks and improve app performance.": [
+				"Dữ liệu truy cập giúp chúng tôi vượt qua chặn VPN và nâng cao hiệu suất ứng dụng."
+			],
+			"User": [
+				"Người dùng"
+			],
+			"VPN Features": [
+				"Các tính năng VPN"
+			],
+			"Websites that do not use VPN:": [
+				"Các trang web không sử dụng VPN:"
+			],
+			"You're signed in": [
+				"Bạn đã đăng nhập"
+			]
+		},
+		"Label": {
+			"And all its subdomains": [
+				"Và tất cả các tên miền phụ"
+			],
+			"Auto connect": [
+				"Tự động kết nối"
+			],
+			"Cities": [
+				"Thành phố"
+			],
+			"City": [
+				"Thành phố"
+			],
+			"Connecting": [
+				"Đang kết nối"
+			],
+			"Countries, cities, servers": [
+				"Thành phố, quốc gia, máy chủ"
+			],
+			"Country": [
+				"Quốc gia"
+			],
+			"Entry country": [
+				"Quốc gia đầu vào"
+			],
+			"Free servers": [
+				"Máy chủ miễn phí"
+			],
+			"Free servers (${count})": [
+				"Máy chủ miễn phí (${count})"
+			],
+			"Internal servers (${count})": [
+				"Máy chủ nội bộ (${count})"
+			],
+			"Need help?": [
+				"Cần giúp?"
+			],
+			"Notifications": [
+				"Các thông báo"
+			],
+			"Offer": [
+				"Ưu đãi"
+			],
+			"Other": [
+				"Khác"
+			],
+			"Plus servers (${count})": [
+				"Máy chủ Plus (${count})"
+			],
+			"Protected": [
+				"Được bảo vệ"
+			],
+			"Server": [
+				"Máy chủ"
+			],
+			"Settings": [
+				"Cài đặt"
+			],
+			"Split tunneling": [
+				"Phân luồng"
+			],
+			"Unprotected": [
+				"Không được bảo vệ"
+			],
+			"Via": [
+				"Qua"
+			],
+			"Want to know more?": [
+				"Muốn tìm hiểu thêm?"
+			],
+			"WebRTC leak protection": [
+				"Bảo vệ lỗ hổng WebRTC"
+			]
+		},
+		"Menu": {
+			"Countries": [
+				"Quốc gia"
+			],
+			"Features": [
+				"Các tính năng"
+			],
+			"Help": [
+				"Hỗ trợ"
+			],
+			"Settings": [
+				"Cài đặt"
+			]
+		},
+		"Status": {
+			"Connecting to ${serverName}": [
+				"Connecting to${serverName}"
+			],
+			"Proton VPN: ${status}": [
+				"Proton VPN: ${status}"
+			]
+		},
+		"Title": {
+			"Features": [
+				"Các tính năng"
+			],
+			"Streaming": [
+				"Phát trực tuyến"
+			]
+		}
+	}
+}

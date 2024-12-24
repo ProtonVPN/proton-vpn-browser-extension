@@ -1,0 +1,464 @@
+{
+	"headers": {
+		"plural-forms": "nplurals=1; plural=0;",
+		"language": "ka_GE"
+	},
+	"contexts": {
+		"Action": {
+			"${linkDescription} (New tab)": [
+				"${linkDescription} (ახალი ჩანართი)"
+			],
+			"Add": [
+				"დამატება"
+			],
+			"Add website": [
+				"ვებსაიტის დამატება"
+			],
+			"Auto connect": [
+				"ავტომატური დაკავშირება"
+			],
+			"Cancel": [
+				"გაუქმება"
+			],
+			"Connect": [
+				"დაკავშირება"
+			],
+			"Contact us": [
+				"დაგვიკავშირდით"
+			],
+			"Create an account": [
+				"ანგარიშის შექმნა"
+			],
+			"Disconnect": [
+				"გათიშვა"
+			],
+			"Enable/disable notifications": [
+				"გაფრთხილებების ჩართვა/გამორთვა"
+			],
+			"Exclude websites from the tunnel": [
+				"ვებსაიტების გამორიცხვა გვირაბიდან"
+			],
+			"Log in with Proton": [
+				"შედით Proton-ით"
+			],
+			"Manage subscription": [
+				"გამოწერის მართვა"
+			],
+			"New to Proton?": [
+				"ახალი ბრძანდებით Proton-ში?"
+			],
+			"Next": [
+				"შემდეგი"
+			],
+			"Prevent WebRTC leak": [
+				"WebRTC-ის გაჟონვის თავიდან აცილება"
+			],
+			"Quick connect": [
+				"სწრაფი მიერთება"
+			],
+			"Remove ${domain}": [
+				"${domain}-ის წაშლა"
+			],
+			"Select a city in ${exitCountryName}": [
+				"აირჩიეთ ქალაქი ${exitCountryName}-ში"
+			],
+			"Select a server in ${cityName}": [
+				"აირჩიეთ სერვერი ${cityName}-ში"
+			],
+			"Select entry country with exit in ${exitCountryName}": [
+				"$${exitCountryName}-ში გასასვლელის მქონე ქვეყნის არჩევა"
+			],
+			"Sign in": [
+				"შესვლა"
+			],
+			"Sign out": [
+				"გასვლა"
+			],
+			"Subscribe to connect more devices": [
+				"გამოწერა მეტი მოწყობილობის მისაერთებლად"
+			],
+			"Subscribe to enable Browser Extension": [
+				"ბრაუზერის გაფართოების ჩასართავად გამოიწერეთ"
+			],
+			"Switch account": [
+				"ანგარიშის გადართვა"
+			],
+			"Update": [
+				"განახლება"
+			],
+			"Upgrade": [
+				"ტარიფის აწევა"
+			],
+			"Visit Support Center": [
+				"ეწვიეთ მხარდაჭერის ცენტრს"
+			]
+		},
+		"Action: City-level button": {
+			"Connect to ${cityName}": [
+				"${cityName}-სთან დაკავშირება"
+			]
+		},
+		"Action: Country-level button": {
+			"Connect to ${exitCountryName}": [
+				"${exitCountryName}-სთან დაკავშირება"
+			]
+		},
+		"Action: Server-level button": {
+			"Connect to ${serverName}": [
+				"${serverName}-სთან დაკავშირება"
+			]
+		},
+		"Confirm": {
+			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
+				"აპლიკაციიდან გასვლა VPN-ის აქტიურ სესიას გათიშავს. გნებავთ, გააგრძელოთ?"
+			]
+		},
+		"Error": {
+			"${countries} country": [
+				"${countries} ქვეყანა",
+				"${countries} ქვეყანა"
+			],
+			"${rounderServersCount} secure server": [
+				"${rounderServersCount} დაცული სერვერი",
+				"${rounderServersCount} დაცული სერვერი"
+			],
+			"${servers}+ secure server": [
+				"${servers} დაცული სერვერი",
+				"${servers} დაცული სერვერი"
+			],
+			"Access over ${servers} in ${countries}": [
+				"მიიღეთ წვდომა ${servers}-ზე ${countries}-ში"
+			],
+			"Bypass online censorship with advanced security and privacy features": [
+				"დააღწიეთ თავი ონლაინ ცენზურას დამატებითი უსაფრთხოებისა და კონფიდენციალობის ფუნქციებით"
+			],
+			"Connect from your browser with ${planName}": [
+				"${planName}-ით მიერთება ბრაუზერიდანაც შეგიძლიათ"
+			],
+			"Network error.": [
+				"ქსელის შეცდომა."
+			],
+			"Network is unreachable": [
+				"ქსელი მიუწვდომელია"
+			],
+			"No results found": [
+				"შედეგების გარეშე"
+			],
+			"Not able to control the browser network settings, possibly a permission is missing": [
+				"ბრაუზერის ქსელის პარამეტრების კონტროლი შეუძლებელია. შეიძლება, წვდომა აკრძალულია"
+			],
+			"Please check your connectivity": [
+				"შეამოწმეთ ინტერნეტკავშირი"
+			],
+			"Please try a different keyword": [
+				"სცადეთ სხვა სიტყვა"
+			],
+			"Server not found": [
+				"სერვერი ვერ მოიძებნა"
+			],
+			"Service temporarily unavailable": [
+				"სერვისი დროებით მიუწვდომელია"
+			],
+			"Something went wrong. If the problem persists, please try to re-install the extension": [
+				"რაღაც არასწორად წავიდა. თუ პრობლემა არ გაქრება, გაფართოება თავიდან დააყენეთ"
+			],
+			"Unable to find appropriate server, try to logout and login again if it persists": [
+				"შესატყვისი სერვისი ვერ ვიპოვე. თუ პრობლემა მალე არ გაქრა, სცადეთ, გახვიდეთ და თავიდან შემოხვიდეთ"
+			],
+			"Unable to load the list": [
+				"სიის ჩატვირთვის შეცდომა"
+			],
+			"Unable to login": [
+				"შესვლა შეუძლებელია"
+			],
+			"Unable to reach the server, please try to reconnect, or to log out and log in again if the problem persists": [
+				"სერვერამდე მიღწევის შეცდომა. სცადეთ, თავიდან მიუერთდეთ, ან, თუ პრობლემა არ გაქრება, გამოდით და თავიდან შედით"
+			],
+			"Unlock ${servers} in ${countries}": [
+				"განბლოკეთ ${servers} სერვერი ${countries}-ში"
+			],
+			"Unlock global streaming services": [
+				"წვდომა გლობალური სტრიმინგის სერვისებთან"
+			]
+		},
+		"Info": {
+			"Access over 5000 secure servers in 63 countries": [
+				"წვდომა 5000+ სერვერთან 63 ქვეყანაში"
+			],
+			"Access Proton VPN via this icon": [
+				"Proton VPN-თან წვდომა ამ ხატულით"
+			],
+			"Allow VPN permissions": [
+				"დაუშვით VPN-ის წვდომები"
+			],
+			"Also exclude subdomains of this website": [
+				"ამ ვებგვერდისთვის ქვედომენებიც გამოტოვებული იქნება"
+			],
+			"and more": [
+				"და სხვა"
+			],
+			"Audited by independent security experts": [
+				"აუდიტი დამოუკიდებელი უსაფრთხოების ექსპერტებისგან"
+			],
+			"Auto-selected from": [
+				"ავტომატურადაა არჩეული წყაროდან"
+			],
+			"Automatically reconnect to Proton VPN when you open your browser.": [
+				"ბრაუზერის გახსნისას Proton VPN-ის ავტომატური მიერთება."
+			],
+			"Back": [
+				"უკან"
+			],
+			"Browse through the Support Center and find answers to frequently asked questions.": [
+				"დაათვალიერეთ მხარდაჭერის ცენტრი და იპოვეთ პასუხები ხშირად დასმულ კითხვებზე."
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"დააღწიეთ თავი ცენზურას დამატებითი უსაფრთხოებისა და კონფიდენციალობის ფუნქციებით"
+			],
+			"Clear search": [
+				"ძებნის გასუფთავება"
+			],
+			"Close": [
+				"დახურვა"
+			],
+			"Connect to a Plus server in this country to start streaming.\n\nHint: Clear the cache of the streaming apps to ensure new content appears.": [
+				"სტრიმინგის დასაწყებად მიუერთდით Plus სერვერს, რომელიც ამ ქვეყანაში მდებარეობს.\n\nმინიშნება: იმისათვის, რომ დარწმუნებული ბრძანდებოდეთ, რომ ჩატვირთული შემცველობა უახლესია, ჯერ ქეში გაასუფთავეთ."
+			],
+			"Connected": [
+				"დაკავშირებულია"
+			],
+			"Connected to ${name}": [
+				"დაკავშირებულია ${name}-სთან"
+			],
+			"Connected to ${name} in ${city}": [
+				"დავუკავშირდი ${name}-ს ${city}-ში"
+			],
+			"Connecting...": [
+				"მიერთება..."
+			],
+			"Contact our Customer Support agents to help you out with Proton VPN.": [
+				"Proton VPN-თან დახმარებისთვის შეგიძლიათ ჩვენს მხარდაჭერის გუნდს დაუკავშირდეთ."
+			],
+			"Crash": [
+				"ავარია"
+			],
+			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
+				"ავარიის ანგარიშები გვეხმარება შეცდომების გამოსწორებაში, ფეიერვოლების აღმოჩენაში და VPN ბლოკების თავიდან აცილებაში."
+			],
+			"Disable VPN for selected websites.": [
+				"VPN-ის გამორთვა არჩეული ვებგვერდებისთვის."
+			],
+			"Disconnected": [
+				"გათიშულია"
+			],
+			"Emit system notifications on connection and disconnection events.": [
+				"მიერთებისა და გათიშვისას სისტემური გაფრთხილების ჩვენება."
+			],
+			"Extra protection for people with advanced privacy needs": [
+				"დამატებითი დაცვა კონფიდენციალობის მაღალი მოთხოვნების მქონე პირებისთვის"
+			],
+			"Fastest free server": [
+				"ყველაზე სწრაფი უფასო სერვერი"
+			],
+			"Follow these simple steps to get the best experience using Proton VPN": [
+				"Proton VPN-ით სარგებლობისას საუკეთესო გამოცდილების მისაღებად ამ მარტივ ნაბიჯებს გაჰყევით"
+			],
+			"For example, news.example.com is a subdomain of example.com.": [
+				"მაგალითად, news.example.com-ი example.com-ის ქვედომენს წარმოადგენს."
+			],
+			"Help": [
+				"დახმარება"
+			],
+			"Help us fight censorship": [
+				"დაგვეხმარეთ, ვებრძოლოთ ცენზურას"
+			],
+			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
+				"მაღალი წარმადობის მქონე შვეიცარიული VPN-ი, რომელიც იცავს თქვენს კონფიდენციალობას. მაქსიმალური დაცვა, ${count}-ზე მეტი სერვერი, შეზღუდვების გარეშე.",
+				"მაღალი წარმადობის მქონე შვეიცარიული VPN-ი, რომელიც იცავს თქვენს კონფიდენციალობას. მაქსიმალური დაცვა, ${count}-ზე მეტი სერვერი, შეზღუდვების გარეშე."
+			],
+			"Learn more": [
+				"მეტის ნახვა"
+			],
+			"Logged out": [
+				"გამოსული"
+			],
+			"Open source VPN": [
+				"ღია კოდის მქონე VPN"
+			],
+			"Open the Extensions menu": [
+				"გაფართოებების მენიუს გახსნა"
+			],
+			"Open the Proton VPN browser extension to continue": [
+				"გასაგრძელებლად Proton VPN-ის ბრაუზერის გაფართოება გახსენით"
+			],
+			"Pin Proton VPN to your toolbar": [
+				"მიამაგრეთ Proton VPN-ი თქვენი ხელსაწყოების ზოლზე"
+			],
+			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
+				"თქვენი ბრაუზერის მხტუნარაში დააწექით <b>შემდეგს</b>, შემდეგ კი <b>დაშვებას</b>."
+			],
+			"Proton VPN Browser Extension": [
+				"Proton VPN-ის გაფართოება ბრაუზერისთვის"
+			],
+			"Search": [
+				"ძებნა"
+			],
+			"Select websites to exclude from your VPN connection.": [
+				"აირჩიეთ თქვენი VPN მიერთებიდან ამოსაღები ვებგვერდები."
+			],
+			"Share anonymous usage crash reports": [
+				"ავარიის ანგარიშების ანონიმურად გაზიარება"
+			],
+			"Share anonymous usage statistics": [
+				"გამოყენების ანონიმური სტატისტიკის გაზიარება"
+			],
+			"Split tunneling": [
+				"Split Tunneling"
+			],
+			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
+				"ხელს უშლის თქვენს ბრაუზერს თვენი IP-ის სხვადასხვა საიტებისაიტებისათვის გაჟონვაში და აპებს WebRTC-ის გამოყენებაში. ამან შეიძლება, ვიდეოზარებზე და ზოგიერთ ვებსაიტზე ცოცხალი ვიდეოს წარმადობაზე იქონიოს გავლენა."
+			],
+			"Telemetry": [
+				"ტელემეტრია"
+			],
+			"Thank you for installing Proton VPN": [
+				"დიდი მადლობა Proton VPN-ის დაყენებისთვის"
+			],
+			"Then just click the Proton VPN icon to sign in.": [
+				"შემდეგ კი, შესასვლელად, უბრალოდ დააწკაპუნეთ Proton VPN-ის ხატულაზე."
+			],
+			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
+				"ეს სტატისტიკა არ შეიცავს თქვენს IP მისამართს და მათი იდენტიფიცირებისთვის შეუძლებელია. ჩვენ არასდროს გავუზიარებთ მათ მესამე მხარეებს"
+			],
+			"To get started, you’ll need to enable VPN permissions on your browser.": [
+				"დასაწყისისთვის საჭიროა ბრაუზერში VPN-ისთვის წვდომები დაუშვათ."
+			],
+			"Upgrade": [
+				"ტარიფის აწევა"
+			],
+			"Usage data helps us overcome VPN blocks and improve app performance.": [
+				"გამოყენების მონაცემები გვეხმარება VPN ბლოკების დაძლევაში და აპლიკაციის მუშაობის გაუმჯობესებაში."
+			],
+			"User": [
+				"მომხმარებელი"
+			],
+			"VPN Features": [
+				"VPN-ის ფუნქციები"
+			],
+			"Websites that do not use VPN:": [
+				"ვებსაიტები, რომლებიც VPN-ს არ იყენებენ:"
+			],
+			"You're signed in": [
+				"შესული ბრძანდებით"
+			]
+		},
+		"Label": {
+			"And all its subdomains": [
+				"და ყველა მისი სუბდომენი"
+			],
+			"Auto connect": [
+				"ავტომატური დაკავშირება"
+			],
+			"Cities": [
+				"ქალაქები"
+			],
+			"City": [
+				"ქალაქი",
+				"ქალაქები"
+			],
+			"Connecting": [
+				"მიერთება"
+			],
+			"Countries, cities, servers": [
+				"ქვეყნები, ქალაქები, სერვერები"
+			],
+			"Country": [
+				"ქვეყანა",
+				"ქვეყნები"
+			],
+			"Entry country": [
+				"შესასვლელი ქვეყანა",
+				"შესასვლელი ქვეყნები"
+			],
+			"Free servers": [
+				"უფასო სერვერები"
+			],
+			"Free servers (${count})": [
+				"უფასო სერვერები (${count})"
+			],
+			"Internal servers (${count})": [
+				"შიდა სერვერები (${count})"
+			],
+			"Need help?": [
+				"დახმარება გჭირდებათ?"
+			],
+			"Notifications": [
+				"შეტყობინებები"
+			],
+			"Offer": [
+				"შეთავაზება"
+			],
+			"Other": [
+				"სხვა"
+			],
+			"Plus servers (${count})": [
+				"Plus სერვერები (${count})"
+			],
+			"Protected": [
+				"დაცულია"
+			],
+			"Server": [
+				"სერვერი",
+				"სერვერი"
+			],
+			"Settings": [
+				"მორგება"
+			],
+			"Split tunneling": [
+				"Split Tunneling"
+			],
+			"Unprotected": [
+				"დაუცველი"
+			],
+			"Via": [
+				"გავლით"
+			],
+			"Want to know more?": [
+				"გსურთ, გაიგოთ მეტი?"
+			],
+			"WebRTC leak protection": [
+				"WebRTC-ის გაჟონვის უსაფრთხოება"
+			]
+		},
+		"Menu": {
+			"Countries": [
+				"ქვეყნები"
+			],
+			"Features": [
+				"ფუნქციები"
+			],
+			"Help": [
+				"დახმარება"
+			],
+			"Settings": [
+				"მორგება"
+			]
+		},
+		"Status": {
+			"Connecting to ${serverName}": [
+				"${serverName}-სთან დაკავშირება"
+			],
+			"Proton VPN: ${status}": [
+				"Proton VPN: ${status}"
+			]
+		},
+		"Title": {
+			"Features": [
+				"ფუნქციები"
+			],
+			"Streaming": [
+				"სტრიმინგი"
+			]
+		}
+	}
+}
