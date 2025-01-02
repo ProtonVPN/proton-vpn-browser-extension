@@ -198,7 +198,7 @@
 				"独立したセキュリティ専門家による監査"
 			],
 			"Auto-selected from": [
-				"から自動選択"
+				"自動選択元"
 			],
 			"Automatically reconnect to Proton VPN when you open your browser.": [
 				"ブラウザを開いた際に Proton VPN に自動で再接続します。"
@@ -374,10 +374,10 @@
 				"経由国"
 			],
 			"Free servers": [
-				"Free サーバー"
+				"無料サーバー"
 			],
 			"Free servers (${count})": [
-				"Free サーバー (${count})"
+				"無料サーバー (${count})"
 			],
 			"Internal servers (${count})": [
 				"内部サーバー (${count})"

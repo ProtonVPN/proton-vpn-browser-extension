@@ -78,7 +78,6 @@ module.exports = (env, argv, options) => {
 				'activeTab',
 				'webRequestBlocking',
 			);
-			manifest.web_accessible_resources[0].matches.push('https://*/*');
 			delete manifest.key;
 			delete manifest.externally_connectable;
 		});

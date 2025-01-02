@@ -1,3 +1,9 @@
+# 1.2.5
+
+- Update Syria flag
+- Update translations
+- Allow Firefox extension to also proxy requests via WebSocket and FTP (Already available on Chromium)
+
 # 1.2.4
 
 - Prevent showing servers that the user is not able to connect to

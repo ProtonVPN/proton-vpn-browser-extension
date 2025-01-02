@@ -15,7 +15,7 @@
 				"Lägg till webbplats"
 			],
 			"Auto connect": [
-				"Anslut automatiskt"
+				"Autoanslut"
 			],
 			"Cancel": [
 				"Avbryt"
@@ -154,7 +154,7 @@
 				"Prova ett annat nyckelord"
 			],
 			"Server not found": [
-				"Server hittades inte"
+				"Servern hittades inte"
 			],
 			"Service temporarily unavailable": [
 				"Tjänst temporärt otillgänglig"
@@ -166,7 +166,7 @@
 				"Kan inte hitta lämplig server, prova att logga ut och logga in igen om det kvarstår"
 			],
 			"Unable to load the list": [
-				"Kan inte ladda listan"
+				"Kan inte läsa in listan"
 			],
 			"Unable to login": [
 				"Kan inte logga in"
@@ -201,7 +201,7 @@
 				"Granskad av oberoende säkerhetsexperter"
 			],
 			"Auto-selected from": [
-				"Automatiskt valt från"
+				"Autovalt från"
 			],
 			"Automatically reconnect to Proton VPN when you open your browser.": [
 				"Återanslut automatiskt till Proton VPN när du öppnar din webbläsare."
@@ -258,13 +258,13 @@
 				"Extra skydd för personer med avancerade integritetsbehov"
 			],
 			"Fastest free server": [
-				"Snabbaste gratisserver"
+				"Snabbaste gratisservern"
 			],
 			"Follow these simple steps to get the best experience using Proton VPN": [
 				"Följ dessa enkla steg för att få den bästa upplevelsen med Proton VPN"
 			],
 			"For example, news.example.com is a subdomain of example.com.": [
-				"Till exempel är news.example.com en underdomän till example.com."
+				"Till exempel är nyheter.exempel.se en underdomän till exempel.se."
 			],
 			"Help": [
 				"Hjälp"
@@ -289,7 +289,7 @@
 				"Öppna tilläggsmenyn"
 			],
 			"Open the Proton VPN browser extension to continue": [
-				"Öppna webbläsartillägget Proton VPN för att fortsätta"
+				"Öppna Proton VPN-webbläsartillägget för att fortsätta"
 			],
 			"Pin Proton VPN to your toolbar": [
 				"Fäst Proton VPN till ditt verktygsfält"
@@ -301,7 +301,7 @@
 				"Proton VPN"
 			],
 			"Proton VPN Browser Extension": [
-				"Proton VPN webbläsartillägg"
+				"Proton VPN-webbläsartillägg"
 			],
 			"Search": [
 				"Sök"
@@ -363,7 +363,7 @@
 				"Och alla dess underdomäner"
 			],
 			"Auto connect": [
-				"Anslut automatiskt"
+				"Autoanslut"
 			],
 			"Cities": [
 				"Orter"
@@ -390,10 +390,10 @@
 				"Free"
 			],
 			"Free servers": [
-				"Gratis servrar"
+				"Free-servrar"
 			],
 			"Free servers (${count})": [
-				"Gratis servrar (${count})"
+				"Free-servrar (${count})"
 			],
 			"Internal servers (${count})": [
 				"Interna servrar (${count})"

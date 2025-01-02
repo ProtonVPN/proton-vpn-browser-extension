@@ -172,7 +172,7 @@
 				"Kan ikke logge på"
 			],
 			"Unable to reach the server, please try to reconnect, or to log out and log in again if the problem persists": [
-				"Ikke i stand til å nå tjeneren, vennligst prøv å koble til på nytt, eller logge av og logge på igjen hvis problemet vedvarer"
+				"Ikke i stand til å nå tjeneren, prøv å koble til på nytt, eller logge av og logge på igjen hvis problemet vedvarer"
 			],
 			"Unlock ${servers} in ${countries}": [
 				"Lås opp ${servers} i ${countries}"
