@@ -14,6 +14,9 @@
 			"Add website": [
 				"Añadir un sitio web"
 			],
+			"Already have a Proton Account?": [
+				"¿Ya tienes una cuenta Proton?"
+			],
 			"Auto connect": [
 				"Conectar automáticamente"
 			],
@@ -57,7 +60,7 @@
 				"Conexión rápida"
 			],
 			"Remove ${domain}": [
-				"Borrar ${domain}"
+				"Eliminar ${domain}"
 			],
 			"Select a city in ${exitCountryName}": [
 				"Seleciona una ciudad en ${exitCountryName}"
@@ -70,6 +73,9 @@
 			],
 			"Sign in": [
 				"Iniciar sesión"
+			],
+			"Sign in with Vivaldi": [
+				"Iniciar sesión con Vivaldi"
 			],
 			"Sign out": [
 				"Cerrar sesión"
@@ -127,7 +133,7 @@
 				"Más de ${servers} servidores seguros"
 			],
 			"Access over ${servers} in ${countries}": [
-				"Acceso a más de ${servers} en ${countries}"
+				"Accede a más de ${servers} en ${countries}"
 			],
 			"Bypass online censorship with advanced security and privacy features": [
 				"Evita la censura en línea con funciones avanzadas de seguridad y privacidad."
@@ -182,8 +188,8 @@
 			]
 		},
 		"Info": {
-			"Access over 5000 secure servers in 63 countries": [
-				"Acceda a más de 5000 servidores seguros en 63 países"
+			"Access over 9000 secure servers in 112 countries": [
+				"Acceda a más de 9000 servidores seguros en 112 países"
 			],
 			"Access Proton VPN via this icon": [
 				"Accede a Proton VPN a través de este icono."
@@ -198,7 +204,7 @@
 				"y más"
 			],
 			"Audited by independent security experts": [
-				"Auditoría independiente por expertos en seguridad"
+				"Sometido a auditoría por expertos en seguridad independientes"
 			],
 			"Auto-selected from": [
 				"Selección automática desde"
@@ -213,7 +219,7 @@
 				"Navega en el centro de soporte y encuentra respuestas a preguntas frecuentes."
 			],
 			"Bypass censorship with advanced security and privacy features": [
-				"Evita la censura con funciones avanzadas de seguridad y privacidad."
+				"Evita la censura con funciones avanzadas de seguridad y privacidad"
 			],
 			"Clear search": [
 				"Borrar la búsqueda"
@@ -243,13 +249,25 @@
 				"Error"
 			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
-				"Los informes de errores nos ayudan a corregir errores, detectar cortafuegos y evitar bloqueos de VPN."
+				"Los informes de erorres nos ayudan a corregir errores, detectar cortafuegos y evitar bloqueos de VPN."
 			],
 			"Disable VPN for selected websites.": [
 				"Desactiva la VPN para sitios web seleccionados."
 			],
 			"Disconnected": [
 				"Desconectado"
+			],
+			"Disconnected by another extension": [
+				"Desconectado por otra extensión"
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"Desconectado por otra extensión. Estabas conectado a ${newProxyName}."
+			],
+			"Disconnected, settings were overridden": [
+				"Estás desconectado. Se han anulado los ajustes."
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"Estás desconectado y los ajustes han sido substituidos por ${newProxyName}."
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Enviar notificaciones del sistema para conexiones y desconexiones."
@@ -297,11 +315,20 @@
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Presiona <b>Siguiente</b>, y haz clic en <b>Permitir</b> en la ventana emergente de tu navegador."
 			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"Protégete en línea con la VPN gratuita de alta velocidad de Proton."
+			],
+			"Proton VPN": [
+				"Proton VPN"
+			],
 			"Proton VPN Browser Extension": [
 				"Extensión de navegador Proton VPN"
 			],
 			"Search": [
 				"Buscar"
+			],
+			"Secure Core": [
+				"Secure Core"
 			],
 			"Select websites to exclude from your VPN connection.": [
 				"Selecciona sitios web para excluir de la conexión VPN."
@@ -380,6 +407,9 @@
 				"País de entrada",
 				"Países de entrada"
 			],
+			"Free": [
+				"Gratuito"
+			],
 			"Free servers": [
 				"Servidores gratuitos"
 			],
@@ -455,6 +485,9 @@
 		"Title": {
 			"Features": [
 				"Funcionalidades"
+			],
+			"Proton VPN for Vivaldi": [
+				"Proton VPN para Vivaldi"
 			],
 			"Streaming": [
 				"Streaming"

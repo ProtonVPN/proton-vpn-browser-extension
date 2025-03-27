@@ -1,3 +1,11 @@
+# 1.2.6
+
+- Persist session when closing the browser even if the "Resume from where you left off" setting is not enabled
+- Hold bootstrap requests as soon as the extension is running (prevents leaking IP during the connection step)
+- Improve recovery on proxy and network error
+- Emit a notification if another extension is altering the VPN settings
+- Update translations
+
 # 1.2.5
 
 - Update Syria flag

@@ -14,8 +14,11 @@
 			"Add website": [
 				"Lägg till webbplats"
 			],
+			"Already have a Proton Account?": [
+				"Har du redan ett Proton-konto?"
+			],
 			"Auto connect": [
-				"Autoanslut"
+				"Anslut automatiskt"
 			],
 			"Cancel": [
 				"Avbryt"
@@ -70,6 +73,9 @@
 			],
 			"Sign in": [
 				"Logga in"
+			],
+			"Sign in with Vivaldi": [
+				"Logga in med Vivaldi"
 			],
 			"Sign out": [
 				"Logga ut"
@@ -166,7 +172,7 @@
 				"Kan inte hitta lämplig server, prova att logga ut och logga in igen om det kvarstår"
 			],
 			"Unable to load the list": [
-				"Kan inte läsa in listan"
+				"Kan inte ladda listan"
 			],
 			"Unable to login": [
 				"Kan inte logga in"
@@ -182,8 +188,8 @@
 			]
 		},
 		"Info": {
-			"Access over 5000 secure servers in 63 countries": [
-				"Åtkomst till 5000 säkra servrar i 63 länder"
+			"Access over 9000 secure servers in 112 countries": [
+				"Åtkomst till över 9000 säkra servrar i 112 länder"
 			],
 			"Access Proton VPN via this icon": [
 				"Kom åt Proton VPN via denna ikon"
@@ -201,7 +207,7 @@
 				"Granskad av oberoende säkerhetsexperter"
 			],
 			"Auto-selected from": [
-				"Autovalt från"
+				"Automatiskt valt från"
 			],
 			"Automatically reconnect to Proton VPN when you open your browser.": [
 				"Återanslut automatiskt till Proton VPN när du öppnar din webbläsare."
@@ -251,6 +257,18 @@
 			"Disconnected": [
 				"Frånkopplad"
 			],
+			"Disconnected by another extension": [
+				"Bortkopplad av annan utökning"
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"Frånkopplad av en annan anknytning, kopplades den till ${newProxyName}"
+			],
+			"Disconnected, settings were overridden": [
+				"Frånkopplad, inställningar åsidosattes"
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"Frånkopplad, inställningar åsidosattes till ${newProxyName}"
+			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Sänd ut systemaviseringar om anslutnings- och frånkopplingshändelser."
 			],
@@ -297,6 +315,9 @@
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Tryck <b>Nästa</b>, klicka sedan <b>Tillåt</b> i pop-up från din webbläsare."
 			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"Skydda dig själv online med Protons kostnadsfria VPN med hög hastighet."
+			],
 			"Proton VPN": [
 				"Proton VPN"
 			],
@@ -322,7 +343,7 @@
 				"Split tunneling"
 			],
 			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
-				"Stoppar din webbläsare från att läcka din IP-adress till webbplatser och appar som använder WebRTC. Detta kan påverka videosamtal eller livestreaming på vissa webbplatser."
+				"Stoppar din webbläsare från att läcka din IP-adress till webbplatser och appar som använder WebRTC. Detta kan påverka prestanda på videosamtal eller livestreaming på vissa webbplatser."
 			],
 			"Telemetry": [
 				"Telemetri"
@@ -363,14 +384,14 @@
 				"Och alla dess underdomäner"
 			],
 			"Auto connect": [
-				"Autoanslut"
+				"Anslut automatiskt"
 			],
 			"Cities": [
 				"Orter"
 			],
 			"City": [
 				"Ort",
-				"Orter"
+				"Städer"
 			],
 			"Connecting": [
 				"Ansluter"
@@ -464,6 +485,9 @@
 		"Title": {
 			"Features": [
 				"Funktioner"
+			],
+			"Proton VPN for Vivaldi": [
+				"Proton VPN för Vivaldi"
 			],
 			"Streaming": [
 				"Streaming"

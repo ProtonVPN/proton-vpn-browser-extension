@@ -9,10 +9,13 @@
 				"${linkDescription} (Pestaña nueva)"
 			],
 			"Add": [
-				"Añadir"
+				"Agregar"
 			],
 			"Add website": [
-				"Añadir un sitio web"
+				"Agregar un sitio web"
+			],
+			"Already have a Proton Account?": [
+				"¿Ya tiene una cuenta Proton?"
 			],
 			"Auto connect": [
 				"Conectar automáticamente"
@@ -57,7 +60,7 @@
 				"Conexión rápida"
 			],
 			"Remove ${domain}": [
-				"Borrar ${domain}"
+				"Eliminar ${domain}"
 			],
 			"Select a city in ${exitCountryName}": [
 				"Selecionar una ciudad en ${exitCountryName}"
@@ -70,6 +73,9 @@
 			],
 			"Sign in": [
 				"Iniciar sesión"
+			],
+			"Sign in with Vivaldi": [
+				"Iniciar sesión con Vivaldi"
 			],
 			"Sign out": [
 				"Cerrar sesión"
@@ -182,8 +188,8 @@
 			]
 		},
 		"Info": {
-			"Access over 5000 secure servers in 63 countries": [
-				"Acceda a más de 5000 servidores seguros en 63 países"
+			"Access over 9000 secure servers in 112 countries": [
+				"Acceda a más de 9000 servidores seguros en 112 países"
 			],
 			"Access Proton VPN via this icon": [
 				"Acceda a Proton VPN con este ícono"
@@ -251,6 +257,18 @@
 			"Disconnected": [
 				"Desconectado"
 			],
+			"Disconnected by another extension": [
+				"Desconectado por otra extensión"
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"Desconectado por otra extensión. Estaba conectado a ${newProxyName}."
+			],
+			"Disconnected, settings were overridden": [
+				"No hay conexión, se anularon los ajustes"
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"No ha conexión y los ajustes fueron sustituidos por ${newProxyName}."
+			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Emitir notificaciones del sistema en eventos de conexión y desconexión."
 			],
@@ -297,11 +315,20 @@
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Presione <b>Siguiente</b>, luego pulse <b>Permitir</b> en la ventana emergente del navegador."
 			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"Protéjase en línea con la VPN gratuita y de alta velocidad de Proton."
+			],
+			"Proton VPN": [
+				"Proton VPN"
+			],
 			"Proton VPN Browser Extension": [
 				"Complemento de navegador Proton VPN"
 			],
 			"Search": [
 				"Buscar"
+			],
+			"Secure Core": [
+				"Secure Core"
 			],
 			"Select websites to exclude from your VPN connection.": [
 				"Seleccione sitios web para excluir de la conexión VPN."
@@ -380,6 +407,9 @@
 				"País de entrada",
 				"Países de entrada"
 			],
+			"Free": [
+				"Gratuito"
+			],
 			"Free servers": [
 				"Servidores gratuitos"
 			],
@@ -455,6 +485,9 @@
 		"Title": {
 			"Features": [
 				"Funcionalidades"
+			],
+			"Proton VPN for Vivaldi": [
+				"Proton VPN para Vivaldi"
 			],
 			"Streaming": [
 				"Streaming"

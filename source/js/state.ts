@@ -11,9 +11,8 @@ import {
 } from './account/credentials/getConnectionCredentials';
 import {Credentials} from './account/credentials/Credentials';
 import {setButton} from './tools/browserAction';
-import {clearProxy, hasProxy, setProxy} from './tools/proxy';
+import {clearProxy, getFixedServerConfig, hasProxy, setProxy} from './tools/proxy';
 import {
-	apiDomainsExclusion,
 	authCheck,
 	excludeApiFromProxy,
 	proxyHost,
@@ -44,7 +43,7 @@ import {forgetUser} from './account/user/forgetUser';
 import {forgetPmUser} from './account/user/forgetPmUser';
 import {notifyStateChange} from './tools/notifyStateChange';
 import {requireBestLogical} from './vpn/getBestLogical';
-import {storage, Timed} from './tools/storage';
+import {storage} from './tools/storage';
 import {getErrorAsString} from './tools/getErrorMessage';
 import {backgroundOnly} from './context/backgroundOnly';
 import {connectedServer} from './vpn/connectedServer';
@@ -69,18 +68,7 @@ let currentState: ConnectionState;
 
 let lastLogicalCheck = 0;
 
-export const auths: Record<string, {
-	auth: ProxyAuthentication | undefined,
-	lastCredentials: Timed<{ credentials: ProxyAuthentication }> | undefined,
-}> = {};
-
 backgroundOnly('state');
-
-const getSingleProxy = (server: ProxyServer) => ({
-	scheme,
-	host: server.proxyHost,
-	port: server.proxyPort,
-});
 
 const hasWarning = () => !!(currentState?.data?.error as ApiError)?.Warning;
 
@@ -189,17 +177,7 @@ const onState = {
 			return false;
 		}
 
-		if (!await setProxy({
-			mode: 'fixed_servers',
-			rules: {
-				singleProxy: getSingleProxy(server),
-				bypassList: [
-					...bypassList,
-					...(excludeApiFromProxy ? apiDomainsExclusion : []),
-					...proxyLocalNetworkExclusion,
-				],
-			},
-		})) {
+		if (!await setProxy(getFixedServerConfig(server.proxyHost, server.proxyPort, bypassList))) {
 			return false;
 		}
 
@@ -694,9 +672,8 @@ export async function checkAutoConnect(): Promise<void> {
 				? filteredList[Math.floor(Math.random() * filteredList.length)]
 				: requireBestLogical(filteredList, userTier)) || filteredList[0];
 			const server = pickServerInLogical(logical);
-			const exitIp = server?.ExitIP;
 
-			if (exitIp) {
+			if (server?.Domain) {
 				await connectLogical(logical, server, getBypassList(userTier, splitTunneling.value));
 			}
 		}

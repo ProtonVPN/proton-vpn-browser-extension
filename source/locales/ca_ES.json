@@ -14,6 +14,9 @@
 			"Add website": [
 				"Afegeix un lloc web"
 			],
+			"Already have a Proton Account?": [
+				"Ja teniu un compte de Proton?"
+			],
 			"Auto connect": [
 				"Connexió automàtica"
 			],
@@ -70,6 +73,9 @@
 			],
 			"Sign in": [
 				"Inicia la sessió"
+			],
+			"Sign in with Vivaldi": [
+				"Inicia la sessió amb Vivaldi"
 			],
 			"Sign out": [
 				"Tanca la sessió"
@@ -182,14 +188,14 @@
 			]
 		},
 		"Info": {
-			"Access over 5000 secure servers in 63 countries": [
-				"Accediu a més de 5.000 servidors en 63 països"
+			"Access over 9000 secure servers in 112 countries": [
+				"Accediu a més de 9.000 servidors en 112 països"
 			],
 			"Access Proton VPN via this icon": [
 				"Accedeix a Proton VPN mitjançant aquesta icona"
 			],
 			"Allow VPN permissions": [
-				"Permet permisos VPN"
+				"Autoritza els permisos de VPN"
 			],
 			"Also exclude subdomains of this website": [
 				"Exclou també els subdominis d'aquest lloc web"
@@ -210,7 +216,7 @@
 				"Torna"
 			],
 			"Browse through the Support Center and find answers to frequently asked questions.": [
-				"Navegueu al centre de suport i troba respostes a preguntes freqüents."
+				"Navegueu pel Centre d'assistència i trobeu respostes a les preguntes més freqüents."
 			],
 			"Bypass censorship with advanced security and privacy features": [
 				"Eviteu la censura amb funcions avançades de seguretat i privadesa"
@@ -237,7 +243,7 @@
 				"Connectant..."
 			],
 			"Contact our Customer Support agents to help you out with Proton VPN.": [
-				"Contacteu amb els nostres agents d´atenció al client per ajudar-us amb Proton VPN."
+				"Contacteu amb els nostres agents d'atenció al client perquè us ajudin amb Proton VPN."
 			],
 			"Crash": [
 				"Error"
@@ -250,6 +256,18 @@
 			],
 			"Disconnected": [
 				"Desconnectat"
+			],
+			"Disconnected by another extension": [
+				"Desconnectat per una altra extensió"
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"Si us ha desconnectat per una altra extensió, que connectava a ${newProxyName}."
+			],
+			"Disconnected, settings were overridden": [
+				"S'ha tancat la sessió. Les preferències s'han substituït."
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"S'ha tancat la sessió. Els paràmetres s'han substituït per ${newProxyName}."
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Envia notificacions del sistema per a connexions i desconnexions."
@@ -297,11 +315,20 @@
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Premeu <b>Següent</b>i després <b>Permet</b> a la finestra emergent del navegador."
 			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"Protegiu-vos en línia amb la VPN gratuïta d'alta velocitat de Proton."
+			],
+			"Proton VPN": [
+				"Proton VPN"
+			],
 			"Proton VPN Browser Extension": [
 				"Extensió del Navegador de Proton VPN"
 			],
 			"Search": [
 				"Cerca"
+			],
+			"Secure Core": [
+				"Secure Core"
 			],
 			"Select websites to exclude from your VPN connection.": [
 				"Seleccioneu llocs web per excloure de la connexió VPN."
@@ -380,6 +407,9 @@
 				"País d'entrada",
 				"Països d'entrada"
 			],
+			"Free": [
+				"Gratuït"
+			],
 			"Free servers": [
 				"Servidors gratuïts"
 			],
@@ -455,6 +485,9 @@
 		"Title": {
 			"Features": [
 				"Característiques"
+			],
+			"Proton VPN for Vivaldi": [
+				"Proton VPN per a Vivaldi"
 			],
 			"Streaming": [
 				"Estríming"

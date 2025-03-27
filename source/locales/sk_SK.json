@@ -14,6 +14,9 @@
 			"Add website": [
 				"Pridať webovú stránku"
 			],
+			"Already have a Proton Account?": [
+				"Už máte Proton účet?"
+			],
 			"Auto connect": [
 				"Automatické pripojenie"
 			],
@@ -54,7 +57,7 @@
 				"Zabráňte WebRTC úniku"
 			],
 			"Quick connect": [
-				"Rýchle pripojenie"
+				"Rýchlo pripojiť"
 			],
 			"Remove ${domain}": [
 				"Odstrániť ${domain}"
@@ -70,6 +73,9 @@
 			],
 			"Sign in": [
 				"Prihlásiť sa"
+			],
+			"Sign in with Vivaldi": [
+				"Prihlásiť sa pomocou Vivaldi"
 			],
 			"Sign out": [
 				"Odhlásiť sa"
@@ -95,12 +101,12 @@
 		},
 		"Action: City-level button": {
 			"Connect to ${cityName}": [
-				"Pripojiť do mesta ${cityName}"
+				"Pripojiť k ${cityName}"
 			]
 		},
 		"Action: Country-level button": {
 			"Connect to ${exitCountryName}": [
-				"Pripojiť cez ${exitCountryName}"
+				"Pripojiť k ${exitCountryName}"
 			]
 		},
 		"Action: Server-level button": {
@@ -188,8 +194,8 @@
 			]
 		},
 		"Info": {
-			"Access over 5000 secure servers in 63 countries": [
-				"Prístup k viac ako 5000 zabezpečeným serverom v 63 krajinách"
+			"Access over 9000 secure servers in 112 countries": [
+				"Prístup k viac ako 9000 zabezpečeným serverom v 112 krajinách"
 			],
 			"Access Proton VPN via this icon": [
 				"Pristupujte k Proton VPN prostredníctvom tejto ikony"
@@ -240,7 +246,7 @@
 				"Pripojené k ${name} v meste ${city}"
 			],
 			"Connecting...": [
-				"Pripájanie..."
+				"Pripájanie k..."
 			],
 			"Contact our Customer Support agents to help you out with Proton VPN.": [
 				"Kontaktujte našich pracovníkov zákazníckej podpory, ktorí vám pomôžu s Proton VPN."
@@ -256,6 +262,18 @@
 			],
 			"Disconnected": [
 				"Odpojené"
+			],
+			"Disconnected by another extension": [
+				"Odpojené iným rozšírením"
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"Odpojené iným rozšírením, pripojené k ${newProxyName}"
+			],
+			"Disconnected, settings were overridden": [
+				"Odpojené, nastavenia boli prepísané"
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"Odpojené, nastavenia boli prepísané na ${newProxyName}"
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Vysielať systémové notifikácie pri udalostiach pripojení a odpojení."
@@ -305,11 +323,20 @@
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Stlačte tlačidlo <b>Ďalej</b> a potom kliknite na <b>Povoliť</b> vo vyskakovacom okne prehliadača."
 			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"Chráňte sa online pomocou bezplatnej vysokorýchlostnej VPN od Protonu."
+			],
+			"Proton VPN": [
+				"Proton VPN"
+			],
 			"Proton VPN Browser Extension": [
 				"Proton VPN rozšírenie prehliadača"
 			],
 			"Search": [
 				"Hľadať"
+			],
+			"Secure Core": [
+				"Secure Core"
 			],
 			"Select websites to exclude from your VPN connection.": [
 				"Vyberte si internetové stránky, ktoré chcete vylúčiť z pripojenia VPN."
@@ -318,7 +345,7 @@
 				"Zdieľajte anonymné hlásenia o chybách pri používaní"
 			],
 			"Share anonymous usage statistics": [
-				"Zdieľajte anonymné štatistiky o používaní"
+				"Zdieľať anonymné štatistiky používania"
 			],
 			"Split tunneling": [
 				"Split tunneling"
@@ -342,7 +369,7 @@
 				"Ak chcete začať, musíte v prehliadači povoliť oprávnenia VPN."
 			],
 			"Upgrade": [
-				"Navýšiť predplatné"
+				"Prejsť na platený plán"
 			],
 			"Usage data helps us overcome VPN blocks and improve app performance.": [
 				"Údaje o používaní nám pomáhajú obchádzať blokovanie VPN a vylepšovať výkon aplikácie."
@@ -365,7 +392,7 @@
 				"A všetky jej subdomény"
 			],
 			"Auto connect": [
-				"Automaticky pripojiť"
+				"Automatické pripojenie"
 			],
 			"Cities": [
 				"Mestá"
@@ -373,8 +400,8 @@
 			"City": [
 				"Mesto",
 				"Mestá",
-				"Miest",
-				"Miest"
+				"Mestá",
+				"Mestá"
 			],
 			"Connecting": [
 				"Pripájanie"
@@ -385,14 +412,17 @@
 			"Country": [
 				"Krajina",
 				"Krajiny",
-				"Krajín",
-				"Krajín"
+				"Krajiny",
+				"Krajiny"
 			],
 			"Entry country": [
 				"Vstupná krajina",
 				"Vstupné krajiny",
 				"Vstupných krajín",
 				"Vstupných krajín"
+			],
+			"Free": [
+				"Zdarma"
 			],
 			"Free servers": [
 				"Bezplatné servery"
@@ -424,8 +454,8 @@
 			"Server": [
 				"Server",
 				"Servery",
-				"Serverov",
-				"Serverov"
+				"Servery",
+				"Servery"
 			],
 			"Settings": [
 				"Nastavenia"
@@ -462,7 +492,7 @@
 		},
 		"Status": {
 			"Connecting to ${serverName}": [
-				"Pripája sa k serveru ${serverName}"
+				"Pripája sa ku ${serverName}"
 			],
 			"Proton VPN: ${status}": [
 				"Proton VPN: ${status}"
@@ -471,6 +501,9 @@
 		"Title": {
 			"Features": [
 				"Funkcie"
+			],
+			"Proton VPN for Vivaldi": [
+				"Proton VPN pre Vivaldi"
 			],
 			"Streaming": [
 				"Streamovanie"

@@ -14,6 +14,9 @@
 			"Add website": [
 				"Adăugare site"
 			],
+			"Already have a Proton Account?": [
+				"Aveți deja un cont Proton?"
+			],
 			"Auto connect": [
 				"Autoconectare"
 			],
@@ -70,6 +73,9 @@
 			],
 			"Sign in": [
 				"Autentificare"
+			],
+			"Sign in with Vivaldi": [
+				"Conectare cu Vivaldi"
 			],
 			"Sign out": [
 				"Deconectare"
@@ -148,7 +154,7 @@
 				"Nu s-au găsit rezultate."
 			],
 			"Not able to control the browser network settings, possibly a permission is missing": [
-				"Nu se pot controla setările de rețea ale navigatorului. Probabil lipsește o permisiune."
+				"Nu se pot controla setările de rețea ale navigatorului web. Probabil lipsește o permisiune."
 			],
 			"Please check your connectivity": [
 				"Verificați-vă conexiunea."
@@ -185,8 +191,8 @@
 			]
 		},
 		"Info": {
-			"Access over 5000 secure servers in 63 countries": [
-				"Accesați peste 5000 de servere sigure din 63 de țări"
+			"Access over 9000 secure servers in 112 countries": [
+				"Accesați peste 9000 de servere sigure din 112 de țări"
 			],
 			"Access Proton VPN via this icon": [
 				"Accesați Proton VPN cu această pictogramă"
@@ -204,7 +210,7 @@
 				"Auditat de experți independenți în securitate"
 			],
 			"Auto-selected from": [
-				"Autoselectată din"
+				"Autoselectare din"
 			],
 			"Automatically reconnect to Proton VPN when you open your browser.": [
 				"Reconectare automată la Proton VPN când se deschide navigatorul."
@@ -254,6 +260,18 @@
 			"Disconnected": [
 				"Deconectat"
 			],
+			"Disconnected by another extension": [
+				"Deconectat de către altă extensie."
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"Deconectat de către altă extensie, conectat la ${newProxyName}."
+			],
+			"Disconnected, settings were overridden": [
+				"Deconectat. Setările au fost înlocuite."
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"Deconectat. Setările au fost înlocuite cu ${newProxyName}."
+			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Emitere notificări de sistem privind evenimentele de conectare și deconectare."
 			],
@@ -301,11 +319,20 @@
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Apăsați pe <b>Înainte</b>, apoi clic pe <b>Permitere</b> în fereastra flotantă din navigator."
 			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"Protejați-vă online cu VPN-ul gratuit de mare viteză de la Proton."
+			],
+			"Proton VPN": [
+				"Proton VPN"
+			],
 			"Proton VPN Browser Extension": [
 				"Extensie navigator Proton VPN"
 			],
 			"Search": [
 				"Căutare"
+			],
+			"Secure Core": [
+				"Secure Core"
 			],
 			"Select websites to exclude from your VPN connection.": [
 				"Selectați pagini web pentru a fi excluse de la conexiunea VPN."
@@ -387,6 +414,9 @@
 				"Țări de intrare",
 				"Țări de intrare"
 			],
+			"Free": [
+				"Gratuite"
+			],
 			"Free servers": [
 				"Servere gratuite"
 			],
@@ -463,6 +493,9 @@
 		"Title": {
 			"Features": [
 				"Funcții"
+			],
+			"Proton VPN for Vivaldi": [
+				"Proton VPN pentru Vivaldi"
 			],
 			"Streaming": [
 				"Transmisie în flux"

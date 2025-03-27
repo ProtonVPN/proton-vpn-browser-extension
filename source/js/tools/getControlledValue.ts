@@ -1,6 +1,6 @@
-import ChromeSettingGetResultDetails = chrome.types.ChromeSettingGetResultDetails;
+import ChromeSettingGetResult = chrome.types.ChromeSettingGetResult;
 
-export const getControlledValue = (details?: ChromeSettingGetResultDetails) => {
+export const getControlledValue = (details?: ChromeSettingGetResult<any>) => {
 	const levelOfControl = details?.levelOfControl;
 	const isControlledByExtension = (
 		levelOfControl === 'controlled_by_this_extension' ||

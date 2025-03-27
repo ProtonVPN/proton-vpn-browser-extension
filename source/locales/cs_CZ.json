@@ -14,6 +14,9 @@
 			"Add website": [
 				"Přidat webovou stránku"
 			],
+			"Already have a Proton Account?": [
+				"Již máte účet Proton?"
+			],
 			"Auto connect": [
 				"Automatické připojení"
 			],
@@ -71,6 +74,9 @@
 			"Sign in": [
 				"Přihlásit se"
 			],
+			"Sign in with Vivaldi": [
+				"Přihlásit se pomocí Vivaldi"
+			],
 			"Sign out": [
 				"Odhlásit se"
 			],
@@ -115,16 +121,16 @@
 		},
 		"Error": {
 			"${countries} country": [
-				"${countries} země",
-				"${countries} země",
-				"${countries} zemí",
-				"${countries} zemí"
+				"${countries} zemi",
+				"${countries} zemích",
+				"${countries} zemích",
+				"${countries} zemích"
 			],
 			"${rounderServersCount} secure server": [
-				"${rounderServersCount} bezpečný server",
-				"${rounderServersCount} bezpečné servery",
-				"${rounderServersCount} bezpečných serverů",
-				"${rounderServersCount} bezpečných serverů"
+				"${rounderServersCount} bezpečnému serveru",
+				"${rounderServersCount} bezpečným serverům",
+				"${rounderServersCount} bezpečným serverům",
+				"${rounderServersCount} bezpečným serverům"
 			],
 			"${servers}+ secure server": [
 				"${servers}+ bezpečný server",
@@ -188,8 +194,8 @@
 			]
 		},
 		"Info": {
-			"Access over 5000 secure servers in 63 countries": [
-				"Přístup k více než 5000 serverům v 63 zemích"
+			"Access over 9000 secure servers in 112 countries": [
+				"Přístup k více než 9000 bezpečným serverům v 112 zemích"
 			],
 			"Access Proton VPN via this icon": [
 				"Přistupujte k Proton VPN přes tuto ikonu"
@@ -257,11 +263,23 @@
 			"Disconnected": [
 				"Odpojeno"
 			],
+			"Disconnected by another extension": [
+				"Odpojeno jiným rozšířením"
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"Odpojeno jiným rozšířením, připojeno k ${newProxyName}"
+			],
+			"Disconnected, settings were overridden": [
+				"Odpojeno, nastavení byla potlačena"
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"Odpojeno, nastavení byla potlačena ${newProxyName}"
+			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Vysílat systémová upozornění při událostech připojení a odpojení."
 			],
 			"Extra protection for people with advanced privacy needs": [
-				"Extra ochrana pro lidi s vyššími nároky na ochranu soukromí"
+				"Dodatečná ochrana pro lidi s vyššími nároky na ochranu soukromí"
 			],
 			"Fastest free server": [
 				"Nejrychlejší bezplatný server"
@@ -305,11 +323,20 @@
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Stiskněte <b>Další</b>, pak klikněte na <b>Povolit</b> ve vyskakovacím okně vašeho prohlížeče."
 			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"Chraňte se online s bezplatnou vysokorychlostní Proton VPN."
+			],
+			"Proton VPN": [
+				"Proton VPN"
+			],
 			"Proton VPN Browser Extension": [
 				"Proton VPN rozšíření prohlížeče"
 			],
 			"Search": [
 				"Vyhledat"
+			],
+			"Secure Core": [
+				"Secure Core"
 			],
 			"Select websites to exclude from your VPN connection.": [
 				"Vyberte webové stránky, pro které nebude použito VPN připojení."
@@ -373,8 +400,8 @@
 			"City": [
 				"Město",
 				"Města",
-				"Měst",
-				"Měst"
+				"Města",
+				"Města"
 			],
 			"Connecting": [
 				"Připojuji"
@@ -385,14 +412,17 @@
 			"Country": [
 				"Země",
 				"Země",
-				"Zemí",
-				"Zemí"
+				"Země",
+				"Země"
 			],
 			"Entry country": [
 				"Vstupní země",
 				"Vstupní země",
-				"Vstupních zemí",
-				"Vstupních zemí"
+				"Vstupní země",
+				"Vstupní země"
+			],
+			"Free": [
+				"Zdarma"
 			],
 			"Free servers": [
 				"Bezplatné servery"
@@ -424,8 +454,8 @@
 			"Server": [
 				"Server",
 				"Servery",
-				"Serverů",
-				"Serverů"
+				"Servery",
+				"Servery"
 			],
 			"Settings": [
 				"Nastavení"
@@ -471,6 +501,9 @@
 		"Title": {
 			"Features": [
 				"Funkce"
+			],
+			"Proton VPN for Vivaldi": [
+				"Proton VPN pro Vivaldi"
 			],
 			"Streaming": [
 				"Streamování"

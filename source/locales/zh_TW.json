@@ -176,6 +176,9 @@
 			]
 		},
 		"Info": {
+			"Access over 9000 secure servers in 112 countries": [
+				"存取位於 112 個國家的超過 9000 台安全伺服器"
+			],
 			"Access Proton VPN via this icon": [
 				"由此圖示進入 Proton VPN"
 			],
@@ -188,6 +191,9 @@
 			"and more": [
 				"以及更多"
 			],
+			"Audited by independent security experts": [
+				"由獨立安全專家進行審核"
+			],
 			"Auto-selected from": [
 				"自動選擇自"
 			],
@@ -199,6 +205,9 @@
 			],
 			"Browse through the Support Center and find answers to frequently asked questions.": [
 				"前往支援中心並查看常見問答。"
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"以進階的安全與隱私功能繞過網路審查"
 			],
 			"Clear search": [
 				"清除搜尋"
@@ -252,7 +261,7 @@
 				"舉例來說，news.example.com 是 example.com 的子網域。"
 			],
 			"Help": [
-				"說明"
+				"幫助"
 			],
 			"Help us fight censorship": [
 				"助我們一臂之力抵抗審查"
@@ -266,6 +275,9 @@
 			"Logged out": [
 				"已登出"
 			],
+			"Open source VPN": [
+				"開放式程式碼VPN"
+			],
 			"Open the Extensions menu": [
 				"開啟擴充功能選單"
 			],
@@ -278,11 +290,17 @@
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"按「<b>下一步</b>」，然後在您的瀏覽器彈出視窗中按一下「<b>允許</b>」。"
 			],
+			"Proton VPN": [
+				"Proton VPN"
+			],
 			"Proton VPN Browser Extension": [
 				"Proton VPN 瀏覽器擴充功能"
 			],
 			"Search": [
 				"搜尋"
+			],
+			"Secure Core": [
+				"Secure Core"
 			],
 			"Select websites to exclude from your VPN connection.": [
 				"選取網站以從您的 VPN 連線排除。"
@@ -335,7 +353,7 @@
 				"與所有其子網域"
 			],
 			"Auto connect": [
-				"自動連接"
+				"自動連線"
 			],
 			"Cities": [
 				"城市"
@@ -354,6 +372,9 @@
 			],
 			"Entry country": [
 				"通道入口國家"
+			],
+			"Free": [
+				"免費"
 			],
 			"Free servers": [
 				"免費伺服器"
@@ -412,7 +433,7 @@
 				"功能"
 			],
 			"Help": [
-				"說明"
+				"幫助"
 			],
 			"Settings": [
 				"設定"

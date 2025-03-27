@@ -1,6 +1,6 @@
 import {saveSession} from './saveSession';
 import {Session} from './Session';
-import {prepareSigningView, showSigningView} from '../components/showSigningView';
+import {prepareSigningView, showSigningView} from '../components/signIn/showSigningView';
 import {notifyStateChange} from '../tools/notifyStateChange';
 
 const root = global || window;

@@ -9,4 +9,5 @@ export interface Session {
 	accessToken?: string;
 	persistent?: boolean;
 	expiresAt?: number;
+	partnerId?: string;
 }

@@ -14,6 +14,9 @@
 			"Add website": [
 				"Website toevoegen"
 			],
+			"Already have a Proton Account?": [
+				"Heeft u al een Proton Account?"
+			],
 			"Auto connect": [
 				"Automatisch verbinden"
 			],
@@ -71,6 +74,9 @@
 			"Sign in": [
 				"Inloggen"
 			],
+			"Sign in with Vivaldi": [
+				"Log in met Vivaldi"
+			],
 			"Sign out": [
 				"Uitloggen"
 			],
@@ -84,7 +90,7 @@
 				"Account wisselen"
 			],
 			"Update": [
-				"Updaten"
+				"Bijwerken"
 			],
 			"Upgrade": [
 				"Upgraden"
@@ -182,8 +188,8 @@
 			]
 		},
 		"Info": {
-			"Access over 5000 secure servers in 63 countries": [
-				"Toegang tot meer dan 5000 servers in 63 landen"
+			"Access over 9000 secure servers in 112 countries": [
+				"Toegang tot meer dan 9000 servers in 112 landen"
 			],
 			"Access Proton VPN via this icon": [
 				"Toegang tot Proton VPN via dit icoon"
@@ -251,6 +257,18 @@
 			"Disconnected": [
 				"Verbinding verbroken"
 			],
+			"Disconnected by another extension": [
+				"Verbinding verbroken door een andere extensie"
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"Verbinding verbroken door een andere extensie, die verbinding maakte met ${newProxyName}"
+			],
+			"Disconnected, settings were overridden": [
+				"Verbinding verbroken, instellingen zijn overschreven"
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"Verbinding verbroken, instellingen zijn overschreven naar ${newProxyName}"
+			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Systeemmeldingen sturen bij verbindingsgebeurtenissen."
 			],
@@ -297,11 +315,20 @@
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Druk <b>Volgende</b>, klik daarna op <b>Toestaan</b> in de pop-up van uw browser."
 			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"Bescherm uzelf online met Proton's gratis hoge snelheid VPN"
+			],
+			"Proton VPN": [
+				"Proton VPN"
+			],
 			"Proton VPN Browser Extension": [
 				"Proton VPN Browserextensie"
 			],
 			"Search": [
 				"Zoeken"
+			],
+			"Secure Core": [
+				"Secure Core"
 			],
 			"Select websites to exclude from your VPN connection.": [
 				"Selecteer websites om uit te sluiten van uw VPN-verbindingen."
@@ -380,6 +407,9 @@
 				"Ingaand land",
 				"Ingaande landen"
 			],
+			"Free": [
+				"Gratis"
+			],
 			"Free servers": [
 				"Free servers"
 			],
@@ -455,6 +485,9 @@
 		"Title": {
 			"Features": [
 				"Functies"
+			],
+			"Proton VPN for Vivaldi": [
+				"Proton VPN voor Vivaldi"
 			],
 			"Streaming": [
 				"Streaming"

@@ -14,6 +14,9 @@
 			"Add website": [
 				"Tambah situs web"
 			],
+			"Already have a Proton Account?": [
+				"Sudah memiliki akun Proton?"
+			],
 			"Auto connect": [
 				"Hubungkan otomatis"
 			],
@@ -54,7 +57,7 @@
 				"Cegah kebocoran WebRTC"
 			],
 			"Quick connect": [
-				"Quick connect"
+				"Quick Connect"
 			],
 			"Remove ${domain}": [
 				"Hapus ${domain}"
@@ -70,6 +73,9 @@
 			],
 			"Sign in": [
 				"Masuk"
+			],
+			"Sign in with Vivaldi": [
+				"Masuk dengan Vivaldi"
 			],
 			"Sign out": [
 				"Keluar"
@@ -145,7 +151,7 @@
 				"Pengaturan jaringan browser tidak dapat dikendalikan. Terdapat perizinan yang kemungkinan hilang"
 			],
 			"Please check your connectivity": [
-				"Mohon periksa koneksi internet Anda"
+				"Silakan periksa konektivitas Anda"
 			],
 			"Please try a different keyword": [
 				"Silakan coba kata kunci pencarian yang berbeda"
@@ -179,8 +185,8 @@
 			]
 		},
 		"Info": {
-			"Access over 5000 secure servers in 63 countries": [
-				"Akses lebih dari 5000 server aman di 63 negara"
+			"Access over 9000 secure servers in 112 countries": [
+				"Akses lebih dari 9000 server aman di 112 negara"
 			],
 			"Access Proton VPN via this icon": [
 				"Akses Proton VPN melalui ikon ini"
@@ -248,6 +254,18 @@
 			"Disconnected": [
 				"Terputus"
 			],
+			"Disconnected by another extension": [
+				"Diputuskan oleh ekstensi lain"
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"Diputuskan oleh ekstensi lain yang menghubungkan VPN ke ${newProxyName}"
+			],
+			"Disconnected, settings were overridden": [
+				"Terputus, pengaturan telah ditimpa"
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"Terputus, pengaturan telah ditimpa ke ${newProxyName}"
+			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Tampilkan notifikasi sistem pada saat terhubung atau terputus."
 			],
@@ -293,11 +311,20 @@
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Klik tombol <b>Selanjutnya</b> di bawah ini, lalu pilih <b>Izinkan</b> pada jendela pop-up yang muncul pada browser Anda."
 			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"Lindungi diri Anda di internet dengan VPN gratis berkecepatan tinggi dari Proton."
+			],
+			"Proton VPN": [
+				"Proton VPN"
+			],
 			"Proton VPN Browser Extension": [
 				"Ekstensi Browser Proton VPN"
 			],
 			"Search": [
 				"Pencarian"
+			],
+			"Secure Core": [
+				"Secure Core"
 			],
 			"Select websites to exclude from your VPN connection.": [
 				"Pilih situs web mana saja yang akan dikecualikan dari sambungan VPN Anda."
@@ -373,8 +400,11 @@
 			"Entry country": [
 				"Negara tujuan awal"
 			],
+			"Free": [
+				"Free"
+			],
 			"Free servers": [
-				"Server Free"
+				"Server Gratis"
 			],
 			"Free servers (${count})": [
 				"Server Free (${count})"
@@ -398,7 +428,7 @@
 				"Server Plus (${count})"
 			],
 			"Protected": [
-				"Terlindung"
+				"Terlindungi"
 			],
 			"Server": [
 				"Server"
@@ -410,7 +440,7 @@
 				"Split tunneling"
 			],
 			"Unprotected": [
-				"Tidak Terlindung"
+				"Tidak terlindung"
 			],
 			"Via": [
 				"Melalui"
@@ -447,6 +477,9 @@
 		"Title": {
 			"Features": [
 				"Fitur"
+			],
+			"Proton VPN for Vivaldi": [
+				"Proton VPN untuk Vivaldi"
 			],
 			"Streaming": [
 				"Streaming"

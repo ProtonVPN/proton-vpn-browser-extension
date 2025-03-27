@@ -182,8 +182,8 @@
 			]
 		},
 		"Info": {
-			"Access over 5000 secure servers in 63 countries": [
-				"Pääsy yli 5000 turvalliselle palvelimelle 63 maassa"
+			"Access over 9000 secure servers in 112 countries": [
+				"Pääsy yli 9000 turvalliselle palvelimelle 112 maassa"
 			],
 			"Access Proton VPN via this icon": [
 				"Käytä Proton VPN:ää tästä kuvakkeesta"
@@ -195,10 +195,10 @@
 				"Sisällytä myös tämän verkkosivuston aliverkkotunnukset"
 			],
 			"and more": [
-				"ja monia muita"
+				"ja enemmän"
 			],
 			"Audited by independent security experts": [
-				"Riippumattomien tietoturva-asiantuntijoiden auditoima"
+				"Riippumattomien tietoturva-asiantuntijoiden tarkastama"
 			],
 			"Auto-selected from": [
 				"Valittu automaattisesti seuraavista"
@@ -297,11 +297,17 @@
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Paina <b>Seuraava</b> ja sitten selaimesi ponnahduksesta <b>Salli</b>."
 			],
+			"Proton VPN": [
+				"Proton VPN"
+			],
 			"Proton VPN Browser Extension": [
 				"Proton VPN -selainlaajennus"
 			],
 			"Search": [
 				"Haku"
+			],
+			"Secure Core": [
+				"Secure Core"
 			],
 			"Select websites to exclude from your VPN connection.": [
 				"Valitse VPN-yhteyden ulkopuolelle suljettavat verkkosivustot."
@@ -334,7 +340,7 @@
 				"Aloita myöntämällä VPN -laajennuksen tarvitsemat käyttöoikeudet selaimestasi."
 			],
 			"Upgrade": [
-				"Päivitä tilaus"
+				"Päivitä"
 			],
 			"Usage data helps us overcome VPN blocks and improve app performance.": [
 				"Käyttötilastot auttavat meitä kiertämään VPN-estoja ja parantamaan sovelluksen suorituskykyä."
@@ -379,6 +385,9 @@
 			"Entry country": [
 				"Lähtömaa",
 				"Lähtömaat"
+			],
+			"Free": [
+				"Free"
 			],
 			"Free servers": [
 				"Ilmaispalvelimet"

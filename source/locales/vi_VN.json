@@ -18,7 +18,7 @@
 				"Tự động kết nối"
 			],
 			"Cancel": [
-				"Hủy"
+				"Huỷ"
 			],
 			"Connect": [
 				"Kết nối"
@@ -48,7 +48,7 @@
 				"Chưa có tài khoản Proton?"
 			],
 			"Next": [
-				"Tiếp theo"
+				"Tiếp"
 			],
 			"Prevent WebRTC leak": [
 				"Ngăn chặn lỗ hổng WebRTC"
@@ -69,10 +69,10 @@
 				"Chọn quốc gia đầu vào với đầu ra là quốc gia ${exitCountryName}"
 			],
 			"Sign in": [
-				"Đăng nhập"
+				"Dăng nhập"
 			],
 			"Sign out": [
-				"Đăng xuất"
+				"Đăng xuất"
 			],
 			"Subscribe to connect more devices": [
 				"Nâng cấp để có thể kết nối trên nhiều thiếc bị"
@@ -87,7 +87,7 @@
 				"Cập nhật"
 			],
 			"Upgrade": [
-				"Nâng cấp"
+				"Nâng cấp"
 			],
 			"Visit Support Center": [
 				"Truy cập Trung tâm hỗ trợ"
@@ -179,8 +179,8 @@
 			]
 		},
 		"Info": {
-			"Access over 5000 secure servers in 63 countries": [
-				"Truy cập hơn 5000 máy chủ được bảo mật ở 63 quốc gia khác nhau"
+			"Access over 9000 secure servers in 112 countries": [
+				"Truy cập hơn 9000 máy chủ được bảo mật ở 112 quốc gia khác nhau"
 			],
 			"Access Proton VPN via this icon": [
 				"Truy cập vào Proton VPN bằng biểu tượng này"
@@ -282,7 +282,7 @@
 				"VPN mã nguồn mở"
 			],
 			"Open the Extensions menu": [
-				"Mở danh sách tùy chọn của các tiện ích mở rộng"
+				"Mở danh sách phần mở rộng"
 			],
 			"Open the Proton VPN browser extension to continue": [
 				"Mở tiện ích mở rộng trình duyệt Proton VPN để tiếp tục"
@@ -372,6 +372,9 @@
 			],
 			"Entry country": [
 				"Quốc gia đầu vào"
+			],
+			"Free": [
+				"Miễn phí"
 			],
 			"Free servers": [
 				"Máy chủ miễn phí"

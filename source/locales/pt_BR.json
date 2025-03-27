@@ -14,6 +14,9 @@
 			"Add website": [
 				"Adicionar site"
 			],
+			"Already have a Proton Account?": [
+				"Já tem uma conta da Proton?"
+			],
 			"Auto connect": [
 				"Conexão automática"
 			],
@@ -70,6 +73,9 @@
 			],
 			"Sign in": [
 				"Iniciar sessão"
+			],
+			"Sign in with Vivaldi": [
+				"Iniciar sessão com Vivaldi"
 			],
 			"Sign out": [
 				"Encerrar sessão"
@@ -182,8 +188,8 @@
 			]
 		},
 		"Info": {
-			"Access over 5000 secure servers in 63 countries": [
-				"Acesse 5000 servidores seguros em 63 países"
+			"Access over 9000 secure servers in 112 countries": [
+				"Acesse 9000 servidores seguros em 112 países"
 			],
 			"Access Proton VPN via this icon": [
 				"Acesse a VPN Proton através deste ícone"
@@ -251,6 +257,18 @@
 			"Disconnected": [
 				"Desconectado"
 			],
+			"Disconnected by another extension": [
+				"Desconectado por outra extensão"
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"Desconectado por outra extensão. Conectou a ${newProxyName}."
+			],
+			"Disconnected, settings were overridden": [
+				"Desconectado, as configurações foram substituídas"
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"Desconectado, as configurações foram substituídas por ${newProxyName}"
+			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Emitir notificações de sistema em eventos de conexão e desconexão."
 			],
@@ -296,6 +314,9 @@
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Pressione <b>Avançar</b> e clique em <b>Permitir</b> no pop-up do seu navegador."
+			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"Proteja-se online com a VPN gratuita de alta velocidade da Proton."
 			],
 			"Proton VPN": [
 				"Proton VPN"
@@ -387,7 +408,7 @@
 				"Países de entrada"
 			],
 			"Free": [
-				"Free"
+				"Gratuito"
 			],
 			"Free servers": [
 				"Servidores gratuitos"
@@ -464,6 +485,9 @@
 		"Title": {
 			"Features": [
 				"Recursos"
+			],
+			"Proton VPN for Vivaldi": [
+				"Proton VPN para Vivaldi"
 			],
 			"Streaming": [
 				"Streaming"

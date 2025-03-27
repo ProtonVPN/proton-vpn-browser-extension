@@ -24,7 +24,7 @@
 				"Подключить"
 			],
 			"Contact us": [
-				"Служба поддержки"
+				"Связаться с нами"
 			],
 			"Create an account": [
 				"Создать аккаунт"
@@ -42,7 +42,7 @@
 				"Войти в аккаунт через Proton"
 			],
 			"Manage subscription": [
-				"Управление подпиской"
+				"Управлять подпиской"
 			],
 			"New to Proton?": [
 				"Впервые в Proton?"
@@ -70,6 +70,9 @@
 			],
 			"Sign in": [
 				"Войти"
+			],
+			"Sign in with Vivaldi": [
+				"Войти с помощью Vivaldi"
 			],
 			"Sign out": [
 				"Выйти"
@@ -118,19 +121,19 @@
 				"${countries} страна",
 				"${countries} страны",
 				"${countries} стран",
-				"${countries} стран"
+				"${countries} страны"
 			],
 			"${rounderServersCount} secure server": [
 				"${rounderServersCount} защищённый сервер",
+				"${rounderServersCount} защищённых сервера",
 				"${rounderServersCount} защищённых серверов",
-				"${rounderServersCount} защищённый сервер",
 				"${rounderServersCount} защищённых сервера"
 			],
 			"${servers}+ secure server": [
 				"${servers}+ защищённый сервер",
 				"${servers}+ защищённых сервера",
 				"${servers}+ защищённых серверов",
-				"${servers}+ защищённых серверов"
+				"${servers}+ защищенных серверов"
 			],
 			"Access over ${servers} in ${countries}": [
 				"Доступ через ${servers} к ${countries}"
@@ -157,7 +160,7 @@
 				"Проверьте доступность сети"
 			],
 			"Please try a different keyword": [
-				"Попробуйте другое ключевое слово"
+				"Пожалуйста, попробуйте другое ключевое слово"
 			],
 			"Server not found": [
 				"Сервер не найден"
@@ -188,8 +191,8 @@
 			]
 		},
 		"Info": {
-			"Access over 5000 secure servers in 63 countries": [
-				"Доступ к более чем 5000 защищенным серверам в 63 странах"
+			"Access over 9000 secure servers in 112 countries": [
+				"Получите доступ к более чем 9000 защищенных серверов в 112 странах"
 			],
 			"Access Proton VPN via this icon": [
 				"Подключитесь к Proton VPN через эту иконку"
@@ -201,7 +204,7 @@
 				"Также исключить поддомены этого веб-сайта"
 			],
 			"and more": [
-				"и др."
+				"и многое другое"
 			],
 			"Audited by independent security experts": [
 				"Проверена независимыми специалистами по безопасности"
@@ -249,13 +252,19 @@
 				"Сбой"
 			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
-				"Отчёты об ошибках помогают нам исправлять ошибки, обнаруживать брандмауэры и избегать блокировки VPN."
+				"Отчёты об ошибках помогают нам устранять ошибки, обнаруживать брандмауэры и избегать блокировки VPN."
 			],
 			"Disable VPN for selected websites.": [
 				"Отключить VPN для выбранных веб-сайтов."
 			],
 			"Disconnected": [
 				"Отключено"
+			],
+			"Disconnected by another extension": [
+				"Отключен другим расширением"
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"Отключено другим расширением, подключено к ${newProxyName}"
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Выдавать системные уведомления при событиях подключения и отключения."
@@ -264,7 +273,7 @@
 				"Дополнительная защита для людей с повышенными требованиями к конфиденциальности"
 			],
 			"Fastest free server": [
-				"Самый быстрый бесплатный сервер"
+				"Самый быстрый сервер Free"
 			],
 			"Follow these simple steps to get the best experience using Proton VPN": [
 				"Следуйте этим простым шагам, чтобы получить лучший опыт, используя Proton VPN"
@@ -310,6 +319,9 @@
 			],
 			"Search": [
 				"Поиск"
+			],
+			"Secure Core": [
+				"Secure Core"
 			],
 			"Select websites to exclude from your VPN connection.": [
 				"Выберите веб-сайты, которые следует исключить из VPN-соединения."
@@ -373,8 +385,8 @@
 			"City": [
 				"Город",
 				"Города",
-				"Города",
-				"Города"
+				"Городов",
+				"Городов"
 			],
 			"Connecting": [
 				"Подключение"
@@ -385,14 +397,17 @@
 			"Country": [
 				"Страна",
 				"Страны",
-				"Страны",
-				"Страны"
+				"Стран",
+				"Стран"
 			],
 			"Entry country": [
 				"Страна входа",
 				"Страны входа",
-				"Страны входа",
+				"Стран входа",
 				"Страны входа"
+			],
+			"Free": [
+				"Free"
 			],
 			"Free servers": [
 				"Бесплатные серверы"
@@ -423,9 +438,9 @@
 			],
 			"Server": [
 				"Сервер",
-				"Серверы",
-				"Серверы",
-				"Серверы"
+				"Сервера",
+				"Серверов",
+				"Серверов"
 			],
 			"Settings": [
 				"Настройки"

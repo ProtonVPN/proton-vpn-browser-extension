@@ -14,6 +14,9 @@
 			"Add website": [
 				"Дадаць вэб-сайт"
 			],
+			"Already have a Proton Account?": [
+				"Ужо ёсць уліковы запіс Proton?"
+			],
 			"Auto connect": [
 				"Аўтаматычнае падключэнне"
 			],
@@ -71,6 +74,9 @@
 			"Sign in": [
 				"Увайсці"
 			],
+			"Sign in with Vivaldi": [
+				"Увайсці з Vivaldi"
+			],
 			"Sign out": [
 				"Выйсці з уліковага запісу"
 			],
@@ -118,7 +124,7 @@
 				"${countries} краіна",
 				"${countries} краіны",
 				"${countries} краін",
-				"${countries} краіны"
+				"${countries} краін"
 			],
 			"${rounderServersCount} secure server": [
 				"${rounderServersCount} бяспечны сервер",
@@ -130,7 +136,7 @@
 				"Больш за ${servers} бяспечны сервер",
 				"Больш за ${servers} бяспечныя серверы",
 				"Больш за ${servers} бяспечных сервераў",
-				"Больш за ${servers} бяспечныя серверы"
+				"Больш за ${servers} бяспечных сервераў"
 			],
 			"Access over ${servers} in ${countries}": [
 				"Доступ праз ${servers} у ${countries}"
@@ -188,8 +194,8 @@
 			]
 		},
 		"Info": {
-			"Access over 5000 secure servers in 63 countries": [
-				"Доступ да больш як 5000 сервераў у 63 краінах"
+			"Access over 9000 secure servers in 112 countries": [
+				"Доступ да больш чым 9000 сервераў у 112 краінах"
 			],
 			"Access Proton VPN via this icon": [
 				"Атрымаць доступ да Proton VPN праз значок праграмы"
@@ -204,10 +210,10 @@
 				"і іншыя"
 			],
 			"Audited by independent security experts": [
-				"Праверана незалежнымі экспертамі ў галіне бяспекі"
+				"Праведзены аўдыт незалежнымі экспертамі ў галіне бяспекі"
 			],
 			"Auto-selected from": [
-				"Аўтаматычна выбрана з"
+				"Аўтаматычны выбар з"
 			],
 			"Automatically reconnect to Proton VPN when you open your browser.": [
 				"Аўтаматычна перападключыцца да Proton VPN пры адкрыцці браўзера."
@@ -257,6 +263,18 @@
 			"Disconnected": [
 				"Адключана"
 			],
+			"Disconnected by another extension": [
+				"Адключана іншым пашырэннем"
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"Адключана іншым пашырэннем, а падключана да ${newProxyName}"
+			],
+			"Disconnected, settings were overridden": [
+				"Адключана. Налады былі перавызначаны"
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"Адключана. Налады былі перавызначаны на ${newProxyName}"
+			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Адпраўляць сістэмныя апавяшчэнні пры падключэнні і адключэнні."
 			],
@@ -279,10 +297,10 @@
 				"Дапамагаць нам змагацца з цэнзурай"
 			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
-				"Высакапрадукцыйны швейцарскі VPN, які абараняе вашу прыватнасць. Максімум бяспекі, больш за ${count} сервер і ніякіх абмежаванняў.",
-				"Высакапрадукцыйны швейцарскі VPN, які абараняе вашу прыватнасць. Максімум бяспекі, больш за ${count} сервераў і ніякіх абмежаванняў.",
-				"Высакапрадукцыйны швейцарскі VPN, які абараняе вашу прыватнасць. Максімум бяспекі, больш за ${count} сервераў і ніякіх абмежаванняў.",
-				"Высакапрадукцыйны швейцарскі VPN, які абараняе вашу прыватнасць. Максімум бяспекі, больш за ${count} сервераў і ніякіх абмежаванняў."
+				"Высокапрадукцыйны швейцарскі VPN, які абараняе вашу прыватнасць. Максімум бяспекі, больш за ${count} сервер і ніякіх абмежаванняў.",
+				"Высокапрадукцыйны швейцарскі VPN, які абараняе вашу прыватнасць. Максімум бяспекі, больш за ${count} серверы і ніякіх абмежаванняў.",
+				"Высокапрадукцыйны швейцарскі VPN, які абараняе вашу прыватнасць. Максімум бяспекі, больш за ${count} сервераў і ніякіх абмежаванняў.",
+				"Высокапрадукцыйны швейцарскі VPN, які абараняе вашу прыватнасць. Максімум бяспекі, больш за ${count} сервераў і ніякіх абмежаванняў."
 			],
 			"Learn more": [
 				"Даведацца больш"
@@ -305,11 +323,20 @@
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Націсніце <b>Далей</b>, а потым <b>Дазволіць</b> ва ўсплывальным акне вашага браўзера."
 			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"Абараніце сябе ў інтэрнэце з бясплатным і высакахуткасным VPN ад Proton."
+			],
+			"Proton VPN": [
+				"Proton VPN"
+			],
 			"Proton VPN Browser Extension": [
 				"Пашырэнні Proton VPN для браўзера"
 			],
 			"Search": [
 				"Пошук"
+			],
+			"Secure Core": [
+				"Secure Core"
 			],
 			"Select websites to exclude from your VPN connection.": [
 				"Выбраць вэб-сайты, якія неабходна выключыць з падключэння па VPN."
@@ -373,7 +400,7 @@
 			"City": [
 				"Горад",
 				"Гарады",
-				"Гарадоў",
+				"Гарады",
 				"Гарады"
 			],
 			"Connecting": [
@@ -385,7 +412,7 @@
 			"Country": [
 				"Краіна",
 				"Краіны",
-				"Краін",
+				"Краіны",
 				"Краіны"
 			],
 			"Entry country": [
@@ -393,6 +420,9 @@
 				"Краіны ўваходу",
 				"Краіны ўваходу",
 				"Краіны ўваходу"
+			],
+			"Free": [
+				"Бясплатна"
 			],
 			"Free servers": [
 				"Бясплатныя серверы"
@@ -424,7 +454,7 @@
 			"Server": [
 				"Сервер",
 				"Серверы",
-				"Сервераў",
+				"Серверы",
 				"Серверы"
 			],
 			"Settings": [
@@ -471,6 +501,9 @@
 		"Title": {
 			"Features": [
 				"Функцыі"
+			],
+			"Proton VPN for Vivaldi": [
+				"Proton VPN для Vivaldi"
 			],
 			"Streaming": [
 				"Трансляцыя"

@@ -1604,6 +1604,11 @@ details {
 	color: var(--dark-gray);
 }
 
+.sign-up-button-box {
+	margin-top: -15px;
+	margin-bottom: 10px;
+}
+
 .side-button,
 .top-icons button,
 .top-icons a {
@@ -1664,10 +1669,56 @@ details {
 		padding: 5px 0 20px;
 
 		> * {
-			padding: 0 20px;
+			padding: 0 18px;
 			margin: 20px auto;
 			line-height: 1.4;
 			text-align: center;
+		}
+	}
+
+	&.partner {
+		.welcome-background {
+			height: $body-width * 220 / 328;
+		}
+
+		h1 {
+			font-size: 1.2em;
+			margin-top: 8px;
+			margin-bottom: 8px;
+		}
+
+		.partner-subtitle {
+			opacity: 0.8;
+		}
+
+		.sign-up-button-box {
+			margin-top: -25px;
+			margin-bottom: 0;
+		}
+
+		button.sign-in-button {
+			min-width: 100%;
+		}
+
+		button.sign-up-button {
+			min-width: 100%;
+			border: 1px solid var(--gray);
+			border-radius: $border-radius;
+			color: var(--primary-contrast);
+			margin: 8px 0;
+			padding: 12px 20px;
+			text-decoration: none;
+			box-sizing: border-box;
+		}
+
+		a.sign-in-link {
+			color: var(--primary-color-faded);
+			text-decoration: underline;
+			cursor: pointer;
+		}
+
+		.content > *:last-child {
+			margin: 8px auto;
 		}
 	}
 }

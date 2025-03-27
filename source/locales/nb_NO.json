@@ -14,8 +14,11 @@
 			"Add website": [
 				"Legg til nettsted"
 			],
+			"Already have a Proton Account?": [
+				"Har du allerede en Proton-konto?"
+			],
 			"Auto connect": [
-				"Automatisk tilkobling"
+				"Koble til automatisk"
 			],
 			"Cancel": [
 				"Avbryt"
@@ -70,6 +73,9 @@
 			],
 			"Sign in": [
 				"Logg på"
+			],
+			"Sign in with Vivaldi": [
+				"Logg på med Vivaldi"
 			],
 			"Sign out": [
 				"Logg av"
@@ -182,8 +188,8 @@
 			]
 		},
 		"Info": {
-			"Access over 5000 secure servers in 63 countries": [
-				"Få tilgang til over 5000 sikre tjenere i 63 land"
+			"Access over 9000 secure servers in 112 countries": [
+				"Få tilgang til over 9000 sikre tjenere i 112 land"
 			],
 			"Access Proton VPN via this icon": [
 				"Få tilgang til Proton VPN via dette ikonet"
@@ -251,6 +257,18 @@
 			"Disconnected": [
 				"Frakoblet"
 			],
+			"Disconnected by another extension": [
+				"Frakoblet av en annen utvidelse"
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"Koblet fra av en annen utvidelse, den ble koblet til ${newProxyName}"
+			],
+			"Disconnected, settings were overridden": [
+				"Koblet fra, innstillinger ble overstyrt"
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"Koblet fra, innstillinger ble overstyrt til ${newProxyName}"
+			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Send systemvarsler om tilkoblings- og frakoblingshendelser."
 			],
@@ -295,13 +313,22 @@
 				"Fest Proton VPN til verktøylinjen din"
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
-				"Trykk på <b>Neste</b>, og klikk deretter <b>Tillat</b> i sprett-opp-vinduet fra nettleseren."
+				"Trykk på <b>Neste</b>, og klikk deretter <b>Tillat</b> i sprettoppvinduet fra nettleseren."
+			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"Beskytt deg selv på nettet med Protons gratis høyhastighets-VPN."
+			],
+			"Proton VPN": [
+				"Proton VPN"
 			],
 			"Proton VPN Browser Extension": [
 				"Proton VPN-Nettleserutvidelse"
 			],
 			"Search": [
 				"Søk"
+			],
+			"Secure Core": [
+				"Secure Core"
 			],
 			"Select websites to exclude from your VPN connection.": [
 				"Velg hvilke nettsteder du ønsker å ekskludere fra din VPN-forbindelse."
@@ -357,7 +384,7 @@
 				"Og alle dets underdomener"
 			],
 			"Auto connect": [
-				"Automatisk tilkobling"
+				"Koble til automatisk"
 			],
 			"Cities": [
 				"Byer"
@@ -379,6 +406,9 @@
 			"Entry country": [
 				"Innreiseland",
 				"Innreiseland"
+			],
+			"Free": [
+				"Gratis"
 			],
 			"Free servers": [
 				"Gratis tjenere"
@@ -455,6 +485,9 @@
 		"Title": {
 			"Features": [
 				"Funksjoner"
+			],
+			"Proton VPN for Vivaldi": [
+				"Proton VPN for Vivaldi"
 			],
 			"Streaming": [
 				"Strømming"

@@ -14,6 +14,9 @@
 			"Add website": [
 				"Dodaj stronę"
 			],
+			"Already have a Proton Account?": [
+				"Posiadasz już konto Proton?"
+			],
 			"Auto connect": [
 				"Automatyczne połączenie"
 			],
@@ -70,6 +73,9 @@
 			],
 			"Sign in": [
 				"Zaloguj się"
+			],
+			"Sign in with Vivaldi": [
+				"Zaloguj się przez Vivaldi"
 			],
 			"Sign out": [
 				"Wyloguj"
@@ -188,8 +194,8 @@
 			]
 		},
 		"Info": {
-			"Access over 5000 secure servers in 63 countries": [
-				"Dostęp do ponad 5000 bezpiecznych serwerów w 63 krajach"
+			"Access over 9000 secure servers in 112 countries": [
+				"Dostęp do ponad 9000 bezpiecznych serwerów w 112 krajach"
 			],
 			"Access Proton VPN via this icon": [
 				"Uzyskaj dostęp do Proton VPN za pomocą tej ikony"
@@ -257,6 +263,18 @@
 			"Disconnected": [
 				"Rozłączono"
 			],
+			"Disconnected by another extension": [
+				"Rozłączony przez inne rozszerzenie"
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"Rozłączony przez inne rozszerzenie, połączył się z ${newProxyName}"
+			],
+			"Disconnected, settings were overridden": [
+				"Odłączono, ustawienia nadpisane"
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"Odłączono, ustawienia nadpisane do ${newProxyName}"
+			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Wyświetla powiadomienia systemowe podczas nawiązywania połączeń."
 			],
@@ -305,11 +323,20 @@
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Kliknij <b>Dalej</b>, a następnie w wyskakującym oknie <b>Zezwalaj</b>."
 			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"Ochroń siebie online z szybką i darmową siecią Proton VPN"
+			],
+			"Proton VPN": [
+				"Proton VPN"
+			],
 			"Proton VPN Browser Extension": [
 				"Rozszerzenie przeglądarki Proton VPN"
 			],
 			"Search": [
 				"Szukaj"
+			],
+			"Secure Core": [
+				"Secure Core"
 			],
 			"Select websites to exclude from your VPN connection.": [
 				"Wybierz strony do wykluczenia z połączenia VPN."
@@ -394,6 +421,9 @@
 				"Kraje wejścia",
 				"Kraje wejścia"
 			],
+			"Free": [
+				"Free"
+			],
 			"Free servers": [
 				"Serwery planu Free"
 			],
@@ -471,6 +501,9 @@
 		"Title": {
 			"Features": [
 				"Funkcje"
+			],
+			"Proton VPN for Vivaldi": [
+				"Proton VPN dla Vivaldi"
 			],
 			"Streaming": [
 				"Streaming"

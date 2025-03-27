@@ -8,6 +8,7 @@ import {updateLocation} from './updateLocation';
 import {updateLogicalLoad} from './updateLogicalLoad';
 import {recoverState} from './recoverState';
 import {watchWithSentry} from '../tools/sentry';
+import {clearProxy} from '../tools/proxy';
 
 export const initState = async () => {
 	debug('Init state', (new Error()).stack);
@@ -28,6 +29,10 @@ export const initState = async () => {
 				error: e as ApiError,
 			});
 		}
+	}
+
+	if (!isCurrentStateConnected()) {
+		await clearProxy();
 	}
 
 	setInterval(() => watchWithSentry(() => {

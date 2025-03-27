@@ -43,8 +43,9 @@ export const forkSession = async (message: any): Promise<ForkResponse | undefine
 	} = payload;
 
 	try {
-		const session = await consumeFork({state, selector});
+		const { session, forkState } = await consumeFork({state, selector});
 		session.persistent = persistent;
+		session.partnerId = forkState.partnerId || undefined;
 
 		await saveSession(session);
 
@@ -53,6 +54,7 @@ export const forkSession = async (message: any): Promise<ForkResponse | undefine
 		return {
 			...baseResponse,
 			type: 'success',
+			partnerId: session.partnerId,
 			payload: {
 				title: c('Info').t`You're signed in`,
 				message: c('Info').t`Open the Proton VPN browser extension to continue`,

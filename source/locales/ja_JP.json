@@ -14,6 +14,9 @@
 			"Add website": [
 				"ウェブサイトを追加"
 			],
+			"Already have a Proton Account?": [
+				"すでに Proton アカウントをお持ちですか？"
+			],
 			"Auto connect": [
 				"自動接続"
 			],
@@ -70,6 +73,9 @@
 			],
 			"Sign in": [
 				"サインイン"
+			],
+			"Sign in with Vivaldi": [
+				"Vivaldi でサインイン"
 			],
 			"Sign out": [
 				"サインアウト"
@@ -179,8 +185,8 @@
 			]
 		},
 		"Info": {
-			"Access over 5000 secure servers in 63 countries": [
-				"63ヶ国の5000以上のセキュアなサーバーにアクセス"
+			"Access over 9000 secure servers in 112 countries": [
+				"112 カ国の9000以上のセキュアなサーバーにアクセス"
 			],
 			"Access Proton VPN via this icon": [
 				"このアイコンから Proton VPN にアクセス"
@@ -198,7 +204,7 @@
 				"独立したセキュリティ専門家による監査"
 			],
 			"Auto-selected from": [
-				"自動選択元"
+				"から自動選択"
 			],
 			"Automatically reconnect to Proton VPN when you open your browser.": [
 				"ブラウザを開いた際に Proton VPN に自動で再接続します。"
@@ -248,6 +254,18 @@
 			"Disconnected": [
 				"接続解除されました"
 			],
+			"Disconnected by another extension": [
+				"別の拡張機能によって切断されました"
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"別の拡張機能によって切断され、 ${newProxyName} に接続されました"
+			],
+			"Disconnected, settings were overridden": [
+				"切断されました。設定は上書きされました"
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"切断されました。設定は ${newProxyName}に上書きされました"
+			],
 			"Emit system notifications on connection and disconnection events.": [
 				"接続や接続解除が発生した際にシステム通知を表示します。"
 			],
@@ -293,11 +311,20 @@
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"<b>次へ</b>を押し、ブラウザのポップアップで<b>許可</b>をクリックします。"
 			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"Protonの無料の高速VPNでオンライン上で安全を確保。"
+			],
+			"Proton VPN": [
+				"Proton VPN"
+			],
 			"Proton VPN Browser Extension": [
 				"Proton VPN ブラウザ拡張機能"
 			],
 			"Search": [
 				"検索"
+			],
+			"Secure Core": [
+				"Secure Core"
 			],
 			"Select websites to exclude from your VPN connection.": [
 				"VPN 接続から除外するウェブサイトを選択します。"
@@ -373,6 +400,9 @@
 			"Entry country": [
 				"経由国"
 			],
+			"Free": [
+				"Free"
+			],
 			"Free servers": [
 				"無料サーバー"
 			],
@@ -447,6 +477,9 @@
 		"Title": {
 			"Features": [
 				"機能"
+			],
+			"Proton VPN for Vivaldi": [
+				"Vivaldi用Proton VPN"
 			],
 			"Streaming": [
 				"ストリーミング"

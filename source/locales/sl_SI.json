@@ -296,11 +296,17 @@
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Pritisnite <b>Naprej</b>, nato kliknite <b>Dovoli</b> na pojavnem oknu v brskalniku."
 			],
+			"Proton VPN": [
+				"Proton VPN"
+			],
 			"Proton VPN Browser Extension": [
 				"Proton VPN razširitev za spletni brskalnik"
 			],
 			"Search": [
 				"Išči"
+			],
+			"Secure Core": [
+				"Secure Core"
 			],
 			"Select websites to exclude from your VPN connection.": [
 				"Izberite spletna mesta, ki jih želite izključiti iz povezave VPN."
@@ -378,6 +384,9 @@
 				"Državi vstopa",
 				"Države vstopa",
 				"Držav vstopa"
+			],
+			"Free": [
+				"Brezplačno"
 			],
 			"Free servers": [
 				"Brezplačni strežniki"

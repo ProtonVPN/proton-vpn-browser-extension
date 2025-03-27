@@ -6,7 +6,7 @@ export enum Storage {
 
 const defaultStorage = Storage.LOCAL;
 
-export const sessionStorageType = Storage.SESSION in chrome.storage ? Storage.SESSION : defaultStorage;
+export const sessionStorageType = defaultStorage;
 
 const getFallbackStorage = (storage: Storage) => storage === Storage.LOCAL
 	? localStorage
@@ -34,6 +34,16 @@ export const storage = {
 
 			if (typeof data === 'object' && (data as any).hasOwnProperty(prefixedKey)) {
 				return (data as any)[prefixedKey];
+			}
+
+			if (storage === Storage.LOCAL && (Storage.SESSION in chrome.storage)) {
+				const data = await new Promise(resolve => {
+					chrome.storage[Storage.SESSION].get(prefixedKey, resolve);
+				});
+
+				if (typeof data === 'object' && (data as any).hasOwnProperty(prefixedKey)) {
+					return (data as any)[prefixedKey];
+				}
 			}
 
 			return defaultValue;

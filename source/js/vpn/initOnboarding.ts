@@ -1,5 +1,11 @@
+import {isOauthAllowed} from '../account/partner/oauth';
+
 export const initOnboarding = () => {
 	browser.runtime.onInstalled.addListener(async (details) => {
+		if (await isOauthAllowed()) {
+			return;
+		}
+
 		switch (details.reason) {
 			case 'install':
 				const url = browser.runtime.getURL('/onboarding.html');

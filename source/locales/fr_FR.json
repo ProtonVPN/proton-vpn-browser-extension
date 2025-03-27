@@ -14,6 +14,9 @@
 			"Add website": [
 				"Ajouter un site internet"
 			],
+			"Already have a Proton Account?": [
+				"Vous avez déjà un compte Proton ?"
+			],
 			"Auto connect": [
 				"Se connecter automatiquement"
 			],
@@ -70,6 +73,9 @@
 			],
 			"Sign in": [
 				"Se connecter"
+			],
+			"Sign in with Vivaldi": [
+				"Se connecter avec Vivaldi"
 			],
 			"Sign out": [
 				"Se déconnecter"
@@ -182,8 +188,8 @@
 			]
 		},
 		"Info": {
-			"Access over 5000 secure servers in 63 countries": [
-				"Accédez à plus de 5 000 serveurs dans 63 pays"
+			"Access over 9000 secure servers in 112 countries": [
+				"Accédez à plus de 9 000 serveurs sécurisés dans 112 pays"
 			],
 			"Access Proton VPN via this icon": [
 				"Accédez à Proton VPN via cette icône"
@@ -251,6 +257,18 @@
 			"Disconnected": [
 				"Déconnecté"
 			],
+			"Disconnected by another extension": [
+				"Vous avez été déconnecté par une autre extension."
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"Vous avez été déconnecté par une autre extension. Vous étiez connecté à ${newProxyName}."
+			],
+			"Disconnected, settings were overridden": [
+				"Vous avez été déconnecté. Les paramètres ont été remplacés."
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"Vous avez été déconnecté. Les paramètres ont été remplacés par ${newProxyName}."
+			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Envoyer des notifications système pour les connexions et déconnexions."
 			],
@@ -273,8 +291,8 @@
 				"Aidez-nous à combattre la censure."
 			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
-				"VPN suisse performant qui protège votre vie privée. Sécurité maximum, plus de ${count} serveur et aucune restriction.",
-				"VPN suisse performant qui protège votre vie privée. Sécurité maximum, plus de ${count} serveurs et aucune restriction."
+				"VPN suisse performant qui protège votre vie privée. Sécurité maximale, plus de ${count} serveur et aucune restriction.",
+				"VPN suisse performant qui protège votre vie privée. Sécurité maximale, plus de ${count} serveurs et aucune restriction."
 			],
 			"Learn more": [
 				"En savoir plus"
@@ -297,11 +315,20 @@
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Cliquez sur <b>Suivant</b>, puis sur <b>Autoriser</b> dans la fenêtre pop-up de votre navigateur."
 			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"Protégez-vous en ligne avec le VPN haut débit gratuit de Proton."
+			],
+			"Proton VPN": [
+				"Proton VPN"
+			],
 			"Proton VPN Browser Extension": [
 				"Extension de navigateur Proton VPN"
 			],
 			"Search": [
 				"Recherche"
+			],
+			"Secure Core": [
+				"Secure Core"
 			],
 			"Select websites to exclude from your VPN connection.": [
 				"Sélectionner des sites internet à exclure de la connexion VPN."
@@ -380,6 +407,9 @@
 				"Pays d'entrée",
 				"Pays d'entrée"
 			],
+			"Free": [
+				"Free"
+			],
 			"Free servers": [
 				"Serveurs Free"
 			],
@@ -455,6 +485,9 @@
 		"Title": {
 			"Features": [
 				"Fonctionnalités"
+			],
+			"Proton VPN for Vivaldi": [
+				"Proton VPN pour Vivaldi"
 			],
 			"Streaming": [
 				"Streaming"

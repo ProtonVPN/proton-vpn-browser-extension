@@ -53,7 +53,7 @@ import {ucfirst} from './tools/ucfirst';
 import {toggleButtons} from './components/toggleButtons';
 import {triggerPromise} from './tools/triggerPromise';
 import {BackgroundData, SettingChange, StateChange} from './messaging/MessageType';
-import {showSigningView} from './components/showSigningView';
+import {showSigningView} from './components/signIn/showSigningView';
 import {delay, timeoutAfter} from './tools/delay';
 import {proxyPermission} from './vpn/proxyPermission';
 import {
@@ -1033,7 +1033,7 @@ const start = async () => {
 
 	getInfoFromBackground(BackgroundData.PM_USER).then(pmUser => {
 		pmUserCache = {user: pmUser};
-		const name = escapeHtml(pmUser.DisplayName || pmUser.Name || '');
+		const name = escapeHtml(pmUser.DisplayName || pmUser.Name || pmUser.Email || '');
 
 		document.querySelectorAll<HTMLDivElement>('.pm-user-name').forEach((userName) => {
 			userName.innerHTML = name;
@@ -1051,7 +1051,9 @@ const start = async () => {
 	document.querySelectorAll<HTMLDivElement>('[data-open-account-page]').forEach((button) => {
 		setButtonTitle(button);
 		button.addEventListener('click', async () => {
-			await openTab(await appendUpgradeParams(accountURL + button.getAttribute('data-open-account-page')));
+			const url = accountURL + button.getAttribute('data-open-account-page');
+
+			await openTab(await appendUpgradeParams(url));
 			forgetAccount();
 		});
 	});

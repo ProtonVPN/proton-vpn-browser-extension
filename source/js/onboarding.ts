@@ -32,13 +32,13 @@ document.querySelectorAll<HTMLButtonElement>('.login-button, .signup-link').forE
 		if (!proxySupported) {
 			chrome.permissions.request(proxyPermission, (ok) => {
 				if (ok) {
-					triggerPromise(openForkTab(action));
+					triggerPromise(openForkTab({ action }));
 				}
 			});
 
 			return;
 		}
 
-		await openForkTab(action);
+		await openForkTab({ action });
 	});
 });

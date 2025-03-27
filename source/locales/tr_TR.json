@@ -14,6 +14,9 @@
 			"Add website": [
 				"Site ekle"
 			],
+			"Already have a Proton Account?": [
+				"Zaten bir Proton hesabınız var mı?"
+			],
 			"Auto connect": [
 				"Otomatik bağlantı"
 			],
@@ -70,6 +73,9 @@
 			],
 			"Sign in": [
 				"Oturum aç"
+			],
+			"Sign in with Vivaldi": [
+				"Vivaldi ile oturum aç"
 			],
 			"Sign out": [
 				"Oturumu kapat"
@@ -182,8 +188,8 @@
 			]
 		},
 		"Info": {
-			"Access over 5000 secure servers in 63 countries": [
-				"63 ülkede bulunan 5.000 üzerindeki sunucuya erişin"
+			"Access over 9000 secure servers in 112 countries": [
+				"112 ülkede bulunan 9.000 üzerindeki sunucuya erişin"
 			],
 			"Access Proton VPN via this icon": [
 				"Proton VPN için bu simgeyi kullanın"
@@ -237,7 +243,7 @@
 				"Bağlantı kuruluyor..."
 			],
 			"Contact our Customer Support agents to help you out with Proton VPN.": [
-				"Proton VPN hakkında yardım almak için müşteri desteği temsilcilerimizle görüşün."
+				"Proton VPN ile ilgili yardım almak için müşteri desteği temsilcilerimizle görüşün."
 			],
 			"Crash": [
 				"Çökme"
@@ -250,6 +256,18 @@
 			],
 			"Disconnected": [
 				"Bağlı değil"
+			],
+			"Disconnected by another extension": [
+				"Başka bir eklenti tarafından bağlantı kesildi"
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"Başka bir eklenti tarafından bağlantı kesildi. ${newProxyName} ile bağlantı kuruldu"
+			],
+			"Disconnected, settings were overridden": [
+				"Bağlantı kesildi. Ayarlar değiştirildi"
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"Bağlantı kesildi, ${newProxyName} için ayarlar değiştirildi"
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Bağlantı kurulma ve kesilme durumlarında sistem bildirimleri gönderilsin."
@@ -297,11 +315,20 @@
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Tarayıcınızda açılan pencerede <b>Sonraki</b> ve <b>İzin ver</b> üzerine tıklayın."
 			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"Ücretsiz ve yüksek-hızlı Proton VPN ile çevrim içi dünyada kendinizi koruyun"
+			],
+			"Proton VPN": [
+				"Proton VPN"
+			],
 			"Proton VPN Browser Extension": [
 				"Proton VPN tarayıcı eklentisi"
 			],
 			"Search": [
 				"Arama"
+			],
+			"Secure Core": [
+				"Secure Core"
 			],
 			"Select websites to exclude from your VPN connection.": [
 				"VPN bağlantınıza katılmayacak siteleri seçin."
@@ -364,7 +391,7 @@
 			],
 			"City": [
 				"İl",
-				"İl"
+				"İller"
 			],
 			"Connecting": [
 				"Bağlantı kuruluyor"
@@ -374,11 +401,14 @@
 			],
 			"Country": [
 				"Ülke",
-				"Ülke"
+				"Ülkeler"
 			],
 			"Entry country": [
 				"Giriş ülkesi",
 				"Giriş ülkeleri"
+			],
+			"Free": [
+				"Free"
 			],
 			"Free servers": [
 				"Free sunucuları"
@@ -409,7 +439,7 @@
 			],
 			"Server": [
 				"Sunucu",
-				"Sunucu"
+				"Sunucular"
 			],
 			"Settings": [
 				"Ayarlar"
@@ -455,6 +485,9 @@
 		"Title": {
 			"Features": [
 				"Özellikler"
+			],
+			"Proton VPN for Vivaldi": [
+				"Vivaldi için Proton VPN"
 			],
 			"Streaming": [
 				"Yayın akışı"

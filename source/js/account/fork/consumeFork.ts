@@ -15,9 +15,9 @@ interface ConsumeForkResponse {
 export const consumeFork = async ({state, selector}: {
 	state: string;
 	selector: string;
-}): Promise<Session> => {
+}): Promise<{ session: Session, forkState: ForkState }> => {
 	const stateKey = `f${state}`;
-	const maybeStoredState = await storage.getItem(
+	const maybeStoredState: ForkState | undefined = await storage.getItem(
 		stateKey,
 		undefined,
 		Storage.LOCAL,
@@ -36,8 +36,11 @@ export const consumeFork = async ({state, selector}: {
 	} = await fetchJson<ConsumeForkResponse>(`auth/sessions/forks/${selector}`);
 
 	return {
-		accessToken: AccessToken,
-		refreshToken: RefreshToken,
-		uid: UID,
-	};
+		session: {
+			accessToken: AccessToken,
+			refreshToken: RefreshToken,
+			uid: UID,
+		},
+		forkState: maybeStoredState
+	}
 };

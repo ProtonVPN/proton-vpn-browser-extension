@@ -1,7 +1,8 @@
 import {triggerPromise} from './triggerPromise';
 import {Storage, storage} from './storage';
-import {warn} from '../log/log';
 import {ForkResponse} from '../messaging/ForkResponse';
+import {getPartnerById} from '../account/partner/partners';
+import {executeOnTab} from './executeOnTab';
 
 const root = global || window;
 root.browser || ((root as any).browser = chrome);
@@ -39,27 +40,32 @@ export const sendForkResponse = async (
 		return;
 	}
 
+	const partnerConfig = response.partnerId
+		? getPartnerById(response.partnerId)
+		: undefined;
+
 	await Promise.all(
 		(tabId ? [tabId] : Object.keys((await tabData.load({})))).map(async (tabId: string | number) => {
 			tabId = Number(tabId);
+			const welcomePage = partnerConfig?.welcomePage;
 
-			try {
-				await ((browser as any as typeof chrome).scripting?.executeScript?.(
-					{
-						target: {tabId, allFrames: true},
-						func(response) {
-							window.postMessage(response);
-						},
-						args: [response],
+			await executeOnTab(
+				tabId,
+				() => ({
+					func(response: ForkResponse, welcomePage: string | undefined) {
+						if (welcomePage) {
+							location.href = welcomePage;
+						}
+
+						window.postMessage(response);
 					},
-				) || browser.tabs.executeScript?.(tabId, {
-					code: `
-						window.postMessage(${JSON.stringify(response)});
-					`,
-				}));
-			} catch (e) {
-				warn(e);
-			}
+					args: [response, welcomePage] as [ForkResponse, string | undefined],
+				}),
+				() => `
+					${welcomePage ? `location.href = ${JSON.stringify(welcomePage)};` : ''}
+					window.postMessage(${JSON.stringify(response)});
+				`,
+			);
 		}),
 	);
 	triggerPromise(tabData.set({}));

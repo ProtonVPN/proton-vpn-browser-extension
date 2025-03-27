@@ -14,6 +14,9 @@
 			"Add website": [
 				"ვებსაიტის დამატება"
 			],
+			"Already have a Proton Account?": [
+				"უკვე აქვთ Proton-ის ანგარიში?"
+			],
 			"Auto connect": [
 				"ავტომატური დაკავშირება"
 			],
@@ -70,6 +73,9 @@
 			],
 			"Sign in": [
 				"შესვლა"
+			],
+			"Sign in with Vivaldi": [
+				"შესვლა Vivaldi-ით"
 			],
 			"Sign out": [
 				"გასვლა"
@@ -182,8 +188,8 @@
 			]
 		},
 		"Info": {
-			"Access over 5000 secure servers in 63 countries": [
-				"წვდომა 5000+ სერვერთან 63 ქვეყანაში"
+			"Access over 9000 secure servers in 112 countries": [
+				"წვდომა 9000+ სერვერთან 112 ქვეყანაში"
 			],
 			"Access Proton VPN via this icon": [
 				"Proton VPN-თან წვდომა ამ ხატულით"
@@ -251,6 +257,18 @@
 			"Disconnected": [
 				"გათიშულია"
 			],
+			"Disconnected by another extension": [
+				"გათიშულია სხვა გაფართოების მიერ"
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"გათიშულია სხვა გაფართოების მიერ. დაკავშირებულია პროქსისთან ${newProxyName}"
+			],
+			"Disconnected, settings were overridden": [
+				"გათიშულია. პარამეტრები გადაიფარა"
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"გათიშულია. პარამეტრები გადაფარულია ${newProxyName}-ზე"
+			],
 			"Emit system notifications on connection and disconnection events.": [
 				"მიერთებისა და გათიშვისას სისტემური გაფრთხილების ჩვენება."
 			],
@@ -297,11 +315,20 @@
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"თქვენი ბრაუზერის მხტუნარაში დააწექით <b>შემდეგს</b>, შემდეგ კი <b>დაშვებას</b>."
 			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"დაიცავით თავი ინტერნეტში Proton-ის უფასო ჩქაროსნული VPN-ით."
+			],
+			"Proton VPN": [
+				"Proton VPN"
+			],
 			"Proton VPN Browser Extension": [
 				"Proton VPN-ის გაფართოება ბრაუზერისთვის"
 			],
 			"Search": [
 				"ძებნა"
+			],
+			"Secure Core": [
+				"Secure Core"
 			],
 			"Select websites to exclude from your VPN connection.": [
 				"აირჩიეთ თქვენი VPN მიერთებიდან ამოსაღები ვებგვერდები."
@@ -380,6 +407,9 @@
 				"შესასვლელი ქვეყანა",
 				"შესასვლელი ქვეყნები"
 			],
+			"Free": [
+				"უფასო"
+			],
 			"Free servers": [
 				"უფასო სერვერები"
 			],
@@ -455,6 +485,9 @@
 		"Title": {
 			"Features": [
 				"ფუნქციები"
+			],
+			"Proton VPN for Vivaldi": [
+				"Proton VPN-ი Vivaldi-სთვის"
 			],
 			"Streaming": [
 				"სტრიმინგი"

@@ -14,6 +14,9 @@
 			"Add website": [
 				"Add website"
 			],
+			"Already have a Proton Account?": [
+				"Already have a Proton Account?"
+			],
 			"Auto connect": [
 				"Auto connect"
 			],
@@ -70,6 +73,9 @@
 			],
 			"Sign in": [
 				"Sign in"
+			],
+			"Sign in with Vivaldi": [
+				"Sign in with Vivaldi"
 			],
 			"Sign out": [
 				"Sign out"
@@ -170,8 +176,8 @@
 			]
 		},
 		"Info": {
-			"Access over 5000 secure servers in 63 countries": [
-				"Access over 5000 secure servers in 63 countries"
+			"Access over 9000 secure servers in 112 countries": [
+				"Access over 9000 secure servers in 112 countries"
 			],
 			"Access Proton VPN via this icon": [
 				"Access Proton VPN via this icon"
@@ -239,6 +245,18 @@
 			"Disconnected": [
 				"Disconnected"
 			],
+			"Disconnected by another extension": [
+				"Disconnected by another extension"
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"Disconnected by another extension, it connected to ${newProxyName}"
+			],
+			"Disconnected, settings were overridden": [
+				"Disconnected, settings were overridden"
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"Disconnected, settings were overridden to ${newProxyName}"
+			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Emit system notifications on connection and disconnection events."
 			],
@@ -281,6 +299,9 @@
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser."
 			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"Protect yourself online with Proton's free high‑speed VPN."
+			],
 			"Proton VPN": [
 				"Proton VPN"
 			],
@@ -297,7 +318,7 @@
 				"Select websites to exclude from your VPN connection."
 			],
 			"Share anonymous usage crash reports": [
-				"Share anonymous crash reports"
+				"Share anonymous usage crash reports"
 			],
 			"Share anonymous usage statistics": [
 				"Share anonymous usage statistics"
@@ -432,6 +453,9 @@
 		"Title": {
 			"Features": [
 				"Features"
+			],
+			"Proton VPN for Vivaldi": [
+				"Proton VPN for Vivaldi"
 			],
 			"Streaming": [
 				"Streaming"

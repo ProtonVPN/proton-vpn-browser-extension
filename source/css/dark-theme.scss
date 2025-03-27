@@ -157,7 +157,8 @@
 		stroke: var(--dark-gray);
 	}
 
-	.sign-up-button, {
+	.sign-up-button,
+	#sign-in-view.partner a.sign-in-link {
 		color: var(--primary-color-lighted);
 	}
 }

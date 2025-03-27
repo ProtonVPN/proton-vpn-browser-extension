@@ -1,6 +1,6 @@
 import {WebRTCState} from './state';
 import {getControlledValue} from '../tools/getControlledValue';
-import ChromeSettingGetResultDetails = chrome.types.ChromeSettingGetResultDetails;
+import ChromeSettingGetResult = chrome.types.ChromeSettingGetResult;
 
 export const setWebRTCState = (state: WebRTCState) => new Promise<boolean>(resolve => {
 	if (!chrome.privacy) {
@@ -10,13 +10,13 @@ export const setWebRTCState = (state: WebRTCState) => new Promise<boolean>(resol
 	}
 
 	if (state === WebRTCState.CLEAR) {
-		chrome.privacy.network.webRTCIPHandlingPolicy.clear({}, resolve);
+		chrome.privacy.network.webRTCIPHandlingPolicy.clear({}, resolve as any);
 
 		return;
 	}
 
 	chrome.privacy.network.webRTCIPHandlingPolicy.set({value: state}, () => {
-		chrome.privacy.network.webRTCIPHandlingPolicy.get({}, (setting?: ChromeSettingGetResultDetails) => {
+		chrome.privacy.network.webRTCIPHandlingPolicy.get({}, (setting?: ChromeSettingGetResult<any>) => {
 			resolve(getControlledValue(setting) === state);
 		});
 	});
