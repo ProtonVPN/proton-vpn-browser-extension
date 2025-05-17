@@ -3,6 +3,7 @@ export const getCountryFlag = (country: string, vocalized = false) => {
 	country = {UK: 'GB'}[country] || country;
 
 	return `<img
+		loading="lazy"
 		class="country-flag-img"
 		src="/img/flags/${country.toLowerCase()}.svg"
 		alt="${String.fromCodePoint(...[...country].map(c => c.charCodeAt(0) + 0x1F1A5))}"

@@ -1,3 +1,10 @@
+# 1.2.7
+
+- Make the popup faster to load and display
+- Prevent trying to reconnect on browser start if logged out
+- Improve bug report and compatibility issues analyze
+- Update translations
+
 # 1.2.6
 
 - Persist session when closing the browser even if the "Resume from where you left off" setting is not enabled

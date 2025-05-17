@@ -287,18 +287,4 @@ export const getCountryNameOrCode = (
 	language?: string,
 ): string => getCountryName(country, language) || country;
 
-interface NumberFormatOptions {
-	localeMatcher?: string | undefined;
-	style?: string | undefined;
-	currency?: string | undefined;
-	currencyDisplay?: string | undefined;
-	currencySign?: string | undefined;
-	useGrouping?: boolean | undefined;
-	minimumIntegerDigits?: number | undefined;
-	minimumFractionDigits?: number | undefined;
-	maximumFractionDigits?: number | undefined;
-	minimumSignificantDigits?: number | undefined;
-	maximumSignificantDigits?: number | undefined;
-}
-
-export const getNumberFormatter = (options?: NumberFormatOptions) => new Intl.NumberFormat('en-US', options);
+export const getNumberFormatter = (options?: Intl.NumberFormatOptions) => new Intl.NumberFormat('en-US', options);

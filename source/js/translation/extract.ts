@@ -65,11 +65,7 @@ Promise.all([
 	new Promise(globResolve => {
 		glob('**/*.html', {
 			cwd: appDirectory,
-		}, (error, files) => {
-			if (error) {
-				throw error;
-			}
-
+		}).then(files => {
 			Promise.all(files.map(file => new Promise(fileResolve => {
 				readFile(appDirectory + '/' + file, (err, content) => {
 					if (err) {
@@ -121,7 +117,9 @@ Promise.all([
 			}))).then(() => {
 				globResolve(null)
 			});
-		});
+		}).catch(error => {
+			throw error;
+		});;
 	}),
 	new Promise(globResolve => {
 		const parser = new TypescriptParser();
@@ -129,11 +127,7 @@ Promise.all([
 
 		glob('**/*.ts', {
 			cwd: appDirectory,
-		}, (error, files) => {
-			if (error) {
-				throw error;
-			}
-
+		}).then(files => {
 			Promise.all(files.map(filePath => new Promise(fileResolve => {
 				const fullPath = appDirectory + '/' + filePath;
 				const baseDirectory = fullPath.replace(/([\/\\])[^\/\\]+$/, '$1');
@@ -231,6 +225,8 @@ Promise.all([
 			}))).then(() => {
 				globResolve(null)
 			});
+		}).catch(error => {
+			throw error;
 		});
 	}),
 ]).then(() => {

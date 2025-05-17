@@ -201,7 +201,7 @@
 				"그리고 더"
 			],
 			"Audited by independent security experts": [
-				"독립 보안 전문가에 의한 감사를 받음"
+				"독립 보안 전문가에 의한 감사를 받았습니다"
 			],
 			"Auto-selected from": [
 				"다음 국가에서 자동 선택됨:"
@@ -255,10 +255,10 @@
 				"연결 해제됨"
 			],
 			"Disconnected by another extension": [
-				"다른 확장 프로그램에 의해 연결 해제됨"
+				"다른 확장 프로그램에 의해 연결이 해제되었습니다"
 			],
 			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"다른 확장 프로그램에 의해 연결 해제됨. ${newProxyName}에 연결되었습니다."
+				"다른 확장 프로그램에 의해 연결이 해제되었습니다. ${newProxyName}에 연결되였습니다."
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"연결되거나 연결이 끊겼을때 시스템 알림을 받아보세요."
@@ -282,7 +282,7 @@
 				"검열에 맞서도록 도와주세요"
 			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
-				"당신의 프라이버시를 지키는 고성능의 스위스 VPN입니다. 최고의 보안과, ${count} 개 이상의 서버를 제한 없이 이용할 수 있습니다."
+				"당신의 프라이버시를 보호하는 고성능 스위스 VPN입니다. 최대한의 보안과 ${count}개 이상의 서버를 제공하며, 제한이 없습니다."
 			],
 			"Learn more": [
 				"더 알아보기"
@@ -306,7 +306,7 @@
 				"<b>다음</b>을 클릭한 다음에 브라우저 팝업에서 <b>허용</b>을 눌러주세요."
 			],
 			"Protect yourself online with Proton's free high‑speed VPN.": [
-				"Proton의 무료 고속 VPN으로 온라인상에서 나 자신을 지키세요."
+				"Proton의 무료 고속 VPN으로 온라인상의 나 자신을 보호하세요."
 			],
 			"Proton VPN": [
 				"Proton VPN"

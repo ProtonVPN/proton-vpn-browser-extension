@@ -28,10 +28,13 @@ export const countryBlock = (
 	const exitCountryName = group.name;
 	const grayOutButton = simplifiedUi && userTier <= 0;
 	const canConnect = up && (simplifiedUi ? (userTier > 0) : !upgradeNeeded);
+	const open = hasSearchScore(group);
+	const sectionBuilder = ((window as any).sectionBuilder || ((window as any).sectionBuilder = {}));
+	sectionBuilder[id] = () => serverGroup(userTier, code, group, predicate, secureCore, showFlagOnGroups);
 
 	return `
 	<div class="country-block">
-		<div class="details-box ${hasSearchScore(group) ? ' details-box-open' : ''}">
+		<div class="details-box ${open ? ' details-box-open' : ''}">
 			<div class="details-box-summary connection-button-container">
 				<div class="country-header list-item-box${grayOutButton ? ' gray-out' : ''}">
 					<button
@@ -75,9 +78,10 @@ export const countryBlock = (
 					</div>
 				</div>
 			</div>
-			<div class="details-box-body servers-list" id="${id}">
-				${serverGroup(userTier, code, group, predicate, secureCore, showFlagOnGroups)}
-			</div>
+			<div
+				class="details-box-body servers-list"
+				id="${id}"
+			></div>
 		</div>
 	</div>
 	`;

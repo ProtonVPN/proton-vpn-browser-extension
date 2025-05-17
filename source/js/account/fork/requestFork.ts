@@ -1,6 +1,6 @@
+import {getFullAppVersion} from '../../config';
 import {arrayToBinaryString, encodeBase64URL} from '../../encoding';
 import {Storage, storage} from '../../tools/storage';
-import {getFullAppVersion} from '../../api';
 
 const actions = {
 	signup: '2',

@@ -5,7 +5,7 @@ import {
 	Scope,
 	defaultStackParser
 } from '@sentry/browser';
-import {appVersion, hostname, sentryDsn} from '../config';
+import {getFullAppVersion, hostname, sentryDsn} from '../config';
 import {CacheWrappedValue, storage} from '../tools/storage';
 import {getErrorAsString} from '../tools/getErrorMessage';
 import {milliSeconds} from '../tools/milliSeconds';
@@ -157,12 +157,11 @@ export const initSentry = (): Scope => {
 
 	const client = new BrowserClient({
 		dsn: sentryDsn,
-		release: appVersion,
+		release: getFullAppVersion(),
 		environment: /\.proton.me$/.test(hostname) ? 'prod' : 'test',
 		normalizeDepth: 5,
 		transport: makeProtonFetchTransport,
 		stackParser: defaultStackParser,
-		autoSessionTracking: false,
 		// do not log calls to console.log, console.error, etc.
 		integrations: integrations,
 		// Disable client reports. Client reports are used by sentry to retry events that failed to send on visibility change.

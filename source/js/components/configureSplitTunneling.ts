@@ -42,7 +42,7 @@ export const configureSplitTunneling = (
 			}</div>` : ''}</div>
 			<button data-st-delete="${index}" title="${title}" class="small-button delete-button">
 				<svg fill="currentColor" viewBox="0 0 24 24">
-					<path fill-rule="evenodd" d="M6.22 6.22a.75.75 0 0 1 1.06 0L12 10.94l4.72-4.72a.75.75 0 1 1 1.06 1.06L13.06 12l4.72 4.72a.75.75 0 1 1-1.06 1.06L12 13.06l-4.72 4.72a.75.75 0 0 1-1.06-1.06L10.94 12 6.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/>
+					<use xlink:href="img/icons.svg#delete"></use>
 				</svg>
 			</button>
 		</div>`;

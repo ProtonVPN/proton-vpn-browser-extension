@@ -15,7 +15,7 @@
 				"Dodaj stronę"
 			],
 			"Already have a Proton Account?": [
-				"Posiadasz już konto Proton?"
+				"Masz już konto Proton?"
 			],
 			"Auto connect": [
 				"Automatyczne połączenie"
@@ -264,16 +264,16 @@
 				"Rozłączono"
 			],
 			"Disconnected by another extension": [
-				"Rozłączony przez inne rozszerzenie"
+				"Rozłączono przez inne rozszerzenie"
 			],
 			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Rozłączony przez inne rozszerzenie, połączył się z ${newProxyName}"
+				"Rozłączono przez inne rozszerzenie. Połączono z ${newProxyName}"
 			],
 			"Disconnected, settings were overridden": [
-				"Odłączono, ustawienia nadpisane"
+				"Rozłączono. Ustawienia zostały nadpisane"
 			],
 			"Disconnected, settings were overridden to ${newProxyName}": [
-				"Odłączono, ustawienia nadpisane do ${newProxyName}"
+				"Rozłączono. Ustawienia zostały nadpisane do ${newProxyName}"
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Wyświetla powiadomienia systemowe podczas nawiązywania połączeń."
@@ -324,7 +324,7 @@
 				"Kliknij <b>Dalej</b>, a następnie w wyskakującym oknie <b>Zezwalaj</b>."
 			],
 			"Protect yourself online with Proton's free high‑speed VPN.": [
-				"Ochroń siebie online z szybką i darmową siecią Proton VPN"
+				"Zadbaj o bezpieczeństwo w sieci z szybką i darmową siecią Proton VPN"
 			],
 			"Proton VPN": [
 				"Proton VPN"

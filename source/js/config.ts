@@ -4,6 +4,7 @@ import * as baseConfig from '../../config';
 const accountSuffix = '';
 
 export const appVersion = baseConfig.appVersion;
+export const getFullAppVersion = () => 'browser-vpn@' + appVersion;
 export const appId = baseConfig.appId;
 export const baseDomainURL = baseConfig.baseDomainURL;
 export const accountURL = `${baseDomainURL}/${accountSuffix}`;

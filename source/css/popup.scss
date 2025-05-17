@@ -134,10 +134,7 @@ button {
 
 .confirm-modal {
 	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
+	inset: 0;
 	background: rgba(0, 0, 0, 0.5);
 
 	> div {
@@ -181,8 +178,7 @@ button {
 	flex-direction: row;
 	max-height: calc(100vh - 44px);
 	box-sizing: border-box;
-	overflow-y: auto;
-	overflow-x: hidden;
+	overflow: hidden auto;
 	scrollbar-width: thin;
 	min-width: $page-width + 2 * $page-padding;
 	max-width: $page-width + 2 * $page-padding;
@@ -1023,8 +1019,7 @@ input[type="text"]:invalid {
 }
 
 .scrollable-view {
-	overflow-y: auto;
-	overflow-x: hidden;
+	overflow: hidden auto;
 	scrollbar-width: thin;
 }
 
@@ -1359,10 +1354,7 @@ summary {
 
 #modal-error {
 	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
+	inset: 0;
 	z-index: 2;
 	flex-direction: column;
 	justify-content: space-between;
@@ -1488,10 +1480,7 @@ details {
 		display: block;
 		width: 100%;
 		position: absolute;
-		left: 0;
-		right: 0;
-		top: 0;
-		bottom: 0;
+		inset: 0;
 		border: 1px solid var(--gray);
 		border-radius: $border-radius;
 		padding: 0 40px;
@@ -1656,8 +1645,7 @@ details {
 	min-width: $sig-in-width;
 	max-width: $sig-in-width;
 	max-height: 100vh;
-	overflow-y: auto;
-	overflow-x: hidden;
+	overflow: hidden auto;
 	scrollbar-width: thin;
 
 	.welcome-background {

@@ -15,6 +15,12 @@ export enum Event {
 	VPN_DISCONNECTION = 'vpn_disconnection',
 }
 
+export enum EventOutcome {
+	SUCCESS = 'success',
+	FAILURE = 'failure',
+	ABORTED = 'aborted',
+}
+
 export enum MeasurementGroup {
 	CONNECTION = 'vpn.any.connection',
 }

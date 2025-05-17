@@ -658,6 +658,11 @@ export async function checkAutoConnect(): Promise<void> {
 	]);
 
 	if (initialChoice?.connected && autoConnect?.value) {
+		// Quit auto-connect if there is no session
+		if (!(await readSession())?.uid) {
+			return;
+		}
+
 		const userTier = getUserMaxTier(user);
 		const filteredList = getLogicalsFilteredByChoice(logicals.filter(
 			getSecureCorePredicate(userTier, secureCore),

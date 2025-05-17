@@ -14,6 +14,9 @@
 			"Add website": [
 				"Lisää verkkosivusto"
 			],
+			"Already have a Proton Account?": [
+				"Onko sinulla jo Proton-tili?"
+			],
 			"Auto connect": [
 				"Automaattiyhteys"
 			],
@@ -251,6 +254,9 @@
 			"Disconnected": [
 				"Ei yhdistetty"
 			],
+			"Disconnected by another extension": [
+				"Yhteys katkaistiin toisen laajennuksen toimesta"
+			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Lähetä järjestelmäilmoituksia yhteyden muodostus- ja katkaisutapahtumista."
 			],
@@ -296,6 +302,9 @@
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Paina <b>Seuraava</b> ja sitten selaimesi ponnahduksesta <b>Salli</b>."
+			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"Suojaa itseäsi verkossa Protonin ilmaisella nopealla VPN:llä."
 			],
 			"Proton VPN": [
 				"Proton VPN"

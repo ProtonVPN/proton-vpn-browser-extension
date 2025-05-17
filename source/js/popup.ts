@@ -18,7 +18,7 @@ import {
 	translateArea,
 } from './tools/translate';
 import {escapeHtml} from './tools/escapeHtml';
-import {ApiError, getFullAppVersion, isUnauthorizedError} from './api';
+import {ApiError, isUnauthorizedError} from './api';
 import {saveSession} from './account/saveSession';
 import {User} from './account/user/User';
 import {PmUser} from './account/user/PmUser';
@@ -26,6 +26,7 @@ import {getUserMaxTier} from './account/user/getUserMaxTier';
 import {
 	accountURL,
 	autoConnectEnabled,
+	getFullAppVersion,
 	manageAccountURL,
 	secureCoreEnabled,
 	secureCoreQuickButtonEnabled,
@@ -57,12 +58,8 @@ import {showSigningView} from './components/signIn/showSigningView';
 import {delay, timeoutAfter} from './tools/delay';
 import {proxyPermission} from './vpn/proxyPermission';
 import {
-	Event,
-	getFeatureNames,
 	getTelemetryOptIn,
 	isTelemetryFeatureEnabled,
-	MeasurementGroup,
-	recordEvent,
 	telemetryOptIn,
 } from './tools/telemetry';
 import {leaveWindowForTab, openTab} from './tools/openTab';
@@ -89,6 +86,7 @@ import {milliSeconds} from './tools/milliSeconds';
 import {appendUrlParams} from './tools/appendUrlParams';
 import {crashReportOptIn, getCrashReportOptIn, handleError} from './tools/sentry';
 import {getServersCount} from './vpn/getServersCount';
+import {connectEventHandler} from './tools/connectEventHandler';
 
 const state = {
 	connected: false,
@@ -389,6 +387,7 @@ const start = async () => {
 				const id = button.getAttribute('data-expand');
 				const {choice} = getLogicalFromButton(button);
 				const code = `${choice.exitCountry}`;
+				const expandContent = (id && ((window as any).sectionBuilder?.[id]?.() || document.getElementById(id)?.innerHTML)) || '';
 
 				goToRegion(
 					`
@@ -400,7 +399,7 @@ const start = async () => {
 							${button.getAttribute('data-subGroupName') || getCountryNameOrCode(code)}
 						</div>
 					`,
-					(id && document.getElementById(id)?.innerHTML) || '',
+					expandContent,
 				);
 			});
 		});
@@ -490,7 +489,7 @@ const start = async () => {
 					throw new Error('Missconfigured server. Cannot find the selected logical.');
 				}
 
-				recordEvent(MeasurementGroup.CONNECTION, Event.VPN_CONNECTION, {}, logical);
+				connectEventHandler.connect(logical);
 				setLastChoiceWithCurrentOptions({
 					connected: true,
 					...choice,
@@ -779,8 +778,7 @@ const start = async () => {
 			logicals: [],
 		});
 		group.needUpgrade = group.needUpgrade && (userTier < logical.Tier);
-		group.logicals || (group.logicals = []);
-		group.logicals.push(logical);
+		(group.logicals || (group.logicals = [])).push(logical);
 	});
 
 	const servers = document.querySelector('#servers') as HTMLDivElement;
@@ -850,15 +848,7 @@ const start = async () => {
 		refreshConnectionStatus();
 		setLastChoiceWithCurrentOptions({connected: false});
 
-		recordEvent(MeasurementGroup.CONNECTION, Event.VPN_DISCONNECTION, {
-			...(previousServer ? {
-				vpn_country: previousServer.exitCountry,
-				server: previousServer.name,
-				...(previousLogical ? {
-					server_features: getFeatureNames(previousLogical.Tier, previousLogical.Features),
-				} : {}),
-			} : {}),
-		});
+		connectEventHandler.disconnect(previousLogical, previousServer);
 
 		await sendMessageToBackground(type);
 	};
@@ -958,6 +948,8 @@ const start = async () => {
 			clearInterval(connectingChecker);
 		}
 
+		connectEventHandler.finishConnection(state.connected);
+
 		disconnectButton.innerHTML = c('Action').t`Disconnect`;
 		disconnectButton.classList.add('danger-hover');
 		serverStatusSlot.classList.remove(state.connected ? 'danger' : 'success');
@@ -981,7 +973,7 @@ const start = async () => {
 			? `
 				<div class="status-title">
 					<svg role="img" focusable="false" aria-hidden="true" class="protection-icon medium-icon" viewBox="0 0 24 24">
-						<path fill-rule="evenodd" d="M7.8 7.5h-.3a4.5 4.5 0 0 1 9 0H7.8ZM6 7.529V7.5a6 6 0 1 1 12 0v.029c.588.036 1.006.116 1.362.298a3 3 0 0 1 1.311 1.311C21 9.78 21 10.62 21 12.3v5.4c0 1.68 0 2.52-.327 3.162a3 3 0 0 1-1.311 1.311c-.642.327-1.482.327-3.162.327H7.8c-1.68 0-2.52 0-3.162-.327a3 3 0 0 1-1.311-1.311C3 20.22 3 19.38 3 17.7v-5.4c0-1.68 0-2.52.327-3.162a3 3 0 0 1 1.311-1.311c.356-.182.774-.262 1.362-.298Zm6.706 7.295a1.5 1.5 0 1 0-1.412 0l-.654 2.617a.45.45 0 0 0 .436.559h1.848a.45.45 0 0 0 .436-.56l-.654-2.616Z" clip-rule="evenodd"/>
+						<use xlink:href="img/icons.svg#protected"></use>
 					</svg>
 					<div id="protected-label" class="protection-status">${c('Label').t`Protected`}</div>
 				</div>
@@ -1001,7 +993,7 @@ const start = async () => {
 			: `
 				<div class="status-title">
 					<svg role="img" focusable="false" aria-hidden="true" class="protection-icon medium-icon" viewBox="0 0 24 24">
-						<path fill-rule="evenodd" d="M6 1.5a6 6 0 0 1 6 6h7.2c1.68 0 2.52 0 3.162.327a3 3 0 0 1 1.311 1.311C24 9.78 24 10.62 24 12.3v5.4c0 1.68 0 2.52-.327 3.162a3 3 0 0 1-1.311 1.311c-.642.327-1.482.327-3.162.327h-8.4c-1.68 0-2.52 0-3.162-.327a3 3 0 0 1-1.311-1.311C6 20.22 6 19.38 6 17.7v-5.4c0-1.68 0-2.52.327-3.162a3 3 0 0 1 1.311-1.311c.602-.307 1.38-.326 2.862-.327a4.5 4.5 0 0 0-9 0 .75.75 0 0 1-1.5 0 6 6 0 0 1 6-6Zm8.294 13.324a1.5 1.5 0 1 1 1.412 0l.654 2.617a.45.45 0 0 1-.436.559h-1.848a.45.45 0 0 1-.436-.56l.654-2.616Z" clip-rule="evenodd"/>
+						<use xlink:href="img/icons.svg#unprotected"></use>
 					</svg>
 					<div id="unprotected-label" class="protection-status">${c('Label').t`Unprotected`}</div>
 					${'' /*<div class="incentive">${c('Label').t`Protect yourself online`}</div>*/}
@@ -1009,7 +1001,7 @@ const start = async () => {
 						<div class="current-server-description">
 							<div class="lightning">
 								<svg class="lightning-symbol" viewBox="0 0 10 14">
-									<path d="M2.67277 12.9704C2.61521 13.1815 2.71131 13.4043 2.90433 13.5073C3.09735 13.6103 3.33595 13.5661 3.47924 13.4008L9.57299 6.36952C9.69318 6.23083 9.72139 6.03476 9.64516 5.86782C9.56892 5.70087 9.40228 5.59377 9.21876 5.59377H6.08247L7.32724 1.02961C7.38481 0.818537 7.2887 0.595714 7.09568 0.492717C6.90266 0.389719 6.66407 0.433943 6.52078 0.599274L0.427027 7.63052C0.306832 7.76921 0.278627 7.96529 0.354858 8.13223C0.431089 8.29917 0.597732 8.40627 0.781257 8.40627H3.91755L2.67277 12.9704Z" />
+									<use xlink:href="img/icons.svg#lightning"></use>
 								</svg>
 							</div>
 							<div class="fastest-server">
@@ -1178,7 +1170,7 @@ const start = async () => {
 			pick: 'fastest',
 		});
 
-		recordEvent(MeasurementGroup.CONNECTION, Event.VPN_CONNECTION, {}, logical);
+		connectEventHandler.connect(logical);
 
 		await connectToServer(logical);
 	});

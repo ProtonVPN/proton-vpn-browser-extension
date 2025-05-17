@@ -3,7 +3,7 @@
 	"key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAi06udziL3L40ltaSvthhugMjNN64XPD7eTZAJs3rqn9IdOSrWSWHm5xO7czk9N3Zz2plUDZ1Y1jN29K8AMLYqSsPCeEfXSZqMYi8vjWfV4xut1RvhxOfuuEimKrX40S5QfISUbync6kJ40UM1nz/43jA2S8+cWEETjE+5vFkiIB5+o0rtjbMwiYYUZ2mxuKnAUWLU/yvNdeRqFXS94I+iIERR/ExVAt9GsVSRTU3bXFdfRNQforPxNtBfBu5FzQHjgRfWJZlKRd4m1FBs5m17/eXGCydewLa01gx0CvsxZlOwSuoOc8QTiePvBdk7xqrpvYozQt5iOQ0ijGeNNcTBQIDAQAB",
 	"name": "Proton VPN: Fast & Secure",
 	"description": "Secure your internet and protect your online privacy in one click.",
-	"version": "1.2.6",
+	"version": "1.2.7",
 	"minimum_chrome_version": "108.0",
 	"icons": {
 		"16": "img/icon-16.png",

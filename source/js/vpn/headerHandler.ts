@@ -11,7 +11,7 @@ export const headerHandler = (requestDetails: WebResponseHeadersDetails): Blocki
 		responseHeaders: requestDetails.responseHeaders.map(header => {
 			// Reduce the maximum max-age so preflight requests won't be held and send later when
 			// token is already expired
-			if (header.name.toLowerCase() === 'access-control-max-age' && (header.value || 0) > requestMaxAge) {
+			if (header.name.toLowerCase() === 'access-control-max-age' && Number(header.value || 0) > requestMaxAge) {
 				header.value = `${requestMaxAge}`;
 			}
 

@@ -1,4 +1,4 @@
-import {apiDomainsExclusion, appVersion, baseAPIURL} from './config';
+import {apiDomainsExclusion, baseAPIURL, getFullAppVersion} from './config';
 import {RequestDetails} from './proxy';
 import {readSession} from './account/readSession';
 import {getAuthHeaders} from './account/getAuthHeaders';
@@ -11,6 +11,7 @@ import {broadcastMessage, ExtensionUpdate} from './tools/broadcastMessage';
 import {getUpdateError, setUpdateError} from './tools/update';
 import {delay} from './tools/delay';
 import {warn} from './log/log';
+import {getBrowserSubType} from './tools/getBrowserSubType';
 
 export const jsonRequest = (method: string, body: any, headers: Record<string, string> = {}) => ({
 	method,
@@ -21,8 +22,6 @@ export const jsonRequest = (method: string, body: any, headers: Record<string, s
 	},
 	body: JSON.stringify(body),
 });
-
-export const getFullAppVersion = () => 'browser-vpn@' + appVersion;
 
 /**
  * Object to remember for each route (method + URL) until when (time)
@@ -78,6 +77,7 @@ export const fetchApi = async (
 		...init,
 		headers: {
 			'x-pm-appversion': getFullAppVersion(),
+			'x-pm-browser-type': await getBrowserSubType(),
 			...headers,
 		},
 	} as RequestInit;
