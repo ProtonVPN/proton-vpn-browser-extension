@@ -117,9 +117,6 @@
 			"${countries} country": [
 				"${countries} quốc gia"
 			],
-			"${rounderServersCount} secure server": [
-				"${rounderServersCount} máy chủ bảo mật"
-			],
 			"${servers}+ secure server": [
 				"${servers} máy chủ bảo mật"
 			],
@@ -159,9 +156,6 @@
 			"Something went wrong. If the problem persists, please try to re-install the extension": [
 				"Có lỗi đã xảy ra. Nếu vấn đề không được khắc phục, vui lòng cài đặt lại tiện ích mở rộng"
 			],
-			"Unable to find appropriate server, try to logout and login again if it persists": [
-				"Không thể tìm thấy máy chủ phù hợp, hãy thử đăng xuất và đăng nhập lại nếu còn tiếp diễn"
-			],
 			"Unable to load the list": [
 				"Không thể tải danh sách"
 			],
@@ -179,9 +173,6 @@
 			]
 		},
 		"Info": {
-			"Access over 9000 secure servers in 112 countries": [
-				"Truy cập hơn 9000 máy chủ được bảo mật ở 112 quốc gia khác nhau"
-			],
 			"Access Proton VPN via this icon": [
 				"Truy cập vào Proton VPN bằng biểu tượng này"
 			],

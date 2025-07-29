@@ -1,8 +1,10 @@
-import {ProxyInfo, RequestDetails} from '../proxy';
+import {ProxyInfo} from '../proxy';
 import {ProxyAuthentication} from './ProxyAuthentication';
 import {ApiError} from '../api';
 import {SettingChange} from '../messaging/MessageType';
 import {Credentials} from '../account/credentials/Credentials';
+import OnAuthRequiredDetails = chrome.webRequest.OnAuthRequiredDetails;
+import OnRequestDetails = browser.proxy._OnRequestDetails;
 
 export interface ServerSummary {
 	id: string | number;
@@ -29,15 +31,20 @@ export interface StateDefinition {
 	checkConnectingState?(time: number): void;
 	setCredentials?(credentials: Credentials | undefined): void;
 	connectCurrentServer?(): Promise<boolean>;
-	handleProxyRequest?(requestInfo: RequestDetails): ProxyInfo | Promise<ProxyInfo>;
-	handleProxyAuthentication?(requestInfo: RequestDetails): Promise<ProxyAuthentication | undefined>;
+	handleProxyRequest?(requestInfo: OnRequestDetails): ProxyInfo | Promise<ProxyInfo>;
+	handleProxyAuthentication?(requestInfo: OnAuthRequiredDetails): Promise<ProxyAuthentication | undefined>;
 	setOption?(type: SettingChange, data: any): void | Promise<void>;
+}
+
+export interface ErrorDump {
+	message: string;
+	stack?: string;
 }
 
 export interface ConnectionState extends StateDefinition {
 	initializedAt: number;
 	data: {
-		error?: ApiError | Error;
+		error?: ApiError | Error | ErrorDump;
 		server?: ProxyServer;
 		credsTry?: number;
 		credsData?: {

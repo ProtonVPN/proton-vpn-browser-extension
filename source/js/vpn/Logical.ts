@@ -1,11 +1,13 @@
 import { Server } from './Server';
 
 export interface Logical {
-    ID: string | number;
+	ID: string | number;
 	City?: string | null;
 	Domain: string;
+	/** e.g. JP | US */
 	EntryCountry: string;
 	EntryCountryName?: string;
+	/** e.g. JP | US */
 	ExitCountry: string;
 	HostCountry: string;
 	Features: number; // bitmap

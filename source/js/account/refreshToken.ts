@@ -15,6 +15,14 @@ let waitingRefreshPromises = [] as ([
 	(error: Error | RefreshTokenError | string) => void,
 ])[];
 
+export const hasRefreshToken = async (session?: Session): Promise<boolean> => {
+	if (!session) {
+		session = await readSession();
+	}
+
+	return Boolean(session.refreshToken);
+};
+
 export const refreshToken = async (session?: Session): Promise<Session> => {
 	if (!session) {
 		session = await readSession();

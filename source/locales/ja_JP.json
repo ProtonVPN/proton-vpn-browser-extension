@@ -123,8 +123,8 @@
 			"${countries} country": [
 				"${countries} か国"
 			],
-			"${rounderServersCount} secure server": [
-				"${rounderServersCount} 台の安全なサーバー"
+			"${serversCount} secure server": [
+				"${serversCount} 台の安全なサーバー"
 			],
 			"${servers}+ secure server": [
 				"${servers} 台以上の安全なサーバー"
@@ -165,9 +165,6 @@
 			"Something went wrong. If the problem persists, please try to re-install the extension": [
 				"なにかが間違っています。問題が解決しない場合は、拡張機能の再インストールをお試しください。"
 			],
-			"Unable to find appropriate server, try to logout and login again if it persists": [
-				"しばらく問題が解決しない場合は、一度ログアウトして再度ログインし、適切なサーバーを探してください。"
-			],
 			"Unable to load the list": [
 				"リストを読み込めません"
 			],
@@ -185,9 +182,6 @@
 			]
 		},
 		"Info": {
-			"Access over 9000 secure servers in 112 countries": [
-				"112 カ国の9000以上のセキュアなサーバーにアクセス"
-			],
 			"Access Proton VPN via this icon": [
 				"このアイコンから Proton VPN にアクセス"
 			],
@@ -364,6 +358,12 @@
 			],
 			"User": [
 				"ユーザー"
+			],
+			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
+				"外部ソフトウェアによってVPNがブロックされました。\n\nアンチウイルスやプロキシなどの一部のツールがProton VPNと干渉する可能性があります。それらを無効化して再試行してください。"
+			],
+			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.": [
+				"外部ソフトウェアによってVPNがブロックされました: ${blockingSoftware}。\n\nアンチウイルスやプロキシなどの一部のツールは、Proton VPNと干渉する可能性があります。無効化して確認してみてください。"
 			],
 			"VPN Features": [
 				"VPN 機能"

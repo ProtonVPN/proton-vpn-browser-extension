@@ -1,5 +1,6 @@
 import {delay} from './delay';
 import {triggerPromise} from './triggerPromise';
+import {getTabs} from './getTabs';
 import _CreateCreateProperties = browser.tabs._CreateCreateProperties;
 
 const opening: Record<string, true> = {};
@@ -20,7 +21,7 @@ export const openTab = async (urlOrOptions: string | _CreateCreateProperties, id
 		}, 800);
 	}
 
-	return await browser.tabs.create(options);
+	return await getTabs().create(options);
 };
 
 export const leaveWindowForTab = (window: Window, urlOrOptions: string | _CreateCreateProperties, id?: string | undefined): void => {

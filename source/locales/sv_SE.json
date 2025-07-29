@@ -23,6 +23,9 @@
 			"Cancel": [
 				"Avbryt"
 			],
+			"Change server": [
+				"Byt server"
+			],
 			"Connect": [
 				"Anslut"
 			],
@@ -95,6 +98,9 @@
 			"Upgrade": [
 				"Uppgradera"
 			],
+			"Upgrade to Proton VPN Plus": [
+				"Uppgradera till Proton VPN Plus"
+			],
 			"Visit Support Center": [
 				"Besök supportcenter"
 			]
@@ -124,9 +130,9 @@
 				"${countries} land",
 				"${countries} länder"
 			],
-			"${rounderServersCount} secure server": [
-				"${rounderServersCount} säker server",
-				"${rounderServersCount} säkra servrar"
+			"${serversCount} secure server": [
+				"${serversCount} säker server",
+				"${serversCount} säkra servrar"
 			],
 			"${servers}+ secure server": [
 				"${servers}+ säker server",
@@ -168,8 +174,8 @@
 			"Something went wrong. If the problem persists, please try to re-install the extension": [
 				"Något gick fel. Om problemet kvarstår, försök att installera om tillägget"
 			],
-			"Unable to find appropriate server, try to logout and login again if it persists": [
-				"Kan inte hitta lämplig server, prova att logga ut och logga in igen om det kvarstår"
+			"Unable to find appropriate server, try to logout and login again if it persists.": [
+				"Kan inte hitta lämplig server, prova att logga ut och logga in igen om det kvarstår."
 			],
 			"Unable to load the list": [
 				"Kan inte ladda listan"
@@ -188,9 +194,6 @@
 			]
 		},
 		"Info": {
-			"Access over 9000 secure servers in 112 countries": [
-				"Åtkomst till över 9000 säkra servrar i 112 länder"
-			],
 			"Access Proton VPN via this icon": [
 				"Kom åt Proton VPN via denna ikon"
 			],
@@ -283,6 +286,15 @@
 			],
 			"For example, news.example.com is a subdomain of example.com.": [
 				"Till exempel är nyheter.exempel.se en underdomän till exempel.se."
+			],
+			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
+				"Gratis serverländer (<span id=\"free-server-countries-count\">0</span>)"
+			],
+			"Get unlimited server changes with VPN Plus": [
+				"Få obegränsade serverändringar med VPN Plus"
+			],
+			"Get worldwide coverage with VPN Plus": [
+				"Få världsomspännande täckning med VPN Plus"
 			],
 			"Help": [
 				"Hjälp"

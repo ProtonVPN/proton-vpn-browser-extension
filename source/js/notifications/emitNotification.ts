@@ -1,6 +1,7 @@
 import {storedNotificationsEnabled} from './notificationsEnabled';
 
-type NotificationOptions = chrome.notifications.NotificationOptions<true>;
+type NotificationOptions = chrome.notifications.NotificationOptions;
+type NotificationCreateOptions = chrome.notifications.NotificationCreateOptions;
 
 export function emitNotification(
 	notificationId: string,
@@ -16,15 +17,21 @@ export function emitNotification(
 			options = {message: options};
 		}
 
+		const notificationOptions = {
+			type: 'basic',
+			title: 'Proton VPN',
+			iconUrl: '/img/icon-512.png',
+			...options,
+		} as NotificationCreateOptions;
+
+		if (!notificationOptions.message) {
+			return;
+		}
+
 		chrome?.notifications?.create(
 			'proton-vpn-' + notificationId,
-			{
-				type: 'basic',
-				title: 'Proton VPN',
-				iconUrl: '/img/icon-512.png',
-				...options,
-			},
-			callback,
+			notificationOptions,
+			callback || (() => {}),
 		);
 	});
 }

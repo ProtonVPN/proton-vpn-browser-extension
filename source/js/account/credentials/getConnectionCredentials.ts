@@ -1,3 +1,4 @@
+'use background';
 import {Credentials} from './Credentials';
 import {
 	ApiError,
@@ -20,15 +21,12 @@ import {triggerPromise} from '../../tools/triggerPromise';
 import {getErrorAsString} from '../../tools/getErrorMessage';
 import {delay, setJitterTimeout} from '../../tools/delay';
 import {CredentialsCacheItem, storedCredentials} from './storedCredentials';
-import {backgroundOnly} from '../../context/backgroundOnly';
 import {debug, warn} from '../../log/log';
 import {tokenDuration} from '../../config';
 import {isIdle} from '../../tools/idle';
 import {initAuthInterceptor} from '../../vpn/initAuthInterceptor';
 import {getCredentialsData} from './getCredentialsData';
 import {fetchWithUserInfo} from '../fetchWithUserInfo';
-
-backgroundOnly('credentials');
 
 let credentialsFetching = false;
 let waitingCredentialsPromises = [] as [((session: Credentials|undefined) => void), ((error: any) => void)][];

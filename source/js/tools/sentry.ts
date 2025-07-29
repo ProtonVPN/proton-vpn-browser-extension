@@ -107,7 +107,9 @@ export const handleError = (error: any) => {
 		return;
 	}
 
-	const code = 'Code' in error ? error.Code : undefined;
+	const code = (typeof error === 'object') && ('Code' in error)
+		? error.Code
+		: undefined;
 
 	switch (code) {
 		case 86110:

@@ -14,6 +14,9 @@
 			"Add website": [
 				"Добавить веб-сайт"
 			],
+			"Already have a Proton Account?": [
+				"У вас уже есть аккаунт Proton?"
+			],
 			"Auto connect": [
 				"Автоподключение"
 			],
@@ -123,12 +126,6 @@
 				"${countries} стран",
 				"${countries} страны"
 			],
-			"${rounderServersCount} secure server": [
-				"${rounderServersCount} защищённый сервер",
-				"${rounderServersCount} защищённых сервера",
-				"${rounderServersCount} защищённых серверов",
-				"${rounderServersCount} защищённых сервера"
-			],
 			"${servers}+ secure server": [
 				"${servers}+ защищённый сервер",
 				"${servers}+ защищённых сервера",
@@ -171,9 +168,6 @@
 			"Something went wrong. If the problem persists, please try to re-install the extension": [
 				"Что-то пошло не так. Если проблема не исчезнет, попробуйте переустановить расширение"
 			],
-			"Unable to find appropriate server, try to logout and login again if it persists": [
-				"Невозможно найти подходящий сервер, попробуйте выйти из системы и войти снова, если проблема сохранится"
-			],
 			"Unable to load the list": [
 				"Не удаётся загрузить список"
 			],
@@ -191,9 +185,6 @@
 			]
 		},
 		"Info": {
-			"Access over 9000 secure servers in 112 countries": [
-				"Получите доступ к более чем 9000 защищенных серверов в 112 странах"
-			],
 			"Access Proton VPN via this icon": [
 				"Подключитесь к Proton VPN через эту иконку"
 			],
@@ -266,6 +257,12 @@
 			"Disconnected by another extension, it connected to ${newProxyName}": [
 				"Отключено другим расширением, подключено к ${newProxyName}"
 			],
+			"Disconnected, settings were overridden": [
+				"Отключено, настройки были отменены"
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"Отключено, настройки были переопределены на ${newProxyName}"
+			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Выдавать системные уведомления при событиях подключения и отключения."
 			],
@@ -313,6 +310,12 @@
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Нажмите <b>Далее</b>, затем щёлкните <b>Разрешить</b> во всплывающем окне браузера."
+			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"Защитите себя в Интернете с помощью бесплатной высокоскоростной VPN от Proton."
+			],
+			"Proton VPN": [
+				"Proton VPN"
 			],
 			"Proton VPN Browser Extension": [
 				"Расширение Proton VPN для браузера"
@@ -486,6 +489,9 @@
 		"Title": {
 			"Features": [
 				"Функции"
+			],
+			"Proton VPN for Vivaldi": [
+				"Proton VPN для Vivaldi"
 			],
 			"Streaming": [
 				"Стриминг"

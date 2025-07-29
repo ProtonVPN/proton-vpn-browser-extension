@@ -3,6 +3,7 @@ import {Storage, storage} from './storage';
 import {ForkResponse} from '../messaging/ForkResponse';
 import {getPartnerById} from '../account/partner/partners';
 import {executeOnTab} from './executeOnTab';
+import {getTabs} from './getTabs';
 
 const root = global || window;
 root.browser || ((root as any).browser = chrome);
@@ -18,7 +19,7 @@ export const addTab = (id: number): void => {
 
 export const connectTab = (id: number): void => {
 	addTab(id);
-	triggerPromise(browser.tabs.executeScript?.(id, {
+	triggerPromise(getTabs().executeScript?.(id, {
 		code: `
 			chrome.runtime.connect();
 			window.addEventListener('message', (event) => {

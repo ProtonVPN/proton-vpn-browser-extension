@@ -1,5 +1,4 @@
-import {apiDomainsExclusion, baseAPIURL, getFullAppVersion} from './config';
-import {RequestDetails} from './proxy';
+import {apiDomainsExclusion, baseAPIURL, getFullAppVersion, incompatibleSoftware} from './config';
 import {readSession} from './account/readSession';
 import {getAuthHeaders} from './account/getAuthHeaders';
 import {Session} from './account/Session';
@@ -12,6 +11,8 @@ import {getUpdateError, setUpdateError} from './tools/update';
 import {delay} from './tools/delay';
 import {warn} from './log/log';
 import {getBrowserSubType} from './tools/getBrowserSubType';
+import {handleError} from './tools/sentry';
+import OnRequestDetails = browser.proxy._OnRequestDetails;
 
 export const jsonRequest = (method: string, body: any, headers: Record<string, string> = {}) => ({
 	method,
@@ -123,6 +124,8 @@ const getJsonContent = async <T = any>(response: Response): Promise<T> => {
 	try {
 		return await response.json();
 	} catch (e) {
+		await checkIfResponseWasBlocked(response);
+
 		warn(response.status, e);
 
 		throw new Error(c('Error').t`Service temporarily unavailable`);
@@ -138,6 +141,44 @@ const buildResponseResult = async <T = any, D = any>(
 	return resultBuilder ? resultBuilder(response, data) : data;
 };
 
+const startLikeHtml = (text: string) => /^\s*</.test(text);
+
+const guessBlockerFromHtml = (html: string) => {
+	for (const blocker of incompatibleSoftware) {
+		if (html.includes(blocker)) {
+			return blocker;
+		}
+	}
+
+	return null;
+};
+
+const getBlockingSoftwareErrorFromResponse = (text: string) => {
+	const blockingSoftware = guessBlockerFromHtml(text);
+
+	if (blockingSoftware) {
+		return new Error(
+			c('Info').t`VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.`,
+		);
+	}
+
+	handleError('HTML Content Received: ' + text);
+
+	return new Error(
+		c('Info').t`VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.`,
+	);
+}
+
+const checkIfResponseWasBlocked = async (response: Response) => {
+	const text = await response.text();
+
+	if (startLikeHtml(text)) {
+		throw getBlockingSoftwareErrorFromResponse(text);
+	}
+
+	return text;
+};
+
 /**
  * Get response as JSON if possible, or else as text, to be used for unexpected output
  * such as API error responses that may or may not contain JSON.
@@ -146,7 +187,7 @@ const getResponseContent = async <T = any>(response: Response): Promise<T | stri
 	try {
 		return await response.clone().json();
 	} catch (e) {
-		return await response.text();
+		return await checkIfResponseWasBlocked(response);
 	}
 };
 
@@ -214,7 +255,7 @@ export const fetchJson = async <T, D = any>(
 };
 
 export const isExcludedFromProxy = (
-	requestInfo: RequestDetails,
+	requestInfo: OnRequestDetails,
 	apiExclusion: boolean,
 	bypassList?: string[],
 ): boolean => {

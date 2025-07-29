@@ -58,7 +58,7 @@
 		}
 
 		&.success::after {
-			box-shadow: 0 0 $shadow-width $shadow-height rgba(45, 220, 204, 0.5);
+			box-shadow: 0 0 $shadow-width $shadow-height rgb(45, 220, 204, 0.5);
 		}
 
 		&.danger .protection-icon,
@@ -68,7 +68,7 @@
 		}
 
 		&.danger::after {
-			box-shadow: 0 0 $shadow-width $shadow-height rgba(240, 143, 164, 0.5);
+			box-shadow: 0 0 $shadow-width $shadow-height rgb(240, 143, 164, 0.5);
 		}
 	}
 
@@ -113,7 +113,7 @@
 	}
 
 	.country-block {
-		border-bottom-color: rgba(0, 0, 0, 0.1);
+		border-bottom-color: rgb(0, 0, 0, 0.1);
 	}
 
 	.city-name {

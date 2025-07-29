@@ -14,6 +14,9 @@
 			"Add website": [
 				"Dodaj spletno mesto"
 			],
+			"Already have a Proton Account?": [
+				"Že imate Proton račun?"
+			],
 			"Auto connect": [
 				"Samodejna povezava"
 			],
@@ -71,6 +74,9 @@
 			"Sign in": [
 				"Prijava"
 			],
+			"Sign in with Vivaldi": [
+				"Prijava z Vivaldijem"
+			],
 			"Sign out": [
 				"Odjava"
 			],
@@ -119,12 +125,6 @@
 				"${countries} državi",
 				"${countries} države",
 				"${countries} držav"
-			],
-			"${rounderServersCount} secure server": [
-				"${rounderServersCount} varen strežnik",
-				"${rounderServersCount} varna strežnika",
-				"${rounderServersCount} varni strežniki",
-				"${rounderServersCount} varnih strežnikov"
 			],
 			"${servers}+ secure server": [
 				"${servers}+ varen strežnik",
@@ -311,6 +311,9 @@
 			"Select websites to exclude from your VPN connection.": [
 				"Izberite spletna mesta, ki jih želite izključiti iz povezave VPN."
 			],
+			"Share anonymous usage crash reports": [
+				"Deli anonimna poročila o zrušitvah uporabe"
+			],
 			"Share anonymous usage statistics": [
 				"Deli anonimne podatke o uporabi?"
 			],
@@ -465,6 +468,9 @@
 		"Title": {
 			"Features": [
 				"Funkcije"
+			],
+			"Proton VPN for Vivaldi": [
+				"Proton VPN za Vivaldi"
 			],
 			"Streaming": [
 				"Pretočni prenos"

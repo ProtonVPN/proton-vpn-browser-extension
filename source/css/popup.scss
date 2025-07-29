@@ -12,10 +12,15 @@
 	--success-color-trans: #67e0c1;
 	--feature-color: #2cffcc;
 	--dark-gray: #3d3d3d;
+	--dark-gray-2: #4A4658;
+	--text-hint: #6D697D;
 	--gray: #666;
 	--middle-gray: #939393;
 	--light-gray: #b6b6b6;
 	--primary-contrast: #f9f9f9;
+	--circle-bg: #3B3747;
+	--circle-fg: #8A6EFF;
+	--bg-weak: #292733;
 }
 
 * {
@@ -30,11 +35,11 @@
 }
 
 *::-webkit-scrollbar-track {
-	background: rgba(127, 127, 127, 0.2);
+	background: rgb(127, 127, 127, 0.2);
 }
 
 *::-webkit-scrollbar-thumb {
-	background: rgba(127, 127, 127, 0.5);
+	background: rgb(127, 127, 127, 0.5);
 }
 
 html,
@@ -77,6 +82,19 @@ button {
 	background: transparent;
 	border: 0;
 	font: inherit;
+}
+
+[data-go-to] {
+	cursor: pointer;
+}
+
+.hidden {
+	display: none;
+}
+
+/* inline-block causes non-collapsible margins */
+button {
+	display: block;
 }
 
 .reset-button {
@@ -135,7 +153,7 @@ button {
 .confirm-modal {
 	position: fixed;
 	inset: 0;
-	background: rgba(0, 0, 0, 0.5);
+	background: rgb(0, 0, 0, 0.5);
 
 	> div {
 		border-radius: $border-radius;
@@ -231,9 +249,18 @@ input[type="number"],
 	border-radius: $border-radius;
 	background: var(--middle-gray);
 	color: var(--primary-contrast);
-	padding: 6px 20px;
+	padding: 9px 20px;
 	text-decoration: none;
 	box-sizing: border-box;
+	margin: 8px 0;
+}
+
+.small-button {
+	margin: 0;
+	padding: 4px;
+	cursor: pointer;
+	width: 32px;
+	height: 32px;
 }
 
 input[type="text"],
@@ -326,13 +353,6 @@ input[type="checkbox"] {
 	height: $icon-size;
 }
 
-.small-button {
-	padding: 4px;
-	cursor: pointer;
-	width: 32px;
-	height: 32px;
-}
-
 .connection-button {
 	font-size: 0.9em;
 	width: $icon-size;
@@ -372,6 +392,14 @@ input[type="checkbox"] {
 	text-align: center;
 }
 
+.quick-connect-button-subtitle > div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 12px 0 8px;
+	gap: 4px;
+}
+
 .server-type {
 	padding: 3px 6px;
 	font-size: 1em;
@@ -384,7 +412,7 @@ input[type="checkbox"] {
 	border-color: transparent;
 
 	&.hover {
-		background: rgba(127, 127, 127, 0.1);
+		background: rgb(127, 127, 127, 0.1);
 		border-color: transparent;
 
 		.server-type.hover.button-light-hover:hover {
@@ -451,17 +479,6 @@ input[type="checkbox"] {
 	margin-right: 5px;
 }
 
-input[type="text"],
-input[type="number"],
-.sign-in-button,
-.primary-button,
-.tertiary-button,
-.quick-connect-button,
-.disconnection-button {
-	margin: 8px 0;
-	padding: 12px 20px;
-}
-
 input[type="number"]:invalid,
 input[type="text"]:invalid {
 	border-color: var(--danger-color);
@@ -481,7 +498,6 @@ input[type="text"]:invalid {
 .primary-button,
 .sign-in-button,
 .quick-connect-button {
-	font-size: 0.9em;
 	border-radius: $border-radius;
 	text-decoration: none;
 	opacity: 0.7;
@@ -497,10 +513,39 @@ input[type="text"]:invalid {
 			cursor: pointer;
 		}
 	}
+
+	&.weak {
+		&:not(:disabled) {
+			opacity: 1;
+			background: var(--dark-gray-2);
+			color: var(--primary-contrast);
+		}
+
+		&:hover {
+			background: var(--primary-color-hover);
+			color: var(--primary-contrast) !important;
+			cursor: pointer;
+		}
+
+		&:active {
+			background: var(--dark-gray-2);
+		}
+	}
+
+	&[data-next-change]:not([data-next-change=""]) {
+		color: var(--text-hint);
+
+		&::after {
+			content: attr(data-next-change);
+			color: var(--primary-contrast);
+			margin-left: 8px;
+		}
+	}
 }
 
 .disconnection-button {
-	border: 2px solid var(--gray);
+	border: 1px solid var(--gray);
+	padding-top: 8px;
 	background: transparent;
 	color: var(--gray);
 	transition: all 0.2s;
@@ -550,7 +595,7 @@ input[type="text"]:invalid {
 	min-height: 42px;
 
 	&:hover {
-		background: rgba(127, 127, 127, 0.1);
+		background: rgb(127, 127, 127, 0.1);
 	}
 
 	.connection-button {
@@ -576,7 +621,7 @@ input[type="text"]:invalid {
 		top: 100%;
 		right: 0;
 		border: 1px solid var(--gray);
-		box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+		box-shadow: 0 0 3px rgb(0, 0, 0, 0.4);
 		background-color: var(--primary-contrast);
 		color: var(--dark-gray);
 		width: 70vw;
@@ -690,7 +735,7 @@ input[type="text"]:invalid {
 }
 
 .connection-status {
-	padding: 6px;
+	padding: 6px 6px 0;
 	overflow: hidden;
 	position: relative;
 
@@ -702,8 +747,8 @@ input[type="text"]:invalid {
 		left: calc(50% - $page-padding);
 		width: 20px;
 		height: 0;
-		box-shadow: 0 0 $shadow-width $shadow-height rgba(245, 254, 245, 0.5);
-		color: rgba(245, 254, 245);
+		box-shadow: 0 0 $shadow-width $shadow-height rgb(245, 254, 245, 0.5);
+		color: rgb(245, 254, 245);
 		pointer-events: none;
 		z-index: -99;
 		border-radius: 50%;
@@ -731,7 +776,7 @@ input[type="text"]:invalid {
 	}
 
 	&.success::after {
-		box-shadow: 0 0 $shadow-width $shadow-height rgba(27, 166, 153, 0.5);
+		box-shadow: 0 0 $shadow-width $shadow-height rgb(27, 166, 153, 0.5);
 	}
 
 	&.danger .protection-icon,
@@ -741,13 +786,13 @@ input[type="text"]:invalid {
 	}
 
 	&.danger::after {
-		box-shadow: 0 0 $shadow-width $shadow-height rgba(166, 89, 106, 0.5);
+		box-shadow: 0 0 $shadow-width $shadow-height rgb(166, 89, 106, 0.5);
 	}
 
 	.incentive {
 		font-weight: bold;
 		color: var(--dark-gray);
-		margin: (2 * $page-padding) 0 $page-padding;
+		margin: $page-padding 0;
 
 		&.current-server-country {
 			margin-bottom: 2px;
@@ -760,6 +805,7 @@ input[type="text"]:invalid {
 
 	.current-server-description {
 		margin-top: $page-padding;
+		margin-bottom: $page-padding;
 		display: flex;
 		flex-direction: row;
 	}
@@ -769,7 +815,7 @@ input[type="text"]:invalid {
 	}
 
 	.lightning {
-		margin: auto 20px auto 0;
+		margin: 0 20px auto 0;
 		background: #1c9c7c4d;
 		fill: #18c398;
 		border-radius: 4px;
@@ -826,15 +872,18 @@ input[type="text"]:invalid {
 }
 
 .status-title {
-	text-align: center;
-	padding: 20px 0 0;
+	margin: 25px 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: baseline;
 
 	.lds-ring {
-		width: 32px;
-		height: 32px;
+		width: 24px;
+		height: 24px;
 
 		div {
-			border-width: 4px;
+			border-width: 2px;
 		}
 	}
 }
@@ -873,7 +922,7 @@ input[type="text"]:invalid {
 	height: $toggle-height;
 	position: relative;
 	border-radius: $toggle-width / 2;
-	background: rgba(127, 127, 127, 0.3);
+	background: rgb(127, 127, 127, 0.3);
 	transition: background-color 0.2s;
 
 	&::after {
@@ -988,7 +1037,7 @@ input[type="text"]:invalid {
 
 	&:hover,
 	&:focus {
-		background: rgba(128, 128, 128, 0.2);
+		background: rgb(128, 128, 128, 0.2);
 	}
 
 	span {
@@ -1094,7 +1143,7 @@ input[type="text"]:invalid {
 	border-color: transparent;
 
 	&:not(.gray-out).hover {
-		background: rgba(127, 127, 127, 0.1);
+		background: rgb(127, 127, 127, 0.1);
 		border-color: transparent;
 	}
 
@@ -1110,7 +1159,7 @@ input[type="text"]:invalid {
 		.connect-option,
 		.expand-button {
 			&:hover {
-				background: rgba(127, 127, 127, 0.1);
+				background: rgb(127, 127, 127, 0.1);
 				border-color: transparent;
 			}
 		}
@@ -1143,7 +1192,7 @@ input[type="text"]:invalid {
 }
 
 .servers-list {
-	background: rgba(127, 127, 127, 0.1);
+	background: rgb(127, 127, 127, 0.1);
 	padding-right: 0.25em;
 }
 
@@ -1152,7 +1201,7 @@ input[type="text"]:invalid {
 }
 
 .country-block {
-	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	border-bottom: 1px solid rgb(255, 255, 255, 0.1);
 }
 
 .wide-button {
@@ -1230,7 +1279,7 @@ summary {
 		display: block;
 		position: fixed;
 		inset: 0;
-		background: rgba(0, 0, 0, 0.5);
+		background: rgb(0, 0, 0, 0.5);
 		z-index: -1;
 	}
 }
@@ -1299,14 +1348,17 @@ summary {
 }
 
 .corner-button {
-	padding: 6px;
 	position: absolute;
 	top: 26px;
 	right: 26px;
 	background: transparent;
+	padding: 4px;
+	cursor: pointer;
+	width: 32px;
+	height: 32px;
 
 	&:hover {
-		background: rgba(255, 255, 255, 0.2);
+		background: rgb(255, 255, 255, 0.2);
 	}
 }
 
@@ -1319,7 +1371,7 @@ summary {
 }
 
 .error-message {
-	background: rgba(127, 127, 127, 0.1);
+	background: rgb(127, 127, 127, 0.1);
 	color: rgb(166, 89, 106);
 	border-radius: $border-radius;
 	padding: 6px 18px;
@@ -1381,6 +1433,10 @@ details {
 	flex-flow: row nowrap;
 }
 
+.flex-row {
+	flex-direction: row;
+}
+
 .single-chart {
 	width: 33%;
 	justify-content: space-around;
@@ -1419,7 +1475,7 @@ details {
 	border-color: transparent;
 
 	&:hover {
-		background: rgba(127, 127, 127, 0.1);
+		background: rgb(127, 127, 127, 0.1);
 	}
 }
 
@@ -1516,6 +1572,10 @@ details {
 
 .text-center {
 	text-align: center;
+}
+
+.inline-block {
+	display: inline-block;
 }
 
 .not-found {
@@ -1728,5 +1788,77 @@ body:not(.auto-theme, .light-theme) {
 @media (prefers-color-scheme: dark) {
 	body.auto-theme {
 		@include dark-theme;
+	}
+}
+
+.page-view>[data-page="server-change-remaining-time"] {
+	height: 100%;
+
+	.circle-modal-body {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 0 $page-padding;
+
+		.circle-progress {
+			height: 86px;
+			width: 86px;
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			>div.circle {
+				position: absolute;
+				border: 6px solid var(--circle-bg);
+				border-radius: 100%;
+				height: 100%;
+				width: 100%;
+			}
+
+			>svg.path {
+				position: absolute;
+				stroke: var(--circle-fg);
+				top: 0;
+				left: 0;
+				transform: rotate(-90deg);
+
+				circle.transition {
+					transition: stroke-dashoffset 1s linear;
+				}
+			}
+
+			>span.time {
+				position: absolute;
+			}
+		}
+	}
+}
+
+.about-free-connections {
+	.page-header {
+		height: 58px;
+	}
+
+	#free-countries-list {
+		display: flex;
+		flex-flow: row wrap;
+		gap: 16px;
+	}
+
+	#upgrade-button {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		box-sizing: content-box;
+		height: 40px;
+		padding: 12px;
+		gap: 12px;
+		margin-top: 12px;
+		border-radius: $border-radius;
+		background: var(--bg-weak);
 	}
 }

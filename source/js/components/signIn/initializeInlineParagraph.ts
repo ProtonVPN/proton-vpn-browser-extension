@@ -21,7 +21,7 @@ export const setServerCount = (count: number) => {
 };
 
 const refreshIncentiveParagraph = (area?: HTMLElement) => {
-	serverCount || (serverCount = 6553);
+	serverCount || (serverCount = 13_626);
 
 	const truncatedCount = truncateBy(serverCount, serverTruncateFactor);
 	const count = getNumberFormatter().format(truncatedCount);

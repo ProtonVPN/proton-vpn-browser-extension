@@ -1,3 +1,4 @@
+'use background';
 import {readSession} from '../account/readSession';
 import {getFreshUser} from '../account/user/getUser';
 import {getPmUser} from '../account/user/getPmUser';
@@ -12,12 +13,9 @@ import {
 	StateChange
 } from './MessageType';
 import {sendForkResponse} from '../tools/openTabs';
-import {backgroundOnly} from '../context/backgroundOnly';
 import {setupHandleProxyRequest} from '../tools/setupHandleProxyRequest';
 import {record} from '../log/record';
 import {forkSession} from './forkSession';
-
-backgroundOnly('messaging');
 
 export const routeMessage = async (message: { type: BackgroundMessage, data: any }): Promise<any> => {
 	const { type, data } = message;

@@ -1,8 +1,8 @@
 import {requestMaxAge} from '../config';
-import WebResponseHeadersDetails = chrome.webRequest.WebResponseHeadersDetails;
 import BlockingResponse = chrome.webRequest.BlockingResponse;
+import OnAuthRequiredDetails = chrome.webRequest.OnAuthRequiredDetails;
 
-export const headerHandler = (requestDetails: WebResponseHeadersDetails): BlockingResponse | void => {
+export const headerHandler = (requestDetails: OnAuthRequiredDetails): BlockingResponse | void => {
 	if (!requestDetails.responseHeaders) {
 		return {};
 	}

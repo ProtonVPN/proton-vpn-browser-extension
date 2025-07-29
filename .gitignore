@@ -4,7 +4,11 @@ yarn.lock
 distribution
 distribution-*
 build
-.idea
 source.zip
 *.php
 *.py
+*.d.ts
+
+# IDE
+.idea
+.vscode

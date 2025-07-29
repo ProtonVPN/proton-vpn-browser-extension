@@ -1,7 +1,7 @@
 import {connectedServer} from './connectedServer';
 import {getCurrentState, isCurrentStateConnected, isLoggedIn, waitForReadyState} from '../state';
 import {milliSeconds} from '../tools/milliSeconds';
-import {debug} from '../log/log';
+import {debug as debug_, bind} from '../log/log';
 import {broadcastMessage} from '../tools/broadcastMessage';
 import {ApiError} from '../api';
 import {updateLocation} from './updateLocation';
@@ -9,6 +9,8 @@ import {updateLogicalLoad} from './updateLogicalLoad';
 import {recoverState} from './recoverState';
 import {watchWithSentry} from '../tools/sentry';
 import {clearProxy} from '../tools/proxy';
+
+const debug = bind(debug_, '[initState]');
 
 export const initState = async () => {
 	debug('Init state', (new Error()).stack);

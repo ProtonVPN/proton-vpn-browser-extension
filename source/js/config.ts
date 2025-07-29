@@ -28,6 +28,8 @@ export const signupEnabled = baseConfig.signupEnabled;
 
 export const torEnabled = baseConfig.torEnabled;
 
+export const incompatibleSoftware = baseConfig.incompatibleSoftware;
+
 export const tokenDuration = baseConfig.tokenDuration; // seconds
 
 export const requestMaxAge = Math.floor(tokenDuration / 4); // seconds

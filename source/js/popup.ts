@@ -1,20 +1,17 @@
+'use popup';
 import {Logical} from './vpn/Logical';
 import {getLogicalById, getSortedLogicals} from './vpn/getLogicals';
 import {readSession} from './account/readSession';
 import {sendMessageToBackground} from './tools/sendMessageToBackground';
 import {getInfoFromBackground} from './tools/getInfoFromBackground';
-import {getBrowser} from './tools/getBrowser';
 import {startSession} from './account/createSession';
 import {
 	c,
 	fetchTranslations,
 	getCountryName,
 	getCountryNameOrCode,
-	getHashSeed,
-	getLocaleSupport,
-	getPrimaryLanguage,
+	getHashSeed, getQuerySeed,
 	getTranslation,
-	msgid,
 	translateArea,
 } from './tools/translate';
 import {escapeHtml} from './tools/escapeHtml';
@@ -26,7 +23,6 @@ import {getUserMaxTier} from './account/user/getUserMaxTier';
 import {
 	accountURL,
 	autoConnectEnabled,
-	getFullAppVersion,
 	manageAccountURL,
 	secureCoreEnabled,
 	secureCoreQuickButtonEnabled,
@@ -34,7 +30,7 @@ import {
 	splitTunnelingEnabled,
 } from './config';
 import {refreshLocationSlots} from './account/refreshLocationSlots';
-import {getAllLogicals, requireBestLogical} from './vpn/getBestLogical';
+import {getAllLogicals, requireBestLogical, requireRandomLogical} from './vpn/getLogical';
 import {getCities, mergeTranslations} from './vpn/getCities';
 import {setUpSearch} from './search/setUpSearch';
 import {countryList, CountryList} from './components/countryList';
@@ -44,7 +40,7 @@ import {showNotifications} from './notifications/showNotifications';
 import {watchBroadcastMessages} from './tools/answering';
 import {ChangeStateMessage} from './tools/broadcastMessage';
 import {getErrorMessage} from './tools/getErrorMessage';
-import {ConnectionState, ServerSummary} from './vpn/ConnectionState';
+import {ConnectionState, ErrorDump, ServerSummary} from './vpn/ConnectionState';
 import {Feature} from './vpn/Feature';
 import {getCountryFlag} from './tools/getCountryFlag';
 import {each} from './tools/each';
@@ -64,29 +60,33 @@ import {
 } from './tools/telemetry';
 import {leaveWindowForTab, openTab} from './tools/openTab';
 import {getSearchResult} from './search/getSearchResult';
-import {getAccessSentence, upsell} from './tools/upsell';
+import {upsell} from './tools/upsell';
 import {forgetAccount} from './account/forgetAccount';
 import {hideIf} from './tools/hideIf';
 import {storedPreventWebrtcLeak} from './webrtc/storedPreventWebrtcLeak';
 import {preventLeak} from './webrtc/preventLeak';
 import {setWebRTCState} from './webrtc/setWebRTCState';
 import {WebRTCState} from './webrtc/state';
-import {popupOnly} from './context/popupOnly';
 import {via} from './components/via';
 import {configureSplitTunneling} from './components/configureSplitTunneling';
 import {getBypassList} from './vpn/getBypassList';
 import {storedSplitTunneling} from './vpn/storedSplitTunneling';
 import {warn} from './log/log';
 import {storedNotificationsEnabled} from './notifications/notificationsEnabled';
+import {canAccessPaidServers} from './account/user/canAccessPaidServers';
 import {RefreshTokenError} from './account/RefreshTokenError';
-import {InitUserError} from './account/InitUserError';
 import {requireUser} from './account/requireUser';
+import {getPmUserFromPopup} from './account/user/getPmUserFromPopup';
 import {pickServerInLogical} from './vpn/pickServerInLogical';
 import {milliSeconds} from './tools/milliSeconds';
 import {appendUrlParams} from './tools/appendUrlParams';
 import {crashReportOptIn, getCrashReportOptIn, handleError} from './tools/sentry';
-import {getServersCount} from './vpn/getServersCount';
 import {connectEventHandler} from './tools/connectEventHandler';
+import {getPrefillValues} from './tools/prefill';
+import {ServerRotator} from './vpn/ServerRotator';
+import {configureGoToButtons} from './components/goToButton';
+import {updateAccessSentenceWithCounts} from './components/accessSentence';
+import {configureLinks, setNewTabLinkTitle} from './components/links';
 
 const state = {
 	connected: false,
@@ -94,8 +94,6 @@ const state = {
 };
 
 type Theme = 'dark' | 'light' | 'auto';
-
-popupOnly('popup');
 
 const start = async () => {
 	await fetchTranslations();
@@ -196,6 +194,7 @@ const start = async () => {
 		if (regionSlot && content) {
 			regionSlot.innerHTML = content;
 			configureButtons(regionSlot);
+			configureGoToButtons(regionSlot, goTo);
 			configureServerGroups(regionSlot);
 			showConnectedItemMarker(regionSlot);
 		}
@@ -220,21 +219,13 @@ const start = async () => {
 		});
 	};
 
-	const setButtonTitle = (button: HTMLElement) => {
-		if (!button.getAttribute('aria-label') && !button.getAttribute('title')) {
-			const linkDescription = button.innerText.trim();
-			button.setAttribute(
-				'title',
-				// translator: explain that the link opens in a new tab
-				c('Action').t`${linkDescription} (New tab)`,
-			);
-		}
-	};
-
-	const filterLogicalWithCurrentFeatures = (userTier: number, rawLogicals: Logical[], withTor = false) => rawLogicals.filter(
+	const filterLogicalsWithCurrentFeatures = (rawLogicals: Logical[], userTier: number, withTor = false) => rawLogicals.filter(
 		logicial => (logicial.Features & ((withTor ? 0 : Feature.TOR) | Feature.RESTRICTED | Feature.PARTNER)) === 0 &&
 			(logicial.Features & Feature.SECURE_CORE) === (userTier > 0 && secureCore?.value ? Feature.SECURE_CORE : 0)
 	);
+
+	const excludeLogicalsFromCurrentCountry = (rawLogicals: Logical[], /** e.g. JP | US */exitCountry?: Logical["ExitCountry"]) =>
+		rawLogicals.filter(logical => logical.ExitCountry !== exitCountry);
 
 	const getLogicalFromButton = (button: HTMLButtonElement): {
 		getLogical: () => Logical | null | undefined,
@@ -259,9 +250,9 @@ const start = async () => {
 				switch (subGroup.toLowerCase()) {
 					case 'other':
 						return {
-							getLogical: () => requireBestLogical(filterLogicalWithCurrentFeatures(userTier, logicals.filter(
+							getLogical: () => requireBestLogical(filterLogicalsWithCurrentFeatures(logicals.filter(
 								logical => (logical.Features & Feature.TOR) === 0 && !logical.City && logical.Tier > 0,
-							)), userTier, setError),
+							), userTier), userTier, setError),
 							choice: {
 								exitCountry: exitCountry,
 								filter: 'other',
@@ -270,9 +261,9 @@ const start = async () => {
 
 					case 'tor':
 						return {
-							getLogical: () => requireBestLogical(filterLogicalWithCurrentFeatures(userTier, logicals.filter(
+							getLogical: () => requireBestLogical(filterLogicalsWithCurrentFeatures(logicals.filter(
 								logical => logical.Features & Feature.TOR,
-							), true), userTier, setError),
+							), userTier, true), userTier, setError),
 							choice: {
 								exitCountry: exitCountry,
 								requiredFeatures: Feature.TOR,
@@ -281,9 +272,9 @@ const start = async () => {
 
 					case 'free':
 						return {
-							getLogical: () => requireBestLogical(filterLogicalWithCurrentFeatures(userTier, logicals.filter(
+							getLogical: () => requireBestLogical(filterLogicalsWithCurrentFeatures(logicals.filter(
 								logical => logical.Tier < 1,
-							)), userTier, setError),
+							), userTier), userTier, setError),
 							choice: {
 								exitCountry: exitCountry,
 								tier: 0,
@@ -292,9 +283,9 @@ const start = async () => {
 
 					default:
 						return {
-							getLogical: () => requireBestLogical(filterLogicalWithCurrentFeatures(userTier, logicals.filter(
+							getLogical: () => requireBestLogical(filterLogicalsWithCurrentFeatures(logicals.filter(
 								logical => logical.City === subGroup,
-							)), userTier, setError),
+							), userTier), userTier, setError),
 							choice: {
 								exitCountry: exitCountry,
 								city: subGroup,
@@ -307,9 +298,9 @@ const start = async () => {
 
 			if (entryCountry) {
 				return {
-					getLogical: () => requireBestLogical(filterLogicalWithCurrentFeatures(userTier, logicals.filter(
+					getLogical: () => requireBestLogical(filterLogicalsWithCurrentFeatures(logicals.filter(
 						logical => logical.EntryCountry === entryCountry,
-					)), userTier, setError),
+					), userTier), userTier, setError),
 					choice: {
 						exitCountry: exitCountry,
 						entryCountry: entryCountry,
@@ -318,7 +309,7 @@ const start = async () => {
 			}
 
 			return {
-				getLogical: () => requireBestLogical(filterLogicalWithCurrentFeatures(userTier, logicals), userTier, setError),
+				getLogical: () => requireBestLogical(filterLogicalsWithCurrentFeatures(logicals, userTier), userTier, setError),
 				choice: {exitCountry: exitCountry},
 			};
 		}
@@ -336,12 +327,7 @@ const start = async () => {
 			return pmUserCache.user;
 		}
 
-		const user = await timeoutAfter(
-			getInfoFromBackground(BackgroundData.PM_USER),
-			milliSeconds.fromSeconds(30),
-			'User loading timed out',
-			InitUserError,
-		);
+		const user = await getPmUserFromPopup();
 
 		pmUserCache = {user};
 
@@ -361,7 +347,9 @@ const start = async () => {
 	};
 
 	const configureButtons = (area?: HTMLDivElement) => {
-		(area || document).querySelectorAll<HTMLButtonElement>('.expand-button').forEach(button => {
+		(area || document).querySelectorAll<HTMLButtonElement>('.expand-button:not(.expand-button-configured)').forEach(button => {
+			button.classList.add('expand-button-configured');
+
 			let parent = button.parentNode as HTMLDivElement;
 			const max = area || document.body;
 
@@ -413,10 +401,16 @@ const start = async () => {
 		};
 
 		const triggerLinkButton = async (link: string, button: HTMLElement) => {
-			const hashSeed = getHashSeed(button.dataset);
+			if (link === '{manageAccountURL}') {
+				link = manageAccountURL;
+			}
+
 			const forget = !!(button.classList.contains('upgrade-button') || Number(button.getAttribute('data-forget-account')));
-			const linkHashSeed = await getHashSeedValues(hashSeed);
-			const href = link + (linkHashSeed ? '#' + linkHashSeed : '');
+			const href = appendUrlParams(
+				link,
+				await getPrefillValues(getQuerySeed(button.dataset), getPmUser),
+				await getPrefillValues(getHashSeed(button.dataset), getPmUser),
+			);
 
 			if (Number(button.getAttribute('data-direct-upgrade'))) {
 				handleLeavingAction(await appendUpgradeParams(href), forget);
@@ -441,25 +435,7 @@ const start = async () => {
 					});
 					configureButtons(page);
 
-					const {
-						Servers: servers,
-						Countries: countries,
-					} = await getServersCount();
-
-					const rounderServersCount = Math.floor(servers / 100) * 100;
-
-					page.querySelectorAll<HTMLElement>('.access-sentence').forEach(paragraph => {
-						paragraph.innerText = getAccessSentence(
-							/**
-							 * 	translator: ${servers} is a number so output is like "1900 secure servers" and this goes in sentence such as "Access over 5000 secure servers in 63 countries"
-							 */
-							c('Error').plural(rounderServersCount, msgid`${rounderServersCount} secure server`, `${rounderServersCount} secure servers`),
-							/**
-							 * 	translator: ${countries} is a number so output is like "63 countries" and this goes in sentence such as "Access over 5000 secure servers in 63 countries"
-							 */
-							c('Error').plural(countries, msgid`${countries} country`, `${countries} countries`),
-						);
-					});
+					updateAccessSentenceWithCounts(page);
 				}
 
 				return;
@@ -468,7 +444,7 @@ const start = async () => {
 			handleLeavingAction(href, forget);
 		};
 
-		(area || document.getElementById('servers') || document).querySelectorAll<HTMLButtonElement>('.open-upgrade-page, button:not(.close-button), .connect-clickable, .server:not(.in-maintenance)').forEach(button => {
+		(area || document.getElementById('servers') || document).querySelectorAll<HTMLButtonElement>('.open-upgrade-page, button:not(.close-button):not(.corner-button):not(.quick-connect-button), .connect-clickable, .server:not(.in-maintenance)').forEach(button => {
 			onClick(button, async (event) => {
 				event.stopPropagation();
 				event.stopImmediatePropagation?.();
@@ -486,10 +462,10 @@ const start = async () => {
 				const logical = getLogical?.();
 
 				if (!logical) {
+					console.log('clicked on', button, event);
 					throw new Error('Missconfigured server. Cannot find the selected logical.');
 				}
 
-				connectEventHandler.connect(logical);
 				setLastChoiceWithCurrentOptions({
 					connected: true,
 					...choice,
@@ -499,60 +475,11 @@ const start = async () => {
 			});
 		});
 
-		const getHashSeedValues = async (hashSeed: string[]): Promise<string> => {
-			if (!hashSeed.length) {
-				return '';
-			}
-
-			const getPmUserValue = async (key: string, pmUserKey: keyof PmUser)=> {
-				const value = (await getPmUser())?.[pmUserKey] as string | undefined;
-
-				return value ? key + '=' + encodeURIComponent(value) : '';
-			};
-
-			return (await Promise.all(hashSeed.map(async key => {
-				switch (key) {
-					case 'platform':
-						return key + '=' + encodeURIComponent(`VPN for ${getBrowser().name}`);
-
-					case 'clientVersion':
-						return key + '=' + encodeURIComponent(getFullAppVersion() + '+' + getBrowser().type);
-
-					case 'username':
-						return await getPmUserValue(key, 'Name');
-
-					case 'email':
-						return await getPmUserValue(key, 'Email');
-				}
-
-				warn('Unknown key ' + key);
-
-				return '';
-			}))).filter(Boolean).join('&');
-		};
-
-		each({'a[href]': 'href', '[data-href]': 'data-href'}, (selector, attribute) => {
-			(area || document).querySelectorAll<HTMLDivElement>(selector).forEach(button => {
-				setButtonTitle(button);
-				button.addEventListener('click', (event) => {
-					const url = button.getAttribute(attribute);
-
-					if (url) {
-						const localeSupport = getLocaleSupport(button.dataset);
-						const primaryLanguage = getPrimaryLanguage();
-						const link = localeSupport.indexOf(primaryLanguage) !== -1
-							? url.replace(/^(https:\/\/protonvpn\.com\/)/, '$1' + primaryLanguage + '/')
-							: url;
-						event.preventDefault();
-						event.stopPropagation();
-						triggerLinkButton(link, button);
-					}
-				});
-			});
-		});
+		configureLinks(area || document, triggerLinkButton);
+		configureGoToButtons(area || document, goTo);
 	};
 
-	const setError = (apiError: ApiError | Error | undefined) => {
+	const setError = (apiError: ApiError | Error | ErrorDump | undefined) => {
 		handleError(apiError);
 
 		const id = (apiError as ApiError)?._id;
@@ -697,8 +624,14 @@ const start = async () => {
 		});
 	});
 
-	const countries: CountryList = {};
 	const userTier = getUserMaxTier(user);
+
+	/** `MaxTier 2` */
+	const hasAccessToPaidServers = canAccessPaidServers(user);
+
+	/** `MaxTier 0` */
+	const isFreeTier = !hasAccessToPaidServers;
+
 	const browserExtensionEnabled = user?.VPN?.BrowserExtension || false;
 	const limitedUi = !browserExtensionEnabled;
 
@@ -716,16 +649,18 @@ const start = async () => {
 		}
 	})();
 	state.connected = !!connectionState?.server;
-	(limitedUi ? upsell(user?.VPN?.BrowserExtensionPlan || 'VPN Plus') : new Promise<ApiError | Error | undefined>(resolve => {
+	(limitedUi ? upsell(user?.VPN?.BrowserExtensionPlan || 'VPN Plus') : new Promise<ApiError | Error | ErrorDump | undefined>(resolve => {
 		resolve(connectionState.error);
 	})).then(error => {
 		setError(error);
 	});
+
+	const countries: CountryList = {};
 	const freeCountries = {} as Record<string, true>;
 
 	logicals.forEach(logical => {
 		// Don't bother paid users with free servers
-		if (userTier >= 2 && logical.Tier === 0) {
+		if (hasAccessToPaidServers && logical.Tier === 0) {
 			return;
 		}
 
@@ -838,6 +773,10 @@ const start = async () => {
 	const quickConnectButton = document.querySelector('.quick-connect-button') as HTMLDivElement;
 	const disconnectButton = document.querySelector('#status button.disconnection-button') as HTMLDivElement;
 
+	const freeCountriesListEl = document.getElementById('free-countries-list') as HTMLDivElement;
+	const freeCountriesCountEl = document.getElementById('free-server-countries-count') as HTMLSpanElement;
+	const freeCountryItemTemplate = document.getElementById('free-country-item-template') as HTMLTemplateElement;
+
 	disconnectButton.innerHTML = c('Action').t`Disconnect`;
 
 	const disconnect = async (type: StateChange = StateChange.DISCONNECT) => {
@@ -893,10 +832,24 @@ const start = async () => {
 		});
 	};
 
-	const showFreeQuickConnect = simplifiedUi && userTier <= 0;
+	const showFreeQuickConnect = simplifiedUi && isFreeTier;
+
 
 	let connectionAttemptTime = 0;
 	let connectingChecker: ReturnType<typeof setInterval> | undefined = undefined;
+
+	const serverChangeRemainingTimeView = document.querySelector<HTMLDivElement>('[data-page="server-change-remaining-time"]')!;
+
+	const serverRotator = isFreeTier
+		? new ServerRotator(
+			quickConnectButton,
+			serverChangeRemainingTimeView,
+			() => {
+				goTo('server-change-remaining-time');
+				configureButtons(serverChangeRemainingTimeView);
+			},
+		)
+		: undefined;
 
 	const refreshConnectionStatus = (server?: ServerSummary, connecting = false) => {
 		server || (server = connectionState?.server);
@@ -908,12 +861,23 @@ const start = async () => {
 		const exitIp = server?.exitIp || '';
 		const canDisconnectOrCancel = (state.connected || connecting);
 		disconnectButton.style.display = canDisconnectOrCancel ? 'block' : 'none';
-		quickConnectButton.style.display = canDisconnectOrCancel ? 'none' : 'block';
+		quickConnectButton.style.display = canDisconnectOrCancel && hasAccessToPaidServers ? 'none' : 'block';
+		quickConnectButton.innerHTML = canDisconnectOrCancel ? c('Action').t`Change server` : c('Action').t`Connect`;
+		quickConnectButton.classList[canDisconnectOrCancel ? 'add' : 'remove']('weak');
+		document.querySelectorAll<HTMLDivElement>('.quick-connect-button-subtitle').forEach(quickConnectSubtitle => {
+			if (hasAccessToPaidServers) {
+				return;
+			}
+
+			quickConnectSubtitle.style.display = canDisconnectOrCancel ? 'none' : 'block';
+		});
 		document.querySelectorAll<HTMLDivElement>('.quick-connect-button-incentive').forEach(quickConnectIncentive => {
 			quickConnectIncentive.style.display = canDisconnectOrCancel ? 'none' : 'block';
 		});
 		logo.switchTo(canDisconnectOrCancel ? 'protected' : 'unprotected');
 		showConnectedItemMarker(servers, state.connected && !connecting);
+
+		serverRotator?.refreshState(canDisconnectOrCancel);
 
 		if (connecting) {
 			connectionAttemptTime = Date.now();
@@ -969,7 +933,6 @@ const start = async () => {
 		};
 
 		serverStatusSlot.innerHTML = state.connected
-
 			? `
 				<div class="status-title">
 					<svg role="img" focusable="false" aria-hidden="true" class="protection-icon medium-icon" viewBox="0 0 24 24">
@@ -977,6 +940,7 @@ const start = async () => {
 					</svg>
 					<div id="protected-label" class="protection-status">${c('Label').t`Protected`}</div>
 				</div>
+
 				<div class="current-server-description">
 					<div class="current-server-flag ${secureCore ? ' wide' : ''}">${
 						(secureCore ? `${getCountryFlag(entryCountry)} &nbsp;${via()}&nbsp;` : '') +
@@ -989,39 +953,74 @@ const start = async () => {
 					</div>
 				</div>
 			`
-
 			: `
 				<div class="status-title">
 					<svg role="img" focusable="false" aria-hidden="true" class="protection-icon medium-icon" viewBox="0 0 24 24">
 						<use xlink:href="img/icons.svg#unprotected"></use>
 					</svg>
 					<div id="unprotected-label" class="protection-status">${c('Label').t`Unprotected`}</div>
-					${'' /*<div class="incentive">${c('Label').t`Protect yourself online`}</div>*/}
-					${showFreeQuickConnect && browserExtensionEnabled ? `
-						<div class="current-server-description">
-							<div class="lightning">
-								<svg class="lightning-symbol" viewBox="0 0 10 14">
-									<use xlink:href="img/icons.svg#lightning"></use>
-								</svg>
-							</div>
-							<div class="fastest-server">
-								<div class="current-server-country incentive">${c('Info').t`Fastest free server`}</div>
-								<div class="current-server-name">
-									<span class="auto-select-label">${c('Info').t`Auto-selected from`}</span>
-									${freeCountriesList.length <= 3
-										? getCountryFlagGroup(freeCountriesList)
-										: getCountryFlagGroup(freeCountriesList.slice(0, 3)) + ' +' + (freeCountriesList.length - 3)}
-								</div>
-							</div>
-						</div>
-					` : ''}
 				</div>
+
+				${'' /*<div class="incentive">${c('Label').t`Protect yourself online`}</div>*/}
+				${showFreeQuickConnect && browserExtensionEnabled ? `
+				<div class="current-server-description">
+					<div class="lightning">
+						<svg class="lightning-symbol" viewBox="0 0 10 14">
+							<use xlink:href="img/icons.svg#lightning"></use>
+						</svg>
+					</div>
+					<div class="fastest-server" data-go-to="about-free-connections">
+						<div class="current-server-country">${c('Info').t`Fastest free server`}</div>
+						<div class="current-server-name">
+							<span class="auto-select-label">${c('Info').t`Auto-selected from`}</span>
+							<span>
+							${freeCountriesList.length <= 3
+								? getCountryFlagGroup(freeCountriesList)
+								: getCountryFlagGroup(freeCountriesList.slice(0, 3)) + ' +' + (freeCountriesList.length - 3)}
+							</span>
+						</div>
+					</div>
+				</div>
+				` : ''}
 			`;
+
+		configureButtons(serverStatusSlot);
+
+		if (isFreeTier && freeCountriesListEl && freeCountryItemTemplate && freeCountriesCountEl) {
+			// Clear the list
+			let node = freeCountryItemTemplate.nextSibling;
+			while (node) {
+				const next = (node as any).nextElementSibling;
+				freeCountriesListEl.removeChild(node);
+				node = next;
+			}
+
+			// Fill the list with free countries
+			Object.keys(freeCountries).forEach(countryCode => {
+				const clone = freeCountryItemTemplate.content.firstElementChild?.cloneNode(true) as HTMLElement;
+				if (clone) {
+					const flagImg = clone.querySelector('.country-flag-img') as HTMLImageElement;
+					const nameDiv = clone.querySelector('.country-name') as HTMLDivElement;
+					if (flagImg) {
+						flagImg.src = `/img/flags/${countryCode.toLowerCase()}.svg`;
+						flagImg.alt = countryCode;
+					}
+					if (nameDiv) {
+						nameDiv.setAttribute('data-country-code', countryCode);
+						nameDiv.textContent = getCountryNameOrCode(countryCode);
+					}
+					freeCountriesListEl.appendChild(clone);
+				}
+			});
+
+			freeCountriesCountEl.textContent = Object.keys(freeCountries).length.toString();
+		}
 
 		triggerPromise(refreshLocationSlots(true));
 	};
 
 	triggerPromise(showNotifications());
+
 
 	getInfoFromBackground(BackgroundData.PM_USER).then(pmUser => {
 		pmUserCache = {user: pmUser};
@@ -1041,7 +1040,7 @@ const start = async () => {
 	});
 
 	document.querySelectorAll<HTMLDivElement>('[data-open-account-page]').forEach((button) => {
-		setButtonTitle(button);
+		setNewTabLinkTitle(button);
 		button.addEventListener('click', async () => {
 			const url = accountURL + button.getAttribute('data-open-account-page');
 
@@ -1061,6 +1060,8 @@ const start = async () => {
 	});
 
 	const connectToServer = async (logical: Logical) => {
+		connectEventHandler.connect(logical);
+
 		const server = pickServerInLogical(logical);
 
 		if (!server) {
@@ -1084,7 +1085,7 @@ const start = async () => {
 				server,
 				logical,
 				user,
-				bypassList: getBypassList(getUserMaxTier(user), splitTunneling.value),
+				bypassList: getBypassList(userTier, splitTunneling.value),
 			});
 		} catch (e) {
 			setError(e as Error);
@@ -1100,8 +1101,8 @@ const start = async () => {
 				confirmModal.classList.add('confirm-modal');
 				confirmModal.innerHTML = `<div>
 					${
-					c('Confirm').t`Logging out of the application will disconnect the active VPN connection. Do you want to continue?`
-				}
+						c('Confirm').t`Logging out of the application will disconnect the active VPN connection. Do you want to continue?`
+					}
 					<div class="user-buttons-bar">
 						<button data-st-action="cancel" class="tertiary-button" data-trans data-context="Action">Cancel</button>
 						<button data-st-action="ok" class="primary-button" data-trans data-context="Action">OK</button>
@@ -1141,6 +1142,7 @@ const start = async () => {
 		window.close();
 	};
 
+
 	switchButton.style.display = 'flex';
 	switchButton.title = c('Action').t`Switch account`;
 	switchButton.addEventListener('click', async () => {
@@ -1156,6 +1158,30 @@ const start = async () => {
 		? c('Action').t`Upgrade`
 		: (showFreeQuickConnect ? c('Action').t`Connect` : c('Action').t`Quick connect`);
 	quickConnectButton.addEventListener('click', async () => {
+		if (isFreeTier && state.connected) {
+			if (await serverRotator!.isPending()) {
+				serverRotator!.showModal();
+
+				return;
+			}
+
+			errorSlot.innerHTML = '';
+
+			const alienLogicals = excludeLogicalsFromCurrentCountry(logicals, connectionState?.server?.exitCountry);
+			const filteredLogicals = filterLogicalsWithCurrentFeatures(alienLogicals, userTier);
+			const logical = requireRandomLogical(filteredLogicals, userTier, setError);
+			setLastChoice({
+				connected: true,
+				pick: 'random',
+			});
+
+			await connectToServer(logical);
+
+			await serverRotator!.startCountdown();
+
+			return;
+		}
+
 		if (limitedUi) {
 			await openTab(appendUrlParams(manageAccountURL, {email: (await getPmUser())?.Email}));
 			forgetAccount();
@@ -1164,13 +1190,11 @@ const start = async () => {
 		}
 
 		errorSlot.innerHTML = '';
-		const logical = requireBestLogical(filterLogicalWithCurrentFeatures(userTier, logicals), userTier, setError);
+		const logical = requireBestLogical(filterLogicalsWithCurrentFeatures(logicals, userTier), userTier, setError);
 		setLastChoice({
 			connected: true,
 			pick: 'fastest',
 		});
-
-		connectEventHandler.connect(logical);
 
 		await connectToServer(logical);
 	});
@@ -1206,7 +1230,7 @@ const start = async () => {
 
 			setRegionPage(name, content);
 		});
-	})
+	});
 
 	const goTo = (page: string): void => {
 		if (page !== 'region') {
@@ -1230,7 +1254,13 @@ const start = async () => {
 
 		if (page) {
 			document.querySelectorAll<HTMLDivElement>('[data-page]').forEach(pageBlock => {
-				pageBlock.classList[pageBlock.getAttribute('data-page') === page ? 'add' : 'remove']('selected-page');
+				const isActivePage = pageBlock.getAttribute('data-page') === page;
+				pageBlock.classList[isActivePage ? 'add' : 'remove']('selected-page');
+
+				if (isActivePage) {
+					configureButtons(pageBlock);
+					configureGoToButtons(pageBlock, goTo);
+				}
 			});
 		}
 
@@ -1243,21 +1273,7 @@ const start = async () => {
 		}
 	};
 
-	document.querySelectorAll('[data-go-to]').forEach(button => {
-		button.addEventListener('click', (event) => {
-			const page = button.getAttribute('data-go-to');
-
-			if (page) {
-				goTo(page);
-
-				button.classList.add('active');
-				button.setAttribute('aria-current', 'true');
-			}
-
-			event.preventDefault();
-			event.stopPropagation();
-		});
-	});
+	configureGoToButtons(document, goTo);
 
 	const centralView = document.querySelector<HTMLDivElement>('.central-view');
 
@@ -1323,7 +1339,7 @@ const start = async () => {
 			showConnectedItemMarker();
 		});
 
-		toggleButtons(storedSecureCore, secureCore, {refresh, upgradeNeeded: userTier <= 0});
+		toggleButtons(storedSecureCore, secureCore, {refresh, upgradeNeeded: isFreeTier});
 		toggleButtons(storedNotificationsEnabled, notificationsEnabled);
 		toggleButtons(storedAutoConnect, autoConnect);
 		toggleButtons(telemetryOptIn, telemetry);

@@ -1,3 +1,4 @@
+'use background';
 import {triggerPromise} from './triggerPromise';
 import {setWebRTCState} from '../webrtc/setWebRTCState';
 import {WebRTCState} from '../webrtc/state';
@@ -5,14 +6,11 @@ import {preventLeak} from '../webrtc/preventLeak';
 import {isConnected} from '../vpn/connectedServer';
 import {setupHandleProxyRequest} from './setupHandleProxyRequest';
 import {clearAuthInterceptor, initAuthInterceptor} from '../vpn/initAuthInterceptor';
-import {backgroundOnly} from '../context/backgroundOnly';
 import {timeoutAfter} from '../tools/delay';
 import {milliSeconds} from '../tools/milliSeconds';
 import {ErrorCode, getErrorCode} from '../tools/getErrorCode';
 import {retryCredentials} from './retryCredentials';
 import {apiDomainsExclusion, excludeApiFromProxy, proxyLocalNetworkExclusion, scheme} from '../config';
-
-backgroundOnly('proxy');
 
 interface SystemProxy {
 	mode: 'system',

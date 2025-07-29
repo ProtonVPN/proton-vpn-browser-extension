@@ -118,10 +118,6 @@
 				"${countries} देश",
 				"${countries} देश"
 			],
-			"${rounderServersCount} secure server": [
-				"${rounderServersCount} सुरक्षित सर्वर",
-				"${rounderServersCount} सुरक्षित सर्वर"
-			],
 			"${servers}+ secure server": [
 				"${servers}+ सुरक्षित सर्वर",
 				"${servers}+ सुरक्षित सर्वर"
@@ -162,9 +158,6 @@
 			"Something went wrong. If the problem persists, please try to re-install the extension": [
 				"कुछ गलत हो गया। अगर समस्या बनी रहती है, तो एक्सटेंशन को वापस इंस्टॉल करें"
 			],
-			"Unable to find appropriate server, try to logout and login again if it persists": [
-				"उपयुक्त सर्वर नहीं मिला, यदि समस्या बनी रहे तो लॉगआउट करके फिर लॉगइन करने का प्रयास करें"
-			],
 			"Unable to load the list": [
 				"लिस्ट लोड नहीं कर सके"
 			],
@@ -182,9 +175,6 @@
 			]
 		},
 		"Info": {
-			"Access over 9000 secure servers in 112 countries": [
-				"112 देशों में 9000 से अधिक सुरक्षित सर्वरों तक पहुंच"
-			],
 			"Access Proton VPN via this icon": [
 				"इस आइकन से Proton VPN एक्सेस करें"
 			],

@@ -1,4 +1,5 @@
 import {warn} from '../log/log';
+import {getTabs} from './getTabs';
 type ScriptInjection<Args extends any[], Result> = chrome.scripting.ScriptInjection<Args, Result>;
 
 export const executeOnTab = async <Args extends any[], Result>(
@@ -14,7 +15,7 @@ export const executeOnTab = async <Args extends any[], Result>(
 				target: {tabId, allFrames: true},
 				...getFuncAndArgs(),
 			} as ScriptInjection<Args, Result>,
-		) : browser.tabs.executeScript?.(tabId, {
+		) : getTabs().executeScript?.(tabId, {
 			code: getCode(),
 		}));
 	} catch (e) {

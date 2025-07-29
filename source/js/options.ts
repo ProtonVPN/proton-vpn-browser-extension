@@ -1,7 +1,5 @@
+'use popup';
 import optionsStorage from './options-storage';
-import {popupOnly} from './context/popupOnly';
-
-popupOnly('options');
 
 void optionsStorage.syncForm('#options-form');
 

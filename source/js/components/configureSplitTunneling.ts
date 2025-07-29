@@ -1,4 +1,5 @@
 import {StoredWebsiteExclusionList} from '../vpn/WebsiteExclusion';
+import {getTabs} from '../tools/getTabs';
 import {CacheItem} from '../tools/storage';
 import {triggerPromise} from '../tools/triggerPromise';
 import {escapeHtml} from '../tools/escapeHtml';
@@ -65,7 +66,7 @@ export const configureSplitTunneling = (
 	const input = area.querySelector<HTMLInputElement>('.split-tunneling-exclusion') as HTMLInputElement;
 
 	const seedWithCurrentDomain = () => {
-		browser.tabs.query({
+		getTabs().query({
 			active: true,
 			currentWindow: true,
 		}).then(tabs => {

@@ -1,16 +1,25 @@
+/** Browser Storage API https://developer.chrome.com/docs/extensions/reference/api/storage */
 export enum Storage {
+	/** Data is stored locally and cleared when the extension is removed. */
 	LOCAL = 'local',
-	SYNC = 'sync',
+	/** Holds data in memory while an extension is loaded. The storage is cleared if the extension is disabled, reloaded or updated and when the browser restarts. */
 	SESSION = 'session',
+	/** If syncing is enabled, the data is synced to any Chrome browser that the user is logged into. If disabled, it behaves like **storage.local**. Chrome stores the data locally when the browser is offline and resumes syncing when it's back online. */
+	SYNC = 'sync',
 }
 
 const defaultStorage = Storage.LOCAL;
 
-export const sessionStorageType = defaultStorage;
+/**
+ * Session related data (tokens, credentials, user, etc.) are stored in `Storage.LOCAL` for persistence across tabs and browser restarts.
+ */
+export const sessionDataStorageType = defaultStorage;
 
-const getFallbackStorage = (storage: Storage) => storage === Storage.LOCAL
-	? localStorage
-	: sessionStorage;
+export const storagePrefix = 'bex-';
+
+const getFallbackStorage = (storage: Storage) => storage === Storage.SESSION
+	? sessionStorage
+	: localStorage;
 
 export const storage = {
 	async getDefinedItem<T extends object>(
@@ -25,7 +34,7 @@ export const storage = {
 		defaultValue: T | undefined = undefined,
 		storage: Storage = defaultStorage,
 	): Promise<T | undefined> {
-		const prefixedKey = 'bex-' + key;
+		const prefixedKey = storagePrefix + key;
 
 		try {
 			const data = await new Promise(resolve => {
@@ -70,10 +79,10 @@ export const storage = {
 		value: object,
 		storage: Storage = defaultStorage,
 	): Promise<void> {
-		const prefixedKey = 'bex-' + key;
+		const prefixedKey = storagePrefix + key;
 
 		try {
-			await chrome.storage[storage].set({[prefixedKey]: value});
+			await chrome.storage[storage].set({ [prefixedKey]: value });
 		} catch (e) {
 			const rawItem = JSON.stringify(value);
 
@@ -85,7 +94,7 @@ export const storage = {
 		}
 	},
 	async removeItem(key: string, storage: Storage = defaultStorage): Promise<void> {
-		const prefixedKey = 'bex-' + key;
+		const prefixedKey = storagePrefix + key;
 
 		try {
 			await chrome.storage[storage].remove(prefixedKey);
@@ -121,7 +130,7 @@ export const storage = {
 				return self.setItem(key, value, storage);
 			},
 			setValue(value: any, extraData: Record<string, any> = {}): Promise<void> {
-				return this.set({time: Date.now(), [valueKey]: value, ...extraData} as T);
+				return this.set({ time: Date.now(), [valueKey]: value, ...extraData } as T);
 			},
 			remove(): Promise<void> {
 				return self.removeItem(key, storage);
@@ -135,6 +144,6 @@ export const storage = {
 
 export type CacheItem<T extends object> = ReturnType<typeof storage.item<T>>;
 
-export type Timed<T> = {time: number} & T;
+export type Timed<T> = { time: number } & T;
 
-export type CacheWrappedValue<T> = Timed<{value: T}>;
+export type CacheWrappedValue<T> = Timed<{ value: T }>;

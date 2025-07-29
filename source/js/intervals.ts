@@ -3,6 +3,7 @@ import {BackgroundData} from './messaging/MessageType';
 import {User} from './account/user/User';
 import {canAccessPaidServers} from './account/user/canAccessPaidServers';
 
+/** We use this to prioritize / increase frequency of updates for paid users. */
 const useSlowFrequency = (() => {
 	let paidServersAccessible = false;
 
@@ -80,3 +81,7 @@ export const getStreamingConfigBlockingUpdateTTL = () => getStreamingConfigTTL()
 export const getCityTranslationMissingNamesTTL = () => milliSeconds.fromHours(1);
 
 export const getCityTranslationNamesTTL = () => milliSeconds.fromDays(20);
+
+export const getClientConfigTTL = () => milliSeconds.fromHours(12);
+
+export const getClientConfigBlockingUpdateTTL = () => getClientConfigTTL() * 4;

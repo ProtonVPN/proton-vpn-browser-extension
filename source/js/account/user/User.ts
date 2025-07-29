@@ -12,9 +12,12 @@ export interface User {
 		Groups?: string[];
 		Status: number;
 		ExpirationTime: number;
+		/** The plan name, e.g. "free", "bundlepro2024", "vpn2024", etc. */
 		PlanName: string;
+		/** Only for translations! Don't use in business logic. Use `PlanName` instead. */
 		PlanTitle?: string;
 		MaxConnect: number;
+		/** *Note: Tier 1 doesn't exist any more, therefor `<2` is equivalent to `free` plan in `PlanName`.* */
 		MaxTier: number;
 		BrowserExtension?: boolean;
 		BrowserExtensionPlan?: string | null;

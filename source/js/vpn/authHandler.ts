@@ -4,13 +4,15 @@ import {getAuthCredentials, isProxyKnownHost} from '../state';
 import {isPending} from '../tools/proxyAuth';
 import {watchPromiseWithSentry, watchWithSentry} from '../tools/sentry';
 import {getCredentials} from '../account/credentials/getConnectionCredentials';
-import {info} from '../log/log';
+import {bind, info as info_} from '../log/log';
 import {triggerPromise} from '../tools/triggerPromise';
-import WebAuthenticationChallengeDetails = chrome.webRequest.WebAuthenticationChallengeDetails;
 import BlockingResponse = chrome.webRequest.BlockingResponse;
+import OnAuthRequiredDetails = chrome.webRequest.OnAuthRequiredDetails;
+
+const info = bind(info_, '[authHandler]');
 
 const handleProxyAuthentication = async (
-	requestDetails: WebAuthenticationChallengeDetails,
+	requestDetails: OnAuthRequiredDetails,
 ): Promise<BlockingResponse> => watchPromiseWithSentry(async () => {
 	if (requestDetails.isProxy) {
 		if (isPending(requestDetails)) {
@@ -30,7 +32,7 @@ const handleProxyAuthentication = async (
 });
 
 export const authHandler = (
-	requestDetails: WebAuthenticationChallengeDetails,
+	requestDetails: OnAuthRequiredDetails,
 	callback?: (response: BlockingResponse) => void,
 ) => watchWithSentry(() => {
 	if (!callback) {
@@ -51,4 +53,6 @@ export const authHandler = (
 			),
 		);
 	}));
+
+	return undefined; // not BlockingResponse
 });

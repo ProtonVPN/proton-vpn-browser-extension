@@ -34,7 +34,7 @@ const en: {
 
 	translations.contexts = contexts;
 
-	writeFile(localeFile, JSON.stringify(translations, null, '\t'), err => {
+	writeFile(localeFile, JSON.stringify(translations, null, '\t').trim() + '\n', err => {
 		if (err) {
 			throw err;
 		}

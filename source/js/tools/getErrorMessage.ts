@@ -7,6 +7,7 @@ import {
 	isDeviceLimitError,
 	needsUpdate,
 } from '../api';
+import {ErrorDump} from '../vpn/ConnectionState';
 import {c} from './translate';
 import {escapeHtml} from './escapeHtml';
 import {accountURL} from '../config';
@@ -103,7 +104,7 @@ function getErrorIllustration(code: number | null | undefined): string | undefin
 	}
 }
 
-export function getErrorMessage(error: ApiError | Error) {
+export function getErrorMessage(error: ApiError | Error | ErrorDump) {
 	if (needsUpdate(error) || isDeviceLimitError(error)) {
 		const apiError = error as ApiError;
 		const errorCode = apiError.Code;
@@ -143,7 +144,7 @@ export function getErrorMessage(error: ApiError | Error) {
 					<path fill-rule="evenodd" d="M22.349 22.5H1.65c-1.266 0-2.06-1.341-1.431-2.42l10.35-17.765c.632-1.087 2.23-1.087 2.862 0l10.35 17.765c.627 1.079-.166 2.42-1.432 2.42ZM12 7.135c.934 0 1.656.803 1.54 1.712l-.722 5.667a.819.819 0 0 1-.818.708.82.82 0 0 1-.818-.708l-.722-5.667c-.116-.909.606-1.712 1.54-1.712Zm1.154 10.513c0 .625-.517 1.132-1.154 1.132a1.143 1.143 0 0 1-1.154-1.133c0-.625.517-1.132 1.154-1.132.637 0 1.154.507 1.154 1.133Z" clip-rule="evenodd"/>
 				</svg>
 			</div>
-			<div class="text">${getErrorAsString(error, true)}</div>
+			<div class="text">${getErrorAsString(error, true).replace(/\n/g, '<br>')}</div>
 			<button class="close-button">
 				<svg viewBox="0 0 24 24">
 					<path fill-rule="evenodd" d="M6.22 6.22a.75.75 0 0 1 1.06 0L12 10.94l4.72-4.72a.75.75 0 1 1 1.06 1.06L13.06 12l4.72 4.72a.75.75 0 1 1-1.06 1.06L12 13.06l-4.72 4.72a.75.75 0 0 1-1.06-1.06L10.94 12 6.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/>

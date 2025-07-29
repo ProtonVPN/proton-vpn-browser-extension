@@ -223,6 +223,10 @@ export const getHashSeed = (data: DOMStringMap | undefined): string[] => {
 	return getStringListFromDataSet('hashSeed', data);
 };
 
+export const getQuerySeed = (data: DOMStringMap | undefined): string[] => {
+	return getStringListFromDataSet('querySeed', data);
+};
+
 const getLocaleForLanguage = (language: string): string => {
 	return ({
 		be: 'be_BY',
@@ -287,4 +291,7 @@ export const getCountryNameOrCode = (
 	language?: string,
 ): string => getCountryName(country, language) || country;
 
-export const getNumberFormatter = (options?: Intl.NumberFormatOptions) => new Intl.NumberFormat('en-US', options);
+export const getNumberFormatter = (
+	language?: string,
+	options?: Intl.NumberFormatOptions,
+) => new Intl.NumberFormat(language || getPrimaryLanguage() || 'en-US', options);

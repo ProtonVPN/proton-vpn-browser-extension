@@ -124,9 +124,9 @@
 				"${countries} land",
 				"${countries} landen"
 			],
-			"${rounderServersCount} secure server": [
-				"${rounderServersCount} beveiligde server",
-				"${rounderServersCount} beveiligde servers"
+			"${serversCount} secure server": [
+				"${serversCount} beveiligde server",
+				"${serversCount} beveiligde servers"
 			],
 			"${servers}+ secure server": [
 				"${servers}+ veilige server",
@@ -168,7 +168,7 @@
 			"Something went wrong. If the problem persists, please try to re-install the extension": [
 				"Er is iets fout gegaan. Als het probleem aanhoudt, probeer de extensie opnieuw te installeren"
 			],
-			"Unable to find appropriate server, try to logout and login again if it persists": [
+			"Unable to find appropriate server, try to logout and login again if it persists.": [
 				"Kan de juiste server niet vinden, probeer opnieuw uit- en in te loggen als het zich voor blijft doen."
 			],
 			"Unable to load the list": [
@@ -188,8 +188,8 @@
 			]
 		},
 		"Info": {
-			"Access over 9000 secure servers in 112 countries": [
-				"Toegang tot meer dan 9000 servers in 112 landen"
+			"Access over 13,000 secure servers in over 120 countries": [
+				"Toegang tot meer dan 13.000 veilige servers in meer dan 120 landen."
 			],
 			"Access Proton VPN via this icon": [
 				"Toegang tot Proton VPN via dit icoon"

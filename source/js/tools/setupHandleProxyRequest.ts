@@ -1,8 +1,9 @@
-import {ProxyInfo, RequestDetails} from '../proxy';
+import {ProxyInfo} from '../proxy';
 import {getCurrentStateIfDefined} from '../state';
+import OnRequestDetails = browser.proxy._OnRequestDetails;
 
 const handleProxyRequest = (
-	requestInfo: RequestDetails,
+	requestInfo: OnRequestDetails,
 ): ProxyInfo | Promise<ProxyInfo> | undefined => getCurrentStateIfDefined()
 	?.handleProxyRequest?.(requestInfo);
 

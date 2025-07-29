@@ -4,6 +4,7 @@ import {CacheWrappedValue, Storage, storage} from '../tools/storage';
 import {Counts} from './Counts';
 import {triggerPromise} from '../tools/triggerPromise';
 import {getServerCountsBlockingUpdateTTL, getServerCountsTTL} from '../intervals';
+import {handleError} from '../tools/sentry';
 
 let countsFetching = false;
 let fetchPromises = [] as ([(result: any) => void, (error: any) => void])[];
@@ -58,7 +59,21 @@ export const getServersCount = async (): Promise<Counts> => {
 
 	// Wait for the updated values from API if cache is empty or too old
 	try {
-		return await fetchServersCounts();
+		const counts = await fetchServersCounts();
+
+		if (counts.Servers < 12_000 || counts.Countries < 110) {
+			handleError(new Error(
+				`Incorrect results from API: servers = ${counts.Servers}, countries = ${counts.Countries}`,
+			));
+
+			return {
+				Servers: 13_626,
+				Countries: 122,
+				Capacity: 15_942,
+			};
+		}
+
+		return counts;
 	} catch (e) {
 		if (cache?.value) {
 			return cache.value;

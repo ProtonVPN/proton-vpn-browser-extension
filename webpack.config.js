@@ -38,74 +38,80 @@ module.exports = (env, argv, options) => {
 			context: 'source',
 		},
 	];
-	const manifestTransformations = [];
+
 	const dev = (argv.mode === 'development');
 
-	if (options.gecko) {
-		manifestTransformations.push(manifest => {
-			manifest.browser_specific_settings = {
-				gecko: {
-					id: 'vpn@proton.ch',
-					strict_min_version: '109.0',
-				},
-			};
-			manifest.optional_permissions = [
-				'proxy'
-			];
-			manifest.content_scripts = [
-				{
-					all_frames: true,
-					js: ['js/transmit.js'],
-					matches: [
-						'https://account.protonvpn.com/*',
-						baseDomainURL + '/*',
-						...(dev ? [
-							'http://localhost:8080/*',
-							'https://account.proton.black/*',
-						] : []),
-					],
-					run_at: 'document_start',
-				},
-			];
-			manifest.background = {
-				scripts: ['js/browser-polyfill.min.js', 'js/background.js'],
-			};
-			manifest.permissions = manifest.permissions.filter(
-				permission => permission !== 'webRequestAuthProvider'
-					&& permission !== 'proxy',
-			);
-			manifest.permissions.push(
-				'activeTab',
-				'webRequestBlocking',
-			);
-			delete manifest.key;
-			delete manifest.externally_connectable;
-		});
-	} else {
-		manifestTransformations.push(manifest => {
-			const matches = (manifest.externally_connectable || {}).matches || [];
+	const downgradeToMv2 = (manifest) => {
+		manifest.manifest_version = 2;
+		manifest.background = {
+			page: 'background.html',
+		}
+		manifest.browser_action = manifest.action;
+		manifest.content_security_policy = "script-src 'self'; object-src 'self'";
+		manifest.permissions.push(
+			'<all_urls>',
+		);
+		manifest.web_accessible_resources = manifest.web_accessible_resources[0].resources;
+		delete manifest.action;
+		delete manifest.host_permissions;
+	};
 
-			if (matches.length && matches.indexOf(baseDomainURL + '/*') === -1) {
-				manifest.externally_connectable.matches.push(baseDomainURL + '/*');
-			}
-		});
-	}
+	const adaptToFirefox = (manifest) => {
+		manifest.browser_specific_settings = {
+			gecko: {
+				id: 'vpn@proton.ch',
+				strict_min_version: '109.0',
+			},
+		};
+		manifest.optional_permissions = [
+			'proxy'
+		];
+		manifest.content_scripts = [
+			{
+				all_frames: true,
+				js: ['js/transmit.js'],
+				matches: [
+					'https://account.protonvpn.com/*',
+					baseDomainURL + '/*',
+					...(dev ? [
+						'http://localhost:8080/*',
+						'https://account.proton.black/*',
+					] : []),
+				],
+				run_at: 'document_start',
+			},
+		];
+		manifest.background = {
+			scripts: ['js/browser-polyfill.min.js', 'js/background.js'],
+		};
+		manifest.permissions = manifest.permissions.filter(
+			permission => permission !== 'webRequestAuthProvider'
+				&& permission !== 'proxy',
+		);
+		manifest.permissions.push(
+			'activeTab',
+			'webRequestBlocking',
+		);
+		delete manifest.key;
+		delete manifest.externally_connectable;
+	};
+
+	const adaptToChromium = (manifest) => {
+		const matches = (manifest.externally_connectable || {}).matches || [];
+
+		if (matches.length && matches.indexOf(baseDomainURL + '/*') === -1) {
+			manifest.externally_connectable.matches.push(baseDomainURL + '/*');
+		}
+	};
+
+	const manifestTransformations = [
+		options.gecko
+			? adaptToFirefox
+			: adaptToChromium,
+	];
 
 	if (options.mv === 2) {
-		manifestTransformations.push(manifest => {
-			manifest.manifest_version = 2;
-			manifest.background = {
-				page: 'background.html',
-			}
-			manifest.browser_action = manifest.action;
-			manifest.content_security_policy = "script-src 'self'; object-src 'self'";
-			manifest.permissions.push(
-				'<all_urls>',
-			);
-			manifest.web_accessible_resources = manifest.web_accessible_resources[0].resources;
-			delete manifest.action;
-			delete manifest.host_permissions;
-		});
+		manifestTransformations.push(downgradeToMv2);
 	}
 
 	if (manifestTransformations.length) {
@@ -165,7 +171,11 @@ module.exports = (env, argv, options) => {
 			['css/onboarding']: './source/css/onboarding.scss',
 		},
 		resolve: {
-			extensions: ['.tsx', '.ts', '.js'],
+			extensions: ['.tsx', '.ts', '.jsx', '.js'],
+			modules: [
+				path.resolve(__dirname, 'source'),
+				'node_modules',
+			],
 		},
 		output: {
 			path: path.join(__dirname, options.distribution || 'distribution'),
@@ -179,7 +189,13 @@ module.exports = (env, argv, options) => {
 		module: {
 			rules: [
 				{
-					test: /\.(js|ts|tsx)$/,
+					test: /\.(js|jsx|ts|tsx)$/,
+					enforce: 'pre',
+					loader: path.resolve(__dirname, 'webpack-directive-loader.js'),
+					exclude: /node_modules/,
+				},
+				{
+					test: /\.(js|jsx|ts|tsx)$/,
 					loader: 'ts-loader',
 					exclude: /node_modules/,
 				},

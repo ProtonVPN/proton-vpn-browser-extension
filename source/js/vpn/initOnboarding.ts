@@ -1,4 +1,5 @@
 import {isOauthAllowed} from '../account/partner/oauth';
+import {getTabs} from '../tools/getTabs';
 
 export const initOnboarding = () => {
 	browser.runtime.onInstalled.addListener(async (details) => {
@@ -13,7 +14,7 @@ export const initOnboarding = () => {
 				// 	? browser.runtime.getURL('/onboarding-firefox.html')
 				// 	: url
 
-				await browser.tabs.create({
+				await getTabs().create({
 					url,
 				});
 		}

@@ -1,5 +1,5 @@
 module.exports = {
-	appVersion: '1.2.7',
+	appVersion: '1.2.9',
 	appId: 'jplgfhpmjnbigmhklmmbgecoobifkmpa',
 	baseDomainURL: 'https://account.proton.me',
 	tokenDuration: 1200, // seconds
@@ -28,5 +28,12 @@ module.exports = {
 	 * so connecting to Proton TOR servers will just be like connecting to non-TOR servers.
 	 */
 	torEnabled: false,
+	incompatibleSoftware: [
+		'Sophos',
+		'Zscaler',
+		'Kaspersky',
+		'McAfee',
+		'eblocker.org',
+	],
 	sentry: 'https://5c4abb94f5a644b38cf8e3261dfad0e3@reports.proton.me/api/core/v4/reports/sentry/67'
 };

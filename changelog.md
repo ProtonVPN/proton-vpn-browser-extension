@@ -1,3 +1,11 @@
+# 1.2.9
+
+- Fix graphic bug in Split-Tunneling screen
+
+# 1.2.8
+
+- Free users can now periodically change server
+
 # 1.2.7
 
 - Make the popup faster to load and display

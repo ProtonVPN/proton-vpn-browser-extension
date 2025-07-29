@@ -1,6 +1,7 @@
-import {ConnectionState, ConnectionStateSwitch, ProxyServer} from './vpn/ConnectionState';
+'use background';
+import {ConnectionState, ConnectionStateSwitch, ErrorDump, ProxyServer} from './vpn/ConnectionState';
 import {ApiError, fetchApi, isExcludedFromProxy} from './api';
-import {ProxyInfo, RequestDetails} from './proxy';
+import {ProxyInfo} from './proxy';
 import {forgetCredentials} from './account/credentials/removeCredentials';
 import {
 	cancelNextCredentialFetch,
@@ -23,7 +24,7 @@ import {
 	secureCoreEnabled,
 	singleProxyPort,
 } from './config';
-import {isPending, markAsPending} from './tools/proxyAuth';
+import {isPending, markAsPending, WithIdentifiableRequest} from './tools/proxyAuth';
 import {ProxyAuthentication} from './vpn/ProxyAuthentication';
 import {milliSeconds} from './tools/milliSeconds';
 import {Logical} from './vpn/Logical';
@@ -42,16 +43,15 @@ import {getUserMaxTier} from './account/user/getUserMaxTier';
 import {forgetUser} from './account/user/forgetUser';
 import {forgetPmUser} from './account/user/forgetPmUser';
 import {notifyStateChange} from './tools/notifyStateChange';
-import {requireBestLogical} from './vpn/getBestLogical';
+import {requireBestLogical} from './vpn/getLogical';
 import {storage} from './tools/storage';
 import {getErrorAsString} from './tools/getErrorMessage';
-import {backgroundOnly} from './context/backgroundOnly';
 import {connectedServer} from './vpn/connectedServer';
 import {Server} from './vpn/Server';
 import {SettingChange} from './messaging/MessageType';
 import {storedSplitTunneling} from './vpn/storedSplitTunneling';
 import {getBypassList} from './vpn/getBypassList';
-import {debug, info, warn} from './log/log';
+import {bind, debug as debug_, info as info_, warn as warn_} from './log/log';
 import {getBasicAuth} from './vpn/getBasicAuth';
 import {getAccessToken} from './account/getAccessToken';
 import {pickServerInLogical} from './vpn/pickServerInLogical';
@@ -62,13 +62,16 @@ import {handleError} from './tools/sentry';
 import {guessTierFromCredentials} from './account/credentials/guessTierFromCredentials';
 import {mayReplaceCredentials} from './account/credentials/mayReplaceCredentials';
 import {transmitCredentialsToProxy} from './vpn/transmitCredentialsToProxy';
-import ResourceRequest = chrome.webRequest.ResourceRequest;
+import OnAuthRequiredDetails = chrome.webRequest.OnAuthRequiredDetails;
+import OnRequestDetails = browser.proxy._OnRequestDetails;
+
+const debug = bind(debug_, '[state]');
+const info = bind(info_, '[state]');
+const warn = bind(warn_, '[state]');
 
 let currentState: ConnectionState;
 
 let lastLogicalCheck = 0;
-
-backgroundOnly('state');
 
 const hasWarning = () => !!(currentState?.data?.error as ApiError)?.Warning;
 
@@ -78,7 +81,7 @@ export const isProxyKnownHost = (host: string): boolean => host === currentState
 	|| /^(.*\.)?protonvpn(\.net|\.com)(:\d+)?$/.test(host)
 	|| !!serverHostnames[host];
 
-export function getAuthCredentials(credentials: Credentials|undefined, requestDetails?: ResourceRequest): ProxyAuthentication | undefined {
+export function getAuthCredentials(credentials: Credentials|undefined, requestDetails?: WithIdentifiableRequest): ProxyAuthentication | undefined {
 	const data = currentState.data;
 
 	if (credentials && (
@@ -146,7 +149,7 @@ const onState = {
 
 	async connectCurrentServer(): Promise<boolean> {
 		const server = currentState?.data?.server;
-		info(server);
+		info("Connect to", server);
 
 		return !!server && await this.setProxy(server, server.bypassList || []);
 	},
@@ -367,7 +370,7 @@ const onState = {
 		}
 	},
 
-	handleProxyRequest(requestDetails: RequestDetails): ProxyInfo | Promise<ProxyInfo> {
+	handleProxyRequest(requestDetails: OnRequestDetails): ProxyInfo | Promise<ProxyInfo> {
 		// This is only to avoid proxy for localhost, but we might actually want to access the API via the proxy in normal cases
 		// We should extend this to prevent proxying for LAN addresses
 		const bypassList = [...proxyLocalNetworkExclusion, ...(currentState?.data?.server?.bypassList || [])];
@@ -417,7 +420,7 @@ const onState = {
 		return tryCredentials(3);
 	},
 
-	async handleProxyAuthentication(requestDetails: RequestDetails): Promise<ProxyAuthentication | undefined> {
+	async handleProxyAuthentication(requestDetails: OnAuthRequiredDetails): Promise<ProxyAuthentication | undefined> {
 		if (requestDetails.isProxy) {
 			if (isPending(requestDetails)) {
 				return {cancel: true};
@@ -488,7 +491,12 @@ const offState = {
 		const error = config?.data?.error;
 
 		if (error) {
-			currentState.data.error = error;
+			currentState.data.error = (error instanceof Error)
+				? {
+					message: error.message,
+					stack: error.stack,
+				}
+				: error;
 		}
 
 		notifyStateChange('disconnected', {error});
@@ -555,7 +563,7 @@ export function logOut(deleteSession: boolean) {
 	info('Logged out');
 }
 
-export function disconnect(error?: ApiError | Error | undefined) {
+export function disconnect(error?: ApiError | Error | ErrorDump | undefined) {
 	emitNotification(
 		'connected-server',
 		error
@@ -728,7 +736,7 @@ export function getCurrentState(): ConnectionState {
 				return;
 			}
 
-			debug(data?.value);
+			debug("[getCurrentState]", data?.value);
 			switchState(await getDisconnectedState());
 			await checkAutoConnect();
 		}).finally(() => {

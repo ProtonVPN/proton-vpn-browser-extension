@@ -1,5 +1,6 @@
 import {requestFork, RequestForkAction} from './fork/requestFork';
 import {baseDomainURL} from '../config';
+import {getTabs} from '../tools/getTabs';
 import {connectTab} from '../tools/openTabs';
 import {openTab} from '../tools/openTab';
 import {isSuspended, suspend} from '../tools/exponentialBackoff';
@@ -17,11 +18,11 @@ export const openForkTab = async ({ action, partnerId, independent }: { action?:
 
 		const listener = (tabId: number) => {
 			if (tab.id === tabId) {
-				browser.tabs.onRemoved.removeListener(listener);
+				getTabs().onRemoved.removeListener(listener);
 				(browser.action as any)?.openPopup?.();
 			}
 		};
 
-		browser.tabs.onRemoved.addListener(listener);
+		getTabs().onRemoved.addListener(listener);
 	});
 };
