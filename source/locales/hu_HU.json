@@ -1,0 +1,491 @@
+{
+	"headers": {
+		"plural-forms": "nplurals=2; plural=(n != 1);",
+		"language": "hu_HU"
+	},
+	"contexts": {
+		"Action": {
+			"${linkDescription} (New tab)": [
+				"${linkDescription} (Új lap)"
+			],
+			"Add": [
+				"Hozzáadás"
+			],
+			"Add website": [
+				"Weboldal hozzáadása"
+			],
+			"Already have a Proton Account?": [
+				"Van már fiókja?"
+			],
+			"Auto connect": [
+				"Automatikus kapcsolódás"
+			],
+			"Cancel": [
+				"Mégsem"
+			],
+			"Connect": [
+				"Kapcsolódás"
+			],
+			"Contact us": [
+				"Kapcsolatfelvétel"
+			],
+			"Create an account": [
+				"Fiók létrehozása"
+			],
+			"Disconnect": [
+				"Kapcsolat bontása"
+			],
+			"Enable/disable notifications": [
+				"Értesítések ki- vagy bekapcsolása"
+			],
+			"Exclude websites from the tunnel": [
+				"Weboldalak kizárása az alagútból"
+			],
+			"Log in with Proton": [
+				"Bejelentkezés Protonnal"
+			],
+			"Manage subscription": [
+				"Előfizetés kezelése"
+			],
+			"New to Proton?": [
+				"Új Proton felhasználó?"
+			],
+			"Next": [
+				"Tovább"
+			],
+			"Prevent WebRTC leak": [
+				"WebRTC szivárgás megelőzése"
+			],
+			"Quick connect": [
+				"Gyors kapcsolódás"
+			],
+			"Remove ${domain}": [
+				"${domain} eltávolítása"
+			],
+			"Select a city in ${exitCountryName}": [
+				"Válasszon egy várost itt: ${exitCountryName}"
+			],
+			"Select a server in ${cityName}": [
+				"Válasszon egy szervert itt: ${cityName}"
+			],
+			"Select entry country with exit in ${exitCountryName}": [
+				"Válasszon belépési országot kilépéssel itt: ${exitCountryName}"
+			],
+			"Sign in": [
+				"Bejelentkezés"
+			],
+			"Sign in with Vivaldi": [
+				"Bejelentkezés Vivaldi-fiókkal"
+			],
+			"Sign out": [
+				"Kijelentkezés"
+			],
+			"Subscribe to connect more devices": [
+				"Fizessen elő, hogy több eszközzel kapcsolódhasson"
+			],
+			"Subscribe to enable Browser Extension": [
+				"Fizessen elő, hogy a böngésző bővítmény használatához"
+			],
+			"Switch account": [
+				"Fiók váltása"
+			],
+			"Update": [
+				"Frissítés"
+			],
+			"Upgrade": [
+				"Nagyobb csomagra váltás"
+			],
+			"Visit Support Center": [
+				"Súgóközpont megnyitása"
+			]
+		},
+		"Action: City-level button": {
+			"Connect to ${cityName}": [
+				"Kapcsolódás: ${cityName}"
+			]
+		},
+		"Action: Country-level button": {
+			"Connect to ${exitCountryName}": [
+				"Kapcsolódás: ${exitCountryName}"
+			]
+		},
+		"Action: Server-level button": {
+			"Connect to ${serverName}": [
+				"Kapcsolódás: ${serverName}"
+			]
+		},
+		"Confirm": {
+			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
+				"Az alkalmazásból való kijelentkezés megszakítja az aktív VPN-kapcsolatot. Folytatja?"
+			]
+		},
+		"Error": {
+			"${countries} country": [
+				"${countries} országban",
+				"${countries} országban"
+			],
+			"${serversCount} secure server": [
+				"${serversCount} biztonságos szerver",
+				"${serversCount} biztonságos szerver"
+			],
+			"${servers}+ secure server": [
+				"${servers}+ biztonságos szerver",
+				"${servers}+ biztonságos szerver"
+			],
+			"Access over ${servers} in ${countries}": [
+				"Hozzáférés több, mint ${servers}hez ${countries}ban"
+			],
+			"Bypass online censorship with advanced security and privacy features": [
+				"Kerülje meg az online cenzúrát fejlett biztonsági és adatvédelmi funkciókkal"
+			],
+			"Connect from your browser with ${planName}": [
+				"Kapcsolódjon böngészőjével a ${planName} csomag használatával"
+			],
+			"Network error.": [
+				"Hálózati hiba."
+			],
+			"Network is unreachable": [
+				"A hálózat nem érhető el"
+			],
+			"No results found": [
+				"Nincs találat"
+			],
+			"Not able to control the browser network settings, possibly a permission is missing": [
+				"A böngésző hálózati beállításainak vezérlése nem sikerült, valószínűleg hiányzik egy engedély"
+			],
+			"Please check your connectivity": [
+				"Ellenőrizze a internetkapcsolatot"
+			],
+			"Please try a different keyword": [
+				"Próbáljon meg egy másik kulcsszavat"
+			],
+			"Server not found": [
+				"Szerver nem található"
+			],
+			"Service temporarily unavailable": [
+				"A szolgáltatás átmenetileg nem elérhető"
+			],
+			"Something went wrong. If the problem persists, please try to re-install the extension": [
+				"Hiba történt. Ha a probléma továbbra is fennáll, próbálja meg újratelepíteni a bővítményt"
+			],
+			"Unable to load the list": [
+				"A lista betöltése sikertelen"
+			],
+			"Unable to login": [
+				"A bejelentkezés nem sikerült"
+			],
+			"Unable to reach the server, please try to reconnect, or to log out and log in again if the problem persists": [
+				"A szerver elérése nem sikerült, próbáljon meg újra kapcsolódni, vagy kilépni és újra belépni, ha a probléma továbbra is fennáll"
+			],
+			"Unlock ${servers} in ${countries}": [
+				"${servers} feloldása ${countries}ban"
+			],
+			"Unlock global streaming services": [
+				"Férjen hozzá globális videózási szolgáltatásokhoz"
+			]
+		},
+		"Info": {
+			"Access Proton VPN via this icon": [
+				"A Proton VPN-t ezen az ikonon keresztül érheti el"
+			],
+			"Allow VPN permissions": [
+				"VPN-engedélyek megadása"
+			],
+			"Also exclude subdomains of this website": [
+				"Beleértve a weboldal aldomainjeink kizárását"
+			],
+			"and more": [
+				"és továbbiak"
+			],
+			"Audited by independent security experts": [
+				"Független biztonsági szakértők által ellenőrzött"
+			],
+			"Auto-selected from": [
+				"Automatikus kiválasztva innen:"
+			],
+			"Automatically reconnect to Proton VPN when you open your browser.": [
+				"Automatikus újrakapcsolódás a Proton VPN-hez a böngésző megnyitásakor."
+			],
+			"Back": [
+				"Vissza"
+			],
+			"Browse through the Support Center and find answers to frequently asked questions.": [
+				"Böngésszen a Súgóközpontban és találjon választ gyakran ismételt kérdésekre."
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"A cenzúra megkerülése magas szintű biztonsági és adatvédelmi funkciókkal"
+			],
+			"Clear search": [
+				"Keresés törlése"
+			],
+			"Close": [
+				"Bezárás"
+			],
+			"Connect to a Plus server in this country to start streaming.\n\nHint: Clear the cache of the streaming apps to ensure new content appears.": [
+				"A videózáshoz kapcsolódjon egy Plus szerverhez ebben az országban.\n\nTipp: törölje a videózási alkalmazások gyorsítótárait, hogy biztosítsa az új tartalmak megjelenését."
+			],
+			"Connected": [
+				"Kapcsolódva"
+			],
+			"Connected to ${name}": [
+				"Kapcsolódva: ${name}"
+			],
+			"Connected to ${name} in ${city}": [
+				"Kapcsolódva: ${name}, hely: ${city}"
+			],
+			"Connecting...": [
+				"Kapcsolódás..."
+			],
+			"Contact our Customer Support agents to help you out with Proton VPN.": [
+				"A Proton VPN-nel kapcsolatos segítségért, lépjen kapcsolatba ügyfélszolgálati munkatársainkkal."
+			],
+			"Crash": [
+				"Összeomlás"
+			],
+			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
+				"Az összeomlási jelentések segítenek a hibák kijavításában, a tűzfalak felismerésében és a VPN korlátozások elkerülésében."
+			],
+			"Disable VPN for selected websites.": [
+				"A VPN lekapcsolása a kiválasztott weboldalakhoz."
+			],
+			"Disconnected": [
+				"Kapcsolat bontva"
+			],
+			"Disconnected by another extension": [
+				"Kapcsolat bontva egy másik bővítmény által"
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"Kapcsolat bontva egy másik bővítmény által, kapcsolódva: ${newProxyName}"
+			],
+			"Disconnected, settings were overridden": [
+				"Kapcsolat bontva, beállítások felülírva"
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"Kapcsolat bontva, a beállításokat felülírta a ${newProxyName}"
+			],
+			"Emit system notifications on connection and disconnection events.": [
+				"Rendszerértesítések kapcsolódáskor és a kapcsolat bontásakor."
+			],
+			"Extra protection for people with advanced privacy needs": [
+				"Extra védelem a kiemelt adatvédelmi igényekkel rendelkezők számára"
+			],
+			"Fastest free server": [
+				"A leggyorsabb ingyenes szerver"
+			],
+			"Follow these simple steps to get the best experience using Proton VPN": [
+				"Kövesse ezeket az egyszerű lépéseket, a Proton VPN sikeres használatához"
+			],
+			"For example, news.example.com is a subdomain of example.com.": [
+				"Például a news.example.com aldomainje az example.com oldalnak"
+			],
+			"Help": [
+				"Segítség"
+			],
+			"Help us fight censorship": [
+				"Segítsen a cenzúra elleni küzdelemben"
+			],
+			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
+				"Nagy teljesítményű svájci VPN, amely védi a magánszféráját. Maximális biztonság, több, mint ${count} szerver, korlátozás nélkül.",
+				"Nagy teljesítményű svájci VPN, amely védi a magánszféráját. Maximális biztonság, több, mint ${count} szerver, korlátozás nélkül."
+			],
+			"Learn more": [
+				"További információk"
+			],
+			"Logged out": [
+				"Kijelentkezve"
+			],
+			"Open source VPN": [
+				"Nyílt forráskódú VPN"
+			],
+			"Open the Extensions menu": [
+				"Nyissa meg a bővítmények menüt"
+			],
+			"Open the Proton VPN browser extension to continue": [
+				"Nyissa meg a Proton VPN böngésző bővítményt a folytatáshoz"
+			],
+			"Pin Proton VPN to your toolbar": [
+				"Rögzítse a Proton VPN-t az eszköztárához"
+			],
+			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
+				"Nyomja meg a <b>Tovább</b> gombot, majd kattintson a böngésző felugró ablakának <b>engedélyezésére</b>."
+			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"Védje magát online a Proton ingyenes, nagy sebességű VPN-jével."
+			],
+			"Proton VPN": [
+				"Proton VPN"
+			],
+			"Proton VPN Browser Extension": [
+				"Proton VPN böngésző bővítmény"
+			],
+			"Search": [
+				"Keresés"
+			],
+			"Secure Core": [
+				"Secure Core"
+			],
+			"Select websites to exclude from your VPN connection.": [
+				"Válassza ki a VPN-kapcsolatból kizárandó webhelyeket."
+			],
+			"Share anonymous usage crash reports": [
+				"Névtelen összeomlási jelentések beküldése"
+			],
+			"Share anonymous usage statistics": [
+				"Anonim használati statisztikák beküldése"
+			],
+			"Split tunneling": [
+				"Osztott alagút"
+			],
+			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
+				"Megakadályozza, hogy a böngésző kiszivárogtassa IP-címét a WebRTC-t használó webhelyek és alkalmazások számára. Ez befolyásolhatja a videohívások vagy az élő közvetítések teljesítményét egyes webhelyeken."
+			],
+			"Telemetry": [
+				"Adatgyűjtés"
+			],
+			"Thank you for installing Proton VPN": [
+				"Köszönjük, hogy telepítette a Proton VPN-t"
+			],
+			"Then just click the Proton VPN icon to sign in.": [
+				"Ezután csak kattintson a Proton VPN ikonjára a bejelentkezéshez."
+			],
+			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
+				"Ezek a statisztikák nem tartalmazzák az IP-címét, és nem használhatók fel az azonosítására. Soha nem osztjuk meg őket harmadik felekkel."
+			],
+			"To get started, you’ll need to enable VPN permissions on your browser.": [
+				"A kezdéshez meg kell adnia a VPN-engedélyeket a böngészőjében."
+			],
+			"Upgrade": [
+				"Nagyobb csomagra váltás"
+			],
+			"Usage data helps us overcome VPN blocks and improve app performance.": [
+				"A használati adatok segítenek leküzdeni a VPN korlátozásokat és javítani az alkalmazás teljesítményét."
+			],
+			"User": [
+				"Felhasználó"
+			],
+			"VPN Features": [
+				"VPN funkciók"
+			],
+			"Websites that do not use VPN:": [
+				"Weboldalak, amelyek nem használnak VPN-t:"
+			],
+			"You're signed in": [
+				"Sikeresen bejelentkezett"
+			]
+		},
+		"Label": {
+			"And all its subdomains": [
+				"És az összes aldomainje"
+			],
+			"Auto connect": [
+				"Automatikus kapcsolódás"
+			],
+			"Cities": [
+				"Városok"
+			],
+			"City": [
+				"Város",
+				"Városok"
+			],
+			"Connecting": [
+				"Kapcsolódás"
+			],
+			"Countries, cities, servers": [
+				"Országok, városok, szerverek"
+			],
+			"Country": [
+				"Ország",
+				"Országok"
+			],
+			"Entry country": [
+				"Belépési ország",
+				"Belépési országok"
+			],
+			"Free": [
+				"Ingyenes"
+			],
+			"Free servers": [
+				"Ingyenes szerverek"
+			],
+			"Free servers (${count})": [
+				"Ingyenes szerverek (${count})"
+			],
+			"Internal servers (${count})": [
+				"Belső szerverek (${count})"
+			],
+			"Need help?": [
+				"Segítségre van szüksége?"
+			],
+			"Notifications": [
+				"Értesítések"
+			],
+			"Offer": [
+				"Ajánlat"
+			],
+			"Other": [
+				"Egyéb"
+			],
+			"Plus servers (${count})": [
+				"Plus szerverek (${count})"
+			],
+			"Protected": [
+				"Védett"
+			],
+			"Server": [
+				"Szerver",
+				"Szerverek"
+			],
+			"Settings": [
+				"Beállítások"
+			],
+			"Split tunneling": [
+				"Osztott alagút"
+			],
+			"Unprotected": [
+				"Nem védett"
+			],
+			"Via": [
+				"Ezen keresztül"
+			],
+			"Want to know more?": [
+				"Szeretne többet megtudni?"
+			],
+			"WebRTC leak protection": [
+				"WebRTC szivárgás védelem"
+			]
+		},
+		"Menu": {
+			"Countries": [
+				"Országok"
+			],
+			"Features": [
+				"Funkciók"
+			],
+			"Help": [
+				"Segítség"
+			],
+			"Settings": [
+				"Beállítások"
+			]
+		},
+		"Status": {
+			"Connecting to ${serverName}": [
+				"Kapcsolódás: ${serverName}"
+			],
+			"Proton VPN: ${status}": [
+				"Proton VPN: ${status}"
+			]
+		},
+		"Title": {
+			"Features": [
+				"Funkciók"
+			],
+			"Proton VPN for Vivaldi": [
+				"Proton VPN a Vivaldihoz"
+			],
+			"Streaming": [
+				"Videózás"
+			]
+		}
+	}
+}

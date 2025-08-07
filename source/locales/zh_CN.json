@@ -1,0 +1,483 @@
+{
+	"headers": {
+		"plural-forms": "nplurals=2; plural=(n > 1);",
+		"language": "zh_CN"
+	},
+	"contexts": {
+		"Action": {
+			"${linkDescription} (New tab)": [
+				"${linkDescription}（新标签）"
+			],
+			"Add": [
+				"添加"
+			],
+			"Add website": [
+				"添加网站"
+			],
+			"Already have a Proton Account?": [
+				"已有 Proton 账户？"
+			],
+			"Auto connect": [
+				"自动连接"
+			],
+			"Cancel": [
+				"取消"
+			],
+			"Connect": [
+				"连接"
+			],
+			"Contact us": [
+				"联系我们"
+			],
+			"Create an account": [
+				"创建账号"
+			],
+			"Disconnect": [
+				"断开连接"
+			],
+			"Enable/disable notifications": [
+				"启用/禁用通知"
+			],
+			"Exclude websites from the tunnel": [
+				"将网站排除在隧道之外"
+			],
+			"Log in with Proton": [
+				"使用 Proton 账户登录"
+			],
+			"Manage subscription": [
+				"管理订阅"
+			],
+			"New to Proton?": [
+				"新建到 Proton？"
+			],
+			"Next": [
+				"下一步"
+			],
+			"Prevent WebRTC leak": [
+				"阻止 WebRTC 泄露信息"
+			],
+			"Quick connect": [
+				"快速连接"
+			],
+			"Remove ${domain}": [
+				"移除 ${domain}"
+			],
+			"Select a city in ${exitCountryName}": [
+				"在 ${exitCountryName} 中选择城市"
+			],
+			"Select a server in ${cityName}": [
+				"在 ${cityName} 中选择服务器"
+			],
+			"Select entry country with exit in ${exitCountryName}": [
+				"在 ${exitCountryName} 中选择入境国和出境国"
+			],
+			"Sign in": [
+				"登录"
+			],
+			"Sign in with Vivaldi": [
+				"使用 Vivaldi 登录"
+			],
+			"Sign out": [
+				"登出"
+			],
+			"Subscribe to connect more devices": [
+				"订阅以连接更多设备"
+			],
+			"Subscribe to enable Browser Extension": [
+				"订阅以启用浏览器扩展"
+			],
+			"Switch account": [
+				"切换账户"
+			],
+			"Update": [
+				"更新"
+			],
+			"Upgrade": [
+				"升级账户"
+			],
+			"Visit Support Center": [
+				"访问支持中心"
+			]
+		},
+		"Action: City-level button": {
+			"Connect to ${cityName}": [
+				"连接到 ${cityName}"
+			]
+		},
+		"Action: Country-level button": {
+			"Connect to ${exitCountryName}": [
+				"连接到 ${exitCountryName}"
+			]
+		},
+		"Action: Server-level button": {
+			"Connect to ${serverName}": [
+				"连接到 ${serverName}"
+			]
+		},
+		"Confirm": {
+			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
+				"退出账户将断开当前 VPN 连接，确定要退出账户吗？"
+			]
+		},
+		"Error": {
+			"${countries} country": [
+				"${countries} 个国家/地区"
+			],
+			"${serversCount} secure server": [
+				"${serversCount} 台安全服务器"
+			],
+			"${servers}+ secure server": [
+				"${servers}+ 台安全服务器"
+			],
+			"Access over ${servers} in ${countries}": [
+				"连通${countries}的${servers}"
+			],
+			"Bypass online censorship with advanced security and privacy features": [
+				"借助高等级安全与隐私功能绕过网络封锁"
+			],
+			"Connect from your browser with ${planName}": [
+				"通过 ${planName} 在您的浏览器中连接网络"
+			],
+			"Network error.": [
+				"网络错误。"
+			],
+			"Network is unreachable": [
+				"无法连接网络"
+			],
+			"No results found": [
+				"您要的没找到"
+			],
+			"Not able to control the browser network settings, possibly a permission is missing": [
+				"无法控制浏览器网络设置，可能是缺少权限"
+			],
+			"Please check your connectivity": [
+				"请检查您的连接"
+			],
+			"Please try a different keyword": [
+				"换个关键词试试"
+			],
+			"Server not found": [
+				"未找到服务器"
+			],
+			"Service temporarily unavailable": [
+				"服务暂时不可用"
+			],
+			"Something went wrong. If the problem persists, please try to re-install the extension": [
+				"出错了。如果问题仍然存在，请尝试重新安装扩展程序"
+			],
+			"Unable to load the list": [
+				"无法加载列表"
+			],
+			"Unable to login": [
+				"无法登录"
+			],
+			"Unable to reach the server, please try to reconnect, or to log out and log in again if the problem persists": [
+				"无法连接服务器，请尝试重新连接，如果问题仍然存在，请退出并重新登录"
+			],
+			"Unlock ${servers} in ${countries}": [
+				"解锁 ${countries}的 ${servers}"
+			],
+			"Unlock global streaming services": [
+				"畅享全球流媒体服务"
+			]
+		},
+		"Info": {
+			"Access Proton VPN via this icon": [
+				"通过此图标访问 Proton VPN"
+			],
+			"Allow VPN permissions": [
+				"允许 VPN 权限"
+			],
+			"Also exclude subdomains of this website": [
+				"同时排除本网站的子域"
+			],
+			"and more": [
+				"以及更多"
+			],
+			"Audited by independent security experts": [
+				"由独立安全专家审核"
+			],
+			"Auto-selected from": [
+				"自动选择"
+			],
+			"Automatically reconnect to Proton VPN when you open your browser.": [
+				"打开浏览器时自动重新连接到 Proton VPN。"
+			],
+			"Back": [
+				"返回"
+			],
+			"Browse through the Support Center and find answers to frequently asked questions.": [
+				"浏览支持中心并找到常见问题的解决方案。"
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"利用先进的安全和隐私功能绕过审查"
+			],
+			"Clear search": [
+				"清除搜索条件"
+			],
+			"Close": [
+				"关闭"
+			],
+			"Connect to a Plus server in this country to start streaming.\n\nHint: Clear the cache of the streaming apps to ensure new content appears.": [
+				"连接该地域的 Plus 服务器开始串流。\n\n提示：清除流媒体应用程序的缓存，确保可以浏览新的内容。"
+			],
+			"Connected": [
+				"已连接"
+			],
+			"Connected to ${name}": [
+				"连接至 ${name}"
+			],
+			"Connected to ${name} in ${city}": [
+				"连接到 ${name} 中的 ${city}"
+			],
+			"Connecting...": [
+				"正在连接..."
+			],
+			"Contact our Customer Support agents to help you out with Proton VPN.": [
+				"联系我们的客户支持代理人来帮助您使用 Proton VPN。"
+			],
+			"Crash": [
+				"崩溃啦"
+			],
+			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
+				"崩溃报告会帮助我们修复错误、检测防火墙并避免 VPN 阻塞。"
+			],
+			"Disable VPN for selected websites.": [
+				"对选定的网站禁用 VPN。"
+			],
+			"Disconnected": [
+				"已断开"
+			],
+			"Disconnected by another extension": [
+				"被其他扩展断开连接"
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"被其他扩展断开连接，现已连接到 ${newProxyName}"
+			],
+			"Disconnected, settings were overridden": [
+				"断开连接，设置已被覆盖"
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"断开连接，设置被覆盖为 ${newProxyName}"
+			],
+			"Emit system notifications on connection and disconnection events.": [
+				"就连接和断开事件发出系统通知。"
+			],
+			"Extra protection for people with advanced privacy needs": [
+				"为有高级隐私需求的用户提供额外保护"
+			],
+			"Fastest free server": [
+				"最快的免费服务器"
+			],
+			"Follow these simple steps to get the best experience using Proton VPN": [
+				"请遵循以下简单步骤，获得使用 Proton VPN 的最佳体验"
+			],
+			"For example, news.example.com is a subdomain of example.com.": [
+				"例如，news.example.com 是 example.com 的子域。"
+			],
+			"Help": [
+				"帮助"
+			],
+			"Help us fight censorship": [
+				"和我们一起对抗审查"
+			],
+			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
+				"真正保护隐私的瑞士高速 VPN。极致的安全性，超过 ${count} 台服务器，流量无限制。"
+			],
+			"Learn more": [
+				"了解详情"
+			],
+			"Logged out": [
+				"退出账户"
+			],
+			"Open source VPN": [
+				"开源的 VPN"
+			],
+			"Open the Extensions menu": [
+				"打开扩展菜单"
+			],
+			"Open the Proton VPN browser extension to continue": [
+				"打开 Proton VPN 浏览器扩展程序即可继续操作"
+			],
+			"Pin Proton VPN to your toolbar": [
+				"将 Proton VPN 固定在您的工具栏"
+			],
+			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
+				"点击 <b>下一步</b>，然后点击浏览器弹出窗口上的<b>允许</b>。"
+			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"使用 Proton 免费高速 VPN 保护您的上网安全。"
+			],
+			"Proton VPN": [
+				"Proton VPN"
+			],
+			"Proton VPN Browser Extension": [
+				"Proton VPN 浏览器扩展程序"
+			],
+			"Search": [
+				"搜索"
+			],
+			"Secure Core": [
+				"Secure Core"
+			],
+			"Select websites to exclude from your VPN connection.": [
+				"选择要从 VPN 连接中排除的网站。"
+			],
+			"Share anonymous usage crash reports": [
+				"分享匿名的崩溃报告"
+			],
+			"Share anonymous usage statistics": [
+				"分享匿名的使用统计数据"
+			],
+			"Split tunneling": [
+				"线路分离"
+			],
+			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
+				"阻止浏览器向使用 WebRTC 的网站和应用程序泄露您的 IP 地址。这可能会影响某些网站的视频通话或直播性能。"
+			],
+			"Telemetry": [
+				"遥测技术"
+			],
+			"Thank you for installing Proton VPN": [
+				"感谢您安装 Proton VPN"
+			],
+			"Then just click the Proton VPN icon to sign in.": [
+				"然后点击 Proton VPN 图标以登录。"
+			],
+			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
+				"这些统计数据不包含您的 IP 地址，因此无法用于识别您的身份。我们绝不会与第三方分享它们。"
+			],
+			"To get started, you’ll need to enable VPN permissions on your browser.": [
+				"要开始使用，您需要在浏览器上启用 VPN 权限。"
+			],
+			"Upgrade": [
+				"升级账户"
+			],
+			"Usage data helps us overcome VPN blocks and improve app performance.": [
+				"使用数据会帮助我们克服 VPN 阻塞、提高应用性能。"
+			],
+			"User": [
+				"用户"
+			],
+			"VPN Features": [
+				"VPN 功能"
+			],
+			"Websites that do not use VPN:": [
+				"不使用 VPN 的网站："
+			],
+			"You're signed in": [
+				"您已成功登录"
+			]
+		},
+		"Label": {
+			"And all its subdomains": [
+				"及其所有子域"
+			],
+			"Auto connect": [
+				"自动连接"
+			],
+			"Cities": [
+				"城市"
+			],
+			"City": [
+				"城市"
+			],
+			"Connecting": [
+				"正在连接"
+			],
+			"Countries, cities, servers": [
+				"国家、城市、服务器"
+			],
+			"Country": [
+				"国家"
+			],
+			"Entry country": [
+				"入口国家/地区"
+			],
+			"Free": [
+				"Free"
+			],
+			"Free servers": [
+				"免费服务器"
+			],
+			"Free servers (${count})": [
+				"免费服务器（${count}）"
+			],
+			"Internal servers (${count})": [
+				"内部服务器 (${count})"
+			],
+			"Need help?": [
+				"需要帮助？"
+			],
+			"Notifications": [
+				"通知"
+			],
+			"Offer": [
+				"优惠"
+			],
+			"Other": [
+				"其它"
+			],
+			"Plus servers (${count})": [
+				"Plus 服务器 (${count})"
+			],
+			"Protected": [
+				"保护中"
+			],
+			"Server": [
+				"服务器"
+			],
+			"Settings": [
+				"设置"
+			],
+			"Split tunneling": [
+				"线路分离"
+			],
+			"Unprotected": [
+				"未受保护"
+			],
+			"Via": [
+				"来自"
+			],
+			"Want to know more?": [
+				"想要了解更多？"
+			],
+			"WebRTC leak protection": [
+				"WebRTC 泄漏保护"
+			]
+		},
+		"Menu": {
+			"Countries": [
+				"国家"
+			],
+			"Features": [
+				"功能"
+			],
+			"Help": [
+				"帮助"
+			],
+			"Settings": [
+				"设置"
+			]
+		},
+		"Status": {
+			"Connecting to ${serverName}": [
+				"正在连接 ${serverName}"
+			],
+			"Proton VPN: ${status}": [
+				"Proton VPN: ${status}"
+			]
+		},
+		"Title": {
+			"Features": [
+				"功能"
+			],
+			"Proton VPN for Vivaldi": [
+				"Proton VPN Vivaldi 客户端"
+			],
+			"Streaming": [
+				"串流中"
+			]
+		}
+	}
+}
