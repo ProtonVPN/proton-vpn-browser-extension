@@ -2,21 +2,19 @@
 
 You'll need to have the following environment to work with this project:
 
-- Node.js LTS
+- Node.js LTS (recommended: latest LTS)
+- npm (comes with Node.js)
+- (Optional) **zip/unzip** utilities for packing builds
+- (Optional, Linux/WSL) `apt-get install zip unzip`
 
-That's all folks!
+That's all folks! 🎉
 
-# Build for Firefox
+---
 
-```
+## Build for Firefox
+```bash
 npm install
 npm run build-ff
-```
-
-Auto-reload on change:
-```
-npm run watch-ff
-```
 
 # Build for Chrome
 
