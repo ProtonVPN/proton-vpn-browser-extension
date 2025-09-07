@@ -15,7 +15,7 @@
 		"pack-ff": "npm run build-ff && web-ext build --overwrite-dest --source-dir=distribution-ff -a . -n vpn-proton-firefox.zip",
 		"watch": "webpack --mode=development --watch",
 		"watch-ff": "webpack --mode=development --watch --config=webpack-ff.config.js",
-		"repack": "node repack.js",
+		"repack": "node scripts/repack.js all",
 		"crx": "crx3 distribution -o vpn-proton.me.crx",
 		"xpi": "web-ext build --overwrite-dest --source-dir=distribution -a . -n vpn-proton.me.xpi",
 		"zip": "web-ext build --overwrite-dest --source-dir=distribution -a . -n vpn-proton-chrome.zip && npm run repack -- vpn-proton-chrome.zip",
@@ -24,7 +24,9 @@
 		"i18n": "ts-node source/js/translation/extract.ts",
 		"po": "ts-node source/js/translation/extract.ts po",
 		"locales": "ts-node source/js/translation/update-locales.ts",
-		"ts": "ts-node"
+		"ts": "ts-node",
+		"repack:chrome": "node scripts/repack.js chrome",
+		"repack:ff": "node scripts/repack.js firefox"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.17.5",
@@ -62,8 +64,8 @@
 		"ts-jest": "^29.1.0",
 		"ts-loader": "^9.2.6",
 		"ts-node": "^10.9.2",
-		"typescript-eslint": "^8.8.0",
 		"typescript": "^5.8.2",
+		"typescript-eslint": "^8.8.0",
 		"typescript-parser": "^2.6.1",
 		"web-ext": "^8.6.0",
 		"webpack": "^5.75.0",
