@@ -1,34 +1,45 @@
 {
 	"name": "proton-vpn-browser-extension",
 	"private": true,
-	"scripts": {
-		"check": "ts-node test/check.ts",
-		"lint": "run-p lint:*",
-		"lint:js": "eslint .",
-		"lint:css": "stylelint source/**/*.scss",
-		"lint-fix": "run-p 'lint:* -- --fix'",
-		"test": "jest",
-		"coverage": "jest --coverage",
-		"build": "webpack --mode=production",
-		"pack": "npm run build && web-ext build --overwrite-dest --source-dir=distribution -a . -n vpn-proton-chrome.zip",
-		"build-ff": "webpack --mode=production --config=webpack-ff.config.js",
-		"pack-ff": "npm run build-ff && web-ext build --overwrite-dest --source-dir=distribution-ff -a . -n vpn-proton-firefox.zip",
-		"watch": "webpack --mode=development --watch",
-		"watch-ff": "webpack --mode=development --watch --config=webpack-ff.config.js",
-		"repack": "node scripts/repack.js all",
-		"crx": "crx3 distribution -o vpn-proton.me.crx",
-		"xpi": "web-ext build --overwrite-dest --source-dir=distribution -a . -n vpn-proton.me.xpi",
-		"zip": "web-ext build --overwrite-dest --source-dir=distribution -a . -n vpn-proton-chrome.zip && npm run repack -- vpn-proton-chrome.zip",
-		"zip-ff": "web-ext build --overwrite-dest --source-dir=distribution-ff -a . -n vpn-proton-firefox.zip && npm run repack -- vpn-proton-firefox.zip",
-		"zip-source": "node zip-sources.js && npm run repack -- source.zip",
-		"i18n": "ts-node source/js/translation/extract.ts",
-		"po": "ts-node source/js/translation/extract.ts po",
-		"locales": "ts-node source/js/translation/update-locales.ts",
-		"ts": "ts-node",
-		"repack:chrome": "node scripts/repack.js chrome",
-		"repack:ff": "node scripts/repack.js firefox"
-	},
-	"devDependencies": {
+"scripts": {
+  "check": "ts-node test/check.ts",
+
+  "lint": "run-p lint:*",
+  "lint:js": "eslint .",
+  "lint:css": "stylelint source/**/*.scss",
+  "lint-fix": "run-p 'lint:* -- --fix'",
+
+  "test": "jest",
+  "coverage": "jest --coverage",
+
+  "build": "webpack --mode=production",
+  "build-ff": "webpack --mode=production --config=webpack-ff.config.js",
+  "watch": "webpack --mode=development --watch",
+  "watch-ff": "webpack --mode=development --watch --config=webpack-ff.config.js",
+
+  "run:chrome": "web-ext run --source-dir=distribution --target=chromium",
+  "run:ff": "web-ext run --source-dir=distribution-ff --watch",
+
+  "pack": "npm run build && web-ext build --overwrite-dest --source-dir=distribution -a . -n vpn-proton-chrome.zip",
+  "pack-ff": "npm run build-ff && web-ext build --overwrite-dest --source-dir=distribution-ff -a . -n vpn-proton-firefox.zip",
+
+  "zip": "npm run pack",
+  "zip-ff": "npm run pack-ff",
+  "zip-source": "node zip-sources.js",
+
+  "repack": "node scripts/repack.js all",
+  "repack:chrome": "node scripts/repack.js chrome",
+  "repack:ff": "node scripts/repack.js firefox",
+
+  "crx": "crx3 distribution -o vpn-proton.me.crx",
+  "xpi": "web-ext build --overwrite-dest --source-dir=distribution-ff -a . -n vpn-proton.me.xpi",
+
+  "i18n": "ts-node source/js/translation/extract.ts",
+  "po": "ts-node source/js/translation/extract.ts po",
+  "locales": "ts-node source/js/translation/update-locales.ts",
+  "ts": "ts-node"
+},
+    "devDependencies": {
 		"@babel/core": "^7.17.5",
 		"@babel/preset-env": "^7.16.11",
 		"@eslint/js": "^9.35.0",
@@ -69,7 +80,7 @@
 		"typescript-parser": "^2.6.1",
 		"web-ext": "^8.6.0",
 		"webpack": "^5.75.0",
-		"webpack-cli": "^6.0.0"
+        "webpack-cli": "^6.0.0"
 	},
 	"dependencies": {
 		"@sentry/browser": "^9.9.0",
@@ -82,4 +93,5 @@
 			"jest": "$jest"
 		}
 	}
+
 }
