@@ -12,3 +12,15 @@ source.zip
 # IDE
 .idea
 .vscode
+
+__temp/
+*.zip
+*.bak
+distribution/
+distribution-ff/
+
+__temp/
+*.zip
+*.bak
+distribution/
+distribution-ff/
