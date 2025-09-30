@@ -149,7 +149,7 @@ const showSigningViewAsync = async (
 
 	const openSignInTab = async (partnerId: string|undefined) => {
 		const timer = setTimeout(() => {
-			window.close();
+			window?.close();
 		}, 200);
 
 		if (!await browser.permissions.request(proxyPermission)) {
@@ -165,13 +165,13 @@ const showSigningViewAsync = async (
 		await openForkTab({
 			partnerId,
 		});
-		window.close();
+		window?.close();
 	};
 
 	signIn.addEventListener('click', async () => {
 		if (signIn.classList.contains('update-extension')) {
 			triggerPromise(openTab(getBrowser().pluginsUrl));
-			window.close();
+			window?.close();
 
 			return;
 		}

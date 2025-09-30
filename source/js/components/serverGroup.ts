@@ -33,7 +33,7 @@ export const formatGroup = (
 			count,
 			msgid`Server`,
 			`Servers`,
-		) + (count > 1 ? ' (' + count + ')' : '');
+		)
 
 	return `
 		<div

@@ -295,6 +295,9 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"Wyświetla powiadomienia systemowe podczas nawiązywania połączeń."
 			],
+			"Enjoying Proton VPN?": [
+				"Podoba Ci się Proton VPN?"
+			],
 			"Extra protection for people with advanced privacy needs": [
 				"Dodatkowa ochrona dla użytkowników z zaawansowanymi potrzebami w zakresie prywatności"
 			],
@@ -331,8 +334,14 @@
 			"Learn more": [
 				"Dowiedz się więcej"
 			],
+			"Leave a rating": [
+				"Oceń rozszerzenie"
+			],
 			"Logged out": [
 				"Wylogowano"
+			],
+			"Not now": [
+				"Nie teraz"
 			],
 			"Open source VPN": [
 				"Otwarty kod źródłowy aplikacji VPN"
@@ -345,6 +354,9 @@
 			],
 			"Pin Proton VPN to your toolbar": [
 				"Przypnij Proton VPN do paska narzędzi"
+			],
+			"Please help us spread the word with a Web Store rating.": [
+				"Pomóż nam rozpowszechnić usługę, wystawiając ocenę."
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Kliknij <b>Dalej</b>, a następnie w wyskakującym oknie <b>Zezwalaj</b>."

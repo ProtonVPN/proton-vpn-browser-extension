@@ -277,6 +277,9 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"Emit system notifications on connection and disconnection events."
 			],
+			"Enjoying Proton VPN?": [
+				"Enjoying Proton VPN?"
+			],
 			"Extra protection for people with advanced privacy needs": [
 				"Extra protection for people with advanced privacy needs"
 			],
@@ -307,8 +310,14 @@
 			"Learn more": [
 				"Learn more"
 			],
+			"Leave a rating": [
+				"Leave a rating"
+			],
 			"Logged out": [
 				"Logged out"
+			],
+			"Not now": [
+				"Not now"
 			],
 			"Open source VPN": [
 				"Open source VPN"
@@ -321,6 +330,9 @@
 			],
 			"Pin Proton VPN to your toolbar": [
 				"Pin Proton VPN to your toolbar"
+			],
+			"Please help us spread the word with a Web Store rating.": [
+				"Please help us spread the word with a Web Store rating."
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser."

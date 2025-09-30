@@ -23,19 +23,19 @@ export const milliSeconds = {
 	toDays(milliSeconds: number) {
 		return this.toHours(milliSeconds) / 24;
 	},
-	diffInMilliSeconds(/** end */ milliSecondTimestamp?: number, /** start */ now?: number) {
+	diffInMilliSeconds(milliSecondTimestamp?: number, now?: number) {
 		return (now || Date.now()) - (milliSecondTimestamp || 0);
 	},
-	diffInSeconds(/** end */ milliSecondTimestamp?: number, /** start */ now?: number) {
+	diffInSeconds(milliSecondTimestamp?: number, now?: number) {
 		return this.toSeconds(this.diffInMilliSeconds(milliSecondTimestamp, now));
 	},
-	diffInMinutes(/** end */ milliSecondTimestamp?: number, /** start */ now?: number) {
+	diffInMinutes(milliSecondTimestamp?: number, now?: number) {
 		return this.toMinutes(this.diffInMilliSeconds(milliSecondTimestamp, now));
 	},
-	diffInHours(/** end */ milliSecondTimestamp?: number, /** start */ now?: number) {
+	diffInHours(milliSecondTimestamp?: number, now?: number) {
 		return this.toHours(this.diffInMilliSeconds(milliSecondTimestamp, now));
 	},
-	diffInDays(/** end */ milliSecondTimestamp?: number, /** start */ now?: number) {
+	diffInDays(milliSecondTimestamp?: number, now?: number) {
 		return this.toDays(this.diffInMilliSeconds(milliSecondTimestamp, now));
 	},
 };

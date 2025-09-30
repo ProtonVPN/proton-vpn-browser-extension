@@ -289,6 +289,9 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"Send systemvarsler om tilkoblings- og frakoblingshendelser."
 			],
+			"Enjoying Proton VPN?": [
+				"Liker du Proton VPN?"
+			],
 			"Extra protection for people with advanced privacy needs": [
 				"Ekstra beskyttelse for personer med avanserte personvernbehov"
 			],
@@ -323,8 +326,14 @@
 			"Learn more": [
 				"Lær mer"
 			],
+			"Leave a rating": [
+				"Legg igjen en vurdering"
+			],
 			"Logged out": [
 				"Logget av"
+			],
+			"Not now": [
+				"Ikke nå"
 			],
 			"Open source VPN": [
 				"Åpen kildekode VPN"
@@ -337,6 +346,9 @@
 			],
 			"Pin Proton VPN to your toolbar": [
 				"Fest Proton VPN til verktøylinjen din"
+			],
+			"Please help us spread the word with a Web Store rating.": [
+				"Hjelp oss å spre budskapet ved å anmelde det i nettbutikken."
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Trykk på <b>Neste</b>, og klikk deretter <b>Tillat</b> i sprettoppvinduet fra nettleseren."

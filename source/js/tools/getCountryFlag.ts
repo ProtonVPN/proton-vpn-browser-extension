@@ -1,6 +1,7 @@
+import {getCountryCode} from './getCountryCode';
+
 export const getCountryFlag = (country: string, vocalized = false) => {
-	country = country.toUpperCase();
-	country = {UK: 'GB'}[country] || country;
+	country = getCountryCode(country);
 
 	return `<img
 		loading="lazy"

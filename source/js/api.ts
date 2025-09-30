@@ -122,7 +122,7 @@ export const fetchApi = async (
  */
 const getJsonContent = async <T = any>(response: Response): Promise<T> => {
 	try {
-		return await response.json();
+		return await response.clone().json();
 	} catch (e) {
 		await checkIfResponseWasBlocked(response);
 
@@ -162,7 +162,11 @@ const getBlockingSoftwareErrorFromResponse = (text: string) => {
 		);
 	}
 
-	handleError('HTML Content Received: ' + text);
+	handleError('HTML Content Received: ' + text
+		.replace(/<script[^>]*>[\s\S]*?<\/script[^>]*>/ig, '')
+		.replace(/<style[^>]*>[\s\S]*?<\/style[^>]*>/ig, '')
+		.replace(/src=["']data:[^"']+["']/ig, '')
+	);
 
 	return new Error(
 		c('Info').t`VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.`,

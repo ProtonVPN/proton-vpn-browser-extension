@@ -205,6 +205,9 @@
 			"About free connections": [
 				"Free bağlantıları hakkında"
 			],
+			"Access over 13,000 secure servers in over 120 countries": [
+				"120 üzerinde ülkede bulunan 13.000 üzerinde güvenli sunucuya erişin"
+			],
 			"Access Proton VPN via this icon": [
 				"Proton VPN için bu simgeyi kullanın"
 			],
@@ -286,6 +289,9 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"Bağlantı kurulma ve kesilme durumlarında sistem bildirimleri gönderilsin."
 			],
+			"Enjoying Proton VPN?": [
+				"Proton VPN uygulamasını beğendiniz mi?"
+			],
 			"Extra protection for people with advanced privacy needs": [
 				"Gelişmiş gizlilik gereksinimleri olan kişiler için ek koruma"
 			],
@@ -320,8 +326,14 @@
 			"Learn more": [
 				"Ayrıntılı bilgi alın"
 			],
+			"Leave a rating": [
+				"Değerlendirin"
+			],
 			"Logged out": [
 				"Oturum kapatıldı"
+			],
+			"Not now": [
+				"Şimdi değil"
 			],
 			"Open source VPN": [
 				"Açık kaynak kodlu VPN"
@@ -334,6 +346,9 @@
 			],
 			"Pin Proton VPN to your toolbar": [
 				"Araçlar menünüze Proton VPN ekleyin"
+			],
+			"Please help us spread the word with a Web Store rating.": [
+				"Lütfen, mağazada değerlendirerek bilirniliğimizi artırın."
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Tarayıcınızda açılan pencerede <b>Sonraki</b> ve <b>İzin ver</b> üzerine tıklayın."

@@ -1,8 +1,9 @@
-import { milliSeconds } from '../tools/milliSeconds';
-import { RemainingTime } from '../tools/RemainingTime';
-import { triggerPromise } from '../tools/triggerPromise';
-import { ChangeServerConfig, getChangeServerConfig as getConfig } from './getClientConfig';
-import { getServerRotatorState as getState, setServerRotatorState as setState } from './getServerRotatorState';
+import {milliSeconds} from '../tools/milliSeconds';
+import {RemainingTime} from '../tools/RemainingTime';
+import {triggerPromise} from '../tools/triggerPromise';
+import {getChangeServerConfig as getConfig} from '../account/user/clientconfig/getClientConfig';
+import type {ChangeServerConfig} from '../account/user/clientconfig/storedClientConfig';
+import {getServerRotatorState as getState, setServerRotatorState as setState} from './getServerRotatorState';
 
 /**
  * This class manages the state and UI changes for the "Change Server" functionality for free users.

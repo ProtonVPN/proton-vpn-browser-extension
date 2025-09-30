@@ -289,6 +289,9 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"Systembenachrichtigungen bei Verbindungs- und Trennungsereignissen ausgeben."
 			],
+			"Enjoying Proton VPN?": [
+				"Gefällt dir Proton VPN?"
+			],
 			"Extra protection for people with advanced privacy needs": [
 				"Zusätzlicher Schutz für Personen mit fortgeschrittenen Privatsphäre-Anforderungen"
 			],
@@ -323,8 +326,14 @@
 			"Learn more": [
 				"Mehr erfahren"
 			],
+			"Leave a rating": [
+				"Bewerte uns"
+			],
 			"Logged out": [
 				"Abgemeldet"
+			],
+			"Not now": [
+				"Nicht jetzt"
 			],
 			"Open source VPN": [
 				"Open Source-VPN"
@@ -337,6 +346,9 @@
 			],
 			"Pin Proton VPN to your toolbar": [
 				"Hefte Proton VPN an deine Werkzeugleiste an"
+			],
+			"Please help us spread the word with a Web Store rating.": [
+				"Bitte hilf uns, indem du unseren Webshop bewertest."
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Drücke <b>Weiter</b> und anschließend <b>Zulassen</b> im Pop-up deines Browsers."
@@ -396,7 +408,7 @@
 				"Benutzer"
 			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
-				"VPN wird durch eine externe Software gesperrt.\n\nEinige Tools, wie Antivirenprogramme oder Proxys, können Proton VPN stören. Bitte deaktiviere sie und versuchen es erneut."
+				"VPN wird durch eine externe Software gesperrt.\n\nEinige Tools, wie Antivirenprogramme oder Proxys, können Proton VPN stören. Bitte deaktiviere sie und versuche es erneut."
 			],
 			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.": [
 				"VPN durch externe Software gesperrt: ${blockingSoftware}.\n\nEinige Tools, wie Antivirenprogramme oder Proxys, können Proton VPN stören. Du kannst versuchen, sie zu deaktivieren, um das zu bestätigen."

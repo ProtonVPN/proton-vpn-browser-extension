@@ -17,11 +17,11 @@ export class RemainingTime {
 	 * const r3 = RemainingTime.fromLastEvent(nextTimestamp, prevTimestamp) // started 1 minute ago
 	 * // r3 is equivalent to r2
 	 *
-	 * r1.remainingTime // 60000
+	 * r1.getRemainingTime() // 60000
 	 * r1.totalDuration // 60000
 	 * r1.getProportion() // 0
 	 *
-	 * r2.remainingTime // 60000
+	 * r2.getRemainingTime() // 60000
 	 * r2.totalDuration // 120000
 	 * r2.getProportion() // 0.5
 	 */
@@ -38,28 +38,33 @@ export class RemainingTime {
 		/** Timestamp [ms] of the last event. *Defaults to `Date.now()`.* */ lastEvent: number = Date.now(),
 	): RemainingTime {
 		const duration = nextEvent - lastEvent;
+
 		return new RemainingTime(nextEvent, duration);
 	}
 
 	/** *[ms]* */
-	public get remainingTime(): number {
-		return Math.max(0, this.nextEvent - Date.now());
+	public getRemainingTime(/** *[ms]* */ now = Date.now()): number {
+		return Math.max(0, this.nextEvent - now);
 	}
 
 	/** Returns `false` after the event is expired. */
-	public isPending(): boolean {
-		return this.remainingTime > 0;
+	public isPending(/** *[ms]* */ now = Date.now()): boolean {
+		return this.getRemainingTime(now) > 0;
 	}
 
 	/** Returns proportion of the remaining time over a given total, between 0 and 1. */
-	public getProportion(/** *[ms]* */ margin = 0, /** *[ms]* */ total: number = this.totalDuration): number {
-		return clamp(0, (this.remainingTime - margin) / total, 1);
+	public getProportion(
+		/** *[ms]* */ margin = 0,
+		/** *[ms]* */ now = Date.now(),
+		/** *[ms]* */ total: number = this.totalDuration,
+	): number {
+		return clamp(0, (this.getRemainingTime(now) - margin) / total, 1);
 	}
 
 	/** Returns remaining time as digits *[mm:ss]*. */
-	public getChronometer() {
-		const minutes = Math.trunc(milliSeconds.toMinutes(this.remainingTime));
-		const seconds = Math.round(milliSeconds.toSeconds(this.remainingTime % milliSeconds.fromMinutes(1)));
+	public getChronometer(/** *[ms]* */ now = Date.now()) {
+		const minutes = Math.trunc(milliSeconds.toMinutes(this.getRemainingTime(now)));
+		const seconds = Math.round(milliSeconds.toSeconds(this.getRemainingTime(now) % milliSeconds.fromMinutes(1)));
 
 		return `${this.twoDigit(minutes)}:${this.twoDigit(seconds)}` as const;
 	}

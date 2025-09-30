@@ -12,7 +12,7 @@ import {initAuthInterceptor} from './vpn/initAuthInterceptor';
 import {initSentry} from './tools/sentry';
 import {setProxyToWaiterHost} from './tools/proxy';
 
-setProxyToWaiterHost();
+triggerPromise(setProxyToWaiterHost());
 initSentry();
 initAuthInterceptor();
 initMessaging();

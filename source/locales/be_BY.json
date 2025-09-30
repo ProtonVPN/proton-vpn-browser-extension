@@ -295,6 +295,9 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"Адпраўляць сістэмныя апавяшчэнні пры падключэнні і адключэнні."
 			],
+			"Enjoying Proton VPN?": [
+				"Падабаецца Proton VPN?"
+			],
 			"Extra protection for people with advanced privacy needs": [
 				"Дадатковая абарона для карыстальнікаў з адмысловымі патрабаваннямі прыватнасці"
 			],
@@ -331,8 +334,14 @@
 			"Learn more": [
 				"Даведацца больш"
 			],
+			"Leave a rating": [
+				"Пакінуць адзнаку"
+			],
 			"Logged out": [
 				"Вы выйшлі"
+			],
+			"Not now": [
+				"Не цяпер"
 			],
 			"Open source VPN": [
 				"VPN з адкрытым зыходным кодам"
@@ -345,6 +354,9 @@
 			],
 			"Pin Proton VPN to your toolbar": [
 				"Замацаваць Proton VPN на панэлі інструментаў"
+			],
+			"Please help us spread the word with a Web Store rating.": [
+				"Дапамажыце нам распаўсюдзіць інфармацыю з дапамогай ацэнкі ў вэб-краме"
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Націсніце <b>Далей</b>, а потым <b>Дазволіць</b> ва ўсплывальным акне вашага браўзера."
@@ -407,7 +419,7 @@
 				"VPN заблакіраваны знешнім праграмным забеспячэннем.\n\nНекаторыя інструменты, такія як антывірусы або проксі, могуць перашкаджаць працы Proton VPN. Адключыце іх і паспрабуйце яшчэ раз."
 			],
 			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.": [
-				"VPN заблакіраваны з дапамогай знешняга праграмннага забеспячэння: ${blockingSoftware}.\n\nНекаторыя інструменты, такія як антывірусы або проксі, могуць перашкаджаць працы Proton VPN. Паспрабуйце адключыць іх, каб пацвердзіць свае дзеянні."
+				"VPN заблакіраваны з дапамогай знешняга праграмнага забеспячэння: ${blockingSoftware}.\n\nНекаторыя інструменты, такія як антывірусы або проксі, могуць перашкаджаць працы Proton VPN. Паспрабуйце адключыць іх, каб пацвердзіць свае дзеянні."
 			],
 			"VPN Features": [
 				"Функцыі VPN"

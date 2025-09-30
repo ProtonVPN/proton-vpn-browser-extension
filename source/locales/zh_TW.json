@@ -132,7 +132,7 @@
 		},
 		"Error": {
 			"${countries} country": [
-				"${countries} 個國家"
+				"${countries} 國家"
 			],
 			"${serversCount} secure server": [
 				"${serversCount} 臺安全防護伺服器"

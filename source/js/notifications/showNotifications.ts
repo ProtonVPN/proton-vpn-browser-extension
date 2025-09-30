@@ -44,9 +44,9 @@ export const showNotifications = async () => {
 		.map(notification => `
 			<a href="${notification.Offer.URL}" title="${notification.Offer.Label}">
 				${notification.Offer.Icon
-			? `<img src="${notification.Offer.Icon}" alt="${notification.Offer.Label}" width="24" height="24" />`
-			: notification.Offer.Label || c('Label').t`Offer`
-		}
+					? `<img src="${notification.Offer.Icon}" alt="${notification.Offer.Label}" width="24" height="24" />`
+					: notification.Offer.Label || c('Label').t`Offer`
+				}
 			</a>
 		`)
 		.join('');

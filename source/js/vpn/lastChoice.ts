@@ -1,7 +1,7 @@
 import {CacheWrappedValue, Storage, storage} from '../tools/storage';
 import {triggerPromise} from '../tools/triggerPromise';
-import {Logical} from './Logical';
 import {Feature} from './Feature';
+import type {Logical} from './Logical';
 
 export type Choice = {
 	connected: boolean;

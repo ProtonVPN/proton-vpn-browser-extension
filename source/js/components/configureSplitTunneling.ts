@@ -1,5 +1,5 @@
 import {StoredWebsiteExclusionList} from '../vpn/WebsiteExclusion';
-import {getTabs} from '../tools/getTabs';
+import {getCurrentTab} from '../tools/getCurrentTab';
 import {CacheItem} from '../tools/storage';
 import {triggerPromise} from '../tools/triggerPromise';
 import {escapeHtml} from '../tools/escapeHtml';
@@ -66,11 +66,8 @@ export const configureSplitTunneling = (
 	const input = area.querySelector<HTMLInputElement>('.split-tunneling-exclusion') as HTMLInputElement;
 
 	const seedWithCurrentDomain = () => {
-		getTabs().query({
-			active: true,
-			currentWindow: true,
-		}).then(tabs => {
-			const domain = tabs[0]?.url && new URL(tabs[0].url).hostname;
+		getCurrentTab().then(tab => {
+			const domain = tab?.url && new URL(tab.url).hostname;
 
 			if (domain) {
 				const tld = domain.replace(/^.*\.([^.]+\.[a-z]+)$/, '$1');

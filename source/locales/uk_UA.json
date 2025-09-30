@@ -211,6 +211,9 @@
 			"About free connections": [
 				"Про безплатні з'єднання"
 			],
+			"Access over 13,000 secure servers in over 120 countries": [
+				"Доступ до понад 13 000 захищених серверів у 120 країнах"
+			],
 			"Access Proton VPN via this icon": [
 				"Відкрийте Proton VPN цією піктограмою"
 			],
@@ -292,6 +295,9 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"Надсилати системні сповіщення про події з'єднання та від'єднання."
 			],
+			"Enjoying Proton VPN?": [
+				"Насолоджуєтеся Proton VPN?"
+			],
 			"Extra protection for people with advanced privacy needs": [
 				"Розширений захист для тих, хто потребує додаткової приватності"
 			],
@@ -328,8 +334,14 @@
 			"Learn more": [
 				"Докладніше"
 			],
+			"Leave a rating": [
+				"Залишити оцінку"
+			],
 			"Logged out": [
 				"Ви вийшли"
+			],
+			"Not now": [
+				"Не зараз"
 			],
 			"Open source VPN": [
 				"VPN із відкритим програмним кодом"
@@ -342,6 +354,9 @@
 			],
 			"Pin Proton VPN to your toolbar": [
 				"Прикріпіть Proton VPN до панелі інструментів"
+			],
+			"Please help us spread the word with a Web Store rating.": [
+				"Будь ласка, допоможіть нам поширити інформацію, поставивши оцінку у вебмагазині."
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Натисніть <b>Далі</b>, потім натисніть <b>Дозволити</b> у діалоговому повідомленні браузера."

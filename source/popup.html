@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-    <title></title>
-    <link href="css/popup.css" type="text/css" rel="stylesheet" />
+	<meta charset="utf-8" />
+	<title></title>
+	<link href="css/popup.css" type="text/css" rel="stylesheet" />
 </head>
 <body class="main-modal">
-	<!--<iframe id="account-frame"></iframe>-->
 	<div class="main-area">
 		<div id="spinner" class="spinner">
 			<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
@@ -69,6 +68,9 @@
 			</header>
 			<main class="central-view">
 				<nav class="sidebar">
+
+					<!-- top section -->
+
 					<div>
 						<button class="side-button active" data-go-to="world" title="Countries" aria-label="Countries" data-context="Menu">
 							<svg viewBox="0 0 24 24">
@@ -83,6 +85,9 @@
 							</svg>
 						</button>
 					</div>
+
+					<!-- bottom section -->
+
 					<div>
 						<button class="side-button" data-go-to="help" title="Help" aria-label="Help" data-context="Menu">
 							<svg viewBox="0 0 24 24">
@@ -96,7 +101,9 @@
 							</svg>
 						</button>
 					</div>
+
 				</nav>
+
 				<div class="page-view" tabindex="-1">
 					<div data-page="world" class="selected-page">
 						<div id="status">
@@ -167,6 +174,8 @@
 							<div></div>
 						</div>
 					</div>
+
+
 					<div data-page="region">
 						<h1 class="page-title flex items-center mt-small">
 							<button title="Back" class="back-button button-light-hover"><svg class="sm-icon" aria-label="Back" viewBox="0 0 24 24" fill="currentColor">
@@ -176,6 +185,8 @@
 						</h1>
 						<div class="region-content"></div>
 					</div>
+
+
 					<div data-page="features">
 						<h1 class="page-title" data-trans>VPN Features</h1>
 
@@ -285,6 +296,8 @@
 							</div>
 						</div>
 					</div>
+
+
 					<div data-page="split-tunneling">
 						<h1 class="page-title flex items-center mt-small">
 							<button data-go-to="features" title="Back" class="back-button button-light-hover"><svg class="sm-icon" aria-label="Back" viewBox="0 0 24 24" fill="currentColor">
@@ -319,6 +332,8 @@
 							<div class="exclusions-list"></div>
 						</div>
 					</div>
+
+
 					<div data-page="help">
 						<h1 class="page-title" data-trans>Help</h1>
 
@@ -372,6 +387,8 @@
 							</div>
 						</div>
 					</div>
+
+
 					<div data-page="settings">
 						<div class="scrollable-view">
 							<h1 class="page-title" data-trans data-context="Label">Settings</h1>
@@ -454,6 +471,7 @@
 						</div>
 					</div>
 
+
 					<div data-page="upgrade">
 						<div class="page-header gradient-background">
 							<button aria-label="Close" data-go-to="world" class="corner-button small-button">
@@ -511,6 +529,7 @@
 						<div><button class="primary-button open-upgrade-page" data-trans>Upgrade</button></div>
 					</div>
 
+
 					<div data-page="server-change-remaining-time">
 						<div class="page-header">
 							<button aria-label="Close" data-go-to="world" class="corner-button small-button">
@@ -542,6 +561,7 @@
 							>Upgrade</button></div>
 						</div>
 					</div>
+
 
 					<div data-page="about-free-connections" class="about-free-connections">
 						<div class="page-header">
@@ -602,10 +622,52 @@
 						</div>
 					</div>
 				</div>
+
+
+				<aside id="modals">
+
+					<!--
+					See:
+						- `modal.ts` for more details, namely how buttons are set with `configureModalButtons()`.
+						- `#modals` scope in `popup.scss` for more available pre-styled classes.
+
+					Note, use:
+						- `<dialog>` elements to create modals.
+						- `data-modal-default-*` pre-defined attributes to add default behaviors:
+							- `data-modal-default-close` attribute on any element to attach click handler which closes the modal.
+							- `data-modal-default-close-outside` attribute on the `<dialog>` element to dismiss the modal when clicking outside of it.
+						- Add any arbitrary `data-<unique-id>-*` attributes as necessary. See id="rate-us" below and `configureRatingModalButtons()` in `ratingModal.ts` as an example.
+
+					Example:
+					<dialog id="<unique-id>" data-modal-default-close-outside>
+						<main>
+							<div class="title" data-trans>Title</div>
+							<div class="sub-title" data-trans>sub title</div>
+						</main>
+						<footer>
+							<button class="primary-button" data-trans>Primary</button>
+							<button data-modal-default-close class="tertiary-button" data-trans>Tertiary</button>
+						</footer>
+					</dialog>
+					 -->
+
+					<dialog id="rate-us" >
+						<img src="img/rate-us.svg" alt="5 stars floating over Proton VPN application button">
+						<main>
+							<div class="title" data-trans>Enjoying Proton VPN?</div>
+							<div class="sub-title" data-trans>Please help us spread the word with a Web Store rating.</div>
+						</main>
+						<footer>
+							<button data-modal-default-close data-rate-us-click id="store-button" class="primary-button" data-trans>Leave a rating</button>
+							<button data-modal-default-close data-rate-us-dismiss id="not-now-button" class="tertiary-button" data-trans>Not now</button>
+						</footer>
+					</dialog>
+
+				</aside>
 			</main>
 		</div>
 	</div>
-    <script src="js/browser-polyfill.min.js"></script>
-    <script src="js/popup.js"></script>
+	<script src="js/browser-polyfill.min.js"></script>
+	<script src="js/popup.js"></script>
 </body>
 </html>

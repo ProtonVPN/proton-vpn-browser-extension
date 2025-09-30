@@ -1,6 +1,7 @@
 // @ts-ignore
 import {getPluralFunc as getPluralFn} from 'plural-forms/minimal-safe';
 import {each} from './each';
+import {getCountryCode} from './getCountryCode';
 
 interface TranslationConfig {
 	headers?: Record<string, string>;
@@ -228,6 +229,8 @@ export const getQuerySeed = (data: DOMStringMap | undefined): string[] => {
 };
 
 const getLocaleForLanguage = (language: string): string => {
+	language ||= 'en';
+
 	return ({
 		be: 'be_BY',
 		ca: 'ca_ES',
@@ -266,8 +269,7 @@ const getLocale = (): string => {
 };
 
 export const getCountryName = (country: string, language?: string): string | undefined => {
-	country = country.toUpperCase();
-	country = {UK: 'GB'}[country] || country;
+	country = getCountryCode(country);
 	const languages = [`${language || getLanguage()}`];
 	const shortName = new Intl.DisplayNames(languages, {type: 'region', style: 'short'}).of(country);
 

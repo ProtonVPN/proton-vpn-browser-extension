@@ -286,6 +286,9 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"Tampilkan notifikasi sistem pada saat terhubung atau terputus."
 			],
+			"Enjoying Proton VPN?": [
+				"Menikmati Proton VPN?"
+			],
 			"Extra protection for people with advanced privacy needs": [
 				"Perlindungan ekstra bagi mereka yang membutuhkan fitur privasi tingkat lanjut"
 			],
@@ -319,8 +322,14 @@
 			"Learn more": [
 				"Pelajari lebih lanjut"
 			],
+			"Leave a rating": [
+				"Berikan rating"
+			],
 			"Logged out": [
 				"Keluar"
+			],
+			"Not now": [
+				"Tidak sekarang"
 			],
 			"Open source VPN": [
 				"VPN open source"
@@ -333,6 +342,9 @@
 			],
 			"Pin Proton VPN to your toolbar": [
 				"Sematkan Proton VPN ke toolbar Anda"
+			],
+			"Please help us spread the word with a Web Store rating.": [
+				"Mohon bantu kami membuat Proton VPN lebih dikenal dengan memberikan rating di Web Store."
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Klik tombol <b>Selanjutnya</b> di bawah ini, lalu pilih <b>Izinkan</b> pada jendela pop-up yang muncul pada browser Anda."

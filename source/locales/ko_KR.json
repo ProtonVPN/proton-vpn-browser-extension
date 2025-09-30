@@ -224,7 +224,7 @@
 				"다음 국가에서 자동 선택됨:"
 			],
 			"Automatically reconnect to Proton VPN when you open your browser.": [
-				"브라우저를 열 때 자동으로 Proton VPN에 재연결하세요."
+				"브라우저를 열 때 자동으로 Proton VPN에 재연결합니다."
 			],
 			"Back": [
 				"이전"
@@ -266,7 +266,7 @@
 				"충돌 보고서는 버그를 수정하고 방화벽을 감지하며 VPN 차단을 방지하는 데 도움이 됩니다."
 			],
 			"Disable VPN for selected websites.": [
-				"선택한 웹사이트의 VPN 비활성화"
+				"선택한 웹사이트에 접속시 VPN을 비활성화합니다."
 			],
 			"Disconnected": [
 				"연결 해제됨"
@@ -284,10 +284,10 @@
 				"연결이 끊겼습니다. 설정이 ${newProxyName}(으)로 재정의되었습니다."
 			],
 			"Emit system notifications on connection and disconnection events.": [
-				"연결되거나 연결이 끊겼을때 시스템 알림을 받아보세요."
+				"연결되거나 연결이 끊겼을때 시스템 알림을 받습니다."
 			],
 			"Extra protection for people with advanced privacy needs": [
-				"향상된 프라이버시가 필요한 사용자를 위한 추가적인 보호"
+				"향상된 프라이버시가 필요한 사용자를 위한 추가적인 보호를 제공합니다."
 			],
 			"Fastest free server": [
 				"가장 빠른 무료 서버"
@@ -296,7 +296,7 @@
 				"최상의 Proton VPN 사용 환경을 누리려면 다음 간단한 단계를 따르세요"
 			],
 			"For example, news.example.com is a subdomain of example.com.": [
-				"예를 들자면 news.example.com은 example.com의 하위 도메인입니다."
+				"예로, news.example.com은 example.com의 하위 도메인입니다."
 			],
 			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
 				"무료 서버 국가 (<span id=\"free-server-countries-count\">0</span>)"
@@ -377,7 +377,7 @@
 				"다음 로그인 하기 위해 Proton VPN 아이콘을 클릭하세요."
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
-				"이러한 통계에는 IP 주소가 포함되어 있지 않으며 귀하를 식별하는 데 사용할 수 없습니다. 이 정보를 제3자에게 공유하지 않습니다"
+				"이러한 통계에는 IP 주소가 포함되어 있지 않으며 사용자 식별에 사용할 수 없습니다. 이 정보는 제3자에게 공유되지 않습니다."
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"시작하려면, 브라우저의 VPN 권한 허용이 필요합니다."
@@ -481,7 +481,7 @@
 				"을(를) 통해"
 			],
 			"Want to know more?": [
-				"더 자세히 알아보고 싶은가요?"
+				"더 자세히 알아보고 싶으시다면?"
 			],
 			"WebRTC leak protection": [
 				"WebRTC 누출 방지"

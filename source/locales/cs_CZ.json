@@ -295,6 +295,9 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"Vysílat systémová upozornění při událostech připojení a odpojení."
 			],
+			"Enjoying Proton VPN?": [
+				"Spokojeni s Proton VPN?"
+			],
 			"Extra protection for people with advanced privacy needs": [
 				"Dodatečná ochrana pro lidi s vyššími nároky na ochranu soukromí"
 			],
@@ -331,8 +334,14 @@
 			"Learn more": [
 				"Zjistěte více"
 			],
+			"Leave a rating": [
+				"Přidejte hodnocení"
+			],
 			"Logged out": [
 				"Odhlášeno"
+			],
+			"Not now": [
+				"Nyní ne"
 			],
 			"Open source VPN": [
 				"VPN s otevřeným zdrojovým kódem"
@@ -345,6 +354,9 @@
 			],
 			"Pin Proton VPN to your toolbar": [
 				"Připnout Proton VPN k vašemu panelu nástrojů"
+			],
+			"Please help us spread the word with a Web Store rating.": [
+				"Prosím, pomozte nám šířit povědomí hodnocením ve webovém obchodě."
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Stiskněte <b>Další</b>, pak klikněte na <b>Povolit</b> ve vyskakovacím okně vašeho prohlížeče."

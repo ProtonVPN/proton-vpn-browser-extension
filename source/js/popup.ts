@@ -10,7 +10,8 @@ import {
 	fetchTranslations,
 	getCountryName,
 	getCountryNameOrCode,
-	getHashSeed, getQuerySeed,
+	getHashSeed,
+	getQuerySeed,
 	getTranslation,
 	translateArea,
 } from './tools/translate';
@@ -87,6 +88,9 @@ import {ServerRotator} from './vpn/ServerRotator';
 import {configureGoToButtons} from './components/goToButton';
 import {updateAccessSentenceWithCounts} from './components/accessSentence';
 import {configureLinks, setNewTabLinkTitle} from './components/links';
+import {configureModalButtons} from './components/modals/modals';
+import {configureRatingModalButtons, maybeShowRatingModal} from './components/modals/ratingModal';
+import {setReviewInfoStateOnConnectAction} from './vpn/reviewInfo';
 
 const state = {
 	connected: false,
@@ -462,8 +466,7 @@ const start = async () => {
 				const logical = getLogical?.();
 
 				if (!logical) {
-					console.log('clicked on', button, event);
-					throw new Error('Missconfigured server. Cannot find the selected logical.');
+					throw new Error('Misconfigured server. Cannot find the selected logical.');
 				}
 
 				setLastChoiceWithCurrentOptions({
@@ -1065,7 +1068,7 @@ const start = async () => {
 		const server = pickServerInLogical(logical);
 
 		if (!server) {
-			throw new Error('Missconfigured server. Cannot find an entry for this server.');
+			throw new Error('Misconfigured server. Cannot find an entry for this server.');
 		}
 
 		try {
@@ -1087,6 +1090,8 @@ const start = async () => {
 				user,
 				bypassList: getBypassList(userTier, splitTunneling.value),
 			});
+			await setReviewInfoStateOnConnectAction();
+			maybeShowRatingModal(user);
 		} catch (e) {
 			setError(e as Error);
 		}
@@ -1232,7 +1237,7 @@ const start = async () => {
 		});
 	});
 
-	const goTo = (page: string): void => {
+	function goTo(page: string): void {
 		if (page !== 'region') {
 			currentRegionState = undefined;
 
@@ -1358,6 +1363,8 @@ const start = async () => {
 	}
 
 	configureButtons();
+	configureModalButtons();
+	configureRatingModalButtons();
 
 	watchBroadcastMessages({
 		logicalUpdate(logicalsInput: Logical[]) {
@@ -1424,6 +1431,8 @@ const start = async () => {
 		(global as any).logicalMaxTier = newValue;
 		await start();
 	});
+
+	maybeShowRatingModal(user);
 };
 
 triggerPromise(start());

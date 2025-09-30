@@ -292,6 +292,9 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"Emitere notificări de sistem privind evenimentele de conectare și deconectare."
 			],
+			"Enjoying Proton VPN?": [
+				"Vă place Proton VPN?"
+			],
 			"Extra protection for people with advanced privacy needs": [
 				"Protecție suplimentară pentru cei care necesită intimitate sporită."
 			],
@@ -327,8 +330,14 @@
 			"Learn more": [
 				"Detalii"
 			],
+			"Leave a rating": [
+				"Lăsați o evaluare"
+			],
 			"Logged out": [
 				"Deconectat"
+			],
+			"Not now": [
+				"Nu acum"
 			],
 			"Open source VPN": [
 				"VPN cu sursa publică"
@@ -341,6 +350,9 @@
 			],
 			"Pin Proton VPN to your toolbar": [
 				"Fixați în bara de unelte Proton VPN"
+			],
+			"Please help us spread the word with a Web Store rating.": [
+				"Vă rugăm să ne ajutați să răspândim vestea prin intermediul unei evaluări în Magazinul Web."
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Apăsați pe <b>Înainte</b>, apoi clic pe <b>Permitere</b> în fereastra flotantă din navigator."

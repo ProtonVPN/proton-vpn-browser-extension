@@ -1,7 +1,8 @@
-import {catchPromise} from '../tools/triggerPromise';
+import {catchPromise, triggerPromise} from '../tools/triggerPromise';
 import {delay} from '../tools/delay';
 import {milliSeconds} from '../tools/milliSeconds';
 import {isSuccessfulResponse} from '../api';
+import {setReviewInfoStateLastSeenConnected} from '../vpn/reviewInfo';
 
 const lastForbiddenResponses: Record<string, number> = {};
 
@@ -35,6 +36,8 @@ const nudge = async (
 		if (!isSuccessfulResponse(response)) {
 			throw new Error(`${response.status || ''} ${response.statusText}`.trim());
 		}
+
+		triggerPromise(setReviewInfoStateLastSeenConnected());
 	} catch (e) {
 		if (tryNumber > 4) {
 			throw e;

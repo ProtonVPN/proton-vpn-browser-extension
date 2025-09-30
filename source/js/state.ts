@@ -1,5 +1,5 @@
 'use background';
-import {ConnectionState, ConnectionStateSwitch, ErrorDump, ProxyServer} from './vpn/ConnectionState';
+import {ConnectionState, ConnectionStateSwitch, asConnectionStateSwitch, ErrorDump, ProxyServer} from './vpn/ConnectionState';
 import {ApiError, fetchApi, isExcludedFromProxy} from './api';
 import {ProxyInfo} from './proxy';
 import {forgetCredentials} from './account/credentials/removeCredentials';
@@ -61,7 +61,9 @@ import {getLogicalCheckUpRefreshInterval} from './intervals';
 import {handleError} from './tools/sentry';
 import {guessTierFromCredentials} from './account/credentials/guessTierFromCredentials';
 import {mayReplaceCredentials} from './account/credentials/mayReplaceCredentials';
+import {forgetClientConfig} from './account/user/clientconfig/forgetClientConfig';
 import {transmitCredentialsToProxy} from './vpn/transmitCredentialsToProxy';
+import {setReviewInfoStateOnFailedConnection, setReviewInfoStateLastSeenConnected} from './vpn/reviewInfo';
 import OnAuthRequiredDetails = chrome.webRequest.OnAuthRequiredDetails;
 import OnRequestDetails = browser.proxy._OnRequestDetails;
 
@@ -127,10 +129,10 @@ export function getAuthCredentials(credentials: Credentials|undefined, requestDe
 }
 
 // **** Logged in and connected ****
-const onState = {
+const onState = asConnectionStateSwitch({
 	name: 'on',
 	initializedAt: 0,
-	proxyEnabled: false,
+	proxyEnabled: false as boolean,
 	refreshingState: false,
 
 	init(oldState?: ConnectionState): void {
@@ -186,6 +188,8 @@ const onState = {
 
 		this.proxyEnabled = true;
 		triggerPromise(this.checkLogicalIsUp(credentials));
+
+		setReviewInfoStateLastSeenConnected();
 
 		return true;
 	},
@@ -457,10 +461,10 @@ const onState = {
 			disconnect(currentState.data?.error || new Error('Connection timeout'));
 		}
 	},
-};
+});
 
 // **** Logged out state ****
-const loggedoutState = {
+const loggedoutState: ConnectionStateSwitch = {
 	name: 'loggedout',
 	initializedAt: 0,
 	async init(): Promise<void> {
@@ -482,7 +486,7 @@ const loggedoutState = {
 };
 
 // **** Logged in, but not connected ****
-const offState = {
+const offState: ConnectionStateSwitch = {
 	name: 'off',
 	initializedAt: 0,
 	async init(config?: ConnectionState): Promise<void> {
@@ -510,7 +514,7 @@ const offState = {
 	},
 	async refreshState(): Promise<void> {
 		if (currentState.data.server &&
-			(Date.now() - this.initializedAt) > milliSeconds.fromSeconds(3) &&
+			(Date.now() - this.initializedAt!) > milliSeconds.fromSeconds(3) &&
 			await hasProxy()
 		) {
 			await connect(currentState.data);
@@ -550,6 +554,7 @@ export function logOut(deleteSession: boolean) {
 		forgetCredentials();
 		forgetLogicals();
 		forgetLastChoice();
+		forgetClientConfig();
 
 		if (deleteSession && session?.uid) {
 			triggerPromise(fetchApi('auth', {method: 'DELETE'}, undefined, session));
@@ -564,6 +569,10 @@ export function logOut(deleteSession: boolean) {
 }
 
 export function disconnect(error?: ApiError | Error | ErrorDump | undefined) {
+	if (error) {
+		triggerPromise(setReviewInfoStateOnFailedConnection());
+	}
+
 	emitNotification(
 		'connected-server',
 		error

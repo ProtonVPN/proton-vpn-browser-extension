@@ -56,3 +56,10 @@ export interface ConnectionState extends StateDefinition {
 }
 
 export type ConnectionStateSwitch = StateDefinition & Partial<ConnectionState>;
+
+/**
+ * Type guard to ensure contextual type compliance while still allowing custom properties and their type inference.
+ */
+export function asConnectionStateSwitch<T extends Record<string, any>>(value: T & ConnectionStateSwitch): T & ConnectionStateSwitch {
+	return value;
+}

@@ -1,5 +1,5 @@
 module.exports = {
-	appVersion: '1.2.9',
+	appVersion: '1.2.10',
 	appId: 'jplgfhpmjnbigmhklmmbgecoobifkmpa',
 	baseDomainURL: 'https://account.proton.me',
 	tokenDuration: 1200, // seconds
@@ -29,11 +29,15 @@ module.exports = {
 	 */
 	torEnabled: false,
 	incompatibleSoftware: [
-		'Sophos',
-		'Zscaler',
+		'ANSES',
+		'Bitdefender',
+		'eblocker.org',
+		'ESET Endpoint Security',
 		'Kaspersky',
 		'McAfee',
-		'eblocker.org',
+		'opendns.com',
+		'Sophos',
+		'Zscaler',
 	],
 	sentry: 'https://5c4abb94f5a644b38cf8e3261dfad0e3@reports.proton.me/api/core/v4/reports/sentry/67'
 };

@@ -289,6 +289,9 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"Εκπέμπει ειδοποιήσεις συστήματος για συμβάντα σύνδεσης και αποσύνδεσης."
 			],
+			"Enjoying Proton VPN?": [
+				"Απολαμβάνετε το Proton VPN;"
+			],
 			"Extra protection for people with advanced privacy needs": [
 				"Επιπλέον προστασία για άτομα με προηγμένες ανάγκες απορρήτου"
 			],
@@ -323,8 +326,14 @@
 			"Learn more": [
 				"Μάθετε περισσότερα"
 			],
+			"Leave a rating": [
+				"Αφήστε μια αξιολόγηση"
+			],
 			"Logged out": [
 				"Αποσυνδεδεμένος"
+			],
+			"Not now": [
+				"Όχι τώρα"
 			],
 			"Open source VPN": [
 				"VPN ανοιχτού κώδικα"
@@ -337,6 +346,9 @@
 			],
 			"Pin Proton VPN to your toolbar": [
 				"Καρφιτσώστε το Proton VPN στη γραμμή εργαλείων σας"
+			],
+			"Please help us spread the word with a Web Store rating.": [
+				"Παρακαλούμε βοηθήστε μας να διαδώσουμε το μήνυμα με μια αξιολόγηση στο Ηλεκτρονικό Κατάστημα."
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Πατήστε <b>Επόμενο</b> και στη συνέχεια, κάντε κλικ στην επιλογή <b>Να επιτρέπεται</b> στο αναδυόμενο παράθυρο από το πρόγραμμα περιήγησής σας."

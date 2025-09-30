@@ -21,6 +21,13 @@
 	--circle-bg: #3B3747;
 	--circle-fg: #8A6EFF;
 	--bg-weak: #292733;
+
+	/* Generated and copied from figma AutoHTML plugin */
+	--background-background-norm: #16141c;
+	--border-border-norm: #4a4658;
+	--shadow-shadow-lifted-box-shadow: 0px 8px 24px 0px rgb(0, 0, 0, 0.48);
+	--text-norm: #fff;
+	--text-weak: #a7a4b5;
 }
 
 * {
@@ -335,7 +342,7 @@ input[type="checkbox"] {
 
 .sign-in-button {
 	margin: 20px;
-	max-width: 200px;
+	width: 280px;
 }
 
 .small-icon {
@@ -1699,6 +1706,106 @@ details {
 	opacity: 0.6;
 }
 
+#modals {
+	display: none; // flex
+	position: fixed;
+	inset: 0;
+	background-color: rgb(0, 0, 0, 0.5);
+
+	dialog[open],
+	&:has(dialog[open]) {
+		display: flex;
+	}
+
+	dialog[open]::backdrop {
+		background-color: rgb(0, 0, 0, 0.1)
+	}
+
+	dialog {
+		display: none; // flex
+		margin: auto;
+		position: absolute;
+		inset: 0;
+
+		&, & * {
+			box-sizing: border-box;
+		}
+
+		background: var(--background-background-norm, #16141c);
+		border-radius: 8px;
+		border-style: solid;
+		border-color: var(--border-border-norm, #4a4658);
+		border-width: 1px;
+		box-shadow: var(--shadow-shadow-lifted-box-shadow, 0 8px 24px 0 rgb(0, 0, 0, 0.48));
+		overflow: hidden;
+		padding: 16px;
+		flex-direction: column;
+		gap: 16px;
+		align-items: center;
+		justify-content: flex-start;
+		flex-shrink: 0;
+
+		/* Generic modal styling */
+
+		main, footer {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: flex-start;
+			align-self: stretch;
+			flex-shrink: 0;
+			gap: 4px;
+		}
+
+		/* Modal buttons */
+		footer {
+			gap: 8px;
+		}
+
+		.primary-button,
+		.tertiary-button {
+			font-size: 14px;
+			line-height: 20px;
+			padding: 8px 16px;
+			margin: 0;
+		}
+
+		.tertiary-button {
+			border-color: var(--border-border-norm, #4a4658);
+		}
+
+		.title, .sub-title {
+			text-align: center;
+			align-self: stretch;
+			color: var(--text-norm, #fff);
+			font-family: Inter-Bold, sans-serif;
+			font-size: 14px;
+			line-height: 20px;
+			font-weight: 700;
+		}
+
+		.sub-title {
+			color: var(--text-weak, #a7a4b5);
+			font-family: Inter-Regular, sans-serif;
+			font-size: 12px;
+			line-height: 16px;
+			font-weight: 400;
+		}
+
+		/* Specific modal styling */
+
+		&#rate-us {
+			> img {
+				flex-shrink: 0;
+				width: 64px;
+				height: 64px;
+				position: relative;
+				aspect-ratio: 1;
+			}
+		}
+	}
+}
+
 #sign-in-view {
 	$sig-in-width: max($body-width, min(300px, $page-width));
 
@@ -1742,10 +1849,6 @@ details {
 		.sign-up-button-box {
 			margin-top: -25px;
 			margin-bottom: 0;
-		}
-
-		button.sign-in-button {
-			min-width: 100%;
 		}
 
 		button.sign-up-button {

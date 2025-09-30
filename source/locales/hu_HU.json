@@ -23,6 +23,9 @@
 			"Cancel": [
 				"Mégsem"
 			],
+			"Change server": [
+				"Szerver váltása"
+			],
 			"Connect": [
 				"Kapcsolódás"
 			],
@@ -95,6 +98,9 @@
 			"Upgrade": [
 				"Nagyobb csomagra váltás"
 			],
+			"Upgrade to Proton VPN Plus": [
+				"Előfizetés a Proton VPN Plusra"
+			],
 			"Visit Support Center": [
 				"Súgóközpont megnyitása"
 			]
@@ -117,6 +123,11 @@
 		"Confirm": {
 			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
 				"Az alkalmazásból való kijelentkezés megszakítja az aktív VPN-kapcsolatot. Folytatja?"
+			]
+		},
+		"Description": {
+			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
+				"A Proton Free automatikusan a leggyorsabb elérhető ingyenes szerverhez csatlakozik az 5 ingyenes országunkból. Ez általában az Önhöz legközelebbi szerver lesz."
 			]
 		},
 		"Error": {
@@ -168,6 +179,9 @@
 			"Something went wrong. If the problem persists, please try to re-install the extension": [
 				"Hiba történt. Ha a probléma továbbra is fennáll, próbálja meg újratelepíteni a bővítményt"
 			],
+			"Unable to find appropriate server, try to logout and login again if it persists.": [
+				"Nem található megfelelő kiszolgáló, ha ez nem változik, próbáljon kijelentkezni és ismét bejelentkezni."
+			],
 			"Unable to load the list": [
 				"A lista betöltése sikertelen"
 			],
@@ -185,6 +199,12 @@
 			]
 		},
 		"Info": {
+			"About free connections": [
+				"Az ingyenes kapcsolatokról"
+			],
+			"Access over 13,000 secure servers in over 120 countries": [
+				"Férjen hozzá több mint 13.000 biztonságos szerverhez több mint 120 országban"
+			],
 			"Access Proton VPN via this icon": [
 				"A Proton VPN-t ezen az ikonon keresztül érheti el"
 			],
@@ -266,6 +286,9 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"Rendszerértesítések kapcsolódáskor és a kapcsolat bontásakor."
 			],
+			"Enjoying Proton VPN?": [
+				"Kedveli a Proton VPN-t?"
+			],
 			"Extra protection for people with advanced privacy needs": [
 				"Extra védelem a kiemelt adatvédelmi igényekkel rendelkezők számára"
 			],
@@ -277,6 +300,15 @@
 			],
 			"For example, news.example.com is a subdomain of example.com.": [
 				"Például a news.example.com aldomainje az example.com oldalnak"
+			],
+			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
+				"Ingyenes szerver országok (<span id=\"free-server-countries-count\">0</span>)"
+			],
+			"Get unlimited server changes with VPN Plus": [
+				"Tegyen szert korlátlan szerverváltásra a VPN Plus-szal"
+			],
+			"Get worldwide coverage with VPN Plus": [
+				"Világszintű lefedettség a VPN Plus-szal"
 			],
 			"Help": [
 				"Segítség"
@@ -291,8 +323,14 @@
 			"Learn more": [
 				"További információk"
 			],
+			"Leave a rating": [
+				"Értékelés"
+			],
 			"Logged out": [
 				"Kijelentkezve"
+			],
+			"Not now": [
+				"Most nem"
 			],
 			"Open source VPN": [
 				"Nyílt forráskódú VPN"
@@ -305,6 +343,9 @@
 			],
 			"Pin Proton VPN to your toolbar": [
 				"Rögzítse a Proton VPN-t az eszköztárához"
+			],
+			"Please help us spread the word with a Web Store rating.": [
+				"Kérjük, segítsen nekünk terjeszteni az üzenetet egy Web Áruház értékeléssel."
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Nyomja meg a <b>Tovább</b> gombot, majd kattintson a böngésző felugró ablakának <b>engedélyezésére</b>."
@@ -363,6 +404,12 @@
 			"User": [
 				"Felhasználó"
 			],
+			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
+				"A VPN-t külső szoftver blokkolja.\n\nNéhány eszköz, például vírusirtó vagy proxy, zavarhatja a Proton VPN működését. Tiltsa le őket, és próbálja újra."
+			],
+			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.": [
+				"A VPN-t külső szoftver blokkolja: ${blockingSoftware}.\\n\\nNéhány eszköz, például vírusirtó vagy proxy, zavarhatja a Proton VPN működését. Megpróbálhatja letiltani, hogy megerősítse."
+			],
 			"VPN Features": [
 				"VPN funkciók"
 			],
@@ -403,6 +450,9 @@
 			],
 			"Free": [
 				"Ingyenes"
+			],
+			"Free connections": [
+				"Ingyenes kapcsolatok"
 			],
 			"Free servers": [
 				"Ingyenes szerverek"

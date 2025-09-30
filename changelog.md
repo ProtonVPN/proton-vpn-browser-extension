@@ -1,3 +1,7 @@
+# 1.2.10
+
+- Add a button to go to extension review page
+
 # 1.2.9
 
 - Fix graphic bug in Split-Tunneling screen
