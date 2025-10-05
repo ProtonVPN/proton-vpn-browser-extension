@@ -1,12 +1,22 @@
-#!/usr/bin/env node
-const { spawn } = require("child_process");
-const target = (process.argv[2] || "all").toLowerCase();
-const run = (cmd, args) => new Promise((res, rej) => {
-  const p = spawn(cmd, args, { stdio: "inherit", shell: true });
-  p.on("close", c => c === 0 ? res() : rej(new Error(`${cmd} ${args.join(" ")} -> ${c}`)));
-});
-(async () => {
-  if (target === "chrome" || target === "all") await run("npm", ["run", "pack"]);
-  if (target === "firefox" || target === "all") await run("npm", ["run", "pack-ff"]);
-  console.log("✅ Repack finished.");
-})().catch(e => { console.error("❌ Repack failed:", e.message); process.exit(1); });
+/**
+ * Pequeno helper para recompactar o zip gerado em nome consistente.
+ * Uso: `node scripts/repack.js vpn-proton-chrome.zip`
+ */
+const fs = require('fs');
+const path = require('path');
+const src = process.argv[2];
+if (!src) {
+  console.error('Usage: node scripts/repack.js <zipname>');
+  process.exit(1);
+}
+if (!fs.existsSync(src)) {
+  console.error(`File not found: ${src}`);
+  process.exit(1);
+}
+const target = src.replace(/\.zip$/i, '').replace(/[^a-z0-9\-]+/ig, '-') + '.zip';
+if (target !== src) {
+  fs.copyFileSync(src, target);
+  console.log(`Repacked: ${src} -> ${target}`);
+} else {
+  console.log(`No rename needed: ${src}`);
+}
