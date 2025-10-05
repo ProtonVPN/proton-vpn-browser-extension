@@ -6,7 +6,7 @@
     "lint": "run-p lint:*",
     "lint:js": "eslint .",
     "lint:css": "stylelint source/**/*.scss",
-    "lint-fix": "run-p 'lint:* -- --fix'",
+    "lint-fix": "npm-run-all -p 'lint:js -- --fix' 'lint:css -- --fix'",
     "lint:fix": "npm run lint-fix",
     "test": "jest",
     "coverage": "jest --coverage",
@@ -30,6 +30,7 @@
   "devDependencies": {
     "@babel/core": "^7.17.5",
     "@babel/preset-env": "^7.16.11",
+    "@eslint/js": "^9.37.0",
     "@jest/globals": "^30.0.0",
     "@types/chrome": "^0.1.0",
     "@types/firefox-webext-browser": "^120.0.0",
@@ -45,14 +46,14 @@
     "css-minimizer-webpack-plugin": "^7.0.0",
     "daily-version": "^2.0.0",
     "decompress": "^4.2.1",
-    "eslint": "^9.20.1",
-    "@eslint/js": "^9.20.1",
+    "eslint": "^9.37.0",
     "glob": "^11.0.1",
+    "globals": "^16.4.0",
     "jest": "^30.0.0",
     "jest-chrome": "^0.8.0",
     "mini-css-extract-plugin": "^2.7.2",
     "node-html-parser": "^7.0.0",
-    "npm-run-all2": "^8.0.0",
+    "npm-run-all2": "^8.0.4",
     "sass": "^1.56.2",
     "sass-loader": "^16.0.0",
     "stylelint": "^16.16.0",
@@ -75,6 +76,8 @@
     "webextension-polyfill": "^0.12.0"
   },
   "overrides": {
-    "jest-chrome": { "jest": "$jest" }
+    "jest-chrome": {
+      "jest": "$jest"
+    }
   }
 }
