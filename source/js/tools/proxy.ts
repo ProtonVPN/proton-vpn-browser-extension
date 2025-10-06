@@ -20,7 +20,7 @@ interface FixedServersProxy {
 	mode: 'fixed_servers';
 	rules: {
 		singleProxy: {
-			scheme: string;
+			scheme: chrome.proxy.Scheme;
 			host: string;
 			port: number;
 		};
@@ -90,7 +90,7 @@ export const getFixedServerConfig = (
 	mode: 'fixed_servers',
 	rules: {
 		singleProxy: {
-			scheme,
+			scheme: scheme as chrome.proxy.Scheme as chrome.proxy.Scheme,
 			host,
 			port,
 		},
