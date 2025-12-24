@@ -77,7 +77,7 @@ export const getTranslation = (
 	);
 };
 
-class MessageId {
+export class MessageId {
 	constructor(
 		public readonly template: TemplateStringsArray,
 		public readonly args: any[],
@@ -235,6 +235,7 @@ const getLocaleForLanguage = (language: string): string => {
 		be: 'be_BY',
 		ca: 'ca_ES',
 		cs: 'cs_CZ',
+		da: 'da_DK',
 		el: 'el_GR',
 		en: 'en_US',
 		hi: 'hi_IN',
@@ -261,7 +262,7 @@ const getLocale = (): string => {
 
 	const language = sourceLanguage.replace('-', '_');
 
-	if (language.indexOf('_') !== -1) {
+	if (language.includes('_')) {
 		return language;
 	}
 

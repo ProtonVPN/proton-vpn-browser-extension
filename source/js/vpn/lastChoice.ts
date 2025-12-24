@@ -1,4 +1,4 @@
-import {CacheWrappedValue, Storage, storage} from '../tools/storage';
+import {type CacheWrappedValue, Storage, storage} from '../tools/storage';
 import {triggerPromise} from '../tools/triggerPromise';
 import {Feature} from './Feature';
 import type {Logical} from './Logical';

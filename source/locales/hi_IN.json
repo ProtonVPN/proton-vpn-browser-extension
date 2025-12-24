@@ -20,6 +20,9 @@
 			"Cancel": [
 				"रद्द करें"
 			],
+			"Change server": [
+				"सर्वर बदलें"
+			],
 			"Connect": [
 				"जुड़े"
 			],
@@ -118,6 +121,10 @@
 				"${countries} देश",
 				"${countries} देश"
 			],
+			"${serversCount} secure server": [
+				"${serversCount} सुरक्षित सर्वर",
+				"${serversCount} सुरक्षित सर्वर"
+			],
 			"${servers}+ secure server": [
 				"${servers}+ सुरक्षित सर्वर",
 				"${servers}+ सुरक्षित सर्वर"
@@ -184,9 +191,6 @@
 			"Allow VPN permissions": [
 				"वीपीएन अनुमतियां दें"
 			],
-			"Also exclude subdomains of this website": [
-				"इस वेबसाइट के उपडोमेन भी छोड़ दें"
-			],
 			"and more": [
 				"और बहुत सारे"
 			],
@@ -238,9 +242,6 @@
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"क्रेश रिपोर्ट हमें बग्स ठीक करने, फॉयरवॉल डिटेक्ट करने, और VPN ब्लॉक से बचने में मदद करता है।"
 			],
-			"Disable VPN for selected websites.": [
-				"वीपीएन चुने गए वेबसाइटों के लिए अक्षम करें।"
-			],
 			"Disconnected": [
 				"कनेक्शन टूटा"
 			],
@@ -256,8 +257,8 @@
 			"Follow these simple steps to get the best experience using Proton VPN": [
 				"Proton VPN से बेहतरीन अनुभव लेने के लिए इन आसान चीज़ो को करें"
 			],
-			"For example, news.example.com is a subdomain of example.com.": [
-				"उदाहरण के लिए, khabar.udaharan.in udaharan.in का उपडोमेन है।"
+			"Get worldwide coverage with VPN Plus": [
+				"VPN Plus के साथ वर्ल्डवाइड कवरेज पाएं"
 			],
 			"Help": [
 				"मदद"
@@ -274,6 +275,15 @@
 			],
 			"Logged out": [
 				"लॉगआउट हो गए"
+			],
+			"Not now": [
+				"अभी नहीं"
+			],
+			"Off": [
+				"बंद"
+			],
+			"On": [
+				"चालू"
 			],
 			"Open source VPN": [
 				"ओपन सोर्स VPN"
@@ -295,9 +305,6 @@
 			],
 			"Search": [
 				"खोजें"
-			],
-			"Select websites to exclude from your VPN connection.": [
-				"अपने वीपीएन कनेक्शन से वेबसाइट निकालने को चुनें"
 			],
 			"Share anonymous usage crash reports": [
 				"अनाम उपयोग क्रैश रिपोर्ट शेयर करें"
@@ -338,9 +345,6 @@
 			"VPN Features": [
 				"वीपीएन विशेषताएं"
 			],
-			"Websites that do not use VPN:": [
-				"वेबसाइट जो वीपीएन इस्तेमाल नहीं करते:"
-			],
 			"You're signed in": [
 				"आप साइनइन हैं"
 			]
@@ -375,6 +379,9 @@
 			],
 			"Free": [
 				"Free"
+			],
+			"Free connections": [
+				"फ्री कनेक्शन"
 			],
 			"Free servers": [
 				"Free सर्वर"

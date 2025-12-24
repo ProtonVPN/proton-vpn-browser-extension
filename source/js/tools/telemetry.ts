@@ -1,9 +1,9 @@
-import {Logical} from '../vpn/Logical';
+import type {Logical} from '../vpn/Logical';
 import {getCachedLocation} from '../account/getLocation';
 import {loadCachedUser} from '../account/user/loadCachedUser';
 import {fetchWithUserInfo} from '../account/fetchWithUserInfo';
 import {Feature} from '../vpn/Feature';
-import {Choice, getLastChoice} from '../vpn/lastChoice';
+import {type Choice, getLastChoice} from '../vpn/lastChoice';
 import {fetchApi, jsonRequest} from '../api';
 import {storage} from './storage';
 import {telemetryEnabled} from '../config';

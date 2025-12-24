@@ -1,5 +1,5 @@
-import {Logical} from './Logical';
-import {CountryItem} from '../components/countryList';
+import type {Logical} from './Logical';
+import type {CountryItem} from '../components/countryList';
 
 export const needUpgrade = (userTier: number, servers: Logical[] | CountryItem): boolean => {
 	if (('logicals' in servers) && servers.logicals?.length && !needUpgrade(userTier, servers.logicals)) {

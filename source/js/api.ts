@@ -1,9 +1,9 @@
-import {apiDomainsExclusion, baseAPIURL, getFullAppVersion, incompatibleSoftware} from './config';
+import {apiDomainsExclusion, baseAPIURL, getFullAppVersion, incompatibleSoftware, routes} from './config';
 import {readSession} from './account/readSession';
 import {getAuthHeaders} from './account/getAuthHeaders';
 import {Session} from './account/Session';
 import {refreshToken} from './account/refreshToken';
-import {isHostExcludedByIpMask} from './tools/ip';
+import {matchDomainList} from './tools/matchDomainList';
 import {c} from './tools/translate';
 import {milliSeconds} from './tools/milliSeconds';
 import {broadcastMessage, ExtensionUpdate} from './tools/broadcastMessage';
@@ -12,6 +12,7 @@ import {delay} from './tools/delay';
 import {warn} from './log/log';
 import {getBrowserSubType} from './tools/getBrowserSubType';
 import {handleError} from './tools/sentry';
+import {makeResponseReplayable} from './tools/makeResponseReplayable';
 import OnRequestDetails = browser.proxy._OnRequestDetails;
 
 export const jsonRequest = (method: string, body: any, headers: Record<string, string> = {}) => ({
@@ -30,6 +31,45 @@ export const jsonRequest = (method: string, body: any, headers: Record<string, s
  */
 const retryAfterPerRoute: Record<string, {time: number, response: Response}> = {};
 
+/**
+ * Return millisecond-timestamp.
+ */
+const getRetryAfterTimestamp = (
+	response: Response,
+	defaultNumberOfSeconds = 0,
+) => {
+	const retryAfterHeader = `${response.headers.get('Retry-After') || defaultNumberOfSeconds}`;
+
+	return Math.min(
+		// Let's have a maximum of 7 days in case server went crazy
+		Date.now() + milliSeconds.fromDays(7),
+		// If the Retry-After is all digit
+		/^\d+$/.test(retryAfterHeader)
+			// Then it's a number of seconds (as per https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After)
+			? Date.now() + milliSeconds.fromSeconds(Math.max(10, Number(retryAfterHeader)))
+			// Else, it's a date string
+			: (new Date(retryAfterHeader)).getTime(),
+	);
+}
+
+const routeRegExps = Object.values(routes).reduce((regExps, route) => {
+	regExps[route] = new RegExp(`^${route.replace(/\{[^}]+}/g, '[^/]+')}$`);
+
+	return regExps;
+}, {} as Record<string, RegExp>);
+
+const getRoute = (method: string, url: string) => {
+	const path = url.split('?')[0] as string;
+
+	for (let route of routes) {
+		if (routeRegExps[route]!.test(path)) {
+			return `${method} ${route}`;
+		}
+	}
+
+	return `${method} ${path}`;
+};
+
 export const fetchApi = async (
 	url: string,
 	init?: RequestInit,
@@ -37,14 +77,14 @@ export const fetchApi = async (
 	inputSession?: Session,
 	tryUntil?: number,
 ): Promise<Response> => {
-	const route = `${init?.method || 'GET'} ${url}`;
+	const route = getRoute(init?.method || 'GET', url);
 	const retryInfo = retryAfterPerRoute[route];
 
 	if (retryInfo) {
 		// Give the last received response if we are ordered not to retry before a certain time
 		if (retryInfo.time >= Date.now()) {
 			// We clone it so we can do .text() or .json() on it
-			return retryInfo.response.clone();
+			return retryInfo.response;
 		}
 
 		// If delay is over, we can forget
@@ -90,23 +130,13 @@ export const fetchApi = async (
 	// how many times we retry a given route in a given situation.
 	// But we will ensure here that whatever is the specific logic it can never
 	// retry sooner than what instructs the Retry-After sent by the server
-	if (isRetriableError(response)) {
-		const retryAfterHeader = `${response.headers.get('Retry-After') || '0'}`;
-		const retryAfter = Math.min(
-			// Let's have a maximum of 30 minutes in case server went crazy
-			Date.now() + milliSeconds.fromMinutes(30),
-			// If the Retry-After is all digit
-			/^\d+$/.test(retryAfterHeader)
-				// Then it's a number of seconds (as per https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After)
-				? Date.now() + milliSeconds.fromSeconds(Math.max(10, Number(retryAfterHeader)))
-				// Else, it's a date string
-				: (new Date(retryAfterHeader)).getTime(),
-		);
+	if (isRetriableResponse(response)) {
+		const retryAfter = getRetryAfterTimestamp(response);
 
 		if ((retryAfterPerRoute[route]?.time || 0) < retryAfter) {
 			retryAfterPerRoute[route] = {
 				time: retryAfter,
-				response: response.clone(),
+				response: makeResponseReplayable(response),
 			};
 		}
 	}
@@ -195,6 +225,8 @@ const getResponseContent = async <T = any>(response: Response): Promise<T | stri
 	}
 };
 
+const isObject = (value: any) => (typeof value) === 'object' && value !== null;
+
 export const fetchJson = async <T, D = any>(
 	url: string,
 	init?: RequestInit,
@@ -217,7 +249,7 @@ export const fetchJson = async <T, D = any>(
 		const error = (data?.Error ? data : new Error(data));
 		error.response = response;
 
-		if (error && typeof error === 'object') {
+		if (isObject(error)) {
 			error.httpStatus = response.status;
 		}
 
@@ -258,58 +290,42 @@ export const fetchJson = async <T, D = any>(
 	return buildResponseResult<T>(response, resultBuilder);
 };
 
+const isUrlExcluded = (
+	url: URL,
+	apiExclusion: boolean,
+)=> (apiDomainsExclusion.includes(url.hostname))
+	&& (apiExclusion || /^\/?(api\/)?vpn\/location(\?.*)?$/.test(url.pathname));
+
 export const isExcludedFromProxy = (
 	requestInfo: OnRequestDetails,
 	apiExclusion: boolean,
 	bypassList?: string[],
 ): boolean => {
 	const url = new URL(requestInfo.url);
-	const callHostname = url.hostname;
 
-	if (
-		(apiDomainsExclusion.indexOf(callHostname) !== -1) &&
-		(apiExclusion || /^\/?(api\/)?vpn\/location(\?.*)?$/.test(url.pathname))
-	) {
+	if (isUrlExcluded(url, apiExclusion)) {
 		return true;
 	}
 
-	return (bypassList || []).some(exclusion => {
-		if (exclusion.charAt(0) === '.') {
-			return (new RegExp(
-				exclusion.replace('.', '\\.') + '$'
-			)).test(callHostname);
-		}
+	return matchDomainList(bypassList || [], requestInfo, url.hostname);
+};
 
-		if (isHostExcludedByIpMask(callHostname, exclusion)) {
-			return true;
-		}
+export const isIncludedIntoProxy = (
+	requestInfo: OnRequestDetails,
+	apiExclusion: boolean,
+	includeOnlyList: string[] | undefined,
+): boolean => {
+	const url = new URL(requestInfo.url);
 
-		if (/[*\\/]/.test(exclusion)) {
-			if (exclusion.indexOf('/') !== -1) {
-				return (new RegExp(
-					'^' +
-					(exclusion.indexOf('//') === -1 ? '([^/]+\.)?' : '') +
-					exclusion
-						.replace('.', '\\.')
-						.replace('*', '.*')
-				)).test(exclusion.indexOf('://') === 0
-					? requestInfo.url.replace(/^[a-z]+(:\/\/)/, '$1')
-					: (exclusion.indexOf('//') === 0
-						? requestInfo.url.replace(/^[a-z]+:(\/\/)/, '$1')
-						: requestInfo.url
-					)
-				);
-			}
+	if (isUrlExcluded(url, apiExclusion)) {
+		return false;
+	}
 
-			return (new RegExp(
-				exclusion
-					.replace('.', '\\.')
-					.replace('*', '.*') + '$'
-			)).test(callHostname);
-		}
+	if (typeof includeOnlyList === 'undefined') {
+		return true;
+	}
 
-		return callHostname === exclusion;
-	});
+	return matchDomainList(includeOnlyList, requestInfo, url.hostname);
 };
 
 export enum ErrorActionCode {
@@ -358,15 +374,17 @@ export type InvalidTokenError<T = any> = UnauthorizedError<T, 401>;
 
 export const isSuccessfulResponse = (response: Response): boolean => response.status >= 200 && response.status < 300;
 
-export const isNetworkError = (error: any): boolean => ((typeof error) === 'object') && (
-	error?.name === 'NetworkError' ||
-	/^(NetworkError |(TypeError: )?Failed to fetch)/.test(error?.message || '')
+export const isNetworkError = (error: any): boolean => isObject(error) && (
+	error.name === 'NetworkError' ||
+	/^(NetworkError |(TypeError: )?Failed to fetch)/.test(error.message || '')
 );
 
-export const hasErrorHttpStatus = (error: any, httpStatus: number): error is ApiError => ((typeof error) === 'object') &&
-	(error?.httpStatus === httpStatus);
+export const hasErrorHttpStatus = (error: any, httpStatus: number): error is ApiError => isObject(error) &&
+	(error.httpStatus === httpStatus);
 
 export const isNotModified = (response: any): response is ApiError<any, 304, any> | {status: 304} => response?.status === 304 || hasErrorHttpStatus(response, 304);
+
+export const isNotFoundError = (error: any): error is UnauthorizedError => hasErrorHttpStatus(error, 404);
 
 export const isUnauthorizedError = (error: any): error is UnauthorizedError => hasErrorHttpStatus(error, 401);
 
@@ -376,11 +394,13 @@ export const isForbiddenError = (error: any): error is ForbiddenError => hasErro
 
 export const isDeviceLimitError = (error: any): error is ApiError<DeviceLimitErrorDetails> => error?.Details?.Type === 'DeviceLimit';
 
-export const needsLogout = (error: any): error is ApiError => ((typeof error) === 'object') &&
-	(error?.Code === 2028 || error?.Code === 2027);
+export const needsLogout = (error: any): error is ApiError => isObject(error) &&
+	(error.Code === 2028 || error.Code === 2027);
 
-export const needsUpdate = (error: any): error is ApiError => ((typeof error) === 'object') &&
-	(error?.Code === 5003);
+export const needsUpdate = (error: any): error is ApiError => isObject(error) &&
+	(error.Code === 5003);
 
-export const isRetriableError = (error: any): error is ApiError => ((typeof error) === 'object') &&
-	(error?.Code === 429 || error?.Code === 503);
+export const isRetriableResponse = (response: Response): boolean => response.status === 429;
+
+export const isRetriableError = (error: any): error is ApiError => isObject(error) &&
+	(error.Code === 429 || error.Code === 503);

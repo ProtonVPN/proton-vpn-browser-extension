@@ -1,3 +1,5 @@
+import {TransactionError} from './TransactionError';
+
 /** Browser Storage API https://developer.chrome.com/docs/extensions/reference/api/storage */
 export enum Storage {
 	/** Data is stored locally and cleared when the extension is removed. */
@@ -21,19 +23,44 @@ const getFallbackStorage = (storage: Storage) => storage === Storage.SESSION
 	? sessionStorage
 	: localStorage;
 
+const withoutPersistentStorage = <T>(
+	error: any,
+	callback: (lastStorage: Record<string, any>) => T
+) => {
+	const root = (
+		typeof window === 'undefined'
+			? (typeof global === 'undefined' ? undefined : global)
+			: window
+	) as any;
+
+	if (!root) {
+		throw error;
+	}
+
+	// Measure only 1% of the storage failure for trend analyze
+	if (Math.random() < 0.01) {
+		// Throw async so it does not block the fallback but can be collected by Sentry
+		setTimeout(() => {
+			throw error;
+		}, 1);
+	}
+
+	return callback(root.bexStorage || (root.bexStorage = {}));
+};
+
 export const storage = {
 	async getDefinedItem<T extends object>(
 		key: string,
 		defaultValue: T,
 		storage: Storage = defaultStorage,
 	): Promise<T> {
-		return (await this.getItem<T>(key, defaultValue, storage)) || defaultValue;
+		return (await this.getItem<T, T>(key, defaultValue, storage)) || defaultValue;
 	},
-	async getItem<T extends object>(
+	async getItem<T extends object, D extends T | undefined = T | undefined>(
 		key: string,
-		defaultValue: T | undefined = undefined,
+		defaultValue: D = undefined as D,
 		storage: Storage = defaultStorage,
-	): Promise<T | undefined> {
+	): Promise<T | D> {
 		const prefixedKey = storagePrefix + key;
 
 		try {
@@ -56,7 +83,7 @@ export const storage = {
 			}
 
 			return defaultValue;
-		} catch (e) {
+		} catch (firstError) {
 			const fallbackStorage = getFallbackStorage(storage);
 
 			try {
@@ -67,10 +94,11 @@ export const storage = {
 				}
 
 				return defaultValue;
-			} catch (e) {
-				const lastStorage = ((window as any).bexStorage || ((window as any).bexStorage = {}));
-
-				return lastStorage.hasOwnProperty(key) ? lastStorage[key] : defaultValue;
+			} catch (secondError) {
+				return withoutPersistentStorage(
+					firstError,
+					lastStorage => lastStorage.hasOwnProperty(key) ? lastStorage[key] : defaultValue,
+				);
 			}
 		}
 	},
@@ -83,13 +111,15 @@ export const storage = {
 
 		try {
 			await chrome.storage[storage].set({ [prefixedKey]: value });
-		} catch (e) {
+		} catch (firstError) {
 			const rawItem = JSON.stringify(value);
 
 			try {
 				getFallbackStorage(storage).setItem(prefixedKey, rawItem);
-			} catch (e) {
-				((window as any).bexStorage || ((window as any).bexStorage = {}))[key] = value;
+			} catch (secondError) {
+				withoutPersistentStorage(firstError, lastStorage => {
+					lastStorage[key] = value;
+				});
 			}
 		}
 	},
@@ -98,16 +128,19 @@ export const storage = {
 
 		try {
 			await chrome.storage[storage].remove(prefixedKey);
-		} catch (e) {
+		} catch (firstError) {
 			try {
 				getFallbackStorage(storage).removeItem(prefixedKey);
-			} catch (e) {
-				delete ((window as any).bexStorage || ((window as any).bexStorage = {}))[key];
+			} catch (secondError) {
+				withoutPersistentStorage(firstError, lastStorage => {
+					delete lastStorage[key];
+				});
 			}
 		}
 	},
 	item<T extends object>(key: string, storage: Storage = defaultStorage, valueKey: string = 'value') {
 		const self = this;
+		let transactionStart: number | undefined = undefined;
 
 		return {
 			key,
@@ -134,6 +167,22 @@ export const storage = {
 			},
 			remove(): Promise<void> {
 				return self.removeItem(key, storage);
+			},
+			async transaction<D extends T | undefined = T | undefined>(
+				callback: (value: T | D) => T | D | undefined,
+				defaultValue: D = undefined as D,
+			): Promise<void> {
+				if (transactionStart) {
+					throw new TransactionError();
+				}
+
+				transactionStart = Date.now();
+				const result = callback(await self.getItem<T, D>(key, defaultValue, storage));
+				await (typeof result === 'undefined'
+					? self.removeItem(key, storage)
+					: self.setItem(key, result, storage)
+				);
+				transactionStart = undefined;
 			},
 		};
 	},

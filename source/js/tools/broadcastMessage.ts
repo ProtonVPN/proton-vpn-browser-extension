@@ -24,7 +24,7 @@ export const broadcastMessage = <T extends BroadcastMessage = ChangeStateMessage
 ): void => {
 	sendMessageTo(type, data)
 		.catch((e: any) => {
-			if (`${e?.message || e}`.indexOf('Receiving end does not exist.') === -1) {
+			if (!`${e?.message || e}`.includes('Receiving end does not exist.')) {
 				error(e);
 			}
 		});

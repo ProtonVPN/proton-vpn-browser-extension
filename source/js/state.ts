@@ -1,7 +1,14 @@
 'use background';
-import {ConnectionState, ConnectionStateSwitch, asConnectionStateSwitch, ErrorDump, ProxyServer} from './vpn/ConnectionState';
-import {ApiError, fetchApi, isExcludedFromProxy} from './api';
-import {ProxyInfo} from './proxy';
+import {
+	asConnectionStateSwitch,
+	ConnectionState,
+	ConnectionStateSwitch,
+	ErrorDump,
+	ProxyServer,
+	SplitTunnelingConfig
+} from './vpn/ConnectionState';
+import {type ApiError, fetchApi, isExcludedFromProxy, isIncludedIntoProxy} from './api';
+import type {ProxyInfo} from './proxy';
 import {forgetCredentials} from './account/credentials/removeCredentials';
 import {
 	cancelNextCredentialFetch,
@@ -10,9 +17,9 @@ import {
 	loadCachedCredentials,
 	loadCredentials,
 } from './account/credentials/getConnectionCredentials';
-import {Credentials} from './account/credentials/Credentials';
+import type {Credentials} from './account/credentials/Credentials';
 import {setButton} from './tools/browserAction';
-import {clearProxy, getFixedServerConfig, hasProxy, setProxy} from './tools/proxy';
+import {clearProxy, getFixedServerConfig, getPacScript, hasProxy, setProxy} from './tools/proxy';
 import {
 	authCheck,
 	excludeApiFromProxy,
@@ -27,7 +34,7 @@ import {
 import {isPending, markAsPending, WithIdentifiableRequest} from './tools/proxyAuth';
 import {ProxyAuthentication} from './vpn/ProxyAuthentication';
 import {milliSeconds} from './tools/milliSeconds';
-import {Logical} from './vpn/Logical';
+import type {Logical} from './vpn/Logical';
 import {fetchWithUserInfo} from './account/fetchWithUserInfo';
 import {forgetLogicals, getLogicalById, getSortedLogicals, isLogicalUp} from './vpn/getLogicals';
 import {c} from './tools/translate';
@@ -44,13 +51,14 @@ import {forgetUser} from './account/user/forgetUser';
 import {forgetPmUser} from './account/user/forgetPmUser';
 import {notifyStateChange} from './tools/notifyStateChange';
 import {requireBestLogical} from './vpn/getLogical';
-import {storage} from './tools/storage';
 import {getErrorAsString} from './tools/getErrorMessage';
 import {connectedServer} from './vpn/connectedServer';
 import {Server} from './vpn/Server';
 import {SettingChange} from './messaging/MessageType';
 import {storedSplitTunneling} from './vpn/storedSplitTunneling';
-import {getBypassList} from './vpn/getBypassList';
+import {storedAutoConnect} from './vpn/storedAutoConnect';
+import {storedSecureCore} from './vpn/storedSecureCore';
+import {getSplitTunnelingConfig} from './vpn/getSplitTunnelingConfig';
 import {bind, debug as debug_, info as info_, warn as warn_} from './log/log';
 import {getBasicAuth} from './vpn/getBasicAuth';
 import {getAccessToken} from './account/getAccessToken';
@@ -63,7 +71,9 @@ import {guessTierFromCredentials} from './account/credentials/guessTierFromCrede
 import {mayReplaceCredentials} from './account/credentials/mayReplaceCredentials';
 import {forgetClientConfig} from './account/user/clientconfig/forgetClientConfig';
 import {transmitCredentialsToProxy} from './vpn/transmitCredentialsToProxy';
-import {setReviewInfoStateOnFailedConnection, setReviewInfoStateLastSeenConnected} from './vpn/reviewInfo';
+import {setReviewInfoStateLastSeenConnected, setReviewInfoStateOnFailedConnection} from './vpn/reviewInfo';
+import {getBypassList} from './vpn/getBypassList';
+import {getIncludeOnlyList} from './vpn/getIncludeOnlyList';
 import OnAuthRequiredDetails = chrome.webRequest.OnAuthRequiredDetails;
 import OnRequestDetails = browser.proxy._OnRequestDetails;
 
@@ -153,14 +163,14 @@ const onState = asConnectionStateSwitch({
 		const server = currentState?.data?.server;
 		info("Connect to", server);
 
-		return !!server && await this.setProxy(server, server.bypassList || []);
+		return !!server && await this.setProxy(server, server.splitTunneling || {});
 	},
 
 	async setOption(type: SettingChange, data: any): Promise<void> {
 		switch (type) {
 			case SettingChange.BYPASS_LIST:
 				if (currentState?.data?.server) {
-					currentState.data.server.bypassList = data;
+					currentState.data.server.splitTunneling = data;
 					await this.connectCurrentServer();
 				}
 
@@ -168,7 +178,7 @@ const onState = asConnectionStateSwitch({
 		}
 	},
 
-	async setProxy(server: ProxyServer, bypassList: string[] = []): Promise<boolean> {
+	async setProxy(server: ProxyServer, splitTunneling: SplitTunnelingConfig = {}): Promise<boolean> {
 		if (currentState.data?.starting) {
 			delete currentState.data.starting;
 		}
@@ -182,7 +192,7 @@ const onState = asConnectionStateSwitch({
 			return false;
 		}
 
-		if (!await setProxy(getFixedServerConfig(server.proxyHost, server.proxyPort, bypassList))) {
+		if (!await setProxy(getPacScript(getFixedServerConfig(server.proxyHost, server.proxyPort, splitTunneling)))) {
 			return false;
 		}
 
@@ -236,7 +246,7 @@ const onState = asConnectionStateSwitch({
 				'on',
 				`${c('Label').t`Protected`} - ${serverName}`,
 			);
-		}, Math.max(1, 200 - new Date().getTime() + time));
+		}, Math.max(1, 200 - Date.now() + time));
 	},
 
 	setCredentials(credentials: Credentials | undefined): void {
@@ -303,7 +313,7 @@ const onState = asConnectionStateSwitch({
 					const {server, logical} = await getAlternativeServer(id, guessTierFromCredentials(currentCredentials));
 
 					if (logical && server && initializedAt === getCurrentState().initializedAt) {
-						await connectLogical(logical, server, currentState?.data?.server?.bypassList);
+						await connectLogical(logical, server, currentState?.data?.server?.splitTunneling);
 					}
 				}
 			}
@@ -377,9 +387,19 @@ const onState = asConnectionStateSwitch({
 	handleProxyRequest(requestDetails: OnRequestDetails): ProxyInfo | Promise<ProxyInfo> {
 		// This is only to avoid proxy for localhost, but we might actually want to access the API via the proxy in normal cases
 		// We should extend this to prevent proxying for LAN addresses
-		const bypassList = [...proxyLocalNetworkExclusion, ...(currentState?.data?.server?.bypassList || [])];
+		const splitTunneling = currentState?.data?.server?.splitTunneling;
+		const bypassList = [
+			...proxyLocalNetworkExclusion,
+			...getBypassList(splitTunneling),
+		];
 
 		if (isExcludedFromProxy(requestDetails, excludeApiFromProxy, bypassList)) {
+			return { type: 'direct' };
+		}
+
+		const includeOnly = getIncludeOnlyList(splitTunneling);
+
+		if (!isIncludedIntoProxy(requestDetails, excludeApiFromProxy, includeOnly)) {
 			return { type: 'direct' };
 		}
 
@@ -570,7 +590,7 @@ export function logOut(deleteSession: boolean) {
 
 export function disconnect(error?: ApiError | Error | ErrorDump | undefined) {
 	if (error) {
-		triggerPromise(setReviewInfoStateOnFailedConnection());
+		setReviewInfoStateOnFailedConnection();
 	}
 
 	emitNotification(
@@ -584,7 +604,7 @@ export function disconnect(error?: ApiError | Error | ErrorDump | undefined) {
 	switchState(offState);
 }
 
-export async function connectLogical(logical: Logical, server: Server, bypassList?: string[]): Promise<void> {
+export async function connectLogical(logical: Logical, server: Server, splitTunneling?: SplitTunnelingConfig): Promise<void> {
 	const secureCoreLogical = (logical.Features & Feature.SECURE_CORE) !== 0;
 	const label = server.Label || '';
 
@@ -602,7 +622,7 @@ export async function connectLogical(logical: Logical, server: Server, bypassLis
 			proxyPort: secureCoreLogical
 				? (proxySecureCorePort || proxyPort)
 				: proxyPort + (!singleProxyPort && /^\d+$/.test(label) ? parseInt(label, 10) : 0),
-			bypassList,
+			splitTunneling,
 		},
 	});
 }
@@ -648,8 +668,6 @@ export function isCurrentStateConnected(): boolean {
 }
 
 export async function checkAutoConnect(): Promise<void> {
-	const storedAutoConnect = storage.item<{ value: boolean }>('auto-connect');
-	const storedSecureCore = storage.item<{value: boolean}>('secure-core');
 	const user = await getUser();
 
 	if (!user) {
@@ -696,7 +714,7 @@ export async function checkAutoConnect(): Promise<void> {
 			const server = pickServerInLogical(logical);
 
 			if (server?.Domain) {
-				await connectLogical(logical, server, getBypassList(userTier, splitTunneling.value));
+				await connectLogical(logical, server, getSplitTunnelingConfig(userTier, splitTunneling));
 			}
 		}
 	}

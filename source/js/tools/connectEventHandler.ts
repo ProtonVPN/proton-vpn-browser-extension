@@ -1,7 +1,7 @@
-import {Logical} from '../vpn/Logical';
+import type {Logical} from '../vpn/Logical';
 import {StateChange} from '../messaging/MessageType';
 import {Event, EventOutcome, getFeatureNames, MeasurementGroup, recordEvent} from './telemetry';
-import {ProxyServer} from '../vpn/ConnectionState';
+import type {ProxyServer} from '../vpn/ConnectionState';
 
 export const connectEventHandler = {
 	connecting: undefined as Logical|undefined,

@@ -11,7 +11,7 @@ const storedRecords = storage.item<CacheWrappedValue<any[][]>>('logs');
 storedRecords.get().then(previousRecords => {
 	if (previousRecords?.value) {
 		records.push(...previousRecords.value);
-		storedRecords.setValue(records);
+		triggerPromise(storedRecords.setValue(records));
 		recordReady = true;
 	}
 });
@@ -24,7 +24,7 @@ export const record = (...params: any[]) => {
 		records.splice(100, 1000);
 
 		if (recordReady) {
-			storedRecords.setValue(records);
+			triggerPromise(storedRecords.setValue(records));
 		}
 
 		return;

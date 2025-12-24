@@ -10,21 +10,20 @@ export const fetchWithUserInfo = async <T, D = any>(
 		MaxTier: maxTier,
 		Groups: groups,
 	} = (await loadCachedUser())?.user?.VPN || {};
-	init || (init = {});
 
 	if (typeof maxTier !== 'number') {
 		throw new Error(`Cannot fetch ${url} while not authenticated`);
 	}
 
-	Object.assign(
-		init.headers || (init.headers = {}),
-		{'x-pm-max-tier': `${maxTier}`}
-	);
+	init ||= {};
+	init.headers ||= {};
+
+	Object.assign(init.headers, {'x-pm-max-tier': `${maxTier}`});
 
 	if (groups) {
 		const groupCount = groups.length;
 		Object.assign(
-			init.headers || (init.headers = {}),
+			init.headers,
 			groupCount === 1
 				? {'x-pm-single-group': groups.join(',')}
 				: {'x-pm-group-count': groupCount}

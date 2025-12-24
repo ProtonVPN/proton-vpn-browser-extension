@@ -208,6 +208,9 @@
 			"<div class=\"weak-text\">\n<span data-trans>About free connections</span>\n<svg width=\"15\" height=\"14\" viewBox=\"0 0 15 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path \t\t\t\t\t\t\t\t\t\tfill-rule=\"evenodd\"\nclip-rule=\"evenodd\"\nd=\"M7.5 13C10.8137 13 13.5 10.3137 13.5 7C13.5 3.68629 10.8137 1 7.5 1C4.18629 1 1.5 3.68629 1.5 7C1.5 10.3137 4.18629 13 7.5 13ZM7.5 14C11.366 14 14.5 10.866 14.5 7C14.5 3.13401 11.366 0 7.5 0C3.63401 0 0.5 3.13401 0.5 7C0.5 10.866 3.63401 14 7.5 14ZM9.24995 10C9.24995 10.3038 9.00371 10.55 8.69995 10.55H7.69995H6.69995C6.39619 10.55 6.14995 10.3038 6.14995 10C6.14995 9.69624 6.39619 9.45 6.69995 9.45H7.14995L7.14995 6.55H6.99994C6.69618 6.55 6.44994 6.30376 6.44994 6C6.44994 5.69624 6.69618 5.45 6.99994 5.45H7.69995C7.84582 5.45 7.98571 5.50795 8.08886 5.61109C8.19201 5.71424 8.24995 5.85413 8.24995 6L8.24995 9.45H8.69995C9.00371 9.45 9.24995 9.69624 9.24995 10ZM7.5 4.40002C7.8866 4.40002 8.2 4.08662 8.2 3.70002C8.2 3.31343 7.8866 3.00002 7.5 3.00002C7.1134 3.00002 6.8 3.31343 6.8 3.70002C6.8 4.08662 7.1134 4.40002 7.5 4.40002Z\"\nfill=\"#A7A4B5\" ></path>\n</svg>\n</div>": [
 				"<div class=\"weak-text\">\n<span data-trans>O bezplatných připojeních</span>\n<svg width=\"15\" height=\"14\" viewBox=\"0 0 15 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path \t\t\t\t\t\t\t\t\t\tfill-rule=\"evenodd\"\nclip-rule=\"evenodd\"\nd=\"M7.5 13C10.8137 13 13.5 10.3137 13.5 7C13.5 3.68629 10.8137 1 7.5 1C4.18629 1 1.5 3.68629 1.5 7C1.5 10.3137 4.18629 13 7.5 13ZM7.5 14C11.366 14 14.5 10.866 14.5 7C14.5 3.13401 11.366 0 7.5 0C3.63401 0 0.5 3.13401 0.5 7C0.5 10.866 3.63401 14 7.5 14ZM9.24995 10C9.24995 10.3038 9.00371 10.55 8.69995 10.55H7.69995H6.69995C6.39619 10.55 6.14995 10.3038 6.14995 10C6.14995 9.69624 6.39619 9.45 6.69995 9.45H7.14995L7.14995 6.55H6.99994C6.69618 6.55 6.44994 6.30376 6.44994 6C6.44994 5.69624 6.69618 5.45 6.99994 5.45H7.69995C7.84582 5.45 7.98571 5.50795 8.08886 5.61109C8.19201 5.71424 8.24995 5.85413 8.24995 6L8.24995 9.45H8.69995C9.00371 9.45 9.24995 9.69624 9.24995 10ZM7.5 4.40002C7.8866 4.40002 8.2 4.08662 8.2 3.70002C8.2 3.31343 7.8866 3.00002 7.5 3.00002C7.1134 3.00002 6.8 3.31343 6.8 3.70002C6.8 4.08662 7.1134 4.40002 7.5 4.40002Z\"\nfill=\"#A7A4B5\" ></path>\n</svg>\n</div>"
 			],
+			"A subdomain URL includes a prefix before the main domain name. For example, account.proton.me is a subdomain of proton.me.": [
+				"URL subdomény obsahuje před hlavním názvem domény předponu. Např. account.proton.me je subdoména proton.me."
+			],
 			"About free connections": [
 				"O připojeních Free"
 			],
@@ -220,8 +223,8 @@
 			"Allow VPN permissions": [
 				"Povolit VPN oprávnění"
 			],
-			"Also exclude subdomains of this website": [
-				"Také vyloučit poddomény této webové stránky"
+			"Also add subdomains": [
+				"Také přidat subdomény"
 			],
 			"and more": [
 				"a další"
@@ -262,6 +265,12 @@
 			"Connected to ${name} in ${city}": [
 				"Připojeno k ${name} v ${city}"
 			],
+			"Connecting servers such as ${logical.Name} is not currently supported in the browser extension": [
+				"Připojení k serverům, jako je ${logical.Name}, není v současné době podporováno v rozšíření prohlížeče"
+			],
+			"Connecting to dedicated IPs such as ${logical.Name} is not currently supported in the browser extension": [
+				"Připojení k vyhrazeným IP adresám, jako je ${logical.Name}, není v současné době podporováno v rozšíření prohlížeče"
+			],
 			"Connecting...": [
 				"Připojování..."
 			],
@@ -274,8 +283,8 @@
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Hlášení o pádech nám pomáhají opravovat chyby, rozpoznat firewally a předcházet blokování VPN."
 			],
-			"Disable VPN for selected websites.": [
-				"Vypnout VPN pro vybrané stránky."
+			"Decide which websites are protected by VPN.": [
+				"Rozhodněte se, které webové stránky budou chráněny VPN."
 			],
 			"Disconnected": [
 				"Odpojeno"
@@ -298,6 +307,9 @@
 			"Enjoying Proton VPN?": [
 				"Spokojeni s Proton VPN?"
 			],
+			"Exclude mode": [
+				"Režim vyloučení"
+			],
 			"Extra protection for people with advanced privacy needs": [
 				"Dodatečná ochrana pro lidi s vyššími nároky na ochranu soukromí"
 			],
@@ -306,9 +318,6 @@
 			],
 			"Follow these simple steps to get the best experience using Proton VPN": [
 				"Postupujte podle následujících jednoduchých kroků, abyste měli co nejlepší zážitek s používáním Proton VPN"
-			],
-			"For example, news.example.com is a subdomain of example.com.": [
-				"Například news.example.com je subdoménou domény example.com."
 			],
 			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
 				"Země se servery Free (<span id=\"free-server-countries-count\">0</span>)"
@@ -331,6 +340,9 @@
 				"Výkonná švýcarská VPN, která chrání vaše soukromí. Maximální zabezpečení, více než ${count} serverů a žádná omezení.",
 				"Výkonná švýcarská VPN, která chrání vaše soukromí. Maximální zabezpečení, více než ${count} serverů a žádná omezení."
 			],
+			"Include mode": [
+				"Režim zahrnutí"
+			],
 			"Learn more": [
 				"Zjistěte více"
 			],
@@ -342,6 +354,12 @@
 			],
 			"Not now": [
 				"Nyní ne"
+			],
+			"Off": [
+				"Vyp."
+			],
+			"On": [
+				"Zap."
 			],
 			"Open source VPN": [
 				"VPN s otevřeným zdrojovým kódem"
@@ -376,8 +394,8 @@
 			"Secure Core": [
 				"Secure Core"
 			],
-			"Select websites to exclude from your VPN connection.": [
-				"Vyberte webové stránky, pro které nebude použito VPN připojení."
+			"Selected websites": [
+				"Vybrané webové stránky"
 			],
 			"Share anonymous usage crash reports": [
 				"Sdílejte anonymní hlášení o pádech"
@@ -406,6 +424,9 @@
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Chcete-li začít, musíte v prohlížeči povolit oprávnění VPN."
 			],
+			"Tor servers such as ${logical.Name} are not currently supported in the browser extension": [
+				"Servery Tor, jako je ${logical.Name}, nejsou v současné době podporovány v rozšíření prohlížeče"
+			],
 			"Upgrade": [
 				"Navýšení"
 			],
@@ -423,9 +444,6 @@
 			],
 			"VPN Features": [
 				"VPN Funkce"
-			],
-			"Websites that do not use VPN:": [
-				"Webové stránky, které nepoužívají VPN:"
 			],
 			"You're signed in": [
 				"Jste přihlášeni"
@@ -464,6 +482,9 @@
 				"Vstupní země",
 				"Vstupní země",
 				"Vstupní země"
+			],
+			"Exact match": [
+				"Přesná shoda"
 			],
 			"Free": [
 				"Zdarma"

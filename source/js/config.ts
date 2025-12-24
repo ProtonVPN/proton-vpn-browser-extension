@@ -10,6 +10,9 @@ export const baseDomainURL = baseConfig.baseDomainURL;
 export const accountURL = `${baseDomainURL}/${accountSuffix}`;
 export const manageAccountURL = `${accountURL}vpn/dashboard`;
 export const baseAPIURL = `${baseDomainURL}/api/`;
+export const routes = [
+	'vpn/v1/logicals/lookup/{name}',
+];
 
 export const hostname = new URL(baseAPIURL).hostname;
 
@@ -44,7 +47,7 @@ export const proxySecureCorePort = baseConfig.proxySecureCorePort;
 
 export const telemetryEnabled = true;
 
-export const scheme = baseConfig.scheme;
+export const scheme = baseConfig.scheme as 'http' | 'https';
 
 export const authCheck = false;
 

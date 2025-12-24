@@ -214,9 +214,6 @@
 			"Allow VPN permissions": [
 				"Permitir permissões de VPN"
 			],
-			"Also exclude subdomains of this website": [
-				"Excluir também os subdomínios deste sítio Web"
-			],
 			"and more": [
 				"e mais"
 			],
@@ -268,9 +265,6 @@
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Os relatórios de erros ajudam-nos a corrigir os problemas, a detetar firewalls e a evitar bloqueios de VPN."
 			],
-			"Disable VPN for selected websites.": [
-				"Desative a VPN para sítios web selecionados."
-			],
 			"Disconnected": [
 				"Desligado"
 			],
@@ -289,6 +283,9 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"Emitir notificações do sistema sobre eventos de ligação e desligação."
 			],
+			"Exclude mode": [
+				"Modo de exclusão"
+			],
 			"Extra protection for people with advanced privacy needs": [
 				"Proteção adicional para pessoas com necessidades avançadas de privacidade"
 			],
@@ -297,9 +294,6 @@
 			],
 			"Follow these simple steps to get the best experience using Proton VPN": [
 				"Siga estes passos simples para obter a melhor experiência de utilização do Proton VPN"
-			],
-			"For example, news.example.com is a subdomain of example.com.": [
-				"Por exemplo, noticias.exemplo.pt é um subdomínio de exemplo.pt."
 			],
 			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
 				"Países com servidores gratuitos (<span id=\"free-server-countries-count\">0</span>)"
@@ -320,11 +314,23 @@
 				"VPN suíço de alto desempenho que protege a sua privacidade. Segurança máxima, mais de ${count} servidor e sem restrições.",
 				"VPN suíço de alto desempenho que protege a sua privacidade. Segurança máxima, mais de ${count} servidores e sem restrições."
 			],
+			"Include mode": [
+				"Modo de inclusão"
+			],
 			"Learn more": [
 				"Saiba mais"
 			],
 			"Logged out": [
 				"Sessão terminada"
+			],
+			"Not now": [
+				"Agora não"
+			],
+			"Off": [
+				"Desativado"
+			],
+			"On": [
+				"Ativado"
 			],
 			"Open source VPN": [
 				"VPN de código aberto"
@@ -355,9 +361,6 @@
 			],
 			"Secure Core": [
 				"Secure Core"
-			],
-			"Select websites to exclude from your VPN connection.": [
-				"Selecione websites para excluir da sua conexão VPN."
 			],
 			"Share anonymous usage crash reports": [
 				"Partilhar relatórios de erros anónimos"
@@ -403,9 +406,6 @@
 			],
 			"VPN Features": [
 				"Funcionalidades VPN"
-			],
-			"Websites that do not use VPN:": [
-				"Websites que não utilizan o VPN:"
 			],
 			"You're signed in": [
 				"Iniciou sessão"

@@ -1,4 +1,4 @@
-import {Logical} from './Logical';
+import type {Logical} from './Logical';
 import {Feature} from './Feature';
 
 export const getSecureCorePredicate = (userTier: number, secureCore: {value: boolean}) => (

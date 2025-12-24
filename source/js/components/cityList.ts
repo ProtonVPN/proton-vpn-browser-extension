@@ -1,6 +1,6 @@
 import {comp} from '../tools/comp';
-import {Logical} from '../vpn/Logical';
-import {CountryList, CountryItem, getCountryFilteredKeys, sortGroups} from './countryList';
+import type {Logical} from '../vpn/Logical';
+import {type CountryList, type CountryItem, getCountryFilteredKeys, sortGroups} from './countryList';
 import {getSecureCorePredicate} from '../vpn/getSecureCorePredicate';
 import {getServerGroups} from './serverGroup';
 import {getCountryFlag} from '../tools/getCountryFlag';

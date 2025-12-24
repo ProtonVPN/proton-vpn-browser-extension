@@ -1,27 +1,59 @@
-import {Logical} from './Logical';
+import type {Logical} from './Logical';
 import {isNotModified} from '../api';
 import {comp} from '../tools/comp';
 import {fetchWithUserInfo} from '../account/fetchWithUserInfo';
 import {getCacheAge} from '../tools/getCacheAge';
-import {CacheWrappedValue, Storage, storage} from '../tools/storage';
+import {milliSeconds} from '../tools/milliSeconds';
+import {type CacheWrappedValue, Storage, storage} from '../tools/storage';
 import {getCities} from './getCities';
 import {triggerPromise} from '../tools/triggerPromise';
-import {BroadcastMessage} from '../tools/broadcastMessage';
-import {Feature} from './Feature';
-import {torEnabled} from '../config';
+import type {BroadcastMessage} from '../tools/broadcastMessage';
 import {isServerUp} from './isServerUp';
+import {isLogicalConnectable} from './isLogicalConnectable';
 import {getLogicalsBlockingUpdateTTL, getLogicalsTTL} from '../intervals';
 
 type LogicalServersCache = CacheWrappedValue<Logical[]> & {
 	lastModified: string,
 };
 
-const logicalServers = storage.item<LogicalServersCache>('logicals-servers', Storage.LOCAL);
+export const logicalServers = storage.item<LogicalServersCache>('logicals-servers', Storage.LOCAL);
+export const lookups = storage.item<CacheWrappedValue<Record<string, number>>>('lookups', Storage.LOCAL);
+export const lookupsNotFound = storage.item<CacheWrappedValue<Record<string, number>>>('lookups-not-found', Storage.LOCAL);
 
 const map: Record<string, Logical> = {};
 
+export const recordLogicalInMap = (logical: Logical) => {
+	map[logical.ID] = logical;
+};
+
 export const forgetLogicals = () => {
 	triggerPromise(logicalServers.remove());
+};
+
+const getLookupIds = async () => {
+	const value = (await lookups.get())?.value || {};
+	const ids = Object.keys(value);
+	// Forget about ID the extension didn't connect to for 100 days or more
+	const threshold = milliSeconds.fromDays(-100, Date.now());
+	let idsToForget = 0;
+	const usedIds = ids.filter(id => {
+		// If this ID was not touched for more than 100 days
+		if (value[id]! < threshold) {
+			// List them for removal
+			delete value[id];
+			idsToForget++;
+
+			return false;
+		}
+
+		return true;
+	});
+
+	if (idsToForget) {
+		triggerPromise(lookups.setValue(value));
+	}
+
+	return usedIds;
 };
 
 export interface BroadcastLogicals extends BroadcastMessage<'logicalUpdate'> {
@@ -46,27 +78,39 @@ export const loadLoads = async (): Promise<Logical[]> => {
 		logicalsById[logical.ID] = logical;
 	});
 
-	cache.value.forEach(logical => {
-		if (logicalsById[logical.ID]) {
-			calculateLogicalUp(Object.assign(logical, logicalsById[logical.ID]));
+	await logicalServers.transaction(newCache => {
+		if (newCache) {
+			newCache.value.forEach(logical => {
+				if (logicalsById[logical.ID]) {
+					calculateLogicalUp(Object.assign(logical, logicalsById[logical.ID]));
+				}
+			});
+			cache.value = newCache.value;
 		}
-	});
 
-	await logicalServers.set(cache);
+		return newCache;
+	});
 
 	return cache.value;
 };
 
 const fetchLogicals = async (cache?: LogicalServersCache) => {
 	try {
+		const ids = await getLookupIds();
+
 		// Use last raw string obtained from Last-Modified header if available
 		const ifModifiedSince = cache?.lastModified;
 		const { logicals, lastModified } = await fetchWithUserInfo<{
 			logicals: Logical[], // From LogicalServers in the JSON response
 			lastModified: string | null, // From Last-Modified response header
 		}, { LogicalServers: Logical[] }>(
-			'vpn/v1/logicals',
-			{headers: {'If-Modified-Since': ifModifiedSince || 'Thu, 01 Jan 1970 00:00:00 GMT'}},
+			'vpn/v1/logicals' + (ids.length ? `?${ids.map(id => `IncludeID[]=${encodeURIComponent(id)}`).join('&')}` : ''),
+			{
+				headers: {
+					'If-Modified-Since': ifModifiedSince || 'Thu, 01 Jan 1970 00:00:00 GMT',
+					'x-pm-response-truncation-permitted': 'true',
+				},
+			},
 			(response, data: { LogicalServers: Logical[] }) => ({
 				logicals: data?.LogicalServers,
 				lastModified: response.headers.get('Last-Modified'),
@@ -146,19 +190,10 @@ const sortLogicals = (logicals: Logical[]) => {
 };
 
 export const getSortedLogicals = async () => {
-	const logicals = (await getLogicals()).filter(
-		logical => (
-			// Only servers up to tier 2 support HTTP proxy
-			logical.Tier <= ((global as any).logicalMaxTier || 2) &&
-			// Remove when/if TOR/B2B will be supported
-			(torEnabled || (logical.Features & (Feature.TOR | Feature.RESTRICTED)) === 0)
-		),
-	);
+	const logicals = (await getLogicals()).filter(isLogicalConnectable);
 	sortLogicals(logicals);
 
-	logicals.forEach(logical => {
-		map[logical.ID] = logical;
-	});
+	logicals.forEach(recordLogicalInMap);
 
 	return logicals;
 };

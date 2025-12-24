@@ -1,5 +1,5 @@
-import {Logical} from './Logical';
-import {CountryItem} from '../components/countryList';
+import type {Logical} from './Logical';
+import type {CountryItem} from '../components/countryList';
 import {isLogicalUp} from './getLogicals';
 import {c} from '../tools/translate';
 

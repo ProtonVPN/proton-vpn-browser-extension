@@ -1,4 +1,4 @@
-import {Logical} from '../vpn/Logical';
+import type {Logical} from '../vpn/Logical';
 import {connectionAttributes, connectionButton} from './connectionButton';
 import {upgradeButton} from './upgradeButton';
 import {escapeHtml} from '../tools/escapeHtml';
@@ -50,12 +50,18 @@ export const serverList = (
 	upperTitle: string,
 	secureCore: boolean,
 	skipSorting: boolean = false,
+	extraConnectionAttributes: Record<string, string | number> = {},
 ) => (skipSorting ? logicals : sortByScore(logicals)).map(logical => {
 	const up = isLogicalUp(logical);
 	const serverName = logical.Name;
-	const connectionsAttributes: Record<string, string | number> = secureCore
-		? {exitCountry: logical.ExitCountry, entryCountry: logical.EntryCountry}
-		: {id: logical.ID};
+	const connectionsAttributes: Record<string, string | number> = {
+		...(secureCore
+			? {exitCountry: logical.ExitCountry, entryCountry: logical.EntryCountry}
+			: {id: logical.ID}
+		),
+		...extraConnectionAttributes,
+	};
+
 
 	return `
 		<div

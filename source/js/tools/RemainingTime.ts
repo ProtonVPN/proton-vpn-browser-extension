@@ -1,5 +1,5 @@
-import { clamp } from './math';
-import { milliSeconds } from './milliSeconds';
+import {clamp} from './math';
+import {milliSeconds} from './milliSeconds';
 
 /**
  * Stores the timestamp of a future event and provides a set of utility methods.

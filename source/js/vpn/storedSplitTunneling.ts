@@ -1,4 +1,4 @@
 import {storage} from '../tools/storage';
-import type {StoredWebsiteExclusionList} from './WebsiteExclusion';
+import type {StoredWebsiteFilterList} from './WebsiteFilter';
 
-export const storedSplitTunneling = storage.item<StoredWebsiteExclusionList>('split-tunneling');
+export const storedSplitTunneling = storage.item<StoredWebsiteFilterList>('split-tunneling');

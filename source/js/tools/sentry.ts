@@ -102,8 +102,36 @@ const getErrorReport = (error: any, message: string): Error => {
 
 const lastReport: Record<string, number> = {};
 
-export const handleError = (error: any) => {
-	if (!error) {
+const getSampleRate = (message: string) => {
+	if (/Failed to fetch/.test(message)) {
+		return 0.03;
+	}
+
+	if (/Url already open/.test(message)) {
+		return 0.05;
+	}
+
+	if (/Could not establish connection/.test(message)) {
+		return 0.01;
+	}
+
+	if (/NetworkError when attempting to fetch resource/.test(message)) {
+		return 0.1;
+	}
+
+	if (/Invalid refresh token/.test(message)) {
+		return 0.2;
+	}
+
+	if (/Network is unreachable/.test(message)) {
+		return 0.4;
+	}
+
+	return 1;
+};
+
+export const handleError = (error: any, sampleRate?: number) => {
+	if (!error || (typeof sampleRate !== 'undefined' && Math.random() >= sampleRate)) {
 		return;
 	}
 
@@ -123,10 +151,6 @@ export const handleError = (error: any) => {
 	}
 
 	const message = getErrorAsString(error);
-
-	if (/Url already open/.test(message)) {
-		return;
-	}
 
 	const now = Date.now();
 
@@ -170,6 +194,14 @@ export const initSentry = (): Scope => {
 		// Unfortunately Sentry does not use the custom transport for those, and thus fails to add the headers the API requires.
 		sendClientReports: false,
 		async beforeSend(event) {
+			const sampleRate = (event.exception?.values?.map(
+				exception => exception.value ? getSampleRate(exception.value) : 1,
+			) as number[]).reduce((a, b) => Math.min(a, b), 1);
+
+			if (sampleRate < 1 && Math.random() > sampleRate) {
+				return null;
+			}
+
 			if (!await isCrashReportEnabled()) {
 				return null;
 			}

@@ -1,8 +1,4 @@
-export const modalsRoot = document.querySelector<HTMLDivElement>('#modals')!;
-
-if (!modalsRoot) {
-	throw new Error('Modals root element not found. (#modals)');
-}
+'use popup';
 
 /* Available pre-defined attributes. */
 
@@ -25,13 +21,13 @@ const dataset = {
  * which invalidates the querySelector that is only looking for `=""` empty attributes,
  * avoiding setting duplicate listeners.
  */
-export function configureModalButtons() {
-	setCloseButtonAction();
-	setCloseOutsideAction()
+export function configureModalButtons(modalsRoot: HTMLDivElement) {
+	setCloseButtonAction(modalsRoot);
+	setCloseOutsideAction(modalsRoot)
 }
 
 /** Set default close action for each element with `data-modal-default-close` attribute. */
-function setCloseButtonAction() {
+function setCloseButtonAction(modalsRoot: HTMLDivElement) {
 	modalsRoot.querySelectorAll<HTMLButtonElement>(`[${attr.close}=""]`).forEach(button => {
 		button.dataset[dataset.close] = 'set';
 		button.addEventListener('click', () => closeModal(button));
@@ -39,7 +35,7 @@ function setCloseButtonAction() {
 }
 
 /** Detect click outside the modal dialog to close it on dialogs with `data-modal-default-close-outside` attribute. */
-function setCloseOutsideAction() {
+function setCloseOutsideAction(modalsRoot: HTMLDivElement) {
 	if (modalsRoot.dataset[dataset.closeOutside] === 'set') {
 		return; // Already configured.
 	}

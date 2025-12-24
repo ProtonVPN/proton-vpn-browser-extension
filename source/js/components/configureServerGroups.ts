@@ -1,4 +1,4 @@
-import {getStreamingConfig, StreamingService} from './getStreamingConfig';
+import {getStreamingConfig, StreamingService} from '../vpn/getStreamingConfig';
 import {c, getCountryNameOrCode} from '../tools/translate';
 import {escapeHtml} from '../tools/escapeHtml';
 
@@ -44,9 +44,9 @@ export const configureServerGroups = (area?: HTMLElement) => {
 							<use xlink:href="img/icons.svg#close-button"></use>
 						</svg>
 					</div>
-                    <div class="tooltip-title streaming-info">${c('Title').t`Features`}</div>
-                    <div class="tooltip-row streaming-info">
-                    	<div class="tooltip-row-icon">
+					<div class="tooltip-title streaming-info">${c('Title').t`Features`}</div>
+					<div class="tooltip-row streaming-info">
+						<div class="tooltip-row-icon">
 							<svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" class="streaming-icon">
 								<use xlink:href="img/icons.svg#streaming"></use>
 							</svg>

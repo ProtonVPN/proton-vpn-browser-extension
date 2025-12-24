@@ -1,4 +1,4 @@
-import {catchPromise, triggerPromise} from '../tools/triggerPromise';
+import {catchPromise} from '../tools/triggerPromise';
 import {delay} from '../tools/delay';
 import {milliSeconds} from '../tools/milliSeconds';
 import {isSuccessfulResponse} from '../api';
@@ -37,7 +37,7 @@ const nudge = async (
 			throw new Error(`${response.status || ''} ${response.statusText}`.trim());
 		}
 
-		triggerPromise(setReviewInfoStateLastSeenConnected());
+		setReviewInfoStateLastSeenConnected();
 	} catch (e) {
 		if (tryNumber > 4) {
 			throw e;

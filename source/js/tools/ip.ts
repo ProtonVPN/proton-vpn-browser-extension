@@ -19,13 +19,13 @@ const isIpMatchingMask = (ip: string[], mask: string[]) => {
 };
 
 /**
- * Return true if host is an IP v4, exclusion is an IP v4 mask, and the IP matches the mask,
+ * Return true if host is an IP v4, matcher is an IP v4 mask, and the IP matches the mask,
  * return false in any other case.
  *
  * We include broadcast and network address in the exclusion.
  */
-export const isHostExcludedByIpMask = (host: string, exclusion: string) => {
-	const mask = exclusion.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)\/(\d+)$/);
+export const isHostMatchedByIpMask = (host: string, matcher: string) => {
+	const mask = matcher.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)\/(\d+)$/);
 
 	if (!mask) {
 		return false;

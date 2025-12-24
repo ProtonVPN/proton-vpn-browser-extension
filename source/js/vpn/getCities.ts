@@ -1,6 +1,6 @@
 import {fetchJson} from '../api';
-import {CacheWrappedValue, Storage, storage} from '../tools/storage';
-import {Logical} from './Logical';
+import {type CacheWrappedValue, Storage, storage} from '../tools/storage';
+import type {Logical} from './Logical';
 import {getCacheAge} from '../tools/getCacheAge';
 import {getLanguage} from '../tools/translate';
 import {triggerPromise} from '../tools/triggerPromise';

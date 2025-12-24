@@ -1,10 +1,10 @@
 import {getCountryFlag} from '../tools/getCountryFlag';
-import {Logical} from '../vpn/Logical';
+import type {Logical} from '../vpn/Logical';
 import {connectionAttributes} from './connectionButton';
 import {upgradeButton} from './upgradeButton';
 import {c} from '../tools/translate';
 import {isGroupUp, serverGroup} from './serverGroup';
-import {CountryItem} from './countryList';
+import type {CountryItem} from './countryList';
 import {hasSearchScore} from '../vpn/hasSearchScore';
 import {needUpgrade} from '../vpn/needUpgrade';
 import {expandButton} from './expendButton';

@@ -1,6 +1,6 @@
 'use popup';
-import {Logical} from './vpn/Logical';
-import {getLogicalById, getSortedLogicals} from './vpn/getLogicals';
+import type {Logical} from './vpn/Logical';
+import {getLogicalById, getSortedLogicals, lookups} from './vpn/getLogicals';
 import {readSession} from './account/readSession';
 import {sendMessageToBackground} from './tools/sendMessageToBackground';
 import {getInfoFromBackground} from './tools/getInfoFromBackground';
@@ -16,10 +16,10 @@ import {
 	translateArea,
 } from './tools/translate';
 import {escapeHtml} from './tools/escapeHtml';
-import {ApiError, isUnauthorizedError} from './api';
+import {type ApiError, isUnauthorizedError} from './api';
 import {saveSession} from './account/saveSession';
-import {User} from './account/user/User';
-import {PmUser} from './account/user/PmUser';
+import type {User} from './account/user/User';
+import type {PmUser} from './account/user/PmUser';
 import {getUserMaxTier} from './account/user/getUserMaxTier';
 import {
 	accountURL,
@@ -34,19 +34,20 @@ import {refreshLocationSlots} from './account/refreshLocationSlots';
 import {getAllLogicals, requireBestLogical, requireRandomLogical} from './vpn/getLogical';
 import {getCities, mergeTranslations} from './vpn/getCities';
 import {setUpSearch} from './search/setUpSearch';
-import {countryList, CountryList} from './components/countryList';
-import {configureServerGroups} from './vpn/configureServerGroups';
+import {countryList, type CountryList} from './components/countryList';
+import {configureServerGroups} from './components/configureServerGroups';
+import {configureLookupSearch} from './components/configureLookupSearch';
 import {storage} from './tools/storage';
 import {showNotifications} from './notifications/showNotifications';
 import {watchBroadcastMessages} from './tools/answering';
-import {ChangeStateMessage} from './tools/broadcastMessage';
+import type {ChangeStateMessage} from './tools/broadcastMessage';
 import {getErrorMessage} from './tools/getErrorMessage';
-import {ConnectionState, ErrorDump, ServerSummary} from './vpn/ConnectionState';
+import type {ConnectionState, ErrorDump, ServerSummary} from './vpn/ConnectionState';
 import {Feature} from './vpn/Feature';
 import {getCountryFlag} from './tools/getCountryFlag';
 import {each} from './tools/each';
 import {logo} from './tools/logo';
-import {Choice, setLastChoice} from './vpn/lastChoice';
+import {type Choice, setLastChoice} from './vpn/lastChoice';
 import {ucfirst} from './tools/ucfirst';
 import {toggleButtons} from './components/toggleButtons';
 import {triggerPromise} from './tools/triggerPromise';
@@ -70,10 +71,12 @@ import {setWebRTCState} from './webrtc/setWebRTCState';
 import {WebRTCState} from './webrtc/state';
 import {via} from './components/via';
 import {configureSplitTunneling} from './components/configureSplitTunneling';
-import {getBypassList} from './vpn/getBypassList';
+import {getSplitTunnelingConfig} from './vpn/getSplitTunnelingConfig';
 import {storedSplitTunneling} from './vpn/storedSplitTunneling';
 import {warn} from './log/log';
 import {storedNotificationsEnabled} from './notifications/notificationsEnabled';
+import {storedSecureCore} from './vpn/storedSecureCore';
+import {storedAutoConnect} from './vpn/storedAutoConnect';
 import {canAccessPaidServers} from './account/user/canAccessPaidServers';
 import {RefreshTokenError} from './account/RefreshTokenError';
 import {requireUser} from './account/requireUser';
@@ -84,6 +87,7 @@ import {appendUrlParams} from './tools/appendUrlParams';
 import {crashReportOptIn, getCrashReportOptIn, handleError} from './tools/sentry';
 import {connectEventHandler} from './tools/connectEventHandler';
 import {getPrefillValues} from './tools/prefill';
+import {toggleClass} from './tools/toggleClass';
 import {ServerRotator} from './vpn/ServerRotator';
 import {configureGoToButtons} from './components/goToButton';
 import {updateAccessSentenceWithCounts} from './components/accessSentence';
@@ -91,6 +95,7 @@ import {configureLinks, setNewTabLinkTitle} from './components/links';
 import {configureModalButtons} from './components/modals/modals';
 import {configureRatingModalButtons, maybeShowRatingModal} from './components/modals/ratingModal';
 import {setReviewInfoStateOnConnectAction} from './vpn/reviewInfo';
+import {filterLogicalsWithCurrentFeatures} from './vpn/filterLogicalsWithCurrentFeatures';
 
 const state = {
 	connected: false,
@@ -223,11 +228,6 @@ const start = async () => {
 		});
 	};
 
-	const filterLogicalsWithCurrentFeatures = (rawLogicals: Logical[], userTier: number, withTor = false) => rawLogicals.filter(
-		logicial => (logicial.Features & ((withTor ? 0 : Feature.TOR) | Feature.RESTRICTED | Feature.PARTNER)) === 0 &&
-			(logicial.Features & Feature.SECURE_CORE) === (userTier > 0 && secureCore?.value ? Feature.SECURE_CORE : 0)
-	);
-
 	const excludeLogicalsFromCurrentCountry = (rawLogicals: Logical[], /** e.g. JP | US */exitCountry?: Logical["ExitCountry"]) =>
 		rawLogicals.filter(logical => logical.ExitCountry !== exitCountry);
 
@@ -249,6 +249,7 @@ const start = async () => {
 		if (exitCountry) {
 			const logicals = getAllLogicals(countries[exitCountry]);
 			const subGroup = button.getAttribute('data-subGroup') || '';
+			const secureCoreFilter = button.hasAttribute('data-no-sc-filter') ? undefined : secureCore;
 
 			if (subGroup) {
 				switch (subGroup.toLowerCase()) {
@@ -256,7 +257,7 @@ const start = async () => {
 						return {
 							getLogical: () => requireBestLogical(filterLogicalsWithCurrentFeatures(logicals.filter(
 								logical => (logical.Features & Feature.TOR) === 0 && !logical.City && logical.Tier > 0,
-							), userTier), userTier, setError),
+							), userTier, secureCoreFilter), userTier, setError),
 							choice: {
 								exitCountry: exitCountry,
 								filter: 'other',
@@ -267,7 +268,7 @@ const start = async () => {
 						return {
 							getLogical: () => requireBestLogical(filterLogicalsWithCurrentFeatures(logicals.filter(
 								logical => logical.Features & Feature.TOR,
-							), userTier, true), userTier, setError),
+							), userTier, secureCoreFilter, true), userTier, setError),
 							choice: {
 								exitCountry: exitCountry,
 								requiredFeatures: Feature.TOR,
@@ -278,7 +279,7 @@ const start = async () => {
 						return {
 							getLogical: () => requireBestLogical(filterLogicalsWithCurrentFeatures(logicals.filter(
 								logical => logical.Tier < 1,
-							), userTier), userTier, setError),
+							), userTier, secureCoreFilter), userTier, setError),
 							choice: {
 								exitCountry: exitCountry,
 								tier: 0,
@@ -289,7 +290,7 @@ const start = async () => {
 						return {
 							getLogical: () => requireBestLogical(filterLogicalsWithCurrentFeatures(logicals.filter(
 								logical => logical.City === subGroup,
-							), userTier), userTier, setError),
+							), userTier, secureCoreFilter), userTier, setError),
 							choice: {
 								exitCountry: exitCountry,
 								city: subGroup,
@@ -304,7 +305,7 @@ const start = async () => {
 				return {
 					getLogical: () => requireBestLogical(filterLogicalsWithCurrentFeatures(logicals.filter(
 						logical => logical.EntryCountry === entryCountry,
-					), userTier), userTier, setError),
+					), userTier, secureCoreFilter), userTier, setError),
 					choice: {
 						exitCountry: exitCountry,
 						entryCountry: entryCountry,
@@ -313,7 +314,11 @@ const start = async () => {
 			}
 
 			return {
-				getLogical: () => requireBestLogical(filterLogicalsWithCurrentFeatures(logicals, userTier), userTier, setError),
+				getLogical: () => requireBestLogical(
+					filterLogicalsWithCurrentFeatures(logicals, userTier, secureCoreFilter),
+					userTier,
+					setError,
+				),
 				choice: {exitCountry: exitCountry},
 			};
 		}
@@ -448,7 +453,7 @@ const start = async () => {
 			handleLeavingAction(href, forget);
 		};
 
-		(area || document.getElementById('servers') || document).querySelectorAll<HTMLButtonElement>('.open-upgrade-page, button:not(.close-button):not(.corner-button):not(.quick-connect-button), .connect-clickable, .server:not(.in-maintenance)').forEach(button => {
+		(area || document.getElementById('servers') || document).querySelectorAll<HTMLButtonElement>('.open-upgrade-page, button[data-href], button[data-id], button[data-exitCountry], .connect-clickable, .server:not(.in-maintenance)').forEach(button => {
 			onClick(button, async (event) => {
 				event.stopPropagation();
 				event.stopImmediatePropagation?.();
@@ -556,8 +561,6 @@ const start = async () => {
 		return;
 	}
 
-	const storedSecureCore = storage.item<{value: boolean}>('secure-core');
-	const storedAutoConnect = storage.item<{value: boolean}>('auto-connect');
 	let logicals: Logical[] = [];
 	const [
 		logicalsInput,
@@ -735,8 +738,23 @@ const start = async () => {
 
 	servers.classList[limitedUi ? 'add' : 'remove']('not-allowed-by-plan');
 
+	const setServersHtml = (html: string, search = '') => {
+		if (servers.innerHTML !== html) {
+			servers.innerHTML = html;
+		}
+
+		if (search === '') {
+			return;
+		}
+
+		configureLookupSearch(servers, userTier, div => {
+			configureButtons(div);
+			configureServerGroups(div);
+		}, search);
+	};
+
 	let refresh = () => {
-		servers.innerHTML = countryList(countries, userTier, secureCore);
+		setServersHtml(countryList(countries, userTier, secureCore));
 		configureServerGroups();
 	};
 	refresh();
@@ -919,13 +937,12 @@ const start = async () => {
 
 		disconnectButton.innerHTML = c('Action').t`Disconnect`;
 		disconnectButton.classList.add('danger-hover');
-		serverStatusSlot.classList.remove(state.connected ? 'danger' : 'success');
-		serverStatusSlot.classList.add(state.connected ? 'success' : 'danger');
+		toggleClass(serverStatusSlot, state.connected, 'success', 'danger');
 
 		const baseCountries = ['US', 'NL', 'JP'];
 		const freeCountriesList = [
 			...baseCountries.filter(country => freeCountries[country]),
-			...Object.keys(freeCountries).filter(country => baseCountries.indexOf(country) === -1),
+			...Object.keys(freeCountries).filter(country => !baseCountries.includes(country)),
 		];
 
 		const getCountryFlagGroup = (countries: string[]): string => {
@@ -1062,6 +1079,8 @@ const start = async () => {
 		});
 	});
 
+	const rateUsModal = document.querySelector<HTMLDialogElement>('#rate-us');
+
 	const connectToServer = async (logical: Logical) => {
 		connectEventHandler.connect(logical);
 
@@ -1088,10 +1107,29 @@ const start = async () => {
 				server,
 				logical,
 				user,
-				bypassList: getBypassList(userTier, splitTunneling.value),
+				splitTunneling: getSplitTunnelingConfig(userTier, splitTunneling),
 			});
+
+			if (logical.ID) {
+				triggerPromise(lookups.transaction(cache => {
+					const id = `${logical.ID}`;
+
+					// If this ID was obtained by lookup, then update the time so it does not
+					// get picked first when cleaning up old IDs
+					if (cache.value[id]) {
+						cache.value[id] = Date.now();
+						cache.time = Date.now();
+					}
+
+					return cache;
+				}, {
+					value: {} as Record<string, number>,
+					time: Date.now(),
+				}));
+			}
+
 			await setReviewInfoStateOnConnectAction();
-			maybeShowRatingModal(user);
+			maybeShowRatingModal(rateUsModal, user);
 		} catch (e) {
 			setError(e as Error);
 		}
@@ -1173,7 +1211,7 @@ const start = async () => {
 			errorSlot.innerHTML = '';
 
 			const alienLogicals = excludeLogicalsFromCurrentCountry(logicals, connectionState?.server?.exitCountry);
-			const filteredLogicals = filterLogicalsWithCurrentFeatures(alienLogicals, userTier);
+			const filteredLogicals = filterLogicalsWithCurrentFeatures(alienLogicals, userTier, secureCore);
 			const logical = requireRandomLogical(filteredLogicals, userTier, setError);
 			setLastChoice({
 				connected: true,
@@ -1195,7 +1233,7 @@ const start = async () => {
 		}
 
 		errorSlot.innerHTML = '';
-		const logical = requireBestLogical(filterLogicalsWithCurrentFeatures(logicals, userTier), userTier, setError);
+		const logical = requireBestLogical(filterLogicalsWithCurrentFeatures(logicals, userTier, secureCore), userTier, setError);
 		setLastChoice({
 			connected: true,
 			pick: 'fastest',
@@ -1276,7 +1314,7 @@ const start = async () => {
 		if (loggedView) {
 			loggedView.scrollTop = 0;
 		}
-	};
+	}
 
 	configureGoToButtons(document, goTo);
 
@@ -1318,9 +1356,9 @@ const start = async () => {
 			const searching = (searchText !== '');
 
 			if (!servers.querySelector(':scope > .spinner')) {
-				servers.innerHTML = `<div class="spinner">
+				setServersHtml(`<div class="spinner">
 					<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-				</div>`;
+				</div>`);
 			}
 
 			// Wait a bit for consecutive letters typed
@@ -1330,15 +1368,18 @@ const start = async () => {
 				return;
 			}
 
-			servers.innerHTML = searching
-				? getSearchResult(countries, searchText, userTier, secureCore)
-				: countryList(countries, userTier, secureCore) || `<p class="not-found">
-					${c('Error').t`Unable to load the list`}<br />
-					<small>${
-						/* translator: maybe internet connection is unstable, wi-fi too far, or API domain got censored by the ISP or country */
-						c('Error').t`Please check your connectivity`
-					}</small>
-				</p>`;
+			setServersHtml(
+				searching
+					? getSearchResult(countries, searchText, userTier, secureCore)
+					: countryList(countries, userTier, secureCore) || `<p class="not-found">
+						${c('Error').t`Unable to load the list`}<br />
+						<small>${
+							/* translator: maybe internet connection is unstable, wi-fi too far, or API domain got censored by the ISP or country */
+							c('Error').t`Please check your connectivity`
+						}</small>
+					</p>`,
+				searchText,
+			);
 			configureButtons();
 			configureServerGroups();
 			showConnectedItemMarker();
@@ -1349,22 +1390,25 @@ const start = async () => {
 		toggleButtons(storedAutoConnect, autoConnect);
 		toggleButtons(telemetryOptIn, telemetry);
 		toggleButtons(crashReportOptIn as any, crashReportEnabled, {buttonSelector: '.crash-button'});
-		toggleButtons(storedPreventWebrtcLeak, preventWebrtcLeak, {refresh: async () => {
+		toggleButtons(storedPreventWebrtcLeak, preventWebrtcLeak, {refresh: async (newValue) => {
 			await (state.connected
-				? preventLeak()
+				? preventLeak(newValue)
 				: setWebRTCState(WebRTCState.CLEAR)
 			);
 		}});
-		configureSplitTunneling(storedSplitTunneling, splitTunneling, document, async () => {
+		configureSplitTunneling(storedSplitTunneling, splitTunneling, document, async (updatedList) => {
 			if (state.connected) {
-				await sendMessageToBackground(SettingChange.BYPASS_LIST, getBypassList(userTier, splitTunneling.value));
+				await sendMessageToBackground(
+					SettingChange.BYPASS_LIST,
+					getSplitTunnelingConfig(userTier, updatedList || splitTunneling),
+				);
 			}
 		}, userTier <= 0);
 	}
 
 	configureButtons();
-	configureModalButtons();
-	configureRatingModalButtons();
+	configureModalButtons(document.querySelector<HTMLDivElement>('#modals')!);
+	configureRatingModalButtons(rateUsModal);
 
 	watchBroadcastMessages({
 		logicalUpdate(logicalsInput: Logical[]) {
@@ -1432,7 +1476,7 @@ const start = async () => {
 		await start();
 	});
 
-	maybeShowRatingModal(user);
+	maybeShowRatingModal(rateUsModal, user);
 };
 
 triggerPromise(start());

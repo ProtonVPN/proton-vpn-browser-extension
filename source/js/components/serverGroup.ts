@@ -1,6 +1,6 @@
 import {serverList} from './serverList';
-import {Logical} from '../vpn/Logical';
-import {CountryItem} from './countryList';
+import type {Logical} from '../vpn/Logical';
+import type {CountryItem} from './countryList';
 import {getKeysAndValues} from '../tools/getKeysAndValues';
 import {needUpgrade} from '../vpn/needUpgrade';
 import {upgradeButton} from './upgradeButton';
@@ -33,7 +33,7 @@ export const formatGroup = (
 			count,
 			msgid`Server`,
 			`Servers`,
-		)
+		);
 
 	return `
 		<div

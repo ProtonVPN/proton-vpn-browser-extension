@@ -5,7 +5,7 @@ export const toggleButtons = <T extends {value: boolean}>(
 	feature: CacheItem<T>,
 	valueHandler: T,
 	options?: {
-		refresh?: () => void,
+		refresh?: (newValue?: boolean) => void,
 		buttonSelector?: string,
 		upgradeNeeded?: boolean,
 	},
@@ -30,7 +30,7 @@ export const toggleButtons = <T extends {value: boolean}>(
 				b.classList[method]('activated');
 				b.setAttribute('aria-pressed', valueHandler.value ? 'true' : 'false');
 			});
-			options?.refresh?.();
+			options?.refresh?.(valueHandler.value);
 			await feature.set(valueHandler);
 		});
 	});

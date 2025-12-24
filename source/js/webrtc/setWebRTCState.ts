@@ -10,7 +10,9 @@ export const setWebRTCState = (state: WebRTCState) => new Promise<boolean>(resol
 	}
 
 	if (state === WebRTCState.CLEAR) {
-		chrome.privacy.network.webRTCIPHandlingPolicy.clear({}, resolve as any);
+		chrome.privacy.network.webRTCIPHandlingPolicy.clear({}, () => {
+			resolve(true);
+		});
 
 		return;
 	}

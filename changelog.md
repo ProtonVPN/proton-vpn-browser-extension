@@ -1,6 +1,22 @@
+# 1.2.13
+
+- Fix Split-Tunneling backward-compatibility
+- Minor bug fixes
+
+# 1.2.12
+
+- Rollback to 1.2.10 due to malfunctioning split-tunneling backward-compatibility
+
+# 1.2.11
+
+- Add reverse Split-Tunneling (ability to define an include list instead of an exclude list)
+- Add remote server search (ability to find servers not being in the in user list yet)
+
 # 1.2.10
 
 - Add a button to go to extension review page
+- Few bug fixes
+- Update translations
 
 # 1.2.9
 

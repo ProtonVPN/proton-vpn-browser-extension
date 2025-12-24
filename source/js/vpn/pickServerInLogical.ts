@@ -1,4 +1,4 @@
-import {Logical} from './Logical';
+import type {Logical} from './Logical';
 import {isServerUp} from './isServerUp';
 
 export const pickServerInLogical = (logical: Logical | undefined) => {

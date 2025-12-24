@@ -211,9 +211,6 @@
 			"Allow VPN permissions": [
 				"VPN-engedélyek megadása"
 			],
-			"Also exclude subdomains of this website": [
-				"Beleértve a weboldal aldomainjeink kizárását"
-			],
 			"and more": [
 				"és továbbiak"
 			],
@@ -265,9 +262,6 @@
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Az összeomlási jelentések segítenek a hibák kijavításában, a tűzfalak felismerésében és a VPN korlátozások elkerülésében."
 			],
-			"Disable VPN for selected websites.": [
-				"A VPN lekapcsolása a kiválasztott weboldalakhoz."
-			],
 			"Disconnected": [
 				"Kapcsolat bontva"
 			],
@@ -289,6 +283,9 @@
 			"Enjoying Proton VPN?": [
 				"Kedveli a Proton VPN-t?"
 			],
+			"Exclude mode": [
+				"Kihagyás mód"
+			],
 			"Extra protection for people with advanced privacy needs": [
 				"Extra védelem a kiemelt adatvédelmi igényekkel rendelkezők számára"
 			],
@@ -297,9 +294,6 @@
 			],
 			"Follow these simple steps to get the best experience using Proton VPN": [
 				"Kövesse ezeket az egyszerű lépéseket, a Proton VPN sikeres használatához"
-			],
-			"For example, news.example.com is a subdomain of example.com.": [
-				"Például a news.example.com aldomainje az example.com oldalnak"
 			],
 			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
 				"Ingyenes szerver országok (<span id=\"free-server-countries-count\">0</span>)"
@@ -320,6 +314,9 @@
 				"Nagy teljesítményű svájci VPN, amely védi a magánszféráját. Maximális biztonság, több, mint ${count} szerver, korlátozás nélkül.",
 				"Nagy teljesítményű svájci VPN, amely védi a magánszféráját. Maximális biztonság, több, mint ${count} szerver, korlátozás nélkül."
 			],
+			"Include mode": [
+				"Befoglaló mód"
+			],
 			"Learn more": [
 				"További információk"
 			],
@@ -331,6 +328,12 @@
 			],
 			"Not now": [
 				"Most nem"
+			],
+			"Off": [
+				"Ki"
+			],
+			"On": [
+				"Be"
 			],
 			"Open source VPN": [
 				"Nyílt forráskódú VPN"
@@ -364,9 +367,6 @@
 			],
 			"Secure Core": [
 				"Secure Core"
-			],
-			"Select websites to exclude from your VPN connection.": [
-				"Válassza ki a VPN-kapcsolatból kizárandó webhelyeket."
 			],
 			"Share anonymous usage crash reports": [
 				"Névtelen összeomlási jelentések beküldése"
@@ -412,9 +412,6 @@
 			],
 			"VPN Features": [
 				"VPN funkciók"
-			],
-			"Websites that do not use VPN:": [
-				"Weboldalak, amelyek nem használnak VPN-t:"
 			],
 			"You're signed in": [
 				"Sikeresen bejelentkezett"

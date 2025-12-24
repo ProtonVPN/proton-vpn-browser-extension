@@ -199,6 +199,9 @@
 			"<div class=\"weak-text\">\n<span data-trans>About free connections</span>\n<svg width=\"15\" height=\"14\" viewBox=\"0 0 15 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path \t\t\t\t\t\t\t\t\t\tfill-rule=\"evenodd\"\nclip-rule=\"evenodd\"\nd=\"M7.5 13C10.8137 13 13.5 10.3137 13.5 7C13.5 3.68629 10.8137 1 7.5 1C4.18629 1 1.5 3.68629 1.5 7C1.5 10.3137 4.18629 13 7.5 13ZM7.5 14C11.366 14 14.5 10.866 14.5 7C14.5 3.13401 11.366 0 7.5 0C3.63401 0 0.5 3.13401 0.5 7C0.5 10.866 3.63401 14 7.5 14ZM9.24995 10C9.24995 10.3038 9.00371 10.55 8.69995 10.55H7.69995H6.69995C6.39619 10.55 6.14995 10.3038 6.14995 10C6.14995 9.69624 6.39619 9.45 6.69995 9.45H7.14995L7.14995 6.55H6.99994C6.69618 6.55 6.44994 6.30376 6.44994 6C6.44994 5.69624 6.69618 5.45 6.99994 5.45H7.69995C7.84582 5.45 7.98571 5.50795 8.08886 5.61109C8.19201 5.71424 8.24995 5.85413 8.24995 6L8.24995 9.45H8.69995C9.00371 9.45 9.24995 9.69624 9.24995 10ZM7.5 4.40002C7.8866 4.40002 8.2 4.08662 8.2 3.70002C8.2 3.31343 7.8866 3.00002 7.5 3.00002C7.1134 3.00002 6.8 3.31343 6.8 3.70002C6.8 4.08662 7.1134 4.40002 7.5 4.40002Z\"\nfill=\"#A7A4B5\" ></path>\n</svg>\n</div>": [
 				"<div class=\"weak-text\">\n<span data-trans>무료 연결 정보</span>\n<svg width=\"15\" height=\"14\" viewBox=\"0 0 15 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path \t\t\t\t\t\t\t\t\t\tfill-rule=\"evenodd\"\nclip-rule=\"evenodd\"\nd=\"M7.5 13C10.8137 13 13.5 10.3137 13.5 7C13.5 3.68629 10.8137 1 7.5 1C4.18629 1 1.5 3.68629 1.5 7C1.5 10.3137 4.18629 13 7.5 13ZM7.5 14C11.366 14 14.5 10.866 14.5 7C14.5 3.13401 11.366 0 7.5 0C3.63401 0 0.5 3.13401 0.5 7C0.5 10.866 3.63401 14 7.5 14ZM9.24995 10C9.24995 10.3038 9.00371 10.55 8.69995 10.55H7.69995H6.69995C6.39619 10.55 6.14995 10.3038 6.14995 10C6.14995 9.69624 6.39619 9.45 6.69995 9.45H7.14995L7.14995 6.55H6.99994C6.69618 6.55 6.44994 6.30376 6.44994 6C6.44994 5.69624 6.69618 5.45 6.99994 5.45H7.69995C7.84582 5.45 7.98571 5.50795 8.08886 5.61109C8.19201 5.71424 8.24995 5.85413 8.24995 6L8.24995 9.45H8.69995C9.00371 9.45 9.24995 9.69624 9.24995 10ZM7.5 4.40002C7.8866 4.40002 8.2 4.08662 8.2 3.70002C8.2 3.31343 7.8866 3.00002 7.5 3.00002C7.1134 3.00002 6.8 3.31343 6.8 3.70002C6.8 4.08662 7.1134 4.40002 7.5 4.40002Z\"\nfill=\"#A7A4B5\" ></path>\n</svg>\n</div>"
 			],
+			"A subdomain URL includes a prefix before the main domain name. For example, account.proton.me is a subdomain of proton.me.": [
+				"서브도메인 URL은 기본 도메인 이름 앞에 접두사를 포함합니다. 예를 들어, account.proton.me는 proton.me의 서브도메인입니다."
+			],
 			"About free connections": [
 				"무료 연결 정보"
 			],
@@ -211,8 +214,8 @@
 			"Allow VPN permissions": [
 				"VPN 권한 허용"
 			],
-			"Also exclude subdomains of this website": [
-				"이 웹사이트의 서브도메인 제외하기"
+			"Also add subdomains": [
+				"하위 도메인도 추가"
 			],
 			"and more": [
 				"그리고 더"
@@ -253,6 +256,12 @@
 			"Connected to ${name} in ${city}": [
 				"${city} 의 ${name} 에 연결됨"
 			],
+			"Connecting servers such as ${logical.Name} is not currently supported in the browser extension": [
+				"${logical.Name}와 같은 서버는 브라우저 확장 프로그램에서 사용할 수 없습니다"
+			],
+			"Connecting to dedicated IPs such as ${logical.Name} is not currently supported in the browser extension": [
+				"${logical.Name}와 같은 전용 IP는 브라우저 확장 프로그램에서 사용할 수 없습니다"
+			],
 			"Connecting...": [
 				"연결 중..."
 			],
@@ -265,8 +274,8 @@
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"충돌 보고서는 버그를 수정하고 방화벽을 감지하며 VPN 차단을 방지하는 데 도움이 됩니다."
 			],
-			"Disable VPN for selected websites.": [
-				"선택한 웹사이트에 접속시 VPN을 비활성화합니다."
+			"Decide which websites are protected by VPN.": [
+				"VPN으로 보호되는 웹 사이트를 설정하세요."
 			],
 			"Disconnected": [
 				"연결 해제됨"
@@ -286,6 +295,12 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"연결되거나 연결이 끊겼을때 시스템 알림을 받습니다."
 			],
+			"Enjoying Proton VPN?": [
+				"Proton VPN을 잘 사용하고 계신가요?"
+			],
+			"Exclude mode": [
+				"제외 모드"
+			],
 			"Extra protection for people with advanced privacy needs": [
 				"향상된 프라이버시가 필요한 사용자를 위한 추가적인 보호를 제공합니다."
 			],
@@ -294,9 +309,6 @@
 			],
 			"Follow these simple steps to get the best experience using Proton VPN": [
 				"최상의 Proton VPN 사용 환경을 누리려면 다음 간단한 단계를 따르세요"
-			],
-			"For example, news.example.com is a subdomain of example.com.": [
-				"예로, news.example.com은 example.com의 하위 도메인입니다."
 			],
 			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
 				"무료 서버 국가 (<span id=\"free-server-countries-count\">0</span>)"
@@ -316,11 +328,26 @@
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"당신의 프라이버시를 보호하는 고성능 스위스 VPN입니다. 최대한의 보안과 ${count}개 이상의 서버를 제공하며, 제한이 없습니다."
 			],
+			"Include mode": [
+				"모드 포함"
+			],
 			"Learn more": [
 				"더 알아보기"
 			],
+			"Leave a rating": [
+				"평점 남기기"
+			],
 			"Logged out": [
 				"로그아웃됨"
+			],
+			"Not now": [
+				"다음에"
+			],
+			"Off": [
+				"끔"
+			],
+			"On": [
+				"켬"
 			],
 			"Open source VPN": [
 				"오픈 소스 VPN"
@@ -333,6 +360,9 @@
 			],
 			"Pin Proton VPN to your toolbar": [
 				"툴바에 Proton VPN 고정"
+			],
+			"Please help us spread the word with a Web Store rating.": [
+				"웹 스토어 평점을 통해 저희를 널리 알리는 데 도움을 주세요."
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"<b>다음</b>을 클릭한 다음에 브라우저 팝업에서 <b>허용</b>을 눌러주세요."
@@ -352,8 +382,8 @@
 			"Secure Core": [
 				"Secure Core"
 			],
-			"Select websites to exclude from your VPN connection.": [
-				"VPN 연결을 제외할 웹사이트를 선택하세요."
+			"Selected websites": [
+				"선택된 웹 사이트"
 			],
 			"Share anonymous usage crash reports": [
 				"익명 사용량 충돌 보고서 공유"
@@ -382,6 +412,9 @@
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"시작하려면, 브라우저의 VPN 권한 허용이 필요합니다."
 			],
+			"Tor servers such as ${logical.Name} are not currently supported in the browser extension": [
+				"${logical.Name}와 같은 Tor 서버는 브라우저 확장 프로그램에서 사용할 수 없습니다"
+			],
 			"Upgrade": [
 				"업그레이드"
 			],
@@ -399,9 +432,6 @@
 			],
 			"VPN Features": [
 				"VPN 기능"
-			],
-			"Websites that do not use VPN:": [
-				"VPN 연결을 제외할 웹사이트:"
 			],
 			"You're signed in": [
 				"로그인됨"
@@ -431,6 +461,9 @@
 			],
 			"Entry country": [
 				"입구 국가"
+			],
+			"Exact match": [
+				"정확히 일치"
 			],
 			"Free": [
 				"무료"

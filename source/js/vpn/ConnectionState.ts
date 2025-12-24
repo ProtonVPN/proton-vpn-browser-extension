@@ -3,6 +3,7 @@ import {ProxyAuthentication} from './ProxyAuthentication';
 import {ApiError} from '../api';
 import {SettingChange} from '../messaging/MessageType';
 import {Credentials} from '../account/credentials/Credentials';
+import type {SplitTunnelingMode} from './WebsiteFilter';
 import OnAuthRequiredDetails = chrome.webRequest.OnAuthRequiredDetails;
 import OnRequestDetails = browser.proxy._OnRequestDetails;
 
@@ -17,10 +18,15 @@ export interface ServerSummary {
 	secureCore: boolean | undefined;
 }
 
+export interface SplitTunnelingConfig {
+	mode?: SplitTunnelingMode;
+	filteredDomains?: string[];
+}
+
 export interface ProxyServer extends ServerSummary {
 	proxyHost: string;
 	proxyPort: number;
-	bypassList?: string[];
+	splitTunneling?: SplitTunnelingConfig;
 }
 
 export interface StateDefinition {

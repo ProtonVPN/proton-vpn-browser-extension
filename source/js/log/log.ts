@@ -1,5 +1,5 @@
-import { debug as debugEnabled } from '../config';
-import { record } from './record';
+import {debug as debugEnabled} from '../config';
+import {record} from './record';
 
 type PickByValue<T, ValueType> = Pick<
 	T,

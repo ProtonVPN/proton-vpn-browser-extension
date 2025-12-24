@@ -1,5 +1,5 @@
-import { Storage, storage } from '../tools/storage';
-import { triggerPromise } from '../tools/triggerPromise';
+import {Storage, storage} from '../tools/storage';
+import {triggerPromise} from '../tools/triggerPromise';
 
 /**
  * The transitive state that needs to be synchronized across tabs for the "Change Server" functionality for free users.

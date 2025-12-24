@@ -23,6 +23,9 @@
 			"Cancel": [
 				"Отменить"
 			],
+			"Change server": [
+				"Сменить сервер"
+			],
 			"Connect": [
 				"Подключить"
 			],
@@ -95,6 +98,9 @@
 			"Upgrade": [
 				"Улучшить"
 			],
+			"Upgrade to Proton VPN Plus": [
+				"Улучшить до Proton VPN Plus"
+			],
 			"Visit Support Center": [
 				"Открыть Центр поддержки"
 			]
@@ -125,6 +131,12 @@
 				"${countries} страны",
 				"${countries} стран",
 				"${countries} страны"
+			],
+			"${serversCount} secure server": [
+				"${serversCount} защищённый сервер",
+				"${serversCount} защищенных серверов",
+				"${serversCount} защищенных серверов",
+				"${serversCount} защищенных серверов"
 			],
 			"${servers}+ secure server": [
 				"${servers}+ защищённый сервер",
@@ -168,6 +180,9 @@
 			"Something went wrong. If the problem persists, please try to re-install the extension": [
 				"Что-то пошло не так. Если проблема не исчезнет, попробуйте переустановить расширение"
 			],
+			"Unable to find appropriate server, try to logout and login again if it persists.": [
+				"Невозможно найти подходящий сервер, попробуйте выйти из системы и войти снова, если проблема сохранится."
+			],
 			"Unable to load the list": [
 				"Не удаётся загрузить список"
 			],
@@ -190,9 +205,6 @@
 			],
 			"Allow VPN permissions": [
 				"Предоставьте разрешения VPN"
-			],
-			"Also exclude subdomains of this website": [
-				"Также исключить поддомены этого веб-сайта"
 			],
 			"and more": [
 				"и многое другое"
@@ -245,9 +257,6 @@
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Отчёты об ошибках помогают нам устранять ошибки, обнаруживать брандмауэры и избегать блокировки VPN."
 			],
-			"Disable VPN for selected websites.": [
-				"Отключить VPN для выбранных веб-сайтов."
-			],
 			"Disconnected": [
 				"Отключено"
 			],
@@ -266,6 +275,9 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"Выдавать системные уведомления при событиях подключения и отключения."
 			],
+			"Exclude mode": [
+				"Режим исключения"
+			],
 			"Extra protection for people with advanced privacy needs": [
 				"Дополнительная защита для людей с повышенными требованиями к конфиденциальности"
 			],
@@ -275,8 +287,11 @@
 			"Follow these simple steps to get the best experience using Proton VPN": [
 				"Следуйте этим простым шагам, чтобы получить лучший опыт, используя Proton VPN"
 			],
-			"For example, news.example.com is a subdomain of example.com.": [
-				"Например, news.example.com является поддоменом example.com."
+			"Get unlimited server changes with VPN Plus": [
+				"Получите неограниченное количество изменений сервера с VPN Plus"
+			],
+			"Get worldwide coverage with VPN Plus": [
+				"Получите глобальное покрытие с помощью VPN Plus"
 			],
 			"Help": [
 				"Справка"
@@ -290,11 +305,23 @@
 				"Высокоскоростной VPN из Швейцарии, защищающий вашу конфиденциальность. Максимальная безопасность, более ${count} серверов и никаких ограничений.",
 				"Высокоскоростной VPN из Швейцарии, защищающий вашу конфиденциальность. Максимальная безопасность, более ${count} сервера и никаких ограничений."
 			],
+			"Include mode": [
+				"Режим включения"
+			],
 			"Learn more": [
 				"Узнать больше"
 			],
 			"Logged out": [
 				"Выход выполнен"
+			],
+			"Not now": [
+				"Не сейчас"
+			],
+			"Off": [
+				"Выкл."
+			],
+			"On": [
+				"Вкл."
 			],
 			"Open source VPN": [
 				"VPN с открытым исходным кодом"
@@ -306,7 +333,7 @@
 				"Для продолжения, откройте расширение Proton VPN"
 			],
 			"Pin Proton VPN to your toolbar": [
-				"Закрепите Proton VPN на панели инструментов"
+				"Закрепить Proton VPN на панели инструментов"
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Нажмите <b>Далее</b>, затем щёлкните <b>Разрешить</b> во всплывающем окне браузера."
@@ -325,9 +352,6 @@
 			],
 			"Secure Core": [
 				"Secure Core"
-			],
-			"Select websites to exclude from your VPN connection.": [
-				"Выберите веб-сайты, которые следует исключить из VPN-соединения."
 			],
 			"Share anonymous usage crash reports": [
 				"Поделиться анонимными отчетами об ошибках"
@@ -367,9 +391,6 @@
 			],
 			"VPN Features": [
 				"Функции VPN"
-			],
-			"Websites that do not use VPN:": [
-				"Веб-сайты, не использующие VPN:"
 			],
 			"You're signed in": [
 				"Вход выполнен"
@@ -411,6 +432,9 @@
 			],
 			"Free": [
 				"Free"
+			],
+			"Free connections": [
+				"Бесплатные подключения"
 			],
 			"Free servers": [
 				"Бесплатные серверы"

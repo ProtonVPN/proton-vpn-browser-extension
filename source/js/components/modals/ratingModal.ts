@@ -8,18 +8,7 @@ import {triggerPromise} from '../../tools/triggerPromise';
 import {openTab} from '../../tools/openTab';
 import {delay} from '../../tools/delay';
 
-export async function maybeShowRatingModal(user: User) {
-	await delay(1000);
-	if (await shouldShowRatingModal(user)) {
-		const rateUsModal = document.getElementById('rate-us') as HTMLDialogElement | undefined;
-
-		if (rateUsModal && !rateUsModal.open) {
-			showModal(rateUsModal);
-		}
-	}
-}
-
-async function shouldShowRatingModal(user: User): Promise<boolean> {
+const shouldShowRatingModal = async (user: User): Promise<boolean> => {
 	const now = Date.now();
 
 	const [config, state] = await Promise.all([
@@ -77,34 +66,43 @@ async function shouldShowRatingModal(user: User): Promise<boolean> {
 	return enoughConnections || enoughDaysConnected;
 }
 
-export function configureRatingModalButtons() {
-	const rateUsModal = document.getElementById('rate-us') as HTMLDialogElement | undefined;
-
+export const maybeShowRatingModal = (rateUsModal: HTMLDialogElement | null, user: User) => triggerPromise((async () => {
 	if (!rateUsModal) {
 		return;
 	}
 
-	const storeButton = rateUsModal.querySelector('#store-button[data-rate-us-click=""]') as HTMLButtonElement | undefined;
+	await delay(1000);
+
+	if ((await shouldShowRatingModal(user)) && !rateUsModal.open) {
+		showModal(rateUsModal);
+	}
+})());
+
+export const configureRatingModalButtons = (rateUsModal: HTMLDialogElement | null) => {
+	if (!rateUsModal) {
+		return;
+	}
+
+	const storeButton = rateUsModal.querySelector<HTMLButtonElement>('#store-button[data-rate-us-click=""]');
 
 	if (storeButton) {
 		storeButton.dataset['rateUsClick'] = 'set';
 		storeButton.addEventListener('click', () => {
-			setReviewInfoState({
+			triggerPromise(setReviewInfoState({
 				lastReviewTimestamp: Date.now(),
-			});
+			}));
 			triggerPromise(openTab(getBrowser().storeReviewsUrl));
 		});
 	}
 
-	const notNowButton = rateUsModal.querySelector('#not-now-button[data-rate-us-dismiss=""]') as HTMLButtonElement | undefined;
+	const notNowButton = rateUsModal.querySelector<HTMLButtonElement>('#not-now-button[data-rate-us-dismiss=""]');
 
 	if (notNowButton) {
 		notNowButton.dataset['rateUsDismiss'] = 'set';
 		notNowButton.addEventListener('click', () => {
-			setReviewInfoState({
+			triggerPromise(setReviewInfoState({
 				lastDismissTimestamp: Date.now(),
-			});
+			}));
 		});
 	}
-
-}
+};

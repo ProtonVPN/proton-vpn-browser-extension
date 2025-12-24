@@ -23,6 +23,9 @@
 			"Cancel": [
 				"Prekliči"
 			],
+			"Change server": [
+				"Spremeni strežnik"
+			],
 			"Connect": [
 				"Poveži"
 			],
@@ -126,6 +129,12 @@
 				"${countries} države",
 				"${countries} držav"
 			],
+			"${serversCount} secure server": [
+				"${serversCount} varen strežnik",
+				"${serversCount} varni strežniki",
+				"${serversCount} varna strežnika",
+				"${serversCount} varni strežniki"
+			],
 			"${servers}+ secure server": [
 				"${servers}+ varen strežnik",
 				"${servers}+ varna strežnika",
@@ -191,9 +200,6 @@
 			"Allow VPN permissions": [
 				"Omogoči VPN dovoljenja"
 			],
-			"Also exclude subdomains of this website": [
-				"Izključite tudi poddomene te spletne strani"
-			],
 			"and more": [
 				"in več"
 			],
@@ -242,14 +248,14 @@
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Poročila o zrušitvah nam pomagajo odpraviti napake, zaznati požarne zidove in se izogniti blokadam VPN."
 			],
-			"Disable VPN for selected websites.": [
-				"Onemogoči VPN za izbrana spletna mesta."
-			],
 			"Disconnected": [
 				"Povezava je prekinjena"
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Oddajanje sistemskih obvestil o dogodkih povezave in prekinitve povezave."
+			],
+			"Exclude mode": [
+				"Način izključitve"
 			],
 			"Extra protection for people with advanced privacy needs": [
 				"Dodatna zaščita za ljudi z naprednimi potrebami glede zasebnosti"
@@ -260,8 +266,11 @@
 			"Follow these simple steps to get the best experience using Proton VPN": [
 				"Sledite tem preprostim korakom za najboljšo izkušnjo z uporabo Proton VPN"
 			],
-			"For example, news.example.com is a subdomain of example.com.": [
-				"Na primer, novice.primer.com je pod domena primer.com."
+			"Get unlimited server changes with VPN Plus": [
+				"Pridobite neomejene spremembe strežnika z VPN Plus"
+			],
+			"Get worldwide coverage with VPN Plus": [
+				"Zagotovite si svetovno pokritost z VPN Plus"
 			],
 			"Help": [
 				"Pomoč"
@@ -275,11 +284,23 @@
 				"Hitri švicarski VPN, ki varuje vašo zasebnost. Največja varnost, več kot ${count} strežniki in brez omejitev.",
 				"Hitri švicarski VPN, ki varuje vašo zasebnost. Največja varnost, več kot ${count} strežnikov in brez omejitev."
 			],
+			"Include mode": [
+				"Način vključitve"
+			],
 			"Learn more": [
 				"Več o tem"
 			],
 			"Logged out": [
 				"Odjavljen"
+			],
+			"Not now": [
+				"Ne zdaj"
+			],
+			"Off": [
+				"Izključeno"
+			],
+			"On": [
+				"Vključeno"
 			],
 			"Open source VPN": [
 				"Odprtokoden VPN"
@@ -307,9 +328,6 @@
 			],
 			"Secure Core": [
 				"Secure Core"
-			],
-			"Select websites to exclude from your VPN connection.": [
-				"Izberite spletna mesta, ki jih želite izključiti iz povezave VPN."
 			],
 			"Share anonymous usage crash reports": [
 				"Deli anonimna poročila o zrušitvah uporabe"
@@ -346,9 +364,6 @@
 			],
 			"VPN Features": [
 				"Funkcije VPN"
-			],
-			"Websites that do not use VPN:": [
-				"Spletna mesta, ki ne uporabljajo VPN:"
 			],
 			"You're signed in": [
 				"Prijavljeni ste"
@@ -390,6 +405,9 @@
 			],
 			"Free": [
 				"Brezplačno"
+			],
+			"Free connections": [
+				"Brezplačne povezave"
 			],
 			"Free servers": [
 				"Brezplačni strežniki"

@@ -1,4 +1,4 @@
-import { Server } from './Server';
+import type {Server} from './Server';
 
 export interface Logical {
 	ID: string | number;
@@ -9,7 +9,7 @@ export interface Logical {
 	EntryCountryName?: string;
 	/** e.g. JP | US */
 	ExitCountry: string;
-	HostCountry: string;
+	HostCountry: string | null;
 	Features: number; // bitmap
 	Location: { Lat: number, Long: number };
 	Name: string;

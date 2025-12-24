@@ -62,7 +62,7 @@ export const routeMessage = async (message: { type: BackgroundMessage, data: any
 			break;
 
 		case StateChange.CONNECT:
-			await connectLogical(data.logical, data.server, data.bypassList);
+			await connectLogical(data.logical, data.server, data.splitTunneling);
 			break;
 
 		case BackgroundAction.FORGET_ERROR:

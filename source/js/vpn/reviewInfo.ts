@@ -1,5 +1,6 @@
 import {milliSeconds} from '../tools/milliSeconds';
 import {Storage, storage} from '../tools/storage';
+import {triggerPromise} from '../tools/triggerPromise';
 import {tokenDuration} from '../../../config';
 
 /**
@@ -69,10 +70,10 @@ export async function setReviewInfoState(partialStateOrUpdater: Partial<ReviewIn
 	}));
 }
 
-export async function setReviewInfoStateLastSeenConnected() {
+export const setReviewInfoStateLastSeenConnected = () => {
 	const now = Date.now();
 
-	return setReviewInfoState(({
+	triggerPromise(setReviewInfoState(({
 		milliSecondsConnectedInRow = 0,
 		lastSeenConnectedTimestamp = 0,
 	}) => ({
@@ -82,7 +83,7 @@ export async function setReviewInfoStateLastSeenConnected() {
 			now,
 		),
 		lastSeenConnectedTimestamp: now,
-	}));
+	})));
 }
 
 export async function setReviewInfoStateOnConnectAction() {
@@ -95,10 +96,10 @@ export async function setReviewInfoStateOnConnectAction() {
 	}));
 }
 
-export async function setReviewInfoStateOnFailedConnection() {
-	return setReviewInfoState(({
+export const setReviewInfoStateOnFailedConnection = () => {
+	triggerPromise(setReviewInfoState(({
 		successConnectionsInRow: 0,
 		milliSecondsConnectedInRow: 0,
 		lastSeenConnectedTimestamp: undefined,
-	}));
-}
+	})));
+};

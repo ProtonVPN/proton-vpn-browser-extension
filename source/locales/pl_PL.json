@@ -220,9 +220,6 @@
 			"Allow VPN permissions": [
 				"Zezwalaj na uprawnienia VPN"
 			],
-			"Also exclude subdomains of this website": [
-				"Wyklucz subdomeny strony"
-			],
 			"and more": [
 				"i wiele więcej"
 			],
@@ -274,9 +271,6 @@
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Raporty o awariach pomagają nam naprawić błędy, wykryć zapory sieciowe i ominąć blokady VPN."
 			],
-			"Disable VPN for selected websites.": [
-				"Wyłącz VPN dla wybranych stron."
-			],
 			"Disconnected": [
 				"Rozłączono"
 			],
@@ -298,6 +292,9 @@
 			"Enjoying Proton VPN?": [
 				"Podoba Ci się Proton VPN?"
 			],
+			"Exclude mode": [
+				"Tryb wykluczania"
+			],
 			"Extra protection for people with advanced privacy needs": [
 				"Dodatkowa ochrona dla użytkowników z zaawansowanymi potrzebami w zakresie prywatności"
 			],
@@ -306,9 +303,6 @@
 			],
 			"Follow these simple steps to get the best experience using Proton VPN": [
 				"Wykonaj proste kroki, aby uzyskać najlepsze wrażenie z rozszerzenia Proton VPN"
-			],
-			"For example, news.example.com is a subdomain of example.com.": [
-				"Np. wiadomosci.przyklad.pl to subdomena przyklad.pl."
 			],
 			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
 				"Kraje planu Free (<span id=\"free-server-countries-count\">0</span>)"
@@ -331,6 +325,9 @@
 				"Szybka szwajcarska usługa VPN, która chroni Twoją prywatność. Maksymalne bezpieczeństwo, ${count} serwerów i brak ograniczeń.",
 				"Szybka szwajcarska usługa VPN, która chroni Twoją prywatność. Maksymalne bezpieczeństwo, ${count} serwerów i brak ograniczeń."
 			],
+			"Include mode": [
+				"Tryb dołączania"
+			],
 			"Learn more": [
 				"Dowiedz się więcej"
 			],
@@ -342,6 +339,12 @@
 			],
 			"Not now": [
 				"Nie teraz"
+			],
+			"Off": [
+				"Wyłączony"
+			],
+			"On": [
+				"Włączony"
 			],
 			"Open source VPN": [
 				"Otwarty kod źródłowy aplikacji VPN"
@@ -375,9 +378,6 @@
 			],
 			"Secure Core": [
 				"Secure Core"
-			],
-			"Select websites to exclude from your VPN connection.": [
-				"Wybierz strony do wykluczenia z połączenia VPN."
 			],
 			"Share anonymous usage crash reports": [
 				"Udostępnij anonimowe raporty o awariach"
@@ -423,9 +423,6 @@
 			],
 			"VPN Features": [
 				"Funkcje VPN"
-			],
-			"Websites that do not use VPN:": [
-				"Strony, które nie używają połączenia VPN:"
 			],
 			"You're signed in": [
 				"Zalogowano"

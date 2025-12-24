@@ -202,6 +202,9 @@
 			"<div class=\"weak-text\">\n<span data-trans>About free connections</span>\n<svg width=\"15\" height=\"14\" viewBox=\"0 0 15 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path \t\t\t\t\t\t\t\t\t\tfill-rule=\"evenodd\"\nclip-rule=\"evenodd\"\nd=\"M7.5 13C10.8137 13 13.5 10.3137 13.5 7C13.5 3.68629 10.8137 1 7.5 1C4.18629 1 1.5 3.68629 1.5 7C1.5 10.3137 4.18629 13 7.5 13ZM7.5 14C11.366 14 14.5 10.866 14.5 7C14.5 3.13401 11.366 0 7.5 0C3.63401 0 0.5 3.13401 0.5 7C0.5 10.866 3.63401 14 7.5 14ZM9.24995 10C9.24995 10.3038 9.00371 10.55 8.69995 10.55H7.69995H6.69995C6.39619 10.55 6.14995 10.3038 6.14995 10C6.14995 9.69624 6.39619 9.45 6.69995 9.45H7.14995L7.14995 6.55H6.99994C6.69618 6.55 6.44994 6.30376 6.44994 6C6.44994 5.69624 6.69618 5.45 6.99994 5.45H7.69995C7.84582 5.45 7.98571 5.50795 8.08886 5.61109C8.19201 5.71424 8.24995 5.85413 8.24995 6L8.24995 9.45H8.69995C9.00371 9.45 9.24995 9.69624 9.24995 10ZM7.5 4.40002C7.8866 4.40002 8.2 4.08662 8.2 3.70002C8.2 3.31343 7.8866 3.00002 7.5 3.00002C7.1134 3.00002 6.8 3.31343 6.8 3.70002C6.8 4.08662 7.1134 4.40002 7.5 4.40002Z\"\nfill=\"#A7A4B5\" ></path>\n</svg>\n</div>": [
 				"<div class=\"weak-text\">\n<span data-trans>Free bağlantıları hakkında</span>\n<svg width=\"15\" height=\"14\" viewBox=\"0 0 15 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path \t\t\t\t\t\t\t\t\t\tfill-rule=\"evenodd\"\nclip-rule=\"evenodd\"\nd=\"M7.5 13C10.8137 13 13.5 10.3137 13.5 7C13.5 3.68629 10.8137 1 7.5 1C4.18629 1 1.5 3.68629 1.5 7C1.5 10.3137 4.18629 13 7.5 13ZM7.5 14C11.366 14 14.5 10.866 14.5 7C14.5 3.13401 11.366 0 7.5 0C3.63401 0 0.5 3.13401 0.5 7C0.5 10.866 3.63401 14 7.5 14ZM9.24995 10C9.24995 10.3038 9.00371 10.55 8.69995 10.55H7.69995H6.69995C6.39619 10.55 6.14995 10.3038 6.14995 10C6.14995 9.69624 6.39619 9.45 6.69995 9.45H7.14995L7.14995 6.55H6.99994C6.69618 6.55 6.44994 6.30376 6.44994 6C6.44994 5.69624 6.69618 5.45 6.99994 5.45H7.69995C7.84582 5.45 7.98571 5.50795 8.08886 5.61109C8.19201 5.71424 8.24995 5.85413 8.24995 6L8.24995 9.45H8.69995C9.00371 9.45 9.24995 9.69624 9.24995 10ZM7.5 4.40002C7.8866 4.40002 8.2 4.08662 8.2 3.70002C8.2 3.31343 7.8866 3.00002 7.5 3.00002C7.1134 3.00002 6.8 3.31343 6.8 3.70002C6.8 4.08662 7.1134 4.40002 7.5 4.40002Z\"\nfill=\"#A7A4B5\" ></path>\n</svg>\n</div>"
 			],
+			"A subdomain URL includes a prefix before the main domain name. For example, account.proton.me is a subdomain of proton.me.": [
+				"Bir alt etki alanı adresinde, ana etki alanı adının önünde bir ek bulunur. Örneğin, account.proton.me, proton.me için bir alt etki alanıdır."
+			],
 			"About free connections": [
 				"Free bağlantıları hakkında"
 			],
@@ -214,8 +217,8 @@
 			"Allow VPN permissions": [
 				"VPN izinlerini verin"
 			],
-			"Also exclude subdomains of this website": [
-				"Bu sitenin alt etki alanları da katılmasın"
+			"Also add subdomains": [
+				"Alt etki alanlarını da ekleyin"
 			],
 			"and more": [
 				"ve daha fazlası"
@@ -256,6 +259,12 @@
 			"Connected to ${name} in ${city}": [
 				"${city} içinde ${name} ile bağlantı kuruldu"
 			],
+			"Connecting servers such as ${logical.Name} is not currently supported in the browser extension": [
+				"${logical.Name} gibi sunucular ile bağlantı kurmak şu anda tarayıcı eklentisinde desteklenmiyor."
+			],
+			"Connecting to dedicated IPs such as ${logical.Name} is not currently supported in the browser extension": [
+				"${logical.Name} gibi özel IP adresleri ile bağlantı kurmak şu anda tarayıcı eklentisinde desteklenmiyor."
+			],
 			"Connecting...": [
 				"Bağlantı kuruluyor..."
 			],
@@ -268,8 +277,8 @@
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Çökme bildirimleri sorunları gidermemize, güvenlik duvarlarını algılamamıza ve VPN engellemelerini aşmamıza yardımcı olur."
 			],
-			"Disable VPN for selected websites.": [
-				"Seçilmiş siteler için VPN kullanılmasını engeller."
+			"Decide which websites are protected by VPN.": [
+				"Hangi sitelerin VPN ile korunacağına karar verin."
 			],
 			"Disconnected": [
 				"Bağlı değil"
@@ -292,6 +301,9 @@
 			"Enjoying Proton VPN?": [
 				"Proton VPN uygulamasını beğendiniz mi?"
 			],
+			"Exclude mode": [
+				"Katmama kipi"
+			],
 			"Extra protection for people with advanced privacy needs": [
 				"Gelişmiş gizlilik gereksinimleri olan kişiler için ek koruma"
 			],
@@ -300,9 +312,6 @@
 			],
 			"Follow these simple steps to get the best experience using Proton VPN": [
 				"Bu basit adımları izleyerek en iyi Proton VPN deneyimini elde edin"
-			],
-			"For example, news.example.com is a subdomain of example.com.": [
-				"Örneğin haber.orneksite.com, orneksite.com sitesinin bir alt etki alanıdır."
 			],
 			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
 				"Free tarifesi sunucuları ülkeleri (<span id=\"free-server-countries-count\">0</span>)"
@@ -323,6 +332,9 @@
 				"Gizliliğinizi koruyan başarımı yüksek İsviçre'li VPN. En yüksek güvenlik, ${count} üzerinde sunucu ve sınırlamasız.",
 				"Gizliliğinizi koruyan başarımı yüksek İsviçre'li VPN. En yüksek güvenlik, ${count} üzerinde sunucu ve sınırlamasız."
 			],
+			"Include mode": [
+				"Katma kipi"
+			],
 			"Learn more": [
 				"Ayrıntılı bilgi alın"
 			],
@@ -334,6 +346,12 @@
 			],
 			"Not now": [
 				"Şimdi değil"
+			],
+			"Off": [
+				"Kapalı"
+			],
+			"On": [
+				"Açık"
 			],
 			"Open source VPN": [
 				"Açık kaynak kodlu VPN"
@@ -368,8 +386,8 @@
 			"Secure Core": [
 				"Secure Core"
 			],
-			"Select websites to exclude from your VPN connection.": [
-				"VPN bağlantınıza katılmayacak siteleri seçin."
+			"Selected websites": [
+				"Seçilmiş siteler"
 			],
 			"Share anonymous usage crash reports": [
 				"Anonim çökme bildirimleri paylaşılsın"
@@ -398,6 +416,9 @@
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Başlamak için tarayıcınızda VPN izinlerini vermeniz gerekir."
 			],
+			"Tor servers such as ${logical.Name} are not currently supported in the browser extension": [
+				"${logical.Name} gibi Tor sunucuları şu anda tarayıcı eklentisinde desteklenmiyor."
+			],
 			"Upgrade": [
 				"Yükselt"
 			],
@@ -415,9 +436,6 @@
 			],
 			"VPN Features": [
 				"VPN özellikleri"
-			],
-			"Websites that do not use VPN:": [
-				"VPN kullanmayan siteler:"
 			],
 			"You're signed in": [
 				"Oturum açtınız"
@@ -450,6 +468,9 @@
 			"Entry country": [
 				"Giriş ülkesi",
 				"Giriş ülkeleri"
+			],
+			"Exact match": [
+				"Tam eşleşme"
 			],
 			"Free": [
 				"Free"

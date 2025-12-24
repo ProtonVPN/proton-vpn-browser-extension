@@ -3,13 +3,13 @@ export const milliSeconds = {
 		return (initialTime || 0) + seconds * 1000;
 	},
 	fromMinutes(minutes: number, initialTime?: number) {
-		return minutes * this.fromSeconds(60, initialTime);
+		return this.fromSeconds(minutes * 60, initialTime);
 	},
 	fromHours(hours: number, initialTime?: number) {
-		return hours * this.fromMinutes(60, initialTime);
+		return this.fromMinutes(hours * 60, initialTime);
 	},
 	fromDays(days: number, initialTime?: number) {
-		return days * this.fromHours(24, initialTime);
+		return this.fromHours(days * 24, initialTime);
 	},
 	toSeconds(milliSeconds: number) {
 		return milliSeconds / 1000;

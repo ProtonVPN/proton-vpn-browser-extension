@@ -11,6 +11,14 @@ import {milliSeconds} from '../tools/milliSeconds';
 import {ErrorCode, getErrorCode} from '../tools/getErrorCode';
 import {retryCredentials} from './retryCredentials';
 import {apiDomainsExclusion, excludeApiFromProxy, proxyLocalNetworkExclusion, scheme} from '../config';
+import type {SplitTunnelingConfig} from '../vpn/ConnectionState';
+import {getIncludeOnlyList} from '../vpn/getIncludeOnlyList';
+import {getBypassList} from '../vpn/getBypassList';
+
+interface PacScript {
+	mode: 'pac_script',
+	pacScript: {data: string},
+}
 
 interface SystemProxy {
 	mode: 'system',
@@ -20,21 +28,27 @@ interface FixedServersProxy {
 	mode: 'fixed_servers';
 	rules: {
 		singleProxy: {
-			scheme: string;
+			scheme: 'http' | 'https'; // https is the only protocol authorized in production
 			host: string;
 			port: number;
 		};
+		includeOnly?: string[];
 		bypassList: string[];
 	};
 }
 
-const isFixedServersProxy = (value: any): value is FixedServersProxy => value.mode === 'fixed_servers';
+const isFixedServersProxy = (value: any): value is FixedServersProxy => (
+	value.mode === 'fixed_servers'
+	|| value.mode === 'pac_script'
+);
 
 let proxySet = false;
 
 let proxyErrorWatched = false;
 
-export const setProxy = (value: FixedServersProxy | SystemProxy): Promise<boolean> => new Promise(resolve => {
+export const setProxy = (
+	value: FixedServersProxy | SystemProxy | PacScript,
+): Promise<boolean> => new Promise(resolve => {
 	if (!chrome.proxy || !setupHandleProxyRequest()) {
 		resolve(false);
 
@@ -85,20 +99,66 @@ export const setProxy = (value: FixedServersProxy | SystemProxy): Promise<boolea
 export const getFixedServerConfig = (
 	host: string,
 	port: number,
-	bypassList: string[] = [],
-): FixedServersProxy => ({
-	mode: 'fixed_servers',
-	rules: {
-		singleProxy: {
-			scheme,
-			host,
-			port,
+	splitTunneling: SplitTunnelingConfig = {},
+): FixedServersProxy => {
+	const config: FixedServersProxy = {
+		mode: 'fixed_servers',
+		rules: {
+			singleProxy: {
+				scheme,
+				host,
+				port,
+			},
+			bypassList: [
+				...getBypassList(splitTunneling),
+				...(excludeApiFromProxy ? apiDomainsExclusion : []),
+				...proxyLocalNetworkExclusion,
+			],
 		},
-		bypassList: [// setProxyToWaiterHost
-			...bypassList,
-			...(excludeApiFromProxy ? apiDomainsExclusion : []),
-			...proxyLocalNetworkExclusion,
-		],
+	};
+
+	const includeOnly = getIncludeOnlyList(splitTunneling);
+
+	if (typeof includeOnly !== 'undefined') {
+		config.rules.includeOnly = includeOnly;
+	}
+
+	return config;
+};
+
+const buildDomainListCondition = (domains: string[]) => domains.map(
+	domain => domain.startsWith('.')
+		? `host.endsWith(${JSON.stringify(domain)})`
+		: `(host === ${JSON.stringify(domain)})`,
+).join(' || ');
+
+const getExcludeCondition = (proxy: FixedServersProxy): string => {
+	return buildDomainListCondition(proxy.rules.bypassList);
+};
+
+const getIncludeCondition = (proxy: FixedServersProxy): string => {
+	const includeOnly = proxy.rules.includeOnly;
+
+	if (typeof includeOnly === 'undefined') {
+		return `!(${getExcludeCondition(proxy)})`;
+	}
+
+	return `!(${getExcludeCondition(proxy)}) && (${buildDomainListCondition(includeOnly)})`;
+};
+
+/**
+ * PAC Script is for Chrome, in Firefox, logic is overridden by handleProxyRequest()
+ */
+export const getPacScript = (proxy: FixedServersProxy): PacScript => ({
+	mode: 'pac_script',
+	pacScript: {
+		data: `function FindProxyForURL(url, host) {
+			if (${getIncludeCondition(proxy)}) {
+				return "${proxy.rules.singleProxy.scheme.toUpperCase()} ${proxy.rules.singleProxy.host}:${proxy.rules.singleProxy.port}";
+			}
+
+			return "DIRECT";
+		}`,
 	},
 });
 

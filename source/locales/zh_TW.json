@@ -211,9 +211,6 @@
 			"Allow VPN permissions": [
 				"允許 VPN 權限"
 			],
-			"Also exclude subdomains of this website": [
-				"同時排除此網站的子網域"
-			],
 			"and more": [
 				"以及更多"
 			],
@@ -265,9 +262,6 @@
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"錯誤報告有助於我們修復程式錯誤、偵測防火牆和避免 VPN 封鎖。"
 			],
-			"Disable VPN for selected websites.": [
-				"為選定的網站停用 VPN。"
-			],
 			"Disconnected": [
 				"已中斷連線"
 			],
@@ -286,6 +280,9 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"發出關於連線與斷線事件的系統通知。"
 			],
+			"Exclude mode": [
+				"排除模式"
+			],
 			"Extra protection for people with advanced privacy needs": [
 				"為有進階隱私需要的人提供額外保障"
 			],
@@ -294,9 +291,6 @@
 			],
 			"Follow these simple steps to get the best experience using Proton VPN": [
 				"只需簡單幾步，即可盡享 Proton VPN 最佳體驗"
-			],
-			"For example, news.example.com is a subdomain of example.com.": [
-				"舉例來說，news.example.com 是 example.com 的子網域。"
 			],
 			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
 				"題供免費伺服器國家 (<span id=\"free-server-countries-count\">0</span>)"
@@ -316,11 +310,23 @@
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"具備高效能的瑞士設計 VPN，保障您的線上隱私。最全面的安全保護，擁有超過 ${count} 臺伺服器，讓您無拘無束遨遊網際。"
 			],
+			"Include mode": [
+				"包含模式"
+			],
 			"Learn more": [
 				"瞭解詳情"
 			],
 			"Logged out": [
 				"已登出"
+			],
+			"Not now": [
+				"稍後再說"
+			],
+			"Off": [
+				"關"
+			],
+			"On": [
+				"開"
 			],
 			"Open source VPN": [
 				"開放式程式碼VPN"
@@ -351,9 +357,6 @@
 			],
 			"Secure Core": [
 				"Secure Core"
-			],
-			"Select websites to exclude from your VPN connection.": [
-				"選取網站以從您的 VPN 連線排除。"
 			],
 			"Share anonymous usage crash reports": [
 				"分享匿名錯誤報告"
@@ -399,9 +402,6 @@
 			],
 			"VPN Features": [
 				"VPN 功能"
-			],
-			"Websites that do not use VPN:": [
-				"不使用 VPN 的網站："
 			],
 			"You're signed in": [
 				"您已登入"

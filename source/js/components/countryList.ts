@@ -1,6 +1,6 @@
 import {comp, Sorter} from '../tools/comp';
 import {countryBlock} from './countryBlock';
-import {Logical} from '../vpn/Logical';
+import type {Logical} from '../vpn/Logical';
 import {getKeys} from '../tools/getKeys';
 import {getSecureCorePredicate} from '../vpn/getSecureCorePredicate';
 

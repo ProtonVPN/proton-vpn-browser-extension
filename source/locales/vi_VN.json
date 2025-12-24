@@ -117,6 +117,9 @@
 			"${countries} country": [
 				"${countries} quốc gia"
 			],
+			"${serversCount} secure server": [
+				"${serversCount} máy chủ bảo mật"
+			],
 			"${servers}+ secure server": [
 				"${servers} máy chủ bảo mật"
 			],
@@ -156,6 +159,9 @@
 			"Something went wrong. If the problem persists, please try to re-install the extension": [
 				"Có lỗi đã xảy ra. Nếu vấn đề không được khắc phục, vui lòng cài đặt lại tiện ích mở rộng"
 			],
+			"Unable to find appropriate server, try to logout and login again if it persists.": [
+				"Không thể tìm thấy máy chủ phù hợp, hãy thử đăng xuất và đăng nhập lại nếu còn tiếp diễn."
+			],
 			"Unable to load the list": [
 				"Không thể tải danh sách"
 			],
@@ -178,9 +184,6 @@
 			],
 			"Allow VPN permissions": [
 				"Cấp phép sử dụng VPN"
-			],
-			"Also exclude subdomains of this website": [
-				"Bỏ qua các tên miền phụ của trang web này"
 			],
 			"and more": [
 				"và hơn nữa"
@@ -233,9 +236,6 @@
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Báo cáo sự cố giúp chúng tôi sửa lỗi, phát hiện tường lửa và tránh bị chặn VPN."
 			],
-			"Disable VPN for selected websites.": [
-				"Vô hiệu hóa VPN cho các trang web được chọn."
-			],
 			"Disconnected": [
 				"Ngắt kết nối"
 			],
@@ -250,9 +250,6 @@
 			],
 			"Follow these simple steps to get the best experience using Proton VPN": [
 				"Hãy làm theo các bước đơn giản sau đây để có được trải nghiệm sử dụng Proton VPN tốt nhất:"
-			],
-			"For example, news.example.com is a subdomain of example.com.": [
-				"Ví dụ news.example.com là một tên miền phụ của example.com"
 			],
 			"Help": [
 				"Hỗ trợ"
@@ -269,6 +266,15 @@
 			"Logged out": [
 				"Đã đăng xuất"
 			],
+			"Not now": [
+				"Để sau"
+			],
+			"Off": [
+				"Tắt"
+			],
+			"On": [
+				"Bật"
+			],
 			"Open source VPN": [
 				"VPN mã nguồn mở"
 			],
@@ -284,14 +290,14 @@
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Nhấn <b>Kế tiếp</b>, sau đó chọn <b>Cho phép</b> khi được trình duyệt hỏi"
 			],
+			"Proton VPN": [
+				"Proton VPN"
+			],
 			"Proton VPN Browser Extension": [
 				"Tiện ích mở rộng trên trình duyệt Proton VPN"
 			],
 			"Search": [
 				"Tìm kiếm"
-			],
-			"Select websites to exclude from your VPN connection.": [
-				"Chọn các trang web không kết nối thông qua VPN"
 			],
 			"Share anonymous usage crash reports": [
 				"Chia sẽ báo cáo sự cố ẩn danh"
@@ -332,9 +338,6 @@
 			"VPN Features": [
 				"Các tính năng VPN"
 			],
-			"Websites that do not use VPN:": [
-				"Các trang web không sử dụng VPN:"
-			],
 			"You're signed in": [
 				"Bạn đã đăng nhập"
 			]
@@ -366,6 +369,9 @@
 			],
 			"Free": [
 				"Miễn phí"
+			],
+			"Free connections": [
+				"Các kết nối miễn phí"
 			],
 			"Free servers": [
 				"Máy chủ miễn phí"

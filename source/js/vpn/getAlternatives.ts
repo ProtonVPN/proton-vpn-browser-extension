@@ -1,5 +1,5 @@
-import {Logical} from './Logical';
-import {Server} from './Server';
+import type {Logical} from './Logical';
+import type {Server} from './Server';
 import {getSortedLogicals} from './getLogicals';
 import {Feature} from './Feature';
 import {getBestLogical} from './getLogical';
