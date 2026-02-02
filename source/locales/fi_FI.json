@@ -428,6 +428,9 @@
 			"User": [
 				"Käyttäjä"
 			],
+			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
+				"Brave-selaimella DNS-pyynnöt voivat olla suojaamattomia Include-tilassa."
+			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
 				"VPN:n on estänyt ulkoinen ohjelmisto.\n\nTietyt työkalut, kuten virustorjuntaohjelmat tai välityspalvelimet, saattavat häiritä Proton VPN:n toimintaa. Poista ne käytöstä ja yritä uudelleen."
 			],

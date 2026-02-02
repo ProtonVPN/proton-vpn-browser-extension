@@ -24,12 +24,14 @@ type BrowserSubTypeCheck = BrowserSubTypeNavigatorCheck | BrowserSubTypeWindowCh
 const canBeCheckedInBackgroundService = (check: BrowserSubTypeCheck): check is BrowserSubTypeNavigatorCheck => 'whenNavigator' in check;
 const cannotBeCheckedInBackgroundService = (check: BrowserSubTypeCheck): check is BrowserSubTypeWindowCheck => 'whenWindow' in check;
 
+export const isBrave = (navigator: Navigator) => hasKey(navigator, ChromiumType.BRAVE);
+
 const checks: Record<ChromiumType, BrowserSubTypeCheck> = {
 	[ChromiumType.OCULUS]: {
 		whenNavigator: (navigator: Navigator) => navigator.userAgent.includes('OculusBrowser'),
 	},
 	[ChromiumType.BRAVE]: {
-		whenNavigator: (navigator: Navigator) => hasKey(navigator, ChromiumType.BRAVE),
+		whenNavigator: isBrave,
 	},
 	[ChromiumType.VIVALDI]: {
 		whenWindow: (window: Window) => hasKey(window, ChromiumType.VIVALDI),

@@ -1,5 +1,6 @@
 import {CacheItem} from '../tools/storage';
 import {upgradeButton} from '../components/upgradeButton';
+import {translateToggleButtonTitle} from '../../js/tools/translate';
 
 export const toggleButtons = <T extends {value: boolean}>(
 	feature: CacheItem<T>,
@@ -21,10 +22,14 @@ export const toggleButtons = <T extends {value: boolean}>(
 		}
 
 		const method = valueHandler.value ? 'add' : 'remove';
+		translateToggleButtonTitle(button, valueHandler.value);
 		button.classList[method]('activated');
 		button.setAttribute('aria-pressed', valueHandler.value ? 'true' : 'false');
+
 		button.addEventListener('click', async () => {
 			valueHandler.value = !valueHandler.value;
+			translateToggleButtonTitle(button, valueHandler.value);
+
 			const method = valueHandler.value ? 'add' : 'remove';
 			buttons.forEach(b => {
 				b.classList[method]('activated');

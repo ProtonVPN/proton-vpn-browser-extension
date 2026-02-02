@@ -428,6 +428,9 @@
 			"User": [
 				"Χρήστης"
 			],
+			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
+				"Χρησιμοποιώντας το Brave, τα αιτήματα DNS ενδέχεται να μην προστατεύονται όταν χρησιμοποιείται η λειτουργία Συμπερίληψης."
+			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
 				"Η VPN αποκλείστηκε από εξωτερικό λογισμικό.\n\nΟρισμένα εργαλεία, όπως προστασίας από ιούς ή διακομιστές μεσολάβησης, μπορούν να παρεμβαίνουν στο Proton VPN. Απενεργοποιήστε τα και δοκιμάστε ξανά."
 			],

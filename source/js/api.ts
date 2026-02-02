@@ -299,7 +299,7 @@ const isUrlExcluded = (
 export const isExcludedFromProxy = (
 	requestInfo: OnRequestDetails,
 	apiExclusion: boolean,
-	bypassList?: string[],
+	bypassList?: string[] | undefined,
 ): boolean => {
 	const url = new URL(requestInfo.url);
 
@@ -313,7 +313,7 @@ export const isExcludedFromProxy = (
 export const isIncludedIntoProxy = (
 	requestInfo: OnRequestDetails,
 	apiExclusion: boolean,
-	includeOnlyList: string[] | undefined,
+	includeOnlyList?: string[] | undefined,
 ): boolean => {
 	const url = new URL(requestInfo.url);
 

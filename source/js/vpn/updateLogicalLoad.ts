@@ -6,13 +6,13 @@ import {getLogicalLoadsRefreshInterval} from '../intervals'
 
 export const updateLogicalLoad = () => {
 	let consecutiveLoadFailures = 0;
-	let lastUpdate = new Date();
+	let lastUpdate = new Date(Date.now());
 	const interval = getLogicalLoadsRefreshInterval();
 
 	setJitterInterval(interval, interval / 5, async () => {
 		try {
 			broadcastMessage<BroadcastLogicals>('logicalUpdate', await loadLoads());
-			lastUpdate = new Date();
+			lastUpdate = new Date(Date.now());
 			consecutiveLoadFailures = 0;
 		} catch (e) {
 			if (++consecutiveLoadFailures > 5) {

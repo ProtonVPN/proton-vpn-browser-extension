@@ -265,6 +265,12 @@
 			"Connected to ${name} in ${city}": [
 				"З'єднано з ${name} у ${city}"
 			],
+			"Connecting servers such as ${logical.Name} is not currently supported in the browser extension": [
+				"Під'єднання серверів, як-от ${logical.Name}, наразі не підтримується в розширенні браузера"
+			],
+			"Connecting to dedicated IPs such as ${logical.Name} is not currently supported in the browser extension": [
+				"Під'єднання до виділених IP-адрес, як-от ${logical.Name}, наразі не підтримується в розширенні браузера"
+			],
 			"Connecting...": [
 				"З'єднання..."
 			],
@@ -418,6 +424,9 @@
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Для початку роботи потрібно надати дозволи для VPN у вашому браузері."
 			],
+			"Tor servers such as ${logical.Name} are not currently supported in the browser extension": [
+				"Сервери Tor, як-от ${logical.Name}, наразі не підтримуються в розширенні браузера"
+			],
 			"Upgrade": [
 				"Покращити"
 			],
@@ -473,6 +482,9 @@
 				"Країни входу",
 				"Країн входу",
 				"Країн входу"
+			],
+			"Exact match": [
+				"Точний збіг"
 			],
 			"Free": [
 				"Free"

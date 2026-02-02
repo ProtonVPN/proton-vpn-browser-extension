@@ -19,7 +19,7 @@ export const watchOnceBroadcastMessage = (name: string, callback: (...args: any[
 	});
 };
 
-chrome.runtime.onMessage.addListener((request: any) => {
+export const messageListener = (request: any) => {
 	allWatchers.forEach(watchers => {
 		const type = request.type;
 		const watcher = type ? watchers[type] : undefined;
@@ -36,4 +36,6 @@ chrome.runtime.onMessage.addListener((request: any) => {
 	});
 
 	return false;
-});
+};
+
+chrome.runtime.onMessage.addListener(messageListener);

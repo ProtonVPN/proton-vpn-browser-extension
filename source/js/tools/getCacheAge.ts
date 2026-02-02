@@ -2,6 +2,9 @@ export const isCachedItem = (cachedItem: any): cachedItem is {time: number} => c
 	&& (typeof cachedItem) === 'object'
 	&& (typeof cachedItem?.time === 'number');
 
+/**
+ * Return age of a cache item in milliseconds.
+ */
 export const getCacheAge = (cachedItem: any): number => {
 	if (isCachedItem(cachedItem)) {
 		return Date.now() - cachedItem.time;

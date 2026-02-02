@@ -88,6 +88,7 @@ import {crashReportOptIn, getCrashReportOptIn, handleError} from './tools/sentry
 import {connectEventHandler} from './tools/connectEventHandler';
 import {getPrefillValues} from './tools/prefill';
 import {toggleClass} from './tools/toggleClass';
+import {updateLastActivityTime} from './tools/activity';
 import {ServerRotator} from './vpn/ServerRotator';
 import {configureGoToButtons} from './components/goToButton';
 import {updateAccessSentenceWithCounts} from './components/accessSentence';
@@ -96,6 +97,7 @@ import {configureModalButtons} from './components/modals/modals';
 import {configureRatingModalButtons, maybeShowRatingModal} from './components/modals/ratingModal';
 import {setReviewInfoStateOnConnectAction} from './vpn/reviewInfo';
 import {filterLogicalsWithCurrentFeatures} from './vpn/filterLogicalsWithCurrentFeatures';
+import {getActivityCheckInterval} from './intervals';
 
 const state = {
 	connected: false,
@@ -1477,6 +1479,9 @@ const start = async () => {
 	});
 
 	maybeShowRatingModal(rateUsModal, user);
+
+	setTimeout(updateLastActivityTime, 1);
+	setInterval(updateLastActivityTime, getActivityCheckInterval());
 };
 
 triggerPromise(start());

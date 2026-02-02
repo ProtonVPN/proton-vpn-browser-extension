@@ -428,6 +428,9 @@
 			"User": [
 				"Kullanıcı"
 			],
+			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
+				"Brave kullanıldığında, katılma kipinde DNS istekleri korunmayabilir."
+			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
 				"VPN bir dış uygulama tarafından engellendi."
 			],

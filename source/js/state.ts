@@ -19,7 +19,7 @@ import {
 } from './account/credentials/getConnectionCredentials';
 import type {Credentials} from './account/credentials/Credentials';
 import {setButton} from './tools/browserAction';
-import {clearProxy, getFixedServerConfig, getPacScript, hasProxy, setProxy} from './tools/proxy';
+import {clearProxy, hasProxy, proxyToServer} from './tools/proxy';
 import {
 	authCheck,
 	excludeApiFromProxy,
@@ -64,9 +64,10 @@ import {getBasicAuth} from './vpn/getBasicAuth';
 import {getAccessToken} from './account/getAccessToken';
 import {pickServerInLogical} from './vpn/pickServerInLogical';
 import {getSecureCorePredicate} from './vpn/getSecureCorePredicate';
+import {getActivityCheckInterval, getLogicalCheckUpRefreshInterval} from './intervals';
 import {delay} from './tools/delay';
-import {getLogicalCheckUpRefreshInterval} from './intervals';
 import {handleError} from './tools/sentry';
+import {updateLastActivityTime} from './tools/activity';
 import {guessTierFromCredentials} from './account/credentials/guessTierFromCredentials';
 import {mayReplaceCredentials} from './account/credentials/mayReplaceCredentials';
 import {forgetClientConfig} from './account/user/clientconfig/forgetClientConfig';
@@ -192,7 +193,7 @@ const onState = asConnectionStateSwitch({
 			return false;
 		}
 
-		if (!await setProxy(getPacScript(getFixedServerConfig(server.proxyHost, server.proxyPort, splitTunneling)))) {
+		if (!await proxyToServer(server, splitTunneling)) {
 			return false;
 		}
 
@@ -302,7 +303,10 @@ const onState = asConnectionStateSwitch({
 				return;
 			}
 
-			const { LogicalServers: logicals } = await fetchWithUserInfo<{ LogicalServers: Logical[] }>('vpn/v1/logicals?ID[]=' + id);
+			const encodedId = encodeURIComponent(id);
+			const { LogicalServers: logicals } = await fetchWithUserInfo<{ LogicalServers: Logical[] }>(
+				`vpn/v1/logicals?ID[]=${encodedId}&IncludeID[]=${encodedId}`,
+			);
 
 			if (!logicals[0] || !isLogicalUp(logicals[0])) {
 				const currentCredentials = credentials || await getCredentials(true);
@@ -779,3 +783,9 @@ export function getCurrentState(): ConnectionState {
 
 	return currentState;
 }
+
+setInterval(() => {
+	if (isCurrentStateConnected()) {
+		triggerPromise(updateLastActivityTime());
+	}
+}, getActivityCheckInterval());

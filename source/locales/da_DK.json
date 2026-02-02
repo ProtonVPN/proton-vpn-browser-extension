@@ -39,7 +39,7 @@
 				"Afbryd"
 			],
 			"Enable/disable notifications": [
-				"Aktiver/deaktiver notifikationer"
+				"Aktivér/deaktivér notifikationer"
 			],
 			"Exclude websites from the tunnel": [
 				"Ekskludér hjemmesider fra tunnelen"
@@ -165,19 +165,19 @@
 				"Kan ikke styre browserens netværksindstillinger, muligvis mangler der en tilladelse"
 			],
 			"Please check your connectivity": [
-				"Tjek venligst din Internetforbindelse"
+				"Tjek din Internetforbindelse"
 			],
 			"Please try a different keyword": [
-				"Venligst prøv et andet nøgleord."
+				"Prøv et andet nøgleord."
 			],
 			"Server not found": [
 				"Server ikke fundet"
 			],
 			"Service temporarily unavailable": [
-				"Tjeneste midlertidigt utilgængelig"
+				"Tjenesten er midlertidigt utilgængelig"
 			],
 			"Something went wrong. If the problem persists, please try to re-install the extension": [
-				"Noget gik galt. Hvis problemet opstår igen, prøv venligst at geninstallerer udvidelsen"
+				"Noget gik galt. Hvis problemet opstår igen, prøv at geninstallerer udvidelsen"
 			],
 			"Unable to find appropriate server, try to logout and login again if it persists.": [
 				"Kan ikke finde passende server, prøv at logge ud og logge på igen, hvis det fortsætter."
@@ -212,7 +212,7 @@
 				"Adgang til over 13.000 sikre servere i over 120 lande"
 			],
 			"Access Proton VPN via this icon": [
-				"Få adgang til Proton VPN via dette ikon"
+				"Få adgang til Proton VPN via denne ikon"
 			],
 			"Allow VPN permissions": [
 				"Giv VPN-tilladelser"
@@ -366,7 +366,7 @@
 				"Fastgør Proton VPN til din værktøjslinje"
 			],
 			"Please help us spread the word with a Web Store rating.": [
-				"Hjælp os venligst med at sprede budskabet med en vurdering i webbutikken."
+				"Hjælp os med at sprede budskabet med en vurdering i webbutikken."
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Tryk <b>Næste</b>, og klik så på <b>Tillad</b> på din browsers pop-up."
@@ -428,6 +428,9 @@
 			"User": [
 				"Bruger"
 			],
+			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
+				"Ved brug af Brave kan DNS-anmodninger være ubeskyttede i inkludér-tilstand."
+			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
 				"VPN blokeret af ekstern software.\n\nNogle værktøjer, som antivirusprogrammer eller proxyer, kan forstyrre Proton VPN. Deaktivér dem, og prøv igen."
 			],
@@ -473,7 +476,7 @@
 				"Nøjagtigt match"
 			],
 			"Free": [
-				"Free"
+				"Gratis"
 			],
 			"Free connections": [
 				"Gratis forbindelser"
@@ -482,7 +485,7 @@
 				"Free servere"
 			],
 			"Free servers (${count})": [
-				"Ledige servere (${count})"
+				"Gratis servere (${count})"
 			],
 			"Internal servers (${count})": [
 				"Interne servere (${count})"

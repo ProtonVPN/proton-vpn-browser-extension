@@ -4,6 +4,7 @@ import {readSession} from '../readSession';
 import {refreshToken} from '../refreshToken';
 import {getAccessToken} from '../getAccessToken';
 import {getCacheAge} from '../../tools/getCacheAge';
+import {getElapsedMillisecondsSinceLastActivity} from '../../tools/activity';
 import {isLoggedIn, logIn} from '../../state';
 import {milliSeconds} from '../../tools/milliSeconds';
 import {fetchPmUser} from './getPmUser';
@@ -11,7 +12,7 @@ import {catchPromise, triggerPromise} from '../../tools/triggerPromise';
 import {checkNetwork} from '../../vpn/checkNetwork';
 import {storedUser} from './storedUser';
 import {loadCachedUser} from './loadCachedUser';
-import {getUserTTL} from '../../intervals';
+import {getIdleThreshold, getUserBlockingUpdateTTL, getUserTTL} from '../../intervals';
 import {BackgroundData} from '../../messaging/MessageType';
 
 let tries: number[] = [];
@@ -34,13 +35,15 @@ export const loadUser = async (forceRefresh?: boolean): Promise<User | UserResul
 	const savedUser = await loadCachedUser();
 	const age = getCacheAge(savedUser);
 	const refresh = forceRefresh && (savedUser.user?.VPN.MaxTier || 0) < 1;
-	const refreshInterval = getUserTTL();
+
+	const idleDuration = await getElapsedMillisecondsSinceLastActivity();
+	const refreshInterval = getUserTTL() * (idleDuration > getIdleThreshold() ? 4 : 1);
 
 	if (age < (refresh ? milliSeconds.fromSeconds(1) : refreshInterval)) {
 		return savedUser?.user;
 	}
 
-	if (!refresh && age < milliSeconds.fromDays(3)) {
+	if (!refresh && age < getUserBlockingUpdateTTL()) {
 		triggerPromise((async () => {
 			try {
 				await getAccessToken();

@@ -11,7 +11,7 @@ import {milliSeconds} from '../tools/milliSeconds';
 import {ErrorCode, getErrorCode} from '../tools/getErrorCode';
 import {retryCredentials} from './retryCredentials';
 import {apiDomainsExclusion, excludeApiFromProxy, proxyLocalNetworkExclusion, scheme} from '../config';
-import type {SplitTunnelingConfig} from '../vpn/ConnectionState';
+import type {ProxyServer, SplitTunnelingConfig} from '../vpn/ConnectionState';
 import {getIncludeOnlyList} from '../vpn/getIncludeOnlyList';
 import {getBypassList} from '../vpn/getBypassList';
 
@@ -46,7 +46,7 @@ let proxySet = false;
 
 let proxyErrorWatched = false;
 
-export const setProxy = (
+const setProxy = (
 	value: FixedServersProxy | SystemProxy | PacScript,
 ): Promise<boolean> => new Promise(resolve => {
 	if (!chrome.proxy || !setupHandleProxyRequest()) {
@@ -96,6 +96,19 @@ export const setProxy = (
 	);
 });
 
+export const proxyToServer = async (
+	server: ProxyServer,
+	splitTunneling: SplitTunnelingConfig = {},
+) => {
+	const config = getFixedServerConfig(server.proxyHost, server.proxyPort, splitTunneling);
+
+	return await setProxy(
+		typeof config.rules.includeOnly === 'undefined'
+			? config
+			: getPacScript(config),
+	);
+};
+
 export const getFixedServerConfig = (
 	host: string,
 	port: number,
@@ -126,24 +139,50 @@ export const getFixedServerConfig = (
 	return config;
 };
 
-const buildDomainListCondition = (domains: string[]) => domains.map(
-	domain => domain.startsWith('.')
-		? `host.endsWith(${JSON.stringify(domain)})`
-		: `(host === ${JSON.stringify(domain)})`,
-).join(' || ');
+const buildDomainMatchingCondition = (domain: string) => {
+	if (domain.startsWith('.')) {
+		return `host.endsWith(${JSON.stringify(domain)})`;
+	}
+
+	const mask = domain.match(/^(\d+\.\d+\.\d+\.\d+)\/(\d+)$/);
+
+	if (mask) {
+		let val = Number(mask[2]);
+
+		return `isInNet(host, "${mask[1]}", "${[255, 255, 255, 255]
+			.map(() => [...Array(8).keys()]
+				.reduce((rst) => (rst * 2 + Number(val-- > 0)), 0))
+			.join('.')}")`;
+	}
+
+	return `(host === ${JSON.stringify(domain)})`;
+}
+
+const buildDomainListCondition = (domains: string[]) => domains
+	.map(domain => buildDomainMatchingCondition(domain))
+	.join(' || ');
 
 const getExcludeCondition = (proxy: FixedServersProxy): string => {
-	return buildDomainListCondition(proxy.rules.bypassList);
+	return buildDomainListCondition(proxy.rules.bypassList.filter(
+		exclusion => !proxyLocalNetworkExclusion.includes(exclusion), // Those will be handled by dnsResolve()
+	));
 };
 
 const getIncludeCondition = (proxy: FixedServersProxy): string => {
 	const includeOnly = proxy.rules.includeOnly;
+	const exclusion = getExcludeCondition(proxy);
 
 	if (typeof includeOnly === 'undefined') {
-		return `!(${getExcludeCondition(proxy)})`;
+		return exclusion ? `!(${exclusion})` : 'true';
 	}
 
-	return `!(${getExcludeCondition(proxy)}) && (${buildDomainListCondition(includeOnly)})`;
+	const inclusion = buildDomainListCondition(includeOnly);
+
+	if (!inclusion) {
+		return 'false';
+	}
+
+	return exclusion ? `!(${exclusion}) && (${inclusion})` : inclusion;
 };
 
 /**
@@ -153,6 +192,15 @@ export const getPacScript = (proxy: FixedServersProxy): PacScript => ({
 	mode: 'pac_script',
 	pacScript: {
 		data: `function FindProxyForURL(url, host) {
+			var isLocal = /^\\d+(\\.\\d+){3}$/.test(host) && (
+				isInNet(host, "192.0.2.0", "255.255.255.0")
+				|| /^(0|10|127|192\\.168|172\\.1[6789]|172\\.2[0-9]|172\\.3[01]|169\\.254|192\\.88\\.99)\\.[0-9.]+$/.test(host)
+			);
+
+			if (isLocal || isPlainHostName(host)) {
+				return "DIRECT";
+			}
+
 			if (${getIncludeCondition(proxy)}) {
 				return "${proxy.rules.singleProxy.scheme.toUpperCase()} ${proxy.rules.singleProxy.host}:${proxy.rules.singleProxy.port}";
 			}

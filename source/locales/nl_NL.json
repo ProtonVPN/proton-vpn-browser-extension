@@ -428,6 +428,9 @@
 			"User": [
 				"Gebruiker"
 			],
+			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
+				"Met Brave kunnen DNS-verzoeken onbeschermd zijn bij gebruik van de modus Inclusief."
+			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
 				"VPN geblokkeerd door externe software.\n\nSommige tools, zoals antivirusprogramma's of proxy's, kunnen interfereren met Proton VPN. Schakel deze uit en probeer het opnieuw."
 			],

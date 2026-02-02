@@ -112,6 +112,26 @@ Promise.all([
 						});
 					});
 
+					root.querySelectorAll('[data-tooltip-title]').forEach(element => {
+						const titles = element.getAttribute('data-tooltip-title');
+
+						if (titles) {
+							(Object.values(JSON.parse(titles)) as string[]).forEach(title => {
+								addTranslation(
+									outputData,
+									file,
+									undefined,
+									new ContextualizedTranslation(
+										element.getAttribute('data-context') || 'Info',
+										title,
+										[title],
+									),
+									[element.getAttribute('data-comment')].filter(Boolean) as string[],
+								);
+							});
+						}
+					});
+
 					fileResolve(null);
 				});
 			}))).then(() => {

@@ -1,3 +1,12 @@
+# 1.2.15
+
+- Hibernate if not connected (reduce API calls frequency)
+
+# 1.2.14
+
+- Fix local network exclusion
+- Fix DNS leak in Brave
+
 # 1.2.13
 
 - Fix Split-Tunneling backward-compatibility

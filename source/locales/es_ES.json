@@ -41,6 +41,15 @@
 			"Enable/disable notifications": [
 				"Activar/desactivar las notificaciones"
 			],
+			"Configure split tunneling":[
+				"Configura el tunel dividido"
+			],
+			"Enable notifications": [
+				"Activar las notificaciones"
+			],
+			"Disable notifications":[
+				"Desactivar las notificaciones"
+			],
 			"Exclude websites from the tunnel": [
 				"Excluir sitios web del túnel"
 			],
@@ -386,6 +395,9 @@
 			"Secure Core": [
 				"Secure Core"
 			],
+			"Enable Secure Core":[
+				"Activa esto papi"
+			],
 			"Selected websites": [
 				"Sitios web seleccionados"
 			],
@@ -427,6 +439,9 @@
 			],
 			"User": [
 				"Usuario"
+			],
+			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
+				"Si usas Brave, las solicitudes DNS podrían quedar desprotegidas en el modo de inclusión."
 			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
 				"VPN bloqueada por software externo.\n\nAlgunas herramientas, como antivirus o proxies, pueden interferir con Proton VPN. Desactívalos y vuelve a intentarlo."

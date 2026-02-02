@@ -27,6 +27,8 @@ const useSlowFrequency = (() => {
 	return () => !paidServersAccessible;
 })();
 
+export const getActivityCheckInterval = () => milliSeconds.fromSeconds(20);
+
 export const getLocationRefreshInterval = () => useSlowFrequency()
 	? milliSeconds.fromMinutes(30)
 	: milliSeconds.fromMinutes(10);
@@ -66,6 +68,8 @@ export const getUserTTL = () => useSlowFrequency()
 	? milliSeconds.fromMinutes(20)
 	: milliSeconds.fromMinutes(10);
 
+export const getUserBlockingUpdateTTL = () => milliSeconds.fromDays(3);
+
 export const getServerCountsTTL = () => milliSeconds.fromDays(10);
 
 export const getServerCountsBlockingUpdateTTL = () => getServerCountsTTL() * 2;
@@ -85,3 +89,7 @@ export const getCityTranslationNamesTTL = () => milliSeconds.fromDays(20);
 export const getClientConfigTTL = () => milliSeconds.fromHours(12);
 
 export const getClientConfigBlockingUpdateTTL = () => getClientConfigTTL() * 4;
+
+export const getIdleThreshold = () => useSlowFrequency()
+	? milliSeconds.fromDays(3)
+	: milliSeconds.fromDays(7);

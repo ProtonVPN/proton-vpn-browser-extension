@@ -21,10 +21,10 @@ export const appendUrlParams = (
 	});
 
 	Object.keys(hashParams).forEach(name => {
-		const value = urlParams[name];
+		const value = hashParams[name];
 
 		if (typeof value === 'number' || isNonEmptyString(value)) {
-			hash += (params === '' ? '' : '&') + encodeURIComponent(name) + '=' + encodeURIComponent(value);
+			hash += (hash === '' ? '' : '&') + encodeURIComponent(name) + '=' + encodeURIComponent(value);
 		}
 	});
 

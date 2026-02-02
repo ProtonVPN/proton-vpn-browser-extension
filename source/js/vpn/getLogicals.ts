@@ -4,16 +4,18 @@ import {comp} from '../tools/comp';
 import {fetchWithUserInfo} from '../account/fetchWithUserInfo';
 import {getCacheAge} from '../tools/getCacheAge';
 import {milliSeconds} from '../tools/milliSeconds';
-import {type CacheWrappedValue, Storage, storage} from '../tools/storage';
+import {getElapsedMillisecondsSinceLastActivity} from '../tools/activity';
 import {getCities} from './getCities';
 import {triggerPromise} from '../tools/triggerPromise';
+import {type CacheWrappedValue, Storage, storage} from '../tools/storage';
 import type {BroadcastMessage} from '../tools/broadcastMessage';
 import {isServerUp} from './isServerUp';
 import {isLogicalConnectable} from './isLogicalConnectable';
-import {getLogicalsBlockingUpdateTTL, getLogicalsTTL} from '../intervals';
+import {getLogicalLoadsRefreshInterval, getLogicalsBlockingUpdateTTL, getLogicalsTTL} from '../intervals';
 
 type LogicalServersCache = CacheWrappedValue<Logical[]> & {
 	lastModified: string,
+	lastLoadUpdate?: number;
 };
 
 export const logicalServers = storage.item<LogicalServersCache>('logicals-servers', Storage.LOCAL);
@@ -62,16 +64,46 @@ export interface BroadcastLogicals extends BroadcastMessage<'logicalUpdate'> {
 
 export const loadLoads = async (): Promise<Logical[]> => {
 	const cache = await logicalServers.get();
-	const age = getCacheAge(cache);
+	const logicalAge = getCacheAge(cache);
 
 	// If the list is obsolete (too old to display)
-	if (!cache || age > getLogicalsBlockingUpdateTTL()) {
+	if (!cache || logicalAge > getLogicalsBlockingUpdateTTL()) {
 		// Then user will wait for request to complete
 		// and can only browse again the list when it succeeds
 		return await fetchLogicals(cache);
 	}
 
-	const { LogicalServers: logicals } = await fetchWithUserInfo<{ LogicalServers: Logical[] }>('vpn/loads');
+	const loadAge = cache.lastLoadUpdate ?? logicalAge;
+
+	getLoadsMaxAge().then(async maxAge => {
+		if (loadAge > maxAge) {
+			await refreshLogicalLoads(cache);
+		}
+	});
+
+	return cache.value;
+};
+
+const getLoadsMaxAge = async () => {
+	const baseInterval = getLogicalLoadsRefreshInterval();
+	const idleDuration = await getElapsedMillisecondsSinceLastActivity();
+
+	// Still connected or active during the last 3 hours
+	if (idleDuration < milliSeconds.fromHours(3)) {
+		return baseInterval / 2;
+	}
+
+	// Between 3 hours and 1 day
+	if (idleDuration < milliSeconds.fromHours(24)) {
+		return baseInterval * 2;
+	}
+
+	// More than 1 day
+	return baseInterval * 4;
+};
+
+const refreshLogicalLoads = async (cache: LogicalServersCache) => {
+	const { LogicalServers: logicals } = await fetchWithUserInfo<{ LogicalServers: Logical[] }>('vpn/v1/loads');
 	const logicalsById: Record<string, Logical> = {};
 
 	logicals.forEach(logical => {
@@ -86,12 +118,11 @@ export const loadLoads = async (): Promise<Logical[]> => {
 				}
 			});
 			cache.value = newCache.value;
+			cache.lastLoadUpdate = Date.now();
 		}
 
 		return newCache;
 	});
-
-	return cache.value;
 };
 
 const fetchLogicals = async (cache?: LogicalServersCache) => {
@@ -146,9 +177,11 @@ const fetchLogicals = async (cache?: LogicalServersCache) => {
 const getLogicals = async () => {
 	const cache = await logicalServers.get();
 	const age = getCacheAge(cache);
+	const idleDuration = await getElapsedMillisecondsSinceLastActivity();
+	const freshnessThreshold = getLogicalsTTL() * (idleDuration > milliSeconds.fromHours(24) ? 2 : 1);
 
 	// If logical list is fresh, just use the cache
-	if (cache && age < getLogicalsTTL()) {
+	if (cache && age < freshnessThreshold) {
 		return cache.value;
 	}
 
@@ -166,8 +199,11 @@ const getLogicals = async () => {
 
 const sortLogicals = (logicals: Logical[]) => {
 	logicals.sort((a, b) => {
-		if (a.SearchScore !== b.SearchScore) {
-			return comp(b.SearchScore, a.SearchScore);
+		const aScore = a.SearchScore ?? 0;
+		const bScore = b.SearchScore ?? 0;
+
+		if (aScore !== bScore) {
+			return comp(bScore, aScore);
 		}
 
 		if (a.ExitCountry !== b.ExitCountry) {

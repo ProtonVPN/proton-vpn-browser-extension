@@ -259,6 +259,9 @@
 			"Connected to ${name} in ${city}": [
 				"Ansluten till ${name} i ${city}"
 			],
+			"Connecting servers such as ${logical.Name} is not currently supported in the browser extension": [
+				"Anslutning till servrar som ${logical.Name} stöds för närvarande inte i webbläsartillägget"
+			],
 			"Connecting...": [
 				"Ansluter..."
 			],
@@ -409,6 +412,9 @@
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"För att komma igång måste du aktivera VPN-behörigheter i din webbläsare."
+			],
+			"Tor servers such as ${logical.Name} are not currently supported in the browser extension": [
+				"Tor-servrar som ${logical.Name} stöds för närvarande inte i webbläsartillägget"
 			],
 			"Upgrade": [
 				"Uppgradera"

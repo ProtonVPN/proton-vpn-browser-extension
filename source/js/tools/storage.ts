@@ -23,6 +23,11 @@ const getFallbackStorage = (storage: Storage) => storage === Storage.SESSION
 	? sessionStorage
 	: localStorage;
 
+export const storageConfig = {
+	// Measure only 1% of the storage failure for trend analyze
+	failureMeasureRatio: 0.01,
+};
+
 const withoutPersistentStorage = <T>(
 	error: any,
 	callback: (lastStorage: Record<string, any>) => T
@@ -37,8 +42,7 @@ const withoutPersistentStorage = <T>(
 		throw error;
 	}
 
-	// Measure only 1% of the storage failure for trend analyze
-	if (Math.random() < 0.01) {
+	if (Math.random() < storageConfig.failureMeasureRatio) {
 		// Throw async so it does not block the fallback but can be collected by Sentry
 		setTimeout(() => {
 			throw error;
@@ -84,9 +88,9 @@ export const storage = {
 
 			return defaultValue;
 		} catch (firstError) {
-			const fallbackStorage = getFallbackStorage(storage);
-
 			try {
+				const fallbackStorage = getFallbackStorage(storage);
+
 				const rawItem = await fallbackStorage.getItem(prefixedKey);
 
 				if (typeof rawItem === 'string') {

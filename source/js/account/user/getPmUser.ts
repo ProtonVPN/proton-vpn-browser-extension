@@ -5,10 +5,9 @@ import {refreshToken} from '../refreshToken';
 import {getAccessToken} from '../getAccessToken';
 import {getCacheAge} from '../../tools/getCacheAge';
 import {isLoggedIn, logIn} from '../../state';
-import {milliSeconds} from '../../tools/milliSeconds';
 import {triggerPromise} from '../../tools/triggerPromise';
 import {storedPmUser} from './storedPmUser';
-import {getPmUserTTL} from '../../intervals';
+import {getPmUserTTL, getUserBlockingUpdateTTL} from '../../intervals';
 
 export const fetchPmUser = async (): Promise<PmUser | undefined> => {
 	const user = await fetchJson<PmUser | PmUserResult | undefined>('users');
@@ -49,7 +48,7 @@ export const loadPmUser = async (): Promise<PmUser|undefined> => {
 		return savedUser?.user;
 	}
 
-	if (age < milliSeconds.fromDays(3)) {
+	if (age < getUserBlockingUpdateTTL()) {
 		triggerPromise(fetchPmUser());
 
 		return savedUser?.user;

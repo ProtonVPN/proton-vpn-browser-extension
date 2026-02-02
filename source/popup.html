@@ -207,7 +207,7 @@
 									</div>
 								</div>
 
-								<button class="toggle secure-core-button" title="Secure Core"></button>
+								<button class="toggle secure-core-button" data-tooltip-title='{"enable":"Enable Secure Core", "disable":"Disable Secure Core"}'></button>
 							</div>
 						</div>
 
@@ -227,7 +227,7 @@
 									</div>
 								</div>
 
-								<button class="toggle auto-connect-button" title="Auto connect" data-context="Action" data-comment="Tooltip of the toggle to auto-connect"></button>
+								<button class="toggle auto-connect-button" data-context="Action" data-comment="Tooltip of the toggle to auto-connect" data-tooltip-title='{"enable":"Enable auto-connect","disable":"Disable auto-connect"}'></button>
 							</div>
 						</div>
 
@@ -246,7 +246,7 @@
 									</div>
 								</div>
 								<div class="action-pretext"></div>
-								<button data-go-to="split-tunneling" title="Exclude websites from the tunnel" data-context="Action" data-comment="Tooltip of the Split tunneling setting" class="enter-setting" tabindex="0">
+								<button data-go-to="split-tunneling" title="Configure split tunneling" data-context="Action" data-comment="Tooltip of the Split tunneling setting" class="enter-setting" tabindex="0">
 									<svg class="sm-icon" aria-hidden="true" viewBox="0 0 32 32" fill="currentColor">
 										<path fill-rule="evenodd" d="M7.745 20.805a.75.75 0 0 1-.05-1.06L14.736 12 7.695 4.255a.75.75 0 1 1 1.11-1.01l7.5 8.25a.75.75 0 0 1 0 1.01l-7.5 8.25a.75.75 0 0 1-1.06.05Z" clip-rule="evenodd"/>
 									</svg>
@@ -270,7 +270,7 @@
 									</div>
 								</div>
 
-								<button class="toggle prevent-webrtc-leak-button" title="Prevent WebRTC leak" data-context="Action" data-comment="Tooltip of the WebRTC setting toggle"></button>
+								<button class="toggle prevent-webrtc-leak-button" data-context="Action" data-comment="Tooltip of the WebRTC setting toggle" data-tooltip-title='{"enable":"Enable WebRTC leak protection","disable":"Disable WebRTC leak protection"}'></button>
 							</div>
 						</div>
 
@@ -291,7 +291,7 @@
 									</div>
 								</div>
 
-								<button class="toggle notifications-enabled-button" title="Enable/disable notifications" data-context="Action" data-comment="Tooltip of system notifications setting toggle"></button>
+								<button class="toggle notifications-enabled-button" data-context="Action" data-comment="Tooltip of system notifications setting toggle" data-tooltip-title='{"enable":"Enable notifications","disable":"Disable notifications"}'></button>
 							</div>
 						</div>
 					</div>
@@ -379,7 +379,10 @@
 							</div>
 							<div class="split-tunneling-filters">
 								<p data-trans class="fade-text">Selected websites</p>
-								<div class="exclusions-list"></div>
+								<div class="domains-list"></div>
+								<div class="domains-list-warning">
+									ℹ️ <span data-trans>Using Brave, DNS requests might be unprotected when "Include mode" is active.</span>
+								</div>
 							</div>
 						</div>
 					</div>

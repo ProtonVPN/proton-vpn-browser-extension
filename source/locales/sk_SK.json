@@ -436,6 +436,9 @@
 			"User": [
 				"Používateľ"
 			],
+			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
+				"Pri používaní prehliadača Brave môžu byť DNS požiadavky v režime „Include“ nechránené."
+			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
 				"VPN blokovaná externým softvérom.\n\nNiektoré nástroje, ako napríklad antivírusy alebo proxy servery, môžu zasahovať do siete Proton VPN. Zakážte ich a skúste to znova."
 			],

@@ -5,6 +5,7 @@ import {CacheItem} from '../tools/storage';
 import {triggerPromise} from '../tools/triggerPromise';
 import {escapeHtml} from '../tools/escapeHtml';
 import {c} from '../tools/translate';
+import {isBrave} from '../tools/getBrowserSubType';
 import {upgradeButton} from './upgradeButton';
 import {warn} from '../log/log';
 
@@ -64,7 +65,15 @@ export const configureSplitTunneling = (
 
 			const currentMode = domainManager.getCurrentMode();
 			const isIncludeMode = currentMode === SplitTunnelingMode.Include;
-			const currentModeText = isIncludeMode ? c('Info').t`Include mode` : c('Info').t`Exclude mode`;
+			const currentModeText = isIncludeMode
+				? c('Info').t`Include mode`
+				: c('Info').t`Exclude mode`;
+			configurationBlock.querySelectorAll<HTMLDivElement>('.domains-list-warning').forEach(block => {
+				block.style.display = isIncludeMode && isBrave(navigator)
+					? 'block'
+					: 'none';
+			});
+
 			selectedModeText.textContent = currentModeText;
 			selectedMode?.setAttribute('data-value', currentMode);
 
@@ -153,7 +162,7 @@ export const configureSplitTunneling = (
 			</div>`;
 		}).join('');
 
-		area.querySelectorAll<HTMLDivElement>('.split-tunneling-filters .exclusions-list').forEach(element => {
+		area.querySelectorAll<HTMLDivElement>('.split-tunneling-filters .domains-list').forEach(element => {
 			element.innerHTML = html;
 			element.addEventListener('click', (e) => {
 				const button = (e.target as Element).closest('[data-st-delete-index]');

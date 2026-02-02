@@ -119,6 +119,10 @@ const getSampleRate = (message: string) => {
 		return 0.1;
 	}
 
+	if (/Cannot fetch vpn\/v1\/browser\/token/.test(message)) {
+		return 0.1;
+	}
+
 	if (/Invalid refresh token/.test(message)) {
 		return 0.2;
 	}

@@ -32,6 +32,16 @@ const calculateVariableOrder = (key: string): string[] => {
 	return variables;
 };
 
+export const translateToggleButtonTitle = (button: HTMLElement, value: boolean) => {
+	const titles = button.getAttribute('data-tooltip-title');
+	
+	if (titles) {
+		const context = button.getAttribute('data-context') || 'Action';
+		const {enable, disable} = JSON.parse(titles);
+		button.title = translate(context, value ? disable : enable);
+	}
+};
+
 export const translateArea = (area: ParentNode): void => {
 	['svg > title', '[data-trans]'].forEach(selector => {
 		area.querySelectorAll(selector).forEach(element => {
@@ -108,6 +118,21 @@ export class Context {
 	}
 }
 
+/**
+ * Translate a given ID.
+ *
+ * ⚠️ This function does not support pluralization.
+ * ⚠️ String template are not statically collected for this function so it must
+ * be used solely on dynamic IDs that are already discoverable for translations
+ * via another way, such as values in data-tooltip-title attributes. If your
+ * string is static, use c('Info').t`Your text`
+ */
+export const translate = (
+	context: string,
+	id: string,
+	args: any[] = [],
+) => getTranslation(context, ([value]) => value, [id], args);
+
 export const c = (context: string) => new Context(context);
 
 const pluralFnBody = (pluralStr: string) => `return args[+ (${pluralStr})];`;
@@ -128,7 +153,7 @@ export const getPluralFunc = (headers?: Record<string, string>): string => {
 		pluralFn = pluralFn.slice(0, -1);
 	}
 
-	return pluralFn || 'plural=(n != 1)';
+	return pluralFn || '(n != 1)';
 };
 
 const setCurrentTranslations = (locale: string, config: TranslationConfig) => {
@@ -165,7 +190,7 @@ const loadTranslations = async (locale: string) => {
 			break;
 	}
 
-	setCurrentTranslations(locale, await (await fetch('/locales/' + locale + '.json')).json());
+	setCurrentTranslations(locale, await (await fetch(`/locales/${locale}.json`)).json());
 };
 
 export const fetchTranslations = async () => {
@@ -232,6 +257,7 @@ const getLocaleForLanguage = (language: string): string => {
 	language ||= 'en';
 
 	return ({
+		ar: 'ar_SA',
 		be: 'be_BY',
 		ca: 'ca_ES',
 		cs: 'cs_CZ',
@@ -250,6 +276,7 @@ const getLocaleForLanguage = (language: string): string => {
 		sv: 'sv_SE',
 		uk: 'uk_UA',
 		vi: 'vi_VN',
+		zh: 'zh_CN',
 	})[language] || (language + '_' + language.toUpperCase());
 };
 
