@@ -17,11 +17,11 @@
 			"Already have a Proton Account?": [
 				"已經有 Proton 帳號？"
 			],
-			"Auto connect": [
-				"自動連線"
-			],
 			"Cancel": [
 				"取消"
+			],
+			"Change language": [
+				"轉換語言"
 			],
 			"Change server": [
 				"切換伺服器"
@@ -38,12 +38,6 @@
 			"Disconnect": [
 				"中斷連線"
 			],
-			"Enable/disable notifications": [
-				"啟用/停用 通知"
-			],
-			"Exclude websites from the tunnel": [
-				"從通道中排除網站"
-			],
 			"Log in with Proton": [
 				"以 Proton 登入"
 			],
@@ -55,9 +49,6 @@
 			],
 			"Next": [
 				"下一個"
-			],
-			"Prevent WebRTC leak": [
-				"防止 WebRTC 洩露"
 			],
 			"Quick connect": [
 				"快速連線"
@@ -351,9 +342,6 @@
 			],
 			"Proton VPN Browser Extension": [
 				"Proton VPN 瀏覽器擴充功能"
-			],
-			"Search": [
-				"搜尋"
 			],
 			"Secure Core": [
 				"Secure Core"

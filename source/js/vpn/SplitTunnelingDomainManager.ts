@@ -1,4 +1,9 @@
-import {SplitTunnelingMode, StoredWebsiteFilterList, WebsiteFilterList, WebsiteFilter} from './WebsiteFilter';
+import type {
+	StoredWebsiteFilterList,
+	WebsiteFilterList,
+	WebsiteFilter,
+} from './WebsiteFilter';
+import {SplitTunnelingMode} from './WebsiteFilter';
 
 /**
  * Manages domain lists for split tunneling with proper mode isolation.
@@ -12,7 +17,7 @@ export class SplitTunnelingDomainManager {
 	constructor(list: StoredWebsiteFilterList) {
 		this.list = {
 			...list,
-			value: (list.value || []).map(filter => ({
+			value: (list.value || []).map((filter) => ({
 				mode: SplitTunnelingMode.Exclude, // If user has filter with no mode from previous version, it's an exclusion
 				...filter,
 			})),
@@ -24,20 +29,21 @@ export class SplitTunnelingDomainManager {
 	private shouldBeEnabledByDefaultFor(list: StoredWebsiteFilterList): boolean {
 		const mode = list.mode || defaultSplitTunnelingMode;
 		const domains = (list.value || []).filter(
-			domain => (domain.mode || defaultSplitTunnelingMode) === mode,
+			(domain) => (domain.mode || defaultSplitTunnelingMode) === mode,
 		);
 
 		return mode === SplitTunnelingMode.Include || domains.length > 0;
 	}
 
 	getDomainsForCurrentMode(): WebsiteFilter[] {
-		return this.list.value.filter(domain => domain.mode === this.list.mode);
+		return this.list.value.filter((domain) => domain.mode === this.list.mode);
 	}
 
 	addDomain(domainName: string, withSubDomains: boolean): void {
 		// Check if domain already exists in current mode
-		const existsInCurrentMode = this.getDomainsForCurrentMode()
-			.some(domain => domain.domain === domainName);
+		const existsInCurrentMode = this.getDomainsForCurrentMode().some(
+			(domain) => domain.domain === domainName,
+		);
 
 		if (!existsInCurrentMode) {
 			this.list.value.push({
@@ -51,7 +57,8 @@ export class SplitTunnelingDomainManager {
 	removeDomain(domainName: string): boolean {
 		const initialLength = this.list.value.length;
 		this.list.value = this.list.value.filter(
-			domain => !(domain.domain === domainName && domain.mode === this.list.mode)
+			(domain) =>
+				!(domain.domain === domainName && domain.mode === this.list.mode),
 		);
 
 		return this.list.value.length < initialLength;
@@ -87,8 +94,9 @@ export class SplitTunnelingDomainManager {
 	}
 
 	hasDomainInCurrentMode(domainName: string): boolean {
-		return this.getDomainsForCurrentMode()
-			.some(domain => domain.domain === domainName);
+		return this.getDomainsForCurrentMode().some(
+			(domain) => domain.domain === domainName,
+		);
 	}
 
 	getCurrentModeDomainsCount(): number {

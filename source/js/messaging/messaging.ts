@@ -1,4 +1,5 @@
 'use background';
+import {getRegisteredLocaleFromUser} from '../account/user/getRegisteredLocaleFromUser';
 import {readSession} from '../account/readSession';
 import {getFreshUser} from '../account/user/getUser';
 import {getPmUser} from '../account/user/getPmUser';
@@ -7,22 +8,36 @@ import {createSession} from '../account/createSession';
 import {
 	BackgroundAction,
 	BackgroundData,
-	BackgroundMessage,
+	type BackgroundExtraData,
+	type BackgroundMessage,
 	PermissionGrant,
 	SettingChange,
-	StateChange
+	StateChange,
 } from './MessageType';
+import {triggerPromise} from '../tools/triggerPromise';
 import {sendForkResponse} from '../tools/openTabs';
 import {setupHandleProxyRequest} from '../tools/setupHandleProxyRequest';
+import {sendMessageToBackground} from '../tools/sendMessageToBackground';
 import {record} from '../log/record';
 import {forkSession} from './forkSession';
+import type {Logical} from '../vpn/Logical';
+import type {Server} from '../vpn/Server';
+import type {SplitTunnelingConfig} from '../vpn/ConnectionState';
 
-export const routeMessage = async (message: { type: BackgroundMessage, data: any }): Promise<any> => {
-	const { type, data } = message;
+export const routeMessage = async <T extends BackgroundMessage>(message: {
+	type: T;
+	data: T extends keyof BackgroundExtraData
+		? BackgroundExtraData[T] | undefined
+		: unknown;
+}): Promise<any> => {
+	const {type, data} = message;
 
 	switch (type) {
 		case BackgroundAction.FORK:
-			await sendForkResponse((message as any).tabId, await forkSession(message));
+			await sendForkResponse(
+				(message as {tabId?: number}).tabId,
+				await forkSession(message),
+			);
 
 			return null;
 
@@ -33,12 +48,25 @@ export const routeMessage = async (message: { type: BackgroundMessage, data: any
 
 			return await getFreshUser();
 
-		case BackgroundData.PM_USER:
+		case BackgroundData.PM_USER: {
 			if (!(await readSession())?.uid) {
 				throw new Error('No session');
 			}
 
-			return await getPmUser(true);
+			const user = await getPmUser(true);
+
+			try {
+				triggerPromise(
+					sendMessageToBackground(BackgroundData.LOCALE, {
+						locale: getRegisteredLocaleFromUser(user),
+					}),
+				);
+			} catch {
+				// Fallback to browser language
+			}
+
+			return user;
+		}
 
 		case StateChange.SIGN_OUT:
 			logOut(true);
@@ -58,11 +86,20 @@ export const routeMessage = async (message: { type: BackgroundMessage, data: any
 			break;
 
 		case StateChange.CONNECTING:
-			getCurrentState().checkConnectingState?.(data.connectionAttemptTime);
+			getCurrentState().checkConnectingState?.(
+				(data as {connectionAttemptTime: number}).connectionAttemptTime,
+			);
 			break;
 
 		case StateChange.CONNECT:
-			await connectLogical(data.logical, data.server, data.splitTunneling);
+			await (({logical, server, splitTunneling}) =>
+				connectLogical(logical, server, splitTunneling))(
+				data as {
+					logical: Logical;
+					server: Server;
+					splitTunneling?: SplitTunnelingConfig;
+				},
+			);
 			break;
 
 		case BackgroundAction.FORGET_ERROR:

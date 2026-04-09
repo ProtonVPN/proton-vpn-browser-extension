@@ -17,14 +17,17 @@
 			"Already have a Proton Account?": [
 				"Har du allerede en Proton-konto?"
 			],
-			"Auto connect": [
-				"Koble til automatisk"
-			],
 			"Cancel": [
 				"Avbryt"
 			],
+			"Change language": [
+				"Endre språk"
+			],
 			"Change server": [
 				"Endre tjener"
+			],
+			"Configure split tunneling": [
+				"Konfigurer delt tunnelering"
 			],
 			"Connect": [
 				"Koble til"
@@ -35,14 +38,32 @@
 			"Create an account": [
 				"Opprett en konto"
 			],
+			"Disable auto-connect": [
+				"Deaktiver automatisk tilkobling"
+			],
+			"Disable notifications": [
+				"Deaktiver varsler"
+			],
+			"Disable Split tunneling": [
+				"Deaktiver delt tunnelering"
+			],
+			"Disable WebRTC leak protection": [
+				"Deaktiver WebRTC-lekkasjebeskyttelse"
+			],
 			"Disconnect": [
 				"Koble fra"
 			],
-			"Enable/disable notifications": [
-				"Aktiver/deaktiver varslinger"
+			"Enable auto-connect": [
+				"Aktiver automatisk tilkobling"
 			],
-			"Exclude websites from the tunnel": [
-				"Ekskluder nettsteder fra tunnelen"
+			"Enable notifications": [
+				"Aktiver varsler"
+			],
+			"Enable Split tunneling": [
+				"Aktiver delt tunnelering"
+			],
+			"Enable WebRTC leak protection": [
+				"Aktiver WebRTC-lekkasjebeskyttelse"
 			],
 			"Log in with Proton": [
 				"Logg på med Proton"
@@ -55,9 +76,6 @@
 			],
 			"Next": [
 				"Neste"
-			],
-			"Prevent WebRTC leak": [
-				"Forhindre WebRTC-lekkasje"
 			],
 			"Quick connect": [
 				"Hurtigtilkobling"
@@ -118,6 +136,11 @@
 		"Action: Server-level button": {
 			"Connect to ${serverName}": [
 				"Koble til ${serverName}"
+			]
+		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"Søk"
 			]
 		},
 		"Confirm": {
@@ -280,6 +303,9 @@
 			"Decide which websites are protected by VPN.": [
 				"Bestem hvilke nettsteder som er beskyttet av VPN."
 			],
+			"Disable Secure Core": [
+				"Deaktiver Secure Core"
+			],
 			"Disconnected": [
 				"Frakoblet"
 			],
@@ -297,6 +323,9 @@
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Send systemvarsler om tilkoblings- og frakoblingshendelser."
+			],
+			"Enable Secure Core": [
+				"Aktiver Secure Core"
 			],
 			"Enjoying Proton VPN?": [
 				"Liker du Proton VPN?"
@@ -380,9 +409,6 @@
 			"Proton VPN Browser Extension": [
 				"Proton VPN-Nettleserutvidelse"
 			],
-			"Search": [
-				"Søk"
-			],
 			"Secure Core": [
 				"Secure Core"
 			],
@@ -407,8 +433,14 @@
 			"Thank you for installing Proton VPN": [
 				"Takk for at du installerte Proton VPN"
 			],
+			"The split tunneling options cannot be changed on this device": [
+				"Alternativene for delt tunnelering kan ikke endres på denne enheten"
+			],
 			"Then just click the Proton VPN icon to sign in.": [
 				"Deretter bare klikk Proton VPN-ikonet for å logge på."
+			],
+			"This option cannot be changed on this device": [
+				"Dette alternativet kan ikke endres på denne enheten"
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"Disse statistikkene inneholder ikke IP-adressen din, og de kan ikke brukes til å identifisere deg. Vi deler dem aldri med tredjeparter"
@@ -429,7 +461,7 @@
 				"Bruker"
 			],
 			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
-				"Ved bruk av Brave kan DNS-forespørsler være ubeskyttet i inkluderingsmodus."
+				"Ved bruk av Brave kan DNS-forespørsler være ubeskyttet når \"Inkludert modus\" er aktiv."
 			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
 				"VPN blokkert av ekstern programvare.\n\nEnkelte verktøy, som antivirusprogrammer eller proxyer, kan forstyrre Proton VPN. Deaktiver dem og prøv igjen."

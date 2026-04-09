@@ -1,4 +1,5 @@
-import {isPmUserResult, PmUser, PmUserResult} from './PmUser';
+import type {PmUser, PmUserResult} from './PmUser';
+import {isPmUserResult} from './PmUser';
 import {fetchJson, isUnauthorizedError} from '../../api';
 import {readSession} from '../readSession';
 import {refreshToken} from '../refreshToken';
@@ -10,17 +11,21 @@ import {storedPmUser} from './storedPmUser';
 import {getPmUserTTL, getUserBlockingUpdateTTL} from '../../intervals';
 
 export const fetchPmUser = async (): Promise<PmUser | undefined> => {
-	const user = await fetchJson<PmUser | PmUserResult | undefined>('users');
+	const user = await fetchJson<PmUser | PmUserResult | undefined>(
+		'core/v4/users?Locale=1',
+	);
 
 	if (user) {
 		if (!isLoggedIn()) {
 			logIn();
 		}
 
-		triggerPromise(storedPmUser.set({
-			time: Date.now(),
-			user,
-		}));
+		triggerPromise(
+			storedPmUser.set({
+				time: Date.now(),
+				user,
+			}),
+		);
 	}
 
 	return isPmUserResult(user) ? user.User : user;
@@ -39,7 +44,7 @@ export const loadPmCachedUser = async () => {
 	};
 };
 
-export const loadPmUser = async (): Promise<PmUser|undefined> => {
+export const loadPmUser = async (): Promise<PmUser | undefined> => {
 	const savedUser = await loadPmCachedUser();
 
 	const age = getCacheAge(savedUser);
@@ -65,7 +70,9 @@ export const loadPmUser = async (): Promise<PmUser|undefined> => {
 	}
 };
 
-export const getPmUser = async (tryReAuthentication = false): Promise<PmUser|undefined> => {
+export const getPmUser = async (
+	tryReAuthentication = false,
+): Promise<PmUser | undefined> => {
 	if (!(await readSession())?.uid) {
 		return undefined;
 	}

@@ -1,9 +1,7 @@
-import {Translation} from './Translation';
+import type {Translation} from './Translation';
 
-const formatString = (text: string): string => text
-	.replace(/\\/g, '\\\\')
-	.replace(/"/g, '\\"')
-	.replace(/\n/g, "\\n\"\n  \"");
+const formatString = (text: string): string =>
+	text.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '\\n"\n  "');
 
 const cleanComment = (comment: string) => {
 	if (comment.substring(0, 2) === '//') {
@@ -19,21 +17,25 @@ const cleanComment = (comment: string) => {
 
 	if (match && match[0]) {
 		const length = match[0].length;
-		lines = lines.map(line => line.substring(0, length) === match[0] ? line.substring(length) : line);
+		lines = lines.map((line) =>
+			line.substring(0, length) === match[0] ? line.substring(length) : line,
+		);
 	}
 
-	return lines.map(line => `#. ${line}\n`).join('');
+	return lines.map((line) => `#. ${line}\n`).join('');
 };
 
-const formatTranslation = (translation: Translation) => translation.comments.map(cleanComment).join('') +
-`#: ${translation.file}${translation.line ? ':' + translation.line : ''}
+const formatTranslation = (translation: Translation) =>
+	translation.comments.map(cleanComment).join('') +
+	`#: ${translation.file}${translation.line ? ':' + translation.line : ''}
 msgctxt "${formatString(translation.context)}"
 msgid "${formatString(translation.key)}"
-${translation.values.length === 2
-	? `msgid_plural "${formatString(translation.values[1] as string)}"
+${
+	translation.values.length === 2
+		? `msgid_plural "${formatString(translation.values[1] as string)}"
 msgstr[0] ""
 msgstr[1] ""`
-	: `msgstr ""`
+		: `msgstr ""`
 }
 
 `;
@@ -49,8 +51,7 @@ msgstr ""
 "POT-Creation-Date: ${new Date()
 	.toISOString()
 	.replace('T', ' ')
-	.replace(/:\d+\.\d+Z$/, '')
-}+0000\\n"
+	.replace(/:\d+\.\d+Z$/, '')}+0000\\n"
 "Language-Team: ProtonMail <contact@protonmail.ch>\\n"
 "Language: ${locale}\\n"
 "MIME-Version: 1.0\\n"

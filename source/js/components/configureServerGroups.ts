@@ -1,20 +1,23 @@
-import {getStreamingConfig, StreamingService} from '../vpn/getStreamingConfig';
+import type {StreamingService} from '../vpn/getStreamingConfig';
+import {getStreamingConfig} from '../vpn/getStreamingConfig';
 import {c, getCountryNameOrCode} from '../tools/translate';
 import {escapeHtml} from '../tools/escapeHtml';
 
-export const configureServerGroups = (area?: HTMLElement) => {
-	getStreamingConfig().then(streamingConfig => {
+export const configureServerGroups = (area: HTMLElement) => {
+	getStreamingConfig().then((streamingConfig) => {
 		if (!streamingConfig) {
 			return;
 		}
 
-		const {ResourceBaseURL: baseUrl, StreamingServices: config} = streamingConfig;
-		const defaultConfig = config['*'] || {};
+		const {ResourceBaseURL: baseUrl, StreamingServices: config} =
+			streamingConfig;
+		const defaultConfig = config?.['*'] || {};
 
-		(area || document).querySelectorAll('.servers-group.with-tooltip').forEach(group => {
+		area.querySelectorAll('.servers-group.with-tooltip').forEach((group) => {
 			const country = group.getAttribute('data-country-code') as string;
 			const tier = group.getAttribute('data-tier') as string;
-			const countryConfig = (config[country] || (country === 'GB' ? (config['UK'] || {}) : {}));
+			const countryConfig =
+				config[country] || (country === 'GB' ? config['UK'] || {} : {});
 			const services = [
 				...(countryConfig[tier] || []),
 				...(defaultConfig[tier] || []),
@@ -26,7 +29,7 @@ export const configureServerGroups = (area?: HTMLElement) => {
 
 			const values = {} as Record<string, StreamingService>;
 
-			services.forEach(service => {
+			services.forEach((service) => {
 				values[service.Name] = service;
 			});
 
@@ -53,20 +56,21 @@ export const configureServerGroups = (area?: HTMLElement) => {
 						</div>
 						<div class="tooltip-text">
 							<h4>${c('Title').t`Streaming`} - ${getCountryNameOrCode(country)}</h4>
-							<p>${
-								c('Info').t`Connect to a Plus server in this country to start streaming.\n\nHint: Clear the cache of the streaming apps to ensure new content appears.`
-									.replace(/\n/g, '<br />')
-							}</p>
-							<div class="streaming-logos">${
-								Object.values(values).map(
-									service => `<img
+							<p>${c('Info')
+								.t`Connect to a Plus server in this country to start streaming.\n\nHint: Clear the cache of the streaming apps to ensure new content appears.`.replace(
+								/\n/g,
+								'<br />',
+							)}</p>
+							<div class="streaming-logos">${Object.values(values)
+								.map(
+									(service) => `<img
 										loading="lazy"
 										class="streaming-logo"
-										src="${escapeHtml(baseUrl + service.Icon)}"
+										src="${escapeHtml(`${baseUrl}${service.Icon}`)}"
 										alt="${escapeHtml(service.Name)}"
  									/>`,
-								).join(' &nbsp; ')
-							}</div>
+								)
+								.join(' &nbsp; ')}</div>
 							<p>${
 								/* translator: this comes after a list of Streaming platforms */
 								c('Info').t`and more`
@@ -77,12 +81,16 @@ export const configureServerGroups = (area?: HTMLElement) => {
 			`;
 			newTooltip.setAttribute('class', 'group-tooltip');
 			group.insertBefore(newTooltip, group.firstChild);
-			newTooltip.querySelector('.open-button')?.addEventListener('click', () => {
-				newTooltip.classList.add('open');
-			});
-			newTooltip.querySelector('.close-button')?.addEventListener('click', () => {
-				newTooltip.classList.remove('open');
-			});
+			newTooltip
+				.querySelector('.open-button')
+				?.addEventListener('click', () => {
+					newTooltip.classList.add('open');
+				});
+			newTooltip
+				.querySelector('.close-button')
+				?.addEventListener('click', () => {
+					newTooltip.classList.remove('open');
+				});
 		});
 	});
 };

@@ -1,5 +1,5 @@
-import {Credentials} from './Credentials';
-import {CredentialsData} from './CredentialsData';
+import type {Credentials} from './Credentials';
+import type {CredentialsData} from './CredentialsData';
 
 const parseCredentialUsername = (username: any): any => {
 	if (typeof username !== 'string') {
@@ -10,12 +10,14 @@ const parseCredentialUsername = (username: any): any => {
 		const body = JSON.parse(atob(username.split('.')[1] || '') || '{}');
 
 		return typeof body === 'object' && !(body instanceof Array) ? body : {};
-	} catch (e) {
+	} catch {
 		return {};
 	}
 };
 
-export const getCredentialsData = (credentials?: Partial<Credentials>): CredentialsData => {
+export const getCredentialsData = (
+	credentials?: Partial<Credentials>,
+): CredentialsData => {
 	const data = parseCredentialUsername(credentials?.Username);
 
 	return {

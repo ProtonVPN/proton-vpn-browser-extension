@@ -17,14 +17,17 @@
 			"Already have a Proton Account?": [
 				"Ja teniu un compte de Proton?"
 			],
-			"Auto connect": [
-				"Connexió automàtica"
-			],
 			"Cancel": [
 				"Cancel·la"
 			],
+			"Change language": [
+				"Canvia l'idioma"
+			],
 			"Change server": [
 				"Canvia de servidor"
+			],
+			"Configure split tunneling": [
+				"Configureu la tunelització dividida"
 			],
 			"Connect": [
 				"Conecta"
@@ -35,14 +38,32 @@
 			"Create an account": [
 				"Crea un compte"
 			],
+			"Disable auto-connect": [
+				"Desactiva la connexió automàtica"
+			],
+			"Disable notifications": [
+				"Desactiveu les notificacions"
+			],
+			"Disable Split tunneling": [
+				"Desactiva la tunelització dividida"
+			],
+			"Disable WebRTC leak protection": [
+				"Desactiveu la protecció contra filtracions de WebRTC"
+			],
 			"Disconnect": [
 				"Desconnecta"
 			],
-			"Enable/disable notifications": [
-				"Activa/desactiva les notificacions"
+			"Enable auto-connect": [
+				"Habiliteu la connexió automàtica"
 			],
-			"Exclude websites from the tunnel": [
-				"Exclou llocs web del túnel"
+			"Enable notifications": [
+				"Habilita les notificacions"
+			],
+			"Enable Split tunneling": [
+				"Habiliteu la tunelització dividida"
+			],
+			"Enable WebRTC leak protection": [
+				"Habiliteu la protecció contra filtracions de WebRTC"
 			],
 			"Log in with Proton": [
 				"Inicia la sessió amb Proton"
@@ -55,9 +76,6 @@
 			],
 			"Next": [
 				"Següent"
-			],
-			"Prevent WebRTC leak": [
-				"Evita fuites de WebRTC"
 			],
 			"Quick connect": [
 				"Connexió ràpida"
@@ -118,6 +136,11 @@
 		"Action: Server-level button": {
 			"Connect to ${serverName}": [
 				"Connecta't a ${serverName}"
+			]
+		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"Cerqueu"
 			]
 		},
 		"Confirm": {
@@ -280,6 +303,9 @@
 			"Decide which websites are protected by VPN.": [
 				"Decidiu quins llocs web estaran protegits per VPN."
 			],
+			"Disable Secure Core": [
+				"Desactiva el Secure Core"
+			],
 			"Disconnected": [
 				"Desconnectat"
 			],
@@ -297,6 +323,9 @@
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Envia notificacions del sistema per a connexions i desconnexions."
+			],
+			"Enable Secure Core": [
+				"Habiliteu Secure Core"
 			],
 			"Enjoying Proton VPN?": [
 				"Us agrada Proton VPN?"
@@ -380,9 +409,6 @@
 			"Proton VPN Browser Extension": [
 				"Extensió del Navegador de Proton VPN"
 			],
-			"Search": [
-				"Cerca"
-			],
 			"Secure Core": [
 				"Secure Core"
 			],
@@ -407,8 +433,14 @@
 			"Thank you for installing Proton VPN": [
 				"Gràcies per instal·lar el Proton VPN"
 			],
+			"The split tunneling options cannot be changed on this device": [
+				"Les opcions de tunelització dividida no es poden canviar en aquest dispositiu"
+			],
 			"Then just click the Proton VPN icon to sign in.": [
 				"Després premeu la icona del Proton VPN per a iniciar sessió."
+			],
+			"This option cannot be changed on this device": [
+				"Aquesta opció no es pot canviar en aquest dispositiu"
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"Aquestes estadístiques no contenen la vostra adreça IP i no es poden utilitzar per identificar-vos. Mai els compartirem amb tercers"
@@ -429,7 +461,7 @@
 				"Usuari"
 			],
 			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
-				"Si utilitzeu Brave, és possible que les sol·licituds DNS no estiguin protegides en el mode Include."
+				"Si feu servir Brave, les peticions DNS podrien quedar desprotegides quan el \"mode d'inclusió\" estigui actiu."
 			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
 				"La VPN ha estat bloquejada per un programa extern.\\n\\nAlgunes eines, com ara antivirus o servidors intermediaris, poden interferir amb Proton VPN. Desactiveu-los i torneu-ho a provar."

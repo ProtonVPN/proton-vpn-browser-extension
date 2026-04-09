@@ -36,47 +36,61 @@ export const getLogicalsFilteredByChoice = (
 	logicals: Logical[],
 	choice: Choice,
 	getById?: (id: Logical['ID']) => Logical[],
-) => choice.logicalId
-	? (getById
-		? getById(choice.logicalId)
-		: logicals.filter(logicial => logicial.ID === choice.logicalId)
-	)
-	: logicals.filter(logicial => {
-		if ((logicial.Features & (Feature.TOR | Feature.RESTRICTED | Feature.PARTNER)) !== 0) {
-			return false;
-		}
+) =>
+	choice.logicalId
+		? getById
+			? getById(choice.logicalId)
+			: logicals.filter((logicial) => logicial.ID === choice.logicalId)
+		: logicals.filter((logicial) => {
+				if (
+					(logicial.Features &
+						(Feature.TOR | Feature.RESTRICTED | Feature.PARTNER)) !==
+					0
+				) {
+					return false;
+				}
 
-		if (choice.filter === 'other' && (
-			(logicial.Features & Feature.TOR) !== 0 ||
-			logicial.Tier > 0 ||
-			logicial.City
-		)) {
-			return false;
-		}
+				if (
+					choice.filter === 'other' &&
+					((logicial.Features & Feature.TOR) !== 0 ||
+						logicial.Tier > 0 ||
+						logicial.City)
+				) {
+					return false;
+				}
 
-		if (typeof choice.tier === 'number' && logicial.Tier !== choice.tier) {
-			return false;
-		}
+				if (typeof choice.tier === 'number' && logicial.Tier !== choice.tier) {
+					return false;
+				}
 
-		if (choice.excludedFeatures && (logicial.Features & choice.excludedFeatures) !== 0) {
-			return false;
-		}
+				if (
+					choice.excludedFeatures &&
+					(logicial.Features & choice.excludedFeatures) !== 0
+				) {
+					return false;
+				}
 
-		if (choice.requiredFeatures && (logicial.Features & choice.requiredFeatures) === 0) {
-			return false;
-		}
+				if (
+					choice.requiredFeatures &&
+					(logicial.Features & choice.requiredFeatures) === 0
+				) {
+					return false;
+				}
 
-		if (choice.exitCountry && logicial.ExitCountry !== choice.exitCountry) {
-			return false;
-		}
+				if (choice.exitCountry && logicial.ExitCountry !== choice.exitCountry) {
+					return false;
+				}
 
-		if (choice.entryCountry && logicial.EntryCountry !== choice.entryCountry) {
-			return false;
-		}
+				if (
+					choice.entryCountry &&
+					logicial.EntryCountry !== choice.entryCountry
+				) {
+					return false;
+				}
 
-		if (choice.city && logicial.City !== choice.city) {
-			return false;
-		}
+				if (choice.city && logicial.City !== choice.city) {
+					return false;
+				}
 
-		return true;
-	});
+				return true;
+			});

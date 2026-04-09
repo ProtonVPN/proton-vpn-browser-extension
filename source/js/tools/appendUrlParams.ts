@@ -4,29 +4,41 @@ const isNonEmptyString = (value: any): value is string => {
 
 export const appendUrlParams = (
 	url: string,
-	urlParams: Record<string, string|number|undefined> = {},
-	hashParams: Record<string, string|number|undefined> = {},
+	urlParams: Record<string, string | number | undefined> = {},
+	hashParams: Record<string, string | number | undefined> = {},
 ): string => {
-	const hashSplit = url.split('#', 2) as [string, string|undefined];
+	const hashSplit = url.split('#', 2) as [string, string | undefined];
 	let hash = hashSplit[1] || '';
-	const paramSplit = hashSplit[0].split('?', 2) as [string, string|undefined];
+	const paramSplit = hashSplit[0].split('?', 2) as [string, string | undefined];
 	let params = paramSplit[1] || '';
 
-	Object.keys(urlParams).forEach(name => {
+	Object.keys(urlParams).forEach((name) => {
 		const value = urlParams[name];
 
 		if (typeof value === 'number' || isNonEmptyString(value)) {
-			params += (params === '' ? '' : '&') + encodeURIComponent(name) + '=' + encodeURIComponent(value);
+			params +=
+				(params === '' ? '' : '&') +
+				encodeURIComponent(name) +
+				'=' +
+				encodeURIComponent(value);
 		}
 	});
 
-	Object.keys(hashParams).forEach(name => {
+	Object.keys(hashParams).forEach((name) => {
 		const value = hashParams[name];
 
 		if (typeof value === 'number' || isNonEmptyString(value)) {
-			hash += (hash === '' ? '' : '&') + encodeURIComponent(name) + '=' + encodeURIComponent(value);
+			hash +=
+				(hash === '' ? '' : '&') +
+				encodeURIComponent(name) +
+				'=' +
+				encodeURIComponent(value);
 		}
 	});
 
-	return paramSplit[0] + (params === '' ? '' : '?' + params) + (hash === '' ? '' : '#' + hash);
+	return (
+		paramSplit[0] +
+		(params === '' ? '' : '?' + params) +
+		(hash === '' ? '' : '#' + hash)
+	);
 };

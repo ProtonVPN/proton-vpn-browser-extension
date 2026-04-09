@@ -1,8 +1,17 @@
-chrome.runtime.connect();
-window.addEventListener('message', (event) => {
-	if (event.source != window) {
-		return;
-	}
+import {getRuntime} from './tools/getRuntime';
 
-	chrome.runtime.sendMessage(event.data);
-}, false);
+((runtime) => {
+	runtime.connect();
+
+	window.addEventListener(
+		'message',
+		(event) => {
+			if (event.source != window) {
+				return;
+			}
+
+			runtime.sendMessage(event.data);
+		},
+		false,
+	);
+})(getRuntime());

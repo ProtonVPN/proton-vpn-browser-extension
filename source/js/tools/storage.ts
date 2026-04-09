@@ -8,6 +8,8 @@ export enum Storage {
 	SESSION = 'session',
 	/** If syncing is enabled, the data is synced to any Chrome browser that the user is logged into. If disabled, it behaves like **storage.local**. Chrome stores the data locally when the browser is offline and resumes syncing when it's back online. */
 	SYNC = 'sync',
+	/** Businesses can customize feature default settings using the managed storage */
+	MANAGED = 'managed',
 }
 
 const defaultStorage = Storage.LOCAL;
@@ -19,9 +21,8 @@ export const sessionDataStorageType = defaultStorage;
 
 export const storagePrefix = 'bex-';
 
-const getFallbackStorage = (storage: Storage) => storage === Storage.SESSION
-	? sessionStorage
-	: localStorage;
+const getFallbackStorage = (storage: Storage) =>
+	storage === Storage.SESSION ? sessionStorage : localStorage;
 
 export const storageConfig = {
 	// Measure only 1% of the storage failure for trend analyze
@@ -30,11 +31,13 @@ export const storageConfig = {
 
 const withoutPersistentStorage = <T>(
 	error: any,
-	callback: (lastStorage: Record<string, any>) => T
+	callback: (lastStorage: Record<string, any>) => T,
 ) => {
 	const root = (
 		typeof window === 'undefined'
-			? (typeof global === 'undefined' ? undefined : global)
+			? typeof global === 'undefined'
+				? undefined
+				: global
 			: window
 	) as any;
 
@@ -58,7 +61,9 @@ export const storage = {
 		defaultValue: T,
 		storage: Storage = defaultStorage,
 	): Promise<T> {
-		return (await this.getItem<T, T>(key, defaultValue, storage)) || defaultValue;
+		return (
+			(await this.getItem<T, T>(key, defaultValue, storage)) || defaultValue
+		);
 	},
 	async getItem<T extends object, D extends T | undefined = T | undefined>(
 		key: string,
@@ -68,20 +73,26 @@ export const storage = {
 		const prefixedKey = storagePrefix + key;
 
 		try {
-			const data = await new Promise(resolve => {
+			const data = await new Promise((resolve) => {
 				chrome.storage[storage].get(prefixedKey, resolve);
 			});
 
-			if (typeof data === 'object' && (data as any).hasOwnProperty(prefixedKey)) {
+			if (
+				typeof data === 'object' &&
+				Object.prototype.hasOwnProperty.call(data, prefixedKey)
+			) {
 				return (data as any)[prefixedKey];
 			}
 
-			if (storage === Storage.LOCAL && (Storage.SESSION in chrome.storage)) {
-				const data = await new Promise(resolve => {
+			if (storage === Storage.LOCAL && Storage.SESSION in chrome.storage) {
+				const data = await new Promise((resolve) => {
 					chrome.storage[Storage.SESSION].get(prefixedKey, resolve);
 				});
 
-				if (typeof data === 'object' && (data as any).hasOwnProperty(prefixedKey)) {
+				if (
+					typeof data === 'object' &&
+					Object.prototype.hasOwnProperty.call(data, prefixedKey)
+				) {
 					return (data as any)[prefixedKey];
 				}
 			}
@@ -98,10 +109,11 @@ export const storage = {
 				}
 
 				return defaultValue;
-			} catch (secondError) {
-				return withoutPersistentStorage(
-					firstError,
-					lastStorage => lastStorage.hasOwnProperty(key) ? lastStorage[key] : defaultValue,
+			} catch {
+				return withoutPersistentStorage(firstError, (lastStorage) =>
+					Object.prototype.hasOwnProperty.call(lastStorage, key)
+						? lastStorage[key]
+						: defaultValue,
 				);
 			}
 		}
@@ -114,20 +126,23 @@ export const storage = {
 		const prefixedKey = storagePrefix + key;
 
 		try {
-			await chrome.storage[storage].set({ [prefixedKey]: value });
+			await chrome.storage[storage].set({[prefixedKey]: value});
 		} catch (firstError) {
 			const rawItem = JSON.stringify(value);
 
 			try {
 				getFallbackStorage(storage).setItem(prefixedKey, rawItem);
-			} catch (secondError) {
-				withoutPersistentStorage(firstError, lastStorage => {
+			} catch {
+				withoutPersistentStorage(firstError, (lastStorage) => {
 					lastStorage[key] = value;
 				});
 			}
 		}
 	},
-	async removeItem(key: string, storage: Storage = defaultStorage): Promise<void> {
+	async removeItem(
+		key: string,
+		storage: Storage = defaultStorage,
+	): Promise<void> {
 		const prefixedKey = storagePrefix + key;
 
 		try {
@@ -135,14 +150,19 @@ export const storage = {
 		} catch (firstError) {
 			try {
 				getFallbackStorage(storage).removeItem(prefixedKey);
-			} catch (secondError) {
-				withoutPersistentStorage(firstError, lastStorage => {
+			} catch {
+				withoutPersistentStorage(firstError, (lastStorage) => {
 					delete lastStorage[key];
 				});
 			}
 		}
 	},
-	item<T extends object>(key: string, storage: Storage = defaultStorage, valueKey: string = 'value') {
+	item<T extends object>(
+		key: string,
+		storage: Storage = defaultStorage,
+		valueKey: string = 'value',
+	) {
+		// eslint-disable-next-line @typescript-eslint/no-this-alias
 		const self = this;
 		let transactionStart: number | undefined = undefined;
 
@@ -159,7 +179,7 @@ export const storage = {
 					const value = await self.getItem<T>(key, defaultValue, storage);
 
 					return typeof value === 'object' ? value : {};
-				} catch (e) {
+				} catch {
 					return {};
 				}
 			},
@@ -167,7 +187,11 @@ export const storage = {
 				return self.setItem(key, value, storage);
 			},
 			setValue(value: any, extraData: Record<string, any> = {}): Promise<void> {
-				return this.set({ time: Date.now(), [valueKey]: value, ...extraData } as T);
+				return this.set({
+					time: Date.now(),
+					[valueKey]: value,
+					...extraData,
+				} as T);
 			},
 			remove(): Promise<void> {
 				return self.removeItem(key, storage);
@@ -181,11 +205,12 @@ export const storage = {
 				}
 
 				transactionStart = Date.now();
-				const result = callback(await self.getItem<T, D>(key, defaultValue, storage));
+				const result = callback(
+					await self.getItem<T, D>(key, defaultValue, storage),
+				);
 				await (typeof result === 'undefined'
 					? self.removeItem(key, storage)
-					: self.setItem(key, result, storage)
-				);
+					: self.setItem(key, result, storage));
 				transactionStart = undefined;
 			},
 		};
@@ -197,6 +222,6 @@ export const storage = {
 
 export type CacheItem<T extends object> = ReturnType<typeof storage.item<T>>;
 
-export type Timed<T> = { time: number } & T;
+export type Timed<T> = {time: number} & T;
 
-export type CacheWrappedValue<T> = Timed<{ value: T }>;
+export type CacheWrappedValue<T> = Timed<{value: T}>;

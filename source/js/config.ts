@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import * as baseConfig from '../../config';
 
@@ -10,9 +11,7 @@ export const baseDomainURL = baseConfig.baseDomainURL;
 export const accountURL = `${baseDomainURL}/${accountSuffix}`;
 export const manageAccountURL = `${accountURL}vpn/dashboard`;
 export const baseAPIURL = `${baseDomainURL}/api/`;
-export const routes = [
-	'vpn/v1/logicals/lookup/{name}',
-];
+export const routes = ['vpn/v1/logicals/lookup/{name}'];
 
 export const hostname = new URL(baseAPIURL).hostname;
 

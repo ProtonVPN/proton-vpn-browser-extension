@@ -15,7 +15,7 @@ const isIpMatchingMask = (ip: string[], mask: string[]) => {
 	const baseIp = ipToLong(mask.slice(1, 5));
 	const long = ipToLong(ip.slice(1, 5));
 
-	return (long >= baseIp) && (long < baseIp + freedom);
+	return long >= baseIp && long < baseIp + freedom;
 };
 
 /**

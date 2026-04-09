@@ -1,5 +1,6 @@
 import {baseDomainURL} from '../config';
-type Permissions = chrome.permissions.Permissions & browser.permissions.Permissions;
+type Permissions = chrome.permissions.Permissions &
+	browser.permissions.Permissions;
 
 const origins = [
 	'http://*/*',

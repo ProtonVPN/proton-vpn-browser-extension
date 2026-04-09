@@ -1,11 +1,9 @@
-interface PartnerParameters
-{
+interface PartnerParameters {
 	id: string;
 	welcomePage?: string;
 }
 
-interface PartnerConfig extends PartnerParameters
-{
+interface PartnerConfig extends PartnerParameters {
 	name: string;
 }
 
@@ -16,7 +14,9 @@ export const partners = {
 	},
 } as const;
 
-const getPartnersByIds = ((partnersById: Record<string, PartnerConfig>|undefined) => {
+const getPartnersByIds = ((
+	partnersById: Record<string, PartnerConfig> | undefined,
+) => {
 	return (): Record<string, PartnerConfig> => {
 		if (!partnersById) {
 			partnersById = {};
@@ -28,10 +28,11 @@ const getPartnersByIds = ((partnersById: Record<string, PartnerConfig>|undefined
 		}
 
 		return partnersById;
-	}
+	};
 })(undefined);
 
-export const getPartnerById = (id: string|number): PartnerConfig|undefined => {
+export const getPartnerById = (
+	id: string | number,
+): PartnerConfig | undefined => {
 	return getPartnersByIds()[`${id}`];
 };
-

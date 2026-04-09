@@ -1,4 +1,4 @@
-import {ProxyServer} from './ConnectionState';
+import type {ProxyServer} from './ConnectionState';
 import {setButton} from '../tools/browserAction';
 import {cancelNextCredentialFetch} from '../account/credentials/getConnectionCredentials';
 import {getUser} from '../account/user/getUser';
@@ -9,7 +9,7 @@ export const recoverState = async (server: ProxyServer | undefined) => {
 	cancelNextCredentialFetch();
 
 	// If no user
-	if (!await getUser(true)) {
+	if (!(await getUser(true))) {
 		// Stay logged out
 		return;
 	}

@@ -1,11 +1,11 @@
-import {ProxyInfo} from '../proxy';
+import type {ProxyInfo} from '../proxy';
 import {getCurrentStateIfDefined} from '../state';
 import OnRequestDetails = browser.proxy._OnRequestDetails;
 
 const handleProxyRequest = (
 	requestInfo: OnRequestDetails,
-): ProxyInfo | Promise<ProxyInfo> | undefined => getCurrentStateIfDefined()
-	?.handleProxyRequest?.(requestInfo);
+): ProxyInfo | Promise<ProxyInfo> | undefined =>
+	getCurrentStateIfDefined()?.handleProxyRequest?.(requestInfo);
 
 export const setupHandleProxyRequest = (): boolean => {
 	const proxy = chrome.proxy as any;

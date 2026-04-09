@@ -1,5 +1,7 @@
 import {each} from '../tools/each';
-import {c, getLocaleSupport, getPrimaryLanguage} from '../tools/translate';
+import {getPrimaryLanguage} from '../tools/locale';
+import {c, getLocaleSupport} from '../tools/translate';
+import {stopEvent} from '../tools/stopEvent';
 
 /**
  * Replace the URL (going to a page in English) with the equivalent URL.
@@ -16,13 +18,19 @@ const localizeUrl = (url: string, localeSupport: string[]) => {
 		return url;
 	}
 
-	const newUrl = url.replace(/^(https:\/\/protonvpn\.com\/support\/)/, '$1' + primaryLanguage + '/');
+	const newUrl = url.replace(
+		/^(https:\/\/protonvpn\.com\/support\/)/,
+		'$1' + primaryLanguage + '/',
+	);
 
 	if (newUrl !== url) {
 		return newUrl;
 	}
 
-	return url.replace(/^(https:\/\/protonvpn\.com\/)/, '$1' + primaryLanguage + '/');
+	return url.replace(
+		/^(https:\/\/protonvpn\.com\/)/,
+		'$1' + primaryLanguage + '/',
+	);
 };
 
 /**
@@ -33,7 +41,9 @@ const localizeUrl = (url: string, localeSupport: string[]) => {
  */
 export const setNewTabLinkTitle = (button: HTMLElement) => {
 	if (!button.getAttribute('aria-label') && !button.getAttribute('title')) {
-		const linkDescription = button.innerText.trim() || button.getElementsByTagName('img')[0]?.getAttribute('alt');
+		const linkDescription =
+			button.innerText?.trim() ||
+			button.querySelector('img')?.getAttribute('alt');
 
 		if (linkDescription) {
 			button.setAttribute(
@@ -50,28 +60,33 @@ export const setNewTabLinkTitle = (button: HTMLElement) => {
  * it configures the title and click handler.
  * This function is idempotent, meaning it can be called multiple times without side effects, e.g. in a render function or a click handler.
  */
-export const configureLinks =  (
-	area: HTMLDivElement | Document,
+export const configureLinks = (
+	area: HTMLElement,
 	triggerLinkButton: (link: string, button: HTMLElement) => void,
 ) => {
-	each({'a[href]': 'href', '[data-href]': 'data-href'}, (selector, attribute) => {
-		(area || document).querySelectorAll<HTMLDivElement>(selector).forEach(button => {
-			if (button.classList.contains('href-configured')) {
-				return;
-			}
-
-			button.classList.add('href-configured');
-
-			setNewTabLinkTitle(button);
-			button.addEventListener('click', (event) => {
-				const url = button.getAttribute(attribute);
-
-				if (url) {
-					event.preventDefault();
-					event.stopPropagation();
-					triggerLinkButton(localizeUrl(url, getLocaleSupport(button.dataset)), button);
+	each(
+		{'a[href]': 'href', '[data-href]': 'data-href'},
+		(selector, attribute) => {
+			area.querySelectorAll<HTMLDivElement>(selector).forEach((button) => {
+				if (button.classList.contains('href-configured')) {
+					return;
 				}
+
+				button.classList.add('href-configured');
+
+				setNewTabLinkTitle(button);
+				button.addEventListener('click', (event) => {
+					const url = button.getAttribute(attribute);
+
+					if (url) {
+						stopEvent(event);
+						triggerLinkButton(
+							localizeUrl(url, getLocaleSupport(button.dataset)),
+							button,
+						);
+					}
+				});
 			});
-		});
-	});
+		},
+	);
 };

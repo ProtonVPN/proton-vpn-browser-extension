@@ -1,5 +1,6 @@
 import {storedUser} from './storedUser';
-import {isUserResult, User} from './User';
+import type {User} from './User';
+import {isUserResult} from './User';
 
 export const loadCachedUser = async () => {
 	const cache = await storedUser.load();

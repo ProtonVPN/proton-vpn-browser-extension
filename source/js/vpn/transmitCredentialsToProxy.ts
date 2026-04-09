@@ -15,16 +15,22 @@ const nudge = async (
 ): Promise<void> => {
 	await delay(pause);
 
-	if (Date.now() - (lastForbiddenResponses[host] || 0) < milliSeconds.fromMinutes(30)) {
+	if (
+		Date.now() - (lastForbiddenResponses[host] || 0) <
+		milliSeconds.fromMinutes(30)
+	) {
 		return;
 	}
 
 	try {
 		const response = await fetch(`http://${host}/vpn/v1/browser/token`, {
 			method: 'HEAD',
-			headers: username && password ? {
-				'x-pm-vpn-authorization': `${username}.${password}`,
-			} : {},
+			headers:
+				username && password
+					? {
+							'x-pm-vpn-authorization': `${username}.${password}`,
+						}
+					: {},
 		});
 
 		if (response.status === 403) {
@@ -43,11 +49,17 @@ const nudge = async (
 			throw e;
 		}
 
-		await nudge(host, username, password, tryNumber + 1, ({
-			1: 500,
-			2: milliSeconds.fromSeconds(2),
-			3: milliSeconds.fromSeconds(6),
-		})[tryNumber] || milliSeconds.fromSeconds(12));
+		await nudge(
+			host,
+			username,
+			password,
+			tryNumber + 1,
+			{
+				1: 500,
+				2: milliSeconds.fromSeconds(2),
+				3: milliSeconds.fromSeconds(6),
+			}[tryNumber] || milliSeconds.fromSeconds(12),
+		);
 	}
 };
 

@@ -17,14 +17,17 @@
 			"Already have a Proton Account?": [
 				"هل لديك حساب Proton بالفعل؟"
 			],
-			"Auto connect": [
-				"اتصال تلقائي"
-			],
 			"Cancel": [
 				"إلغاء"
 			],
+			"Change language": [
+				"تغيير اللغة"
+			],
 			"Change server": [
 				"تغيير الخادم"
+			],
+			"Configure split tunneling": [
+				"إعداد تقسيم الاتصال النفقي"
 			],
 			"Connect": [
 				"اتصل"
@@ -35,14 +38,32 @@
 			"Create an account": [
 				"إنشاء حساب"
 			],
+			"Disable auto-connect": [
+				"تعطيل الاتصال التلقائي"
+			],
+			"Disable notifications": [
+				"تعطيل الإشعارات"
+			],
+			"Disable Split tunneling": [
+				"تعطيل تقسيم الاتصال"
+			],
+			"Disable WebRTC leak protection": [
+				"تعطيل حماية تسريب WebRTC"
+			],
 			"Disconnect": [
 				"اقطع الاتصال"
 			],
-			"Enable/disable notifications": [
-				"تفعيل / تعطيل الإشعارات"
+			"Enable auto-connect": [
+				"تمكين الاتصال التلقائي"
 			],
-			"Exclude websites from the tunnel": [
-				"استبعاد مواقع الويب من النفق"
+			"Enable notifications": [
+				"تفعيل الإشعارات"
+			],
+			"Enable Split tunneling": [
+				"تفعيل تقسيم الاتصال النفقي"
+			],
+			"Enable WebRTC leak protection": [
+				"تفعيل حماية من تسريب WebRTC"
 			],
 			"Log in with Proton": [
 				"تسجيل الدخول بواسطة Proton"
@@ -55,9 +76,6 @@
 			],
 			"Next": [
 				"التالي"
-			],
-			"Prevent WebRTC leak": [
-				"منع تسريب WebRTC"
 			],
 			"Quick connect": [
 				"اتصال سريع"
@@ -118,6 +136,11 @@
 		"Action: Server-level button": {
 			"Connect to ${serverName}": [
 				"اتصل بـ${serverName}"
+			]
+		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"البحث"
 			]
 		},
 		"Confirm": {
@@ -218,7 +241,7 @@
 				"يتضمن عنوان URL للنطاق الفرعي بادئة قبل اسم النطاق الرئيسي. على سبيل المثال، account.proton.me هو نطاق فرعي لـ proton.me."
 			],
 			"About free connections": [
-				"حول الاتصالات المجانية"
+				"حول الخوادم المجانية"
 			],
 			"Access over 13,000 secure servers in over 120 countries": [
 				"الوصول إلى أكثر من 13,000 خادم آمن في أكثر من 120 دولة"
@@ -292,6 +315,9 @@
 			"Decide which websites are protected by VPN.": [
 				"حدد المواقع الإلكترونية التي تتم حمايتها بواسطة VPN."
 			],
+			"Disable Secure Core": [
+				"تعطيل Secure Core"
+			],
 			"Disconnected": [
 				"غير متصل"
 			],
@@ -310,6 +336,9 @@
 			"Emit system notifications on connection and disconnection events.": [
 				"إرسال إشعارات النظام على أحداث الاتصال وانقطاع الاتصال."
 			],
+			"Enable Secure Core": [
+				"تفعيل Secure Core"
+			],
 			"Enjoying Proton VPN?": [
 				"هل ينال Proton VPN إعجابك؟"
 			],
@@ -320,7 +349,7 @@
 				"حماية إضافية للأشخاص ذوي احتياجات الخصوصية المتقدمة"
 			],
 			"Fastest free server": [
-				"أسرع خادم مجاني"
+				"الخادم المجاني الأسرع"
 			],
 			"Follow these simple steps to get the best experience using Proton VPN": [
 				"اتبع هذه الخطوات البسيطة للحصول على أفضل تجربة باستخدام Proton VPN"
@@ -396,9 +425,6 @@
 			"Proton VPN Browser Extension": [
 				"إضافة متصفح Proton VPN"
 			],
-			"Search": [
-				"البحث"
-			],
 			"Secure Core": [
 				"Secure Core"
 			],
@@ -412,7 +438,7 @@
 				"مشاركة بيانات الاستخدام بشكل مجهول"
 			],
 			"Split tunneling": [
-				"الانقسام النفقي"
+				"تقسيم الاتصال"
 			],
 			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
 				"يوقف متصفحك عن تسريب عنوان IP الخاص بك إلى مواقع الويب والتطبيقات التي تستخدم WebRTC. قد يؤثر ذلك على أداء مكالمات الفيديو أو البث المباشر على بعض مواقع الويب."
@@ -423,8 +449,14 @@
 			"Thank you for installing Proton VPN": [
 				"شكرا لتثبيتك Proton VPN"
 			],
+			"The split tunneling options cannot be changed on this device": [
+				"لا يمكن تغيير خيارات تقسيم الاتصال على هذا الجهاز"
+			],
 			"Then just click the Proton VPN icon to sign in.": [
 				"ثم انقر فقط على أيقونة Proton VPN لتسجيل الدخول."
+			],
+			"This option cannot be changed on this device": [
+				"لا يمكن تغيير هذا الخيار على هذا الجهاز"
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"هذه البيانات لا تحوي عنوان IP، ولا يمكن استخدامها للتعرّف عليك.\nلن نقوم أبدا بمشاركة بياناتك مع أطراف أخرى."
@@ -443,6 +475,9 @@
 			],
 			"User": [
 				"المستخدم"
+			],
+			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
+				"عند استخدام Brave، قد تكون طلبات DNS غير محمية عند تنشيط \"وضع التضمين\"."
 			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
 				"حظر الـ VPN بواسطة برنامج خارجي.\n\nقد تتداخل بعض الأدوات، مثل برامج مكافحة الفيروسات أو الخوادم الوكيلة، مع Proton VPN. يُرجى تعطيلها وإعادة المحاولة."
@@ -496,7 +531,7 @@
 				"مجاني"
 			],
 			"Free connections": [
-				"الاتصالات مجانية"
+				"الخوادم المجانية"
 			],
 			"Free servers": [
 				"خوادم مجانية"
@@ -537,7 +572,7 @@
 				"الإعدادات"
 			],
 			"Split tunneling": [
-				"الانقسام النفقي"
+				"تقسيم الاتصال"
 			],
 			"Unprotected": [
 				"غير محمي"

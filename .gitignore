@@ -12,3 +12,6 @@ source.zip
 # IDE
 .idea
 .vscode
+
+# MacOS
+*.DS_Store

@@ -17,14 +17,14 @@
 			"Already have a Proton Account?": [
 				"すでに Proton アカウントをお持ちですか？"
 			],
-			"Auto connect": [
-				"自動接続"
-			],
 			"Cancel": [
 				"キャンセル"
 			],
 			"Change server": [
 				"サーバーを変更する"
+			],
+			"Configure split tunneling": [
+				"スプリットトンネリングを設定"
 			],
 			"Connect": [
 				"接続"
@@ -35,14 +35,32 @@
 			"Create an account": [
 				"アカウントを作成"
 			],
+			"Disable auto-connect": [
+				"自動接続を無効にする"
+			],
+			"Disable notifications": [
+				"通知を無効にする"
+			],
+			"Disable Split tunneling": [
+				"スプリットトンネリングを無効にする"
+			],
+			"Disable WebRTC leak protection": [
+				"WebRTC漏洩防止を無効にする"
+			],
 			"Disconnect": [
 				"接続解除"
 			],
-			"Enable/disable notifications": [
-				"通知を有効または無効にする"
+			"Enable auto-connect": [
+				"自動接続を有効にする"
 			],
-			"Exclude websites from the tunnel": [
-				"ウェブサイトをトンネルから除外する"
+			"Enable notifications": [
+				"通知を有効にする"
+			],
+			"Enable Split tunneling": [
+				"スプリットトンネリングを有効にする"
+			],
+			"Enable WebRTC leak protection": [
+				"WebRTC漏洩防止を有効にする"
 			],
 			"Log in with Proton": [
 				"Proton でログイン"
@@ -55,9 +73,6 @@
 			],
 			"Next": [
 				"次へ"
-			],
-			"Prevent WebRTC leak": [
-				"WebRTC 漏洩防止"
 			],
 			"Quick connect": [
 				"クイック接続"
@@ -277,6 +292,9 @@
 			"Decide which websites are protected by VPN.": [
 				"どのウェブサイトがVPNによって保護されるかを決定します。"
 			],
+			"Disable Secure Core": [
+				"Secure Coreを無効にする"
+			],
 			"Disconnected": [
 				"接続解除されました"
 			],
@@ -294,6 +312,9 @@
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"接続や接続解除が発生した際にシステム通知を表示します。"
+			],
+			"Enable Secure Core": [
+				"Secure Coreを有効にする"
 			],
 			"Enjoying Proton VPN?": [
 				"Proton VPNをお楽しみいただいていますか？"
@@ -376,9 +397,6 @@
 			"Proton VPN Browser Extension": [
 				"Proton VPN ブラウザ拡張機能"
 			],
-			"Search": [
-				"検索"
-			],
 			"Secure Core": [
 				"Secure Core"
 			],
@@ -423,6 +441,9 @@
 			],
 			"User": [
 				"ユーザー"
+			],
+			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
+				"Braveを使用している場合、「含めるモード」が有効なとき、DNSリクエストが保護されない可能性があります。"
 			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
 				"外部ソフトウェアによってVPNがブロックされました。\n\nアンチウイルスやプロキシなどの一部のツールがProton VPNと干渉する可能性があります。それらを無効化して再試行してください。"

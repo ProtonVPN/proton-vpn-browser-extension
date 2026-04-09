@@ -27,10 +27,12 @@ export const countryBlock = (
 	const up = isGroupUp(group);
 	const exitCountryName = group.name;
 	const grayOutButton = simplifiedUi && userTier <= 0;
-	const canConnect = up && (simplifiedUi ? (userTier > 0) : !upgradeNeeded);
+	const canConnect = up && (simplifiedUi ? userTier > 0 : !upgradeNeeded);
 	const open = hasSearchScore(group);
-	const sectionBuilder = ((window as any).sectionBuilder || ((window as any).sectionBuilder = {}));
-	sectionBuilder[id] = () => serverGroup(userTier, code, group, predicate, secureCore, showFlagOnGroups);
+	const sectionBuilder =
+		(window as any).sectionBuilder || ((window as any).sectionBuilder = {});
+	sectionBuilder[id] = () =>
+		serverGroup(userTier, code, group, predicate, secureCore, showFlagOnGroups);
 
 	return `
 	<div class="country-block">
@@ -40,10 +42,16 @@ export const countryBlock = (
 					<button
 						class="flex flex-1 text-left connect-option${canConnect ? ' connect-clickable' : ''}"
 						title="${c('Action: Country-level button').t`Connect to ${exitCountryName}`}"
-						${up ? (canConnect ? connectionAttributes({
-							...extraConnectionAttributes,
-							exitCountry: code,
-						}) : upgradeAttributes) : ''}
+						${
+							up
+								? canConnect
+									? connectionAttributes({
+											...extraConnectionAttributes,
+											exitCountry: code,
+										})
+									: upgradeAttributes
+								: ''
+						}
 					>
 						<div class="country-flag">
 							${secureCore ? via() : ''}
@@ -57,17 +65,21 @@ export const countryBlock = (
 						</div>
 					</button>
 					<div class="button-box">
-						${up ? ((simplifiedUi && userTier <= 0) || (!paidOnly && upgradeNeeded)
-							? upgradeButton()
-							: '' // connectionButton({exitCountry: code})
-						) : maintenanceIcon}
+						${
+							up
+								? (simplifiedUi && userTier <= 0) ||
+									(!paidOnly && upgradeNeeded)
+									? upgradeButton()
+									: '' // connectionButton({exitCountry: code})
+								: maintenanceIcon
+						}
 						${expandButton(
 							{
 								exitCountry: code,
 								upgradeNeeded: upgradeNeeded ? 1 : 0,
 								expand: id,
 							},
-						secureCore
+							secureCore
 								? /*
 								translator: exitCountryName is the exit of a Secure-Core entry-exit pair: "Germany", "United States", "Sweden"
 								*/ c('Action').t`Select entry country with exit in ${exitCountryName}`

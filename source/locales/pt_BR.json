@@ -17,14 +17,17 @@
 			"Already have a Proton Account?": [
 				"Já tem uma conta da Proton?"
 			],
-			"Auto connect": [
-				"Conexão automática"
-			],
 			"Cancel": [
 				"Cancelar"
 			],
+			"Change language": [
+				"Alterar idioma"
+			],
 			"Change server": [
 				"Alterar servidor"
+			],
+			"Configure split tunneling": [
+				"Configurar tunelamento dividido"
 			],
 			"Connect": [
 				"Conectar"
@@ -35,14 +38,32 @@
 			"Create an account": [
 				"Criar uma conta"
 			],
+			"Disable auto-connect": [
+				"Desativar conexão automática"
+			],
+			"Disable notifications": [
+				"Desativar as notificações"
+			],
+			"Disable Split tunneling": [
+				"Desativar tunelamento dividido"
+			],
+			"Disable WebRTC leak protection": [
+				"Desativar proteção contra vazamento de WebRTC"
+			],
 			"Disconnect": [
 				"Desconectar"
 			],
-			"Enable/disable notifications": [
-				"Ativar/desativar as notificações"
+			"Enable auto-connect": [
+				"Ativar conexão automática"
 			],
-			"Exclude websites from the tunnel": [
-				"Excluir sites do túnel"
+			"Enable notifications": [
+				"Ativar notificações"
+			],
+			"Enable Split tunneling": [
+				"Ativar tunelamento dividido"
+			],
+			"Enable WebRTC leak protection": [
+				"Ativar proteção contra vazamento de WebRTC"
 			],
 			"Log in with Proton": [
 				"Iniciar sessão com Proton"
@@ -55,9 +76,6 @@
 			],
 			"Next": [
 				"Próximo"
-			],
-			"Prevent WebRTC leak": [
-				"Evitar vazamento WebRTC"
 			],
 			"Quick connect": [
 				"Conexão rápida"
@@ -118,6 +136,11 @@
 		"Action: Server-level button": {
 			"Connect to ${serverName}": [
 				"Conectar em ${serverName}"
+			]
+		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"Pesquisar"
 			]
 		},
 		"Confirm": {
@@ -259,6 +282,12 @@
 			"Connected to ${name} in ${city}": [
 				"Conectado a ${name} em ${city}"
 			],
+			"Connecting servers such as ${logical.Name} is not currently supported in the browser extension": [
+				"A conexão de servidores como ${logical.Name} não é suportada atualmente na extensão do navegador."
+			],
+			"Connecting to dedicated IPs such as ${logical.Name} is not currently supported in the browser extension": [
+				"A conexão com IPs dedicados, como ${logical.Name}, não é suportada atualmente na extensão do navegador."
+			],
 			"Connecting...": [
 				"Conectando..."
 			],
@@ -273,6 +302,9 @@
 			],
 			"Decide which websites are protected by VPN.": [
 				"Decida quais sites são protegidos por VPN."
+			],
+			"Disable Secure Core": [
+				"Desativar Secure Core"
 			],
 			"Disconnected": [
 				"Desconectado"
@@ -291,6 +323,9 @@
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Emitir notificações de sistema em eventos de conexão e desconexão."
+			],
+			"Enable Secure Core": [
+				"Ativar Secure Core"
 			],
 			"Enjoying Proton VPN?": [
 				"Está gostando do Proton VPN?"
@@ -374,9 +409,6 @@
 			"Proton VPN Browser Extension": [
 				"Extensão do Proton VPN para navegador"
 			],
-			"Search": [
-				"Pesquisar"
-			],
 			"Secure Core": [
 				"Secure Core"
 			],
@@ -401,14 +433,23 @@
 			"Thank you for installing Proton VPN": [
 				"Nós lhe agradecemos por instalar o Proton VPN"
 			],
+			"The split tunneling options cannot be changed on this device": [
+				"As opções de tunelamento dividido não podem ser alteradas neste dispositivo"
+			],
 			"Then just click the Proton VPN icon to sign in.": [
 				"Depois basta clicar no ícone Proton VPN para iniciar a sessão."
+			],
+			"This option cannot be changed on this device": [
+				"Esta opção não pode ser alterada neste dispositivo"
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"Essas estatísticas não contêm seu endereço IP e não podem ser usadas para identificar você. Nunca as compartilharemos com terceiros"
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Para começar, terá de ativar as permissões VPN no seu navegador."
+			],
+			"Tor servers such as ${logical.Name} are not currently supported in the browser extension": [
+				"Servidores Tor como ${logical.Name} não são atualmente suportados na extensão do navegador."
 			],
 			"Upgrade": [
 				"Fazer upgrade"
@@ -418,6 +459,9 @@
 			],
 			"User": [
 				"Usuário"
+			],
+			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
+				"Usando o Brave, as solicitações de DNS podem ficar desprotegidas quando o \"modo de inclusão\" estiver ativo."
 			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
 				"VPN bloqueada por software externo.\n\nAlgumas ferramentas, como antivírus ou proxies, pode interferir com o Proton VPN. Desative-as e tente novamente."

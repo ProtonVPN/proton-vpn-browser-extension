@@ -1,24 +1,22 @@
 import {consumeFork} from '../account/fork/consumeFork';
 import {saveSession} from '../account/saveSession';
-import {ForkMessage} from './Message';
+import type {ForkMessage} from './Message';
 import {appId} from '../config';
 import {triggerPromise} from '../tools/triggerPromise';
 import {getFreshUser} from '../account/user/getUser';
 import {error} from '../log/log';
 import {c} from '../tools/translate';
-import {ForkResponse} from './ForkResponse';
+import type {ForkResponse} from './ForkResponse';
 import {getErrorAsString} from '../tools/getErrorMessage';
 
-export const forkSession = async (message: any): Promise<ForkResponse | undefined> => {
+export const forkSession = async (
+	message: any,
+): Promise<ForkResponse | undefined> => {
 	if (!message || typeof message !== 'object') {
 		return;
 	}
 
-	const {
-		payload,
-		extension,
-		token,
-	} = message as ForkMessage;
+	const {payload, extension, token} = message as ForkMessage;
 
 	if (extension && extension !== appId) {
 		// ignore the message
@@ -43,7 +41,7 @@ export const forkSession = async (message: any): Promise<ForkResponse | undefine
 	} = payload;
 
 	try {
-		const { session, forkState } = await consumeFork({state, selector});
+		const {session, forkState} = await consumeFork({state, selector});
 		session.persistent = persistent;
 		session.partnerId = forkState.partnerId || undefined;
 

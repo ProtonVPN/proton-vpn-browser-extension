@@ -1,15 +1,22 @@
 import {fetchJson} from '../api';
 import {getCacheAge} from '../tools/getCacheAge';
-import {CacheWrappedValue, Storage, storage} from '../tools/storage';
-import {Counts} from './Counts';
+import type {CacheWrappedValue} from '../tools/storage';
+import {Storage, storage} from '../tools/storage';
+import type {Counts} from './Counts';
 import {triggerPromise} from '../tools/triggerPromise';
-import {getServerCountsBlockingUpdateTTL, getServerCountsTTL} from '../intervals';
+import {
+	getServerCountsBlockingUpdateTTL,
+	getServerCountsTTL,
+} from '../intervals';
 import {handleError} from '../tools/sentry';
 
 let countsFetching = false;
-let fetchPromises = [] as ([(result: any) => void, (error: any) => void])[];
+let fetchPromises = [] as [(result: any) => void, (error: any) => void][];
 
-const serversCount = storage.item<CacheWrappedValue<Counts>>('servers-count', Storage.LOCAL);
+const serversCount = storage.item<CacheWrappedValue<Counts>>(
+	'servers-count',
+	Storage.LOCAL,
+);
 
 const fetchServersCounts = async (): Promise<Counts> => {
 	if (countsFetching) {
@@ -62,9 +69,11 @@ export const getServersCount = async (): Promise<Counts> => {
 		const counts = await fetchServersCounts();
 
 		if (counts.Servers < 12_000 || counts.Countries < 110) {
-			handleError(new Error(
-				`Incorrect results from API: servers = ${counts.Servers}, countries = ${counts.Countries}`,
-			));
+			handleError(
+				new Error(
+					`Incorrect results from API: servers = ${counts.Servers}, countries = ${counts.Countries}`,
+				),
+			);
 
 			return {
 				Servers: 13_626,
@@ -82,4 +91,3 @@ export const getServersCount = async (): Promise<Counts> => {
 		throw e;
 	}
 };
-

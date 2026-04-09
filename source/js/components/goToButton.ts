@@ -1,5 +1,10 @@
-export const configureGoToButtons =  (area: HTMLDivElement | Document, goTo: (page: string) => void) => {
-	area.querySelectorAll('[data-go-to]').forEach(button => {
+import {stopEvent} from '../tools/stopEvent';
+
+export const configureGoToButtons = (
+	area: HTMLElement,
+	goTo: (page: string) => void,
+) => {
+	area.querySelectorAll('[data-go-to]').forEach((button) => {
 		if (button.classList.contains('go-to-configured')) {
 			return;
 		}
@@ -16,8 +21,7 @@ export const configureGoToButtons =  (area: HTMLDivElement | Document, goTo: (pa
 				button.setAttribute('aria-current', 'true');
 			}
 
-			event.preventDefault();
-			event.stopPropagation();
+			stopEvent(event);
 		});
 	});
 };

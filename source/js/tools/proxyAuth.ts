@@ -5,13 +5,15 @@ import CreateResponseDetails = chrome.webAuthenticationProxy.CreateResponseDetai
 import OnErrorOccurredDetails = chrome.webRequest.OnErrorOccurredDetails;
 import OnCompletedDetails = chrome.webRequest.OnCompletedDetails;
 
-let authPending = {} as Record<string, true>;
+const authPending = {} as Record<string, true>;
 
 export interface WithIdentifiableRequest {
-	requestId: string|number;
+	requestId: string | number;
 }
 
-export const clearPending = (request: CreateResponseDetails|OnCompletedDetails|OnErrorOccurredDetails): void => {
+export const clearPending = (
+	request: CreateResponseDetails | OnCompletedDetails | OnErrorOccurredDetails,
+): void => {
 	if (!isCurrentStateConnected()) {
 		return;
 	}
@@ -34,7 +36,7 @@ export const clearPending = (request: CreateResponseDetails|OnCompletedDetails|O
 		return; // auth will be sent again
 	}
 
-	if(!authPending[request.requestId]) {
+	if (!authPending[request.requestId]) {
 		return;
 	}
 
@@ -45,4 +47,5 @@ export const markAsPending = ({requestId}: WithIdentifiableRequest) => {
 	authPending[requestId] = true;
 };
 
-export const isPending = ({requestId}: WithIdentifiableRequest): boolean => !!authPending[requestId];
+export const isPending = ({requestId}: WithIdentifiableRequest): boolean =>
+	!!authPending[requestId];

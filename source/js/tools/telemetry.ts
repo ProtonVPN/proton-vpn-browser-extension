@@ -27,23 +27,17 @@ export enum MeasurementGroup {
 
 export const telemetryOptIn = storage.item<{value: boolean}>('telemetry');
 
-export const isTelemetryFeatureEnabled = () => new Promise<boolean>(resolve => {
-	resolve(telemetryEnabled);
-});
-
-export const getTelemetryOptIn = () => telemetryEnabled
-	? telemetryOptIn.getDefined({value: false})
-	: new Promise<{value: false}>(resolve => {
-		resolve({value: false});
-	});
-
-export const getFeatureNames = (tier: number, features: number): string => [
-	tier ? null : 'free',
-	(features & Feature.TOR) ? 'tor' : null,
-	(features & Feature.P2P) ? 'p2p' : null,
-	(features & Feature.PARTNER) ? 'partnership' : null,
-	(features & Feature.STREAMING) ? 'streaming' : null,
-].filter(Boolean).sort().join(',');
+export const getFeatureNames = (tier: number, features: number): string =>
+	[
+		tier ? null : 'free',
+		features & Feature.TOR ? 'tor' : null,
+		features & Feature.P2P ? 'p2p' : null,
+		features & Feature.PARTNER ? 'partnership' : null,
+		features & Feature.STREAMING ? 'streaming' : null,
+	]
+		.filter(Boolean)
+		.sort()
+		.join(',');
 
 const getVpnTrigger = (choice?: Choice) => {
 	if (!choice) {
@@ -63,7 +57,7 @@ const getVpnTrigger = (choice?: Choice) => {
 	}
 
 	return 'quick';
-}
+};
 
 export const recordEvent = (
 	group: MeasurementGroup,
@@ -74,41 +68,34 @@ export const recordEvent = (
 	Promise.all([
 		telemetryEnabled
 			? telemetryOptIn.load()
-			: new Promise<{value: false}>(resolve => {
-				resolve({value: false});
-			}),
+			: new Promise<{value: false}>((resolve) => {
+					resolve({value: false});
+				}),
 		getCachedLocation(),
 		loadCachedUser(),
 		getLastChoice(),
-	]).then(async ([
-		{value: optIn},
-		{location},
-		{user},
-		lastChoice,
-	]) => {
+	]).then(async ([{value: optIn}, {location}, {user}, lastChoice]) => {
 		const tier = user?.VPN?.MaxTier;
 		const formattedDimensions: Record<string, string> = {};
 		const rawDimensions: Record<string, any> = {
 			vpn_trigger: getVpnTrigger(lastChoice),
 			...(logical
-					? {
+				? {
 						vpn_country: logical.ExitCountry || null,
 						server: logical.Name || null,
 						server_features: getFeatureNames(logical.Tier, logical.Features),
 					}
-					: {}
-			),
+				: {}),
 			user_country: location?.Country || null,
 			isp: location?.ISP || null,
 			user_tier: tier,
 			...dimensions,
 		};
 
-		Object.keys(rawDimensions).forEach(dimensionName => {
+		Object.keys(rawDimensions).forEach((dimensionName) => {
 			const value = rawDimensions[dimensionName];
-			formattedDimensions[dimensionName] = typeof value === 'undefined' || value === null
-				? NO_VALUE
-				: `${value}`;
+			formattedDimensions[dimensionName] =
+				typeof value === 'undefined' || value === null ? NO_VALUE : `${value}`;
 		});
 
 		const body = {
@@ -124,7 +111,9 @@ export const recordEvent = (
 		}
 
 		if (user?.VPN?.BusinessEvents) {
-			calls.push(fetchWithUserInfo('vpn/v1/business/events', jsonRequest('POST', body)));
+			calls.push(
+				fetchWithUserInfo('vpn/v1/business/events', jsonRequest('POST', body)),
+			);
 		}
 
 		await Promise.all(calls);

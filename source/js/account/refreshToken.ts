@@ -1,7 +1,7 @@
 import {readSession} from './readSession';
 import {fetchJson, jsonRequest} from '../api';
 import {saveSession} from './saveSession';
-import {Session} from './Session';
+import type {Session} from './Session';
 import {sendMessageToBackground} from '../tools/sendMessageToBackground';
 import {StateChange} from '../messaging/MessageType';
 import {triggerPromise} from '../tools/triggerPromise';
@@ -10,10 +10,10 @@ import {RefreshTokenError} from './RefreshTokenError';
 import {getErrorAsString} from '../tools/getErrorMessage';
 
 let refreshing = false;
-let waitingRefreshPromises = [] as ([
+let waitingRefreshPromises = [] as [
 	(session: Session) => void,
 	(error: Error | RefreshTokenError | string) => void,
-])[];
+][];
 
 export const hasRefreshToken = async (session?: Session): Promise<boolean> => {
 	if (!session) {
@@ -45,19 +45,22 @@ export const refreshToken = async (session?: Session): Promise<Session> => {
 		const auth = await fetchJson<{
 			RefreshToken: string;
 			AccessToken: string;
-		}>('auth/refresh', jsonRequest(
-			'POST',
-			{
-				UID: session.uid,
-				ResponseType: 'token',
-				GrantType: 'refresh_token',
-				RefreshToken: session.refreshToken,
-				RedirectURI: session.redirectURI || 'https://protonvpn.com',
-			},
-			{
-				'x-pm-uid': session.uid,
-			},
-		));
+		}>(
+			'auth/refresh',
+			jsonRequest(
+				'POST',
+				{
+					UID: session.uid,
+					ResponseType: 'token',
+					GrantType: 'refresh_token',
+					RefreshToken: session.refreshToken,
+					RedirectURI: session.redirectURI || 'https://protonvpn.com',
+				},
+				{
+					'x-pm-uid': session.uid,
+				},
+			),
+		);
 		delete session.expiresAt;
 		session.refreshToken = auth.RefreshToken;
 		session.accessToken = auth.AccessToken;
@@ -70,30 +73,34 @@ export const refreshToken = async (session?: Session): Promise<Session> => {
 
 		return session;
 	} catch (e) {
+		let error = e;
 		const nextSession = await readSession();
 
-		if (nextSession.expiresAt && nextSession.accessToken === session.accessToken) {
+		if (
+			nextSession.expiresAt &&
+			nextSession.accessToken === session.accessToken
+		) {
 			delete nextSession.expiresAt;
 			await saveSession(nextSession);
 		}
 
-		if ((e as any).Code === 10013) {
-			warn(e, new Error().stack);
-			e = new RefreshTokenError(getErrorAsString(e));
+		if ((error as any).Code === 10013) {
+			warn(error, new Error().stack);
+			error = new RefreshTokenError(getErrorAsString(error));
 
 			try {
 				triggerPromise(sendMessageToBackground(StateChange.SIGN_OUT));
-			} catch (e) {
+			} catch {
 				// Let the initial error throw
 			}
 
 			waitingRefreshPromises.forEach(([, reject]) => {
-				reject(e as RefreshTokenError);
+				reject(error as RefreshTokenError);
 			});
 			waitingRefreshPromises = [];
 		}
 
-		throw e;
+		throw error;
 	} finally {
 		refreshing = false;
 	}

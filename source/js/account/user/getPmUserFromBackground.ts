@@ -4,9 +4,10 @@ import {BackgroundData} from '../../messaging/MessageType';
 import {milliSeconds} from '../../tools/milliSeconds';
 import {InitUserError} from '../../account/InitUserError';
 
-export const getPmUserFromPopup = async () =>  await timeoutAfter(
-	getInfoFromBackground(BackgroundData.PM_USER),
-	milliSeconds.fromSeconds(30),
-	'User loading timed out',
-	InitUserError,
-);
+export const getPmUserFromBackground = async (maxMilliSeconds?: number) =>
+	await timeoutAfter(
+		getInfoFromBackground(BackgroundData.PM_USER),
+		maxMilliSeconds ?? milliSeconds.fromSeconds(30),
+		'User loading timed out',
+		InitUserError,
+	);

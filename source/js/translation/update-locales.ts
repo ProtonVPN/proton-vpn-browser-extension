@@ -4,13 +4,13 @@ import {writeFile} from 'fs';
 const localDirectory = __dirname + '/../../locales/';
 
 const en: {
-	contexts: Record<string, Record<string, any>>,
+	contexts: Record<string, Record<string, any>>;
 } = require(localDirectory + 'en_US.json');
 
-['fr_FR'].forEach(locale => {
+['fr_FR'].forEach((locale) => {
 	const localeFile = localDirectory + locale + '.json';
 	const translations: {
-		contexts: Record<string, Record<string, any>>,
+		contexts: Record<string, Record<string, any>>;
 	} = require(localeFile);
 	const flatTranslations: Record<string, any> = {};
 
@@ -26,7 +26,8 @@ const en: {
 		const newTranslations: Record<string, any> = {};
 
 		each(values, (id, value) => {
-			newTranslations[id] = translations.contexts[context]?.[id] || flatTranslations[id] || value;
+			newTranslations[id] =
+				translations.contexts[context]?.[id] || flatTranslations[id] || value;
 		});
 
 		contexts[context] = newTranslations;
@@ -34,11 +35,15 @@ const en: {
 
 	translations.contexts = contexts;
 
-	writeFile(localeFile, JSON.stringify(translations, null, '\t').trim() + '\n', err => {
-		if (err) {
-			throw err;
-		}
+	writeFile(
+		localeFile,
+		JSON.stringify(translations, null, '\t').trim() + '\n',
+		(err) => {
+			if (err) {
+				throw err;
+			}
 
-		console.log('Translations updated for ' + locale);
-	});
+			console.log('Translations updated for ' + locale);
+		},
+	);
 });

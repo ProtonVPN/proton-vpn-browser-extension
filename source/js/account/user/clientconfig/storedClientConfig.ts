@@ -1,4 +1,5 @@
-import {CacheWrappedValue, Storage, storage} from '../../../tools/storage';
+import type {CacheWrappedValue} from '../../../tools/storage';
+import {Storage, storage} from '../../../tools/storage';
 
 /**
  * As returned from the API endpoint.
@@ -92,4 +93,7 @@ export interface RatingSettings {
 export type ClientConfigCache = CacheWrappedValue<ClientConfig>;
 
 // We are using Storage.LOCAL to synchronize the client state between all tabs to prevent free refresh exploits. There is no point in synchronizing to different browsers where the user is signed in (Storage.SYNC).
-export const clientConfigStore = storage.item<ClientConfigCache>('client-config', Storage.LOCAL);
+export const clientConfigStore = storage.item<ClientConfigCache>(
+	'client-config',
+	Storage.LOCAL,
+);

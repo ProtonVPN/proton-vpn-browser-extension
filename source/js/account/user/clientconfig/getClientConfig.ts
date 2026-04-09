@@ -1,20 +1,31 @@
 import {fetchWithUserInfo} from '../../fetchWithUserInfo';
-import {getClientConfigBlockingUpdateTTL, getClientConfigTTL, getIdleThreshold} from '../../../intervals';
+import {
+	getClientConfigBlockingUpdateTTL,
+	getClientConfigTTL,
+	getIdleThreshold,
+} from '../../../intervals';
 import {getCacheAge} from '../../../tools/getCacheAge';
 import {triggerPromise} from '../../../tools/triggerPromise';
 import {getElapsedMillisecondsSinceLastActivity} from '../../../tools/activity';
 import {clientConfigStore} from './storedClientConfig';
-import type {ChangeServerConfig, ClientConfig, ClientConfigCache, RatingSettings} from './storedClientConfig';
+import type {
+	ChangeServerConfig,
+	ClientConfig,
+	ClientConfigCache,
+	RatingSettings,
+} from './storedClientConfig';
 
 let cache: ClientConfigCache | undefined = undefined;
 
 const fetchClientConfig = async () => {
 	const value = await fetchWithUserInfo<ClientConfig>('vpn/v2/clientconfig');
 
-	triggerPromise(clientConfigStore.set({
-		time: Date.now(),
-		value,
-	}));
+	triggerPromise(
+		clientConfigStore.set({
+			time: Date.now(),
+			value,
+		}),
+	);
 
 	return value;
 };
@@ -28,7 +39,8 @@ const getClientConfig = async () => {
 
 	const age = getCacheAge(cache);
 	const idleDuration = await getElapsedMillisecondsSinceLastActivity();
-	const freshnessThreshold = getClientConfigTTL() * (idleDuration > getIdleThreshold() ? 2 : 1);
+	const freshnessThreshold =
+		getClientConfigTTL() * (idleDuration > getIdleThreshold() ? 2 : 1);
 
 	// Use cache if fresh
 	if (cache && age < freshnessThreshold) {
@@ -55,7 +67,8 @@ const getClientConfig = async () => {
 };
 
 /** Only the portion of the state relevant to Rating Booster Modal functionality. */
-export const getReviewInfoConfig = async (): Promise<RatingSettings> => (await getClientConfig()).RatingSettings;
+export const getReviewInfoConfig = async (): Promise<RatingSettings> =>
+	(await getClientConfig()).RatingSettings;
 
 /** Only the portion of the state relevant to ChangeServer functionality. */
 export const getChangeServerConfig = async (): Promise<ChangeServerConfig> => {
@@ -63,7 +76,8 @@ export const getChangeServerConfig = async (): Promise<ChangeServerConfig> => {
 
 	return {
 		ChangeServerAttemptLimit: clientConfig.ChangeServerAttemptLimit,
-		ChangeServerShortDelayInSeconds: clientConfig.ChangeServerShortDelayInSeconds,
+		ChangeServerShortDelayInSeconds:
+			clientConfig.ChangeServerShortDelayInSeconds,
 		ChangeServerLongDelayInSeconds: clientConfig.ChangeServerLongDelayInSeconds,
 	};
 };

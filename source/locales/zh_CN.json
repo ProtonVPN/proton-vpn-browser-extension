@@ -17,14 +17,17 @@
 			"Already have a Proton Account?": [
 				"已有 Proton 账户？"
 			],
-			"Auto connect": [
-				"自动连接"
-			],
 			"Cancel": [
 				"取消"
 			],
+			"Change language": [
+				"更改语言"
+			],
 			"Change server": [
 				"切换服务器"
+			],
+			"Configure split tunneling": [
+				"配置拆分隧道"
 			],
 			"Connect": [
 				"连接"
@@ -35,14 +38,32 @@
 			"Create an account": [
 				"创建账号"
 			],
+			"Disable auto-connect": [
+				"停用自动连接"
+			],
+			"Disable notifications": [
+				"停用通知"
+			],
+			"Disable Split tunneling": [
+				"禁用拆分隧道"
+			],
+			"Disable WebRTC leak protection": [
+				"停用 WebRTC 泄露保护"
+			],
 			"Disconnect": [
 				"断开连接"
 			],
-			"Enable/disable notifications": [
-				"启用/禁用通知"
+			"Enable auto-connect": [
+				"启用自动连接"
 			],
-			"Exclude websites from the tunnel": [
-				"将网站排除在隧道之外"
+			"Enable notifications": [
+				"启用通知"
+			],
+			"Enable Split tunneling": [
+				"启用拆分隧道"
+			],
+			"Enable WebRTC leak protection": [
+				"启用 WebRTC 泄露保护"
 			],
 			"Log in with Proton": [
 				"使用 Proton 账户登录"
@@ -55,9 +76,6 @@
 			],
 			"Next": [
 				"下一步"
-			],
-			"Prevent WebRTC leak": [
-				"阻止 WebRTC 泄露信息"
 			],
 			"Quick connect": [
 				"快速连接"
@@ -118,6 +136,11 @@
 		"Action: Server-level button": {
 			"Connect to ${serverName}": [
 				"连接到 ${serverName}"
+			]
+		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"搜索"
 			]
 		},
 		"Confirm": {
@@ -256,6 +279,12 @@
 			"Connected to ${name} in ${city}": [
 				"连接到 ${name} 中的 ${city}"
 			],
+			"Connecting servers such as ${logical.Name} is not currently supported in the browser extension": [
+				"目前浏览器扩展不支持连接到诸如 ${logical.Name} 之类的服务器"
+			],
+			"Connecting to dedicated IPs such as ${logical.Name} is not currently supported in the browser extension": [
+				"目前浏览器扩展不支持连接到诸如 ${logical.Name} 之类的专用 IP"
+			],
 			"Connecting...": [
 				"正在连接..."
 			],
@@ -270,6 +299,9 @@
 			],
 			"Decide which websites are protected by VPN.": [
 				"决定哪些网站受 VPN 保护。"
+			],
+			"Disable Secure Core": [
+				"停用 Secure Core"
 			],
 			"Disconnected": [
 				"已断开"
@@ -288,6 +320,12 @@
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"就连接和断开事件发出系统通知。"
+			],
+			"Enable Secure Core": [
+				"启用 Secure Core"
+			],
+			"Enjoying Proton VPN?": [
+				"正在享受使用 Proton VPN 吗？"
 			],
 			"Exclude mode": [
 				"排除模式"
@@ -325,6 +363,9 @@
 			"Learn more": [
 				"了解详情"
 			],
+			"Leave a rating": [
+				"去评个分吧"
+			],
 			"Logged out": [
 				"退出账户"
 			],
@@ -349,6 +390,9 @@
 			"Pin Proton VPN to your toolbar": [
 				"将 Proton VPN 固定在您的工具栏"
 			],
+			"Please help us spread the word with a Web Store rating.": [
+				"请通过给 Web 商店评分帮助我们传播好评！"
+			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"点击 <b>下一步</b>，然后点击浏览器弹出窗口上的<b>允许</b>。"
 			],
@@ -360,9 +404,6 @@
 			],
 			"Proton VPN Browser Extension": [
 				"Proton VPN 浏览器扩展程序"
-			],
-			"Search": [
-				"搜索"
 			],
 			"Secure Core": [
 				"Secure Core"
@@ -388,14 +429,23 @@
 			"Thank you for installing Proton VPN": [
 				"感谢您安装 Proton VPN"
 			],
+			"The split tunneling options cannot be changed on this device": [
+				"此设备无法更改拆分隧道选项"
+			],
 			"Then just click the Proton VPN icon to sign in.": [
 				"然后点击 Proton VPN 图标以登录。"
+			],
+			"This option cannot be changed on this device": [
+				"此设备无法更改此选项"
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"这些统计数据不包含您的 IP 地址，因此无法用于识别您的身份。我们绝不会与第三方分享它们。"
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"要开始使用，您需要在浏览器上启用 VPN 权限。"
+			],
+			"Tor servers such as ${logical.Name} are not currently supported in the browser extension": [
+				"目前浏览器扩展不支持诸如 ${logical.Name} 之类的 Tor 服务器"
 			],
 			"Upgrade": [
 				"升级账户"
@@ -405,6 +455,9 @@
 			],
 			"User": [
 				"用户"
+			],
+			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
+				"使用 Brave 浏览器时，当“包含模式”处于活动状态时，DNS 请求可能不受保护。"
 			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
 				"VPN 被外部软件阻止。\n\n某些工具（如反病毒软件或代理服务器）会干扰 Proton VPN，请禁用它们并重试。"
@@ -443,6 +496,9 @@
 			],
 			"Entry country": [
 				"入口国家/地区"
+			],
+			"Exact match": [
+				"精确匹配"
 			],
 			"Free": [
 				"Free"

@@ -24,7 +24,12 @@ export enum BackgroundData {
 	USER = 'user',
 	PM_USER = 'pmUser',
 	STATE = 'state',
+	LOCALE = 'locale',
 }
+
+export type BackgroundExtraData = {
+	[BackgroundData.PM_USER]: object;
+};
 
 export type BackgroundMessage =
 	| BackgroundAction

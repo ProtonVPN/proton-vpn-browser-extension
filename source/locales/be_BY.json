@@ -17,14 +17,17 @@
 			"Already have a Proton Account?": [
 				"Ужо ёсць уліковы запіс Proton?"
 			],
-			"Auto connect": [
-				"Аўтаматычнае падключэнне"
-			],
 			"Cancel": [
 				"Скасаваць"
 			],
+			"Change language": [
+				"Змяніць мову"
+			],
 			"Change server": [
 				"Змяніць сервер"
+			],
+			"Configure split tunneling": [
+				"Сканфігурыраваць Split Tunneling"
 			],
 			"Connect": [
 				"Падключыцца"
@@ -35,14 +38,32 @@
 			"Create an account": [
 				"Стварыць уліковы запіс"
 			],
+			"Disable auto-connect": [
+				"Адключыць аўтаматычнае падключэнне"
+			],
+			"Disable notifications": [
+				"Адключыць апавяшчэнні"
+			],
+			"Disable Split tunneling": [
+				"Адключыць Split Tunelling"
+			],
+			"Disable WebRTC leak protection": [
+				"Адключыць абарону ад уцечкі WebRTC"
+			],
 			"Disconnect": [
 				"Адключыцца"
 			],
-			"Enable/disable notifications": [
-				"Уключыць/адключыць апавяшчэнні"
+			"Enable auto-connect": [
+				"Уключыць аўтаматычнае падключэнне"
 			],
-			"Exclude websites from the tunnel": [
-				"Выключыць вэб-сайты з тунэлю"
+			"Enable notifications": [
+				"Уключыць апавяшчэнні"
+			],
+			"Enable Split tunneling": [
+				"Уключыць Split Tunelling"
+			],
+			"Enable WebRTC leak protection": [
+				"Уключыць абарону ад уцечкі WebRTC"
 			],
 			"Log in with Proton": [
 				"Увайсці з Proton"
@@ -55,9 +76,6 @@
 			],
 			"Next": [
 				"Далей"
-			],
-			"Prevent WebRTC leak": [
-				"Прадухіліць уцечку WebRTC"
 			],
 			"Quick connect": [
 				"Хуткае падключэнне"
@@ -120,6 +138,11 @@
 				"Падключыцца да ${serverName}"
 			]
 		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"Пошук"
+			]
+		},
 		"Confirm": {
 			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
 				"Выхад з праграмы прывядзе да адключэння актыўнага падключэння па VPN. Вы сапраўды хочаце працягнуць?"
@@ -132,10 +155,10 @@
 		},
 		"Error": {
 			"${countries} country": [
-				"${countries} краіна",
-				"${countries} краіны",
-				"${countries} краін",
-				"${countries} краін"
+				"${countries} краіне",
+				"${countries} краінах",
+				"${countries} краінах",
+				"${countries} краінах"
 			],
 			"${serversCount} secure server": [
 				"${serversCount} бяспечны сервер",
@@ -171,7 +194,7 @@
 				"Верагодна, што адсутнічаюць неабходныя дазволы і па гэтай прычыне немагчыма кантраляваць сеткавыя налады браўзера"
 			],
 			"Please check your connectivity": [
-				"Праверце ваша падключэнне"
+				"Праверце сваё падключэнне"
 			],
 			"Please try a different keyword": [
 				"Паспрабуйце іншае ключавое слова"
@@ -186,7 +209,7 @@
 				"Нешта пайшло не так. Калі праблема застанецца, паспрабуйце паўторна ўсталяваць пашырэнне"
 			],
 			"Unable to find appropriate server, try to logout and login again if it persists.": [
-				"Немагчыма знайсці адпаведны сервер. Паспрабуйце выйсці і ўвайсці паўторна, калі гэта праблема захаваецца."
+				"Немагчыма знайсці адпаведны сервер. Паспрабуйце выйсці і ўвайсці паўторна, калі гэта праблема застанецца."
 			],
 			"Unable to load the list": [
 				"Немагчыма загрузіць спіс"
@@ -201,7 +224,7 @@
 				"Разблакіраваць ${servers} у ${countries}"
 			],
 			"Unlock global streaming services": [
-				"Разблакіраваць глабальныя сэрвісы з трансляцыямі"
+				"Разблакіруйце глабальныя сэрвісы з трансляцыямі"
 			]
 		},
 		"Info": {
@@ -212,7 +235,7 @@
 				"URL-адрас паддамена ўключае прэфікс перад асноўным іменем дамена. Напрыклад, account.proton.me з'яўляецца паддаменам proton.me."
 			],
 			"About free connections": [
-				"Пра бясплатныя падключэнні"
+				"Аб бясплатных падключэннях"
 			],
 			"Access over 13,000 secure servers in over 120 countries": [
 				"Доступ да больш чым 13000 абароненых сервераў у больш чым 120 краінах"
@@ -254,7 +277,7 @@
 				"Закрыць"
 			],
 			"Connect to a Plus server in this country to start streaming.\n\nHint: Clear the cache of the streaming apps to ensure new content appears.": [
-				"Каб пачаць трансляцыю, падключыцеся да сервера Plus у гэтай краіне.\n\nПадказка: ачысціце кэш праграм, якія выкарыстоўваць гэту тэхналогію, каб з'явілася новае змесціва."
+				"Падключыцеся да сервера Plus у гэтай краіне, каб пачаць трансляцыю.\n\nПадказка: ачысціце кэш праграм, якія выкарыстоўваць гэту тэхналогію, каб з'явілася новае змесціва."
 			],
 			"Connected": [
 				"Падключана"
@@ -286,6 +309,9 @@
 			"Decide which websites are protected by VPN.": [
 				"Вырашыце, якія вэб-сайты абаронены праз VPN."
 			],
+			"Disable Secure Core": [
+				"Адключыць Secure Core"
+			],
 			"Disconnected": [
 				"Адключана"
 			],
@@ -303,6 +329,9 @@
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Адпраўляць сістэмныя апавяшчэнні пры падключэнні і адключэнні."
+			],
+			"Enable Secure Core": [
+				"Уключыць Secure Core"
 			],
 			"Enjoying Proton VPN?": [
 				"Падабаецца Proton VPN?"
@@ -323,7 +352,7 @@
 				"Краіны з бясплатнымі серверамі (<span id=\"free-server-countries-count\">0</span>)"
 			],
 			"Get unlimited server changes with VPN Plus": [
-				"Атрымайце неабмежаваную колькасць змяненняў сервера з VPN Plus"
+				"Змяняйце серверы без абмежаванняў з VPN Plus"
 			],
 			"Get worldwide coverage with VPN Plus": [
 				"Тарыфны план VPN Plus забяспечвае пакрыццё ўсяго свету"
@@ -332,7 +361,7 @@
 				"Даведка"
 			],
 			"Help us fight censorship": [
-				"Дапамагаць нам змагацца з цэнзурай"
+				"Дапамажыце нам змагацца з цэнзурай"
 			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"Высокапрадукцыйны швейцарскі VPN, які абараняе вашу прыватнасць. Максімум бяспекі, больш за ${count} сервер і ніякіх абмежаванняў.",
@@ -347,7 +376,7 @@
 				"Даведацца больш"
 			],
 			"Leave a rating": [
-				"Пакінуць адзнаку"
+				"Ацаніць"
 			],
 			"Logged out": [
 				"Вы выйшлі"
@@ -377,7 +406,7 @@
 				"Дапамажыце нам распаўсюдзіць інфармацыю з дапамогай ацэнкі ў вэб-краме"
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
-				"Націсніце <b>Далей</b>, а потым <b>Дазволіць</b> ва ўсплывальным акне вашага браўзера."
+				"Націсніце <b>Далей</b>, а потым <b>Дазволіць</b> ва ўсплывальным акне свайго браўзера."
 			],
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Абараніце сябе ў інтэрнэце з бясплатным і высакахуткасным VPN ад Proton."
@@ -387,9 +416,6 @@
 			],
 			"Proton VPN Browser Extension": [
 				"Пашырэнні Proton VPN для браўзера"
-			],
-			"Search": [
-				"Пошук"
 			],
 			"Secure Core": [
 				"Secure Core"
@@ -415,14 +441,20 @@
 			"Thank you for installing Proton VPN": [
 				"Дзякуй за тое, што ўсталявалі Proton VPN"
 			],
+			"The split tunneling options cannot be changed on this device": [
+				"Параметры Split Tunneling нельга змяніць на гэтай прыладзе"
+			],
 			"Then just click the Proton VPN icon to sign in.": [
 				"Цяпер проста націсніце значок Proton VPN, каб увайсці."
 			],
+			"This option cannot be changed on this device": [
+				"Гэтыя параметры не могуць быць зменены на гэтай прыладзе"
+			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
-				"Гэта статыстыка не змяшчае ваш IP-адрас і яна не будзе выкарыстана, каб ідэнтыфікаваць вас. Мы ніколі не перадаём яе староннім асобам"
+				"Гэта статыстыка не змяшчае ваш IP-адрас і яна не будзе выкарыстана, каб ідэнтыфікаваць вас. Вашы даныя ніколі не будуць абагульвацца са староннімі асобамі"
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
-				"Для таго, каб пачаць працу вам неабходна ўключыць дазволы VPN у вашым браўзеры."
+				"Для пачатку працы вам неабходна ўключыць дазволы VPN у сваім браўзеры."
 			],
 			"Tor servers such as ${logical.Name} are not currently supported in the browser extension": [
 				"Серверы Tor, такія як ${logical.Name}, пакуль не падтрымліваюцца ў пашырэнні для браўзера"
@@ -437,10 +469,10 @@
 				"Карыстальнік"
 			],
 			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
-				"Выкарыстанне Brave можа прывесці да таго, што запыты DNS будуць неабароненымі ў рэжыме выключэння."
+				"Выкарыстанне Brave можа прывесці да таго, што запыты DNS будуць неабароненымі, калі яны актыўныя ў \"Рэжыме ўключэння\"."
 			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
-				"VPN заблакіраваны знешнім праграмным забеспячэннем.\n\nНекаторыя інструменты, такія як антывірусы або проксі, могуць перашкаджаць працы Proton VPN. Адключыце іх і паспрабуйце яшчэ раз."
+				"VPN заблакіраваны з дапамогай знешняга праграмнага забеспячэння.\n\nНекаторыя інструменты, такія як антывірусы або проксі, могуць перашкаджаць працы Proton VPN. Адключыце іх і паспрабуйце яшчэ раз."
 			],
 			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.": [
 				"VPN заблакіраваны з дапамогай знешняга праграмнага забеспячэння: ${blockingSoftware}.\n\nНекаторыя інструменты, такія як антывірусы або проксі, могуць перашкаджаць працы Proton VPN. Паспрабуйце адключыць іх, каб пацвердзіць свае дзеянні."
@@ -535,7 +567,7 @@
 				"Split Tunneling"
 			],
 			"Unprotected": [
-				"Не абаронена"
+				"Неабаронена"
 			],
 			"Via": [
 				"Праз"

@@ -1,3 +1,8 @@
+# 1.2.16
+
+- Support MDM-driven default feature settings
+- Option to change language (independently of browser language)
+
 # 1.2.15
 
 - Hibernate if not connected (reduce API calls frequency)

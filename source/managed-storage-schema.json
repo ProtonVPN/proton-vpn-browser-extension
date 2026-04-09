@@ -1,0 +1,127 @@
+{
+	"type": "object",
+	"properties": {
+		"bex-config": {
+			"type": "object",
+			"properties": {
+				"auto-connect": {
+					"title": "Automatically connect on start",
+					"description": "If toggled, the extension will connect when the browser starts to where it was last connected.",
+					"type": "object",
+					"properties": {
+						"controllable": {
+							"id": "controllable",
+							"description": "If set to true then user can toggle this feature.",
+							"type": "boolean"
+						},
+						"controlMessage": {
+							"id": "controlMessage",
+							"description": "A message for users to explain why the feature is locked when it is.",
+							"type": "string"
+						},
+						"config": {
+							"id": "toggle",
+							"type": "object",
+							"properties": {
+								"value": {
+									"description": "Either the feature is enabled.",
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				},
+				"crash-reports": {
+					"title": "Send anonymous reports when an error occurs",
+					"description": "If toggled, anonymized data will be collected on crashes.",
+					"type": "object",
+					"properties": {
+						"controllable": {"$ref": "controllable"},
+						"controlMessage": {"$ref": "controlMessage"},
+						"config": {"$ref": "toggle"}
+					}
+				},
+				"notification": {
+					"title": "Emit device notification when connecting/disconnected",
+					"description": "If toggled, notification pop when an event occurs.",
+					"type": "object",
+					"properties": {
+						"controllable": {"$ref": "controllable"},
+						"controlMessage": {"$ref": "controlMessage"},
+						"config": {"$ref": "toggle"}
+					}
+				},
+				"prevent-webrtc-leak": {
+					"title": "Prevent IP leak via WebRTC",
+					"description": "If toggled, policy disable_non_proxied_udp will be used so IP cannot be discovered via WebRTC peer-to-peer, however some website using this feature without any fallback may cease to work.",
+					"type": "object",
+					"properties": {
+						"controllable": {"$ref": "controllable"},
+						"controlMessage": {"$ref": "controlMessage"},
+						"config": {"$ref": "toggle"}
+					}
+				},
+				"secure-core": {
+					"title": "Secure-Core (use 2-country circuits)",
+					"description": "If toggled, list of location will propose circuits entering in one country and exiting in another one.",
+					"type": "object",
+					"properties": {
+						"controllable": {"$ref": "controllable"},
+						"controlMessage": {"$ref": "controlMessage"},
+						"config": {"$ref": "toggle"}
+					}
+				},
+				"split-tunneling": {
+					"title": "Split-Tunneling, decide which websites are protected by VPN",
+					"description": "Mode (exclude or include the list), and a list of include/exclude items (only items matching the currently selected mode applies, other remain hidden unless the setting get switched).",
+					"type": "object",
+					"properties": {
+						"controllable": {"$ref": "controllable"},
+						"controlMessage": {"$ref": "controlMessage"},
+						"config": {
+							"type": "object",
+							"properties": {
+								"enabled": {"type":  "boolean"},
+								"mode": {
+									"type": "string",
+									"enum": ["include", "exclude"]
+								},
+								"value": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"domain": {
+												"type": "string",
+												"required": true,
+												"description": "The website domain"
+											},
+											"withSubDomains": {
+												"type": "boolean",
+												"description": "Either sub-domains of the domain should also be considered"
+											},
+											"mode": {
+												"type": "string",
+												"enum": ["include", "exclude"]
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"telemetry": {
+					"title": "Telemetry",
+					"description": "If toggled, send anonymized events that will help Proton to work around censorship.",
+					"type": "object",
+					"properties": {
+						"controllable": {"$ref": "controllable"},
+						"controlMessage": {"$ref": "controlMessage"},
+						"config": {"$ref": "toggle"}
+					}
+				}
+			}
+		}
+	}
+}

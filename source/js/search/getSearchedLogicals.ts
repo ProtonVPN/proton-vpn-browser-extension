@@ -1,5 +1,5 @@
 import {getSearchWordsScore} from '../tools/getSearchScore';
-import {CountryList} from '../components/countryList';
+import type {CountryList} from '../components/countryList';
 import {each} from '../tools/each';
 import {withSearchScore} from '../vpn/withSearchScore';
 import {getWords} from '../tools/getWords';
@@ -15,19 +15,30 @@ export const getSearchedLogicals = (
 
 	each(countries, (countryCode, source) => {
 		const countryScore = useCountryScore
-			? getSearchWordsScore(searchWords, [...new Set([
-				countryCode,
-				...getWords(source.name),
-				...getWords(source.englishName),
-			])])
+			? getSearchWordsScore(searchWords, [
+					...new Set([
+						countryCode,
+						...getWords(source.name),
+						...getWords(source.englishName),
+					]),
+				])
 			: 0;
 
 		const filteredSource = useCityScore
-			? withSearchScore(source, countryScore, searchWords, useCountryScore, useCityScore, withTor)
+			? withSearchScore(
+					source,
+					countryScore,
+					searchWords,
+					useCountryScore,
+					useCityScore,
+					withTor,
+				)
 			: source;
 
-		if (countryScore < searchWords.length &&
-			(!useCityScore || (!filteredSource?.logicals?.length && !filteredSource?.groups))
+		if (
+			countryScore < searchWords.length &&
+			(!useCityScore ||
+				(!filteredSource?.logicals?.length && !filteredSource?.groups))
 		) {
 			return;
 		}
@@ -40,4 +51,3 @@ export const getSearchedLogicals = (
 
 	return filteredCountries;
 };
-

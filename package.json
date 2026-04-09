@@ -3,10 +3,9 @@
 	"private": true,
 	"scripts": {
 		"check": "ts-node test/check.ts",
-		"lint": "run-p lint:*",
-		"lint:js": "xo",
+		"lint": "eslint . && run-p lint:*",
 		"lint:css": "stylelint source/**/*.scss",
-		"lint-fix": "run-p 'lint:* -- --fix'",
+		"lint-fix": "eslint . --fix",
 		"test": "jest",
 		"coverage": "jest --coverage",
 		"build": "webpack --mode=production",
@@ -24,7 +23,8 @@
 		"i18n": "ts-node source/js/translation/extract.ts",
 		"po": "ts-node source/js/translation/extract.ts po",
 		"locales": "ts-node source/js/translation/update-locales.ts",
-		"ts": "ts-node"
+		"ts": "ts-node",
+		"prepare": "husky"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.17.5",
@@ -34,42 +34,48 @@
 		"@types/firefox-webext-browser": "^143.0.0",
 		"@types/html": "^1.0.4",
 		"@types/jest": "^30.0.0",
+		"@typescript-eslint/eslint-plugin": "^8.55.0",
+		"@typescript-eslint/parser": "^8.55.0",
 		"archiver": "^7.0.1",
 		"babel-loader": "^10.0.0",
 		"chrome-webstore-upload-cli": "^3.0.0",
 		"clean-webpack-plugin": "^4.0.0",
-		"copy-webpack-plugin": "^13.0.0",
+		"copy-webpack-plugin": "^14.0.0",
 		"crx3": "^2.0.0",
 		"css-loader": "^7.0.0",
-		"css-minimizer-webpack-plugin": "^7.0.0",
+		"css-minimizer-webpack-plugin": "^8.0.0",
 		"daily-version": "^2.0.0",
 		"decompress": "^4.2.1",
-		"eslint": "^9.32.0",
-		"eslint-config-xo": "^0.49.0",
+		"eslint": "^10.0.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-import-resolver-typescript": "^4.4.4",
+		"eslint-plugin-prettier": "^5.5.5",
 		"glob": "^13.0.0",
 		"html": "^1.0.0",
+		"husky": "^9.1.7",
 		"jest": "^30.0.5",
 		"jest-chrome": "^0.8.0",
 		"jest-environment-jsdom": "^30.2.0",
+		"lint-staged": "^16.2.7",
 		"mini-css-extract-plugin": "^2.9.3",
 		"node-html-parser": "^7.0.0",
 		"npm-run-all2": "^8.0.0",
+		"prettier": "^3.8.1",
 		"sass": "^1.56.2",
 		"sass-loader": "^16.0.0",
-		"stylelint": "^16.16.0",
-		"stylelint-config-standard-scss": "^16.0.0",
-		"stylelint-config-xo": "^1.0.2",
+		"stylelint": "^17.0.0",
+		"stylelint-config-standard-scss": "^17.0.0",
 		"terser-webpack-plugin": "^5.3.1",
 		"ts-jest": "^29.1.0",
 		"ts-loader": "^9.2.6",
 		"ts-node": "^10.9.2",
 		"typescript": "^5.9.2",
+		"typescript-eslint": "^8.55.0",
 		"typescript-parser": "^2.6.1",
-		"web-ext": "^9.0.0",
+		"web-ext": "^10.0.0",
 		"webpack": "^5.101.0",
-		"webpack-cli": "^6.0.1",
-		"whatwg-fetch": "^3.6.20",
-		"xo": "^1.2.1"
+		"webpack-cli": "^7.0.0",
+		"whatwg-fetch": "^3.6.20"
 	},
 	"dependencies": {
 		"@sentry/browser": "^10.0.0",
@@ -82,15 +88,7 @@
 			"jest": "$jest"
 		}
 	},
-	"xo": {
-		"envs": [
-			"browser"
-		],
-		"ignores": [
-			"distribution"
-		],
-		"globals": [
-			"browser"
-		]
+	"lint-staged": {
+		"*.{js,ts,html}": "eslint"
 	}
 }

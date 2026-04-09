@@ -8,12 +8,19 @@ interface Backoff {
 	forget: number;
 }
 
+const BACKOFF_KEY_PREFIX = 'backoff-';
+
+const getBackoffKey = (key: string): string => BACKOFF_KEY_PREFIX + key;
+
+const getBackoff = (key: string): Promise<Backoff | undefined> =>
+	storage.getItem<Backoff>(getBackoffKey(key), undefined, Storage.LOCAL);
+
 export const liftBackoff = (key: string): void => {
-	triggerPromise(storage.removeItem('backoff-' + key, Storage.LOCAL));
+	triggerPromise(storage.removeItem(getBackoffKey(key), Storage.LOCAL));
 };
 
 export const isSuspended = async (key: string): Promise<boolean> => {
-	const backoff = await storage.getItem<Backoff>('backoff-' + key, undefined, Storage.LOCAL);
+	const backoff = await getBackoff(key);
 
 	if (!backoff) {
 		return false;
@@ -25,20 +32,35 @@ export const isSuspended = async (key: string): Promise<boolean> => {
 		return false;
 	}
 
-	return (Date.now() <= backoff.expiration);
+	return Date.now() <= backoff.expiration;
 };
 
-export const suspend = (key: string, millisecondDelay: number = 5000): void => {
-	triggerPromise((async () => {
-		const backoff = await storage.getItem<Backoff>('backoff-' + key, undefined, Storage.LOCAL);
-		const increment = (backoff?.increment || 0) + 1;
-		const expiration = Date.now() + 1000 * Math.min(300, Math.pow(millisecondDelay / 1000, (1 + increment) / 2));
-		const forget = Date.now() + 20000 + 1000 * clamp(15, Math.pow(millisecondDelay / 1000, (2 + increment) / 2), 600);
+const getExpiration = (millisecondDelay: number, increment: number): number =>
+	Date.now() +
+	1000 * Math.min(300, Math.pow(millisecondDelay / 1000, (1 + increment) / 2));
 
-		await storage.setItem('backoff-' + key, {
-			increment,
-			expiration,
-			forget,
-		}, Storage.LOCAL);
-	})());
+const getForget = (millisecondDelay: number, increment: number): number =>
+	Date.now() +
+	20000 +
+	1000 * clamp(15, Math.pow(millisecondDelay / 1000, (2 + increment) / 2), 600);
+
+export const suspend = (key: string, millisecondDelay: number = 5000): void => {
+	triggerPromise(
+		(async () => {
+			const backoff = await getBackoff(key);
+			const increment = (backoff?.increment || 0) + 1;
+			const expiration = getExpiration(millisecondDelay, increment);
+			const forget = getForget(millisecondDelay, increment);
+
+			await storage.setItem(
+				'backoff-' + key,
+				{
+					increment,
+					expiration,
+					forget,
+				},
+				Storage.LOCAL,
+			);
+		})(),
+	);
 };

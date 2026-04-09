@@ -17,9 +17,6 @@
 			"Already have a Proton Account?": [
 				"Já tem uma conta da Proton?"
 			],
-			"Auto connect": [
-				"Conectar automaticamente"
-			],
 			"Cancel": [
 				"Cancelar"
 			],
@@ -38,12 +35,6 @@
 			"Disconnect": [
 				"Desconectar"
 			],
-			"Enable/disable notifications": [
-				"Ativar/desativar notificações"
-			],
-			"Exclude websites from the tunnel": [
-				"Excluir websites do túnel"
-			],
 			"Log in with Proton": [
 				"Iniciar sessão com Proton"
 			],
@@ -55,9 +46,6 @@
 			],
 			"Next": [
 				"Seguinte"
-			],
-			"Prevent WebRTC leak": [
-				"Prevenir fuga WebRTC"
 			],
 			"Quick connect": [
 				"Ligação rápida"
@@ -355,9 +343,6 @@
 			],
 			"Proton VPN Browser Extension": [
 				"Extensão do Proton VPN para navegador"
-			],
-			"Search": [
-				"Pesquisar"
 			],
 			"Secure Core": [
 				"Secure Core"

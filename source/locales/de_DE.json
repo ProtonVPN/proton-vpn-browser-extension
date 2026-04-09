@@ -17,14 +17,17 @@
 			"Already have a Proton Account?": [
 				"Du besitzt bereits ein Proton-Konto?"
 			],
-			"Auto connect": [
-				"Automatisch verbinden"
-			],
 			"Cancel": [
 				"Abbrechen"
 			],
+			"Change language": [
+				"Sprache ändern"
+			],
 			"Change server": [
 				"Server wechseln"
+			],
+			"Configure split tunneling": [
+				"Split-Tunneling konfigurieren"
 			],
 			"Connect": [
 				"Verbinden"
@@ -35,14 +38,32 @@
 			"Create an account": [
 				"Konto erstellen"
 			],
+			"Disable auto-connect": [
+				"Automatisches Verbinden deaktivieren"
+			],
+			"Disable notifications": [
+				"Benachrichtigungen deaktivieren"
+			],
+			"Disable Split tunneling": [
+				"Split-Tunneling deaktivieren"
+			],
+			"Disable WebRTC leak protection": [
+				"WebRTC-Offenlegungs-Schutz deaktivieren"
+			],
 			"Disconnect": [
 				"Verbindung trennen"
 			],
-			"Enable/disable notifications": [
-				"Benachrichtigungen aktivieren/deaktivieren"
+			"Enable auto-connect": [
+				"Automatisches Verbinden aktivieren"
 			],
-			"Exclude websites from the tunnel": [
-				"Websites aus dem Tunnel ausschließen"
+			"Enable notifications": [
+				"Benachrichtigungen aktivieren"
+			],
+			"Enable Split tunneling": [
+				"Split-Tunneling aktivieren"
+			],
+			"Enable WebRTC leak protection": [
+				"WebRTC-Offenlegungs-Schutz aktivieren"
 			],
 			"Log in with Proton": [
 				"Mit Proton anmelden"
@@ -55,9 +76,6 @@
 			],
 			"Next": [
 				"Weiter"
-			],
-			"Prevent WebRTC leak": [
-				"WebRTC-Leak verhindern"
 			],
 			"Quick connect": [
 				"Schnellverbinden"
@@ -118,6 +136,11 @@
 		"Action: Server-level button": {
 			"Connect to ${serverName}": [
 				"Mit ${serverName} verbinden"
+			]
+		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"Suchen"
 			]
 		},
 		"Confirm": {
@@ -280,6 +303,9 @@
 			"Decide which websites are protected by VPN.": [
 				"Entscheide, welche Websites durch VPN geschützt werden sollen."
 			],
+			"Disable Secure Core": [
+				"Secure Core deaktivieren"
+			],
 			"Disconnected": [
 				"Getrennt"
 			],
@@ -297,6 +323,9 @@
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Systembenachrichtigungen bei Verbindungs- und Trennungsereignissen ausgeben."
+			],
+			"Enable Secure Core": [
+				"Secure Core aktivieren"
 			],
 			"Enjoying Proton VPN?": [
 				"Gefällt dir Proton VPN?"
@@ -380,9 +409,6 @@
 			"Proton VPN Browser Extension": [
 				"Proton VPN Browser-Erweiterung"
 			],
-			"Search": [
-				"Suchen"
-			],
 			"Secure Core": [
 				"Secure Core"
 			],
@@ -407,8 +433,14 @@
 			"Thank you for installing Proton VPN": [
 				"Vielen Dank, dass du Proton VPN installiert hast!"
 			],
+			"The split tunneling options cannot be changed on this device": [
+				"Die Optionen für Split-Tunneling können auf diesem Gerät nicht geändert werden"
+			],
 			"Then just click the Proton VPN icon to sign in.": [
 				"Drücke dann einfach auf das Proton VPN-Symbol, um dich anzumelden."
+			],
+			"This option cannot be changed on this device": [
+				"Diese Option kann auf diesem Gerät nicht geändert werden"
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"Diese Statistiken enthalten weder deine IP-Adresse noch können diese dazu verwendet werden, um dich zu identifizieren. Wir werden die Statistiken nie an Dritte weitergeben."
@@ -429,7 +461,7 @@
 				"Benutzer"
 			],
 			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
-				"Bei Verwendung von Brave sind DNS-Anfragen im Include-Modus möglicherweise ungeschützt."
+				"Bei Verwendung von Brave sind DNS-Anfragen im \"Include-Modus\" möglicherweise ungeschützt."
 			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
 				"VPN wird durch eine externe Software gesperrt.\n\nEinige Tools, wie Antivirenprogramme oder Proxys, können Proton VPN stören. Bitte deaktiviere sie und versuche es erneut."

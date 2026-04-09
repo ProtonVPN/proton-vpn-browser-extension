@@ -1,8 +1,12 @@
 import {fetchJson} from '../api';
 import {getCacheAge} from '../tools/getCacheAge';
-import {CacheWrappedValue, Storage, storage} from '../tools/storage';
+import type {CacheWrappedValue} from '../tools/storage';
+import {Storage, storage} from '../tools/storage';
 import {triggerPromise} from '../tools/triggerPromise';
-import {getStreamingConfigBlockingUpdateTTL, getStreamingConfigTTL} from '../intervals';
+import {
+	getStreamingConfigBlockingUpdateTTL,
+	getStreamingConfigTTL,
+} from '../intervals';
 
 export interface StreamingService {
 	Name: string;
@@ -14,18 +18,21 @@ interface StreamingConfig {
 	StreamingServices: {
 		[country: string]: {
 			[tier: string]: StreamingService[];
-		}
-	}
+		};
+	};
 }
 
 type StreamingConfigCache = CacheWrappedValue<StreamingConfig>;
 
 let streamingConfig: StreamingConfigCache | undefined = undefined;
 
-const streamingServers = storage.item<StreamingConfigCache>('streaming-services', Storage.LOCAL);
+const streamingServers = storage.item<StreamingConfigCache>(
+	'streaming-services',
+	Storage.LOCAL,
+);
 
 const fetchStreamingConfig = async () => {
-	const config = await fetchJson<StreamingConfig>('vpn/streamingservices');
+	const config = await fetchJson<StreamingConfig>('vpn/v1/streamingservices');
 	streamingConfig = {time: Date.now(), value: config};
 	triggerPromise(streamingServers.set(streamingConfig));
 

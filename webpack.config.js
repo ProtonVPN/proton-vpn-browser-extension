@@ -6,8 +6,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const {baseDomainURL} = require('./config');
 
-module.exports = (env, argv, options) => {
-	options || (options = {});
+module.exports = (_, argv, options) => {
+	if (!options) {
+		options = {};
+	}
 
 	const copy = [
 		{
@@ -39,19 +41,18 @@ module.exports = (env, argv, options) => {
 		},
 	];
 
-	const dev = (argv.mode === 'development');
+	const dev = argv.mode === 'development';
 
 	const downgradeToMv2 = (manifest) => {
 		manifest.manifest_version = 2;
 		manifest.background = {
 			page: 'background.html',
-		}
+		};
 		manifest.browser_action = manifest.action;
 		manifest.content_security_policy = "script-src 'self'; object-src 'self'";
-		manifest.permissions.push(
-			'<all_urls>',
-		);
-		manifest.web_accessible_resources = manifest.web_accessible_resources[0].resources;
+		manifest.permissions.push('<all_urls>');
+		manifest.web_accessible_resources =
+			manifest.web_accessible_resources[0].resources;
 		delete manifest.action;
 		delete manifest.host_permissions;
 	};
@@ -63,9 +64,7 @@ module.exports = (env, argv, options) => {
 				strict_min_version: '109.0',
 			},
 		};
-		manifest.optional_permissions = [
-			'proxy'
-		];
+		manifest.optional_permissions = ['proxy'];
 		manifest.content_scripts = [
 			{
 				all_frames: true,
@@ -73,10 +72,9 @@ module.exports = (env, argv, options) => {
 				matches: [
 					'https://account.protonvpn.com/*',
 					baseDomainURL + '/*',
-					...(dev ? [
-						'http://localhost:8080/*',
-						'https://account.proton.black/*',
-					] : []),
+					...(dev
+						? ['http://localhost:8080/*', 'https://account.proton.black/*']
+						: []),
 				],
 				run_at: 'document_start',
 			},
@@ -85,13 +83,10 @@ module.exports = (env, argv, options) => {
 			scripts: ['js/browser-polyfill.min.js', 'js/background.js'],
 		};
 		manifest.permissions = manifest.permissions.filter(
-			permission => permission !== 'webRequestAuthProvider'
-				&& permission !== 'proxy',
+			(permission) =>
+				permission !== 'webRequestAuthProvider' && permission !== 'proxy',
 		);
-		manifest.permissions.push(
-			'activeTab',
-			'webRequestBlocking',
-		);
+		manifest.permissions.push('activeTab', 'webRequestBlocking');
 		delete manifest.key;
 		delete manifest.externally_connectable;
 	};
@@ -105,9 +100,7 @@ module.exports = (env, argv, options) => {
 	};
 
 	const manifestTransformations = [
-		options.gecko
-			? adaptToFirefox
-			: adaptToChromium,
+		options.gecko ? adaptToFirefox : adaptToChromium,
 	];
 
 	if (options.mv === 2) {
@@ -121,7 +114,7 @@ module.exports = (env, argv, options) => {
 			transform: (content) => {
 				const manifest = JSON.parse(content);
 
-				manifestTransformations.forEach(transformation => {
+				manifestTransformations.forEach((transformation) => {
 					transformation(manifest);
 				});
 
@@ -172,10 +165,7 @@ module.exports = (env, argv, options) => {
 		},
 		resolve: {
 			extensions: ['.tsx', '.ts', '.jsx', '.js'],
-			modules: [
-				path.resolve(__dirname, 'source'),
-				'node_modules',
-			],
+			modules: [path.resolve(__dirname, 'source'), 'node_modules'],
 		},
 		output: {
 			path: path.join(__dirname, options.distribution || 'distribution'),
@@ -206,11 +196,7 @@ module.exports = (env, argv, options) => {
 				},
 				{
 					test: /\.s[ac]ss$/i,
-					use: [
-						MiniCssExtractPlugin.loader,
-						'css-loader',
-						'sass-loader',
-					],
+					use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
 				},
 			],
 		},
@@ -221,4 +207,4 @@ module.exports = (env, argv, options) => {
 	}
 
 	return config;
-}
+};

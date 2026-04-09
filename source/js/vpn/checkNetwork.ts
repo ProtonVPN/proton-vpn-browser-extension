@@ -1,4 +1,5 @@
-import {ApiError, isNetworkError} from '../api';
+import type {ApiError} from '../api';
+import {isNetworkError} from '../api';
 import {setButton} from '../tools/browserAction';
 import {c} from '../tools/translate';
 import {getCurrentState} from '../state';

@@ -1,9 +1,14 @@
 import {connectedServer} from './connectedServer';
-import {getCurrentState, isCurrentStateConnected, isLoggedIn, waitForReadyState} from '../state';
+import {
+	getCurrentState,
+	isCurrentStateConnected,
+	isLoggedIn,
+	waitForReadyState,
+} from '../state';
 import {milliSeconds} from '../tools/milliSeconds';
 import {debug as debug_, bind} from '../log/log';
 import {broadcastMessage} from '../tools/broadcastMessage';
-import {ApiError} from '../api';
+import type {ApiError} from '../api';
 import {updateLocation} from './updateLocation';
 import {updateLogicalLoad} from './updateLogicalLoad';
 import {recoverState} from './recoverState';
@@ -13,7 +18,7 @@ import {clearProxy} from '../tools/proxy';
 const debug = bind(debug_, '[initState]');
 
 export const initState = async () => {
-	debug('Init state', (new Error()).stack);
+	debug('Init state', new Error().stack);
 
 	await waitForReadyState();
 	const server = (await connectedServer.get())?.value;
@@ -37,9 +42,13 @@ export const initState = async () => {
 		await clearProxy();
 	}
 
-	setInterval(() => watchWithSentry(() => {
-		getCurrentState().refreshState?.();
-	}), milliSeconds.fromSeconds(1));
+	setInterval(
+		() =>
+			watchWithSentry(() => {
+				getCurrentState().refreshState?.();
+			}),
+		milliSeconds.fromSeconds(1),
+	);
 
 	updateLocation();
 	updateLogicalLoad();

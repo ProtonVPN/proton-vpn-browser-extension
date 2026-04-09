@@ -6,10 +6,8 @@ export const fetchWithUserInfo = async <T, D = any>(
 	init?: RequestInit,
 	resultBuilder?: (response: Response, data: D) => T,
 ): Promise<T> => {
-	const {
-		MaxTier: maxTier,
-		Groups: groups,
-	} = (await loadCachedUser())?.user?.VPN || {};
+	const {MaxTier: maxTier, Groups: groups} =
+		(await loadCachedUser())?.user?.VPN || {};
 
 	if (typeof maxTier !== 'number') {
 		throw new Error(`Cannot fetch ${url} while not authenticated`);
@@ -26,7 +24,7 @@ export const fetchWithUserInfo = async <T, D = any>(
 			init.headers,
 			groupCount === 1
 				? {'x-pm-single-group': groups.join(',')}
-				: {'x-pm-group-count': groupCount}
+				: {'x-pm-group-count': groupCount},
 		);
 	}
 

@@ -17,14 +17,17 @@
 			"Already have a Proton Account?": [
 				"Heeft u al een Proton Account?"
 			],
-			"Auto connect": [
-				"Automatisch verbinden"
-			],
 			"Cancel": [
 				"Annuleren"
 			],
+			"Change language": [
+				"Taal wijzigen"
+			],
 			"Change server": [
 				"Server wijzigen"
+			],
+			"Configure split tunneling": [
+				"Split tunneling configureren"
 			],
 			"Connect": [
 				"Verbinden"
@@ -35,14 +38,32 @@
 			"Create an account": [
 				"Een account aanmaken"
 			],
+			"Disable auto-connect": [
+				"Schakel automatisch verbinden uit"
+			],
+			"Disable notifications": [
+				"Schakel meldingen uit"
+			],
+			"Disable Split tunneling": [
+				"Split tunneling uitschakelen"
+			],
+			"Disable WebRTC leak protection": [
+				"Schakel bescherming tegen WebRTC lekken uit"
+			],
 			"Disconnect": [
 				"Verbinding verbreken"
 			],
-			"Enable/disable notifications": [
-				"Meldingen in- of uitschakelen"
+			"Enable auto-connect": [
+				"Schakel automatisch verbinden in"
 			],
-			"Exclude websites from the tunnel": [
-				"Websites uitsluiten van de tunnel"
+			"Enable notifications": [
+				"Schakel meldingen in"
+			],
+			"Enable Split tunneling": [
+				"Split tunneling inschakelen"
+			],
+			"Enable WebRTC leak protection": [
+				"Schakel bescherming tegen WebRTC lekken in"
 			],
 			"Log in with Proton": [
 				"Aanmelden met Proton"
@@ -55,9 +76,6 @@
 			],
 			"Next": [
 				"Volgende"
-			],
-			"Prevent WebRTC leak": [
-				"WebRTC-lek vermijden"
 			],
 			"Quick connect": [
 				"Snel verbinden"
@@ -118,6 +136,11 @@
 		"Action: Server-level button": {
 			"Connect to ${serverName}": [
 				"Verbinden met ${serverName}"
+			]
+		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"Zoeken"
 			]
 		},
 		"Confirm": {
@@ -280,6 +303,9 @@
 			"Decide which websites are protected by VPN.": [
 				"Bepaal welke websites door VPN worden beschermd."
 			],
+			"Disable Secure Core": [
+				"Schakel Secure Core uit"
+			],
 			"Disconnected": [
 				"Verbinding verbroken"
 			],
@@ -297,6 +323,9 @@
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Systeemmeldingen sturen bij verbindingsgebeurtenissen."
+			],
+			"Enable Secure Core": [
+				"Schakel Secure Core in"
 			],
 			"Enjoying Proton VPN?": [
 				"Geniet u van Proton VPN?"
@@ -380,9 +409,6 @@
 			"Proton VPN Browser Extension": [
 				"Proton VPN Browserextensie"
 			],
-			"Search": [
-				"Zoeken"
-			],
 			"Secure Core": [
 				"Secure Core"
 			],
@@ -407,8 +433,14 @@
 			"Thank you for installing Proton VPN": [
 				"Bedankt voor het installeren van Proton VPN"
 			],
+			"The split tunneling options cannot be changed on this device": [
+				"De opties voor split tunneling kunnen niet op dit apparaat worden gewijzigd"
+			],
 			"Then just click the Proton VPN icon to sign in.": [
 				"Klik daarna op het Proton VPN-icoon om in te loggen."
+			],
+			"This option cannot be changed on this device": [
+				"Deze optie kan niet worden gewijzigd op dit apparaat"
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"Deze statistieken bevatten uw IP-adres niet, en kunnen niet gebruikt worden om u te identificeren. We zullen deze gegevens nooit delen met derden"
@@ -429,7 +461,7 @@
 				"Gebruiker"
 			],
 			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
-				"Met Brave kunnen DNS-verzoeken onbeschermd zijn bij gebruik van de modus Inclusief."
+				"Met Brave kunnen DNS-verzoeken onbeschermd zijn wanneer \"Include mode\" actief is."
 			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
 				"VPN geblokkeerd door externe software.\n\nSommige tools, zoals antivirusprogramma's of proxy's, kunnen interfereren met Proton VPN. Schakel deze uit en probeer het opnieuw."

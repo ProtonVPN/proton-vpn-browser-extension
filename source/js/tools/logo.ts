@@ -30,27 +30,42 @@ const config = {
 };
 
 export const logo = {
-	switchTo(state: keyof typeof config): void {
+	switchTo(area: HTMLElement, state: keyof typeof config): void {
 		const values = config[state];
 
-		const radialGradient = document.getElementById('top-bar-inner-radial-gradient-path') as SVGLinearGradientElement | null;
+		const radialGradient = area.querySelector(
+			'#top-bar-inner-radial-gradient-path',
+		) as SVGLinearGradientElement | null;
 
 		if (radialGradient) {
 			radialGradient.style.opacity = `${values.radialGradientOpacity}`;
 		}
 
-		const gradient = document.getElementById('top-bar-outer-gradient') as SVGLinearGradientElement | null;
+		const gradient = area.querySelector(
+			'#top-bar-outer-gradient',
+		) as SVGLinearGradientElement | null;
 
 		if (!gradient) {
 			return;
 		}
 
-		(['x1', 'y1', 'x2', 'y2'] as (keyof typeof values.linearGradient)[]).forEach(attribute => {
-			gradient.setAttribute(attribute, `${values.linearGradient?.[attribute] as any}`);
+		(
+			['x1', 'y1', 'x2', 'y2'] as (keyof typeof values.linearGradient)[]
+		).forEach((attribute) => {
+			gradient.setAttribute(
+				attribute,
+				`${values.linearGradient?.[attribute] as any}`,
+			);
 
 			gradient.querySelectorAll('stop').forEach((stop, index) => {
-				stop.setAttribute('offset', `${values.linearGradient?.stops?.[index]?.offset}`);
-				stop.setAttribute('stop-color', `${values.linearGradient?.stops?.[index]?.color}`);
+				stop.setAttribute(
+					'offset',
+					`${values.linearGradient?.stops?.[index]?.offset}`,
+				);
+				stop.setAttribute(
+					'stop-color',
+					`${values.linearGradient?.stops?.[index]?.color}`,
+				);
 			});
 		});
 	},

@@ -1,7 +1,9 @@
 import {triggerPromise} from './triggerPromise';
-import {CacheWrappedValue, storage} from './storage';
+import type {CacheWrappedValue} from './storage';
+import {storage} from './storage';
 
-const browserTypeStorage = storage.item<CacheWrappedValue<string>>('browser-type');
+const browserTypeStorage =
+	storage.item<CacheWrappedValue<string>>('browser-type');
 
 enum ChromiumType {
 	BRAVE = 'brave',
@@ -9,7 +11,8 @@ enum ChromiumType {
 	OCULUS = 'Oculus',
 }
 
-const hasKey = (value: object|null, key: string): boolean => (key in (value || {}));
+const hasKey = (value: object | null, key: string): boolean =>
+	key in (value || {});
 
 interface BrowserSubTypeNavigatorCheck {
 	whenNavigator(navigator: Navigator): boolean;
@@ -19,16 +22,24 @@ interface BrowserSubTypeWindowCheck {
 	whenWindow(window: Window): boolean;
 }
 
-type BrowserSubTypeCheck = BrowserSubTypeNavigatorCheck | BrowserSubTypeWindowCheck;
+type BrowserSubTypeCheck =
+	| BrowserSubTypeNavigatorCheck
+	| BrowserSubTypeWindowCheck;
 
-const canBeCheckedInBackgroundService = (check: BrowserSubTypeCheck): check is BrowserSubTypeNavigatorCheck => 'whenNavigator' in check;
-const cannotBeCheckedInBackgroundService = (check: BrowserSubTypeCheck): check is BrowserSubTypeWindowCheck => 'whenWindow' in check;
+const canBeCheckedInBackgroundService = (
+	check: BrowserSubTypeCheck,
+): check is BrowserSubTypeNavigatorCheck => 'whenNavigator' in check;
+const cannotBeCheckedInBackgroundService = (
+	check: BrowserSubTypeCheck,
+): check is BrowserSubTypeWindowCheck => 'whenWindow' in check;
 
-export const isBrave = (navigator: Navigator) => hasKey(navigator, ChromiumType.BRAVE);
+export const isBrave = (navigator: Navigator) =>
+	hasKey(navigator, ChromiumType.BRAVE);
 
 const checks: Record<ChromiumType, BrowserSubTypeCheck> = {
 	[ChromiumType.OCULUS]: {
-		whenNavigator: (navigator: Navigator) => navigator.userAgent.includes('OculusBrowser'),
+		whenNavigator: (navigator: Navigator) =>
+			navigator.userAgent.includes('OculusBrowser'),
 	},
 	[ChromiumType.BRAVE]: {
 		whenNavigator: isBrave,
@@ -52,7 +63,10 @@ export const getBrowserSubType = async (): Promise<string> => {
 		for (const subType in checks) {
 			const check = checks[subType as ChromiumType];
 
-			if (canBeCheckedInBackgroundService(check) && check.whenNavigator(navigator)) {
+			if (
+				canBeCheckedInBackgroundService(check) &&
+				check.whenNavigator(navigator)
+			) {
 				return storeAndReturn(subType as ChromiumType);
 			}
 		}
@@ -68,7 +82,10 @@ export const getBrowserSubType = async (): Promise<string> => {
 		for (const subType in checks) {
 			const check = checks[subType as ChromiumType];
 
-			if (cannotBeCheckedInBackgroundService(check) && check.whenWindow(window)) {
+			if (
+				cannotBeCheckedInBackgroundService(check) &&
+				check.whenWindow(window)
+			) {
 				return storeAndReturn(subType as ChromiumType);
 			}
 		}

@@ -14,9 +14,6 @@
 			"Add website": [
 				"वेबसाइट जोड़ें"
 			],
-			"Auto connect": [
-				"अपनेआप-जुड़ें"
-			],
 			"Cancel": [
 				"रद्द करें"
 			],
@@ -35,12 +32,6 @@
 			"Disconnect": [
 				"कनेक्शन तोड़ें"
 			],
-			"Enable/disable notifications": [
-				"सूचना सक्षम/अक्षम करें"
-			],
-			"Exclude websites from the tunnel": [
-				"टनल में से वेबसाइटों को निकालें"
-			],
 			"Log in with Proton": [
 				"Proton से लॉगइन करें"
 			],
@@ -52,9 +43,6 @@
 			],
 			"Next": [
 				"अगला"
-			],
-			"Prevent WebRTC leak": [
-				"WebRTC लीक से बचें"
 			],
 			"Quick connect": [
 				"तुरंत जुड़ें"
@@ -302,9 +290,6 @@
 			],
 			"Proton VPN Browser Extension": [
 				"Proton VPN ब्राउज़र एक्सटेंशन"
-			],
-			"Search": [
-				"खोजें"
 			],
 			"Share anonymous usage crash reports": [
 				"अनाम उपयोग क्रैश रिपोर्ट शेयर करें"

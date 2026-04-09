@@ -1,4 +1,4 @@
-import {ApiError} from '../api';
+import type {ApiError} from '../api';
 
 export class InitUserError extends Error {
 	constructor(
@@ -8,7 +8,7 @@ export class InitUserError extends Error {
 	) {
 		super(message);
 
-		if (!this.Details.Body) {
+		if (this.Details && !this.Details.Body) {
 			this.Details.Body = message;
 		}
 	}

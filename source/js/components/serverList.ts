@@ -32,7 +32,7 @@ const getStrokeAttributes = (logical?: Logical): string => {
 	`;
 };
 
-const sorter = new Sorter<Logical, Logical>(l => l)
+const sorter = new Sorter<Logical, Logical>((l) => l)
 	.asc('Score')
 	.desc('Load')
 	.asc('Name');
@@ -51,85 +51,92 @@ export const serverList = (
 	secureCore: boolean,
 	skipSorting: boolean = false,
 	extraConnectionAttributes: Record<string, string | number> = {},
-) => (skipSorting ? logicals : sortByScore(logicals)).map(logical => {
-	const up = isLogicalUp(logical);
-	const serverName = logical.Name;
-	const connectionsAttributes: Record<string, string | number> = {
-		...(secureCore
-			? {exitCountry: logical.ExitCountry, entryCountry: logical.EntryCountry}
-			: {id: logical.ID}
-		),
-		...extraConnectionAttributes,
-	};
+) =>
+	(skipSorting ? logicals : sortByScore(logicals))
+		.map((logical) => {
+			const up = isLogicalUp(logical);
+			const serverName = logical.Name;
+			const connectionsAttributes: Record<string, string | number> = {
+				...(secureCore
+					? {
+							exitCountry: logical.ExitCountry,
+							entryCountry: logical.EntryCountry,
+						}
+					: {id: logical.ID}),
+				...extraConnectionAttributes,
+			};
 
-
-	return `
-		<div
-			${up
-				? `
-					class="server connection-button-container"
-					tabindex="0"
-					role="button"
-					title="${c('Action: Server-level button').t`Connect to ${serverName}`}"
-					${(simplifiedUi ? (userTier <= 0) : (logical.Tier > userTier))
-						? upgradeAttributes
-						: connectionAttributes(connectionsAttributes)}
-					`
-				: `class="server in-maintenance"`
-			}
-		>
-			<div class="load-block" title="${logical.Load}%">
-				<div class="load-percentage">
-					<svg aria-label="${logical.Load}%" viewBox="0 0 36 36" class="circular-chart">
-						<path class="circle-bg"
-							d="M18 2.0845
-							  a 15.9155 15.9155 0 0 1 0 31.831
-							  a 15.9155 15.9155 0 0 1 0 -31.831"
-						/>
-						<path class="circle"
-							${getStrokeAttributes(logical)}
-							d="M18 2.0845
-							  a 15.9155 15.9155 0 0 1 0 31.831
-							  a 15.9155 15.9155 0 0 1 0 -31.831"
-						/>
-					</svg>
+			return `
+				<div
+					${
+						up
+							? `
+							class="server connection-button-container"
+							tabindex="0"
+							role="button"
+							title="${c('Action: Server-level button').t`Connect to ${serverName}`}"
+							${
+								(simplifiedUi ? userTier <= 0 : logical.Tier > userTier)
+									? upgradeAttributes
+									: connectionAttributes(connectionsAttributes)
+							}
+							`
+							: `class="server in-maintenance"`
+					}
+				>
+					<div class="load-block" title="${logical.Load}%">
+						<div class="load-percentage">
+							<svg aria-label="${logical.Load}%" viewBox="0 0 36 36" class="circular-chart">
+								<path class="circle-bg"
+									d="M18 2.0845
+									  a 15.9155 15.9155 0 0 1 0 31.831
+									  a 15.9155 15.9155 0 0 1 0 -31.831"
+								/>
+								<path class="circle"
+									${getStrokeAttributes(logical)}
+									d="M18 2.0845
+									  a 15.9155 15.9155 0 0 1 0 31.831
+									  a 15.9155 15.9155 0 0 1 0 -31.831"
+								/>
+							</svg>
+						</div>
+					</div>
+					<div class="server-infos">
+						<span
+							class="server-name"
+							data-server-id="${escapeHtml(`${logical.ID}`)}"
+						>${
+							secureCore
+								? `<span class="country-flag">${getCountryFlag(logical.EntryCountry)}</span> ${via('top-small')} ${logical.Translations?.EntryCountryName || logical.EntryCountryName}`
+								: serverName
+						}</span>${
+							logical.City &&
+							(logical.Translations?.City || logical.City) !== upperTitle
+								? ` &nbsp; <span
+										class="city-name"
+										data-english-city-name="${escapeHtml(logical.City)}"
+										data-country-code="${escapeHtml(logical.ExitCountry)}"
+									>${escapeHtml(logical.Translations?.City || logical.City)}</span>`
+								: ''
+						}
+					</div>
+					<div class="flex-1 connect-text">
+						${!up || (simplifiedUi && userTier <= 0) || logical.Tier > userTier ? '' : c('Action').t`Connect`}
+					</div>
+					<div class="button-box">
+						${
+							up
+								? simplifiedUi && userTier <= 0
+									? upgradeButton()
+									: logical.Tier > userTier
+										? paidOnly
+											? ''
+											: upgradeButton()
+										: connectionButton(connectionsAttributes)
+								: maintenanceIcon
+						}
+					</div>
 				</div>
-			</div>
-			<div class="server-infos">
-				<span
-					class="server-name"
-					data-server-id="${escapeHtml(`${logical.ID}`)}"
-				>${
-					secureCore
-						? `<span class="country-flag">${getCountryFlag(logical.EntryCountry)}</span> ${via('top-small')} ${logical.Translations?.EntryCountryName || logical.EntryCountryName}`
-						: serverName
-				}</span>${
-				logical.City && (logical.Translations?.City || logical.City) !== upperTitle
-				? ` &nbsp; <span
-					class="city-name"
-					data-english-city-name="${escapeHtml(logical.City)}"
-					data-country-code="${escapeHtml(logical.ExitCountry)}"
-				>${
-					escapeHtml(logical.Translations?.City || logical.City)
-				}</span>`
-				: ''
-			}
-			</div>
-			<div class="flex-1 connect-text">
-				${!up || (simplifiedUi && userTier <= 0) || logical.Tier > userTier ? '' : c('Action').t`Connect`}
-			</div>
-			<div class="button-box">
-				${up
-					? (simplifiedUi && userTier <= 0
-						? upgradeButton()
-						: (logical.Tier > userTier
-							? (paidOnly ? '' : upgradeButton())
-							: connectionButton(connectionsAttributes)
-						)
-					)
-					: maintenanceIcon
-				}
-			</div>
-		</div>
-	`;
-}).join('');
+			`;
+		})
+		.join('');

@@ -17,11 +17,11 @@
 			"Already have a Proton Account?": [
 				"Вже маєте обліковий запис Proton?"
 			],
-			"Auto connect": [
-				"Автоз'єднання"
-			],
 			"Cancel": [
 				"Скасувати"
+			],
+			"Change language": [
+				"Змінити мову"
 			],
 			"Change server": [
 				"Змінити сервер"
@@ -38,12 +38,6 @@
 			"Disconnect": [
 				"Від'єднати"
 			],
-			"Enable/disable notifications": [
-				"Увімкнути/вимкнути сповіщення"
-			],
-			"Exclude websites from the tunnel": [
-				"Виключити вебсайти з тунелю"
-			],
 			"Log in with Proton": [
 				"Увійти з Proton"
 			],
@@ -55,9 +49,6 @@
 			],
 			"Next": [
 				"Далі"
-			],
-			"Prevent WebRTC leak": [
-				"Запобігання витоку WebRTC"
 			],
 			"Quick connect": [
 				"Швидке з'єднання"
@@ -118,6 +109,11 @@
 		"Action: Server-level button": {
 			"Connect to ${serverName}": [
 				"З'єднатися з ${serverName}"
+			]
+		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"Пошук"
 			]
 		},
 		"Confirm": {
@@ -388,9 +384,6 @@
 			"Proton VPN Browser Extension": [
 				"Розширення браузера Proton VPN"
 			],
-			"Search": [
-				"Пошук"
-			],
 			"Secure Core": [
 				"Secure Core"
 			],
@@ -435,6 +428,9 @@
 			],
 			"User": [
 				"Користувач"
+			],
+			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
+				"Використовуючи Brave, DNS-запити можуть бути незахищеними, коли активовано \"Режим включення\"."
 			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
 				"VPN блокується сторонніми програмами.\n\nДеякі програми, як-от антивіруси або проксі, можуть перешкоджати роботі Proton VPN. Вимкніть їх і повторіть спробу."

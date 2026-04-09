@@ -3,20 +3,22 @@ import {RefreshTokenError} from '../account/RefreshTokenError';
 import {logOut} from '../state';
 import {createSession} from '../account/createSession';
 import {BackgroundAction} from '../messaging/MessageType';
-import {ForkMessage, MessageBase} from '../messaging/Message';
+import type {ForkMessage, MessageBase} from '../messaging/Message';
 import {forkSession} from '../messaging/forkSession';
 import {triggerPromise} from '../tools/triggerPromise';
 import {executeOnTab} from '../tools/executeOnTab';
 import {getPartnerById} from '../account/partner/partners';
 import {delay} from '../tools/delay';
+import {getRuntime} from '../tools/getRuntime';
 import Tab = browser.tabs.Tab;
 
-type WorkerExternalMessage = MessageBase & (
-	| {
-		type: undefined;
-	}
-	| ForkMessage
-);
+type WorkerExternalMessage = MessageBase &
+	(
+		| {
+				type: undefined;
+		  }
+		| ForkMessage
+	);
 
 const getMessageResponse = async (message: any) => {
 	try {
@@ -34,24 +36,25 @@ const getMessageResponse = async (message: any) => {
 };
 
 export const initMessaging = () => {
-	global.browser || ((global as any).browser = chrome);
+	const runtime = getRuntime();
 
-	browser.runtime.onMessage.addListener((message: any) => {
-		const promise = new Promise(async resolve => {
+	runtime?.onMessage.addListener((message: any) => {
+		// eslint-disable-next-line no-async-promise-executor
+		const promise = new Promise(async (resolve) => {
 			const result = await getMessageResponse(message);
 
 			resolve({
 				received: true,
-				success: !result || !(typeof result === 'object' && (result as any).error),
+				success:
+					!result || !(typeof result === 'object' && (result as any).error),
 				result,
 			});
 		});
 
 		if (message.respondTo === 'broadcast') {
-			promise.then(response => {
-				triggerPromise(browser.runtime.sendMessage(
-					browser.runtime.id,
-					{
+			promise.then((response) => {
+				triggerPromise(
+					runtime.sendMessage(runtime.id, {
 						type: 'answer:' + message.requestId,
 						respondTo: 'none',
 						data: (() => {
@@ -61,8 +64,8 @@ export const initMessaging = () => {
 								return {result: {error: `${error}`}};
 							}
 						})(),
-					},
-				));
+					}),
+				);
 			});
 
 			return undefined;
@@ -76,7 +79,7 @@ export const initMessaging = () => {
 	 * to sender (account app) - to see full data flow :
 	 * `applications/account/src/app/content/PublicApp.tsx`
 	 */
-	browser.runtime.onMessageExternal.addListener(
+	runtime?.onMessageExternal.addListener(
 		async (request: WorkerExternalMessage, sender) => {
 			if (request.type === BackgroundAction.FORK) {
 				const response = await forkSession(request);
@@ -106,6 +109,6 @@ export const initMessaging = () => {
 			}
 
 			return;
-		}
+		},
 	);
 };

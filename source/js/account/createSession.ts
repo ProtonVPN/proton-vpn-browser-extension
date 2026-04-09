@@ -1,21 +1,28 @@
 import {saveSession} from './saveSession';
-import {Session} from './Session';
-import {prepareSigningView, showSigningView} from '../components/signIn/showSigningView';
+import type {Session} from './Session';
+import {
+	prepareSigningView,
+	showSigningView,
+} from '../components/signIn/showSigningView';
 import {notifyStateChange} from '../tools/notifyStateChange';
 
-const root = global || window;
-root.browser || ((root as any).browser = chrome);
-
-export const createSession = async (session: Session = {}): Promise<boolean> => {
+export const createSession = async (
+	area?: HTMLElement,
+	session: Session = {},
+): Promise<boolean> => {
 	prepareSigningView();
 
 	await saveSession(session);
 
-	const spinner = document.getElementById('spinner');
-	const signInView = document.getElementById('sign-in-view');
-	const loggedView = document.getElementById('logged-view');
+	if (!area) {
+		return true;
+	}
 
-	if (!signInView || !loggedView) {
+	const spinner = area.querySelector<HTMLElement>('#spinner');
+	const signInView = area.querySelector<HTMLElement>('#sign-in-view');
+	const loggedView = area.querySelector<HTMLElement>('#logged-view');
+
+	if (!signInView || !loggedView || !spinner) {
 		notifyStateChange('logged-out');
 
 		return false;
@@ -25,5 +32,3 @@ export const createSession = async (session: Session = {}): Promise<boolean> => 
 
 	return false;
 };
-
-export const startSession = (session: Session = {}) => createSession(session);

@@ -1,9 +1,12 @@
-import {Session} from './Session';
+import type {Session} from './Session';
 import {sessionDataStorageType, storage} from '../tools/storage';
 import {triggerPromise} from '../tools/triggerPromise';
 import {getKeys} from '../tools/getKeys';
 
-export const storedSession = storage.item<Session>('session', sessionDataStorageType);
+export const storedSession = storage.item<Session>(
+	'session',
+	sessionDataStorageType,
+);
 
 export const persistentlyStoredSession = storage.item<Session>('session');
 

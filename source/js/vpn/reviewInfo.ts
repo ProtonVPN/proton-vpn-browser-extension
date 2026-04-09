@@ -20,7 +20,10 @@ export interface ReviewInfoState {
 	lastSeenConnectedTimestamp: number | undefined;
 }
 
-const reviewInfoState = storage.item<ReviewInfoState>('review-info', Storage.SYNC);
+const reviewInfoState = storage.item<ReviewInfoState>(
+	'review-info',
+	Storage.SYNC,
+);
 
 export const getReviewInfoState = async (): Promise<ReviewInfoState> => ({
 	lastReviewTimestamp: 0,
@@ -29,7 +32,7 @@ export const getReviewInfoState = async (): Promise<ReviewInfoState> => ({
 	successConnectionsInRow: 0,
 	milliSecondsConnectedInRow: 0,
 	lastSeenConnectedTimestamp: undefined,
-	...(await reviewInfoState.get() ?? {}),
+	...((await reviewInfoState.get()) ?? {}),
 });
 
 const getNextValueForMilliSecondsConnectedInRow = (
@@ -41,7 +44,10 @@ const getNextValueForMilliSecondsConnectedInRow = (
 		return 0;
 	}
 
-	const milliSecondsSinceLastSeen = milliSeconds.diffInMilliSeconds(lastSeenConnectedTimestamp, now);
+	const milliSecondsSinceLastSeen = milliSeconds.diffInMilliSeconds(
+		lastSeenConnectedTimestamp,
+		now,
+	);
 
 	// We consider it "in row"
 	if (milliSeconds.toSeconds(milliSecondsSinceLastSeen) < tokenDuration) {
@@ -61,45 +67,59 @@ const getNextValueForMilliSecondsConnectedInRow = (
 	return 0;
 };
 
-export async function setReviewInfoState(partialState: Partial<ReviewInfoState>): Promise<void>;
-export async function setReviewInfoState(updater: (prevState: ReviewInfoState) => Partial<ReviewInfoState>): Promise<void>;
-export async function setReviewInfoState(partialStateOrUpdater: Partial<ReviewInfoState> | ((prevState: ReviewInfoState) => Partial<ReviewInfoState>)): Promise<void> {
-	return getReviewInfoState().then(prevState => reviewInfoState.set({
-		...prevState,
-		...(partialStateOrUpdater instanceof Function ? partialStateOrUpdater(prevState!) : partialStateOrUpdater || {}),
-	}));
+export async function setReviewInfoState(
+	partialState: Partial<ReviewInfoState>,
+): Promise<void>;
+export async function setReviewInfoState(
+	updater: (prevState: ReviewInfoState) => Partial<ReviewInfoState>,
+): Promise<void>;
+export async function setReviewInfoState(
+	partialStateOrUpdater:
+		| Partial<ReviewInfoState>
+		| ((prevState: ReviewInfoState) => Partial<ReviewInfoState>),
+): Promise<void> {
+	return getReviewInfoState().then((prevState) =>
+		reviewInfoState.set({
+			...prevState,
+			...(partialStateOrUpdater instanceof Function
+				? partialStateOrUpdater(prevState!)
+				: partialStateOrUpdater || {}),
+		}),
+	);
 }
 
 export const setReviewInfoStateLastSeenConnected = () => {
 	const now = Date.now();
 
-	triggerPromise(setReviewInfoState(({
-		milliSecondsConnectedInRow = 0,
-		lastSeenConnectedTimestamp = 0,
-	}) => ({
-		milliSecondsConnectedInRow: getNextValueForMilliSecondsConnectedInRow(
-			milliSecondsConnectedInRow,
-			lastSeenConnectedTimestamp,
-			now,
+	triggerPromise(
+		setReviewInfoState(
+			({milliSecondsConnectedInRow = 0, lastSeenConnectedTimestamp = 0}) => ({
+				milliSecondsConnectedInRow: getNextValueForMilliSecondsConnectedInRow(
+					milliSecondsConnectedInRow,
+					lastSeenConnectedTimestamp,
+					now,
+				),
+				lastSeenConnectedTimestamp: now,
+			}),
 		),
-		lastSeenConnectedTimestamp: now,
-	})));
-}
+	);
+};
 
 export async function setReviewInfoStateOnConnectAction() {
-	return setReviewInfoState(({
-		firstConnectionTimestamp = Date.now(),
-		successConnectionsInRow = 0,
-	}) => ({
-		firstConnectionTimestamp,
-		successConnectionsInRow: successConnectionsInRow + 1,
-	}));
+	return setReviewInfoState(
+		({firstConnectionTimestamp = Date.now(), successConnectionsInRow = 0}) => ({
+			firstConnectionTimestamp,
+			successConnectionsInRow: successConnectionsInRow + 1,
+		}),
+	);
 }
 
 export const setReviewInfoStateOnFailedConnection = () => {
-	triggerPromise(setReviewInfoState(({
-		successConnectionsInRow: 0,
-		milliSecondsConnectedInRow: 0,
-		lastSeenConnectedTimestamp: undefined,
-	})));
+	triggerPromise(
+		setReviewInfoState({
+			successConnectionsInRow: 0,
+			milliSecondsConnectedInRow: 0,
+			lastSeenConnectedTimestamp: undefined,
+		}),
+	);
 };

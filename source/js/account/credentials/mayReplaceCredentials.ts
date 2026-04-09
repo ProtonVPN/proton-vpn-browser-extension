@@ -1,4 +1,4 @@
-import {Credentials} from './Credentials';
+import type {Credentials} from './Credentials';
 import {getCredentialsData} from './getCredentialsData';
 
 export const mayReplaceCredentials = (

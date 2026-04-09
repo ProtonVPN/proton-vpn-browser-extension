@@ -17,14 +17,14 @@
 			"Already have a Proton Account?": [
 				"Masz już konto Proton?"
 			],
-			"Auto connect": [
-				"Automatyczne połączenie"
-			],
 			"Cancel": [
 				"Anuluj"
 			],
 			"Change server": [
 				"Zmień serwer"
+			],
+			"Configure split tunneling": [
+				"Konfiguruj split tunneling"
 			],
 			"Connect": [
 				"Połącz"
@@ -35,14 +35,26 @@
 			"Create an account": [
 				"Utwórz konto"
 			],
+			"Disable auto-connect": [
+				"Wyłącz automatyczne połączenie"
+			],
+			"Disable notifications": [
+				"Wyłącz powiadomienia"
+			],
+			"Disable WebRTC leak protection": [
+				"Wyłącz ochronę przed wyciekiem WebRTC"
+			],
 			"Disconnect": [
 				"Rozłącz"
 			],
-			"Enable/disable notifications": [
-				"Włącz / wyłącz powiadomienia"
+			"Enable auto-connect": [
+				"Włącz automatyczne połączenie"
 			],
-			"Exclude websites from the tunnel": [
-				"Wyklucz strony z tunelu"
+			"Enable notifications": [
+				"Włącz powiadomienia"
+			],
+			"Enable WebRTC leak protection": [
+				"Włącz ochronę przed wyciekiem WebRTC"
 			],
 			"Log in with Proton": [
 				"Zaloguj się z Proton"
@@ -55,9 +67,6 @@
 			],
 			"Next": [
 				"Dalej"
-			],
-			"Prevent WebRTC leak": [
-				"Zapobiega wyciekaniu WebRTC"
 			],
 			"Quick connect": [
 				"Szybkie połączenie"
@@ -271,6 +280,9 @@
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Raporty o awariach pomagają nam naprawić błędy, wykryć zapory sieciowe i ominąć blokady VPN."
 			],
+			"Disable Secure Core": [
+				"Wyłącz Secure Core"
+			],
 			"Disconnected": [
 				"Rozłączono"
 			],
@@ -288,6 +300,9 @@
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Wyświetla powiadomienia systemowe podczas nawiązywania połączeń."
+			],
+			"Enable Secure Core": [
+				"Włącz Secure Core"
 			],
 			"Enjoying Proton VPN?": [
 				"Podoba Ci się Proton VPN?"
@@ -373,9 +388,6 @@
 			"Proton VPN Browser Extension": [
 				"Rozszerzenie przeglądarki Proton VPN"
 			],
-			"Search": [
-				"Szukaj"
-			],
 			"Secure Core": [
 				"Secure Core"
 			],
@@ -414,6 +426,9 @@
 			],
 			"User": [
 				"Użytkownik"
+			],
+			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
+				"Podczas korzystania z przeglądarki Brave żądania DNS mogą nie być chronione, gdy aktywny jest „tryb dołączania”."
 			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
 				"Usługa VPN jest zablokowana przez zewnętrzne oprogramowanie.\n\nNiektóre narzędzia, takie jak antywirusy lub serwery proxy, mogą zakłócać działanie Proton VPN. Wyłącz je i spróbuj ponownie."

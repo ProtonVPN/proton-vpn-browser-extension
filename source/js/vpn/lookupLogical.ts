@@ -8,7 +8,7 @@ import {
 	logicalServers,
 	lookups,
 	lookupsNotFound,
-	recordLogicalInMap
+	recordLogicalInMap,
 } from './getLogicals';
 import type {Logical} from './Logical';
 
@@ -30,29 +30,36 @@ const recordOnLookupStorage = (
 	store: typeof lookupsNotFound | typeof lookups,
 	id: string,
 ) => {
-	triggerPromise(store.transaction(cache => {
-		// If ID is not yet in cache
-		if (!cache.value[id]) {
-			const ids = Object.keys(cache.value);
+	triggerPromise(
+		store.transaction(
+			(cache) => {
+				// If ID is not yet in cache
+				if (!cache.value[id]) {
+					const ids = Object.keys(cache.value);
 
-			if (ids.length >= maxLookupIdsStored) {
-				// Sort IDs from oldest to newest
-				ids.sort((a, b) => cache.value[a]! - cache.value[b]!);
-				// We remove older IDs so when we'll add the new ID, it's still exactly maxLookupIdsStored stored
-				ids.slice(0, ids.length + 1 - maxLookupIdsStored).forEach(oldId => {
-					delete cache.value[oldId];
-				});
-			}
-		}
+					if (ids.length >= maxLookupIdsStored) {
+						// Sort IDs from oldest to newest
+						ids.sort((a, b) => cache.value[a]! - cache.value[b]!);
+						// We remove older IDs so when we'll add the new ID, it's still exactly maxLookupIdsStored stored
+						ids
+							.slice(0, ids.length + 1 - maxLookupIdsStored)
+							.forEach((oldId) => {
+								delete cache.value[oldId];
+							});
+					}
+				}
 
-		cache.value[id] = Date.now();
-		cache.time = Date.now();
+				cache.value[id] = Date.now();
+				cache.time = Date.now();
 
-		return cache;
-	}, {
-		value: {} as Record<string, number>,
-		time: Date.now(),
-	}));
+				return cache;
+			},
+			{
+				value: {} as Record<string, number>,
+				time: Date.now(),
+			},
+		),
+	);
 };
 
 const pushLogicalToCache = (logical: Logical): void => {
@@ -60,17 +67,19 @@ const pushLogicalToCache = (logical: Logical): void => {
 	recordLogicalInMap(logical);
 
 	// Update cache asynchronously
-	triggerPromise(logicalServers.transaction(cache => {
-		if (!cache) {
-			warnMissingCache();
+	triggerPromise(
+		logicalServers.transaction((cache) => {
+			if (!cache) {
+				warnMissingCache();
+
+				return cache;
+			}
+
+			cache.value.push(logical);
 
 			return cache;
-		}
-
-		cache.value.push(logical);
-
-		return cache;
-	}));
+		}),
+	);
 	recordOnLookupStorage(lookups, `${logical.ID}`);
 };
 
@@ -84,7 +93,7 @@ const fetchLogicalLookup = async (name: string, init?: RequestInit) => {
 
 	try {
 		const {LogicalServer: logical} = await fetchWithUserInfo<{
-			LogicalServer: Logical
+			LogicalServer: Logical;
 		}>(`vpn/v1/logicals/lookup/${encodeURIComponent(name)}`, init);
 
 		if (!logical) {
@@ -111,6 +120,9 @@ export const lookupLogical = async (name: string, init?: RequestInit) => {
 	const logicals = await getSortedLogicals();
 	const upperName = name.toLocaleUpperCase();
 
-	return logicals.find(logical => logical.Name.toLocaleUpperCase() === upperName)
-		|| fetchLogicalLookup(name, init);
+	return (
+		logicals.find(
+			(logical) => logical.Name.toLocaleUpperCase() === upperName,
+		) || fetchLogicalLookup(name, init)
+	);
 };

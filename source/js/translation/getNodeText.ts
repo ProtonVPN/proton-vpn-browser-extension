@@ -1,8 +1,13 @@
-import {isTaggedTemplateExpression, SourceFile} from 'typescript';
+import type {SourceFile} from 'typescript';
+import {isTaggedTemplateExpression} from 'typescript';
 import {isTranslatableString} from './isTranslatableString';
 import {ContextualizedTranslation} from './ContextualizedTranslation';
 
-export const getNodeText = (textNode: any, sourceFile?: SourceFile, context = 'messages'): ContextualizedTranslation | undefined => {
+export const getNodeText = (
+	textNode: any,
+	sourceFile?: SourceFile,
+	context = 'messages',
+): ContextualizedTranslation | undefined => {
 	if (!textNode) {
 		return undefined;
 	}
@@ -29,7 +34,8 @@ export const getNodeText = (textNode: any, sourceFile?: SourceFile, context = 'm
 		case '`':
 		case "'":
 		case '"':
-			text = text.substring(1, text.length - 1)
+			text = text
+				.substring(1, text.length - 1)
 				.replace(/\\n/g, '\n')
 				.replace(/\\([\\'"`])/g, '$1');
 	}

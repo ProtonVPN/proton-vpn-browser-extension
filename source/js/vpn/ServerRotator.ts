@@ -3,20 +3,25 @@ import {RemainingTime} from '../tools/RemainingTime';
 import {triggerPromise} from '../tools/triggerPromise';
 import {getChangeServerConfig as getConfig} from '../account/user/clientconfig/getClientConfig';
 import type {ChangeServerConfig} from '../account/user/clientconfig/storedClientConfig';
-import {getServerRotatorState as getState, setServerRotatorState as setState} from './getServerRotatorState';
+import {
+	getServerRotatorState as getState,
+	setServerRotatorState as setState,
+} from './getServerRotatorState';
 
 /**
  * This class manages the state and UI changes for the "Change Server" functionality for free users.
  */
 export class ServerRotator {
-
 	/** *[milliseconds]* Current waiting time. For the circle percentage animation. */
 	private _wait = 0;
 
 	private _RemainingTime?: RemainingTime;
 
 	private refChangeServerInterval?: NodeJS.Timeout;
-	private intervalSubscribers = new Map</** subscriber */AnyFunction, /** unsubscriber */ AnyFunction | undefined>();
+	private intervalSubscribers = new Map<
+		/** subscriber */ AnyFunction,
+		/** unsubscriber */ AnyFunction | undefined
+	>();
 
 	private modalCircleEl: SVGCircleElement;
 	private modalTimeEl: HTMLSpanElement;
@@ -49,26 +54,32 @@ export class ServerRotator {
 		}
 
 		const progressEl = this.modalEl.querySelector('.circle-progress');
-		const [, svgEl, timeEl] = (progressEl!.children) as unknown as [HTMLDivElement, SVGElement, HTMLSpanElement];
+		const [, svgEl, timeEl] = progressEl!.children as unknown as [
+			HTMLDivElement,
+			SVGElement,
+			HTMLSpanElement,
+		];
 
 		this.modalCircleEl = svgEl.children[0] as SVGCircleElement;
 		this.modalTimeEl = timeEl;
 
-		getConfig().then(config => this.loadConfig(config));
+		getConfig().then((config) => this.loadConfig(config));
 	}
 
 	/** Uses chrome storage shared across tabs to get the pending state. */
 	public async isPending(): Promise<boolean> {
 		const nextChange = this._nextChange ?? (await getState()).nextChange ?? 0;
 
-		return (nextChange - Date.now()) > 0;
+		return nextChange - Date.now() > 0;
 	}
 
 	/**
 	 * Start a new counter if not already running and increase the count of free changes.
 	 * @param wait - Milliseconds to wait before the next change. If not provided, it will use the default short or long wait time based on counted changes.
 	 */
-	public async startCountdown(/** *[milliseconds]* */wait?: number): Promise<void> {
+	public async startCountdown(
+		/** *[milliseconds]* */ wait?: number,
+	): Promise<void> {
 		if (this.refChangeServerInterval) {
 			return;
 		}
@@ -87,10 +98,11 @@ export class ServerRotator {
 			return;
 		}
 
-		const { nextChange = 0, changesCount = 0 } = await getState();
+		const {nextChange = 0, changesCount = 0} = await getState();
 
 		if (nextChange > Date.now()) {
-			this._wait = changesCount % this._changesLimit ? this._waitShort : this._waitLong;
+			this._wait =
+				changesCount % this._changesLimit ? this._waitShort : this._waitLong;
 			this._nextChange = nextChange;
 			this._RemainingTime = new RemainingTime(nextChange, this._wait);
 			this.startCountdownRefreshing();
@@ -115,8 +127,12 @@ export class ServerRotator {
 	}
 
 	private loadConfig(config: ChangeServerConfig): void {
-		this._waitShort = milliSeconds.fromSeconds(config.ChangeServerShortDelayInSeconds);
-		this._waitLong = milliSeconds.fromSeconds(config.ChangeServerLongDelayInSeconds);
+		this._waitShort = milliSeconds.fromSeconds(
+			config.ChangeServerShortDelayInSeconds,
+		);
+		this._waitLong = milliSeconds.fromSeconds(
+			config.ChangeServerLongDelayInSeconds,
+		);
 		this._changesLimit = config.ChangeServerAttemptLimit;
 	}
 
@@ -133,7 +149,7 @@ export class ServerRotator {
 	}
 
 	public async refreshState(canDisconnectOrCancel: boolean): Promise<void> {
-		if (!await this.isPending()) {
+		if (!(await this.isPending())) {
 			return;
 		}
 
@@ -144,7 +160,10 @@ export class ServerRotator {
 		}
 
 		await this.resumeCountdown();
-		this.subscribeToInterval(this.renderQuickConnectButtonTime, this.clearQuickConnectButtonTime);
+		this.subscribeToInterval(
+			this.renderQuickConnectButtonTime,
+			this.clearQuickConnectButtonTime,
+		);
 	}
 
 	public showModal(): void {
@@ -173,15 +192,23 @@ export class ServerRotator {
 		});
 	}
 
-	private async setNextChange(/** *[milliseconds]* */wait?: number): Promise<number> {
+	private async setNextChange(
+		/** *[milliseconds]* */ wait?: number,
+	): Promise<number> {
 		const changesCount = 1 + ((await getState()).changesCount ?? 0);
-		this._wait = wait ?? changesCount % this._changesLimit ? this._waitShort : this._waitLong;
+		this._wait =
+			(wait ?? changesCount % this._changesLimit)
+				? this._waitShort
+				: this._waitLong;
 		this._nextChange = Date.now() + this._wait;
-		triggerPromise(setState({ changesCount, nextChange: this._nextChange }));
+		triggerPromise(setState({changesCount, nextChange: this._nextChange}));
 		return this._nextChange;
 	}
 
-	private subscribeToInterval(callback: AnyFunction, clearCallback?: AnyFunction) {
+	private subscribeToInterval(
+		callback: AnyFunction,
+		clearCallback?: AnyFunction,
+	) {
 		this.intervalSubscribers.set(callback, clearCallback);
 	}
 
@@ -192,31 +219,41 @@ export class ServerRotator {
 
 			return;
 		}
-		this.intervalSubscribers.forEach(unsubscriber => unsubscriber?.call(this));
+		this.intervalSubscribers.forEach((unsubscriber) =>
+			unsubscriber?.call(this),
+		);
 		this.intervalSubscribers.clear();
 	}
 
 	private runIntervalCallbacks() {
-		this.intervalSubscribers.forEach((_unsubscriber, callback) => callback.call(this));
+		this.intervalSubscribers.forEach((_unsubscriber, callback) =>
+			callback.call(this),
+		);
 	}
 
 	/** Render remaining time in the quickConnectButton. */
 	private renderQuickConnectButtonTime() {
-		this.quickConnectButtonEl.dataset['nextChange'] = this._RemainingTime?.getChronometer() || '';
-	};
+		this.quickConnectButtonEl.dataset['nextChange'] =
+			this._RemainingTime?.getChronometer() || '';
+	}
 
 	private clearQuickConnectButtonTime() {
 		this.quickConnectButtonEl.dataset['nextChange'] = '';
-	};
+	}
 
 	/** Render remaining time in the modal. */
-	private renderModalTime(/** Make the proportion artificially +longer/-shorter to better match the chronometer. */offsetSeconds = 1) {
+	private renderModalTime(
+		/** Make the proportion artificially +longer/-shorter to better match the chronometer. */ offsetSeconds = 1,
+	) {
 		const maxCircleCircumference = 252;
 
-		this.modalCircleEl.style.strokeDashoffset = (this._RemainingTime!.getProportion(milliSeconds.fromSeconds(offsetSeconds)) * maxCircleCircumference).toString();
+		this.modalCircleEl.style.strokeDashoffset = (
+			this._RemainingTime!.getProportion(
+				milliSeconds.fromSeconds(offsetSeconds),
+			) * maxCircleCircumference
+		).toString();
 		this.modalTimeEl!.innerHTML = this._RemainingTime!.getChronometer();
-	};
-
+	}
 }
 
 type AnyFunction = () => void;

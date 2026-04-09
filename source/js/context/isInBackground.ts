@@ -12,7 +12,6 @@
  * //... the rest of the file
  */
 
-export const isInBackground = () => (
+export const isInBackground = () =>
 	typeof window === 'undefined' ||
-	window.location.href.includes('_generated_background_page.html')
-);
+	window.location.href.includes('_generated_background_page.html');

@@ -3,7 +3,8 @@ export interface UserResult {
 	User: User;
 }
 
-export const isUserResult = (result: any): result is UserResult => typeof result?.User?.VPN === 'object';
+export const isUserResult = (result: unknown): result is UserResult =>
+	typeof (result as UserResult | undefined)?.User?.VPN === 'object';
 
 export interface User {
 	VPN: {
@@ -17,13 +18,13 @@ export interface User {
 		/** Only for translations! Don't use in business logic. Use `PlanName` instead. */
 		PlanTitle?: string;
 		MaxConnect: number;
-		/** *Note: Tier 1 doesn't exist any more, therefor `<2` is equivalent to `free` plan in `PlanName`.* */
+		/** Note: Tier 1 doesn't exist anymore, therefore `<2` is equivalent to `free` plan in `PlanName`.* */
 		MaxTier: number;
 		BrowserExtension?: boolean;
 		BrowserExtensionPlan?: string | null;
 		NeedConnectionAllocation: boolean;
 		BusinessEvents?: boolean;
-	},
+	};
 	Subscribed: number;
 	Services: number;
 	Delinquent: number;

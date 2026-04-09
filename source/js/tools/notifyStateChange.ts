@@ -1,6 +1,10 @@
-import {broadcastMessage, ChangeStateMessage} from './broadcastMessage';
+import type {ChangeStateMessage} from './broadcastMessage';
+import {broadcastMessage} from './broadcastMessage';
 
-export function notifyStateChange(state: ChangeStateMessage['data']['state'], data: any = {}): void {
+export function notifyStateChange(
+	state: ChangeStateMessage['data']['state'],
+	data: any = {},
+): void {
 	if (data.error instanceof Error) {
 		data.error = {
 			message: data.error.message,

@@ -1,18 +1,24 @@
-import {isUserResult, User, UserResult} from './User';
+import type {User, UserResult} from './User';
+import {isUserResult} from './User';
 import {fetchJson, isUnauthorizedError} from '../../api';
 import {readSession} from '../readSession';
 import {refreshToken} from '../refreshToken';
 import {getAccessToken} from '../getAccessToken';
 import {getCacheAge} from '../../tools/getCacheAge';
 import {getElapsedMillisecondsSinceLastActivity} from '../../tools/activity';
-import {isLoggedIn, logIn} from '../../state';
+import {getRuntime} from '../../tools/getRuntime';
 import {milliSeconds} from '../../tools/milliSeconds';
+import {isLoggedIn, logIn} from '../../state';
 import {fetchPmUser} from './getPmUser';
 import {catchPromise, triggerPromise} from '../../tools/triggerPromise';
 import {checkNetwork} from '../../vpn/checkNetwork';
 import {storedUser} from './storedUser';
 import {loadCachedUser} from './loadCachedUser';
-import {getIdleThreshold, getUserBlockingUpdateTTL, getUserTTL} from '../../intervals';
+import {
+	getIdleThreshold,
+	getUserBlockingUpdateTTL,
+	getUserTTL,
+} from '../../intervals';
 import {BackgroundData} from '../../messaging/MessageType';
 
 let tries: number[] = [];
@@ -31,44 +37,47 @@ const fetchUser = async (): Promise<User | UserResult | undefined> => {
 	return user;
 };
 
-export const loadUser = async (forceRefresh?: boolean): Promise<User | UserResult | undefined> => {
+export const loadUser = async (
+	forceRefresh?: boolean,
+): Promise<User | UserResult | undefined> => {
 	const savedUser = await loadCachedUser();
 	const age = getCacheAge(savedUser);
 	const refresh = forceRefresh && (savedUser.user?.VPN.MaxTier || 0) < 1;
 
 	const idleDuration = await getElapsedMillisecondsSinceLastActivity();
-	const refreshInterval = getUserTTL() * (idleDuration > getIdleThreshold() ? 4 : 1);
+	const refreshInterval =
+		getUserTTL() * (idleDuration > getIdleThreshold() ? 4 : 1);
 
 	if (age < (refresh ? milliSeconds.fromSeconds(1) : refreshInterval)) {
 		return savedUser?.user;
 	}
 
 	if (!refresh && age < getUserBlockingUpdateTTL()) {
-		triggerPromise((async () => {
-			try {
-				await getAccessToken();
-				await fetchUser();
-			} catch (e) {
-				if (isUnauthorizedError(e)) {
-					await refreshToken();
-					await Promise.all([fetchUser(), fetchPmUser()]);
+		triggerPromise(
+			(async () => {
+				try {
+					await getAccessToken();
+					await fetchUser();
+				} catch (e) {
+					if (isUnauthorizedError(e)) {
+						await refreshToken();
+						await Promise.all([fetchUser(), fetchPmUser()]);
 
-					return;
+						return;
+					}
+
+					checkNetwork(e);
+
+					throw e;
 				}
-
-				checkNetwork(e);
-
-				throw e;
-			}
-		})());
+			})(),
+		);
 
 		return savedUser?.user;
 	}
 
 	const now = Date.now();
-	tries = tries.filter(
-		time => time < now - refreshInterval,
-	);
+	tries = tries.filter((time) => time < now - refreshInterval);
 	tries.push(now);
 
 	try {
@@ -88,14 +97,15 @@ export const loadUser = async (forceRefresh?: boolean): Promise<User | UserResul
 
 const canRetry = () => {
 	const now = Date.now();
-	tries = tries.filter(
-		time => time < now - getUserTTL(),
-	);
+	tries = tries.filter((time) => time < now - getUserTTL());
 
 	return tries.length < 20;
 };
 
-const calculateUser = async (tryReAuthentication = false, fresh?: boolean): Promise<User | undefined> => {
+const calculateUser = async (
+	tryReAuthentication = false,
+	fresh?: boolean,
+): Promise<User | undefined> => {
 	if (!(await readSession())?.uid) {
 		return undefined;
 	}
@@ -121,17 +131,21 @@ const calculateUser = async (tryReAuthentication = false, fresh?: boolean): Prom
 	return isUserResult(result) ? result.User : result;
 };
 
-export const getUser = async (tryReAuthentication = false, fresh?: boolean): Promise<User | undefined> => {
+export const getUser = async (
+	tryReAuthentication = false,
+	fresh?: boolean,
+): Promise<User | undefined> => {
 	const user = await calculateUser(tryReAuthentication, fresh);
 
-	global.browser || ((global as any).browser = chrome);
-
-	catchPromise(browser.runtime.sendMessage({
-		event: BackgroundData.USER,
-		user,
-	}));
+	catchPromise(
+		getRuntime()?.sendMessage({
+			event: BackgroundData.USER,
+			user,
+		}),
+	);
 
 	return user;
 };
 
-export const getFreshUser = (): Promise<User | undefined> => getUser(true, true);
+export const getFreshUser = (): Promise<User | undefined> =>
+	getUser(true, true);

@@ -17,14 +17,14 @@
 			"Already have a Proton Account?": [
 				"이미 Proton 계정을 가지고 계신가요?"
 			],
-			"Auto connect": [
-				"자동 연결"
-			],
 			"Cancel": [
 				"취소"
 			],
 			"Change server": [
 				"서버 변경"
+			],
+			"Configure split tunneling": [
+				"분할 터널링 구성 설정하기"
 			],
 			"Connect": [
 				"연결"
@@ -35,14 +35,26 @@
 			"Create an account": [
 				"계정 만들기"
 			],
+			"Disable auto-connect": [
+				"자동 연결 비활성화"
+			],
+			"Disable notifications": [
+				"알림 끄기"
+			],
+			"Disable WebRTC leak protection": [
+				"WebRTC 누출 방지 비활성화"
+			],
 			"Disconnect": [
 				"연결 해제"
 			],
-			"Enable/disable notifications": [
-				"알림 활성화/비활성화"
+			"Enable auto-connect": [
+				"자동 연결 활성화"
 			],
-			"Exclude websites from the tunnel": [
-				"터널에서 웹사이트 제외하기"
+			"Enable notifications": [
+				"알림 켜기"
+			],
+			"Enable WebRTC leak protection": [
+				"WebRTC 누출 방지 활성화"
 			],
 			"Log in with Proton": [
 				"Proton으로 로그인"
@@ -55,9 +67,6 @@
 			],
 			"Next": [
 				"다음"
-			],
-			"Prevent WebRTC leak": [
-				"WebRTC 유출 방지"
 			],
 			"Quick connect": [
 				"빠른 연결"
@@ -277,6 +286,9 @@
 			"Decide which websites are protected by VPN.": [
 				"VPN으로 보호되는 웹 사이트를 설정하세요."
 			],
+			"Disable Secure Core": [
+				"Secure Core 비활성화"
+			],
 			"Disconnected": [
 				"연결 해제됨"
 			],
@@ -294,6 +306,9 @@
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"연결되거나 연결이 끊겼을때 시스템 알림을 받습니다."
+			],
+			"Enable Secure Core": [
+				"Secure Core 활성화"
 			],
 			"Enjoying Proton VPN?": [
 				"Proton VPN을 잘 사용하고 계신가요?"
@@ -375,9 +390,6 @@
 			],
 			"Proton VPN Browser Extension": [
 				"Proton VPN 브라우저 확장 프로그램"
-			],
-			"Search": [
-				"검색"
 			],
 			"Secure Core": [
 				"Secure Core"

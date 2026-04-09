@@ -6,42 +6,14 @@ import {triggerPromise} from '../tools/triggerPromise';
 import {watchWithSentry} from '../tools/sentry';
 import {hasRefreshToken} from '../account/refreshToken';
 
-const keepCredentialsReady = () => watchWithSentry((): undefined => {
-	if (getCurrentState()?.proxyEnabled) {
-		triggerPromise(getCredentials());
-	}
-
-	return undefined; // not BlockingResponse
-});
-
-const initAuthInterceptorListeners = (webRequest: typeof chrome.webRequest) => {
-	const allUrls = {
-		urls: ['<all_urls>'],
-	};
-
-	clearAuthInterceptor();
-
-	webRequest.onBeforeRequest?.addListener(keepCredentialsReady, allUrls);
-
-	if (!webRequest.onAuthRequired?.hasListener(authHandler)) {
-		try {
-			webRequest.onAuthRequired?.addListener(
-				authHandler,
-				allUrls,
-				['asyncBlocking', 'extraHeaders'],
-			);
-		} catch (e) {
-			webRequest.onAuthRequired?.addListener(
-				authHandler,
-				allUrls,
-				['asyncBlocking'],
-			);
+const keepCredentialsReady = () =>
+	watchWithSentry((): undefined => {
+		if (getCurrentState()?.proxyEnabled) {
+			triggerPromise(getCredentials());
 		}
-	}
 
-	webRequest.onCompleted?.addListener(clearPending, allUrls);
-	webRequest.onErrorOccurred?.addListener(clearPending, allUrls);
-};
+		return undefined; // not BlockingResponse
+	});
 
 export const clearAuthInterceptor = () => {
 	const webRequest = (browser as any as typeof chrome).webRequest;
@@ -55,6 +27,32 @@ export const clearAuthInterceptor = () => {
 	webRequest.onErrorOccurred?.removeListener(clearPending);
 };
 
+const initAuthInterceptorListeners = (webRequest: typeof chrome.webRequest) => {
+	const allUrls = {
+		urls: ['<all_urls>'],
+	};
+
+	clearAuthInterceptor();
+
+	webRequest.onBeforeRequest?.addListener(keepCredentialsReady, allUrls);
+
+	if (!webRequest.onAuthRequired?.hasListener(authHandler)) {
+		try {
+			webRequest.onAuthRequired?.addListener(authHandler, allUrls, [
+				'asyncBlocking',
+				'extraHeaders',
+			]);
+		} catch {
+			webRequest.onAuthRequired?.addListener(authHandler, allUrls, [
+				'asyncBlocking',
+			]);
+		}
+	}
+
+	webRequest.onCompleted?.addListener(clearPending, allUrls);
+	webRequest.onErrorOccurred?.addListener(clearPending, allUrls);
+};
+
 export const initAuthInterceptor = () => {
 	const webRequest = (browser as any as typeof chrome).webRequest;
 
@@ -64,7 +62,7 @@ export const initAuthInterceptor = () => {
 
 	initAuthInterceptorListeners(webRequest);
 
-	hasRefreshToken().then(valid => {
+	hasRefreshToken().then((valid) => {
 		if (!valid) {
 			clearAuthInterceptor();
 		}

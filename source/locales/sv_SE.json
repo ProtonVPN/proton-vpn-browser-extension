@@ -17,14 +17,17 @@
 			"Already have a Proton Account?": [
 				"Har du redan ett Proton-konto?"
 			],
-			"Auto connect": [
-				"Anslut automatiskt"
-			],
 			"Cancel": [
 				"Avbryt"
 			],
+			"Change language": [
+				"Ändra språk"
+			],
 			"Change server": [
 				"Byt server"
+			],
+			"Configure split tunneling": [
+				"Konfigurera split tunneling"
 			],
 			"Connect": [
 				"Anslut"
@@ -35,14 +38,32 @@
 			"Create an account": [
 				"Skapa ett konto"
 			],
+			"Disable auto-connect": [
+				"Inaktivera automatisk anslutning"
+			],
+			"Disable notifications": [
+				"Inaktivera aviseringar"
+			],
+			"Disable Split tunneling": [
+				"Inaktivera split tunneling"
+			],
+			"Disable WebRTC leak protection": [
+				"Inaktivera WebRTC-läckageskydd"
+			],
 			"Disconnect": [
 				"Koppla från"
 			],
-			"Enable/disable notifications": [
-				"Aktivera/inaktivera aviseringar"
+			"Enable auto-connect": [
+				"Aktivera automatisk anslutning"
 			],
-			"Exclude websites from the tunnel": [
-				"Exkludera webbplatser från tunneln"
+			"Enable notifications": [
+				"Aktivera aviseringar"
+			],
+			"Enable Split tunneling": [
+				"Aktivera split tunneling"
+			],
+			"Enable WebRTC leak protection": [
+				"Aktivera WebRTC-läckageskydd"
 			],
 			"Log in with Proton": [
 				"Logga in med Proton"
@@ -55,9 +76,6 @@
 			],
 			"Next": [
 				"Nästa"
-			],
-			"Prevent WebRTC leak": [
-				"Förhindra WebRTC-läckage"
 			],
 			"Quick connect": [
 				"Snabbanslut"
@@ -118,6 +136,11 @@
 		"Action: Server-level button": {
 			"Connect to ${serverName}": [
 				"Anslut till ${serverName}"
+			]
+		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"Sök"
 			]
 		},
 		"Confirm": {
@@ -262,6 +285,9 @@
 			"Connecting servers such as ${logical.Name} is not currently supported in the browser extension": [
 				"Anslutning till servrar som ${logical.Name} stöds för närvarande inte i webbläsartillägget"
 			],
+			"Connecting to dedicated IPs such as ${logical.Name} is not currently supported in the browser extension": [
+				"Anslutning till dedikerade IP:n som ${logical.Name} stöds för närvarande inte i webbläsartillägget"
+			],
 			"Connecting...": [
 				"Ansluter..."
 			],
@@ -276,6 +302,9 @@
 			],
 			"Decide which websites are protected by VPN.": [
 				"Bestäm vilka webbplatser som är skyddade av VPN."
+			],
+			"Disable Secure Core": [
+				"Inaktivera Secure Core"
 			],
 			"Disconnected": [
 				"Frånkopplad"
@@ -294,6 +323,9 @@
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Sänd ut systemaviseringar om anslutnings- och frånkopplingshändelser."
+			],
+			"Enable Secure Core": [
+				"Aktivera Secure Core"
 			],
 			"Enjoying Proton VPN?": [
 				"Gillar du Proton VPN?"
@@ -377,9 +409,6 @@
 			"Proton VPN Browser Extension": [
 				"Proton VPN-webbläsartillägg"
 			],
-			"Search": [
-				"Sök"
-			],
 			"Secure Core": [
 				"Secure Core"
 			],
@@ -407,6 +436,9 @@
 			"Then just click the Proton VPN icon to sign in.": [
 				"Klicka sedan på Proton VPN-ikonen för att logga in."
 			],
+			"This option cannot be changed on this device": [
+				"Detta alternativ kan inte ändras på denna enhet"
+			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"Denna statistik innehåller inte din IP-adress och den kan inte användas för att identifiera dig. Vi kommer aldrig att dela dem med tredje part"
 			],
@@ -424,6 +456,9 @@
 			],
 			"User": [
 				"Användare"
+			],
+			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
+				"Med Brave kan DNS-förfrågningar vara oskyddade när “Inkluderingsläge“ är aktivt."
 			],
 			"VPN Features": [
 				"VPN-funktioner"

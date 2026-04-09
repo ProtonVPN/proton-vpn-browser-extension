@@ -6,8 +6,11 @@ import {getLocationRefreshInterval} from '../intervals';
 
 export const updateLocation = (): void => {
 	const loadLocation = (): void => {
-		getLocation().catch(error => {
-			if (error instanceof RefreshTokenError || (error as RefreshTokenError).logout) {
+		getLocation().catch((error) => {
+			if (
+				error instanceof RefreshTokenError ||
+				(error as RefreshTokenError).logout
+			) {
 				logOut(false);
 			}
 		});
@@ -15,4 +18,4 @@ export const updateLocation = (): void => {
 	const interval = getLocationRefreshInterval();
 	setJitterInterval(interval, interval / 10, loadLocation);
 	(navigator as any).connection?.addEventListener('change', loadLocation);
-}
+};

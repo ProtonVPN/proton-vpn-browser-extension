@@ -1,5 +1,4 @@
-
-interface ForkState {
+export interface ForkState {
 	independent?: boolean;
 	partnerId?: string;
 }

@@ -1,5 +1,6 @@
 import {fetchJson} from '../api';
-import {CacheWrappedValue, Storage, storage} from '../tools/storage';
+import type {CacheWrappedValue} from '../tools/storage';
+import {Storage, storage} from '../tools/storage';
 import {getCacheAge} from '../tools/getCacheAge';
 import {triggerPromise} from '../tools/triggerPromise';
 import {getNotificationsRefreshInterval} from '../intervals';
@@ -13,40 +14,44 @@ interface Notification {
 		Icon?: string;
 		Label?: string;
 		Panel?: {
-			IncentivePrice?: string|number;
+			IncentivePrice?: string | number;
 			Incentive?: string;
 			PictureURL?: string;
 			Title?: string;
 			Pill?: string;
-			Features?: ({
+			Features?: {
 				IconURL?: string;
 				Text?: string;
-			})[];
+			}[];
 			FeaturesFooter?: string;
 			Button?: {
 				URL: string;
 				Text: string;
-			}
+			};
 			PageFooter?: string;
 			FullScreenImage?: {
 				AlternativeText: string;
-				Source?: ({
+				Source?: {
 					URL: string;
 					Type?: string;
 					Width?: number;
 					Height?: number;
 					Ratio?: number;
-				})[];
+				}[];
 			};
 		};
 	};
 }
 
-const storedNotifications = storage.item<CacheWrappedValue<Notification[]>>('notifications', Storage.LOCAL)
+const storedNotifications = storage.item<CacheWrappedValue<Notification[]>>(
+	'notifications',
+	Storage.LOCAL,
+);
 
 const fetchNotifications = async (): Promise<Notification[]> => {
 	const data = await fetchJson('core/v4/notifications');
-	const { Notifications: notifications }: { Notifications: Notification[] } = data as any;
+	const {Notifications: notifications}: {Notifications: Notification[]} =
+		data as any;
 
 	if (notifications) {
 		triggerPromise(storedNotifications.setValue(notifications));
@@ -57,7 +62,9 @@ const fetchNotifications = async (): Promise<Notification[]> => {
 	return [];
 };
 
-export const getNotifications = async (forceReload = false): Promise<Notification[]> => {
+export const getNotifications = async (
+	forceReload = false,
+): Promise<Notification[]> => {
 	if (!forceReload) {
 		const cacheItem = await storedNotifications.load();
 		const age = getCacheAge(cacheItem);
@@ -69,7 +76,7 @@ export const getNotifications = async (forceReload = false): Promise<Notificatio
 
 	try {
 		return await fetchNotifications();
-	} catch (e) {
+	} catch {
 		return [];
 	}
 };

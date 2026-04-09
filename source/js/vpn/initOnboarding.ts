@@ -1,21 +1,22 @@
 import {isOauthAllowed} from '../account/partner/oauth';
 import {getTabs} from '../tools/getTabs';
+import {getRuntime} from '../tools/getRuntime';
 
 export const initOnboarding = () => {
-	browser.runtime.onInstalled.addListener(async (details) => {
+	const runtime = getRuntime();
+
+	runtime?.onInstalled.addListener(async (details) => {
 		if (await isOauthAllowed()) {
 			return;
 		}
 
 		switch (details.reason) {
 			case 'install':
-				const url = browser.runtime.getURL('/onboarding.html');
 				// /^moz-extension:/.test(url)
-				// 	? browser.runtime.getURL('/onboarding-firefox.html')
+				// 	? runtime.getURL('/onboarding-firefox.html')
 				// 	: url
-
 				await getTabs().create({
-					url,
+					url: runtime.getURL('/onboarding.html'),
 				});
 		}
 	});

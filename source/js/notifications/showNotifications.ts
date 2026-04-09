@@ -5,14 +5,16 @@ import {setJitterTimeout} from '../tools/delay';
 
 let lastCheck = 0;
 
-export const showNotifications = async () => {
+export const showNotifications = async (area: HTMLElement) => {
 	const now = Date.now();
-	const notifications = (await getNotifications()).filter(notification => (
-		!notification.StartTime || now >= milliSeconds.fromSeconds(notification.StartTime)
-	) && (
-		!notification.EndTime || now < milliSeconds.fromSeconds(notification.EndTime)
-	));
-	const notificationsSlot = document.querySelector('.notifications') as HTMLElement;
+	const notifications = (await getNotifications()).filter(
+		(notification) =>
+			(!notification.StartTime ||
+				now >= milliSeconds.fromSeconds(notification.StartTime)) &&
+			(!notification.EndTime ||
+				now < milliSeconds.fromSeconds(notification.EndTime)),
+	);
+	const notificationsSlot = area.querySelector<HTMLElement>('.notifications')!;
 
 	if (notifications.length === 0) {
 		notificationsSlot.innerHTML = '';
@@ -20,45 +22,62 @@ export const showNotifications = async () => {
 		return;
 	}
 
-	const offers = notifications.filter(notification => notification.Type === 0);
-	await Promise.all(offers.map(notification => new Promise(resolve => {
-		if (!notification.Offer.Icon) {
-			resolve(null);
+	const offers = notifications.filter(
+		(notification) => notification.Type === 0,
+	);
+	await Promise.all(
+		offers.map(
+			(notification) =>
+				new Promise((resolve) => {
+					if (!notification.Offer.Icon) {
+						resolve(null);
 
-			return;
-		}
+						return;
+					}
 
-		const image = new Image();
-		image.src = notification.Offer.Icon;
+					const image = new Image();
+					image.src = notification.Offer.Icon;
 
-		if (image.width) {
-			resolve(null);
+					if (image.width) {
+						resolve(null);
 
-			return;
-		}
+						return;
+					}
 
-		image.onload = resolve;
-		image.onerror = resolve;
-	})));
+					image.onload = resolve;
+					image.onerror = resolve;
+				}),
+		),
+	);
 	notificationsSlot.innerHTML = offers
-		.map(notification => `
+		.map(
+			(notification) => `
 			<a href="${notification.Offer.URL}" title="${notification.Offer.Label}">
-				${notification.Offer.Icon
-					? `<img src="${notification.Offer.Icon}" alt="${notification.Offer.Label}" width="24" height="24" />`
-					: notification.Offer.Label || c('Label').t`Offer`
+				${
+					notification.Offer.Icon
+						? `<img src="${notification.Offer.Icon}" alt="${notification.Offer.Label}" width="24" height="24" />`
+						: notification.Offer.Label ||
+							/* translator: Fallback link text when an offer is available but has no icon, clicking on it open a page showing the offer */ c(
+								'Label',
+							).t`Offer`
 				}
 			</a>
-		`)
+		`,
+		)
 		.join('');
 
-	setJitterTimeout(milliSeconds.fromMinutes(30), milliSeconds.fromMinutes(5), async () => {
-		const time = Date.now();
+	setJitterTimeout(
+		milliSeconds.fromMinutes(30),
+		milliSeconds.fromMinutes(5),
+		async () => {
+			const time = Date.now();
 
-		if (time - lastCheck < milliSeconds.fromMinutes(15)) {
-			return;
-		}
+			if (time - lastCheck < milliSeconds.fromMinutes(15)) {
+				return;
+			}
 
-		lastCheck = time;
-		await showNotifications();
-	});
+			lastCheck = time;
+			await showNotifications(area);
+		},
+	);
 };

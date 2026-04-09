@@ -1,6 +1,7 @@
-export const isCachedItem = (cachedItem: any): cachedItem is {time: number} => cachedItem
-	&& (typeof cachedItem) === 'object'
-	&& (typeof cachedItem?.time === 'number');
+export const isCachedItem = (cachedItem: any): cachedItem is {time: number} =>
+	cachedItem &&
+	typeof cachedItem === 'object' &&
+	typeof cachedItem?.time === 'number';
 
 /**
  * Return age of a cache item in milliseconds.

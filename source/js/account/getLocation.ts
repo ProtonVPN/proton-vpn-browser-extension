@@ -1,7 +1,8 @@
 import {fetchJson} from '../api';
-import {Location} from './Location';
+import type {Location} from './Location';
 import {milliSeconds} from '../tools/milliSeconds';
-import {Storage, storage, Timed} from '../tools/storage';
+import type {Timed} from '../tools/storage';
+import {Storage, storage} from '../tools/storage';
 import {triggerPromise} from '../tools/triggerPromise';
 import {isSuspended, suspend} from '../tools/exponentialBackoff';
 import {delay} from '../tools/delay';
@@ -10,10 +11,13 @@ import {excludeApiFromProxy} from '../config';
 import {isConnected} from '../vpn/connectedServer';
 import {getLocationRefreshInterval} from '../intervals';
 
-const storedLocation = storage.item<Partial<Timed<{location: Location|undefined}>>>('location', Storage.LOCAL);
-const locationFetching = storage.item<Partial<Timed<{}>>>('location-fetching', Storage.LOCAL);
-
-triggerPromise(storedLocation.remove());
+const storedLocation = storage.item<
+	Partial<Timed<{location: Location | undefined}>>
+>('location', Storage.LOCAL);
+const locationFetching = storage.item<Partial<Timed<object>>>(
+	'location-fetching',
+	Storage.LOCAL,
+);
 
 export const getCachedLocation = () => storedLocation.load();
 
@@ -29,19 +33,27 @@ const willLocationBeSentOutsideProxy = async () => {
 	return await isConnected();
 };
 
-export const getLocation = async (): Promise<Location|undefined> => {
+export const getLocation = async (): Promise<Location | undefined> => {
 	const savedLocation = await getCachedLocation();
 	const refreshInterval = getLocationRefreshInterval();
 
-	if (milliSeconds.diffInMilliSeconds(savedLocation?.time) < refreshInterval || (await isSuspended('location'))) {
+	if (
+		milliSeconds.diffInMilliSeconds(savedLocation?.time) < refreshInterval ||
+		(await isSuspended('location'))
+	) {
 		return savedLocation?.location;
 	}
 
-	while (Date.now() - ((await locationFetching.get())?.time || 0) < milliSeconds.fromSeconds(2)) {
+	while (
+		Date.now() - ((await locationFetching.get())?.time || 0) <
+		milliSeconds.fromSeconds(2)
+	) {
 		await delay(200);
 		const savedLocation = await getCachedLocation();
 
-		if (milliSeconds.diffInMilliSeconds(savedLocation?.time) < refreshInterval) {
+		if (
+			milliSeconds.diffInMilliSeconds(savedLocation?.time) < refreshInterval
+		) {
 			return savedLocation?.location;
 		}
 	}

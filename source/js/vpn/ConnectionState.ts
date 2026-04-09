@@ -1,8 +1,8 @@
-import {ProxyInfo} from '../proxy';
-import {ProxyAuthentication} from './ProxyAuthentication';
-import {ApiError} from '../api';
-import {SettingChange} from '../messaging/MessageType';
-import {Credentials} from '../account/credentials/Credentials';
+import type {ProxyInfo} from '../proxy';
+import type {ProxyAuthentication} from './ProxyAuthentication';
+import type {ApiError} from '../api';
+import type {SettingChange} from '../messaging/MessageType';
+import type {Credentials} from '../account/credentials/Credentials';
 import type {SplitTunnelingMode} from './WebsiteFilter';
 import OnAuthRequiredDetails = chrome.webRequest.OnAuthRequiredDetails;
 import OnRequestDetails = browser.proxy._OnRequestDetails;
@@ -37,8 +37,12 @@ export interface StateDefinition {
 	checkConnectingState?(time: number): void;
 	setCredentials?(credentials: Credentials | undefined): void;
 	connectCurrentServer?(): Promise<boolean>;
-	handleProxyRequest?(requestInfo: OnRequestDetails): ProxyInfo | Promise<ProxyInfo>;
-	handleProxyAuthentication?(requestInfo: OnAuthRequiredDetails): Promise<ProxyAuthentication | undefined>;
+	handleProxyRequest?(
+		requestInfo: OnRequestDetails,
+	): ProxyInfo | Promise<ProxyInfo>;
+	handleProxyAuthentication?(
+		requestInfo: OnAuthRequiredDetails,
+	): Promise<ProxyAuthentication | undefined>;
 	setOption?(type: SettingChange, data: any): void | Promise<void>;
 }
 
@@ -66,6 +70,8 @@ export type ConnectionStateSwitch = StateDefinition & Partial<ConnectionState>;
 /**
  * Type guard to ensure contextual type compliance while still allowing custom properties and their type inference.
  */
-export function asConnectionStateSwitch<T extends Record<string, any>>(value: T & ConnectionStateSwitch): T & ConnectionStateSwitch {
+export function asConnectionStateSwitch<T extends Record<string, any>>(
+	value: T & ConnectionStateSwitch,
+): T & ConnectionStateSwitch {
 	return value;
 }

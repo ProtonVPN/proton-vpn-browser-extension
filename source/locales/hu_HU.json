@@ -17,9 +17,6 @@
 			"Already have a Proton Account?": [
 				"Van már fiókja?"
 			],
-			"Auto connect": [
-				"Automatikus kapcsolódás"
-			],
 			"Cancel": [
 				"Mégsem"
 			],
@@ -38,12 +35,6 @@
 			"Disconnect": [
 				"Kapcsolat bontása"
 			],
-			"Enable/disable notifications": [
-				"Értesítések ki- vagy bekapcsolása"
-			],
-			"Exclude websites from the tunnel": [
-				"Weboldalak kizárása az alagútból"
-			],
 			"Log in with Proton": [
 				"Bejelentkezés Protonnal"
 			],
@@ -55,9 +46,6 @@
 			],
 			"Next": [
 				"Tovább"
-			],
-			"Prevent WebRTC leak": [
-				"WebRTC szivárgás megelőzése"
 			],
 			"Quick connect": [
 				"Gyors kapcsolódás"
@@ -361,9 +349,6 @@
 			],
 			"Proton VPN Browser Extension": [
 				"Proton VPN böngésző bővítmény"
-			],
-			"Search": [
-				"Keresés"
 			],
 			"Secure Core": [
 				"Secure Core"

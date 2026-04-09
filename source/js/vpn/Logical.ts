@@ -11,7 +11,7 @@ export interface Logical {
 	ExitCountry: string;
 	HostCountry: string | null;
 	Features: number; // bitmap
-	Location: { Lat: number, Long: number };
+	Location: {Lat: number; Long: number};
 	Name: string;
 	Region?: string | null;
 	ServerIDs?: number[];
@@ -24,7 +24,7 @@ export interface Logical {
 	Load?: number;
 	Translations?: {
 		EntryCountryName?: string;
-		City?: string|null;
+		City?: string | null;
 	};
 	Status: number;
 	_up?: boolean;

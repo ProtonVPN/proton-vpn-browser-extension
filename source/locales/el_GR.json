@@ -17,14 +17,17 @@
 			"Already have a Proton Account?": [
 				"Έχετε ήδη Λογαριασμό Proton;"
 			],
-			"Auto connect": [
-				"Αυτόματη σύνδεση"
-			],
 			"Cancel": [
 				"Ακύρωση"
 			],
+			"Change language": [
+				"Αλλαγή γλώσσας"
+			],
 			"Change server": [
 				"Αλλαγή διακομιστή"
+			],
+			"Configure split tunneling": [
+				"Διαμόρφωση διαίρεσης σήραγγας"
 			],
 			"Connect": [
 				"Σύνδεση"
@@ -35,14 +38,32 @@
 			"Create an account": [
 				"Δημιουργία λογαριασμού"
 			],
+			"Disable auto-connect": [
+				"Απενεργοποίηση αυτόματης σύνδεσης"
+			],
+			"Disable notifications": [
+				"Απενεργοποίηση ειδοποιήσεων"
+			],
+			"Disable Split tunneling": [
+				"Απενεργοποίηση Διαίρεσης Σήραγγας"
+			],
+			"Disable WebRTC leak protection": [
+				"Απενεργοποίηση προστασίας από διαρροές WebRTC"
+			],
 			"Disconnect": [
 				"Αποσύνδεση"
 			],
-			"Enable/disable notifications": [
-				"Απ/ενεργοποίηση ειδοποιήσεων"
+			"Enable auto-connect": [
+				"Ενεργοποίηση αυτόματης σύνδεσης"
 			],
-			"Exclude websites from the tunnel": [
-				"Εξαίρεση ιστότοπων από τη σήραγγα"
+			"Enable notifications": [
+				"Ενεργοποίηση ειδοποιήσεων"
+			],
+			"Enable Split tunneling": [
+				"Ενεργοποίηση Διαίρεσης Σήραγγας"
+			],
+			"Enable WebRTC leak protection": [
+				"Ενεργοποίηση προστασίας από διαρροές WebRTC"
 			],
 			"Log in with Proton": [
 				"Είσοδος με Proton"
@@ -55,9 +76,6 @@
 			],
 			"Next": [
 				"Επόμενο"
-			],
-			"Prevent WebRTC leak": [
-				"Αποτροπή διαρροής WebRTC"
 			],
 			"Quick connect": [
 				"Γρήγορη σύνδεση"
@@ -118,6 +136,11 @@
 		"Action: Server-level button": {
 			"Connect to ${serverName}": [
 				"Συνδεθήτε σε ${serverName}"
+			]
+		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"Αναζήτηση"
 			]
 		},
 		"Confirm": {
@@ -280,6 +303,9 @@
 			"Decide which websites are protected by VPN.": [
 				"Αποφασίστε ποιοι ιστότοποι προστατεύονται από το VPN."
 			],
+			"Disable Secure Core": [
+				"Απενεργοποίηση Secure Core"
+			],
 			"Disconnected": [
 				"Αποσυνδεδεμένο"
 			],
@@ -297,6 +323,9 @@
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Εκπέμπει ειδοποιήσεις συστήματος για συμβάντα σύνδεσης και αποσύνδεσης."
+			],
+			"Enable Secure Core": [
+				"Ενεργοποίηση Secure Core"
 			],
 			"Enjoying Proton VPN?": [
 				"Απολαμβάνετε το Proton VPN;"
@@ -380,9 +409,6 @@
 			"Proton VPN Browser Extension": [
 				"Προέκταση προγράμματος περιήγησης Proton VPN"
 			],
-			"Search": [
-				"Αναζήτηση"
-			],
 			"Secure Core": [
 				"Secure Core"
 			],
@@ -407,8 +433,14 @@
 			"Thank you for installing Proton VPN": [
 				"Σας ευχαριστούμε που εγκαταστήσατε το Proton VPN"
 			],
+			"The split tunneling options cannot be changed on this device": [
+				"Οι επιλογές διαχωρισμένης σήραγγας δεν μπορούν να αλλάξουν σε αυτή τη συσκευή"
+			],
 			"Then just click the Proton VPN icon to sign in.": [
 				"Στη συνέχεια, απλώς κάντε κλικ στο εικονίδιο Proton VPN για να συνδεθείτε."
+			],
+			"This option cannot be changed on this device": [
+				"Αυτή η επιλογή δεν μπορεί να αλλάξει σε αυτή τη συσκευή"
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"Αυτά τα στατιστικά στοιχεία δεν περιέχουν τη διεύθυνση IP σας και δεν μπορούν να χρησιμοποιηθούν για την αναγνώρισή σας. Δε θα τα κοινοποιήσουμε ποτέ σε τρίτους"
@@ -429,7 +461,7 @@
 				"Χρήστης"
 			],
 			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
-				"Χρησιμοποιώντας το Brave, τα αιτήματα DNS ενδέχεται να μην προστατεύονται όταν χρησιμοποιείται η λειτουργία Συμπερίληψης."
+				"Χρησιμοποιώντας το Brave, τα αιτήματα DNS ενδέχεται να μην προστατεύονται όταν η \"Λειτουργία Συμπερίληψης\" είναι ενεργοποιημένη."
 			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
 				"Η VPN αποκλείστηκε από εξωτερικό λογισμικό.\n\nΟρισμένα εργαλεία, όπως προστασίας από ιούς ή διακομιστές μεσολάβησης, μπορούν να παρεμβαίνουν στο Proton VPN. Απενεργοποιήστε τα και δοκιμάστε ξανά."

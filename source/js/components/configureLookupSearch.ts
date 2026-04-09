@@ -19,18 +19,26 @@ class LookupRequest {
 		private area: HTMLElement | undefined = undefined,
 	) {
 		this.abort = new AbortController();
-		this.divs = this.area?.querySelectorAll<HTMLDivElement>('.lookup-result') || [];
-		this.timeout = search && this.divs.length ? setTimeout(() => {
-			this.timeout = undefined;
+		this.divs =
+			this.area?.querySelectorAll<HTMLDivElement>('.lookup-result') || [];
+		this.timeout =
+			search && this.divs.length
+				? setTimeout(() => {
+						this.timeout = undefined;
 
-			void this.lookup();
-		}, 400) : undefined;
+						void this.lookup();
+					}, 400)
+				: undefined;
 	}
 
-	public has(userTier: number, search: string, area: HTMLElement | undefined): boolean {
-		return this.userTier === userTier
-			&& this.search === search
-			&& this.area === area;
+	public has(
+		userTier: number,
+		search: string,
+		area: HTMLElement | undefined,
+	): boolean {
+		return (
+			this.userTier === userTier && this.search === search && this.area === area
+		);
 	}
 
 	public cancel() {
@@ -48,7 +56,8 @@ class LookupRequest {
 	private async lookup(): Promise<void> {
 		try {
 			this.showResult(
-				getExactMatchSearchResult(this.userTier, await this.searchLogical()) || getNoResultBlock(),
+				getExactMatchSearchResult(this.userTier, await this.searchLogical()) ||
+					getNoResultBlock(),
 			);
 		} catch (e) {
 			this.showResult(
@@ -60,7 +69,9 @@ class LookupRequest {
 	private async searchLogical() {
 		this.abort.abort();
 		this.abort = new AbortController();
-		const result = await lookupLogical(this.search, {signal: this.abort.signal});
+		const result = await lookupLogical(this.search, {
+			signal: this.abort.signal,
+		});
 
 		if (result && !isLogicalConnectable(result)) {
 			throw new Error(this.getUnsupportedLogicalErrorMessage(result));
@@ -74,7 +85,7 @@ class LookupRequest {
 			return;
 		}
 
-		this.divs.forEach(div => {
+		this.divs.forEach((div) => {
 			div.innerHTML = html;
 			this.configurator(div);
 		});
@@ -82,14 +93,17 @@ class LookupRequest {
 
 	private getUnsupportedLogicalErrorMessage(logical: Logical): string {
 		if (logical.Features & Feature.TOR) {
-			return c('Info').t`Tor servers such as ${logical.Name} are not currently supported in the browser extension`;
+			return c('Info')
+				.t`Tor servers such as ${logical.Name} are not currently supported in the browser extension`;
 		}
 
 		if (logical.Features & Feature.RESTRICTED) {
-			return c('Info').t`Connecting to dedicated IPs such as ${logical.Name} is not currently supported in the browser extension`;
+			return c('Info')
+				.t`Connecting to dedicated IPs such as ${logical.Name} is not currently supported in the browser extension`;
 		}
 
-		return c('Info').t`Connecting servers such as ${logical.Name} is not currently supported in the browser extension`;
+		return c('Info')
+			.t`Connecting servers such as ${logical.Name} is not currently supported in the browser extension`;
 	}
 }
 
@@ -106,10 +120,5 @@ export const configureLookupSearch = (
 	}
 
 	currentRequest.cancel();
-	currentRequest = new LookupRequest(
-		userTier,
-		configurator,
-		search,
-		area,
-	);
+	currentRequest = new LookupRequest(userTier, configurator, search, area);
 };

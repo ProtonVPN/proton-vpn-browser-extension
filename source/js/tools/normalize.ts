@@ -1,7 +1,7 @@
 const removeAccents = (text: string): string => {
 	try {
 		return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-	} catch (e) {
+	} catch {
 		return text
 			.replace(/[àáâãäå]/g, 'a')
 			.replace(/æ/g, 'ae')
@@ -12,8 +12,7 @@ const removeAccents = (text: string): string => {
 			.replace(/[òóôõö]/g, 'o')
 			.replace(/œ/g, 'oe')
 			.replace(/[ùúûü]/g, 'u')
-			.replace(/[ýÿ]/g, 'y')
-		;
+			.replace(/[ýÿ]/g, 'y');
 	}
 };
 
@@ -22,7 +21,8 @@ export const normalize = (text: string): string => {
 
 	try {
 		text = removeAccents(text);
-	} catch (e) {
+	} catch {
+		/* empty */
 	}
 
 	return text;

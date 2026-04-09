@@ -1,3 +1,5 @@
+// TODO: Remove this when VPNBEX-238 is done.
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import {serverList} from './serverList';
 import type {Logical} from '../vpn/Logical';
 import type {CountryItem} from './countryList';
@@ -24,21 +26,20 @@ export const formatGroup = (
 ): string => {
 	const count = logicals.length;
 	const title = secureCore
-		? /* translator: Header of a list of entry counties once Secure Core exit country has been selected */ c('Label').plural(
-			count,
-			msgid`Entry country`,
-			`Entry countries`,
-		) + (count > 1 ? ' (' + count + ')' : '')
+		? /* translator: Header of a list of entry counties once Secure Core exit country has been selected */ c(
+				'Label',
+			).plural(count, msgid`Entry country`, `Entry countries`) +
+			(count > 1 ? ' (' + count + ')' : '')
 		: /* translator: Header of a list of servers */ c('Label').plural(
-			count,
-			msgid`Server`,
-			`Servers`,
-		);
+				count,
+				msgid`Server`,
+				`Servers`,
+			);
 
 	return `
 		<div
 			class="servers-group${hasStreamingLogical(logicals) ? ' with-tooltip' : ''} ${className || 'group-logicals'}"
-			${simplifiedUi && (userTier <= 0) ? upgradeAttributes : connectionAttributes(extraAttributes)}
+			${simplifiedUi && userTier <= 0 ? upgradeAttributes : connectionAttributes(extraAttributes)}
 		>
 			<div class="server-type group-section">${title}</div>
 			<div class="server-items">${serverList(userTier, logicals, title, secureCore, skipSorting)}</div>
@@ -46,16 +47,23 @@ export const formatGroup = (
 	`;
 };
 
-const getMinTier = (group: CountryItem): number => Math.min(
-	(group?.logicals || []).reduce((t, l) => Math.min(t, l.Tier), 2),
-	Object.values(group?.groups || {}).reduce((t, g) => Math.min(t, getMinTier(g)), 2),
-);
+const getMinTier = (group: CountryItem): number =>
+	Math.min(
+		(group?.logicals || []).reduce((t, l) => Math.min(t, l.Tier), 2),
+		Object.values(group?.groups || {}).reduce(
+			(t, g) => Math.min(t, getMinTier(g)),
+			2,
+		),
+	);
 
 export const torIcon = `<svg class="small-icon" viewBox="-3 -1 24 24" role="img" focusable="false">
 	<use xlink:href="img/icons.svg#tor"></use>
 </svg>`;
 
-const getGroupIcon = (type: CountryItem['type'], countryCode: string): string => {
+const getGroupIcon = (
+	type: CountryItem['type'],
+	countryCode: string,
+): string => {
 	if (type === 'tor') {
 		return torIcon;
 	}
@@ -75,17 +83,16 @@ const getGroupIcon = (type: CountryItem['type'], countryCode: string): string =>
 	</svg>`;
 };
 
-export const isGroupUp = (group: CountryItem): boolean => (group.logicals || []).some(isLogicalUp)
-	|| Object.values(group.groups || {}).some(isGroupUp);
+export const isGroupUp = (group: CountryItem): boolean =>
+	(group.logicals || []).some(isLogicalUp) ||
+	Object.values(group.groups || {}).some(isGroupUp);
 
-const hasStreamingLogical = (logicals: Logical[]) => logicals.some(
-	// TODO Use (logical.Features & Feature.STREAMING) !== 0
-	// TODO once admin properly seed it
-	logical => (logical.Features & (Feature.SECURE_CORE | Feature.TOR | Feature.RESTRICTED | Feature.PARTNER)) === 0,
-);
+const hasStreamingLogical = (logicals: Logical[]) =>
+	logicals.some((logical) => (logical.Features & Feature.STREAMING) !== 0);
 
-const hasGroupStreaming = (group: CountryItem): boolean => hasStreamingLogical(group.logicals || [])
-	|| Object.values(group.groups || {}).some(hasGroupStreaming);
+const hasGroupStreaming = (group: CountryItem): boolean =>
+	hasStreamingLogical(group.logicals || []) ||
+	Object.values(group.groups || {}).some(hasGroupStreaming);
 
 const formatGroups = (
 	userTier: number,
@@ -95,13 +102,27 @@ const formatGroups = (
 	upgradeNeeded: boolean,
 	groups: (CountryItem | undefined)[],
 	showFlag = false,
-): string[] => (groups.map(
-	group => (group && (Object.values(group?.groups || {}).length || group?.logicals?.length)) ? ({
-		group,
-		list: serverGroup(userTier, countryCode, group, predicate, secureCore, showFlag),
-	}) : {},
-).filter(({list}) => list) as ({group: CountryItem, list: string})[]).map(
-	({group, list}) => {
+): string[] =>
+	(
+		groups
+			.map((group) =>
+				group &&
+				(Object.values(group?.groups || {}).length || group?.logicals?.length)
+					? {
+							group,
+							list: serverGroup(
+								userTier,
+								countryCode,
+								group,
+								predicate,
+								secureCore,
+								showFlag,
+							),
+						}
+					: {},
+			)
+			.filter(({list}) => list) as {group: CountryItem; list: string}[]
+	).map(({group, list}) => {
 		if (group.type === 'secureCore') {
 			return list;
 		}
@@ -110,8 +131,8 @@ const formatGroups = (
 		const up = isGroupUp(group);
 		const cityName = group.name;
 		const grayOutButton = simplifiedUi && userTier <= 0;
-		const subscriptionNeeded = ((simplifiedUi && userTier <= 0) || upgradeNeeded);
-		const unconnectable = (subscriptionNeeded || !up);
+		const subscriptionNeeded = (simplifiedUi && userTier <= 0) || upgradeNeeded;
+		const unconnectable = subscriptionNeeded || !up;
 
 		return `
 			<div class="servers-group" data-tier="${getMinTier(group)}" data-country-code="${countryCode}">
@@ -119,14 +140,21 @@ const formatGroups = (
 					<button
 						class="flex flex-1 text-left group-button button-light-hover connect-option${unconnectable ? '' : ' connect-clickable'}${up ? '' : ' in-maintenance'}"
 						title="${c('Action: City-level button').t`Connect to ${cityName}`}"
-						${up ? (subscriptionNeeded ? upgradeAttributes : connectionAttributes({
-							exitCountry: countryCode,
-							subGroup: group.englishName,
-						})) : ''}
+						${
+							up
+								? subscriptionNeeded
+									? upgradeAttributes
+									: connectionAttributes({
+											exitCountry: countryCode,
+											subGroup: group.englishName,
+										})
+								: ''
+						}
 					>
-						${showFlag
-							? `<div class="group-icon squeezed">${getCountryFlag(countryCode, true)}</div>`
-							: `<div class="group-icon">${getGroupIcon(group.type, countryCode)}</div>`
+						${
+							showFlag
+								? `<div class="group-icon squeezed">${getCountryFlag(countryCode, true)}</div>`
+								: `<div class="group-icon">${getGroupIcon(group.type, countryCode)}</div>`
 						}
 						<div class="flex-1 group-name">${cityName}</div>
 						<div class="flex-1 connect-text">
@@ -134,12 +162,13 @@ const formatGroups = (
 						</div>
 					</button>
 					<div class="button-box">
-						${up ? (
-							((simplifiedUi && userTier <= 0) || (!paidOnly && upgradeNeeded))
-								? upgradeButton()
-								: '' // connectionButton({exitCountry: code})
-							)
-							: maintenanceIcon
+						${
+							up
+								? (simplifiedUi && userTier <= 0) ||
+									(!paidOnly && upgradeNeeded)
+									? upgradeButton()
+									: '' // connectionButton({exitCountry: code})
+								: maintenanceIcon
 						}
 						${expandButton(
 							{
@@ -156,17 +185,20 @@ const formatGroups = (
 				<div class="servers-list" id="${id}">${list}</div>
 			</div>
 		`;
-	},
-);
+	});
 
-const getGroupParts = (group: CountryItem): [string, (CountryItem | undefined)[]][] => {
+const getGroupParts = (
+	group: CountryItem,
+): [string, (CountryItem | undefined)[]][] => {
 	const groups = group.groups || {};
 	const freeGroup = (groups as any).Free as CountryItem | undefined;
 	const torGroup = (groups as any).Tor as CountryItem | undefined;
 	const secureCoreGroup = (groups as any).SecureCore as CountryItem | undefined;
 	const otherGroup = (groups as any).Other as CountryItem | undefined;
 	const restGroups = getKeysAndValues(groups)
-		.filter(({key}) => !({Free: true, Tor: true, SecureCore: true, Other: true})[key])
+		.filter(
+			({key}) => !{Free: true, Tor: true, SecureCore: true, Other: true}[key],
+		)
 		.map(({value}) => value);
 
 	return [
@@ -193,7 +225,7 @@ export const getServerGroups = (
 			countryCode,
 			predicate,
 			secureCore,
-			items.every(g => needUpgrade(userTier, g)),
+			items.every((g) => needUpgrade(userTier, g)),
 			list,
 			showFlagOnGroups,
 		);
@@ -203,14 +235,15 @@ export const getServerGroups = (
 			return '';
 		}
 
-		return (withTitle && !secureCore
-			? `<div
+		return (
+			(withTitle && !secureCore
+				? `<div
 				class="servers-group group-section${items.some(hasGroupStreaming) ? ' with-tooltip' : ''}"
 				data-tier="${getMinTier(group)}"
 				data-country-code="${countryCode}"
 			>${section}${count > 1 ? ' (' + count + ')' : ''}</div>`
-			: ''
-		) + subGroups.join('');
+				: '') + subGroups.join('')
+		);
 	});
 };
 
@@ -226,16 +259,19 @@ export const serverGroup = (
 	const secureCoreEnabled = userTier > 0 && secureCore;
 
 	if (logicals.length) {
-		return formatGroup(
-			userTier,
-			logicals,
-			secureCoreEnabled,
-			{
-				tier: logicals.reduce((t, l) => Math.min(t, l.Tier), 2),
-				'country-code': countryCode,
-			},
-		);
+		return formatGroup(userTier, logicals, secureCoreEnabled, {
+			tier: logicals.reduce((t, l) => Math.min(t, l.Tier), 2),
+			'country-code': countryCode,
+		});
 	}
 
-	return getServerGroups(userTier, countryCode, group, predicate, secureCoreEnabled, true, showFlagOnGroups).join('');
+	return getServerGroups(
+		userTier,
+		countryCode,
+		group,
+		predicate,
+		secureCoreEnabled,
+		true,
+		showFlagOnGroups,
+	).join('');
 };

@@ -5,7 +5,6 @@ import {milliSeconds} from './milliSeconds';
  * Stores the timestamp of a future event and provides a set of utility methods.
  */
 export class RemainingTime {
-
 	/**
 	 * @example
 	 * declare const nextTimestamp // 1 minute from now
@@ -26,8 +25,10 @@ export class RemainingTime {
 	 * r2.getProportion() // 0.5
 	 */
 	constructor(
-		/** Timestamp [ms] for the next event. */ public readonly nextEvent: number,
-		/** *[ms]*; The total time from last event *(or creation)* until the next event. */ public readonly totalDuration: number = nextEvent - Date.now(),
+		/** Timestamp [ms] for the next event. */
+		public readonly nextEvent: number,
+		/** *[ms]*; The total time from last event *(or creation)* until the next event. */
+		public readonly totalDuration: number = nextEvent - Date.now(),
 	) {}
 
 	/**
@@ -63,8 +64,14 @@ export class RemainingTime {
 
 	/** Returns remaining time as digits *[mm:ss]*. */
 	public getChronometer(/** *[ms]* */ now = Date.now()) {
-		const minutes = Math.trunc(milliSeconds.toMinutes(this.getRemainingTime(now)));
-		const seconds = Math.round(milliSeconds.toSeconds(this.getRemainingTime(now) % milliSeconds.fromMinutes(1)));
+		const minutes = Math.trunc(
+			milliSeconds.toMinutes(this.getRemainingTime(now)),
+		);
+		const seconds = Math.round(
+			milliSeconds.toSeconds(
+				this.getRemainingTime(now) % milliSeconds.fromMinutes(1),
+			),
+		);
 
 		return `${this.twoDigit(minutes)}:${this.twoDigit(seconds)}` as const;
 	}

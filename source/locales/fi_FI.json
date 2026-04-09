@@ -17,14 +17,17 @@
 			"Already have a Proton Account?": [
 				"Onko sinulla jo Proton-tili?"
 			],
-			"Auto connect": [
-				"Automaattiyhteys"
-			],
 			"Cancel": [
 				"Peruuta"
 			],
+			"Change language": [
+				"Vaihda kieli"
+			],
 			"Change server": [
 				"Vaihda palvelinta"
+			],
+			"Configure split tunneling": [
+				"Määritä jaettu tunnelointi"
 			],
 			"Connect": [
 				"Yhdistä"
@@ -35,14 +38,32 @@
 			"Create an account": [
 				"Luo tili"
 			],
+			"Disable auto-connect": [
+				"Poista automaattinen yhdistäminen käytöstä"
+			],
+			"Disable notifications": [
+				"Poista ilmoitukset käytöstä"
+			],
+			"Disable Split tunneling": [
+				"Poista jaettu tunnelointi käytöstä"
+			],
+			"Disable WebRTC leak protection": [
+				"Poista WebRTC-vuotosuojaus käytöstä"
+			],
 			"Disconnect": [
 				"Katkaise yhteys"
 			],
-			"Enable/disable notifications": [
-				"Ota ilmoitukset käyttöön/poista ne käytöstä"
+			"Enable auto-connect": [
+				"Ota automaattinen yhdistäminen käyttöön"
 			],
-			"Exclude websites from the tunnel": [
-				"Sulje verkkosivustoja tunnelin ulkopuolelle"
+			"Enable notifications": [
+				"Ota ilmoitukset käyttöön"
+			],
+			"Enable Split tunneling": [
+				"Ota jaettu tunnelointi käyttöön"
+			],
+			"Enable WebRTC leak protection": [
+				"Ota WebRTC-vuotosuojaus käyttöön"
 			],
 			"Log in with Proton": [
 				"Kirjaudu Protonilla"
@@ -55,9 +76,6 @@
 			],
 			"Next": [
 				"Seuraava"
-			],
-			"Prevent WebRTC leak": [
-				"Estä WebRTC-vuoto"
 			],
 			"Quick connect": [
 				"Pikayhteys"
@@ -118,6 +136,11 @@
 		"Action: Server-level button": {
 			"Connect to ${serverName}": [
 				"Yhdistä palvelimeen ${serverName}"
+			]
+		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"Haku"
 			]
 		},
 		"Confirm": {
@@ -280,6 +303,9 @@
 			"Decide which websites are protected by VPN.": [
 				"Päätä, mitkä verkkosivustot suojataan VPN:llä."
 			],
+			"Disable Secure Core": [
+				"Poista Secure Core käytöstä"
+			],
 			"Disconnected": [
 				"Ei yhdistetty"
 			],
@@ -297,6 +323,9 @@
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Lähetä järjestelmäilmoituksia yhteyden muodostus- ja katkaisutapahtumista."
+			],
+			"Enable Secure Core": [
+				"Ota Secure Core käyttöön"
 			],
 			"Enjoying Proton VPN?": [
 				"Nautitko Proton VPN:stä?"
@@ -380,9 +409,6 @@
 			"Proton VPN Browser Extension": [
 				"Proton VPN -selainlaajennus"
 			],
-			"Search": [
-				"Haku"
-			],
 			"Secure Core": [
 				"Secure Core"
 			],
@@ -407,8 +433,14 @@
 			"Thank you for installing Proton VPN": [
 				"Kiitos Proton VPN:n asennuksesta"
 			],
+			"The split tunneling options cannot be changed on this device": [
+				"Jaetun tunneloinnin asetuksia ei voi muuttaa tällä laitteella"
+			],
 			"Then just click the Proton VPN icon to sign in.": [
 				"Kirjaudu sitten sisään painamalla Proron VPN -kuvaketta."
+			],
+			"This option cannot be changed on this device": [
+				"Tätä asetusta ei voi muuttaa tällä laitteella"
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"Nämä tilastot eivät sisällä IP-osoitettasi, eikä sinua ole mahdollista tunnistaa niiden perusteella. Emme koskaa jaa niitä ulkopuolisille tahoille"
@@ -429,7 +461,7 @@
 				"Käyttäjä"
 			],
 			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
-				"Brave-selaimella DNS-pyynnöt voivat olla suojaamattomia Include-tilassa."
+				"Brave-selaimella DNS-pyynnöt voivat olla suojaamattomia, kun ”Include mode” -tila on aktiivinen."
 			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
 				"VPN:n on estänyt ulkoinen ohjelmisto.\n\nTietyt työkalut, kuten virustorjuntaohjelmat tai välityspalvelimet, saattavat häiritä Proton VPN:n toimintaa. Poista ne käytöstä ja yritä uudelleen."

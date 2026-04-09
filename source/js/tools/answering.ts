@@ -1,14 +1,21 @@
-export const allWatchers: (Record<string, (...args: any[]) => void>)[] = [];
+import {getRuntime} from './getRuntime';
 
-export const watchBroadcastMessages = (watchers: Record<string, (...args: any[]) => void>) => {
+export const allWatchers: Record<string, (...args: any[]) => void>[] = [];
+
+export const watchBroadcastMessages = (
+	watchers: Record<string, (...args: any[]) => void>,
+) => {
 	allWatchers.push(watchers);
 
 	return () => {
 		allWatchers.splice(allWatchers.indexOf(watchers), 1);
 	};
-}
+};
 
-export const watchOnceBroadcastMessage = (name: string, callback: (...args: any[]) => void) => {
+export const watchOnceBroadcastMessage = (
+	name: string,
+	callback: (...args: any[]) => void,
+) => {
 	let unwatch: (() => void) | undefined = undefined;
 
 	unwatch = watchBroadcastMessages({
@@ -20,7 +27,7 @@ export const watchOnceBroadcastMessage = (name: string, callback: (...args: any[
 };
 
 export const messageListener = (request: any) => {
-	allWatchers.forEach(watchers => {
+	allWatchers.forEach((watchers) => {
 		const type = request.type;
 		const watcher = type ? watchers[type] : undefined;
 
@@ -38,4 +45,4 @@ export const messageListener = (request: any) => {
 	return false;
 };
 
-chrome.runtime.onMessage.addListener(messageListener);
+getRuntime()?.onMessage.addListener(messageListener);

@@ -5,8 +5,12 @@ import _CreateCreateProperties = browser.tabs._CreateCreateProperties;
 
 const opening: Record<string, true> = {};
 
-export const openTab = async (urlOrOptions: string | _CreateCreateProperties, id?: string | undefined) => {
-	const options = typeof urlOrOptions === 'string' ? {url: urlOrOptions} : urlOrOptions;
+export const openTab = async (
+	urlOrOptions: string | _CreateCreateProperties,
+	id?: string | undefined,
+) => {
+	const options =
+		typeof urlOrOptions === 'string' ? {url: urlOrOptions} : urlOrOptions;
 	const requestId = id || options.url;
 
 	if (requestId) {
@@ -24,7 +28,11 @@ export const openTab = async (urlOrOptions: string | _CreateCreateProperties, id
 	return await getTabs().create(options);
 };
 
-export const leaveWindowForTab = (window: Window, urlOrOptions: string | _CreateCreateProperties, id?: string | undefined): void => {
+export const leaveWindowForTab = (
+	window: Window,
+	urlOrOptions: string | _CreateCreateProperties,
+	id?: string | undefined,
+): void => {
 	triggerPromise(openTab(urlOrOptions, id));
 	delay(1).then(() => {
 		window.close();

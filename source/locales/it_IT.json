@@ -17,14 +17,14 @@
 			"Already have a Proton Account?": [
 				"Hai già un account Proton?"
 			],
-			"Auto connect": [
-				"Connessione automatica"
-			],
 			"Cancel": [
 				"Annulla"
 			],
 			"Change server": [
 				"Cambia server"
+			],
+			"Configure split tunneling": [
+				"Configura lo split tunneling"
 			],
 			"Connect": [
 				"Connetti"
@@ -35,14 +35,32 @@
 			"Create an account": [
 				"Registrati"
 			],
+			"Disable auto-connect": [
+				"Disattiva la connessione automatica"
+			],
+			"Disable notifications": [
+				"Disattiva notifiche"
+			],
+			"Disable Split tunneling": [
+				"Disattiva lo Split tunneling"
+			],
+			"Disable WebRTC leak protection": [
+				"Disabilita la protezione dalle perdite WebRTC"
+			],
 			"Disconnect": [
 				"Disconnetti"
 			],
-			"Enable/disable notifications": [
-				"Attiva/disattiva le notifiche"
+			"Enable auto-connect": [
+				"Abilita la connessione automatica"
 			],
-			"Exclude websites from the tunnel": [
-				"Escludi siti web dal tunnel"
+			"Enable notifications": [
+				"Abilita le notifiche"
+			],
+			"Enable Split tunneling": [
+				"Abilita lo Split tunneling"
+			],
+			"Enable WebRTC leak protection": [
+				"Abilita la protezione dalle perdite WebRTC"
 			],
 			"Log in with Proton": [
 				"Accedi tramite Proton"
@@ -55,9 +73,6 @@
 			],
 			"Next": [
 				"Avanti"
-			],
-			"Prevent WebRTC leak": [
-				"Prevenzione di perdite WebRTC"
 			],
 			"Quick connect": [
 				"Connessione rapida"
@@ -118,6 +133,11 @@
 		"Action: Server-level button": {
 			"Connect to ${serverName}": [
 				"Connetti a ${serverName}"
+			]
+		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"Cerca"
 			]
 		},
 		"Confirm": {
@@ -280,6 +300,9 @@
 			"Decide which websites are protected by VPN.": [
 				"Decidi quali siti web verranno protetti dalla VPN."
 			],
+			"Disable Secure Core": [
+				"Disattiva Secure Core"
+			],
 			"Disconnected": [
 				"Disconnesso"
 			],
@@ -297,6 +320,9 @@
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Invia notifiche di sistema per le connessioni e le disconnessioni."
+			],
+			"Enable Secure Core": [
+				"Abilita Secure Core"
 			],
 			"Enjoying Proton VPN?": [
 				"Ti piace Proton VPN?"
@@ -380,9 +406,6 @@
 			"Proton VPN Browser Extension": [
 				"Estensione di Proton VPN per il browser"
 			],
-			"Search": [
-				"Cerca"
-			],
 			"Secure Core": [
 				"Secure Core"
 			],
@@ -429,7 +452,7 @@
 				"Utente"
 			],
 			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
-				"Usando Brave, le richieste DNS potrebbero essere non protette in modalità Include."
+				"Usando Brave, le richieste DNS potrebbero essere non protette quando la modalità \"Includi\" è attiva."
 			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
 				"VPN bloccata da software esterno.\n\nAlcuni strumenti, come gli antivirus o i proxy, possono interferire con Proton VPN. Disattivali e riprova."

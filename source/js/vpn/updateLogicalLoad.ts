@@ -1,8 +1,9 @@
 import {setJitterInterval} from '../tools/delay';
 import {broadcastMessage} from '../tools/broadcastMessage';
-import {BroadcastLogicals, loadLoads} from './getLogicals';
+import type {BroadcastLogicals} from './getLogicals';
+import {loadLoads} from './getLogicals';
 import {warn} from '../log/log';
-import {getLogicalLoadsRefreshInterval} from '../intervals'
+import {getLogicalLoadsRefreshInterval} from '../intervals';
 
 export const updateLogicalLoad = () => {
 	let consecutiveLoadFailures = 0;
@@ -17,11 +18,13 @@ export const updateLogicalLoad = () => {
 		} catch (e) {
 			if (++consecutiveLoadFailures > 5) {
 				warn(
-					'Loagical load update failed after ' + consecutiveLoadFailures + ' attempts, last update was ',
+					'Loagical load update failed after ' +
+						consecutiveLoadFailures +
+						' attempts, last update was ',
 					lastUpdate,
 					e,
 				);
 			}
 		}
 	});
-}
+};

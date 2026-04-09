@@ -1,4 +1,7 @@
-import {sessionDataStorageType, storage, Timed} from '../../tools/storage';
-import {User, UserResult} from './User';
+import type {Timed} from '../../tools/storage';
+import {sessionDataStorageType, storage} from '../../tools/storage';
+import type {User, UserResult} from './User';
 
-export const storedUser = storage.selfItem<Partial<Timed<{user?: User | UserResult}>>>('user', sessionDataStorageType);
+export const storedUser = storage.selfItem<
+	Partial<Timed<{user?: User | UserResult}>>
+>('user', sessionDataStorageType);

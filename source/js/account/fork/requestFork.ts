@@ -1,6 +1,7 @@
 import {getFullAppVersion} from '../../config';
 import {arrayToBinaryString, encodeBase64URL} from '../../encoding';
 import {Storage, storage} from '../../tools/storage';
+import type {ForkState} from './forkState';
 
 const actions = {
 	signup: '2',
@@ -8,18 +9,25 @@ const actions = {
 
 export type RequestForkAction = keyof typeof actions;
 
-export const requestFork = async ({host, action, partnerId, independent}: {
-	host: string,
-	action?: RequestForkAction,
+export const requestFork = async ({
+	host,
+	action,
+	partnerId,
+	independent,
+}: {
+	host: string;
+	action?: RequestForkAction;
 	partnerId?: string;
-	independent?: boolean
+	independent?: boolean;
 }) => {
-	const state = encodeBase64URL(arrayToBinaryString(crypto.getRandomValues(new Uint8Array(32))));
+	const state = encodeBase64URL(
+		arrayToBinaryString(crypto.getRandomValues(new Uint8Array(32))),
+	);
 
 	const forkState: ForkState = {
 		partnerId,
-		independent
-	}
+		independent,
+	};
 	await storage.setItem(`f${state}`, forkState, Storage.LOCAL);
 
 	const params: Record<string, string> = {

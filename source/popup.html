@@ -142,8 +142,8 @@
 						<div id="menu">
 							<div class="filters-bar">
 								<div class="search-box">
-									<label for="search-input" title="Search">
-										<svg aria-label="Search" class="search-icon" viewBox="0 0 24 24">
+									<label for="search-input" title="Search" data-context="Alternative text for the search (magnifying glass) icon">
+										<svg aria-label="Search" data-context="Alternative text for the search (magnifying glass) icon" class="search-icon" viewBox="0 0 24 24">
 											<path fill-rule="evenodd" d="M16.5 9.75a6.75 6.75 0 1 1-13.5 0 6.75 6.75 0 0 1 13.5 0Zm-1.47 6.34a8.25 8.25 0 1 1 1.06-1.06l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69Z" clip-rule="evenodd"/>
 										</svg>
 									</label>
@@ -302,8 +302,22 @@
 								<path fill-rule="evenodd" d="M16.255 20.805a.75.75 0 0 0 .05-1.06L9.264 12l7.041-7.745a.75.75 0 0 0-1.11-1.01l-7.5 8.25a.75.75 0 0 0 0 1.01l7.5 8.25a.75.75 0 0 0 1.06.05Z" clip-rule="evenodd"/>
 							</svg></button>
 							<div class="name flex items-center" data-trans>Split tunneling</div>
-
 						</h1>
+
+						<div class="locked-feature-page-warning">
+							<div>
+								<svg
+									fill="currentColor"
+									viewBox="0 0 1309.443 1658.036"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<use xlink:href="img/icons.svg#lock"></use>
+								</svg>
+							</div>
+							<div>
+								<p data-trans>The split tunneling options cannot be changed on this device</p>
+							</div>
+						</div>
 
 						<div class="action-block split-tunneling-inner-action-block">
 							<div class="action-description">
@@ -317,7 +331,7 @@
 									</div>
 								</div>
 
-								<button data-st-action="toggle" class="toggle" title="Auto connect" data-context="Action" data-comment="Tooltip of the toggle to auto-connect"></button>
+								<button data-st-action="toggle" class="toggle" data-context="Action" data-comment="Tooltip of the toggle for Split Tunneling" data-tooltip-title='{"enable":"Enable Split tunneling", "disable":"Disable Split tunneling"}'></button>
 							</div>
 						</div>
 
@@ -354,8 +368,6 @@
 								</div>
 							</div>
 
-
-							<!-- <p class="fade-text my1" data-trans>Select websites to exclude from your VPN connection.</p> -->
 							<div class="split-tunneling-filter-add">
 								<button data-st-action="add-website" class="primary-button" data-trans data-context="Action">Add website</button>
 							</div>
@@ -462,6 +474,10 @@
 
 							<button data-open-account-page="vpn" class="primary-button" data-trans data-context="Action" data-comment="Button to go to account dashboard">
 								Manage subscription
+							</button>
+
+							<button data-open-account-page="vpn/language-time" class="secondary-button" data-trans data-context="Action" data-comment="Button to go to account dashboard language section">
+								Change language
 							</button>
 
 							<div class="action-block telemetry-block">

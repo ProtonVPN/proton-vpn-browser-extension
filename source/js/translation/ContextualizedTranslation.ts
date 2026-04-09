@@ -3,6 +3,5 @@ export class ContextualizedTranslation {
 		public readonly context: string,
 		public readonly key: string,
 		public readonly values: string[],
-	) {
-	}
+	) {}
 }

@@ -1,5 +1,5 @@
 module.exports = {
-	appVersion: '1.2.15',
+	appVersion: '1.2.16',
 	appId: 'jplgfhpmjnbigmhklmmbgecoobifkmpa',
 	baseDomainURL: 'https://account.proton.me',
 	tokenDuration: 1200, // seconds
@@ -39,5 +39,6 @@ module.exports = {
 		'Sophos',
 		'Zscaler',
 	],
-	sentry: 'https://5c4abb94f5a644b38cf8e3261dfad0e3@reports.proton.me/api/core/v4/reports/sentry/67'
+	sentry:
+		'https://5c4abb94f5a644b38cf8e3261dfad0e3@reports.proton.me/api/core/v4/reports/sentry/67',
 };

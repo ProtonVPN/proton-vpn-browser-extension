@@ -7,7 +7,7 @@ export const getCountryFlag = (country: string, vocalized = false) => {
 		loading="lazy"
 		class="country-flag-img"
 		src="/img/flags/${country.toLowerCase()}.svg"
-		alt="${String.fromCodePoint(...[...country].map(c => c.charCodeAt(0) + 0x1F1A5))}"
+		alt="${String.fromCodePoint(...[...country].map((c) => c.charCodeAt(0) + 0x1f1a5))}"
 		width="20"
 		height="15"
 		${vocalized ? 'aria-hidden="true"' : ''}

@@ -1,4 +1,5 @@
-import {User} from './User';
+import type {User} from './User';
 import {getUserMaxTier} from './getUserMaxTier';
 
-export const canAccessPaidServers = (user: User|undefined) => getUserMaxTier(user) > 0;
+export const canAccessPaidServers = (user: User | undefined) =>
+	getUserMaxTier(user) > 0;

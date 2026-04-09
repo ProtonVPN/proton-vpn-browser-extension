@@ -8,24 +8,30 @@
  * //... the rest of the file
  */
 
-module.exports = function (/** @type string */source) {
+module.exports = function (/** @type string */ source) {
 	const useBackground = /^(.)use background\1/i;
 	const usePopup = /^(.)use popup\1/i;
 
 	let injected = '';
 
 	if (useBackground.test(source)) {
-		injected = template('!isInBackground()', "'use background' directive detected in");
+		injected = template(
+			'!isInBackground()',
+			"'use background' directive detected in",
+		);
 	}
 
 	if (usePopup.test(source)) {
-		injected = template('isInBackground()', "'use popup' directive detected in");
+		injected = template(
+			'isInBackground()',
+			"'use popup' directive detected in",
+		);
 	}
 
 	return injected + source;
 };
 
-function template(/** @type string */condition, /** @type string */message) {
+function template(/** @type string */ condition, /** @type string */ message) {
 	return `
 import { isInBackground } from 'js/context/isInBackground';
 //@ts-ignore
@@ -35,4 +41,4 @@ if (${condition}) {
 }
 
 `;
-};
+}

@@ -1,12 +1,21 @@
-import {apiDomainsExclusion, baseAPIURL, getFullAppVersion, incompatibleSoftware, routes} from './config';
+import {
+	apiDomainsExclusion,
+	baseAPIURL,
+	getFullAppVersion,
+	incompatibleSoftware,
+	routes,
+} from './config';
 import {readSession} from './account/readSession';
 import {getAuthHeaders} from './account/getAuthHeaders';
-import {Session} from './account/Session';
+import type {Session} from './account/Session';
 import {refreshToken} from './account/refreshToken';
+import {getRegisteredLocale} from './account/user/getRegisteredLocale';
 import {matchDomainList} from './tools/matchDomainList';
+import {getLocale} from './tools/locale';
 import {c} from './tools/translate';
 import {milliSeconds} from './tools/milliSeconds';
-import {broadcastMessage, ExtensionUpdate} from './tools/broadcastMessage';
+import type {ExtensionUpdate} from './tools/broadcastMessage';
+import {broadcastMessage} from './tools/broadcastMessage';
 import {getUpdateError, setUpdateError} from './tools/update';
 import {delay} from './tools/delay';
 import {warn} from './log/log';
@@ -15,10 +24,136 @@ import {handleError} from './tools/sentry';
 import {makeResponseReplayable} from './tools/makeResponseReplayable';
 import OnRequestDetails = browser.proxy._OnRequestDetails;
 
-export const jsonRequest = (method: string, body: any, headers: Record<string, string> = {}) => ({
+export enum ErrorActionCode {
+	UPGRADE = 'Upgrade',
+	SIGN_OUT = 'SignOut',
+	REFRESH = 'Refresh',
+}
+
+export enum ErrorActionCategory {
+	MAIN_ACTION = 'main_action',
+	SECONDARY_ACTION = 'secondary_action',
+	LINK = 'link',
+}
+
+export interface ErrorAction {
+	Code: ErrorActionCode;
+	Category: ErrorActionCategory;
+	Name: string;
+	URL: string;
+}
+
+export interface DeviceLimitErrorDetails {
+	Type: 'DeviceLimit';
+	Title?: string;
+	Body?:
+		| string
+		| Array<{
+				Component: string;
+				Icon: string;
+				Text: string;
+		  }>;
+	Hint?: string;
+	Actions?: ErrorAction[];
+}
+
+export interface ApiError<
+	T = Record<string, unknown> | DeviceLimitErrorDetails,
+	S extends number = number,
+	C extends number = number,
+> {
+	httpStatus: S;
+	Code: C;
+	Error: string;
+	Details?: T;
+	Warning?: boolean;
+	_id?: string;
+}
+
+export type UnauthorizedError<
+	T = Record<string, unknown>,
+	C extends number = number,
+> = ApiError<T, 401, C>;
+
+export type ForbiddenError<
+	T = Record<string, unknown>,
+	C extends number = number,
+> = ApiError<T, 403, C>;
+
+export type InvalidTokenError<T = Record<string, unknown>> = UnauthorizedError<
+	T,
+	401
+>;
+
+const isObject = (value: unknown) =>
+	typeof value === 'object' && value !== null;
+
+export const isSuccessfulResponse = (response: Response): boolean =>
+	response.status >= 200 && response.status < 300;
+
+export const isNetworkError = (error: unknown): boolean =>
+	isObject(error) &&
+	((error as {name?: string}).name === 'NetworkError' ||
+		/^(NetworkError |(TypeError: )?Failed to fetch)/.test(
+			(error as {message?: string}).message || '',
+		));
+
+export const hasErrorHttpStatus = (
+	error: unknown,
+	httpStatus: number,
+): error is ApiError =>
+	isObject(error) && (error as {httpStatus?: number}).httpStatus === httpStatus;
+
+export const isNotModified = (
+	response: unknown,
+): response is ApiError<unknown, 304, number> | {status: 304} =>
+	(response as {status?: number})?.status === 304 ||
+	hasErrorHttpStatus(response, 304);
+
+export const isNotFoundError = (error: unknown): error is UnauthorizedError =>
+	hasErrorHttpStatus(error, 404);
+
+export const isUnauthorizedError = (
+	error: unknown,
+): error is UnauthorizedError => hasErrorHttpStatus(error, 401);
+
+export const isInvalidTokenError = (
+	error: unknown,
+): error is InvalidTokenError =>
+	isUnauthorizedError(error) && error.Code === 401;
+
+export const isForbiddenError = (error: unknown): error is ForbiddenError =>
+	hasErrorHttpStatus(error, 403);
+
+export const isDeviceLimitError = (
+	error: unknown,
+): error is ApiError<DeviceLimitErrorDetails> =>
+	((error as ApiError)?.Details as {Type?: string})?.Type === 'DeviceLimit';
+
+export const needsLogout = (error: unknown): error is ApiError =>
+	isObject(error) &&
+	((error as {Code?: number}).Code === 2028 ||
+		(error as {Code?: number}).Code === 2027);
+
+export const needsUpdate = (error: unknown): error is ApiError =>
+	isObject(error) && (error as {Code?: number}).Code === 5003;
+
+export const isRetriableResponse = (response: Response): boolean =>
+	response.status === 429;
+
+export const isRetriableError = (error: unknown): error is ApiError =>
+	isObject(error) &&
+	((error as {Code?: number}).Code === 429 ||
+		(error as {Code?: number}).Code === 503);
+
+export const jsonRequest = (
+	method: string,
+	body: unknown,
+	headers: Record<string, string> = {},
+) => ({
 	method,
 	headers: {
-		'Accept': 'application/json',
+		Accept: 'application/json',
 		'Content-Type': 'application/json',
 		...headers,
 	},
@@ -29,7 +164,8 @@ export const jsonRequest = (method: string, body: any, headers: Record<string, s
  * Object to remember for each route (method + URL) until when (time)
  * we should not re-fetch (and so return instead the memorized response)
  */
-const retryAfterPerRoute: Record<string, {time: number, response: Response}> = {};
+const retryAfterPerRoute: Record<string, {time: number; response: Response}> =
+	{};
 
 /**
  * Return millisecond-timestamp.
@@ -45,23 +181,27 @@ const getRetryAfterTimestamp = (
 		Date.now() + milliSeconds.fromDays(7),
 		// If the Retry-After is all digit
 		/^\d+$/.test(retryAfterHeader)
-			// Then it's a number of seconds (as per https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After)
-			? Date.now() + milliSeconds.fromSeconds(Math.max(10, Number(retryAfterHeader)))
-			// Else, it's a date string
-			: (new Date(retryAfterHeader)).getTime(),
+			? // Then it's a number of seconds (as per https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After)
+				Date.now() +
+					milliSeconds.fromSeconds(Math.max(10, Number(retryAfterHeader)))
+			: // Else, it's a date string
+				new Date(retryAfterHeader).getTime(),
 	);
-}
+};
 
-const routeRegExps = Object.values(routes).reduce((regExps, route) => {
-	regExps[route] = new RegExp(`^${route.replace(/\{[^}]+}/g, '[^/]+')}$`);
+const routeRegExps = Object.values(routes).reduce(
+	(regExps, route) => {
+		regExps[route] = new RegExp(`^${route.replace(/\{[^}]+}/g, '[^/]+')}$`);
 
-	return regExps;
-}, {} as Record<string, RegExp>);
+		return regExps;
+	},
+	{} as Record<string, RegExp>,
+);
 
 const getRoute = (method: string, url: string) => {
 	const path = url.split('?')[0] as string;
 
-	for (let route of routes) {
+	for (const route of routes) {
 		if (routeRegExps[route]!.test(path)) {
 			return `${method} ${route}`;
 		}
@@ -94,7 +234,7 @@ export const fetchApi = async (
 	const headers = (init?.headers || {}) as Record<string, string>;
 
 	if (!headers['x-pm-uid']) {
-		const session = inputSession || await readSession();
+		const session = inputSession || (await readSession());
 
 		if (!session.expiresAt) {
 			const uid = session?.uid;
@@ -102,11 +242,18 @@ export const fetchApi = async (
 
 			if (uid && accessToken) {
 				Object.assign(headers, getAuthHeaders(uid, accessToken));
+				headers['x-pm-locale'] ??= (await getRegisteredLocale()) || getLocale();
 			}
 		} else if (!inputSession && (tryUntil || 0) < Date.now()) {
 			await delay(200);
 
-			return fetchApi(url, init, baseUrl, inputSession, tryUntil || milliSeconds.fromSeconds(8, Date.now()));
+			return fetchApi(
+				url,
+				init,
+				baseUrl,
+				inputSession,
+				tryUntil || milliSeconds.fromSeconds(8, Date.now()),
+			);
 		}
 	}
 
@@ -123,7 +270,7 @@ export const fetchApi = async (
 		},
 	} as RequestInit;
 
-	const response = await fetch(`${(baseUrl || baseAPIURL)}${url}`, options);
+	const response = await fetch(`${baseUrl || baseAPIURL}${url}`, options);
 
 	// If 429 / 503, check the Retry-After header
 	// We don't handle the retry-logic here, it must be handled case by case if and
@@ -142,6 +289,52 @@ export const fetchApi = async (
 	}
 
 	return response;
+};
+
+const startLikeHtml = (text: string) => /^\s*</.test(text);
+
+const guessBlockerFromHtml = (html: string) => {
+	for (const blocker of incompatibleSoftware) {
+		if (html.includes(blocker)) {
+			return blocker;
+		}
+	}
+
+	return null;
+};
+
+const getBlockingSoftwareErrorFromResponse = (text: string) => {
+	const blockingSoftware = guessBlockerFromHtml(text);
+
+	if (blockingSoftware) {
+		return new Error(
+			c('Info')
+				.t`VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.`,
+		);
+	}
+
+	handleError(
+		'HTML Content Received: ' +
+			text
+				.replace(/<script[^>]*>[\s\S]*?<\/script[^>]*>/gi, '')
+				.replace(/<style[^>]*>[\s\S]*?<\/style[^>]*>/gi, '')
+				.replace(/src=["']data:[^"']+["']/gi, ''),
+	);
+
+	return new Error(
+		c('Info')
+			.t`VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.`,
+	);
+};
+
+const checkIfResponseWasBlocked = async (response: Response) => {
+	const text = await response.text();
+
+	if (startLikeHtml(text)) {
+		throw getBlockingSoftwareErrorFromResponse(text);
+	}
+
+	return text;
 };
 
 /**
@@ -171,63 +364,21 @@ const buildResponseResult = async <T = any, D = any>(
 	return resultBuilder ? resultBuilder(response, data) : data;
 };
 
-const startLikeHtml = (text: string) => /^\s*</.test(text);
-
-const guessBlockerFromHtml = (html: string) => {
-	for (const blocker of incompatibleSoftware) {
-		if (html.includes(blocker)) {
-			return blocker;
-		}
-	}
-
-	return null;
-};
-
-const getBlockingSoftwareErrorFromResponse = (text: string) => {
-	const blockingSoftware = guessBlockerFromHtml(text);
-
-	if (blockingSoftware) {
-		return new Error(
-			c('Info').t`VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.`,
-		);
-	}
-
-	handleError('HTML Content Received: ' + text
-		.replace(/<script[^>]*>[\s\S]*?<\/script[^>]*>/ig, '')
-		.replace(/<style[^>]*>[\s\S]*?<\/style[^>]*>/ig, '')
-		.replace(/src=["']data:[^"']+["']/ig, '')
-	);
-
-	return new Error(
-		c('Info').t`VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.`,
-	);
-}
-
-const checkIfResponseWasBlocked = async (response: Response) => {
-	const text = await response.text();
-
-	if (startLikeHtml(text)) {
-		throw getBlockingSoftwareErrorFromResponse(text);
-	}
-
-	return text;
-};
-
 /**
  * Get response as JSON if possible, or else as text, to be used for unexpected output
  * such as API error responses that may or may not contain JSON.
  */
-const getResponseContent = async <T = any>(response: Response): Promise<T | string> => {
+const getResponseContent = async <T = unknown>(
+	response: Response,
+): Promise<T | string> => {
 	try {
 		return await response.clone().json();
-	} catch (e) {
+	} catch {
 		return await checkIfResponseWasBlocked(response);
 	}
 };
 
-const isObject = (value: any) => (typeof value) === 'object' && value !== null;
-
-export const fetchJson = async <T, D = any>(
+export const fetchJson = async <T, D = unknown>(
 	url: string,
 	init?: RequestInit,
 	baseUrl?: string,
@@ -246,15 +397,17 @@ export const fetchJson = async <T, D = any>(
 
 	if (!isSuccessfulResponse(response)) {
 		const data = await getResponseContent(response);
-		const error = (data?.Error ? data : new Error(data));
-		error.response = response;
+		const error = (data as ApiError)?.Error ? data : new Error(data as string);
+		(error as {response?: Response}).response = response;
 
 		if (isObject(error)) {
-			error.httpStatus = response.status;
+			(error as {httpStatus?: number}).httpStatus = response.status;
 		}
 
 		if (needsUpdate(data)) {
-			broadcastMessage<ExtensionUpdate>('updateExtension', {error});
+			broadcastMessage<ExtensionUpdate>('updateExtension', {
+				error: error as ApiError,
+			});
 			setUpdateError(data);
 
 			throw error;
@@ -268,7 +421,8 @@ export const fetchJson = async <T, D = any>(
 			const oldAccessToken = oldSession.accessToken;
 			const newSession = await refreshToken(oldSession);
 
-			if (newSession.uid &&
+			if (
+				newSession.uid &&
 				newSession.accessToken &&
 				(newSession.uid !== oldUid || newSession.accessToken !== oldAccessToken)
 			) {
@@ -290,11 +444,9 @@ export const fetchJson = async <T, D = any>(
 	return buildResponseResult<T>(response, resultBuilder);
 };
 
-const isUrlExcluded = (
-	url: URL,
-	apiExclusion: boolean,
-)=> (apiDomainsExclusion.includes(url.hostname))
-	&& (apiExclusion || /^\/?(api\/)?vpn\/location(\?.*)?$/.test(url.pathname));
+const isUrlExcluded = (url: URL, apiExclusion: boolean) =>
+	apiDomainsExclusion.includes(url.hostname) &&
+	(apiExclusion || /^\/?(api\/)?vpn\/location(\?.*)?$/.test(url.pathname));
 
 export const isExcludedFromProxy = (
 	requestInfo: OnRequestDetails,
@@ -327,80 +479,3 @@ export const isIncludedIntoProxy = (
 
 	return matchDomainList(includeOnlyList, requestInfo, url.hostname);
 };
-
-export enum ErrorActionCode {
-	UPGRADE = 'Upgrade'
-}
-
-export enum ErrorActionCategory {
-	MAIN_ACTION = 'main_action',
-	SECONDARY_ACTION = 'secondary_action',
-	LINK = 'link',
-}
-
-export interface ErrorAction {
-	Code: ErrorActionCode;
-	Category: ErrorActionCategory;
-	Name: string;
-	URL: string;
-}
-
-export interface DeviceLimitErrorDetails {
-	Type: 'DeviceLimit';
-	Title?: string;
-	Body?: string | Array<{
-		Component: string;
-		Icon: string;
-		Text: string;
-	}>;
-	Hint?: string;
-	Actions?: ErrorAction[];
-}
-
-export interface ApiError<T = any, S extends number = number, C extends number = number> {
-	httpStatus: S;
-	Code: C;
-	Error: string;
-	Details?: T;
-	Warning?: boolean;
-	_id?: string;
-}
-
-export type UnauthorizedError<T = any, C extends number = number> = ApiError<T, 401, C>;
-
-export type ForbiddenError<T = any, C extends number = number> = ApiError<T, 403, C>;
-
-export type InvalidTokenError<T = any> = UnauthorizedError<T, 401>;
-
-export const isSuccessfulResponse = (response: Response): boolean => response.status >= 200 && response.status < 300;
-
-export const isNetworkError = (error: any): boolean => isObject(error) && (
-	error.name === 'NetworkError' ||
-	/^(NetworkError |(TypeError: )?Failed to fetch)/.test(error.message || '')
-);
-
-export const hasErrorHttpStatus = (error: any, httpStatus: number): error is ApiError => isObject(error) &&
-	(error.httpStatus === httpStatus);
-
-export const isNotModified = (response: any): response is ApiError<any, 304, any> | {status: 304} => response?.status === 304 || hasErrorHttpStatus(response, 304);
-
-export const isNotFoundError = (error: any): error is UnauthorizedError => hasErrorHttpStatus(error, 404);
-
-export const isUnauthorizedError = (error: any): error is UnauthorizedError => hasErrorHttpStatus(error, 401);
-
-export const isInvalidTokenError = (error: any): error is InvalidTokenError => isUnauthorizedError(error) && error.Code === 401;
-
-export const isForbiddenError = (error: any): error is ForbiddenError => hasErrorHttpStatus(error, 403);
-
-export const isDeviceLimitError = (error: any): error is ApiError<DeviceLimitErrorDetails> => error?.Details?.Type === 'DeviceLimit';
-
-export const needsLogout = (error: any): error is ApiError => isObject(error) &&
-	(error.Code === 2028 || error.Code === 2027);
-
-export const needsUpdate = (error: any): error is ApiError => isObject(error) &&
-	(error.Code === 5003);
-
-export const isRetriableResponse = (response: Response): boolean => response.status === 429;
-
-export const isRetriableError = (error: any): error is ApiError => isObject(error) &&
-	(error.Code === 429 || error.Code === 503);

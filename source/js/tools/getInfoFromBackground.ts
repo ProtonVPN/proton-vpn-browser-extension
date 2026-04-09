@@ -1,7 +1,11 @@
 import {sendMessageToBackground} from './sendMessageToBackground';
-import {User} from '../account/user/User';
-import {ConnectionState} from '../vpn/ConnectionState';
-import {PmUser} from '../account/user/PmUser';
+import type {User} from '../account/user/User';
+import type {ConnectionState} from '../vpn/ConnectionState';
+import type {PmUser} from '../account/user/PmUser';
+import type {
+	BackgroundData,
+	BackgroundExtraData,
+} from '../messaging/MessageType';
 
 interface BackgroundObjects {
 	location: Location;
@@ -10,5 +14,13 @@ interface BackgroundObjects {
 	state: ConnectionState['data'];
 }
 
-export const getInfoFromBackground = <K extends keyof BackgroundObjects>
-	(key: K): Promise<BackgroundObjects[K]> => sendMessageToBackground<BackgroundObjects[K]>(key);
+export const getInfoFromBackground = <
+	K extends keyof BackgroundObjects,
+	T extends BackgroundData,
+>(
+	key: K,
+	data:
+		| (T extends keyof BackgroundExtraData ? BackgroundExtraData[T] : undefined)
+		| undefined = undefined,
+): Promise<BackgroundObjects[K]> =>
+	sendMessageToBackground<BackgroundObjects[K]>(key, data);

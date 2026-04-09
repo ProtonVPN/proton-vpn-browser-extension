@@ -17,14 +17,17 @@
 			"Already have a Proton Account?": [
 				"Aveți deja un cont Proton?"
 			],
-			"Auto connect": [
-				"Autoconectare"
-			],
 			"Cancel": [
 				"Anulare"
 			],
+			"Change language": [
+				"Schimbare limbă"
+			],
 			"Change server": [
 				"Schimbare server"
+			],
+			"Configure split tunneling": [
+				"Configurare divizare trafic"
 			],
 			"Connect": [
 				"Conectare"
@@ -35,14 +38,32 @@
 			"Create an account": [
 				"Creare cont"
 			],
+			"Disable auto-connect": [
+				"Dezactivare conectare automată"
+			],
+			"Disable notifications": [
+				"Dezactivare notificări"
+			],
+			"Disable Split tunneling": [
+				"Dezactivare divizare trafic"
+			],
+			"Disable WebRTC leak protection": [
+				"Dezactivare protejare divulgare prin WebRTC"
+			],
 			"Disconnect": [
 				"Deconectare"
 			],
-			"Enable/disable notifications": [
-				"Activați/dezactivați notificările."
+			"Enable auto-connect": [
+				"Activare conectare automată"
 			],
-			"Exclude websites from the tunnel": [
-				"Excludere pagini web de la tunel"
+			"Enable notifications": [
+				"Activare notificări"
+			],
+			"Enable Split tunneling": [
+				"Activare divizare trafic"
+			],
+			"Enable WebRTC leak protection": [
+				"Activare protejare divulgare prin WebRTC"
 			],
 			"Log in with Proton": [
 				"Conectare cu Proton"
@@ -55,9 +76,6 @@
 			],
 			"Next": [
 				"Înainte"
-			],
-			"Prevent WebRTC leak": [
-				"Prevenire divulgări prin WebRTC"
 			],
 			"Quick connect": [
 				"Conectare rapidă"
@@ -118,6 +136,11 @@
 		"Action: Server-level button": {
 			"Connect to ${serverName}": [
 				"Conectare la ${serverName}"
+			]
+		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"Căutare"
 			]
 		},
 		"Confirm": {
@@ -283,6 +306,9 @@
 			"Decide which websites are protected by VPN.": [
 				"Decideți site-urile web care sunt protejate de VPN."
 			],
+			"Disable Secure Core": [
+				"Dezactivare Secure Core"
+			],
 			"Disconnected": [
 				"Deconectat"
 			],
@@ -300,6 +326,9 @@
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Emitere notificări de sistem privind evenimentele de conectare și deconectare."
+			],
+			"Enable Secure Core": [
+				"Activare Secure Core"
 			],
 			"Enjoying Proton VPN?": [
 				"Vă place Proton VPN?"
@@ -384,9 +413,6 @@
 			"Proton VPN Browser Extension": [
 				"Extensie navigator Proton VPN"
 			],
-			"Search": [
-				"Căutare"
-			],
 			"Secure Core": [
 				"Secure Core"
 			],
@@ -411,8 +437,14 @@
 			"Thank you for installing Proton VPN": [
 				"Vă mulțumim că ați instalat Proton VPN"
 			],
+			"The split tunneling options cannot be changed on this device": [
+				"Opțiunea de divizare a traficului nu poate fi modificată pe acest dispozitiv."
+			],
 			"Then just click the Proton VPN icon to sign in.": [
 				"Apoi doar faceți clic pe pictograma Proton VPN pentru autentificare."
+			],
+			"This option cannot be changed on this device": [
+				"Această opțiune nu poate fi modificată pe acest dispozitiv."
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"Statisticile nu vă conțin adresa IP și nu pot fi utilizate să vă identifice. Nu le vom partaja cu terțe părți"
@@ -433,7 +465,7 @@
 				"Utilizator"
 			],
 			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
-				"Folosind Brave, cererile DNS ar putea fi neprotejate utilizând modul includere."
+				"Folosind Brave, cererile DNS ar putea fi neprotejate când „Mod includere” este activ."
 			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
 				"VPN blocat de un program extern.\n\nAnumite instrumente, cum ar fi antivirusurile sau proxy-urile, pot interfera cu Proton VPN. Dezactivați-le și reîncercați."

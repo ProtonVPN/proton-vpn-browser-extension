@@ -2,17 +2,21 @@ import {Storage, storage} from './storage';
 import {appVersion} from '../config';
 import {catchPromise} from './triggerPromise';
 import {milliSeconds} from './milliSeconds';
-import {ApiError} from '../api';
+import type {ApiError} from '../api';
 
 type UpgradeErrorCachedItem = {
-	version: string,
-	time: number,
-	error: ApiError | undefined,
+	version: string;
+	time: number;
+	error: ApiError | undefined;
 };
 
 let upgradeError: UpgradeErrorCachedItem | undefined = undefined;
 
-const upgradeErrorCache = storage.item<UpgradeErrorCachedItem>('upgrade-error', Storage.LOCAL, 'error');
+const upgradeErrorCache = storage.item<UpgradeErrorCachedItem>(
+	'upgrade-error',
+	Storage.LOCAL,
+	'error',
+);
 
 export const setUpdateError = (error: ApiError | undefined): void => {
 	upgradeError = {
@@ -43,7 +47,10 @@ export const getUpdateError = async (): Promise<ApiError | undefined> => {
 		return undefined;
 	}
 
-	if (upgradeError.version !== appVersion || Date.now() - upgradeError.time > milliSeconds.fromHours(2)) {
+	if (
+		upgradeError.version !== appVersion ||
+		Date.now() - upgradeError.time > milliSeconds.fromHours(2)
+	) {
 		setUpdateError(undefined);
 
 		return undefined;

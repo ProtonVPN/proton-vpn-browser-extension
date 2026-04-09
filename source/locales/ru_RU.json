@@ -17,9 +17,6 @@
 			"Already have a Proton Account?": [
 				"У вас уже есть аккаунт Proton?"
 			],
-			"Auto connect": [
-				"Автоподключение"
-			],
 			"Cancel": [
 				"Отменить"
 			],
@@ -35,14 +32,14 @@
 			"Create an account": [
 				"Создать аккаунт"
 			],
+			"Disable notifications": [
+				"Отключить уведомления"
+			],
 			"Disconnect": [
 				"Отключить"
 			],
-			"Enable/disable notifications": [
-				"Включить/отключить уведомления"
-			],
-			"Exclude websites from the tunnel": [
-				"Исключить веб-сайты из туннелирования"
+			"Enable notifications": [
+				"Включить уведомления"
 			],
 			"Log in with Proton": [
 				"Войти в аккаунт через Proton"
@@ -55,9 +52,6 @@
 			],
 			"Next": [
 				"Далее"
-			],
-			"Prevent WebRTC leak": [
-				"Защитить от утечки WebRTC"
 			],
 			"Quick connect": [
 				"Быстрое подключение"
@@ -257,6 +251,9 @@
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Отчёты об ошибках помогают нам устранять ошибки, обнаруживать брандмауэры и избегать блокировки VPN."
 			],
+			"Disable Secure Core": [
+				"Отключить Secure Core"
+			],
 			"Disconnected": [
 				"Отключено"
 			],
@@ -274,6 +271,9 @@
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Выдавать системные уведомления при событиях подключения и отключения."
+			],
+			"Enable Secure Core": [
+				"Включить Secure Core"
 			],
 			"Exclude mode": [
 				"Режим исключения"
@@ -346,9 +346,6 @@
 			],
 			"Proton VPN Browser Extension": [
 				"Расширение Proton VPN для браузера"
-			],
-			"Search": [
-				"Поиск"
 			],
 			"Secure Core": [
 				"Secure Core"

@@ -17,14 +17,17 @@
 			"Already have a Proton Account?": [
 				"Zaten bir Proton hesabınız var mı?"
 			],
-			"Auto connect": [
-				"Otomatik bağlantı"
-			],
 			"Cancel": [
 				"İptal"
 			],
+			"Change language": [
+				"Dili değiştir"
+			],
 			"Change server": [
 				"Sunucu değiştir"
+			],
+			"Configure split tunneling": [
+				"Ayrılmış tünellemeyi yapılandır"
 			],
 			"Connect": [
 				"Bağlan"
@@ -35,14 +38,32 @@
 			"Create an account": [
 				"Hesap açın"
 			],
+			"Disable auto-connect": [
+				"Otomatik bağlanmayı kapat"
+			],
+			"Disable notifications": [
+				"Bildirimleri kapat"
+			],
+			"Disable Split tunneling": [
+				"Ayrılmış tünellemeyi kapat"
+			],
+			"Disable WebRTC leak protection": [
+				"WebRTC sızıntı korumasını kapat"
+			],
 			"Disconnect": [
 				"Bağlantıyı kes"
 			],
-			"Enable/disable notifications": [
-				"Bildirimleri aç/kapat"
+			"Enable auto-connect": [
+				"Otomatik bağlanmayı aç"
 			],
-			"Exclude websites from the tunnel": [
-				"Sitelerin tünele katılmasını engeller"
+			"Enable notifications": [
+				"Bildirimleri aç"
+			],
+			"Enable Split tunneling": [
+				"Ayrılmış tünellemeyi aç"
+			],
+			"Enable WebRTC leak protection": [
+				"WebRTC sızıntı korumasını aç"
 			],
 			"Log in with Proton": [
 				"Proton ile oturum açın"
@@ -55,9 +76,6 @@
 			],
 			"Next": [
 				"İleri"
-			],
-			"Prevent WebRTC leak": [
-				"WebRTC sızıntısını engelle"
 			],
 			"Quick connect": [
 				"Hızlı bağlan"
@@ -118,6 +136,11 @@
 		"Action: Server-level button": {
 			"Connect to ${serverName}": [
 				"${serverName} ile bağlantı kur"
+			]
+		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"Ara"
 			]
 		},
 		"Confirm": {
@@ -280,6 +303,9 @@
 			"Decide which websites are protected by VPN.": [
 				"Hangi sitelerin VPN ile korunacağına karar verin."
 			],
+			"Disable Secure Core": [
+				"Secure Core özelliğini kapat"
+			],
 			"Disconnected": [
 				"Bağlı değil"
 			],
@@ -297,6 +323,9 @@
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Bağlantı kurulma ve kesilme durumlarında sistem bildirimleri gönderilsin."
+			],
+			"Enable Secure Core": [
+				"Secure Core özelliğini aç"
 			],
 			"Enjoying Proton VPN?": [
 				"Proton VPN uygulamasını beğendiniz mi?"
@@ -380,9 +409,6 @@
 			"Proton VPN Browser Extension": [
 				"Proton VPN tarayıcı eklentisi"
 			],
-			"Search": [
-				"Arama"
-			],
 			"Secure Core": [
 				"Secure Core"
 			],
@@ -407,8 +433,14 @@
 			"Thank you for installing Proton VPN": [
 				"Proton VPN uygulamasını indirdiğiniz için teşekkürler"
 			],
+			"The split tunneling options cannot be changed on this device": [
+				"Bu aygıtta ayrılmış tünelleme seçenekleri değiştirilemez"
+			],
 			"Then just click the Proton VPN icon to sign in.": [
 				"Ardından oturum açmak için Proton VPN simgesine tıklayın."
+			],
+			"This option cannot be changed on this device": [
+				"Bu ayar bu aygıtta değiştirilemez"
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"Bu istatistiklerde IP adresiniz bulunmaz ve kim olduğunuzu belirlemek için kullanılamaz. Bu verileri asla üçüncü taraflar ile paylaşmayız"

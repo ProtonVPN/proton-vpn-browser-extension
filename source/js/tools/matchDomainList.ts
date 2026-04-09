@@ -10,40 +10,35 @@ export const matchDomainList = (
 	domainList: string[],
 	requestInfo: OnRequestDetails,
 	callHostname: string,
-) => domainList.some(domain => {
-	if (domain.startsWith('.')) {
-		return (new RegExp(
-			domain.replace('.', '\\.') + '$'
-		)).test(callHostname);
-	}
-
-	if (isHostMatchedByIpMask(callHostname, domain)) {
-		return true;
-	}
-
-	if (/[*\\/]/.test(domain)) {
-		if (domain.includes('/')) {
-			return (new RegExp(
-				'^' +
-				(domain.includes('//') ? '([^/]+\.)?' : '') +
-				domain
-					.replace('.', '\\.')
-					.replace('*', '.*')
-			)).test(domain.startsWith('://')
-				? requestInfo.url.replace(/^[a-z]+(:\/\/)/, '$1')
-				: (domain.startsWith('//')
-						? requestInfo.url.replace(/^[a-z]+:(\/\/)/, '$1')
-						: requestInfo.url
-				)
-			);
+) =>
+	domainList.some((domain) => {
+		if (domain.startsWith('.')) {
+			return new RegExp(domain.replace('.', '\\.') + '$').test(callHostname);
 		}
 
-		return (new RegExp(
-			domain
-				.replace('.', '\\.')
-				.replace('*', '.*') + '$'
-		)).test(callHostname);
-	}
+		if (isHostMatchedByIpMask(callHostname, domain)) {
+			return true;
+		}
 
-	return callHostname === domain;
-});
+		if (/[*\\/]/.test(domain)) {
+			if (domain.includes('/')) {
+				return new RegExp(
+					'^' +
+						(domain.includes('//') ? '([^/]+\\.)?' : '') +
+						domain.replace(/\./g, '\\.').replace(/\*/g, '.*'),
+				).test(
+					domain.startsWith('://')
+						? requestInfo.url.replace(/^[a-z]+(:\/\/)/, '$1')
+						: domain.startsWith('//')
+							? requestInfo.url.replace(/^[a-z]+:(\/\/)/, '$1')
+							: requestInfo.url,
+				);
+			}
+
+			return new RegExp(
+				domain.replace(/\./g, '\\.').replace(/\*/g, '.*') + '$',
+			).test(callHostname);
+		}
+
+		return callHostname === domain;
+	});

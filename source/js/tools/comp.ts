@@ -1,12 +1,14 @@
-export const comp = (a: any, b: any) => {
+export const comp = (a: unknown, b: unknown) => {
 	if (typeof a === 'string' && typeof b === 'string') {
 		return a.localeCompare(b);
 	}
 
+	// @ts-expect-error compare values of unknow types
 	if (a > b) {
 		return 1;
 	}
 
+	// @ts-expect-error compare values of unknow types
 	if (a < b) {
 		return -1;
 	}
@@ -14,20 +16,18 @@ export const comp = (a: any, b: any) => {
 	return 0;
 };
 
-export class Sorter<
-	V,
-	S,
-> {
-	private sortingCallbacks: ((a: S | undefined, b: S | undefined) => number)[] = [];
+export class Sorter<V, S> {
+	private sortingCallbacks: ((a: S | undefined, b: S | undefined) => number)[] =
+		[];
 
-	constructor(private readonly transformer?: (value: V, ...args: any[]) => S | undefined) {
-	}
+	constructor(
+		private readonly transformer?: (value: V, ...args: any[]) => S | undefined,
+	) {}
 
 	private getField(value: V, ...args: any[]): S | undefined {
-		return (this.transformer
-			? this.transformer(value, ...args)
-			: value
-		) as S | undefined;
+		return (this.transformer ? this.transformer(value, ...args) : value) as
+			| S
+			| undefined;
 	}
 
 	public sort(list: V[], ...args: any[]): void {
@@ -37,7 +37,7 @@ export class Sorter<
 				const bValue = this.getField(b, ...args);
 				let result = 0;
 
-				this.sortingCallbacks.some(callback => {
+				this.sortingCallbacks.some((callback) => {
 					return (result = callback(aValue, bValue));
 				});
 

@@ -32,7 +32,7 @@ export const sortGroups = (countries: CountryList): CountryList => {
 
 	const sortedCountries: CountryList = {};
 
-	keys.forEach(key => {
+	keys.forEach((key) => {
 		sortedCountries[key] = countries[key] as CountryItem;
 	});
 
@@ -43,11 +43,13 @@ export const getCountryFilteredKeys = (
 	countries: CountryList,
 	predicate: (logical: Logical) => boolean,
 ) => {
-	const groupPredicate = (group: CountryItem | undefined): boolean => (group?.logicals || []).some(predicate)
-		|| Object.values(group?.groups || {}).some(group => groupPredicate(group));
+	const groupPredicate = (group: CountryItem | undefined): boolean =>
+		(group?.logicals || []).some(predicate) ||
+		Object.values(group?.groups || {}).some((group) => groupPredicate(group));
 
-	return getKeys(countries)
-		.filter(country => groupPredicate(countries[country]));
+	return getKeys(countries).filter((country) =>
+		groupPredicate(countries[country]),
+	);
 };
 
 export const countryFilteredList = (
@@ -69,24 +71,32 @@ export const countryFilteredList = (
 
 	sorter.sort(keys, countries);
 
-	return (header
-		? `<div class="servers-group group-section">${header(count)}</div>`
-		: ''
-	) + keys.map(country => countryBlock(
-		userTier,
-		country,
-		countries[country] as CountryItem,
-		(logicals: Logical[]) => logicals
-			.filter(predicate)
-			.sort(
-				(a, b) => comp(userTier < a.Tier, userTier < b.Tier)
-					|| comp(b.SearchScore, a.SearchScore)
-					|| comp(a.Name, b.Name),
-			),
-		userTier > 0 && secureCoreValue,
-		extraConnectionAttributes,
-		showFlag,
-	)).join('');
+	return (
+		(header
+			? `<div class="servers-group group-section">${header(count)}</div>`
+			: '') +
+		keys
+			.map((country) =>
+				countryBlock(
+					userTier,
+					country,
+					countries[country] as CountryItem,
+					(logicals: Logical[]) =>
+						logicals
+							.filter(predicate)
+							.sort(
+								(a, b) =>
+									comp(userTier < a.Tier, userTier < b.Tier) ||
+									comp(b.SearchScore, a.SearchScore) ||
+									comp(a.Name, b.Name),
+							),
+					userTier > 0 && secureCoreValue,
+					extraConnectionAttributes,
+					showFlag,
+				),
+			)
+			.join('')
+	);
 };
 
 export const countryList = (

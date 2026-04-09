@@ -17,14 +17,17 @@
 			"Already have a Proton Account?": [
 				"Již máte účet Proton?"
 			],
-			"Auto connect": [
-				"Automatické připojení"
-			],
 			"Cancel": [
 				"Zrušit"
 			],
+			"Change language": [
+				"Změnit jazyk"
+			],
 			"Change server": [
 				"Změnit server"
+			],
+			"Configure split tunneling": [
+				"Nastavit split tunneling"
 			],
 			"Connect": [
 				"Připojit"
@@ -35,14 +38,32 @@
 			"Create an account": [
 				"Vytvořit účet"
 			],
+			"Disable auto-connect": [
+				"Deaktivovat automatické připojování"
+			],
+			"Disable notifications": [
+				"Deaktivovat oznámení"
+			],
+			"Disable Split tunneling": [
+				"Deaktivovat split tunneling"
+			],
+			"Disable WebRTC leak protection": [
+				"Deaktivovat ochranu proti úniku WebRTC"
+			],
 			"Disconnect": [
 				"Odpojit"
 			],
-			"Enable/disable notifications": [
-				"Zapnout/vypnout upozornění"
+			"Enable auto-connect": [
+				"Povolit automatické připojení"
 			],
-			"Exclude websites from the tunnel": [
-				"Vylučte stránky pro které nebude použit tunel"
+			"Enable notifications": [
+				"Povolit oznámení"
+			],
+			"Enable Split tunneling": [
+				"Povolit split tunneling"
+			],
+			"Enable WebRTC leak protection": [
+				"Povolit ochranu proti úniku WebRTC"
 			],
 			"Log in with Proton": [
 				"Přihlásit se pomocí Proton"
@@ -55,9 +76,6 @@
 			],
 			"Next": [
 				"Další"
-			],
-			"Prevent WebRTC leak": [
-				"Předejít WebRTC úniku"
 			],
 			"Quick connect": [
 				"Rychlé připojení"
@@ -118,6 +136,11 @@
 		"Action: Server-level button": {
 			"Connect to ${serverName}": [
 				"Připojit k ${serverName}"
+			]
+		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"Hledat"
 			]
 		},
 		"Confirm": {
@@ -286,6 +309,9 @@
 			"Decide which websites are protected by VPN.": [
 				"Rozhodněte se, které webové stránky budou chráněny VPN."
 			],
+			"Disable Secure Core": [
+				"Deaktivovat Secure Core"
+			],
 			"Disconnected": [
 				"Odpojeno"
 			],
@@ -303,6 +329,9 @@
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Vysílat systémová upozornění při událostech připojení a odpojení."
+			],
+			"Enable Secure Core": [
+				"Povolit Secure Core"
 			],
 			"Enjoying Proton VPN?": [
 				"Spokojeni s Proton VPN?"
@@ -388,9 +417,6 @@
 			"Proton VPN Browser Extension": [
 				"Proton VPN rozšíření prohlížeče"
 			],
-			"Search": [
-				"Vyhledat"
-			],
 			"Secure Core": [
 				"Secure Core"
 			],
@@ -437,7 +463,7 @@
 				"Uživatel"
 			],
 			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
-				"Při používání Brave mohou být DNS požadavky v režimu zahrnutí nechráněné."
+				"Při používání Brave mohou být DNS požadavky nechráněné, je-li aktivní \"režim zahrnutí\"."
 			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
 				"VPN blokuje externí software.\n\nNěkteré nástroje, jako jsou například antivirové programy nebo proxy, mohou narušovat funkčnost Proton VPN. Deaktivujte je a zkuste to znovu."

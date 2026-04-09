@@ -17,14 +17,17 @@
 			"Already have a Proton Account?": [
 				"Že imate Proton račun?"
 			],
-			"Auto connect": [
-				"Samodejna povezava"
-			],
 			"Cancel": [
 				"Prekliči"
 			],
+			"Change language": [
+				"Spremeni jezik"
+			],
 			"Change server": [
 				"Spremeni strežnik"
+			],
+			"Configure split tunneling": [
+				"Konfiguriraj deljeno tuneliranje"
 			],
 			"Connect": [
 				"Poveži"
@@ -35,14 +38,32 @@
 			"Create an account": [
 				"Ustvarite račun"
 			],
+			"Disable auto-connect": [
+				"Onemogoči samodejno povezavo"
+			],
+			"Disable notifications": [
+				"Onemogoči obvestila"
+			],
+			"Disable Split tunneling": [
+				"Omogočiti razdeljeno tuneliranje"
+			],
+			"Disable WebRTC leak protection": [
+				"Omogoči zaščito pred uhajanjem WebRTC"
+			],
 			"Disconnect": [
 				"Prekini povezavo"
 			],
-			"Enable/disable notifications": [
-				"Omogoči/onemogoči obvestila"
+			"Enable auto-connect": [
+				"Omogoči samodejno povezavo"
 			],
-			"Exclude websites from the tunnel": [
-				"Izključite spletna mesta iz tunela"
+			"Enable notifications": [
+				"Omogoči obvestila"
+			],
+			"Enable Split tunneling": [
+				"Omogočiti razdeljeno tuneliranje"
+			],
+			"Enable WebRTC leak protection": [
+				"Omogoči zaščito pred uhajanjem WebRTC"
 			],
 			"Log in with Proton": [
 				"Prijavite se s Protonom"
@@ -55,9 +76,6 @@
 			],
 			"Next": [
 				"Naprej"
-			],
-			"Prevent WebRTC leak": [
-				"Preprečite uhajanje WebRTC"
 			],
 			"Quick connect": [
 				"Hitro povezovanje"
@@ -98,6 +116,9 @@
 			"Upgrade": [
 				"Nadgradi"
 			],
+			"Upgrade to Proton VPN Plus": [
+				"Nadgradite na Proton VPN Plus"
+			],
 			"Visit Support Center": [
 				"Obiščite center za podporo"
 			]
@@ -117,9 +138,19 @@
 				"Povežite se z ${serverName}"
 			]
 		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"Išči"
+			]
+		},
 		"Confirm": {
 			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
 				"Odjava iz aplikacije bo prekinila aktivno povezavo VPN. Želite nadaljevati?"
+			]
+		},
+		"Description": {
+			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
+				"Proton Free vas samodejno poveže z najhitrejšim razpoložljivim brezplačnim strežnikom iz naših 5 brezplačnih držav. To bo običajno strežnik, ki je najbližje vaši lokaciji."
 			]
 		},
 		"Error": {
@@ -177,6 +208,9 @@
 			"Something went wrong. If the problem persists, please try to re-install the extension": [
 				"Nekaj ​​je šlo narobe. Če težave ne odpravite, poskusite znova namestiti razširitev."
 			],
+			"Unable to find appropriate server, try to logout and login again if it persists.": [
+				"Ni mogoče najti ustreznega strežnika. Če se težava nadaljuje, se poskusite odjaviti in znova prijaviti."
+			],
 			"Unable to load the list": [
 				"Ni mogoče naložiti seznama"
 			],
@@ -194,11 +228,26 @@
 			]
 		},
 		"Info": {
+			"<div class=\"weak-text\">\n<span data-trans>About free connections</span>\n<svg width=\"15\" height=\"14\" viewBox=\"0 0 15 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path \t\t\t\t\t\t\t\t\t\tfill-rule=\"evenodd\"\nclip-rule=\"evenodd\"\nd=\"M7.5 13C10.8137 13 13.5 10.3137 13.5 7C13.5 3.68629 10.8137 1 7.5 1C4.18629 1 1.5 3.68629 1.5 7C1.5 10.3137 4.18629 13 7.5 13ZM7.5 14C11.366 14 14.5 10.866 14.5 7C14.5 3.13401 11.366 0 7.5 0C3.63401 0 0.5 3.13401 0.5 7C0.5 10.866 3.63401 14 7.5 14ZM9.24995 10C9.24995 10.3038 9.00371 10.55 8.69995 10.55H7.69995H6.69995C6.39619 10.55 6.14995 10.3038 6.14995 10C6.14995 9.69624 6.39619 9.45 6.69995 9.45H7.14995L7.14995 6.55H6.99994C6.69618 6.55 6.44994 6.30376 6.44994 6C6.44994 5.69624 6.69618 5.45 6.99994 5.45H7.69995C7.84582 5.45 7.98571 5.50795 8.08886 5.61109C8.19201 5.71424 8.24995 5.85413 8.24995 6L8.24995 9.45H8.69995C9.00371 9.45 9.24995 9.69624 9.24995 10ZM7.5 4.40002C7.8866 4.40002 8.2 4.08662 8.2 3.70002C8.2 3.31343 7.8866 3.00002 7.5 3.00002C7.1134 3.00002 6.8 3.31343 6.8 3.70002C6.8 4.08662 7.1134 4.40002 7.5 4.40002Z\"\nfill=\"#A7A4B5\" ></path>\n</svg>\n</div>": [
+				"<div class=\"weak-text\">\n<span data-trans>O brezplačnih povezavah</span>\n<svg width=\"15\" height=\"14\" viewBox=\"0 0 15 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path \t\t\t\t\t\t\t\t\t\tfill-rule=\"evenodd\"\nclip-rule=\"evenodd\"\nd=\"M7.5 13C10.8137 13 13.5 10.3137 13.5 7C13.5 3.68629 10.8137 1 7.5 1C4.18629 1 1.5 3.68629 1.5 7C1.5 10.3137 4.18629 13 7.5 13ZM7.5 14C11.366 14 14.5 10.866 14.5 7C14.5 3.13401 11.366 0 7.5 0C3.63401 0 0.5 3.13401 0.5 7C0.5 10.866 3.63401 14 7.5 14ZM9.24995 10C9.24995 10.3038 9.00371 10.55 8.69995 10.55H7.69995H6.69995C6.39619 10.55 6.14995 10.3038 6.14995 10C6.14995 9.69624 6.39619 9.45 6.69995 9.45H7.14995L7.14995 6.55H6.99994C6.69618 6.55 6.44994 6.30376 6.44994 6C6.44994 5.69624 6.69618 5.45 6.99994 5.45H7.69995C7.84582 5.45 7.98571 5.50795 8.08886 5.61109C8.19201 5.71424 8.24995 5.85413 8.24995 6L8.24995 9.45H8.69995C9.00371 9.45 9.24995 9.69624 9.24995 10ZM7.5 4.40002C7.8866 4.40002 8.2 4.08662 8.2 3.70002C8.2 3.31343 7.8866 3.00002 7.5 3.00002C7.1134 3.00002 6.8 3.31343 6.8 3.70002C6.8 4.08662 7.1134 4.40002 7.5 4.40002Z\"\nfill=\"#A7A4B5\" ></path>\n</svg>\n</div>"
+			],
+			"A subdomain URL includes a prefix before the main domain name. For example, account.proton.me is a subdomain of proton.me.": [
+				"URL poddomene vključuje predpono pred glavnim imenom domene. Na primer, account.proton.me je poddomena domene proton.me."
+			],
+			"About free connections": [
+				"O brezplačnih povezavah"
+			],
+			"Access over 13,000 secure servers in over 120 countries": [
+				"Dostop do več kot 13.000 varnih strežnikov v več kot 120 državah"
+			],
 			"Access Proton VPN via this icon": [
 				"Dostopajte do Proton VPN prek te ikone"
 			],
 			"Allow VPN permissions": [
 				"Omogoči VPN dovoljenja"
+			],
+			"Also add subdomains": [
+				"Dodaj tudi poddomene"
 			],
 			"and more": [
 				"in več"
@@ -239,20 +288,53 @@
 			"Connected to ${name} in ${city}": [
 				"Povezan z ${name} v ${city}"
 			],
+			"Connecting servers such as ${logical.Name} is not currently supported in the browser extension": [
+				"Povezani strežniki, kot so ${logical.Name}, trenutno niso podprti v razširitvi brskalnika"
+			],
+			"Connecting to dedicated IPs such as ${logical.Name} is not currently supported in the browser extension": [
+				"Povezovanje na namenske IP-je, kot so ${logical.Name}, trenutno ni podprto v razširitvi brskalnika"
+			],
 			"Connecting...": [
 				"Povezujem ..."
 			],
 			"Contact our Customer Support agents to help you out with Proton VPN.": [
 				"Obrnite se na naše agente za podporo strankam, da vam bodo pomagali pri Proton VPN."
 			],
+			"Crash": [
+				"Zrušitev"
+			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Poročila o zrušitvah nam pomagajo odpraviti napake, zaznati požarne zidove in se izogniti blokadam VPN."
+			],
+			"Decide which websites are protected by VPN.": [
+				"Odločite se, katera spletna mesta so zaščitena z VPN."
+			],
+			"Disable Secure Core": [
+				"Onemogoči Secure Core"
 			],
 			"Disconnected": [
 				"Povezava je prekinjena"
 			],
+			"Disconnected by another extension": [
+				"Prekinitev zaradi druge razširitve"
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"Povezavo je prekinila druga razširitev, povezala pa se je z ${newProxyName}"
+			],
+			"Disconnected, settings were overridden": [
+				"Prekinjena povezava, nastavitve so bile prepisane"
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"Povezava prekinjena, nastavitve so bile prepisane na ${newProxyName}"
+			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Oddajanje sistemskih obvestil o dogodkih povezave in prekinitve povezave."
+			],
+			"Enable Secure Core": [
+				"Omogoči Secure Core"
+			],
+			"Enjoying Proton VPN?": [
+				"Vam je Proton VPN všeč?"
 			],
 			"Exclude mode": [
 				"Način izključitve"
@@ -265,6 +347,9 @@
 			],
 			"Follow these simple steps to get the best experience using Proton VPN": [
 				"Sledite tem preprostim korakom za najboljšo izkušnjo z uporabo Proton VPN"
+			],
+			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
+				"Države z brezplačnimi strežniki (<span id=\"free-server-countries-count\">0</span>)"
 			],
 			"Get unlimited server changes with VPN Plus": [
 				"Pridobite neomejene spremembe strežnika z VPN Plus"
@@ -290,6 +375,9 @@
 			"Learn more": [
 				"Več o tem"
 			],
+			"Leave a rating": [
+				"Pustite oceno"
+			],
 			"Logged out": [
 				"Odjavljen"
 			],
@@ -297,7 +385,7 @@
 				"Ne zdaj"
 			],
 			"Off": [
-				"Izključeno"
+				"Izklopljeno"
 			],
 			"On": [
 				"Vključeno"
@@ -314,8 +402,14 @@
 			"Pin Proton VPN to your toolbar": [
 				"Pripnite Proton VPN v orodno vrstico"
 			],
+			"Please help us spread the word with a Web Store rating.": [
+				"Prosimo, pomagajte nam širiti glas z oceno spletne trgovine"
+			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Pritisnite <b>Naprej</b>, nato kliknite <b>Dovoli</b> na pojavnem oknu v brskalniku."
+			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"Zaščitite se na spletu z brezplačnim hitrim VPN-jem Proton."
 			],
 			"Proton VPN": [
 				"Proton VPN"
@@ -323,11 +417,11 @@
 			"Proton VPN Browser Extension": [
 				"Proton VPN razširitev za spletni brskalnik"
 			],
-			"Search": [
-				"Išči"
-			],
 			"Secure Core": [
 				"Secure Core"
+			],
+			"Selected websites": [
+				"Izbrana spletna mesta"
 			],
 			"Share anonymous usage crash reports": [
 				"Deli anonimna poročila o zrušitvah uporabe"
@@ -347,11 +441,23 @@
 			"Thank you for installing Proton VPN": [
 				"Hvala, ker ste namestili Proton VPN"
 			],
+			"The split tunneling options cannot be changed on this device": [
+				"Možnosti deljenega tuneliranja ni mogoče spremeniti na tej napravi"
+			],
 			"Then just click the Proton VPN icon to sign in.": [
 				"Nato samo kliknite ikono Proton VPN, da se prijavite."
 			],
+			"This option cannot be changed on this device": [
+				"Te možnosti ni mogoče spremeniti na tej napravi"
+			],
+			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
+				"Ti statistični podatki ne vsebujejo vašega naslova IP in jih ni mogoče uporabiti za vašo identifikacijo. Nikoli jih ne bomo dali v skupno rabo s tretjimi osebami"
+			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Če želite začeti, morate v brskalniku omogočiti dovoljenja VPN."
+			],
+			"Tor servers such as ${logical.Name} are not currently supported in the browser extension": [
+				"Tor strežniki, kot je ${logical.Name}, trenutno niso podprti v razširitvi brskalnika"
 			],
 			"Upgrade": [
 				"Prehod na plačljiv paket"
@@ -361,6 +467,15 @@
 			],
 			"User": [
 				"Uporabnik"
+			],
+			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
+				"Z uporabo Brskalnika Brave so zahteve DNS morda nezaščitene, ko je aktiviran \"Način vključevanja\"."
+			],
+			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
+				"VPN blokira zunanja programska oprema.\n\nNekatera orodja, kot so protivirusni programi ali posredniški strežniki, lahko motijo ​​delovanje Proton VPN. Onemogočite jih in poskusite znova."
+			],
+			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.": [
+				"VPN blokira zunanja programska oprema: ${blockingSoftware}.\n\nNekatera orodja, kot so protivirusni programi ali posredniški strežniki, lahko motijo ​​delovanje Proton VPN. Za potrditev jih in poskusite onemogočiti."
 			],
 			"VPN Features": [
 				"Funkcije VPN"
@@ -402,6 +517,9 @@
 				"Državi vstopa",
 				"Države vstopa",
 				"Držav vstopa"
+			],
+			"Exact match": [
+				"Natančna ujema"
 			],
 			"Free": [
 				"Brezplačno"

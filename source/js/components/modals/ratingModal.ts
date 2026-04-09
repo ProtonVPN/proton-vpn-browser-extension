@@ -39,7 +39,10 @@ const shouldShowRatingModal = async (user: User): Promise<boolean> => {
 	}
 
 	// Days since last dialog dismiss (user clicked [Not now] button)
-	const daysSinceLastDismiss = milliSeconds.diffInDays(lastDismissTimestamp, now);
+	const daysSinceLastDismiss = milliSeconds.diffInDays(
+		lastDismissTimestamp,
+		now,
+	);
 
 	if (daysSinceLastDismiss < DaysFromLastDismiss) {
 		return false;
@@ -53,7 +56,10 @@ const shouldShowRatingModal = async (user: User): Promise<boolean> => {
 	}
 
 	// Days since first connection
-	const daysSinceFirstConnection = milliSeconds.diffInDays(firstConnectionTimestamp, now);
+	const daysSinceFirstConnection = milliSeconds.diffInDays(
+		firstConnectionTimestamp,
+		now,
+	);
 
 	if (daysSinceFirstConnection < DaysFromFirstConnection) {
 		return false;
@@ -61,48 +67,65 @@ const shouldShowRatingModal = async (user: User): Promise<boolean> => {
 
 	// Successful consecutive connections or days connected in row
 	const enoughConnections = successConnectionsInRow >= SuccessConnections;
-	const enoughDaysConnected = milliSeconds.toDays(milliSecondsConnectedInRow) >= DaysConnected;
+	const enoughDaysConnected =
+		milliSeconds.toDays(milliSecondsConnectedInRow) >= DaysConnected;
 
 	return enoughConnections || enoughDaysConnected;
-}
+};
 
-export const maybeShowRatingModal = (rateUsModal: HTMLDialogElement | null, user: User) => triggerPromise((async () => {
+export const maybeShowRatingModal = (
+	rateUsModal: HTMLDialogElement | null,
+	user: User,
+) =>
+	triggerPromise(
+		(async () => {
+			if (!rateUsModal) {
+				return;
+			}
+
+			await delay(1000);
+
+			if ((await shouldShowRatingModal(user)) && !rateUsModal.open) {
+				showModal(rateUsModal);
+			}
+		})(),
+	);
+
+export const configureRatingModalButtons = (
+	rateUsModal: HTMLDialogElement | null,
+) => {
 	if (!rateUsModal) {
 		return;
 	}
 
-	await delay(1000);
-
-	if ((await shouldShowRatingModal(user)) && !rateUsModal.open) {
-		showModal(rateUsModal);
-	}
-})());
-
-export const configureRatingModalButtons = (rateUsModal: HTMLDialogElement | null) => {
-	if (!rateUsModal) {
-		return;
-	}
-
-	const storeButton = rateUsModal.querySelector<HTMLButtonElement>('#store-button[data-rate-us-click=""]');
+	const storeButton = rateUsModal.querySelector<HTMLButtonElement>(
+		'#store-button[data-rate-us-click=""]',
+	);
 
 	if (storeButton) {
 		storeButton.dataset['rateUsClick'] = 'set';
 		storeButton.addEventListener('click', () => {
-			triggerPromise(setReviewInfoState({
-				lastReviewTimestamp: Date.now(),
-			}));
+			triggerPromise(
+				setReviewInfoState({
+					lastReviewTimestamp: Date.now(),
+				}),
+			);
 			triggerPromise(openTab(getBrowser().storeReviewsUrl));
 		});
 	}
 
-	const notNowButton = rateUsModal.querySelector<HTMLButtonElement>('#not-now-button[data-rate-us-dismiss=""]');
+	const notNowButton = rateUsModal.querySelector<HTMLButtonElement>(
+		'#not-now-button[data-rate-us-dismiss=""]',
+	);
 
 	if (notNowButton) {
 		notNowButton.dataset['rateUsDismiss'] = 'set';
 		notNowButton.addEventListener('click', () => {
-			triggerPromise(setReviewInfoState({
-				lastDismissTimestamp: Date.now(),
-			}));
+			triggerPromise(
+				setReviewInfoState({
+					lastDismissTimestamp: Date.now(),
+				}),
+			);
 		});
 	}
 };

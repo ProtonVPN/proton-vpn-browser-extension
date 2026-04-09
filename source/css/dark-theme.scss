@@ -20,6 +20,10 @@
 		color: var(--primary-contrast);
 	}
 
+	.secondary-button {
+		background-color: var(--dark-gray);
+	}
+
 	.expanded-tooltip {
 		border: 1px solid var(--dark-gray);
 		background: #16141c;
@@ -160,5 +164,9 @@
 	.sign-up-button,
 	#sign-in-view.partner a.sign-in-link {
 		color: var(--primary-color-lighted);
+	}
+
+	.locked-feature svg {
+		stroke: var(--dark-gray);
 	}
 }

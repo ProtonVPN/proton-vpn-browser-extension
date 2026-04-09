@@ -1,9 +1,10 @@
 import {connect, getCurrentState} from '../state';
 import {connectedServer} from './connectedServer';
 import {setCurrentIdleState} from '../tools/idle';
+import {getGlobalBrowser} from '../tools/getGlobalBrowser';
 
 export const initIdleWatcher = (): void => {
-	browser.idle.onStateChanged.addListener(async (newState) => {
+	getGlobalBrowser().idle.onStateChanged.addListener(async (newState) => {
 		setCurrentIdleState(newState);
 
 		if (newState !== 'active') {
@@ -12,7 +13,10 @@ export const initIdleWatcher = (): void => {
 
 		const state = getCurrentState();
 
-		if (state?.name !== 'on' && (state?.data?.error as any)?.httpStatus === -1) {
+		if (
+			state?.name !== 'on' &&
+			(state?.data?.error as any)?.httpStatus === -1
+		) {
 			const server = (await connectedServer.get())?.value;
 
 			if (server) {
