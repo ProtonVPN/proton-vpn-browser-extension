@@ -12,8 +12,6 @@ import {asConnectionStateSwitch} from './vpn/ConnectionState';
 import {
 	type ApiError,
 	fetchApi,
-	isExcludedFromProxy,
-	isIncludedIntoProxy,
 } from './api';
 import type {ProxyInfo} from './proxy';
 import {forgetCredentials} from './account/credentials/removeCredentials';
@@ -100,6 +98,8 @@ import {
 } from './vpn/reviewInfo';
 import {getBypassList} from './vpn/getBypassList';
 import {getIncludeOnlyList} from './vpn/getIncludeOnlyList';
+import {FirefoxSplitTunnelingFrameContext} from './vpn/FirefoxSplitTunnelingFrameContext';
+import {getFirefoxSplitTunnelingProxyRoute} from './vpn/getFirefoxSplitTunnelingProxyRoute';
 import OnAuthRequiredDetails = chrome.webRequest.OnAuthRequiredDetails;
 import OnRequestDetails = browser.proxy._OnRequestDetails;
 
@@ -114,6 +114,13 @@ let lastLogicalCheck = 0;
 const hasWarning = () => !!(currentState?.data?.error as ApiError)?.Warning;
 
 const serverHostnames: Record<string, boolean> = {};
+const firefoxSplitTunnelingFrameContext =
+	new FirefoxSplitTunnelingFrameContext();
+const tabsOnRemoved = browser?.tabs?.onRemoved;
+
+tabsOnRemoved?.addListener((tabId) => {
+	firefoxSplitTunnelingFrameContext.clearTab(tabId);
+});
 
 export const isProxyKnownHost = (host: string): boolean =>
 	host === currentState?.data?.server?.proxyHost ||
@@ -219,6 +226,7 @@ const onState = asConnectionStateSwitch({
 			delete currentState.data.starting;
 		}
 
+		firefoxSplitTunnelingFrameContext.clear();
 		serverHostnames[server.proxyHost] = true;
 		const credentials = await getCredentials();
 
@@ -456,20 +464,16 @@ const onState = asConnectionStateSwitch({
 		// This is only to avoid proxy for localhost, but we might actually want to access the API via the proxy in normal cases
 		// We should extend this to prevent proxying for LAN addresses
 		const splitTunneling = currentState?.data?.server?.splitTunneling;
-		const bypassList = [
-			...proxyLocalNetworkExclusion,
-			...getBypassList(splitTunneling),
-		];
+		const route = getFirefoxSplitTunnelingProxyRoute(requestDetails, {
+			apiExclusion: excludeApiFromProxy,
+			hardDirectDomains: proxyLocalNetworkExclusion,
+			includeOnlyDomains: getIncludeOnlyList(splitTunneling),
+			splitTunneling,
+			splitTunnelingDomains: getBypassList(splitTunneling),
+			frameContext: firefoxSplitTunnelingFrameContext,
+		});
 
-		if (isExcludedFromProxy(requestDetails, excludeApiFromProxy, bypassList)) {
-			return {type: 'direct'};
-		}
-
-		const includeOnly = getIncludeOnlyList(splitTunneling);
-
-		if (
-			!isIncludedIntoProxy(requestDetails, excludeApiFromProxy, includeOnly)
-		) {
+		if (route === 'direct') {
 			return {type: 'direct'};
 		}
 
@@ -571,6 +575,7 @@ const loggedoutState: ConnectionStateSwitch = {
 	async init(): Promise<void> {
 		cancelNextCredentialFetch();
 		//Always start clean
+		firefoxSplitTunnelingFrameContext.clear();
 		currentState.data = {};
 
 		setButton('loggedOut');
@@ -592,6 +597,7 @@ const offState: ConnectionStateSwitch = {
 	initializedAt: 0,
 	async init(config?: ConnectionState): Promise<void> {
 		cancelNextCredentialFetch();
+		firefoxSplitTunnelingFrameContext.clear();
 		currentState.data = {};
 		const error = config?.data?.error;
 
