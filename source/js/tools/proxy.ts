@@ -87,7 +87,10 @@ const buildDomainMatchingCondition = (domain: string) => {
 
 		return `isInNet(host, "${mask[1]}", "${[255, 255, 255, 255]
 			.map(() =>
-				[...Array(8).keys()].reduce((rst) => rst * 2 + Number(val-- > 0), 0),
+				[...Array.from(Array(8).keys())].reduce(
+					(rst) => rst * 2 + Number(val-- > 0),
+					0,
+				),
 			)
 			.join('.')}")`;
 	}

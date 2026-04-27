@@ -11,6 +11,12 @@
 module.exports = function (/** @type string */ source) {
 	const useBackground = /^(.)use background\1/i;
 	const usePopup = /^(.)use popup\1/i;
+	const path = this.resourcePath.split(/[/\\]/g);
+	path.pop();
+
+	let up = './';
+
+	for (; path.length && path.pop() !== 'js'; up += '../');
 
 	let injected = '';
 
@@ -18,6 +24,7 @@ module.exports = function (/** @type string */ source) {
 		injected = template(
 			'!isInBackground()',
 			"'use background' directive detected in",
+			up,
 		);
 	}
 
@@ -25,15 +32,20 @@ module.exports = function (/** @type string */ source) {
 		injected = template(
 			'isInBackground()',
 			"'use popup' directive detected in",
+			up,
 		);
 	}
 
 	return injected + source;
 };
 
-function template(/** @type string */ condition, /** @type string */ message) {
+function template(
+	/** @type string */ condition,
+	/** @type string */ message,
+	/** @type string */ resourcePath,
+) {
 	return `
-import { isInBackground } from 'js/context/isInBackground';
+import { isInBackground } from '${resourcePath}context/isInBackground';
 //@ts-ignore
 const fileName = import.meta.url.split('/').pop();
 if (${condition}) {

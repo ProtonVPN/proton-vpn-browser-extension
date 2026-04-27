@@ -1,5 +1,5 @@
 module.exports = {
-	appVersion: '1.2.16',
+	appVersion: '1.3.0',
 	appId: 'jplgfhpmjnbigmhklmmbgecoobifkmpa',
 	baseDomainURL: 'https://account.proton.me',
 	tokenDuration: 1200, // seconds
@@ -22,6 +22,7 @@ module.exports = {
 		'[::1]',
 		'<local>',
 	],
+	lastChoicesMemoryLimit: 5,
 	signupEnabled: true,
 	/**
 	 * For now TOR is disabled, server-side proxy requests won't be sent to the TOR network

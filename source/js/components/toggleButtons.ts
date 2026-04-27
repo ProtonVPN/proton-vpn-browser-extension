@@ -1,5 +1,5 @@
-import {escapeHtml} from '../tools/escapeHtml';
 import {upgradeButton} from '../components/upgradeButton';
+import {describeButton} from '../components/connectionButton';
 import {translateToggleButtonTitle} from '../tools/translate';
 import {stopEvent} from '../tools/stopEvent';
 import type {CacheItem} from '../tools/storage';
@@ -31,7 +31,7 @@ const configureLock = (
 	const div = document.createElement('div');
 	div.setAttribute('class', 'locked-feature');
 	div.innerHTML = `
-		<a href="#" title="${escapeHtml(feature.getControlMessage())}">
+		<a href="#" ${describeButton(feature.getControlMessage())}>
 			<svg
 				fill="currentColor"
 				viewBox="0 0 1309.443 1658.036"

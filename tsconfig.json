@@ -1,13 +1,7 @@
 {
 	"compilerOptions": {
-		"baseUrl": "source",
-		"paths": {
-			"*": [
-				"*"
-			]
-		},
 		"module": "ES2020",
-		"target": "es5",
+		"target": "es2015",
 		"lib": [
 			"ES2019",
 			"ES2020.String",
@@ -15,7 +9,11 @@
 			"DOM.Iterable",
 			"webworker"
 		],
-		"moduleResolution": "node",
+		"moduleResolution": "bundler",
+		"types": [
+			"chrome",
+			"firefox-webext-browser"
+		],
 		"allowJs": true,
 		"allowSyntheticDefaultImports": true,
 		"resolveJsonModule": false,
@@ -35,11 +33,11 @@
 		"noEmitOnError": true,
 		"useDefineForClassFields": true,
 		"forceConsistentCasingInFileNames": true,
-		"skipLibCheck": true,
-		"downlevelIteration": true
+		"skipLibCheck": true
 	},
 	"include": [
-		"source",
-		"config.js"
-	]
+		"./source/",
+		"./config.js"
+	],
+	"exclude": ["**/node_modules/*", "**/dist/*", "**/.*/"]
 }

@@ -24,6 +24,14 @@
 		background-color: var(--dark-gray);
 	}
 
+	.remove-recent-button {
+		fill: var(--dark-gray);
+
+		&:hover {
+			fill: var(--light-gray);
+		}
+	}
+
 	.expanded-tooltip {
 		border: 1px solid var(--dark-gray);
 		background: #16141c;

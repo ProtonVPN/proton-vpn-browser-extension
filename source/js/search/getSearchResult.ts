@@ -3,6 +3,7 @@ import {
 	type CountryList,
 	countryList,
 } from '../components/countryList';
+import {countryListHeader} from '../components/countryListHeader';
 import {getSearchedLogicals} from './getSearchedLogicals';
 import {getExactMatchSearchResult} from './getExactMatchSearchResult';
 import {getNoResultBlock} from './getNoResultBlock';
@@ -186,12 +187,7 @@ const getSearchSynchronousResult = (
 			getSearchedLogicals(countries, searchWords, true, false),
 			userTier,
 			secureCore,
-			(count) =>
-				/* translator: Header of a list of countries */ c('Label').plural(
-					count,
-					msgid`Country`,
-					`Countries`,
-				) + (count > 1 ? ' (' + count + ')' : ''),
+			countryListHeader,
 		) +
 		(secureCoreEnabled
 			? ''

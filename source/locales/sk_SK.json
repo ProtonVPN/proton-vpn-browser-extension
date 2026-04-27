@@ -80,6 +80,9 @@
 			"Quick connect": [
 				"Rýchlo pripojiť"
 			],
+			"Remove": [
+				"Odstrániť"
+			],
 			"Remove ${domain}": [
 				"Odstrániť ${domain}"
 			],
@@ -129,8 +132,20 @@
 			]
 		},
 		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"Pripojiť k \"${mode}\""
+			],
+			"Connect to ${countryName}": [
+				"Pripojiť k ${countryName}"
+			],
 			"Connect to ${exitCountryName}": [
 				"Pripojiť k ${exitCountryName}"
+			],
+			"Connect to ${logical.Name}": [
+				"Pripojiť k ${logical.Name}"
+			],
+			"Connect to the fastest country": [
+				"Pripojiť k narýchlejšej krajine"
 			]
 		},
 		"Action: Server-level button": {
@@ -269,6 +284,9 @@
 			],
 			"Bypass censorship with advanced security and privacy features": [
 				"Obchádzajte cenzúru pomocou pokročilých funkcií zabezpečenia a ochrany súkromia"
+			],
+			"Clear all recent connections and don't keep local history": [
+				"Vymazať všetky nedávne pripojenia a neukladať lokálnu históriu"
 			],
 			"Clear search": [
 				"Vyčistiť vyhľadávanie"
@@ -416,6 +434,18 @@
 			],
 			"Proton VPN Browser Extension": [
 				"Proton VPN rozšírenie prehliadača"
+			],
+			"Recent connections": [
+				"Nedávne pripojenia"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"Zapamätať si nedávne lokálne pripojenia a zobrazovať rýchle odkazy na ne"
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"Zapamätaj si posledné krajiny/mestá/servery, ku ktorým som sa pripojil, a zobraz ich v\nhornej časti zoznamu."
+			],
+			"Retired server": [
+				"Vyradený server"
 			],
 			"Secure Core": [
 				"Secure Core"
@@ -602,11 +632,26 @@
 			]
 		},
 		"Title": {
+			"Closest server": [
+				"Najbližší server"
+			],
+			"Fastest country": [
+				"Najrýchlejšia krajina"
+			],
+			"Fastest server": [
+				"Najrýchlejší server"
+			],
 			"Features": [
 				"Funkcie"
 			],
 			"Proton VPN for Vivaldi": [
 				"Proton VPN pre Vivaldi"
+			],
+			"Random server": [
+				"Náhodný server"
+			],
+			"Recents": [
+				"Nedávne"
 			],
 			"Streaming": [
 				"Streamovanie"

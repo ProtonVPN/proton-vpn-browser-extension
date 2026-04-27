@@ -80,6 +80,9 @@
 			"Quick connect": [
 				"Conectare rapidă"
 			],
+			"Remove": [
+				"Eliminare"
+			],
 			"Remove ${domain}": [
 				"Eliminare ${domain}"
 			],
@@ -129,8 +132,20 @@
 			]
 		},
 		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"Conectare la „${mode}\""
+			],
+			"Connect to ${countryName}": [
+				"Conectare la ${countryName}"
+			],
 			"Connect to ${exitCountryName}": [
 				"Conectare la ${exitCountryName}"
+			],
+			"Connect to ${logical.Name}": [
+				"Conectare la ${logical.Name}"
+			],
+			"Connect to the fastest country": [
+				"Conectare la cea mai rapidă țară"
 			]
 		},
 		"Action: Server-level button": {
@@ -266,6 +281,9 @@
 			],
 			"Bypass censorship with advanced security and privacy features": [
 				"Depășiți cenzura cu securitate avansată și funcții de confidențialitate"
+			],
+			"Clear all recent connections and don't keep local history": [
+				"Elimină toate conexiunile recente și nu păstrează istoric local."
 			],
 			"Clear search": [
 				"Golire căutare"
@@ -412,6 +430,18 @@
 			],
 			"Proton VPN Browser Extension": [
 				"Extensie navigator Proton VPN"
+			],
+			"Recent connections": [
+				"Conexiuni recente"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"Memorează conexiunile recente local și arată legături rapide spre ele."
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"Reține ultimele țări/orașe/servere la care m-am conectat și afișează-le în partea de sus a listei."
+			],
+			"Retired server": [
+				"Server retras"
 			],
 			"Secure Core": [
 				"Secure Core"
@@ -594,11 +624,26 @@
 			]
 		},
 		"Title": {
+			"Closest server": [
+				"Cel mai apropiat server"
+			],
+			"Fastest country": [
+				"Cea mai rapidă țară"
+			],
+			"Fastest server": [
+				"Cel mai rapid server"
+			],
 			"Features": [
 				"Funcții"
 			],
 			"Proton VPN for Vivaldi": [
 				"Proton VPN pentru Vivaldi"
+			],
+			"Random server": [
+				"Server aleatoriu"
+			],
+			"Recents": [
+				"Recente"
 			],
 			"Streaming": [
 				"Transmisie în flux"

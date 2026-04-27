@@ -80,6 +80,9 @@
 			"Quick connect": [
 				"Conexión rápida"
 			],
+			"Remove": [
+				"Eliminar"
+			],
 			"Remove ${domain}": [
 				"Eliminar ${domain}"
 			],
@@ -129,8 +132,20 @@
 			]
 		},
 		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"Conéctate a \"${mode}\""
+			],
+			"Connect to ${countryName}": [
+				"Conéctate a ${countryName}"
+			],
 			"Connect to ${exitCountryName}": [
 				"Conectar a ${exitCountryName}"
+			],
+			"Connect to ${logical.Name}": [
+				"Conéctate a ${logical.Name}"
+			],
+			"Connect to the fastest country": [
+				"Conéctate al país más rápido"
 			]
 		},
 		"Action: Server-level button": {
@@ -263,6 +278,9 @@
 			],
 			"Bypass censorship with advanced security and privacy features": [
 				"Evita la censura con funciones avanzadas de seguridad y privacidad"
+			],
+			"Clear all recent connections and don't keep local history": [
+				"Borra todas las conexiones recientes y no guardes el historial local"
 			],
 			"Clear search": [
 				"Borrar la búsqueda"
@@ -408,6 +426,18 @@
 			],
 			"Proton VPN Browser Extension": [
 				"Extensión de navegador Proton VPN"
+			],
+			"Recent connections": [
+				"Conexiones recientes"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"Recuerda las conexiones recientes localmente y muestra accesos rápidos a ellas"
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"Recuerda los últimos países, ciudades y servidores a los que te has conectado y muéstralos al principio de la lista."
+			],
+			"Retired server": [
+				"Servidor retirado"
 			],
 			"Secure Core": [
 				"Secure Core"
@@ -586,11 +616,26 @@
 			]
 		},
 		"Title": {
+			"Closest server": [
+				"Servidor más cercano"
+			],
+			"Fastest country": [
+				"País más rápido"
+			],
+			"Fastest server": [
+				"Servidor más rápido"
+			],
 			"Features": [
 				"Funcionalidades"
 			],
 			"Proton VPN for Vivaldi": [
 				"Proton VPN para Vivaldi"
+			],
+			"Random server": [
+				"Servidor aleatorio"
+			],
+			"Recents": [
+				"Recientes"
 			],
 			"Streaming": [
 				"Streaming"

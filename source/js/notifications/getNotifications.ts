@@ -5,7 +5,7 @@ import {getCacheAge} from '../tools/getCacheAge';
 import {triggerPromise} from '../tools/triggerPromise';
 import {getNotificationsRefreshInterval} from '../intervals';
 
-interface Notification {
+export interface Notification {
 	StartTime: number;
 	EndTime: number;
 	Type: number;

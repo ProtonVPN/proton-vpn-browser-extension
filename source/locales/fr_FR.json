@@ -80,6 +80,9 @@
 			"Quick connect": [
 				"Connexion rapide"
 			],
+			"Remove": [
+				"Retirer"
+			],
 			"Remove ${domain}": [
 				"Retirer ${domain}"
 			],
@@ -129,8 +132,20 @@
 			]
 		},
 		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"Se connecter à « ${mode} »"
+			],
+			"Connect to ${countryName}": [
+				"Se connecter à ${countryName}"
+			],
 			"Connect to ${exitCountryName}": [
 				"Se connecter au pays ${exitCountryName}"
+			],
+			"Connect to ${logical.Name}": [
+				"Se connecter à ${logical.Name}"
+			],
+			"Connect to the fastest country": [
+				"Se connecter au pays le plus rapide"
 			]
 		},
 		"Action: Server-level button": {
@@ -263,6 +278,9 @@
 			],
 			"Bypass censorship with advanced security and privacy features": [
 				"Contournez la censure avec des fonctionnalités avancées de sécurité et de confidentialité"
+			],
+			"Clear all recent connections and don't keep local history": [
+				"Effacer toutes les connexions récentes et ne pas conserver l'historique local"
 			],
 			"Clear search": [
 				"Effacer la recherche"
@@ -408,6 +426,18 @@
 			],
 			"Proton VPN Browser Extension": [
 				"Extension de navigateur Proton VPN"
+			],
+			"Recent connections": [
+				"Connexions récentes"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"Mémorisez les connexions récentes au niveau local et affichez des liens rapides vers celles-ci"
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"Mémoriser les derniers pays/villes/serveurs auxquels je me suis connecté et les afficher en\nhaut de la liste."
+			],
+			"Retired server": [
+				"Serveur hors service"
 			],
 			"Secure Core": [
 				"Secure Core"
@@ -586,11 +616,26 @@
 			]
 		},
 		"Title": {
+			"Closest server": [
+				"Serveur le plus proche"
+			],
+			"Fastest country": [
+				"Pays le plus rapide"
+			],
+			"Fastest server": [
+				"Serveur le plus rapide"
+			],
 			"Features": [
 				"Fonctionnalités"
 			],
 			"Proton VPN for Vivaldi": [
 				"Proton VPN pour Vivaldi"
+			],
+			"Random server": [
+				"Serveur aléatoire"
+			],
+			"Recents": [
+				"Connexions récentes"
 			],
 			"Streaming": [
 				"Streaming"

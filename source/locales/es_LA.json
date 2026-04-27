@@ -80,6 +80,9 @@
 			"Quick connect": [
 				"Conexión rápida"
 			],
+			"Remove": [
+				"Eliminar"
+			],
 			"Remove ${domain}": [
 				"Eliminar ${domain}"
 			],
@@ -129,8 +132,20 @@
 			]
 		},
 		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"Conectar a «${mode}»"
+			],
+			"Connect to ${countryName}": [
+				"Conectar a ${countryName}"
+			],
 			"Connect to ${exitCountryName}": [
 				"Conectar a ${exitCountryName}"
+			],
+			"Connect to ${logical.Name}": [
+				"Conectar a ${logical.Name}"
+			],
+			"Connect to the fastest country": [
+				"Conectarse al país más rápido"
 			]
 		},
 		"Action: Server-level button": {
@@ -263,6 +278,9 @@
 			],
 			"Bypass censorship with advanced security and privacy features": [
 				"Evite la censura con funciones avanzadas de seguridad y privacidad"
+			],
+			"Clear all recent connections and don't keep local history": [
+				"Borrar todas la conexiones recientes y no mantener el historial local"
 			],
 			"Clear search": [
 				"Limpiar búsqueda"
@@ -408,6 +426,18 @@
 			],
 			"Proton VPN Browser Extension": [
 				"Complemento de navegador Proton VPN"
+			],
+			"Recent connections": [
+				"Conexiones recientes"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"Recordar conexiones recientes localmente y mostrar enlaces rápido a ellos"
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"Recordar los últimos países/ciudades/servidores a los que me conecté y mostrarlos al inicio de la lista."
+			],
+			"Retired server": [
+				"Servidor retirado"
 			],
 			"Secure Core": [
 				"Secure Core"
@@ -586,11 +616,26 @@
 			]
 		},
 		"Title": {
+			"Closest server": [
+				"Servidor más cercano"
+			],
+			"Fastest country": [
+				"País más rápido"
+			],
+			"Fastest server": [
+				"Servidor más rápido"
+			],
 			"Features": [
 				"Funcionalidades"
 			],
 			"Proton VPN for Vivaldi": [
 				"Proton VPN para Vivaldi"
+			],
+			"Random server": [
+				"Servidor aleatorio"
+			],
+			"Recents": [
+				"Recientes"
 			],
 			"Streaming": [
 				"Streaming"

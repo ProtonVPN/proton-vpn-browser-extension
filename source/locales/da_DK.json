@@ -80,6 +80,9 @@
 			"Quick connect": [
 				"Hurtig tilslutning"
 			],
+			"Remove": [
+				"Fjern"
+			],
 			"Remove ${domain}": [
 				"Fjern ${domain}"
 			],
@@ -129,8 +132,20 @@
 			]
 		},
 		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"Forbind til ${mode}\""
+			],
+			"Connect to ${countryName}": [
+				"Forbind til ${countryName}"
+			],
 			"Connect to ${exitCountryName}": [
 				"Forbind til ${exitCountryName}"
+			],
+			"Connect to ${logical.Name}": [
+				"Forbind til ${logical.Name}"
+			],
+			"Connect to the fastest country": [
+				"Forbind til det hurtigste land"
 			]
 		},
 		"Action: Server-level button": {
@@ -263,6 +278,9 @@
 			],
 			"Bypass censorship with advanced security and privacy features": [
 				"Omgå censur med avancerede sikkerheds- og privatlivsfunktioner"
+			],
+			"Clear all recent connections and don't keep local history": [
+				"Ryd alle seneste forbindelser og gem ikke historik lokalt"
 			],
 			"Clear search": [
 				"Ryd søgning"
@@ -408,6 +426,18 @@
 			],
 			"Proton VPN Browser Extension": [
 				"Proton VPN browser-udvidelse"
+			],
+			"Recent connections": [
+				"Seneste forbindelser"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"Husk seneste forbindelser lokalt og vis hurtige links til dem"
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"Husk de seneste lande/byer/servere, jeg har forbundet til, og vis dem øverst på listen."
+			],
+			"Retired server": [
+				"Udgået server"
 			],
 			"Secure Core": [
 				"Secure Core"
@@ -586,11 +616,26 @@
 			]
 		},
 		"Title": {
+			"Closest server": [
+				"Nærmeste server"
+			],
+			"Fastest country": [
+				"Hurtigste land"
+			],
+			"Fastest server": [
+				"Hurtigste server"
+			],
 			"Features": [
 				"Funktioner"
 			],
 			"Proton VPN for Vivaldi": [
 				"Proton VPN til Vivaldi"
+			],
+			"Random server": [
+				"Tilfældig server"
+			],
+			"Recents": [
+				"Seneste"
 			],
 			"Streaming": [
 				"Streaming"

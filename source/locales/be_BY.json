@@ -80,6 +80,9 @@
 			"Quick connect": [
 				"Хуткае падключэнне"
 			],
+			"Remove": [
+				"Выдаліць"
+			],
 			"Remove ${domain}": [
 				"Выдаліць ${domain}"
 			],
@@ -129,8 +132,20 @@
 			]
 		},
 		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"Падключыцца да \"${mode}\""
+			],
+			"Connect to ${countryName}": [
+				"Падключыцца да ${countryName}"
+			],
 			"Connect to ${exitCountryName}": [
 				"Падключыцца да ${exitCountryName}"
+			],
+			"Connect to ${logical.Name}": [
+				"Падключыцца да ${logical.Name}"
+			],
+			"Connect to the fastest country": [
+				"Падключыцца да найхутчэйшай краіны"
 			]
 		},
 		"Action: Server-level button": {
@@ -269,6 +284,9 @@
 			],
 			"Bypass censorship with advanced security and privacy features": [
 				"Абыходзьце цэнзуру з пашыранымі функцыямі бяспекі і прыватнасці"
+			],
+			"Clear all recent connections and don't keep local history": [
+				"Ачысціць усе нядаўні падключэнні і не пакідаць лакальную гісторыю"
 			],
 			"Clear search": [
 				"Ачысціць пошук"
@@ -416,6 +434,18 @@
 			],
 			"Proton VPN Browser Extension": [
 				"Пашырэнні Proton VPN для браўзера"
+			],
+			"Recent connections": [
+				"Нядаўнія падключэнні"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"Запамінаць нядаўнія падключэнні лакальна і паказваць хуткія спасылкі на іх"
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"Запамінаць апошнія краіны/гарады/серверы, да якіх я падключаўся, і паказваць іх\nуверсе спіса."
+			],
+			"Retired server": [
+				"Выведзены з эксплуатацыі сервер"
 			],
 			"Secure Core": [
 				"Secure Core"
@@ -602,11 +632,26 @@
 			]
 		},
 		"Title": {
+			"Closest server": [
+				"Найбліжэйшы сервер"
+			],
+			"Fastest country": [
+				"Найхутчэйшыя краіны"
+			],
+			"Fastest server": [
+				"Найхутчэйшы сервер"
+			],
 			"Features": [
 				"Функцыі"
 			],
 			"Proton VPN for Vivaldi": [
 				"Proton VPN для Vivaldi"
+			],
+			"Random server": [
+				"Выпадковы сервер"
+			],
+			"Recents": [
+				"Нядаўнія"
 			],
 			"Streaming": [
 				"Трансляцыя"

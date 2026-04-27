@@ -80,6 +80,9 @@
 			"Quick connect": [
 				"Pikayhteys"
 			],
+			"Remove": [
+				"Poista"
+			],
 			"Remove ${domain}": [
 				"Poista ${domain}"
 			],
@@ -129,8 +132,20 @@
 			]
 		},
 		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"Yhdistä maahan \"${mode}\""
+			],
+			"Connect to ${countryName}": [
+				"Yhdistä maahan ${countryName}"
+			],
 			"Connect to ${exitCountryName}": [
 				"Yhdistä maahan ${exitCountryName}"
+			],
+			"Connect to ${logical.Name}": [
+				"Yhdistä maahan ${logical.Name}"
+			],
+			"Connect to the fastest country": [
+				"Yhdistä nopeimpaan maahan"
 			]
 		},
 		"Action: Server-level button": {
@@ -263,6 +278,9 @@
 			],
 			"Bypass censorship with advanced security and privacy features": [
 				"Ohita sensuuri kehittyneillä tietoturva- ja yksityisyysominaisuuksilla"
+			],
+			"Clear all recent connections and don't keep local history": [
+				"Tyhjennä kaikki viimeaikaiset yhteydet ja älä tallenna paikallista historiaa"
 			],
 			"Clear search": [
 				"Tyhjennä haku"
@@ -408,6 +426,18 @@
 			],
 			"Proton VPN Browser Extension": [
 				"Proton VPN -selainlaajennus"
+			],
+			"Recent connections": [
+				"Viimeisimmät yhteydet"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"Muista viimeaikaiset paikalliset yhteydet ja näytä pikalinkit niihin"
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"Muista viimeisimmät maat/kaupungit/palvelimet, joihin olen muodostanut yhteyden, ja näytä ne luettelon yläosassa."
+			],
+			"Retired server": [
+				"Poistettu palvelin"
 			],
 			"Secure Core": [
 				"Secure Core"
@@ -586,11 +616,26 @@
 			]
 		},
 		"Title": {
+			"Closest server": [
+				"Lähin palvelin"
+			],
+			"Fastest country": [
+				"Nopein maa"
+			],
+			"Fastest server": [
+				"Nopein palvelin"
+			],
 			"Features": [
 				"Ominaisuudet"
 			],
 			"Proton VPN for Vivaldi": [
 				"Proton VPN Vivaldille"
+			],
+			"Random server": [
+				"Satunnainen palvelin"
+			],
+			"Recents": [
+				"Viimeisimmät"
 			],
 			"Streaming": [
 				"Suoratoisto"

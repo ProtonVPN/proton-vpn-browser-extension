@@ -343,6 +343,9 @@
 			"Proton VPN Browser Extension": [
 				"Proton VPN 瀏覽器擴充功能"
 			],
+			"Retired server": [
+				"最近使用的伺服器"
+			],
 			"Secure Core": [
 				"Secure Core"
 			],
@@ -503,6 +506,9 @@
 			],
 			"Proton VPN for Vivaldi": [
 				"適用於 Vivaldi 的 Proton VPN"
+			],
+			"Random server": [
+				"隨機選擇的伺服器"
 			],
 			"Streaming": [
 				"串流"

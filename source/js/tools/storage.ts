@@ -12,6 +12,10 @@ export enum Storage {
 	MANAGED = 'managed',
 }
 
+type CacheKey<T> = Exclude<keyof T, 'time'>;
+
+type CacheValue<T> = T[CacheKey<T>];
+
 const defaultStorage = Storage.LOCAL;
 
 /**
@@ -212,6 +216,34 @@ export const storage = {
 					? self.removeItem(key, storage)
 					: self.setItem(key, result, storage));
 				transactionStart = undefined;
+			},
+			async transactionValue<
+				D extends CacheValue<T> | undefined = CacheValue<T> | undefined,
+			>(
+				callback: (value: CacheValue<T> | D) => CacheValue<T> | D | undefined,
+				defaultValue: D = undefined as D,
+			): Promise<void> {
+				return this.transaction(
+					(cache) => {
+						const newValue = callback(cache?.[valueKey as CacheKey<T>]);
+
+						if (newValue !== undefined) {
+							return {
+								...cache,
+								[valueKey]: newValue,
+								time: Date.now(),
+							} as T;
+						}
+
+						return undefined;
+					},
+					defaultValue === undefined
+						? undefined
+						: ({
+								[valueKey]: defaultValue,
+								time: Date.now(),
+							} as T),
+				);
 			},
 		};
 	},

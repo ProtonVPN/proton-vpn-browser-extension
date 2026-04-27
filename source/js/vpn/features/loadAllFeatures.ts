@@ -5,7 +5,9 @@ import {PreventWebrtcLeak} from './PreventWebrtcLeak';
 import {SplitTunneling} from './SplitTunneling';
 import {Telemetry} from './Telemetry';
 import {CrashReports} from './CrashReports';
+import {Recents} from './Recents';
 import type {FeatureWrapper} from './FeatureWrapper';
+import type {AllFeatures} from './AllFeatures';
 
 type extractGeneric<Type> = Type extends FeatureWrapper<infer X> ? X : never;
 
@@ -23,6 +25,7 @@ export const loadAllFeatures = async () => {
 		telemetry: Telemetry.create(),
 		crashReport: CrashReports.create(),
 		splitTunneling: SplitTunneling.create(),
+		recents: Recents.create(),
 	};
 
 	const [
@@ -33,6 +36,7 @@ export const loadAllFeatures = async () => {
 		telemetry,
 		crashReport,
 		splitTunneling,
+		recents,
 	] = await Promise.all(
 		Object.values(loaders).map(async (featureLoader) => {
 			const feature = await featureLoader;
@@ -52,13 +56,6 @@ export const loadAllFeatures = async () => {
 		telemetry,
 		crashReport,
 		splitTunneling,
-	} as {
-		secureCore: LoadedFeature<SecureCore>;
-		notification: LoadedFeature<Notification>;
-		autoConnect: LoadedFeature<AutoConnect>;
-		preventWebrtcLeak: LoadedFeature<PreventWebrtcLeak>;
-		telemetry: LoadedFeature<Telemetry>;
-		crashReport: LoadedFeature<CrashReports>;
-		splitTunneling: LoadedFeature<SplitTunneling>;
-	};
+		recents,
+	} as AllFeatures;
 };
