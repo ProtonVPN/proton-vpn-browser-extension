@@ -17,7 +17,7 @@ export const locationList = async (
 		(userTier > 0 && recents.config.value
 			? recentLocationsSlot(await getLastChoices(), countries)
 			: '') +
-		(countryList(countries, userTier, secureCore, countryListHeader) ||
+		(countryList(countries, userTier, secureCore, countryListHeader, true) ||
 			`<p class="not-found">
 				${c('Error').t`Unable to load the list`}<br />
 				<small>${

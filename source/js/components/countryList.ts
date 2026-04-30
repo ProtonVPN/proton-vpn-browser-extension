@@ -1,12 +1,9 @@
 import {countryBlock} from './countryBlock';
-import {connectionAttributes, describeButton} from './connectionButton';
-import {via} from './via';
+import {fastestCountry} from './fastestCountry';
 import {comp, Sorter} from '../tools/comp';
 import {getKeys} from '../tools/getKeys';
-import {c} from '../tools/translate';
 import type {Logical} from '../vpn/Logical';
 import {getSecureCorePredicate} from '../vpn/getSecureCorePredicate';
-import {Feature} from '../vpn/Feature';
 
 export type CountryList = Record<string, CountryItem>;
 
@@ -64,6 +61,7 @@ export const countryFilteredList = (
 	secureCoreValue = false,
 	extraConnectionAttributes: Record<string, string | number> = {},
 	showFlag = false,
+	withFastest = false,
 ): string => {
 	const keys = getCountryFilteredKeys(countries, predicate);
 
@@ -79,36 +77,7 @@ export const countryFilteredList = (
 		(header
 			? `<div class="servers-group group-section">${header(count)}</div>`
 			: '') +
-		`<div class="country-block">
-			<div class="details-box ">
-				<div class="details-box-summary connection-button-container">
-					<div class="country-header list-item-box">
-						<button
-							class="flex flex-1 text-left button-light-hover connect-option connect-clickable"
-							${describeButton(c('Action: Country-level button').t`Connect to the fastest country`)}
-							${connectionAttributes({
-								pick: 'fastest',
-								[secureCoreValue ? 'requiredFeatures' : 'excludedFeatures']:
-									Feature.SECURE_CORE,
-							})}
-						>
-							${secureCoreValue ? `<div class="via-box">${via()}</div>` : ''}
-							<div class="lightning">
-								<svg class="lightning-symbol" viewBox="0 0 10 14">
-									<use xlink:href="img/icons.svg#lightning"></use>
-								</svg>
-							</div>
-							<div class="flex-1 group-name recent-name">
-								${c('Title').t`Fastest country`}
-							</div>
-							<div class="flex-1 connect-text">
-								${c('Action').t`Connect`}
-							</div>
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>` +
+		(withFastest ? fastestCountry(secureCoreValue) : '') +
 		keys
 			.map((country) =>
 				countryBlock(
@@ -138,6 +107,7 @@ export const countryList = (
 	userTier: number,
 	secureCore = {value: false},
 	header?: (count: number) => string,
+	withFastest = false,
 ) => {
 	return countryFilteredList(
 		countries,
@@ -145,5 +115,8 @@ export const countryList = (
 		getSecureCorePredicate(userTier, secureCore),
 		header,
 		userTier > 0 && secureCore.value,
+		{},
+		false,
+		withFastest,
 	);
 };

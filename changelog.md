@@ -1,3 +1,7 @@
+# 1.3.1
+
+- Don't show "Fastest country" at the top of the search result
+
 # 1.3.0
 
 - Add the possibility to connect back to recent locations

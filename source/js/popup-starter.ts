@@ -87,13 +87,13 @@ import {showSigningView} from './components/signIn/showSigningView';
 import {delay, timeoutAfter} from './tools/delay';
 import {proxyPermission} from './vpn/proxyPermission';
 import {leaveWindowForTab, openTab} from './tools/openTab';
-import {getSearchResult} from './search/getSearchResult';
 import {upsell} from './tools/upsell';
 import {forgetAccount} from './account/forgetAccount';
 import {hideIf} from './tools/hideIf';
 import {preventLeak} from './webrtc/preventLeak';
 import {setWebRTCState} from './webrtc/setWebRTCState';
 import {WebRTCState} from './webrtc/state';
+import {locationListOrSearch} from './components/locationListOrSearch';
 import {via} from './components/via';
 import {locationList} from './components/locationList';
 import {configureSplitTunneling} from './components/configureSplitTunneling';
@@ -1638,20 +1638,13 @@ export const start = async (area: HTMLElement) => {
 		search.focus();
 		search.onkeyup = (e) => {
 			if (e.key === 'Enter' || e.keyCode === 13) {
-				const firstButton = servers.querySelector<HTMLElement>(
-					'.server, .connect-option',
-				);
-
-				if (firstButton) {
-					firstButton.click();
-				}
+				servers.querySelector<HTMLElement>('.server, .connect-option')?.click();
 			}
 		};
 		let lastSearchStart = 0;
 		refresh = setUpSearch(search, async (searchText) => {
 			const searchStart = Date.now();
 			lastSearchStart = searchStart;
-			const searching = searchText !== '';
 
 			if (!servers.querySelector(':scope > .spinner')) {
 				setServersHtml(`<div class="spinner">
@@ -1660,26 +1653,14 @@ export const start = async (area: HTMLElement) => {
 			}
 
 			// Wait a bit for consecutive letters typed
-			await delay(searching ? 300 : 1);
+			await delay(searchText === '' ? 1 : 300);
 
 			if (lastSearchStart !== searchStart) {
 				return;
 			}
 
 			setServersHtml(
-				searching
-					? getSearchResult(
-							countries,
-							searchText,
-							userTier,
-							features.secureCore.config,
-						)
-					: await locationList(
-							countries,
-							userTier,
-							features.secureCore.config,
-							features.recents,
-						),
+				await locationListOrSearch(searchText, countries, userTier, features),
 				searchText,
 			);
 			configureArea(area);
