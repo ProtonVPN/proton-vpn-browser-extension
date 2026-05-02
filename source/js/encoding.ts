@@ -27,7 +27,9 @@ export const arrayToBinaryString = (bytes: Uint8Array) => {
 
 	for (let i = 0; i < j; i += bs) {
 		result.push(
-			String.fromCharCode(...bytes.subarray(i, i + bs < j ? i + bs : j)),
+			String.fromCharCode(
+				...Array.from(bytes.subarray(i, i + bs < j ? i + bs : j)),
+			),
 		);
 	}
 	return result.join('');

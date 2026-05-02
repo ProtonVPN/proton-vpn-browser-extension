@@ -77,6 +77,9 @@
 			"Quick connect": [
 				"Connessione rapida"
 			],
+			"Remove": [
+				"Rimuovi"
+			],
 			"Remove ${domain}": [
 				"Rimuovi ${domain}"
 			],
@@ -126,8 +129,20 @@
 			]
 		},
 		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"Connettiti a \"${mode}\""
+			],
+			"Connect to ${countryName}": [
+				"Connettiti a ${countryName}"
+			],
 			"Connect to ${exitCountryName}": [
 				"Connetti a ${exitCountryName}"
+			],
+			"Connect to ${logical.Name}": [
+				"Connession a${logical.Name}"
+			],
+			"Connect to the fastest country": [
+				"Connettiti al paese piú veloce"
 			]
 		},
 		"Action: Server-level button": {
@@ -260,6 +275,9 @@
 			],
 			"Bypass censorship with advanced security and privacy features": [
 				"Evita la censura con funzionalità avanzate di sicurezza e privacy"
+			],
+			"Clear all recent connections and don't keep local history": [
+				"Cancella tutte le recenti connessioni e non mantenere lo storico locale"
 			],
 			"Clear search": [
 				"Cancella ricerca"
@@ -405,6 +423,18 @@
 			],
 			"Proton VPN Browser Extension": [
 				"Estensione di Proton VPN per il browser"
+			],
+			"Recent connections": [
+				"Connessioni recenti"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"Ricorda localmente le connessioni recenti e mostra collegamenti rapidi a esse."
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"Ricorda gli ultimi paesi/città/server a cui ti sei connesso e mostrali in cima all’elenco."
+			],
+			"Retired server": [
+				"Server ritirato"
 			],
 			"Secure Core": [
 				"Secure Core"
@@ -577,11 +607,26 @@
 			]
 		},
 		"Title": {
+			"Closest server": [
+				"Server piú vicini"
+			],
+			"Fastest country": [
+				"Il paese piú veloce"
+			],
+			"Fastest server": [
+				"Server veloce"
+			],
 			"Features": [
 				"Funzionalità"
 			],
 			"Proton VPN for Vivaldi": [
 				"Proton VPN per Vivaldi"
+			],
+			"Random server": [
+				"Server casuale"
+			],
+			"Recents": [
+				"Recenti"
 			],
 			"Streaming": [
 				"Streaming"

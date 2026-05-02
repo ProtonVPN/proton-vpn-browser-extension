@@ -16,11 +16,13 @@ export const getSearchedLogicals = (
 	each(countries, (countryCode, source) => {
 		const countryScore = useCountryScore
 			? getSearchWordsScore(searchWords, [
-					...new Set([
-						countryCode,
-						...getWords(source.name),
-						...getWords(source.englishName),
-					]),
+					...Array.from(
+						new Set([
+							countryCode,
+							...getWords(source.name),
+							...getWords(source.englishName),
+						]),
+					),
 				])
 			: 0;
 

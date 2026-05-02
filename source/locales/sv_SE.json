@@ -80,6 +80,9 @@
 			"Quick connect": [
 				"Snabbanslut"
 			],
+			"Remove": [
+				"Ta bort"
+			],
 			"Remove ${domain}": [
 				"Ta bort ${domain}"
 			],
@@ -129,8 +132,20 @@
 			]
 		},
 		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"Anslut till ”${mode}”"
+			],
+			"Connect to ${countryName}": [
+				"Anslut till ${countryName}"
+			],
 			"Connect to ${exitCountryName}": [
 				"Anslut till ${exitCountryName}"
+			],
+			"Connect to ${logical.Name}": [
+				"Anslut till ${logical.Name}"
+			],
+			"Connect to the fastest country": [
+				"Anslut till snabbaste landet"
 			]
 		},
 		"Action: Server-level button": {
@@ -263,6 +278,9 @@
 			],
 			"Bypass censorship with advanced security and privacy features": [
 				"Kringgå censur med avancerade säkerhets- och integritetsfunktioner"
+			],
+			"Clear all recent connections and don't keep local history": [
+				"Rensa alla senaste anslutningar och behåll inte lokal historik"
 			],
 			"Clear search": [
 				"Rensa sök"
@@ -409,6 +427,18 @@
 			"Proton VPN Browser Extension": [
 				"Proton VPN-webbläsartillägg"
 			],
+			"Recent connections": [
+				"Senaste anslutningar"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"Kom ihåg de senaste anslutningarna lokalt och visa snabblänkar till dem"
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"Kom ihåg de senaste länderna/städerna/servrarna jag anslöt till och visa dem\nhögst upp i listan."
+			],
+			"Retired server": [
+				"Avvecklad server"
+			],
 			"Secure Core": [
 				"Secure Core"
 			],
@@ -459,6 +489,12 @@
 			],
 			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
 				"Med Brave kan DNS-förfrågningar vara oskyddade när “Inkluderingsläge“ är aktivt."
+			],
+			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
+				"VPN blockerat av extern programvara.\n\nVissa verktyg, som antivirusprogram eller proxy kan störa Proton VPN. Inaktivera dem och försök igen."
+			],
+			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.": [
+				"VPN blockerat av extern programvara: ${blockingSoftware}\n\nVissa verktyg, som antivirusprogram eller proxy kan störa Proton VPN. Du kan prova att inaktivera dem för att bekräfta."
 			],
 			"VPN Features": [
 				"VPN-funktioner"
@@ -577,11 +613,26 @@
 			]
 		},
 		"Title": {
+			"Closest server": [
+				"Närmaste server"
+			],
+			"Fastest country": [
+				"Snabbaste land"
+			],
+			"Fastest server": [
+				"Snabbaste server"
+			],
 			"Features": [
 				"Funktioner"
 			],
 			"Proton VPN for Vivaldi": [
 				"Proton VPN för Vivaldi"
+			],
+			"Random server": [
+				"Slumpmässig server"
+			],
+			"Recents": [
+				"Senaste"
 			],
 			"Streaming": [
 				"Streaming"

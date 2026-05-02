@@ -80,6 +80,9 @@
 			"Quick connect": [
 				"Connexió ràpida"
 			],
+			"Remove": [
+				"Eliminar-ho"
+			],
 			"Remove ${domain}": [
 				"Esborra ${domain}"
 			],
@@ -129,8 +132,20 @@
 			]
 		},
 		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"Connectar-se a \"${mode}\""
+			],
+			"Connect to ${countryName}": [
+				"Connectar-se a ${countryName}"
+			],
 			"Connect to ${exitCountryName}": [
 				"Connecta't a ${exitCountryName}"
+			],
+			"Connect to ${logical.Name}": [
+				"Connectar-se a ${logical.Name}"
+			],
+			"Connect to the fastest country": [
+				"Connectar-se al país més ràpid"
 			]
 		},
 		"Action: Server-level button": {
@@ -263,6 +278,9 @@
 			],
 			"Bypass censorship with advanced security and privacy features": [
 				"Eviteu la censura amb funcions avançades de seguretat i privadesa"
+			],
+			"Clear all recent connections and don't keep local history": [
+				"Netejar totes les connexions recents i no mantenir-ne l'historial local"
 			],
 			"Clear search": [
 				"Esborra la cerca"
@@ -408,6 +426,18 @@
 			],
 			"Proton VPN Browser Extension": [
 				"Extensió del Navegador de Proton VPN"
+			],
+			"Recent connections": [
+				"Connexions recents"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"Recordar les connexions recents localment i mostrar-ne els enllaços ràpids"
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"Recordar els últims països, ciutats o servidors als quals us heu connectat i mostrar-los al capdamunt de la llista."
+			],
+			"Retired server": [
+				"Servidor retirat"
 			],
 			"Secure Core": [
 				"Secure Core"
@@ -586,11 +616,26 @@
 			]
 		},
 		"Title": {
+			"Closest server": [
+				"El servidor més proper"
+			],
+			"Fastest country": [
+				"El país més ràpid"
+			],
+			"Fastest server": [
+				"El servidor més ràpid"
+			],
 			"Features": [
 				"Característiques"
 			],
 			"Proton VPN for Vivaldi": [
 				"Proton VPN per a Vivaldi"
+			],
+			"Random server": [
+				"Servidor aleatori"
+			],
+			"Recents": [
+				"Recents"
 			],
 			"Streaming": [
 				"Estríming"

@@ -129,8 +129,20 @@
 			]
 		},
 		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"Verbinden met ${mode}\""
+			],
+			"Connect to ${countryName}": [
+				"Verbinden met ${countryName}"
+			],
 			"Connect to ${exitCountryName}": [
 				"Verbinden met ${exitCountryName}"
+			],
+			"Connect to ${logical.Name}": [
+				"Verbinden met ${logical.Name}"
+			],
+			"Connect to the fastest country": [
+				"Maak verbinding met het snelste land"
 			]
 		},
 		"Action: Server-level button": {
@@ -263,6 +275,9 @@
 			],
 			"Bypass censorship with advanced security and privacy features": [
 				"Omzeil censuur met geavanceerde beveiligings- en privacyfuncties"
+			],
+			"Clear all recent connections and don't keep local history": [
+				"Wis alle recente verbindingen en bewaar geen lokale geschiedenis."
 			],
 			"Clear search": [
 				"Zoekveld leegmaken"
@@ -408,6 +423,18 @@
 			],
 			"Proton VPN Browser Extension": [
 				"Proton VPN Browserextensie"
+			],
+			"Recent connections": [
+				"Recente verbindingen"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"Onthoud recente lokale verbindingen en toon snelle links ernaartoe."
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"Onthoud de laatste landen/steden/servers waarmee ik verbinding heb gemaakt en toon ze bovenaan de lijst."
+			],
+			"Retired server": [
+				"Oude server"
 			],
 			"Secure Core": [
 				"Secure Core"
@@ -586,11 +613,26 @@
 			]
 		},
 		"Title": {
+			"Closest server": [
+				"Dichtstbijzijnde server"
+			],
+			"Fastest country": [
+				"Snelste land"
+			],
+			"Fastest server": [
+				"Snelste server"
+			],
 			"Features": [
 				"Functies"
 			],
 			"Proton VPN for Vivaldi": [
 				"Proton VPN voor Vivaldi"
+			],
+			"Random server": [
+				"Willekeurige server"
+			],
+			"Recents": [
+				"Laatst gebruikte"
 			],
 			"Streaming": [
 				"Streaming"

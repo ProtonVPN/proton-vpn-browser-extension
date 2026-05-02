@@ -80,6 +80,9 @@
 			"Quick connect": [
 				"Schnellverbinden"
 			],
+			"Remove": [
+				"Entfernen"
+			],
 			"Remove ${domain}": [
 				"${domain} entfernen"
 			],
@@ -129,8 +132,20 @@
 			]
 		},
 		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"Mit „${mode}“ verbinden"
+			],
+			"Connect to ${countryName}": [
+				"Mit ${countryName} verbinden"
+			],
 			"Connect to ${exitCountryName}": [
 				"Mit ${exitCountryName} verbinden"
+			],
+			"Connect to ${logical.Name}": [
+				"Mit ${logical.Name} verbinden"
+			],
+			"Connect to the fastest country": [
+				"Mit schnellstem Land verbinden"
 			]
 		},
 		"Action: Server-level button": {
@@ -263,6 +278,9 @@
 			],
 			"Bypass censorship with advanced security and privacy features": [
 				"Umgehe die Zensur mit erweiterten Sicherheits- und Datenschutzfunktionen"
+			],
+			"Clear all recent connections and don't keep local history": [
+				"Alle zuletzt verwendeten Verbindungen löschen und lokalen Verlauf nicht speichern"
 			],
 			"Clear search": [
 				"Suche löschen"
@@ -408,6 +426,18 @@
 			],
 			"Proton VPN Browser Extension": [
 				"Proton VPN Browser-Erweiterung"
+			],
+			"Recent connections": [
+				"Letzte Verbindungen"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"Zuletzt verwendete lokale Verbindungen speichern und Schnellzugriff darauf anzeigen"
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"Länder, Städte und Server speichern, mit denen ich zuletzt verbunden war, und sie oben in der Liste anzeigen."
+			],
+			"Retired server": [
+				"Inaktiver Server"
 			],
 			"Secure Core": [
 				"Secure Core"
@@ -586,11 +616,26 @@
 			]
 		},
 		"Title": {
+			"Closest server": [
+				"Nächstgelegener Server"
+			],
+			"Fastest country": [
+				"Schnellstes Land"
+			],
+			"Fastest server": [
+				"Schnellster Server"
+			],
 			"Features": [
 				"Funktionen"
 			],
 			"Proton VPN for Vivaldi": [
 				"Proton VPN für Vivaldi"
+			],
+			"Random server": [
+				"Zufälliger Server"
+			],
+			"Recents": [
+				"Zuletzt"
 			],
 			"Streaming": [
 				"Streaming"

@@ -80,6 +80,9 @@
 			"Quick connect": [
 				"Hızlı bağlan"
 			],
+			"Remove": [
+				"Kaldır"
+			],
 			"Remove ${domain}": [
 				"${domain} etki alanı katılmasın"
 			],
@@ -129,8 +132,20 @@
 			]
 		},
 		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"\"${mode}\" ile bağlantı kur"
+			],
+			"Connect to ${countryName}": [
+				"${countryName} ile bağlantı kur"
+			],
 			"Connect to ${exitCountryName}": [
 				"${exitCountryName} ile bağlantı kur"
+			],
+			"Connect to ${logical.Name}": [
+				"${logical.Name} ile bağlantı kur"
+			],
+			"Connect to the fastest country": [
+				"En hızlı ülkeye bağlan"
 			]
 		},
 		"Action: Server-level button": {
@@ -263,6 +278,9 @@
 			],
 			"Bypass censorship with advanced security and privacy features": [
 				"Gelişmiş güvenlik ve gizlilik özellikleriyle engelleri aşın"
+			],
+			"Clear all recent connections and don't keep local history": [
+				"Son bağlantıları temizle ve yerel geçmişi tutma"
 			],
 			"Clear search": [
 				"Aramayı temizle"
@@ -408,6 +426,18 @@
 			],
 			"Proton VPN Browser Extension": [
 				"Proton VPN tarayıcı eklentisi"
+			],
+			"Recent connections": [
+				"Son bağlantılar"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"Son bağlantılar yerel olarak hatırlansın ve hızlı bağlantıları görüntülensin"
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"Son bağlandığım ülkeler/iller/sunucular hatırlansın ve bunlar listenin\nen üstünde görüntülensin."
+			],
+			"Retired server": [
+				"Kullanımdan kaldırılmış sunucu"
 			],
 			"Secure Core": [
 				"Secure Core"
@@ -586,11 +616,26 @@
 			]
 		},
 		"Title": {
+			"Closest server": [
+				"En yakın sunucu"
+			],
+			"Fastest country": [
+				"En hızlı ülke"
+			],
+			"Fastest server": [
+				"En hızlı sunucu"
+			],
 			"Features": [
 				"Özellikler"
 			],
 			"Proton VPN for Vivaldi": [
 				"Vivaldi için Proton VPN"
+			],
+			"Random server": [
+				"Rastgele sunucu"
+			],
+			"Recents": [
+				"Son kullanılanlar"
 			],
 			"Streaming": [
 				"Yayın akışı"

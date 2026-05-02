@@ -6,7 +6,7 @@ import type {CountryItem} from './countryList';
 import {getKeysAndValues} from '../tools/getKeysAndValues';
 import {needUpgrade} from '../vpn/needUpgrade';
 import {upgradeButton} from './upgradeButton';
-import {connectionAttributes} from './connectionButton';
+import {connectionAttributes, describeButton} from './connectionButton';
 import {expandButton} from './expendButton';
 import {c, msgid} from '../tools/translate';
 import {paidOnly, simplifiedUi} from '../config';
@@ -139,7 +139,7 @@ const formatGroups = (
 				<div class="server-type list-item-box${grayOutButton ? ' gray-out' : ''}">
 					<button
 						class="flex flex-1 text-left group-button button-light-hover connect-option${unconnectable ? '' : ' connect-clickable'}${up ? '' : ' in-maintenance'}"
-						title="${c('Action: City-level button').t`Connect to ${cityName}`}"
+						${describeButton(c('Action: City-level button').t`Connect to ${cityName}`)}
 						${
 							up
 								? subscriptionNeeded

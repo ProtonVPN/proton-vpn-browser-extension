@@ -44,6 +44,8 @@ export const singleProxyPort = baseConfig.singleProxyPort;
 
 export const proxySecureCorePort = baseConfig.proxySecureCorePort;
 
+export const lastChoicesMemoryLimit = baseConfig.lastChoicesMemoryLimit;
+
 export const telemetryEnabled = true;
 
 export const scheme = baseConfig.scheme as 'http' | 'https';

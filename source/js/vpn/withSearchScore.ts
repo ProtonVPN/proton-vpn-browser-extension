@@ -6,13 +6,15 @@ import {getWords} from '../tools/getWords';
 
 const getSearchScoreForWords = (
 	searchWords: string[],
-	searchIn: any[],
+	searchIn: unknown[],
 ): number =>
 	getSearchWordsScore(searchWords, [
-		...new Set(
-			searchIn.filter(
-				(item) => typeof item === 'string' && item !== '',
-			) as string[],
+		...Array.from(
+			new Set(
+				searchIn.filter(
+					(item) => typeof item === 'string' && item !== '',
+				) as string[],
+			),
 		),
 	]);
 

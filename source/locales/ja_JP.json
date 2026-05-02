@@ -20,6 +20,9 @@
 			"Cancel": [
 				"キャンセル"
 			],
+			"Change language": [
+				"言語を変更"
+			],
 			"Change server": [
 				"サーバーを変更する"
 			],
@@ -133,6 +136,11 @@
 		"Action: Server-level button": {
 			"Connect to ${serverName}": [
 				"${serverName} に接続"
+			]
+		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"検索"
 			]
 		},
 		"Confirm": {
@@ -421,8 +429,14 @@
 			"Thank you for installing Proton VPN": [
 				"Proton VPN をインストールしていただき、ありがとうございます"
 			],
+			"The split tunneling options cannot be changed on this device": [
+				"このデバイスでは、スプリットトンネルのオプションを変更できません"
+			],
 			"Then just click the Proton VPN icon to sign in.": [
 				"そして、Proton VPN アイコンをクリックしてサインインします。"
+			],
+			"This option cannot be changed on this device": [
+				"このデバイスでは、このオプションを変更できません"
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"これらの統計にはあなたの IP アドレスは含まれていないため、個人を特定するために使用することはできません。第三者と共有することはありません"

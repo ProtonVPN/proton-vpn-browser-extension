@@ -1,7 +1,17 @@
+# 1.3.1
+
+- Don't show "Fastest country" at the top of the search result
+
+# 1.3.0
+
+- Add the possibility to connect back to recent locations
+(stored locally, can be switched off in the feature panel)
+
 # 1.2.16
 
 - Support MDM-driven default feature settings
 - Option to change language (independently of browser language)
+- Update translations
 
 # 1.2.15
 

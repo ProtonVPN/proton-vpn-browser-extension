@@ -1,636 +1,585 @@
 {
 	"headers": {
 		"plural-forms": "nplurals=2; plural=(n > 1);",
-		"language": "zh_CN"
+		"language": "fil_PH"
 	},
 	"contexts": {
 		"Action": {
 			"${linkDescription} (New tab)": [
-				"${linkDescription}（新标签）"
+				"${linkDescription} (Bagong tab)"
 			],
 			"Add": [
-				"添加"
+				"Idagdag"
 			],
 			"Add website": [
-				"添加网站"
+				"Magdagdag ng website"
 			],
 			"Already have a Proton Account?": [
-				"已有 Proton 账户？"
+				"Mayroon nang Proton Account?"
 			],
 			"Cancel": [
-				"取消"
-			],
-			"Change language": [
-				"更改语言"
+				"Kanselahin"
 			],
 			"Change server": [
-				"切换服务器"
+				"Palitan ang server"
 			],
 			"Configure split tunneling": [
-				"配置拆分隧道"
+				"I-configure ang split tunneling"
 			],
 			"Connect": [
-				"连接"
+				"Kumonekta"
 			],
 			"Contact us": [
-				"联系我们"
+				"Makipag-ugnayan sa amin"
 			],
 			"Create an account": [
-				"创建账号"
+				"Gumawa ng account"
 			],
 			"Disable auto-connect": [
-				"停用自动连接"
+				"I-disable ang auto-connect"
 			],
 			"Disable notifications": [
-				"停用通知"
+				"I-disable ang mga abiso"
 			],
 			"Disable Split tunneling": [
-				"禁用拆分隧道"
+				"I-disable ang split tunneling"
 			],
 			"Disable WebRTC leak protection": [
-				"停用 WebRTC 泄露保护"
+				"I-disable ang proteksyon sa WebRTC leak"
 			],
 			"Disconnect": [
-				"断开连接"
+				"I-disconnect"
 			],
 			"Enable auto-connect": [
-				"启用自动连接"
+				"I-enable ang auto-connect"
 			],
 			"Enable notifications": [
-				"启用通知"
+				"I-enable ang mga abiso"
 			],
 			"Enable Split tunneling": [
-				"启用拆分隧道"
+				"I-enable ang split tunneling"
 			],
 			"Enable WebRTC leak protection": [
-				"启用 WebRTC 泄露保护"
+				"I-enable ang proteksyon sa WebRTC leak"
 			],
 			"Log in with Proton": [
-				"使用 Proton 账户登录"
+				"Mag-log in gamit ang Proton"
 			],
 			"Manage subscription": [
-				"管理订阅"
+				"Pamahalaan ang subscription"
 			],
 			"New to Proton?": [
-				"新建到 Proton？"
+				"Bago sa Proton?"
 			],
 			"Next": [
-				"下一步"
+				"Susunod"
 			],
 			"Quick connect": [
-				"快速连接"
-			],
-			"Remove": [
-				"移除"
+				"Mabilis na pagkonekta"
 			],
 			"Remove ${domain}": [
-				"移除 ${domain}"
+				"Alisin ang ${domain}"
 			],
 			"Select a city in ${exitCountryName}": [
-				"在 ${exitCountryName} 中选择城市"
+				"Piliin ang lungsod sa ${exitCountryName}"
 			],
 			"Select a server in ${cityName}": [
-				"在 ${cityName} 中选择服务器"
+				"Pumili ng server sa ${cityName}"
 			],
 			"Select entry country with exit in ${exitCountryName}": [
-				"在 ${exitCountryName} 中选择入境国和出境国"
+				"Piliin ang entry na bansa na may exit sa ${exitCountryName}"
 			],
 			"Sign in": [
-				"登录"
+				"Mag-sign in"
 			],
 			"Sign in with Vivaldi": [
-				"使用 Vivaldi 登录"
+				"Mag-sign in gamit ang Vivaldi"
 			],
 			"Sign out": [
-				"登出"
+				"Mag-sign out"
 			],
 			"Subscribe to connect more devices": [
-				"订阅以连接更多设备"
+				"Mag-subscribe upang makakonekta ng mas maraming device"
 			],
 			"Subscribe to enable Browser Extension": [
-				"订阅以启用浏览器扩展"
+				"Mag-subscribe upang ma-enable ang Browser Extension"
 			],
 			"Switch account": [
-				"切换账户"
+				"Lumipat ng account"
 			],
 			"Update": [
-				"更新"
+				"I-update"
 			],
 			"Upgrade": [
-				"升级账户"
+				"I-upgrade"
 			],
 			"Upgrade to Proton VPN Plus": [
-				"升级到 Proton VPN Plus"
+				"Mag-upgrade sa Proton VPN Plus"
 			],
 			"Visit Support Center": [
-				"访问支持中心"
+				"Bisitahin ang Support Center"
 			]
 		},
 		"Action: City-level button": {
 			"Connect to ${cityName}": [
-				"连接到 ${cityName}"
+				"Kumonekta sa ${cityName}"
 			]
 		},
 		"Action: Country-level button": {
-			"Connect to \"${mode}\"": [
-				"连接到“${mode}”"
-			],
-			"Connect to ${countryName}": [
-				"连接到 ${countryName}"
-			],
 			"Connect to ${exitCountryName}": [
-				"连接到 ${exitCountryName}"
-			],
-			"Connect to ${logical.Name}": [
-				"连接到 ${logical.Name}"
-			],
-			"Connect to the fastest country": [
-				"连接到最快的国家/地区"
+				"Kumonekta sa ${exitCountryName}"
 			]
 		},
 		"Action: Server-level button": {
 			"Connect to ${serverName}": [
-				"连接到 ${serverName}"
-			]
-		},
-		"Alternative text for the search (magnifying glass) icon": {
-			"Search": [
-				"搜索"
+				"Kumonekta sa ${serverName}"
 			]
 		},
 		"Confirm": {
 			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
-				"退出账户将断开当前 VPN 连接，确定要退出账户吗？"
+				"Ang pag-log out sa application ay magdi-disconnect sa aktibong koneksyon ng VPN. Gusto mo bang magpatuloy?"
 			]
 		},
 		"Description": {
 			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Proton Free 会自动将您连接到 5 个免费国家的最快可用免费服务器上。这通常是离您最近的服务器。"
+				"Awtomatiko kang ikinokonekta ng Proton Free sa pinakamabilis na available na libreng server mula sa aming 5 libreng bansa. Karaniwang ito ang pinakamalapit na server sa lokasyon mo."
 			]
 		},
 		"Error": {
 			"${countries} country": [
-				"${countries} 个国家/地区"
+				"${countries} bansa",
+				"${countries} na bansa"
 			],
 			"${serversCount} secure server": [
-				"${serversCount} 台安全服务器"
+				"${serversCount} ligtas na server",
+				"${serversCount} ligtas na server"
 			],
 			"${servers}+ secure server": [
-				"${servers}+ 台安全服务器"
+				"${servers}+ ligtas na server",
+				"${servers} ligtas na server"
 			],
 			"Access over ${servers} in ${countries}": [
-				"连通${countries}的${servers}"
+				"I-access ang mahigit ${servers} sa ${countries}"
 			],
 			"Bypass online censorship with advanced security and privacy features": [
-				"借助高等级安全与隐私功能绕过网络封锁"
+				"I-bypass ang online na censorship gamit ang mga advanced na feature sa seguridad at privacy"
 			],
 			"Connect from your browser with ${planName}": [
-				"通过 ${planName} 在您的浏览器中连接网络"
+				"Kumonekta mula sa browser mo gamit ang ${planName}."
 			],
 			"Network error.": [
-				"网络错误。"
+				"Error sa network"
 			],
 			"Network is unreachable": [
-				"无法连接网络"
+				"Hindi maabot ang network"
 			],
 			"No results found": [
-				"您要的没找到"
+				"Walang nakitang resulta"
 			],
 			"Not able to control the browser network settings, possibly a permission is missing": [
-				"无法控制浏览器网络设置，可能是缺少权限"
+				"Hindi makontrol ang mga setting ng network ng browser. Posibleng may kulang na pahintulot."
 			],
 			"Please check your connectivity": [
-				"请检查您的连接"
+				"Pakisuri ang iyong koneksyon"
 			],
 			"Please try a different keyword": [
-				"换个关键词试试"
+				"Pakisubukan ang ibang keyword"
 			],
 			"Server not found": [
-				"未找到服务器"
+				"Hindi mahanap ang server"
 			],
 			"Service temporarily unavailable": [
-				"服务暂时不可用"
+				"Pansamantalang hindi available ang serbisyo"
 			],
 			"Something went wrong. If the problem persists, please try to re-install the extension": [
-				"出错了。如果问题仍然存在，请尝试重新安装扩展程序"
+				"Nagkaroon ng problema. Kung magpatuloy ang problema, pakisubukang i-install muli ang extension."
 			],
 			"Unable to find appropriate server, try to logout and login again if it persists.": [
-				"无法找到合适的服务器，请尝试注销，如果问题仍然存在，请重新登录。"
+				"Hindi mahanap ang angkop na server. Subukang mag-log out at mag-log in muli kung magpatuloy ito."
 			],
 			"Unable to load the list": [
-				"无法加载列表"
+				"Hindi ma-load ang listahan"
 			],
 			"Unable to login": [
-				"无法登录"
+				"Hindi makapag-login"
 			],
 			"Unable to reach the server, please try to reconnect, or to log out and log in again if the problem persists": [
-				"无法连接服务器，请尝试重新连接，如果问题仍然存在，请退出并重新登录"
+				"Hindi maabot ang server. Pakisubukang kumonektang muli o mag-log out at mag-log in muli kung magpatuloy ang problema."
 			],
 			"Unlock ${servers} in ${countries}": [
-				"解锁 ${countries}的 ${servers}"
+				"I-unlock ang ${servers} sa ${countries}"
 			],
 			"Unlock global streaming services": [
-				"畅享全球流媒体服务"
+				"I-unlock ang mga pandaigdigang streaming service"
 			]
 		},
 		"Info": {
 			"<div class=\"weak-text\">\n<span data-trans>About free connections</span>\n<svg width=\"15\" height=\"14\" viewBox=\"0 0 15 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path \t\t\t\t\t\t\t\t\t\tfill-rule=\"evenodd\"\nclip-rule=\"evenodd\"\nd=\"M7.5 13C10.8137 13 13.5 10.3137 13.5 7C13.5 3.68629 10.8137 1 7.5 1C4.18629 1 1.5 3.68629 1.5 7C1.5 10.3137 4.18629 13 7.5 13ZM7.5 14C11.366 14 14.5 10.866 14.5 7C14.5 3.13401 11.366 0 7.5 0C3.63401 0 0.5 3.13401 0.5 7C0.5 10.866 3.63401 14 7.5 14ZM9.24995 10C9.24995 10.3038 9.00371 10.55 8.69995 10.55H7.69995H6.69995C6.39619 10.55 6.14995 10.3038 6.14995 10C6.14995 9.69624 6.39619 9.45 6.69995 9.45H7.14995L7.14995 6.55H6.99994C6.69618 6.55 6.44994 6.30376 6.44994 6C6.44994 5.69624 6.69618 5.45 6.99994 5.45H7.69995C7.84582 5.45 7.98571 5.50795 8.08886 5.61109C8.19201 5.71424 8.24995 5.85413 8.24995 6L8.24995 9.45H8.69995C9.00371 9.45 9.24995 9.69624 9.24995 10ZM7.5 4.40002C7.8866 4.40002 8.2 4.08662 8.2 3.70002C8.2 3.31343 7.8866 3.00002 7.5 3.00002C7.1134 3.00002 6.8 3.31343 6.8 3.70002C6.8 4.08662 7.1134 4.40002 7.5 4.40002Z\"\nfill=\"#A7A4B5\" ></path>\n</svg>\n</div>": [
-				"<div class=\"weak-text\">\n<span data-trans>关于免费连接</span>\n<svg width=\"15\" height=\"14\" viewBox=\"0 0 15 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path \t\t\t\t\t\t\t\t\t\tfill-rule=\"evenodd\"\nclip-rule=\"evenodd\"\nd=\"M7.5 13C10.8137 13 13.5 10.3137 13.5 7C13.5 3.68629 10.8137 1 7.5 1C4.18629 1 1.5 3.68629 1.5 7C1.5 10.3137 4.18629 13 7.5 13ZM7.5 14C11.366 14 14.5 10.866 14.5 7C14.5 3.13401 11.366 0 7.5 0C3.63401 0 0.5 3.13401 0.5 7C0.5 10.866 3.63401 14 7.5 14ZM9.24995 10C9.24995 10.3038 9.00371 10.55 8.69995 10.55H7.69995H6.69995C6.39619 10.55 6.14995 10.3038 6.14995 10C6.14995 9.69624 6.39619 9.45 6.69995 9.45H7.14995L7.14995 6.55H6.99994C6.69618 6.55 6.44994 6.30376 6.44994 6C6.44994 5.69624 6.69618 5.45 6.99994 5.45H7.69995C7.84582 5.45 7.98571 5.50795 8.08886 5.61109C8.19201 5.71424 8.24995 5.85413 8.24995 6L8.24995 9.45H8.69995C9.00371 9.45 9.24995 9.69624 9.24995 10ZM7.5 4.40002C7.8866 4.40002 8.2 4.08662 8.2 3.70002C8.2 3.31343 7.8866 3.00002 7.5 3.00002C7.1134 3.00002 6.8 3.31343 6.8 3.70002C6.8 4.08662 7.1134 4.40002 7.5 4.40002Z\"\nfill=\"#A7A4B5\" ></path>\n</svg>\n</div>"
+				"<div class=\"weak-text\">\n<span data-trans>Tungkol sa mga libreng koneksyon</span>\n<svg width=\"15\" height=\"14\" viewBox=\"0 0 15 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path \t\t\t\t\t\t\t\t\t\tfill-rule=\"evenodd\"\nclip-rule=\"evenodd\"\nd=\"M7.5 13C10.8137 13 13.5 10.3137 13.5 7C13.5 3.68629 10.8137 1 7.5 1C4.18629 1 1.5 3.68629 1.5 7C1.5 10.3137 4.18629 13 7.5 13ZM7.5 14C11.366 14 14.5 10.866 14.5 7C14.5 3.13401 11.366 0 7.5 0C3.63401 0 0.5 3.13401 0.5 7C0.5 10.866 3.63401 14 7.5 14ZM9.24995 10C9.24995 10.3038 9.00371 10.55 8.69995 10.55H7.69995H6.69995C6.39619 10.55 6.14995 10.3038 6.14995 10C6.14995 9.69624 6.39619 9.45 6.69995 9.45H7.14995L7.14995 6.55H6.99994C6.69618 6.55 6.44994 6.30376 6.44994 6C6.44994 5.69624 6.69618 5.45 6.99994 5.45H7.69995C7.84582 5.45 7.98571 5.50795 8.08886 5.61109C8.19201 5.71424 8.24995 5.85413 8.24995 6L8.24995 9.45H8.69995C9.00371 9.45 9.24995 9.69624 9.24995 10ZM7.5 4.40002C7.8866 4.40002 8.2 4.08662 8.2 3.70002C8.2 3.31343 7.8866 3.00002 7.5 3.00002C7.1134 3.00002 6.8 3.31343 6.8 3.70002C6.8 4.08662 7.1134 4.40002 7.5 4.40002Z\"\nfill=\"#A7A4B5\" ></path>\n</svg>\n</div>"
 			],
 			"A subdomain URL includes a prefix before the main domain name. For example, account.proton.me is a subdomain of proton.me.": [
-				"子域名网址包含主域名之前的前缀。例如，account.proton.me 是 proton.me 的子域名。"
+				"Kasama sa subdomain URL ang prefix bago ang pangunahing pangalan ng domain. Halimbawa, ang account.proton.me ay isang subdomain ng proton.me."
 			],
 			"About free connections": [
-				"关于免费连接"
+				"Tungkol sa mga libreng koneksyon"
 			],
 			"Access over 13,000 secure servers in over 120 countries": [
-				"访问超过 120 个国家的 13,000 多个安全服务器"
+				"I-access ang mahigit 13,000 ligtas na server sa mahigit 120 bansa"
 			],
 			"Access Proton VPN via this icon": [
-				"通过此图标访问 Proton VPN"
+				"I-access ang Proton VPN gamit ang icon na ito"
 			],
 			"Allow VPN permissions": [
-				"允许 VPN 权限"
+				"Payagan ang mga pahintulot sa VPN"
 			],
 			"Also add subdomains": [
-				"也添加子域名"
+				"Magdagdag din ng mga subdomain"
 			],
 			"and more": [
-				"以及更多"
+				"at marami pang iba"
 			],
 			"Audited by independent security experts": [
-				"由独立安全专家审核"
+				"Na-audit ng mga independent na eksperto sa seguridad"
 			],
 			"Auto-selected from": [
-				"自动选择"
+				"Awtomatikong pinili mula sa"
 			],
 			"Automatically reconnect to Proton VPN when you open your browser.": [
-				"打开浏览器时自动重新连接到 Proton VPN。"
+				"Awtomatikong kumonektang muli sa Proton VPN kapag binuksan mo ang browser mo."
 			],
 			"Back": [
-				"返回"
+				"Bumalik"
 			],
 			"Browse through the Support Center and find answers to frequently asked questions.": [
-				"浏览支持中心并找到常见问题的解决方案。"
+				"Mag-browse sa Support Center at maghanap ng mga sagot sa mga madalas itanong."
 			],
 			"Bypass censorship with advanced security and privacy features": [
-				"利用先进的安全和隐私功能绕过审查"
-			],
-			"Clear all recent connections and don't keep local history": [
-				"清除所有最近连接记录且不保留本地历史"
+				"I-bypass ang censorship gamit ang mga advanced na feature sa seguridad at privacy"
 			],
 			"Clear search": [
-				"清除搜索条件"
+				"I-clear ang paghahanap"
 			],
 			"Close": [
-				"关闭"
+				"Isara"
 			],
 			"Connect to a Plus server in this country to start streaming.\n\nHint: Clear the cache of the streaming apps to ensure new content appears.": [
-				"连接该地域的 Plus 服务器开始串流。\n\n提示：清除流媒体应用程序的缓存，确保可以浏览新的内容。"
+				"Kumonekta sa isang Plus server sa bansang ito upang magsimulang mag-stream.\n\nPahiwatig: I-clear ang cache ng mga streaming app upang matiyak na lilitaw ang bagong content."
 			],
 			"Connected": [
-				"已连接"
+				"Konektado"
 			],
 			"Connected to ${name}": [
-				"连接至 ${name}"
+				"Konektado sa ${name}"
 			],
 			"Connected to ${name} in ${city}": [
-				"连接到 ${name} 中的 ${city}"
+				"Konektado sa ${name} sa ${city}"
 			],
 			"Connecting servers such as ${logical.Name} is not currently supported in the browser extension": [
-				"目前浏览器扩展不支持连接到诸如 ${logical.Name} 之类的服务器"
+				"Ang pagkonekta sa mga server tulad ng ${logical.Name} ay kasalukuyang hindi sinusuportahan sa browser extension"
 			],
 			"Connecting to dedicated IPs such as ${logical.Name} is not currently supported in the browser extension": [
-				"目前浏览器扩展不支持连接到诸如 ${logical.Name} 之类的专用 IP"
+				"Ang pagkonekta sa mga dedicated IP tulad ng ${logical.Name} ay kasalukuyang hindi sinusuportahan sa browser extension"
 			],
 			"Connecting...": [
-				"正在连接..."
+				"Kumokonekta..."
 			],
 			"Contact our Customer Support agents to help you out with Proton VPN.": [
-				"联系我们的客户支持代理人来帮助您使用 Proton VPN。"
+				"Makipag-ugnayan sa aming mga ahente ng Suporta sa Customer upang matulungan ka sa Proton VPN."
 			],
 			"Crash": [
-				"崩溃啦"
+				"Pag-crash"
 			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
-				"崩溃报告会帮助我们修复错误、检测防火墙并避免 VPN 阻塞。"
+				"Nakakatulong ang mga ulat ng pag-crash upang maayos namin ang mga bug, ma-detect ang mga firewall at maiwasan ang mga block sa VPN."
 			],
 			"Decide which websites are protected by VPN.": [
-				"决定哪些网站受 VPN 保护。"
+				"Magpasya kung aling mga website ang protektado ng VPN."
 			],
 			"Disable Secure Core": [
-				"停用 Secure Core"
+				"I-disable ang Secure Core"
 			],
 			"Disconnected": [
-				"已断开"
+				"Na-disconnect"
 			],
 			"Disconnected by another extension": [
-				"被其他扩展断开连接"
+				"Na-disconnect ng ibang extension"
 			],
 			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"被其他扩展断开连接，现已连接到 ${newProxyName}"
+				"Na-disconnect ng ibang extension. Kumonekta ito sa ${newProxyName}."
 			],
 			"Disconnected, settings were overridden": [
-				"断开连接，设置已被覆盖"
+				"Na-disconnect. Na-override ang mga setting."
 			],
 			"Disconnected, settings were overridden to ${newProxyName}": [
-				"断开连接，设置被覆盖为 ${newProxyName}"
+				"Na-disconnect. Na-override ang mga setting sa ${newProxyName}."
 			],
 			"Emit system notifications on connection and disconnection events.": [
-				"就连接和断开事件发出系统通知。"
+				"Maglabas ng mga abiso ng system sa mga kaganapan ng koneksyon at pagka-disconnect."
 			],
 			"Enable Secure Core": [
-				"启用 Secure Core"
+				"I-enable ang Secure Core"
 			],
 			"Enjoying Proton VPN?": [
-				"正在享受使用 Proton VPN 吗？"
+				"Nasisiyahan sa Proton VPN?"
 			],
 			"Exclude mode": [
-				"排除模式"
+				"Exclude mode"
 			],
 			"Extra protection for people with advanced privacy needs": [
-				"为有高级隐私需求的用户提供额外保护"
+				"Karagdagang proteksyon para sa mga taong may advanced na pangangailangan sa privacy"
 			],
 			"Fastest free server": [
-				"最快的免费服务器"
+				"Pinakamabilis na libreng server"
 			],
 			"Follow these simple steps to get the best experience using Proton VPN": [
-				"请遵循以下简单步骤，获得使用 Proton VPN 的最佳体验"
+				"Sundin ang mga simpleng hakbang na ito para makuha ang pinakamagandang karanasan sa paggamit ng Proton VPN"
 			],
 			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
-				"免费服务器所在的国家 (<span id=\"free-server-countries-count\">0</span>)"
+				"Mga bansang may libreng server (<span id=\"free-server-countries-count\">0</span>)"
 			],
 			"Get unlimited server changes with VPN Plus": [
-				"使用 VPN Plus 获得无限制的服务器更改"
+				"Magkaroon ng unlimited na pagpapalit ng server gamit ang VPN Plus"
 			],
 			"Get worldwide coverage with VPN Plus": [
-				"开通 VPN Plus，获得全球覆盖"
+				"Magkaroon ng pandaigdigang coverage gamit ang VPN Plus"
 			],
 			"Help": [
-				"帮助"
+				"Tulong"
 			],
 			"Help us fight censorship": [
-				"和我们一起对抗审查"
+				"Tulungan kaming labanan ang censorship"
 			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
-				"真正保护隐私的瑞士高速 VPN。极致的安全性，超过 ${count} 台服务器，流量无限制。"
+				"High-performance na Swiss VPN na pumoprotekta sa privacy mo. Maximum na seguridad, higit sa ${count} na server at walang paghihigpit.\n",
+				"High-performance na Swiss VPN na pumoprotekta sa privacy mo. Maximum na seguridad, higit sa ${count} na server at walang paghihigpit."
 			],
 			"Include mode": [
-				"包含模式"
+				"Include mode"
 			],
 			"Learn more": [
-				"了解详情"
+				"Matuto pa"
 			],
 			"Leave a rating": [
-				"去评个分吧"
+				"Mag-iwan ng rating"
 			],
 			"Logged out": [
-				"退出账户"
+				"Naka-log out"
 			],
 			"Not now": [
-				"以后再说"
+				"Huwag muna"
 			],
 			"Off": [
-				"关闭"
+				"Naka-off"
 			],
 			"On": [
-				"启用"
+				"Naka-on"
 			],
 			"Open source VPN": [
-				"开源的 VPN"
+				"Buksan ang source na VPN"
 			],
 			"Open the Extensions menu": [
-				"打开扩展菜单"
+				"Buksan ang menu ng Extensions"
 			],
 			"Open the Proton VPN browser extension to continue": [
-				"打开 Proton VPN 浏览器扩展程序即可继续操作"
+				"Buksan ang Proton VPN browser extension upang magpatuloy"
 			],
 			"Pin Proton VPN to your toolbar": [
-				"将 Proton VPN 固定在您的工具栏"
+				"I-pin ang Proton VPN sa toolbar mo"
 			],
 			"Please help us spread the word with a Web Store rating.": [
-				"请通过给 Web 商店评分帮助我们传播好评！"
+				"Mangyaring tulungan kaming ipamahagi ang balita gamit ang rating sa Web Store."
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
-				"点击 <b>下一步</b>，然后点击浏览器弹出窗口上的<b>允许</b>。"
+				"Pindutin ang <b>Susunod</b>, pagkatapos ay i-click ang <b>Payagan</b> sa pop-up mula sa browser mo."
 			],
 			"Protect yourself online with Proton's free high‑speed VPN.": [
-				"使用 Proton 免费高速 VPN 保护您的上网安全。"
+				"Protektahan ang sarili online gamit ang libre at napakabilis na VPN ng Proton."
 			],
 			"Proton VPN": [
 				"Proton VPN"
 			],
 			"Proton VPN Browser Extension": [
-				"Proton VPN 浏览器扩展程序"
-			],
-			"Recent connections": [
-				"最近连接"
-			],
-			"Remember recent connections locally and show quick links to them": [
-				"在本地记录最近连接并显示快速链接"
-			],
-			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
-				"记住我最近连接过的国家/地区/城市/服务器，并将其显示在列表顶部！"
-			],
-			"Retired server": [
-				"已退役的服务器"
+				"Proton VPN Browser Extension"
 			],
 			"Secure Core": [
 				"Secure Core"
 			],
 			"Selected websites": [
-				"已选择的网站"
+				"Mga napiling website"
 			],
 			"Share anonymous usage crash reports": [
-				"分享匿名的崩溃报告"
+				"I-share ang mga anonymous na ulat ng pag-crash sa paggamit"
 			],
 			"Share anonymous usage statistics": [
-				"分享匿名的使用统计数据"
+				"I-share ang anonymous na statistics ng paggamit"
 			],
 			"Split tunneling": [
-				"线路分离"
+				"Split tunneling"
 			],
 			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
-				"阻止浏览器向使用 WebRTC 的网站和应用程序泄露您的 IP 地址。这可能会影响某些网站的视频通话或直播性能。"
+				"Pinipigilan ang browser mo na mag-leak ng IP address sa mga website at app gamit ang WebRTC. Maaaring makaapekto ito sa video calling o performance ng live streaming sa ilang website."
 			],
 			"Telemetry": [
-				"遥测技术"
+				"Telemetry"
 			],
 			"Thank you for installing Proton VPN": [
-				"感谢您安装 Proton VPN"
-			],
-			"The split tunneling options cannot be changed on this device": [
-				"此设备无法更改拆分隧道选项"
+				"Salamat sa pag-install ng Proton VPN"
 			],
 			"Then just click the Proton VPN icon to sign in.": [
-				"然后点击 Proton VPN 图标以登录。"
-			],
-			"This option cannot be changed on this device": [
-				"此设备无法更改此选项"
+				"Pagkatapos, i-click lang ang icon ng Proton VPN upang mag-sign in."
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
-				"这些统计数据不包含您的 IP 地址，因此无法用于识别您的身份。我们绝不会与第三方分享它们。"
+				"Hindi naglalaman ang statistics na iyon ng iyong IP address, at hindi magagamit ang mga ito upang matukoy ka. Hinding-hindi namin isi-share ang mga ito sa mga third party."
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
-				"要开始使用，您需要在浏览器上启用 VPN 权限。"
+				"Upang makapagsimula, kailangan mong i-enable ang mga pahintulot ng VPN sa browser mo."
 			],
 			"Tor servers such as ${logical.Name} are not currently supported in the browser extension": [
-				"目前浏览器扩展不支持诸如 ${logical.Name} 之类的 Tor 服务器"
+				"Ang mga Tor server tulad ng ${logical.Name} ay kasalukuyang hindi sinusuportahan sa browser extension"
 			],
 			"Upgrade": [
-				"升级账户"
+				"I-upgrade"
 			],
 			"Usage data helps us overcome VPN blocks and improve app performance.": [
-				"使用数据会帮助我们克服 VPN 阻塞、提高应用性能。"
+				"Nakakatulong ang data ng paggamit upang malampasan namin ang mga block sa VPN at mapahusay ang performance ng app."
 			],
 			"User": [
-				"用户"
+				"User"
 			],
 			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
-				"使用 Brave 浏览器时，当“包含模式”处于活动状态时，DNS 请求可能不受保护。"
+				"Gamit ang Brave, maaaring hindi protektado ang mga DNS request kapag aktibo ang \"Include mode\"."
 			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
-				"VPN 被外部软件阻止。\n\n某些工具（如反病毒软件或代理服务器）会干扰 Proton VPN，请禁用它们并重试。"
+				"Na-block ang VPN ng external software.\n\nMaaaring makagambala sa Proton VPN ang ilang tool, tulad ng mga anti-virus o proxy. I-disable ang mga ito at subukang muli."
 			],
 			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.": [
-				"VPN 被外部软件阻止：${blockingSoftware}。\n\n某些工具（如反病毒软件或代理服务器）会干扰 Proton VPN，您可以尝试禁用它们来确认。"
+				"Na-block ang VPN ng external software: ${blockingSoftware}.\n\nMaaaring makagambala sa Proton VPN ang ilang tool, tulad ng mga anti-virus o proxy. Maaari mong i-disable ang mga ito upang makumpirma."
 			],
 			"VPN Features": [
-				"VPN 功能"
+				"Mga Feature ng VPN"
 			],
 			"You're signed in": [
-				"您已成功登录"
+				"Naka-sign in ka"
 			]
 		},
 		"Label": {
 			"And all its subdomains": [
-				"及其所有子域"
+				"At ang lahat ng subdomain nito"
 			],
 			"Auto connect": [
-				"自动连接"
+				"Auto-connect"
 			],
 			"Cities": [
-				"城市"
+				"Mga Lungsod"
 			],
 			"City": [
-				"城市"
+				"Lungsod",
+				"Mga Lungsod"
 			],
 			"Connecting": [
-				"正在连接"
+				"Kumokonekta"
 			],
 			"Countries, cities, servers": [
-				"国家、城市、服务器"
+				"Mga bansa, lungsod, server"
 			],
 			"Country": [
-				"国家"
+				"Bansa",
+				"Mga Bansa"
 			],
 			"Entry country": [
-				"入口国家/地区"
+				"Entry na bansa",
+				"Mga entry na bansa"
 			],
 			"Exact match": [
-				"精确匹配"
+				"Eksaktong tugma"
 			],
 			"Free": [
-				"Free"
+				"Libre"
 			],
 			"Free connections": [
-				"免费连接"
+				"Mga libreng koneksyon"
 			],
 			"Free servers": [
-				"免费服务器"
+				"Mga libreng server"
 			],
 			"Free servers (${count})": [
-				"免费服务器（${count}）"
+				"Mga libreng server (${count})"
 			],
 			"Internal servers (${count})": [
-				"内部服务器 (${count})"
+				"Mga internal na server (${count})"
 			],
 			"Need help?": [
-				"需要帮助？"
+				"Kailangan ng tulong?"
 			],
 			"Notifications": [
-				"通知"
+				"Mga Abiso"
 			],
 			"Offer": [
-				"优惠"
+				"Alok"
 			],
 			"Other": [
-				"其它"
+				"Iba pa"
 			],
 			"Plus servers (${count})": [
-				"Plus 服务器 (${count})"
+				"Mga Plus server (${count})"
 			],
 			"Protected": [
-				"保护中"
+				"Protektado"
 			],
 			"Server": [
-				"服务器"
+				"Server",
+				"Mga Server"
 			],
 			"Settings": [
-				"设置"
+				"Mga Setting"
 			],
 			"Split tunneling": [
-				"线路分离"
+				"Split tunneling"
 			],
 			"Unprotected": [
-				"未受保护"
+				"Hindi protektado"
 			],
 			"Via": [
-				"来自"
+				"Via"
 			],
 			"Want to know more?": [
-				"想要了解更多？"
+				"Gustong malaman ang higit pa?"
 			],
 			"WebRTC leak protection": [
-				"WebRTC 泄漏保护"
+				"Proteksyon sa WebRTC leak"
 			]
 		},
 		"Menu": {
 			"Countries": [
-				"国家"
+				"Mga Bansa"
 			],
 			"Features": [
-				"功能"
+				"Mga Feature"
 			],
 			"Help": [
-				"帮助"
+				"Tulong"
 			],
 			"Settings": [
-				"设置"
+				"Mga Setting"
 			]
 		},
 		"Status": {
 			"Connecting to ${serverName}": [
-				"正在连接 ${serverName}"
+				"Kumokonekta sa ${serverName}"
 			],
 			"Proton VPN: ${status}": [
 				"Proton VPN: ${status}"
 			]
 		},
 		"Title": {
-			"Closest server": [
-				"最近的服务器"
-			],
-			"Fastest country": [
-				"最快的国家/地区"
-			],
-			"Fastest server": [
-				"最快的服务器"
-			],
 			"Features": [
-				"功能"
+				"Mga Feature"
 			],
 			"Proton VPN for Vivaldi": [
-				"Proton VPN Vivaldi 客户端"
-			],
-			"Random server": [
-				"随机服务器"
-			],
-			"Recents": [
-				"最近"
+				"Proton VPN para sa Vivaldi"
 			],
 			"Streaming": [
-				"串流中"
+				"Streaming"
 			]
 		}
 	}
