@@ -17,6 +17,7 @@ export interface FirefoxSplitTunnelingProxyRouteOptions {
 	splitTunneling: SplitTunnelingConfig | undefined;
 	splitTunnelingDomains: string[];
 	frameContext: FirefoxSplitTunnelingFrameContext;
+	proxyPreRequests: boolean;
 }
 
 const canParseCandidateUrl = (candidateUrl: string | undefined): boolean => {
@@ -119,6 +120,7 @@ export const getFirefoxSplitTunnelingProxyRoute = (
 		splitTunneling,
 		splitTunnelingDomains,
 		frameContext,
+		proxyPreRequests,
 	}: FirefoxSplitTunnelingProxyRouteOptions,
 ): FirefoxSplitTunnelingProxyRoute => {
 	if (isHardDirectRequest(requestInfo, apiExclusion, hardDirectDomains)) {
@@ -128,6 +130,11 @@ export const getFirefoxSplitTunnelingProxyRoute = (
 	}
 
 	const inheritanceEnabled = canUseInheritance(requestInfo);
+
+	if (!inheritanceEnabled && proxyPreRequests) {
+		return 'proxy';
+	}
+
 	const inheritedRoute = inheritanceEnabled
 		? getInheritedRoute(requestInfo, frameContext)
 		: undefined;

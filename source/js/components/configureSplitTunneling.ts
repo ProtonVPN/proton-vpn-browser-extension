@@ -84,6 +84,7 @@ export const configureSplitTunneling = (
 			feature.feature.getCacheItem().setValue(rawList.value, {
 				enabled: rawList.enabled,
 				mode: rawList.mode,
+				proxyPreRequests: rawList.proxyPreRequests,
 			}),
 		);
 	};
@@ -274,6 +275,16 @@ export const configureSplitTunneling = (
 				toggle.classList[isEnabled ? 'add' : 'remove']('activated');
 				translateToggleButtonTitle(toggle, isEnabled);
 			});
+
+		area
+			.querySelectorAll<HTMLDivElement>(
+				'[data-st-action="proxy-pre-requests"]',
+			)
+			.forEach((toggle) => {
+				toggle.classList[
+					domainManager.isProxyPreRequestsEnabled() ? 'add' : 'remove'
+				]('activated');
+			});
 	};
 
 	refreshEnabled();
@@ -368,6 +379,15 @@ export const configureSplitTunneling = (
 						refresh?.(domainManager.getRawList());
 						break;
 
+					case 'proxy-pre-requests':
+						domainManager.setProxyPreRequests(
+							!domainManager.isProxyPreRequestsEnabled(),
+						);
+						refreshEnabled();
+						storeList();
+						refresh?.(domainManager.getRawList());
+						break;
+
 					case 'add-website':
 						toggleAddForm(true);
 						seedWithCurrentDomain();
@@ -389,5 +409,6 @@ export const configureSplitTunneling = (
 				}
 			});
 		});
+
 	updateDropdownUI(area);
 };
