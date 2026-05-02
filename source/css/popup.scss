@@ -665,6 +665,10 @@ input[type="text"]:invalid {
 	}
 }
 
+.via-box {
+	margin: 5px 4px 0 0;
+}
+
 .via-country {
 	color: var(--primary-color);
 	padding-right: 4px;
@@ -673,6 +677,10 @@ input[type="text"]:invalid {
 		width: $small-icon-size;
 		height: $small-icon-size;
 	}
+}
+
+.recent-block .via-country {
+	padding-right: 0;
 }
 
 .country-flag-img {
@@ -1136,7 +1144,8 @@ input[type="text"]:invalid {
 }
 
 .connect-option,
-.expand-button {
+.expand-button,
+.remove-recent-button {
 	cursor: pointer;
 	align-items: center;
 }
@@ -1146,7 +1155,16 @@ input[type="text"]:invalid {
 	overflow: hidden;
 }
 
-.expand-button {
+.remove-recent-button {
+	fill: var(--light-gray);
+
+	&:hover {
+		fill: var(--dark-gray);
+	}
+}
+
+.expand-button,
+.remove-recent-button {
 	display: flex;
 	align-self: stretch;
 	align-content: center;
@@ -1158,6 +1176,26 @@ input[type="text"]:invalid {
 	}
 }
 
+.connect-option .lightning {
+	width: 20px;
+	min-width: 20px;
+	max-width: 20px;
+	height: 15px;
+	background: var(--feature-color);
+	border-radius: 4px;
+	position: relative;
+
+	svg {
+		display: block;
+		position: absolute;
+		top: 2px;
+		left: 2px;
+		width: 16px;
+		height: 11px;
+	}
+}
+
+.recent-block,
 .country-header {
 	display: flex;
 	flex-direction: row;
@@ -1174,7 +1212,8 @@ input[type="text"]:invalid {
 	}
 
 	.connect-option,
-	.expand-button {
+	.expand-button,
+	.remove-recent-button {
 		padding: 0.6em 0.4em;
 		border-radius: $border-radius;
 		transition: border-color 0.1s, background-color 0.1s;
@@ -1183,7 +1222,8 @@ input[type="text"]:invalid {
 
 	&:not(.hover,.gray-out) {
 		.connect-option,
-		.expand-button {
+		.expand-button,
+		.remove-recent-button {
 			&:hover {
 				background: rgb(127, 127, 127, 0.1);
 				border-color: transparent;
@@ -1203,8 +1243,13 @@ input[type="text"]:invalid {
 .list-item-box {
 	height: 2.5em;
 
-	&.list-item-box:not(.hover) .expand-button:not(:hover) {
-		color: var(--gray);
+	&.list-item-box:not(.hover) {
+		.expand-button,
+		.remove-recent-button {
+			&:not(:hover) {
+				color: var(--gray);
+			}
+		}
 	}
 }
 
@@ -1222,6 +1267,7 @@ input[type="text"]:invalid {
 	padding-right: 0.25em;
 }
 
+.recent-name,
 .country-name {
 	padding-left: 0.6em;
 }

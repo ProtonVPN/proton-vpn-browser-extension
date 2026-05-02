@@ -8,7 +8,7 @@ export const setUpSearch = (
 		.t`Countries, cities, servers`;
 
 	const refresh = () => {
-		const searchText = input.value;
+		const searchText = input.value.trim();
 
 		(
 			input.parentNode?.querySelectorAll<HTMLElement>('.reset-button') || []

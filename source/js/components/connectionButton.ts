@@ -1,13 +1,30 @@
 import {c} from '../tools/translate';
 import {escapeHtml} from '../tools/escapeHtml';
 import {getKeysAndValues} from '../tools/getKeysAndValues';
+import type {Choice} from '../vpn/lastChoice';
 
-export const connectionAttributes = <T extends Record<string, string | number>>(
+export const attributes = <T extends Choice | Record<string, string | number>>(
 	data: T,
+	prefix = '',
 ) =>
 	getKeysAndValues(data)
-		.map(({key, value}) => ` data-${key as string}="${escapeHtml(`${value}`)}"`)
+		.map(
+			({key, value}) =>
+				` ${prefix + (key as string)}="${escapeHtml(`${value}`)}"`,
+		)
 		.join('');
+
+export const connectionAttributes = <
+	T extends Choice | Record<string, string | number>,
+>(
+	data: T,
+) => attributes(data, 'data-');
+
+export const describeButton = (title: string) =>
+	attributes({
+		title,
+		'aria-label': title,
+	});
 
 export const connectionButton = <T extends Record<string, string | number>>(
 	data: T,

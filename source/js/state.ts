@@ -471,6 +471,7 @@ const onState = asConnectionStateSwitch({
 			splitTunneling,
 			splitTunnelingDomains: getBypassList(splitTunneling),
 			frameContext: firefoxSplitTunnelingFrameContext,
+			proxyPreRequests: splitTunneling?.proxyPreRequests ?? false,
 		});
 
 		if (route === 'direct') {

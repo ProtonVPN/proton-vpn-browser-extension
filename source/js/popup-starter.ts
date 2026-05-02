@@ -46,9 +46,14 @@ import {
 } from './vpn/getLogical';
 import {getCities, mergeTranslations} from './vpn/getCities';
 import {setUpSearch} from './search/setUpSearch';
-import {countryList, type CountryList} from './components/countryList';
+import type {CountryList} from './components/countryList';
+import {recentLocations} from './components/recentLocations';
+import {aboutFreeConnections} from './components/aboutFreeConnections';
+import {configureExpandButton} from './components/configureExpandButton';
+import {configureRemoveRecentButton} from './components/configureRemoveRecentButton';
 import {configureServerGroups} from './components/configureServerGroups';
 import {configureLookupSearch} from './components/configureLookupSearch';
+import {showConnectedItemMarker} from './components/showConnectedItemMarker';
 import {storage} from './tools/storage';
 import {showNotifications} from './notifications/showNotifications';
 import {watchBroadcastMessages} from './tools/answering';
@@ -63,7 +68,12 @@ import {Feature} from './vpn/Feature';
 import {getCountryFlag} from './tools/getCountryFlag';
 import {each} from './tools/each';
 import {logo} from './tools/logo';
-import {type Choice, setLastChoice} from './vpn/lastChoice';
+import {
+	type Choice,
+	forgetLastChoices,
+	getLastChoices,
+	setLastChoice,
+} from './vpn/lastChoice';
 import {ucfirst} from './tools/ucfirst';
 import {toggleButtons} from './components/toggleButtons';
 import {triggerPromise} from './tools/triggerPromise';
@@ -77,14 +87,15 @@ import {showSigningView} from './components/signIn/showSigningView';
 import {delay, timeoutAfter} from './tools/delay';
 import {proxyPermission} from './vpn/proxyPermission';
 import {leaveWindowForTab, openTab} from './tools/openTab';
-import {getSearchResult} from './search/getSearchResult';
 import {upsell} from './tools/upsell';
 import {forgetAccount} from './account/forgetAccount';
 import {hideIf} from './tools/hideIf';
 import {preventLeak} from './webrtc/preventLeak';
 import {setWebRTCState} from './webrtc/setWebRTCState';
 import {WebRTCState} from './webrtc/state';
+import {locationListOrSearch} from './components/locationListOrSearch';
 import {via} from './components/via';
+import {locationList} from './components/locationList';
 import {configureSplitTunneling} from './components/configureSplitTunneling';
 import {getSplitTunnelingConfig} from './vpn/getSplitTunnelingConfig';
 import {
@@ -267,10 +278,7 @@ export const start = async (area: HTMLElement) => {
 
 		if (regionSlot && content) {
 			regionSlot.innerHTML = content;
-			configureButtons(regionSlot);
-			configureGoToButtons(regionSlot, goTo);
-			configureServerGroups(regionSlot);
-			showConnectedItemMarker(regionSlot);
+			configureArea(regionSlot);
 		}
 	};
 
@@ -321,13 +329,32 @@ export const start = async (area: HTMLElement) => {
 		}
 
 		const exitCountry = button.getAttribute('data-exitCountry') || '';
+		const excludedFeatures = Number(
+			button.getAttribute('data-excludedFeatures') || 0,
+		);
+		const requiredFeatures = Number(
+			button.getAttribute('data-requiredFeatures') || 0,
+		);
+		const baseSecureCoreFilter = (() => {
+			if (excludedFeatures & Feature.SECURE_CORE) {
+				return {value: false};
+			}
+
+			if (requiredFeatures & Feature.SECURE_CORE) {
+				return {value: true};
+			}
+
+			return undefined;
+		})();
 
 		if (exitCountry) {
 			const logicals = getAllLogicals(countries[exitCountry]);
 			const subGroup = button.getAttribute('data-subGroup') || '';
-			const secureCoreFilter = button.hasAttribute('data-no-sc-filter')
-				? undefined
-				: features.secureCore.config;
+			const secureCoreFilter =
+				baseSecureCoreFilter ??
+				(button.hasAttribute('data-no-sc-filter')
+					? undefined
+					: features.secureCore.config);
 
 			if (subGroup) {
 				switch (subGroup.toLowerCase()) {
@@ -451,6 +478,41 @@ export const start = async (area: HTMLElement) => {
 			};
 		}
 
+		const pick = button.getAttribute('data-pick') || '';
+
+		// For now "closest" is not anywhere in the UI, it can redirect to "fastest"
+		if (pick === 'fastest' || pick === 'closest') {
+			return {
+				getLogical: () =>
+					requireBestLogical(
+						filterLogicalsWithCurrentFeatures(
+							logicals.filter((logical) => logical.Tier > 0),
+							userTier,
+							baseSecureCoreFilter,
+						),
+						userTier,
+						setError,
+					),
+				choice: {pick},
+			};
+		}
+
+		if (pick === 'random') {
+			return {
+				getLogical: () =>
+					requireRandomLogical(
+						filterLogicalsWithCurrentFeatures(
+							logicals.filter((logical) => logical.Tier > 0),
+							userTier,
+							baseSecureCoreFilter,
+						),
+						userTier,
+						setError,
+					),
+				choice: {pick},
+			};
+		}
+
 		return {
 			getLogical: () => null,
 			choice: {},
@@ -469,61 +531,19 @@ export const start = async (area: HTMLElement) => {
 		});
 	};
 
-	const configureButtons = (subArea?: HTMLDivElement) => {
-		(subArea || area)
-			.querySelectorAll<HTMLButtonElement>(
-				'.expand-button:not(.expand-button-configured)',
-			)
-			.forEach((button) => {
-				button.classList.add('expand-button-configured');
+	let isSecureCoreEnabled = () => false;
 
-				let parent = button.parentNode as HTMLDivElement;
-				const max = subArea || area;
-
-				while (
-					parent !== max &&
-					!parent?.classList?.contains('country-header') &&
-					!parent?.classList?.contains('server-type')
-				) {
-					parent = parent.parentNode as HTMLDivElement;
-				}
-
-				if (parent !== max) {
-					button.addEventListener('mouseover', () => {
-						parent.classList.add('hover');
-					});
-
-					button.addEventListener('mouseout', () => {
-						parent.classList.remove('hover');
-					});
-				}
-
-				onClick(button, async (event) => {
-					stopEvent(event);
-
-					const id = button.getAttribute('data-expand');
-					const {choice} = getLogicalFromButton(button);
-					const code = `${choice.exitCountry}`;
-					const expandContent =
-						(id &&
-							((window as any).sectionBuilder?.[id]?.() ||
-								area.querySelector(`#${id}`)?.innerHTML)) ||
-						'';
-
-					goToRegion(
-						`
-						<div class="country-flag">
-							${features.secureCore.config.value ? via() : ''}
-							${getCountryFlag(code)}
-						</div>
-						<div class="country-name" data-country-code="${code}">
-							${button.getAttribute('data-subGroupName') || getCountryNameOrCode(code)}
-						</div>
-					`,
-						expandContent,
-					);
-				});
-			});
+	const configureButtons = (subArea?: HTMLElement) => {
+		configureExpandButton(
+			subArea || area,
+			isSecureCoreEnabled,
+			onClick,
+			goToRegion,
+			getLogicalFromButton,
+		);
+		configureRemoveRecentButton(subArea || area, onClick, () => {
+			refresh();
+		});
 
 		const handleLeavingAction = (url: string, forget: boolean) => {
 			leaveWindowForTab(window, url);
@@ -744,6 +764,7 @@ export const start = async (area: HTMLElement) => {
 		loadAllFeatures(),
 	]);
 	logicals = logicalsInput;
+	isSecureCoreEnabled = () => features.secureCore.config.value;
 
 	if (!features.telemetry.feature.isAvailable()) {
 		area
@@ -927,11 +948,27 @@ export const start = async (area: HTMLElement) => {
 		);
 	};
 
-	let refresh = () => {
-		setServersHtml(
-			countryList(countries, userTier, features.secureCore.config),
+	const configureArea = (subArea: HTMLElement) => {
+		configureButtons(subArea);
+		configureServerGroups(subArea);
+		showConnectedItemMarker(
+			subArea,
+			state.connected,
+			connectionState?.server,
+			isSecureCoreEnabled,
 		);
-		configureServerGroups(area);
+	};
+
+	let refresh = () => {
+		locationList(
+			countries,
+			userTier,
+			features.secureCore.config,
+			features.recents,
+		).then((list) => {
+			setServersHtml(list);
+			configureArea(area);
+		});
 	};
 	refresh();
 
@@ -1012,60 +1049,6 @@ export const start = async (area: HTMLElement) => {
 		await disconnect();
 	});
 
-	const showConnectedItemMarker = (
-		subArea?: HTMLElement,
-		connected?: boolean,
-	) => {
-		if (typeof connected === 'undefined') {
-			connected = state.connected;
-		}
-
-		const exitCountry = connectionState?.server?.exitCountry;
-		const exitEnglishCity = connectionState?.server?.exitEnglishCity;
-		const id = connectionState?.server?.id;
-
-		(subArea || area)
-			.querySelectorAll<HTMLDivElement>('.country-name')
-			.forEach((nameSlot) => {
-				const currentCode = nameSlot.getAttribute('data-country-code');
-
-				nameSlot.classList[
-					connected && currentCode && currentCode === exitCountry
-						? 'add'
-						: 'remove'
-				]('connected-list-item');
-			});
-
-		(subArea || area)
-			.querySelectorAll<HTMLDivElement>('.group-button')
-			.forEach((groupSlot) => {
-				const subGroup = groupSlot.getAttribute('data-subGroup');
-				const groupExitCountry = groupSlot.getAttribute('data-exitCountry');
-				const match =
-					connected &&
-					subGroup &&
-					groupExitCountry &&
-					subGroup === exitEnglishCity &&
-					groupExitCountry === exitCountry;
-
-				groupSlot
-					.querySelectorAll<HTMLDivElement>('.group-name')
-					.forEach((nameSlot) => {
-						nameSlot.classList[match ? 'add' : 'remove']('connected-list-item');
-					});
-			});
-
-		(subArea || area)
-			.querySelectorAll<HTMLDivElement>('.server-name')
-			.forEach((nameSlot) => {
-				nameSlot.classList[
-					connected && id && nameSlot.getAttribute('data-server-id') === id
-						? 'add'
-						: 'remove'
-				]('connected-list-item');
-			});
-	};
-
 	const showFreeQuickConnect = simplifiedUi && isFreeTier;
 
 	let connectionAttemptTime = 0;
@@ -1132,7 +1115,12 @@ export const start = async (area: HTMLElement) => {
 					: 'block';
 			});
 		logo.switchTo(area, canDisconnectOrCancel ? 'protected' : 'unprotected');
-		showConnectedItemMarker(servers, state.connected && !connecting);
+		showConnectedItemMarker(
+			servers,
+			state.connected && !connecting,
+			connectionState?.server,
+			isSecureCoreEnabled,
+		);
 
 		serverRotator?.refreshState(canDisconnectOrCancel);
 
@@ -1185,17 +1173,6 @@ export const start = async (area: HTMLElement) => {
 			),
 		];
 
-		const getCountryFlagGroup = (countries: string[]): string => {
-			return countries
-				.map(
-					(country, index) => `
-				<span class="country-in-group${country !== countries[0] ? ' folded' : ''}" style="z-index: ${3 - index}">${getCountryFlag(
-					country,
-				)}</span>`,
-				)
-				.join('');
-		};
-
 		serverStatusSlot.innerHTML = state.connected
 			? `
 				<div class="status-title">
@@ -1226,33 +1203,9 @@ export const start = async (area: HTMLElement) => {
 					<div id="unprotected-label" class="protection-status">${c('Label').t`Unprotected`}</div>
 				</div>
 
-				${'' /*<div class="incentive">${c('Label').t`Protect yourself online`}</div>*/}
 				${
 					showFreeQuickConnect && browserExtensionEnabled
-						? `
-				<div class="current-server-description">
-					<div class="lightning">
-						<svg class="lightning-symbol" viewBox="0 0 10 14">
-							<use xlink:href="img/icons.svg#lightning"></use>
-						</svg>
-					</div>
-					<div class="fastest-server" data-go-to="about-free-connections">
-						<div class="current-server-country">${c('Info').t`Fastest free server`}</div>
-						<div class="current-server-name">
-							<span class="auto-select-label">${c('Info').t`Auto-selected from`}</span>
-							<span>
-							${
-								freeCountriesList.length <= 3
-									? getCountryFlagGroup(freeCountriesList)
-									: getCountryFlagGroup(freeCountriesList.slice(0, 3)) +
-										' +' +
-										(freeCountriesList.length - 3)
-							}
-							</span>
-						</div>
-					</div>
-				</div>
-				`
+						? aboutFreeConnections(freeCountriesList)
 						: ''
 				}
 			`;
@@ -1268,7 +1221,8 @@ export const start = async (area: HTMLElement) => {
 			// Clear the list
 			let node = freeCountryItemTemplate.nextSibling;
 			while (node) {
-				const next = (node as any).nextElementSibling;
+				const next = (node as unknown as {nextElementSibling: ChildNode})
+					.nextElementSibling;
 				freeCountriesListEl.removeChild(node);
 				node = next;
 			}
@@ -1280,20 +1234,20 @@ export const start = async (area: HTMLElement) => {
 						true,
 					) as HTMLElement;
 				if (clone) {
-					const flagImg = clone.querySelector(
-						'.country-flag-img',
-					) as HTMLImageElement;
-					const nameDiv = clone.querySelector(
-						'.country-name',
-					) as HTMLDivElement;
+					const flagImg =
+						clone.querySelector<HTMLImageElement>('.country-flag-img');
+					const nameDiv = clone.querySelector<HTMLDivElement>('.country-name');
+
 					if (flagImg) {
 						flagImg.src = `/img/flags/${countryCode.toLowerCase()}.svg`;
 						flagImg.alt = countryCode;
 					}
+
 					if (nameDiv) {
 						nameDiv.setAttribute('data-country-code', countryCode);
 						nameDiv.textContent = getCountryNameOrCode(countryCode);
 					}
+
 					freeCountriesListEl.appendChild(clone);
 				}
 			});
@@ -1303,6 +1257,21 @@ export const start = async (area: HTMLElement) => {
 		}
 
 		triggerPromise(refreshLocationSlots(area, true));
+
+		if (state.connected) {
+			const recentLocationSlots = area.querySelectorAll<HTMLDivElement>(
+				'.recent-locations-slot',
+			);
+
+			if (recentLocationSlots.length > 0) {
+				getLastChoices().then((choices) => {
+					recentLocationSlots.forEach((recentLocationSlot) => {
+						recentLocationSlot.innerHTML = recentLocations(choices, countries);
+						configureArea(recentLocationSlot);
+					});
+				});
+			}
+		}
 	};
 
 	triggerPromise(showNotifications(area));
@@ -1394,23 +1363,19 @@ export const start = async (area: HTMLElement) => {
 
 			if (logical.ID) {
 				triggerPromise(
-					lookups.transaction(
-						(cache) => {
+					lookups.transactionValue(
+						(value) => {
 							const id = `${logical.ID}`;
 
 							// If this ID was obtained by lookup, then update the time so it does not
 							// get picked first when cleaning up old IDs
-							if (cache.value[id]) {
-								cache.value[id] = Date.now();
-								cache.time = Date.now();
+							if (value[id]) {
+								value[id] = Date.now();
 							}
 
-							return cache;
+							return value;
 						},
-						{
-							value: {} as Record<string, number>,
-							time: Date.now(),
-						},
+						{} as Record<string, number>,
 					),
 				);
 			}
@@ -1520,6 +1485,7 @@ export const start = async (area: HTMLElement) => {
 			setLastChoice({
 				connected: true,
 				pick: 'random',
+				excludedFeatures: Feature.SECURE_CORE,
 			});
 
 			await connectToServer(logical);
@@ -1551,6 +1517,9 @@ export const start = async (area: HTMLElement) => {
 		setLastChoice({
 			connected: true,
 			pick: 'fastest',
+			...(features.secureCore.config.value
+				? {requiredFeatures: Feature.SECURE_CORE}
+				: {excludedFeatures: Feature.SECURE_CORE}),
 		});
 
 		await connectToServer(logical);
@@ -1628,7 +1597,6 @@ export const start = async (area: HTMLElement) => {
 
 					if (isActivePage) {
 						configureButtons(pageBlock);
-						configureGoToButtons(pageBlock, goTo);
 					}
 				});
 		}
@@ -1670,20 +1638,13 @@ export const start = async (area: HTMLElement) => {
 		search.focus();
 		search.onkeyup = (e) => {
 			if (e.key === 'Enter' || e.keyCode === 13) {
-				const firstButton = servers.querySelector<HTMLElement>(
-					'.server, .connect-option',
-				);
-
-				if (firstButton) {
-					firstButton.click();
-				}
+				servers.querySelector<HTMLElement>('.server, .connect-option')?.click();
 			}
 		};
 		let lastSearchStart = 0;
 		refresh = setUpSearch(search, async (searchText) => {
 			const searchStart = Date.now();
 			lastSearchStart = searchStart;
-			const searching = searchText !== '';
 
 			if (!servers.querySelector(':scope > .spinner')) {
 				setServersHtml(`<div class="spinner">
@@ -1692,33 +1653,17 @@ export const start = async (area: HTMLElement) => {
 			}
 
 			// Wait a bit for consecutive letters typed
-			await delay(searching ? 300 : 1);
+			await delay(searchText === '' ? 1 : 300);
 
 			if (lastSearchStart !== searchStart) {
 				return;
 			}
 
 			setServersHtml(
-				searching
-					? getSearchResult(
-							countries,
-							searchText,
-							userTier,
-							features.secureCore.config,
-						)
-					: countryList(countries, userTier, features.secureCore.config) ||
-							`<p class="not-found">
-						${c('Error').t`Unable to load the list`}<br />
-						<small>${
-							/* translator: maybe internet connection is unstable, Wi-Fi too far, or API domain got censored by the ISP or country */
-							c('Error').t`Please check your connectivity`
-						}</small>
-					</p>`,
+				await locationListOrSearch(searchText, countries, userTier, features),
 				searchText,
 			);
-			configureButtons();
-			configureServerGroups(area);
-			showConnectedItemMarker();
+			configureArea(area);
 		});
 
 		const setUpToggleButtonForFeature = (
@@ -1742,6 +1687,19 @@ export const start = async (area: HTMLElement) => {
 		setUpToggleButtonForFeature(features.notification);
 		setUpToggleButtonForFeature(features.autoConnect);
 		setUpToggleButtonForFeature(features.telemetry);
+		setUpToggleButtonForFeature(features.recents, {
+			upgradeNeeded: isFreeTier,
+			refresh: (newValue) => {
+				if (!newValue) {
+					forgetLastChoices();
+					area
+						.querySelectorAll<HTMLDivElement>('.recent-locations-slot')
+						.forEach((slot) => {
+							slot.innerHTML = '';
+						});
+				}
+			},
+		});
 		setUpToggleButtonForFeature(features.crashReport, {
 			buttonSelector: '.crash-button',
 		});
@@ -1771,7 +1729,6 @@ export const start = async (area: HTMLElement) => {
 		);
 	}
 
-	configureButtons();
 	configureModalButtons(area.querySelector<HTMLDivElement>('#modals')!);
 	configureRatingModalButtons(rateUsModal);
 

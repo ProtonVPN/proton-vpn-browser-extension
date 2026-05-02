@@ -285,7 +285,7 @@ export const getCountryName = (
 	language?: string,
 ): string | undefined => {
 	country = getCountryCode(country);
-	const languages = [`${language || getLanguage()}`];
+	const languages = [`${language || getLanguage() || 'en'}`];
 	const shortName = new Intl.DisplayNames(languages, {
 		type: 'region',
 		style: 'short',

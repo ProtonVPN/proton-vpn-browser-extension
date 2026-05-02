@@ -21,6 +21,7 @@ export interface ServerSummary {
 export interface SplitTunnelingConfig {
 	mode?: SplitTunnelingMode;
 	filteredDomains?: string[];
+	proxyPreRequests?: boolean;
 }
 
 export interface ProxyServer extends ServerSummary {

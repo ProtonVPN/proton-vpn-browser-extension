@@ -80,6 +80,9 @@
 			"Quick connect": [
 				"Γρήγορη σύνδεση"
 			],
+			"Remove": [
+				"Αφαίρεση"
+			],
 			"Remove ${domain}": [
 				"Αφαίρεση ${domain}"
 			],
@@ -129,8 +132,20 @@
 			]
 		},
 		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"Σύνδεση με \"${mode}\""
+			],
+			"Connect to ${countryName}": [
+				"Σύνδεση με ${countryName}"
+			],
 			"Connect to ${exitCountryName}": [
 				"Συνδεθήτε στη ${exitCountryName}"
+			],
+			"Connect to ${logical.Name}": [
+				"Σύνδεση με ${logical.Name}"
+			],
+			"Connect to the fastest country": [
+				"Συνδεθείτε με την ταχύτερη χώρα"
 			]
 		},
 		"Action: Server-level button": {
@@ -263,6 +278,9 @@
 			],
 			"Bypass censorship with advanced security and privacy features": [
 				"Παράκαμψη της λογοκρισίας στο διαδίκτυο με προηγμένες λειτουργίες ασφάλειας και απορρήτου"
+			],
+			"Clear all recent connections and don't keep local history": [
+				"Διαγράψτε όλες τις πρόσφατες συνδέσεις και μην κρατάτε το τοπικό ιστορικό"
 			],
 			"Clear search": [
 				"Εκκαθάριση αναζήτησης"
@@ -408,6 +426,18 @@
 			],
 			"Proton VPN Browser Extension": [
 				"Προέκταση προγράμματος περιήγησης Proton VPN"
+			],
+			"Recent connections": [
+				"Πρόσφατες συνδέσεις"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"Θυμήσου τις πρόσφατες συνδέσεις τοπικά και εμφάνισε γρήγορους συνδέσμους προς αυτές"
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"Θυμήσου τις τελευταίες χώρες/πόλεις/διακομιστές με τους οποίους συνδέθηκα και δείξε τους στην κορυφή της λίστας."
+			],
+			"Retired server": [
+				"Αποσυρμένος διακομιστής"
 			],
 			"Secure Core": [
 				"Secure Core"
@@ -586,11 +616,26 @@
 			]
 		},
 		"Title": {
+			"Closest server": [
+				"Πλησιέστερος διακομιστής"
+			],
+			"Fastest country": [
+				"Ταχύτερη χώρα"
+			],
+			"Fastest server": [
+				"Ο ταχύτερος διακομιστής"
+			],
 			"Features": [
 				"Χαρακτηριστικά"
 			],
 			"Proton VPN for Vivaldi": [
 				"Proton VPN για Vivaldi"
+			],
+			"Random server": [
+				"Τυχαίος διακομιστής"
+			],
+			"Recents": [
+				"Πρόσφατα"
 			],
 			"Streaming": [
 				"Μετάδοση"

@@ -7,6 +7,7 @@ import {escapeHtml} from '../tools/escapeHtml';
 import {c, translateToggleButtonTitle} from '../tools/translate';
 import {isBrave} from '../tools/getBrowserSubType';
 import {upgradeButton} from './upgradeButton';
+import {describeButton} from './connectionButton';
 import {warn} from '../log/log';
 import type {SplitTunneling} from '../vpn/features/SplitTunneling';
 import type {LoadedFeature} from '../vpn/features/loadAllFeatures';
@@ -84,6 +85,7 @@ export const configureSplitTunneling = (
 			feature.feature.getCacheItem().setValue(rawList.value, {
 				enabled: rawList.enabled,
 				mode: rawList.mode,
+				proxyPreRequests: rawList.proxyPreRequests,
 			}),
 		);
 	};
@@ -98,8 +100,7 @@ export const configureSplitTunneling = (
 			.getDomainsForCurrentMode()
 			.map((exclusion, index) => {
 				const domain = escapeHtml(exclusion.domain);
-				/* translator: this is a tooltip/vocalization for the button to remove an exclusion from split tunneling, domain can be "youtube.com" or "www.anysite.net"
-				 */
+				/* translator: this is a tooltip/vocalization for the button to remove an exclusion from split tunneling, domain can be "youtube.com" or "www.anysite.net" */
 				const title = c('Action').t`Remove ${domain}`;
 
 				return `<div class="flex my1">
@@ -111,7 +112,7 @@ export const configureSplitTunneling = (
 								}</div>`
 							: ''
 					}</div>
-					<button data-st-delete-index="${index}" title="${title}" class="small-button delete-button">
+					<button data-st-delete-index="${index}" ${describeButton(title)} class="small-button delete-button">
 						<svg fill="currentColor" viewBox="0 0 24 24">
 							<use xlink:href="img/icons.svg#delete"></use>
 						</svg>
@@ -274,6 +275,16 @@ export const configureSplitTunneling = (
 				toggle.classList[isEnabled ? 'add' : 'remove']('activated');
 				translateToggleButtonTitle(toggle, isEnabled);
 			});
+
+		area
+			.querySelectorAll<HTMLDivElement>(
+				'[data-st-action="proxy-pre-requests"]',
+			)
+			.forEach((toggle) => {
+				toggle.classList[
+					domainManager.isProxyPreRequestsEnabled() ? 'add' : 'remove'
+				]('activated');
+			});
 	};
 
 	refreshEnabled();
@@ -368,6 +379,15 @@ export const configureSplitTunneling = (
 						refresh?.(domainManager.getRawList());
 						break;
 
+					case 'proxy-pre-requests':
+						domainManager.setProxyPreRequests(
+							!domainManager.isProxyPreRequestsEnabled(),
+						);
+						refreshEnabled();
+						storeList();
+						refresh?.(domainManager.getRawList());
+						break;
+
 					case 'add-website':
 						toggleAddForm(true);
 						seedWithCurrentDomain();
@@ -389,5 +409,6 @@ export const configureSplitTunneling = (
 				}
 			});
 		});
+
 	updateDropdownUI(area);
 };

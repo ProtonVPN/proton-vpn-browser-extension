@@ -1,5 +1,9 @@
 import type {Logical} from '../vpn/Logical';
-import {connectionAttributes, connectionButton} from './connectionButton';
+import {
+	connectionAttributes,
+	connectionButton,
+	describeButton,
+} from './connectionButton';
 import {upgradeButton} from './upgradeButton';
 import {escapeHtml} from '../tools/escapeHtml';
 import {getCountryFlag} from '../tools/getCountryFlag';
@@ -74,7 +78,7 @@ export const serverList = (
 							class="server connection-button-container"
 							tabindex="0"
 							role="button"
-							title="${c('Action: Server-level button').t`Connect to ${serverName}`}"
+							${describeButton(c('Action: Server-level button').t`Connect to ${serverName}`)}
 							${
 								(simplifiedUi ? userTier <= 0 : logical.Tier > userTier)
 									? upgradeAttributes
@@ -84,9 +88,9 @@ export const serverList = (
 							: `class="server in-maintenance"`
 					}
 				>
-					<div class="load-block" title="${logical.Load}%">
+					<div class="load-block" ${describeButton(logical.Load + '%')}>
 						<div class="load-percentage">
-							<svg aria-label="${logical.Load}%" viewBox="0 0 36 36" class="circular-chart">
+							<svg viewBox="0 0 36 36" class="circular-chart">
 								<path class="circle-bg"
 									d="M18 2.0845
 									  a 15.9155 15.9155 0 0 1 0 31.831
@@ -114,8 +118,10 @@ export const serverList = (
 							(logical.Translations?.City || logical.City) !== upperTitle
 								? ` &nbsp; <span
 										class="city-name"
-										data-english-city-name="${escapeHtml(logical.City)}"
-										data-country-code="${escapeHtml(logical.ExitCountry)}"
+										${connectionAttributes({
+											'english-city-name': logical.City,
+											'country-code': logical.ExitCountry,
+										})}
 									>${escapeHtml(logical.Translations?.City || logical.City)}</span>`
 								: ''
 						}

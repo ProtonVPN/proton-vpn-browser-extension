@@ -80,6 +80,9 @@
 			"Quick connect": [
 				"Rychlé připojení"
 			],
+			"Remove": [
+				"Odebrat"
+			],
 			"Remove ${domain}": [
 				"Odstranit ${domain}"
 			],
@@ -129,8 +132,20 @@
 			]
 		},
 		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"Připojit k \"${mode}\""
+			],
+			"Connect to ${countryName}": [
+				"Připojit k ${countryName}"
+			],
 			"Connect to ${exitCountryName}": [
 				"Připojit k ${exitCountryName}"
+			],
+			"Connect to ${logical.Name}": [
+				"Připojit k ${logical.Name}"
+			],
+			"Connect to the fastest country": [
+				"Připojit se k nejrychlejší zemi"
 			]
 		},
 		"Action: Server-level button": {
@@ -269,6 +284,9 @@
 			],
 			"Bypass censorship with advanced security and privacy features": [
 				"Obejděte cenzuru pomocí pokročilých funkcí bezpečnosti a ochrany soukromí"
+			],
+			"Clear all recent connections and don't keep local history": [
+				"Vyčistit všechna nedávná připojení a neuchovávat místní historii"
 			],
 			"Clear search": [
 				"Vyčistit vyhledávání"
@@ -417,6 +435,18 @@
 			"Proton VPN Browser Extension": [
 				"Proton VPN rozšíření prohlížeče"
 			],
+			"Recent connections": [
+				"Nedávná připojení"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"Zapamatovat lokálně nedávná připojení a zobrazit k nim rychlé odkazy"
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"Pamatovat poslední země/města/servery, ke kterým jsem se připojil(a) a zobrazit je v\nhorní části seznamu."
+			],
+			"Retired server": [
+				"Zastaralý server"
+			],
 			"Secure Core": [
 				"Secure Core"
 			],
@@ -441,8 +471,14 @@
 			"Thank you for installing Proton VPN": [
 				"Děkujeme, že jste si nainstalovali Proton VPN"
 			],
+			"The split tunneling options cannot be changed on this device": [
+				"Na tomto zařízení nelze měnit nastavení Split tunneling"
+			],
 			"Then just click the Proton VPN icon to sign in.": [
 				"Pak jen klikněte na ikonu Proton VPN pro přihlášení."
+			],
+			"This option cannot be changed on this device": [
+				"Tuto možnost nelze na tomto zařízení změnit"
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"Tyto statistiky neobsahují vaši IP adresu a nelze je použít k vaší identifikaci. Nikdy je nebudeme sdílet se třetími stranami"
@@ -596,11 +632,26 @@
 			]
 		},
 		"Title": {
+			"Closest server": [
+				"Nejbližší server"
+			],
+			"Fastest country": [
+				"Nejrychlejší země"
+			],
+			"Fastest server": [
+				"Nejrychlejší server"
+			],
 			"Features": [
 				"Funkce"
 			],
 			"Proton VPN for Vivaldi": [
 				"Proton VPN pro Vivaldi"
+			],
+			"Random server": [
+				"Náhodný server"
+			],
+			"Recents": [
+				"Nedávné"
 			],
 			"Streaming": [
 				"Streamování"

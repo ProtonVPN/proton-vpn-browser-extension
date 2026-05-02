@@ -1,6 +1,6 @@
 import {getCountryFlag} from '../tools/getCountryFlag';
 import type {Logical} from '../vpn/Logical';
-import {connectionAttributes} from './connectionButton';
+import {connectionAttributes, describeButton} from './connectionButton';
 import {upgradeButton} from './upgradeButton';
 import {c} from '../tools/translate';
 import {isGroupUp, serverGroup} from './serverGroup';
@@ -41,7 +41,7 @@ export const countryBlock = (
 				<div class="country-header list-item-box${grayOutButton ? ' gray-out' : ''}">
 					<button
 						class="flex flex-1 text-left connect-option${canConnect ? ' connect-clickable' : ''}"
-						title="${c('Action: Country-level button').t`Connect to ${exitCountryName}`}"
+						${describeButton(c('Action: Country-level button').t`Connect to ${exitCountryName}`)}
 						${
 							up
 								? canConnect

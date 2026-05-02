@@ -1,7 +1,8 @@
-import {comp, Sorter} from '../tools/comp';
 import {countryBlock} from './countryBlock';
-import type {Logical} from '../vpn/Logical';
+import {fastestCountry} from './fastestCountry';
+import {comp, Sorter} from '../tools/comp';
 import {getKeys} from '../tools/getKeys';
+import type {Logical} from '../vpn/Logical';
 import {getSecureCorePredicate} from '../vpn/getSecureCorePredicate';
 
 export type CountryList = Record<string, CountryItem>;
@@ -60,6 +61,7 @@ export const countryFilteredList = (
 	secureCoreValue = false,
 	extraConnectionAttributes: Record<string, string | number> = {},
 	showFlag = false,
+	withFastest = false,
 ): string => {
 	const keys = getCountryFilteredKeys(countries, predicate);
 
@@ -75,6 +77,7 @@ export const countryFilteredList = (
 		(header
 			? `<div class="servers-group group-section">${header(count)}</div>`
 			: '') +
+		(withFastest ? fastestCountry(secureCoreValue) : '') +
 		keys
 			.map((country) =>
 				countryBlock(
@@ -104,6 +107,7 @@ export const countryList = (
 	userTier: number,
 	secureCore = {value: false},
 	header?: (count: number) => string,
+	withFastest = false,
 ) => {
 	return countryFilteredList(
 		countries,
@@ -111,5 +115,8 @@ export const countryList = (
 		getSecureCorePredicate(userTier, secureCore),
 		header,
 		userTier > 0 && secureCore.value,
+		{},
+		false,
+		withFastest,
 	);
 };

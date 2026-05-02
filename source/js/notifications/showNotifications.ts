@@ -1,9 +1,28 @@
 import {c} from '../tools/translate';
-import {getNotifications} from './getNotifications';
 import {milliSeconds} from '../tools/milliSeconds';
 import {setJitterTimeout} from '../tools/delay';
+import {escapeHtml} from '../tools/escapeHtml';
+import {describeButton} from '../components/connectionButton';
+import {getNotifications} from './getNotifications';
+import type {Notification} from './getNotifications';
 
 let lastCheck = 0;
+
+const getNotificationLink = (notification: Notification) => {
+	const label =
+		notification.Offer.Label ||
+		/* translator: Fallback link text when an offer is available but has no icon, clicking on it open a page showing the offer */ c(
+			'Label',
+		).t`Offer`;
+
+	return `<a href="${notification.Offer.URL}" ${describeButton(label)}>
+		${
+			notification.Offer.Icon
+				? `<img src="${notification.Offer.Icon}" alt="${escapeHtml(label)}" width="24" height="24" />`
+				: label
+		}
+	</a>`;
+};
 
 export const showNotifications = async (area: HTMLElement) => {
 	const now = Date.now();
@@ -49,22 +68,7 @@ export const showNotifications = async (area: HTMLElement) => {
 				}),
 		),
 	);
-	notificationsSlot.innerHTML = offers
-		.map(
-			(notification) => `
-			<a href="${notification.Offer.URL}" title="${notification.Offer.Label}">
-				${
-					notification.Offer.Icon
-						? `<img src="${notification.Offer.Icon}" alt="${notification.Offer.Label}" width="24" height="24" />`
-						: notification.Offer.Label ||
-							/* translator: Fallback link text when an offer is available but has no icon, clicking on it open a page showing the offer */ c(
-								'Label',
-							).t`Offer`
-				}
-			</a>
-		`,
-		)
-		.join('');
+	notificationsSlot.innerHTML = offers.map(getNotificationLink).join('');
 
 	setJitterTimeout(
 		milliSeconds.fromMinutes(30),

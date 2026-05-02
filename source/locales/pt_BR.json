@@ -80,6 +80,9 @@
 			"Quick connect": [
 				"Conexão rápida"
 			],
+			"Remove": [
+				"Remover"
+			],
 			"Remove ${domain}": [
 				"Remover ${domain}"
 			],
@@ -129,8 +132,17 @@
 			]
 		},
 		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"Conectado a \"${mode}\""
+			],
+			"Connect to ${countryName}": [
+				"Conectado a ${countryName}"
+			],
 			"Connect to ${exitCountryName}": [
 				"Conectar em ${exitCountryName}"
+			],
+			"Connect to ${logical.Name}": [
+				"Conectar a ${logical.Name}"
 			]
 		},
 		"Action: Server-level button": {
@@ -409,6 +421,12 @@
 			"Proton VPN Browser Extension": [
 				"Extensão do Proton VPN para navegador"
 			],
+			"Recent connections": [
+				"Conexões recentes"
+			],
+			"Retired server": [
+				"Servidor retirado"
+			],
 			"Secure Core": [
 				"Secure Core"
 			],
@@ -586,11 +604,26 @@
 			]
 		},
 		"Title": {
+			"Closest server": [
+				"Servidor mais perto"
+			],
+			"Fastest country": [
+				"País mais rápido"
+			],
+			"Fastest server": [
+				"Servidor mais rápido"
+			],
 			"Features": [
 				"Recursos"
 			],
 			"Proton VPN for Vivaldi": [
 				"Proton VPN para Vivaldi"
+			],
+			"Random server": [
+				"Servidor aleatório"
+			],
+			"Recents": [
+				"Recentes"
 			],
 			"Streaming": [
 				"Streaming"

@@ -80,6 +80,9 @@
 			"Quick connect": [
 				"Hurtigtilkobling"
 			],
+			"Remove": [
+				"Fjern"
+			],
 			"Remove ${domain}": [
 				"Fjern ${domain}"
 			],
@@ -129,8 +132,20 @@
 			]
 		},
 		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"Koble til \"${mode}\""
+			],
+			"Connect to ${countryName}": [
+				"Koble til ${countryName}"
+			],
 			"Connect to ${exitCountryName}": [
 				"Koble til ${exitCountryName}"
+			],
+			"Connect to ${logical.Name}": [
+				"Koble til ${logical.Name}"
+			],
+			"Connect to the fastest country": [
+				"Koble til det raskeste landet"
 			]
 		},
 		"Action: Server-level button": {
@@ -263,6 +278,9 @@
 			],
 			"Bypass censorship with advanced security and privacy features": [
 				"Omgå sensur med avanserte sikkerhets- og personvernfunksjoner"
+			],
+			"Clear all recent connections and don't keep local history": [
+				"Fjern alle nylige tilkoblinger og ikke behold lokal historikk"
 			],
 			"Clear search": [
 				"Tøm søk"
@@ -408,6 +426,18 @@
 			],
 			"Proton VPN Browser Extension": [
 				"Proton VPN-Nettleserutvidelse"
+			],
+			"Recent connections": [
+				"Nylige tilkoblinger"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"Husk nylige tilkoblinger lokalt og vis hurtigkoblinger til dem"
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"Husk de siste landene/byene/serverne jeg koblet til, og vis dem øverst på listen."
+			],
+			"Retired server": [
+				"Pensjonert server"
 			],
 			"Secure Core": [
 				"Secure Core"
@@ -586,11 +616,26 @@
 			]
 		},
 		"Title": {
+			"Closest server": [
+				"Nærmeste server"
+			],
+			"Fastest country": [
+				"Raskeste land"
+			],
+			"Fastest server": [
+				"Raskeste server"
+			],
 			"Features": [
 				"Funksjoner"
 			],
 			"Proton VPN for Vivaldi": [
 				"Proton VPN for Vivaldi"
+			],
+			"Random server": [
+				"Tilfeldig server"
+			],
+			"Recents": [
+				"Nylige"
 			],
 			"Streaming": [
 				"Strømming"

@@ -80,6 +80,9 @@
 			"Quick connect": [
 				"სწრაფი მიერთება"
 			],
+			"Remove": [
+				"წაშლა"
+			],
 			"Remove ${domain}": [
 				"${domain}-ის წაშლა"
 			],
@@ -129,8 +132,20 @@
 			]
 		},
 		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"\"${mode}\"-ისთან დაკავშირება\""
+			],
+			"Connect to ${countryName}": [
+				"${countryName}-სთან დაკავშირება"
+			],
 			"Connect to ${exitCountryName}": [
 				"${exitCountryName}-სთან დაკავშირება"
+			],
+			"Connect to ${logical.Name}": [
+				"${logical.Name}-სთან დაკავშირება"
+			],
+			"Connect to the fastest country": [
+				"უსწრაფეს ქვეყანასთან დაკავშირება"
 			]
 		},
 		"Action: Server-level button": {
@@ -263,6 +278,9 @@
 			],
 			"Bypass censorship with advanced security and privacy features": [
 				"დააღწიეთ თავი ცენზურას დამატებითი უსაფრთხოებისა და კონფიდენციალობის ფუნქციებით"
+			],
+			"Clear all recent connections and don't keep local history": [
+				"ყველა უახლესი კავშირის გასუფთავება და ლოკალური ისტორიის არშენახვა"
 			],
 			"Clear search": [
 				"ძებნის გასუფთავება"
@@ -409,6 +427,18 @@
 			"Proton VPN Browser Extension": [
 				"Proton VPN-ის გაფართოება ბრაუზერისთვის"
 			],
+			"Recent connections": [
+				"უახლესი მიერთებები"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"უახლესი კავშირების ლოკალურად დამახსოვრება და მათი სწრაფი ბმულების ჩვენება"
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"ბოლო ქვეყნების/ქალაქების სერვერების, რომელსაც დავუკავშირდი, დამახსოვრება და მათი სიის თავში ჩვენება."
+			],
+			"Retired server": [
+				"არაექსპლუატირებული სერვერი"
+			],
 			"Secure Core": [
 				"Secure Core"
 			],
@@ -433,8 +463,14 @@
 			"Thank you for installing Proton VPN": [
 				"დიდი მადლობა Proton VPN-ის დაყენებისთვის"
 			],
+			"The split tunneling options cannot be changed on this device": [
+				"Split tunneling-ის პარამეტრებს ამ მოწყობილობაზე ვერ შეცვლით"
+			],
 			"Then just click the Proton VPN icon to sign in.": [
 				"შემდეგ კი, შესასვლელად, უბრალოდ დააწკაპუნეთ Proton VPN-ის ხატულაზე."
+			],
+			"This option cannot be changed on this device": [
+				"ამ პარამეტრს ამ მოწყობილობაზე ვერ შეცვლით"
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"ეს სტატისტიკა არ შეიცავს თქვენს IP მისამართს და მათი იდენტიფიცირებისთვის შეუძლებელია. ჩვენ არასდროს გავუზიარებთ მათ მესამე მხარეებს"
@@ -580,11 +616,26 @@
 			]
 		},
 		"Title": {
+			"Closest server": [
+				"უახლოესი სერვერი"
+			],
+			"Fastest country": [
+				"უსწრაფესი ქვეყანა"
+			],
+			"Fastest server": [
+				"უსწრაფესი სერვერი"
+			],
 			"Features": [
 				"ფუნქციები"
 			],
 			"Proton VPN for Vivaldi": [
 				"Proton VPN-ი Vivaldi-სთვის"
+			],
+			"Random server": [
+				"შემთხვევითი სერვერი"
+			],
+			"Recents": [
+				"ახლახან გამოყენებულები"
 			],
 			"Streaming": [
 				"სტრიმინგი"
