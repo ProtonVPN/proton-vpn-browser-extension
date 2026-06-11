@@ -89,6 +89,7 @@ module.exports = (_, argv, options) => {
 		manifest.permissions.push('activeTab', 'webRequestBlocking');
 		delete manifest.key;
 		delete manifest.externally_connectable;
+		delete manifest.storage;
 	};
 
 	const adaptToChromium = (manifest) => {
