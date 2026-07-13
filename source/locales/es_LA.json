@@ -29,6 +29,9 @@
 			"Configure split tunneling": [
 				"Configurar túnel dividido"
 			],
+			"Confirm choices": [
+				"Confirmar elección"
+			],
 			"Connect": [
 				"Conectar"
 			],
@@ -315,6 +318,9 @@
 			"Crash": [
 				"Error"
 			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"Los informes de error contienen información de diagnóstico (trazas de pila, tipo de navegador, versión de la extensión). No contienen su dirección IP y no se adjunta ningún identificador de la cuenta de Proton. Nunca se comparten con terceros."
+			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Los informes de errores nos ayudan a corregir errores, detectar firewalls y evitar bloqueos de VPN."
 			],
@@ -374,6 +380,9 @@
 			],
 			"Help us fight censorship": [
 				"Ayúdenos a combatir la censura"
+			],
+			"Help us improve Proton VPN": [
+				"Ayúdenos a mejorar Proton VPN"
 			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"VPN suiza de alto rendimiento que protege su privacidad. Máxima seguridad, más de ${count} servidor y sin restricciones.",
@@ -445,8 +454,8 @@
 			"Selected websites": [
 				"Sitios web seleccionados"
 			],
-			"Share anonymous usage crash reports": [
-				"Compartir informes de errores anónimos"
+			"Share anonymous crash reports": [
+				"Compartir informes de error anónimos"
 			],
 			"Share anonymous usage statistics": [
 				"Compartir estadísticas de uso anónimas"
@@ -501,6 +510,9 @@
 			],
 			"VPN Features": [
 				"Funciones de VPN"
+			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"Se prioriza su privacidad por encima de todo. No rastreamos su navegación ni guardamos registros. Para autenticar su conexión, el ID de sesión de su cuenta se envía a los servidores. Esto es necesario para que la extensión funcione."
 			],
 			"You're signed in": [
 				"Sesión iniciada"

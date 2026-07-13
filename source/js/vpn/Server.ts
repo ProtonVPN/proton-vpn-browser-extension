@@ -1,3 +1,5 @@
+/* c8 ignore start */
+
 export interface Server {
 	ID?: string | number;
 	Domain: string;
@@ -17,3 +19,5 @@ export interface Server {
 	ServicesDown?: number | null;
 	Status: number;
 }
+
+/* c8 ignore stop */

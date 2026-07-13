@@ -2,6 +2,7 @@ import {disconnect, isCurrentStateConnected} from '../state';
 import {isConnected} from '../vpn/connectedServer';
 import {c} from '../tools/translate';
 import LevelOfControl = browser.types.LevelOfControl;
+import OnChangeDetails = browser.types._OnChangeDetails;
 
 const getDisconnectionMessage = (
 	levelOfControl: LevelOfControl,
@@ -29,27 +30,45 @@ const getDisconnectionMessage = (
 	return c('Info').t`Disconnected, settings were overridden`;
 };
 
-export const initProxySettingsWatcher = (): void => {
-	browser.proxy.settings.onChange.addListener(async (event) => {
-		const connected = isCurrentStateConnected() || (await isConnected());
+const proxySettingsWatcher = async (event: OnChangeDetails) => {
+	const connected = isCurrentStateConnected() || (await isConnected());
 
-		if (!connected) {
-			// Don't bother if Proton VPN is not currently connected
-			return;
-		}
+	if (!connected) {
+		// Don't bother if Proton VPN is not currently connected
+		return;
+	}
 
-		if (event.levelOfControl === 'controlled_by_this_extension') {
-			// Action from the user or auto-reconnection
-			return;
-		}
+	if (event.levelOfControl === 'controlled_by_this_extension') {
+		// Action from the user or auto-reconnection
+		return;
+	}
 
-		disconnect(
-			new Error(
-				getDisconnectionMessage(
-					event.levelOfControl,
-					event.value?.rules?.singleProxy,
-				),
+	disconnect(
+		new Error(
+			getDisconnectionMessage(
+				event.levelOfControl,
+				event.value?.rules?.singleProxy,
 			),
-		);
-	});
+		),
+	);
+};
+
+let proxySettingsWatcherInitialized = true;
+
+export const removeProxySettingsWatcher = () => {
+	if (!proxySettingsWatcherInitialized || !browser.proxy) {
+		return;
+	}
+
+	proxySettingsWatcherInitialized = false;
+	browser.proxy.settings.onChange.removeListener(proxySettingsWatcher);
+};
+
+export const initProxySettingsWatcher = (): void => {
+	if (proxySettingsWatcherInitialized || !browser.proxy) {
+		return;
+	}
+
+	proxySettingsWatcherInitialized = true;
+	browser.proxy.settings.onChange.addListener(proxySettingsWatcher);
 };

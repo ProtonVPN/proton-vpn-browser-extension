@@ -1,3 +1,5 @@
+/* c8 ignore start */
+
 export interface ProxyAuthentication {
 	cancel?: boolean;
 	authCredentials?: {
@@ -5,3 +7,5 @@ export interface ProxyAuthentication {
 		password: string;
 	};
 }
+
+/* c8 ignore stop */

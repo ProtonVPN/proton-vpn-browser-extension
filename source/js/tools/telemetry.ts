@@ -7,6 +7,7 @@ import {type Choice, getLastChoice} from '../vpn/lastChoice';
 import {fetchApi, jsonRequest} from '../api';
 import {storage} from './storage';
 import {telemetryEnabled} from '../config';
+import {getBrowser} from './getBrowser';
 
 const NO_VALUE = 'n/a';
 
@@ -65,8 +66,12 @@ export const recordEvent = (
 	dimensions: Record<string, string | number> = {},
 	logical?: Logical,
 ): void => {
+	// Disabled on Firefox for Mozilla Add-ons compliance.
+	const isTelemetryAllowed =
+		telemetryEnabled && getBrowser().type !== 'firefox';
+
 	Promise.all([
-		telemetryEnabled
+		isTelemetryAllowed
 			? telemetryOptIn.load()
 			: new Promise<{value: false}>((resolve) => {
 					resolve({value: false});
@@ -110,7 +115,7 @@ export const recordEvent = (
 			calls.push(fetchApi('data/v1/stats', jsonRequest('POST', body)));
 		}
 
-		if (user?.VPN?.BusinessEvents) {
+		if (isTelemetryAllowed && user?.VPN?.BusinessEvents) {
 			calls.push(
 				fetchWithUserInfo('vpn/v1/business/events', jsonRequest('POST', body)),
 			);

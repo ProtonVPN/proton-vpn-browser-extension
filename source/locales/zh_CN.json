@@ -29,6 +29,9 @@
 			"Configure split tunneling": [
 				"配置拆分隧道"
 			],
+			"Confirm choices": [
+				"确认选择"
+			],
 			"Connect": [
 				"连接"
 			],
@@ -312,6 +315,9 @@
 			"Crash": [
 				"崩溃啦"
 			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"崩溃报告包含诊断信息（堆栈跟踪、浏览器类型、扩展程序版本）。它们不包含您的 IP 地址，也不会附带任何 Proton 账户标识符。我们绝不会将其分享给第三方。"
+			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"崩溃报告会帮助我们修复错误、检测防火墙并避免 VPN 阻塞。"
 			],
@@ -371,6 +377,9 @@
 			],
 			"Help us fight censorship": [
 				"和我们一起对抗审查"
+			],
+			"Help us improve Proton VPN": [
+				"帮助我们改进 Proton VPN"
 			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"真正保护隐私的瑞士高速 VPN。极致的安全性，超过 ${count} 台服务器，流量无限制。"
@@ -441,14 +450,14 @@
 			"Selected websites": [
 				"已选择的网站"
 			],
-			"Share anonymous usage crash reports": [
-				"分享匿名的崩溃报告"
+			"Share anonymous crash reports": [
+				"分享匿名崩溃报告"
 			],
 			"Share anonymous usage statistics": [
 				"分享匿名的使用统计数据"
 			],
 			"Split tunneling": [
-				"线路分离"
+				"拆分隧道"
 			],
 			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
 				"阻止浏览器向使用 WebRTC 的网站和应用程序泄露您的 IP 地址。这可能会影响某些网站的视频通话或直播性能。"
@@ -498,6 +507,9 @@
 			"VPN Features": [
 				"VPN 功能"
 			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"我们始终将您的隐私放在首位。我们不跟踪您的浏览记录，也不保留任何日志。为了验证您的连接，您的账户会话 ID 会发送到我们的服务器，这是扩展程序正常运行所必需的。"
+			],
 			"You're signed in": [
 				"您已成功登录"
 			]
@@ -522,7 +534,7 @@
 				"国家、城市、服务器"
 			],
 			"Country": [
-				"国家"
+				"国家/地区"
 			],
 			"Entry country": [
 				"入口国家/地区"
@@ -570,7 +582,7 @@
 				"设置"
 			],
 			"Split tunneling": [
-				"线路分离"
+				"拆分隧道"
 			],
 			"Unprotected": [
 				"未受保护"

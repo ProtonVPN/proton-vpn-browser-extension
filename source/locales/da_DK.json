@@ -29,6 +29,9 @@
 			"Configure split tunneling": [
 				"Konfigurér split tunneling"
 			],
+			"Confirm choices": [
+				"Bekræft valg"
+			],
 			"Connect": [
 				"Forbind"
 			],
@@ -315,6 +318,9 @@
 			"Crash": [
 				"Nedbrud"
 			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"Nedbrudsrapporter indeholder diagnostik (stack traces, browsertype, version for udvidelsen). De indeholder ikke din IP-adresse, og ingen identifikatorer tilknyttet din Proton-konto bliver sendt med. Vi deler dem aldrig med tredjeparter."
+			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Nedbrudsrapporter hjælper os med at rette fejl, opdage firewalls og undgå VPN-blokeringer."
 			],
@@ -374,6 +380,9 @@
 			],
 			"Help us fight censorship": [
 				"Hjælp os med at bekæmpe censur"
+			],
+			"Help us improve Proton VPN": [
+				"Hjælp os med at forbedre Proton VPN"
 			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"Højhastigheds schweizisk VPN, der beskytter dit privatliv. Maksimal sikkerhed, mere end ${count} server og ingen begrænsninger.",
@@ -445,8 +454,8 @@
 			"Selected websites": [
 				"Udvalgte websteder"
 			],
-			"Share anonymous usage crash reports": [
-				"Del anonyme brugsnedbrudsrapporter"
+			"Share anonymous crash reports": [
+				"Del anonyme rapporter om nedbrud"
 			],
 			"Share anonymous usage statistics": [
 				"Del anonym brugerstatistik"
@@ -501,6 +510,9 @@
 			],
 			"VPN Features": [
 				"VPN Funktioner"
+			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"Vi sætter dit privatliv højere end alt andet. Vi sporer ikke din browsing og fører ingen logfiler. For at godkende din forbindelse bliver dit kontosessions-ID sendt til vores severe, hvilket kræves for at udvidelsen virker"
 			],
 			"You're signed in": [
 				"Du er logget ind"

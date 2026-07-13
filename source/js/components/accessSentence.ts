@@ -13,7 +13,7 @@ export const updateAccessSentenceWithCounts = (
 		(async () => {
 			const {Servers: servers, Countries: countries} = await getServersCount();
 
-			const serversCount = Math.floor(servers / 100) * 100;
+			const serversCount = Math.floor(servers / 1000) * 1000;
 
 			area
 				.querySelectorAll<HTMLElement>('.access-sentence')

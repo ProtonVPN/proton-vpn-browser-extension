@@ -1,3 +1,5 @@
+/* c8 ignore start */
+
 export interface ProxyInfo {
 	type: 'direct' | 'https' | 'http';
 	host?: string;
@@ -6,3 +8,5 @@ export interface ProxyInfo {
 	password?: string;
 	proxyAuthorizationHeader?: string;
 }
+
+/* c8 ignore stop */

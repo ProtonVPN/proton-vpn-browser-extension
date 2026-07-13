@@ -29,6 +29,9 @@
 			"Configure split tunneling": [
 				"Διαμόρφωση διαίρεσης σήραγγας"
 			],
+			"Confirm choices": [
+				"Επιβεβαίωση επιλογών"
+			],
 			"Connect": [
 				"Σύνδεση"
 			],
@@ -315,6 +318,9 @@
 			"Crash": [
 				"Ατύχημα"
 			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"Οι αναφορές σφαλμάτων περιέχουν διαγνωστικές πληροφορίες (ιχνηλασιμότητα στοίβας, τύπος προγράμματος περιήγησης, έκδοση επέκτασης). Δεν περιέχουν τη διεύθυνση IP σας και δεν έχει επισυναφθεί αναγνωριστικό λογαριασμού Proton. Δε θα τις κοινοποιήσουμε ποτέ σε τρίτους."
+			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Οι αναφορές σφαλμάτων μάς βοηθούν να διορθώνουμε σφάλματα, να εντοπίζουμε τείχη προστασίας και να αποφεύγουμε τα μπλοκαρίσματα VPN."
 			],
@@ -374,6 +380,9 @@
 			],
 			"Help us fight censorship": [
 				"Βοηθήστε μας να καταπολεμήσουμε τη λογοκρισία"
+			],
+			"Help us improve Proton VPN": [
+				"Βοηθήστε μας να βελτιώσουμε το Proton VPN"
 			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"Ελβετικό VPN υψηλής απόδοσης που προστατεύει την ιδιωτικότητά σας. Μέγιστη διασφάλιση, άνω του ${count} διακομιστή, και χωρίς περιορισμούς.",
@@ -445,8 +454,8 @@
 			"Selected websites": [
 				"Επιλεγμένοι ιστότοποι"
 			],
-			"Share anonymous usage crash reports": [
-				"Κοινή χρήση ανώνυμων αναφορών σφαλμάτων χρήσης"
+			"Share anonymous crash reports": [
+				"Κοινοποιήστε ανώνυμες αναφορές σφαλμάτων"
 			],
 			"Share anonymous usage statistics": [
 				"Κοινοποιήστε ανώνυμα στατιστικά χρήσης"
@@ -501,6 +510,9 @@
 			],
 			"VPN Features": [
 				"Χαρακτηριστικά VPN"
+			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"Δίνουμε προτεραιότητα στο απόρρητό σας πάνω απ' όλα. Δεν παρακολουθούμε την περιήγησή σας και δεν διατηρούμε αρχεία καταγραφής. Για τον έλεγχο ταυτότητας της σύνδεσής σας, το αναγνωριστικό περιόδου σύνδεσης του λογαριασμού σας αποστέλλεται στους διακομιστές μας, κάτι που απαιτείται για να λειτουργήσει η προέκταση."
 			],
 			"You're signed in": [
 				"Είστε συνδεδεμένοι"

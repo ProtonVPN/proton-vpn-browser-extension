@@ -8,7 +8,7 @@ const lastActivity = storage.item<{time: number}>(
 );
 
 export const getLastActivityTime = async () => {
-	const time = (await lastActivity.getDefined({time: 0})).time;
+	const time = (await lastActivity.get())?.time ?? 0;
 
 	if (time) {
 		return time;

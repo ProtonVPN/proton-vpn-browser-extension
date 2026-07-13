@@ -56,7 +56,7 @@ export const sendForkResponse = async (
 				await executeOnTab(
 					tabId,
 					() => ({
-						func(response: ForkResponse, welcomePage: string | undefined) {
+						func: (response: ForkResponse, welcomePage: string | undefined) => {
 							if (welcomePage) {
 								location.href = welcomePage;
 							}

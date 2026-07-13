@@ -53,6 +53,9 @@
 			"Quick connect": [
 				"快速連線"
 			],
+			"Remove": [
+				"移除"
+			],
 			"Remove ${domain}": [
 				"移除 ${domain}"
 			],
@@ -109,6 +112,11 @@
 		"Action: Server-level button": {
 			"Connect to ${serverName}": [
 				"連線到 ${serverName}"
+			]
+		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"搜尋"
 			]
 		},
 		"Confirm": {
@@ -349,8 +357,8 @@
 			"Secure Core": [
 				"Secure Core"
 			],
-			"Share anonymous usage crash reports": [
-				"分享匿名錯誤報告"
+			"Share anonymous crash reports": [
+				"使用匿名分享當機錯誤報告"
 			],
 			"Share anonymous usage statistics": [
 				"分享匿名使用統計資料"
@@ -509,6 +517,9 @@
 			],
 			"Random server": [
 				"隨機選擇的伺服器"
+			],
+			"Recents": [
+				"最近使用"
 			],
 			"Streaming": [
 				"串流"

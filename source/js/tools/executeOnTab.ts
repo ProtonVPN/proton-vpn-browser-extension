@@ -1,5 +1,7 @@
 import {warn} from '../log/log';
 import {getTabs} from './getTabs';
+import {getGlobalBrowser} from './getGlobalBrowser';
+
 type ScriptInjection<
 	Args extends any[],
 	Result,
@@ -11,7 +13,7 @@ export const executeOnTab = async <Args extends any[], Result>(
 	getCode: () => string,
 ) => {
 	try {
-		const executeScript = (browser as any as typeof chrome).scripting
+		const executeScript = (getGlobalBrowser() as any as typeof chrome).scripting
 			?.executeScript;
 
 		await (executeScript

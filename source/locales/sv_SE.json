@@ -29,6 +29,9 @@
 			"Configure split tunneling": [
 				"Konfigurera split tunneling"
 			],
+			"Confirm choices": [
+				"Bekräfta val"
+			],
 			"Connect": [
 				"Anslut"
 			],
@@ -375,6 +378,9 @@
 			"Help us fight censorship": [
 				"Hjälp oss att bekämpa censur"
 			],
+			"Help us improve Proton VPN": [
+				"Hjälp oss att förbättra Proton VPN"
+			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"Högpresterande schweizisk VPN som skyddar din integritet. Maximal säkerhet, fler än ${count} server och inga begränsningar.",
 				"Högpresterande schweizisk VPN som skyddar din integritet. Maximal säkerhet, fler än ${count} servrar och inga begränsningar."
@@ -445,7 +451,7 @@
 			"Selected websites": [
 				"Valda webbplatser"
 			],
-			"Share anonymous usage crash reports": [
+			"Share anonymous crash reports": [
 				"Dela anonyma kraschrapporter"
 			],
 			"Share anonymous usage statistics": [

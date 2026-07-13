@@ -7,6 +7,8 @@ import type {SplitTunnelingMode} from './WebsiteFilter';
 import OnAuthRequiredDetails = chrome.webRequest.OnAuthRequiredDetails;
 import OnRequestDetails = browser.proxy._OnRequestDetails;
 
+/* c8 ignore start */
+
 export interface ServerSummary {
 	id: string | number;
 	name: string;
@@ -66,6 +68,8 @@ export interface ConnectionState extends StateDefinition {
 }
 
 export type ConnectionStateSwitch = StateDefinition & Partial<ConnectionState>;
+
+/* c8 ignore stop */
 
 /**
  * Type guard to ensure contextual type compliance while still allowing custom properties and their type inference.

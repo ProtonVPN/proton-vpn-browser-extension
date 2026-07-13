@@ -29,6 +29,9 @@
 			"Configure split tunneling": [
 				"Konfigurer delt tunnelering"
 			],
+			"Confirm choices": [
+				"Bekreft valgene"
+			],
 			"Connect": [
 				"Koble til"
 			],
@@ -444,9 +447,6 @@
 			],
 			"Selected websites": [
 				"Valgte nettsteder"
-			],
-			"Share anonymous usage crash reports": [
-				"Del anonyme krasjrapporter for bruk"
 			],
 			"Share anonymous usage statistics": [
 				"Del anonym bruksstatistikk"

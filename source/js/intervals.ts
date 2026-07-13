@@ -89,5 +89,8 @@ export const getClientConfigTTL = () => milliSeconds.fromHours(12);
 
 export const getClientConfigBlockingUpdateTTL = () => getClientConfigTTL() * 4;
 
+export const getFeatureFlagTTL = () =>
+	useSlowFrequency() ? milliSeconds.fromDays(1) : milliSeconds.fromHours(6);
+
 export const getIdleThreshold = () =>
 	useSlowFrequency() ? milliSeconds.fromDays(3) : milliSeconds.fromDays(7);

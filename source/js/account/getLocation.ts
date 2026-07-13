@@ -1,5 +1,7 @@
+import type {ResponseResult} from '../api';
 import {fetchJson} from '../api';
-import type {Location} from './Location';
+import type {IpLocation} from '../account/IpLocation';
+import type {Coordinates} from '../tools/Coordinates';
 import {milliSeconds} from '../tools/milliSeconds';
 import type {Timed} from '../tools/storage';
 import {Storage, storage} from '../tools/storage';
@@ -12,7 +14,7 @@ import {isConnected} from '../vpn/connectedServer';
 import {getLocationRefreshInterval} from '../intervals';
 
 const storedLocation = storage.item<
-	Partial<Timed<{location: Location | undefined}>>
+	Partial<Timed<{location: IpLocation | undefined}>>
 >('location', Storage.LOCAL);
 const locationFetching = storage.item<Partial<Timed<object>>>(
 	'location-fetching',
@@ -24,7 +26,7 @@ export const getCachedLocation = () => storedLocation.load();
 const willLocationBeSentOutsideProxy = async () => {
 	if (
 		excludeApiFromProxy || // API generally excluded
-		(chrome.proxy as any)?.onRequest // able to exclude specifically vpn/location calls
+		(chrome.proxy as {onRequest?: () => void})?.onRequest // able to exclude specifically vpn/location calls
 	) {
 		return true;
 	}
@@ -33,7 +35,7 @@ const willLocationBeSentOutsideProxy = async () => {
 	return await isConnected();
 };
 
-export const getLocation = async (): Promise<Location | undefined> => {
+export const getLocation = async (): Promise<IpLocation | undefined> => {
 	const savedLocation = await getCachedLocation();
 	const refreshInterval = getLocationRefreshInterval();
 
@@ -65,7 +67,7 @@ export const getLocation = async (): Promise<Location | undefined> => {
 
 	try {
 		await locationFetching.setValue(null);
-		const location = await fetchJson<Location | undefined>('vpn/v1/location');
+		const location = await fetchJson<IpLocation | undefined>('vpn/v1/location');
 
 		if (location) {
 			await storedLocation.set({
@@ -88,7 +90,25 @@ export const getLocation = async (): Promise<Location | undefined> => {
 	}
 };
 
-export const fetchWithNetZone = async <T, D = any>(
+export const getCountryAndCoordinates = async (): Promise<{
+	coordinates: Partial<Coordinates>;
+	country: string | undefined;
+}> => {
+	const location = await getLocation();
+
+	return {
+		coordinates: {
+			Latitude: location?.Lat,
+			Longitude: location?.Long,
+		},
+		country: location?.Country,
+	};
+};
+
+export const fetchWithNetZone = async <
+	T,
+	D extends ResponseResult = ResponseResult,
+>(
 	url: string,
 	init?: RequestInit,
 	resultBuilder?: (response: Response, data: D) => T,

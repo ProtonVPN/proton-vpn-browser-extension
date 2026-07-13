@@ -1,3 +1,5 @@
+/* c8 ignore start */
+
 import type {BackgroundAction} from './MessageType';
 
 export interface MessageBase {
@@ -20,3 +22,5 @@ export interface ForkMessage extends Message<BackgroundAction.FORK> {
 		state: string;
 	};
 }
+
+/* c8 ignore stop */

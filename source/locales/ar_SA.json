@@ -29,6 +29,9 @@
 			"Configure split tunneling": [
 				"إعداد تقسيم الاتصال"
 			],
+			"Confirm choices": [
+				"تأكيد الخيارات"
+			],
 			"Connect": [
 				"اتصال"
 			],
@@ -327,6 +330,9 @@
 			"Crash": [
 				"عطل"
 			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"تحتوي تقارير الأعطال على معلومات تشخيصية، مثل تتبعات المكدس (Stack Traces) ونوع المتصفح وإصدار الإضافة. ولا تتضمن عنوان IP الخاص بك، كما لا ترتبط بأي معرّف لحساب Proton. ونحن لا نشاركها مطلقًا مع أي أطراف خارجية."
+			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"تقارير الأعطال تمنحنا القدرة على معالجة الخلل، واكتشاف جدران الحماية، وتجاوز حظر الـ VPN لضمان اتصالك الدائم."
 			],
@@ -386,6 +392,9 @@
 			],
 			"Help us fight censorship": [
 				"ساعدنا في مكافحة الرقابة"
+			],
+			"Help us improve Proton VPN": [
+				"ساعدنا في تحسين Proton VPN"
 			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} servers and no restrictions.": [
 				"VPN سويسري فائق الأداء لحماية خصوصيتك، يمنحك أقصى درجات الأمان عبر أكثر من ${count} خادم بلا قيود.",
@@ -461,8 +470,8 @@
 			"Selected websites": [
 				"المواقع المحددة"
 			],
-			"Share anonymous usage crash reports": [
-				"مشاركة تقارير الأعطال دون الكشف عن الهوية"
+			"Share anonymous crash reports": [
+				"مشاركة تقارير الأعطال المجهولة"
 			],
 			"Share anonymous usage statistics": [
 				"مشاركة بيانات الاستخدام بشكل مجهول"
@@ -517,6 +526,9 @@
 			],
 			"VPN Features": [
 				"خصائص الـ VPN"
+			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"خصوصيتك هي أولويتنا القصوى. نحن لا نتتبع نشاط تصفحك ولا نحتفظ بأي سجلات. وللتحقق من اتصالك، يُرسل معرّف جلسة حسابك إلى خوادمنا، وهو متطلب أساسي لعمل الإضافة."
 			],
 			"You're signed in": [
 				"تم تسجيل الدخول"
