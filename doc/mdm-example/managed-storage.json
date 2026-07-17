@@ -1,0 +1,56 @@
+{
+	"policies": {
+		"3rdparty": {
+			"Extensions": {
+				"vpn@proton.ch": {
+					"bex-config": {
+						"auto-connect": {
+							"controllable": false,
+							"controlMessage": "Mandatory connection when browser starts",
+							"config": {"value": true}
+						},
+						"crash-reports": {
+							"controllable": false,
+							"config": {"value": true}
+						},
+						"notification": {
+							"controllable": false,
+							"config": {"value": true}
+						},
+						"prevent-webrtc-leak": {
+							"controllable": false,
+							"config": {"value": true}
+						},
+						"secure-core": {
+							"controllable": false,
+							"config": {"value": false}
+						},
+						"split-tunneling": {
+							"controllable": false,
+							"config": {
+								"enabled": false,
+								"mode": "exclude",
+								"value": [
+									{
+										"domain": "my-domain.com",
+										"withSubdomains": true,
+										"mode": "exclude"
+									},
+									{
+										"domain": "another-domain.com",
+										"withSubdomains": true,
+										"mode": "exclude"
+									}
+								]
+							}
+						},
+						"telemetry": {
+							"controllable": false,
+							"config": {"value": true}
+						}
+					}
+				}
+			}
+		}
+	}
+}
