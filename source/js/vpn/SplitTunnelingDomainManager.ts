@@ -23,6 +23,7 @@ export class SplitTunnelingDomainManager {
 			})),
 			mode: list.mode || defaultSplitTunnelingMode, // If user has no mode set from previous version, it's exclude
 			enabled: list.enabled ?? this.shouldBeEnabledByDefaultFor(list), // Enable if user previous set an exclusion list
+			proxyPreRequests: list.proxyPreRequests ?? false,
 		};
 	}
 
@@ -87,6 +88,14 @@ export class SplitTunnelingDomainManager {
 
 	setEnabled(enabled: boolean): void {
 		this.list.enabled = enabled;
+	}
+
+	isProxyPreRequestsEnabled(): boolean {
+		return this.list.proxyPreRequests;
+	}
+
+	setProxyPreRequests(enabled: boolean): void {
+		this.list.proxyPreRequests = enabled;
 	}
 
 	getRawList(): WebsiteFilterList {
