@@ -88,8 +88,7 @@
 		"typescript": "$typescript",
 		"jest-chrome": {
 			"jest": "$jest"
-		},
-		"shell-quote": ">=1.8.4"
+		}
 	},
 	"lint-staged": {
 		"*.{js,ts,html}": "eslint"
