@@ -57,8 +57,10 @@ export interface DeviceLimitErrorDetails {
 	Actions?: ErrorAction[];
 }
 
+type DataResult = Record<string, unknown>;
+
 export interface ApiError<
-	T = Record<string, unknown> | DeviceLimitErrorDetails,
+	T = DataResult | DeviceLimitErrorDetails,
 	S extends number = number,
 	C extends number = number,
 > {
@@ -71,19 +73,18 @@ export interface ApiError<
 }
 
 export type UnauthorizedError<
-	T = Record<string, unknown>,
+	T = DataResult,
 	C extends number = number,
 > = ApiError<T, 401, C>;
 
 export type ForbiddenError<
-	T = Record<string, unknown>,
+	T = DataResult,
 	C extends number = number,
 > = ApiError<T, 403, C>;
 
-export type InvalidTokenError<T = Record<string, unknown>> = UnauthorizedError<
-	T,
-	401
->;
+export type InvalidTokenError<T = DataResult> = UnauthorizedError<T, 401>;
+
+export type ResponseResult = DataResult | ArrayBuffer;
 
 const isObject = (value: unknown) =>
 	typeof value === 'object' && value !== null;
@@ -343,9 +344,16 @@ const checkIfResponseWasBlocked = async (response: Response) => {
  * Note: most of the error should not trigger this because this function is called when
  * HTTP status is 200, so well-formed JSON is expected.
  */
-const getJsonContent = async <T = any>(response: Response): Promise<T> => {
+const getJsonContent = async <T extends ResponseResult = ResponseResult>(
+	response: Response,
+): Promise<T> => {
 	try {
-		return await response.clone().json();
+		const clone = response.clone();
+		const type = response.headers.get('Content-Type');
+
+		return await (type === 'application/octet-stream'
+			? clone.arrayBuffer()
+			: clone.json());
 	} catch (e) {
 		await checkIfResponseWasBlocked(response);
 
@@ -355,20 +363,20 @@ const getJsonContent = async <T = any>(response: Response): Promise<T> => {
 	}
 };
 
-const buildResponseResult = async <T = any, D = any>(
+const buildResponseResult = async <T, D>(
 	response: Response,
 	resultBuilder?: (response: Response, data: D) => T,
 ): Promise<T> => {
 	const data = await getJsonContent(response);
 
-	return resultBuilder ? resultBuilder(response, data) : data;
+	return resultBuilder ? resultBuilder(response, data as D) : (data as T);
 };
 
 /**
  * Get response as JSON if possible, or else as text, to be used for unexpected output
  * such as API error responses that may or may not contain JSON.
  */
-const getResponseContent = async <T = unknown>(
+const getResponseContent = async <T extends DataResult = DataResult>(
 	response: Response,
 ): Promise<T | string> => {
 	try {
@@ -378,7 +386,7 @@ const getResponseContent = async <T = unknown>(
 	}
 };
 
-export const fetchJson = async <T, D = unknown>(
+export const fetchJson = async <T, D extends ResponseResult = ResponseResult>(
 	url: string,
 	init?: RequestInit,
 	baseUrl?: string,
@@ -396,7 +404,7 @@ export const fetchJson = async <T, D = unknown>(
 	const response = await fetchApi(url, init, baseUrl);
 
 	if (!isSuccessfulResponse(response)) {
-		const data = await getResponseContent(response);
+		const data = (await getResponseContent(response)) as unknown;
 		const error = (data as ApiError)?.Error ? data : new Error(data as string);
 		(error as {response?: Response}).response = response;
 
@@ -429,7 +437,7 @@ export const fetchJson = async <T, D = unknown>(
 				const retryResponse = await fetchApi(url, init, baseUrl, newSession);
 
 				if (isSuccessfulResponse(retryResponse)) {
-					return buildResponseResult<T>(retryResponse, resultBuilder);
+					return buildResponseResult<T, D>(retryResponse, resultBuilder);
 				}
 			}
 
@@ -441,7 +449,7 @@ export const fetchJson = async <T, D = unknown>(
 
 	setUpdateError(undefined);
 
-	return buildResponseResult<T>(response, resultBuilder);
+	return buildResponseResult<T, D>(response, resultBuilder);
 };
 
 const isUrlExcluded = (url: URL, apiExclusion: boolean) =>

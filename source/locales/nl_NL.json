@@ -29,6 +29,9 @@
 			"Configure split tunneling": [
 				"Split tunneling configureren"
 			],
+			"Confirm choices": [
+				"Keuzes bevestigen"
+			],
 			"Connect": [
 				"Verbinden"
 			],
@@ -79,6 +82,9 @@
 			],
 			"Quick connect": [
 				"Snel verbinden"
+			],
+			"Remove": [
+				"Verwijderen"
 			],
 			"Remove ${domain}": [
 				"Verwijder ${domain}"
@@ -312,6 +318,9 @@
 			"Crash": [
 				"Crash"
 			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"Crashrapporten bevatten diagnostische informatie (stacktraces, browsertype, extensieversie). Ze bevatten niet uw IP-adres en er is geen Proton-account-ID aan gekoppeld. Wij delen ze nooit met derden."
+			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Crashrapporten helpen ons om bugs op te lossen, firewalls te detecteren en VPN-blokkeringen te vermijden."
 			],
@@ -371,6 +380,9 @@
 			],
 			"Help us fight censorship": [
 				"Help ons censuur te bestrijden"
+			],
+			"Help us improve Proton VPN": [
+				"Help ons Proton VPN te verbeteren"
 			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"Zwitserse VPN met hoge performantie die uw privacy beschermt. Maximale beveiliging, meer dan ${count} server en geen beperkingen.",
@@ -442,7 +454,7 @@
 			"Selected websites": [
 				"Geselecteerde websites"
 			],
-			"Share anonymous usage crash reports": [
+			"Share anonymous crash reports": [
 				"Deel anonieme crashrapporten"
 			],
 			"Share anonymous usage statistics": [
@@ -498,6 +510,9 @@
 			],
 			"VPN Features": [
 				"VPN-functies"
+			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"Wij geven bovenal prioriteit aan uw privacy. We volgen uw surfgedrag niet en houden geen logbestanden bij. Om uw verbinding te verifiëren, wordt uw accountsessie-ID naar onze servers verzonden. Dit is nodig om de extensie te laten werken"
 			],
 			"You're signed in": [
 				"U bent ingelogd"

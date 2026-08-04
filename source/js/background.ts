@@ -2,7 +2,7 @@
 import {setupHandleProxyRequest} from './tools/setupHandleProxyRequest';
 import {fetchTranslations} from './tools/translate';
 import {triggerPromise} from './tools/triggerPromise';
-import {initOnboarding} from './vpn/initOnboarding';
+import {initPostInstallationHook} from './vpn/initPostInstallationHook';
 import {initMessaging} from './vpn/initMessaging';
 import {initState} from './vpn/initState';
 import {initFocusWatcher} from './vpn/initFocusWatcher';
@@ -19,7 +19,7 @@ initMessaging();
 setTimeout(initState, 1);
 setupHandleProxyRequest();
 triggerPromise(fetchTranslations());
-initOnboarding();
+initPostInstallationHook();
 initFocusWatcher();
 initProxySettingsWatcher();
 initIdleWatcher();

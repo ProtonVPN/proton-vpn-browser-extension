@@ -29,6 +29,9 @@
 			"Configure split tunneling": [
 				"Ayrılmış tünellemeyi yapılandır"
 			],
+			"Confirm choices": [
+				"Seçimleri onayla"
+			],
 			"Connect": [
 				"Bağlan"
 			],
@@ -315,6 +318,9 @@
 			"Crash": [
 				"Çökme"
 			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"Çökme bildirimlerinde tanılama bilgileri (yığın izleri, tarayıcı türü, eklenti sürümü gibi) bulunur. Bu bildirimlerde IP adresiniz bulunmaz ve herhangi bir Proton hesabı kimliği eklenmemiştir. Bu bilgileri asla üçüncü taraflarla paylaşmayız."
+			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Çökme bildirimleri sorunları gidermemize, güvenlik duvarlarını algılamamıza ve VPN engellemelerini aşmamıza yardımcı olur."
 			],
@@ -374,6 +380,9 @@
 			],
 			"Help us fight censorship": [
 				"Sansüre karşı koymamıza yardımcı olun"
+			],
+			"Help us improve Proton VPN": [
+				"Proton VPN uygulamasını geliştirmemize yardım edin"
 			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"Gizliliğinizi koruyan başarımı yüksek İsviçre'li VPN. En yüksek güvenlik, ${count} üzerinde sunucu ve sınırlamasız.",
@@ -445,7 +454,7 @@
 			"Selected websites": [
 				"Seçilmiş siteler"
 			],
-			"Share anonymous usage crash reports": [
+			"Share anonymous crash reports": [
 				"Anonim çökme bildirimleri paylaşılsın"
 			],
 			"Share anonymous usage statistics": [
@@ -501,6 +510,9 @@
 			],
 			"VPN Features": [
 				"VPN özellikleri"
+			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"Gizliliğinizi her şeyin önüne koyuyoruz. Gezinme etkinliklerinizi izlemiyoruz ve herhangi bir kayıt tutmuyoruz. Bağlantınızı doğrulamak için hesap oturum kimliğiniz sunucularımıza gönderilir. Bu işlem eklentinin çalışması için gereklidir"
 			],
 			"You're signed in": [
 				"Oturum açtınız"

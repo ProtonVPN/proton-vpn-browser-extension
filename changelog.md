@@ -1,3 +1,19 @@
+# 1.3.5
+
+- Update translations
+- Fix window size on Chrome Canary
+
+# 1.3.4
+
+- Disabled anonymous usage statistics on Firefox
+- Updated consent screen to summarize data transmission
+- Removed account identifier from crash report headers
+
+# 1.3.3
+
+- Ask user preference after installation on Firefox for the crash-reports
+and anonymous statistics
+
 # 1.3.1
 
 - Don't show "Fastest country" at the top of the search result

@@ -29,6 +29,9 @@
 			"Configure split tunneling": [
 				"Split Tunneling-ის მორგება"
 			],
+			"Confirm choices": [
+				"არჩევნების დადასტურება"
+			],
 			"Connect": [
 				"დაკავშირება"
 			],
@@ -444,9 +447,6 @@
 			],
 			"Selected websites": [
 				"მონიშნული ვებსაიტები"
-			],
-			"Share anonymous usage crash reports": [
-				"ავარიის ანგარიშების ანონიმურად გაზიარება"
 			],
 			"Share anonymous usage statistics": [
 				"გამოყენების ანონიმური სტატისტიკის გაზიარება"

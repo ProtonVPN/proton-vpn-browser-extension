@@ -41,7 +41,7 @@ module.exports = (_, argv, options) => {
 		},
 	];
 
-	const dev = argv.mode === 'development';
+	const dev = argv.mode === 'development' || argv.mode === 'test';
 
 	const downgradeToMv2 = (manifest) => {
 		manifest.manifest_version = 2;
@@ -89,6 +89,7 @@ module.exports = (_, argv, options) => {
 		manifest.permissions.push('activeTab', 'webRequestBlocking');
 		delete manifest.key;
 		delete manifest.externally_connectable;
+		delete manifest.storage;
 	};
 
 	const adaptToChromium = (manifest) => {
@@ -138,9 +139,10 @@ module.exports = (_, argv, options) => {
 			terserOptions: {
 				mangle: !dev,
 				compress: !dev,
-				output: {
+				format: {
 					beautify: dev,
 					indent_level: dev ? 2 : undefined,
+					comments: dev ? 'all' : false,
 				},
 			},
 		}),

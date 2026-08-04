@@ -29,6 +29,9 @@
 			"Configure split tunneling": [
 				"Configurare divizare trafic"
 			],
+			"Confirm choices": [
+				"Confirmare alegeri"
+			],
 			"Connect": [
 				"Conectare"
 			],
@@ -318,6 +321,9 @@
 			"Crash": [
 				"Eroare"
 			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"Rapoartele de eroare conțin informații de diagnosticare (urme ale stivei, tipul de navigator web, versiunea extensiei). Nu conțin adresa IP și nu este atașat niciun identificator de cont Proton. Nu le vom partaja niciodată cu terțe părți."
+			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Rapoartele de erori ne ajută să reparăm erorile, să detectăm paravanele de protecție și să evităm blocările VPN-ului."
 			],
@@ -377,6 +383,9 @@
 			],
 			"Help us fight censorship": [
 				"Ajutați-ne să luptăm cu cenzura"
+			],
+			"Help us improve Proton VPN": [
+				"Ajutați-ne să îmbunătățim Proton VPN"
 			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"VPN elvețian de înaltă performanță care vă protejează intimitatea. Securitate maximă, mai mult de ${count} server și fără restricții.",
@@ -449,7 +458,7 @@
 			"Selected websites": [
 				"Site-uri web selectate"
 			],
-			"Share anonymous usage crash reports": [
+			"Share anonymous crash reports": [
 				"Partajare anonimă rapoarte de erori"
 			],
 			"Share anonymous usage statistics": [
@@ -505,6 +514,9 @@
 			],
 			"VPN Features": [
 				"Funcții VPN"
+			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"Vă punem confidențialitatea mai presus de orice. Nu vă urmărim navigarea și nu păstrăm jurnale. Pentru autentificarea conexiunii, ID-ul de sesiune al contului este trimis serverelor noastre, acest lucru fiind necesar pentru ca extensia să funcționeze."
 			],
 			"You're signed in": [
 				"V-ați autentificat"

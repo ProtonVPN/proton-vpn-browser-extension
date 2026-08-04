@@ -46,7 +46,41 @@
 				</li>
 			</ol>
 		</div>
-		<div class="mb2">
+		<div data-if="consent" class="action-block" style="display: none;">
+			<div class="mb2" data-trans>
+				We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work
+			</div>
+
+			<div class="mb2">
+				<div class="action-description">
+					<div class="action-text">
+						<div>
+							<span data-trans>Share anonymous crash reports</span><br />
+							<span class="sub-action-text" data-trans>Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.</span>
+						</div>
+					</div>
+
+					<button class="toggle" data-toggle="crash-reports" title="Crash" data-comment="Toggle button to opt-in to share anonymous crash reports"></button>
+				</div>
+
+				<div class="action-description">
+					<div class="action-text">
+						<div class="sub-action-text">
+							<span data-trans>Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.</span>
+							<a data-trans class="text-link" href="https://proton.me/legal/privacy">Learn more</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="mb2" style="text-align: center;">
+				<button class="button max-w-custom w100 consent-button" aria-busy="false" type="button"
+				        style="--max-width-custom:480px;">
+					<span data-trans data-context="Action" data-comment="Button">Confirm choices</span>
+				</button>
+			</div>
+		</div>
+		<div data-if="login" class="mb2" style="display: none;">
 			<button class="button max-w-custom w100 login-button" aria-busy="false" type="button"
 					style="--max-width-custom:480px;">
 				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 36 36"

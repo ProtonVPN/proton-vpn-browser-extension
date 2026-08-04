@@ -26,6 +26,12 @@
 			"Change server": [
 				"Змінити сервер"
 			],
+			"Configure split tunneling": [
+				"Налаштувати роздільне тунелювання"
+			],
+			"Confirm choices": [
+				"Підтвердити"
+			],
 			"Connect": [
 				"З'єднатися"
 			],
@@ -35,8 +41,32 @@
 			"Create an account": [
 				"Зареєструватися"
 			],
+			"Disable auto-connect": [
+				"Вимкнути автопід'єднання"
+			],
+			"Disable notifications": [
+				"Вимкнути сповіщення"
+			],
+			"Disable Split tunneling": [
+				"Вимкнути роздільне тунелювання"
+			],
+			"Disable WebRTC leak protection": [
+				"Вимкнути захист від витоку WebRTC"
+			],
 			"Disconnect": [
 				"Від'єднати"
+			],
+			"Enable auto-connect": [
+				"Увімкнути автопід'єднання"
+			],
+			"Enable notifications": [
+				"Увімкнути сповіщення"
+			],
+			"Enable Split tunneling": [
+				"Увімкнути роздільне тунелювання"
+			],
+			"Enable WebRTC leak protection": [
+				"Увімкнути захист від витоку WebRTC"
 			],
 			"Log in with Proton": [
 				"Увійти з Proton"
@@ -52,6 +82,9 @@
 			],
 			"Quick connect": [
 				"Швидке з'єднання"
+			],
+			"Remove": [
+				"Вилучити"
 			],
 			"Remove ${domain}": [
 				"Вилучити ${domain}"
@@ -102,8 +135,20 @@
 			]
 		},
 		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"З'єднатися з \"${mode}\""
+			],
+			"Connect to ${countryName}": [
+				"З'єднатися з ${countryName}"
+			],
 			"Connect to ${exitCountryName}": [
 				"З'єднатися з ${exitCountryName}"
+			],
+			"Connect to ${logical.Name}": [
+				"З'єднатися з ${logical.Name}"
+			],
+			"Connect to the fastest country": [
+				"З'єднатися з найшвидшою країною"
 			]
 		},
 		"Action: Server-level button": {
@@ -243,6 +288,9 @@
 			"Bypass censorship with advanced security and privacy features": [
 				"Обходьте цензуру за допомогою розширених функцій безпеки та приватності"
 			],
+			"Clear all recent connections and don't keep local history": [
+				"Очистити всі нещодавні з'єднання і не зберігати локальну історію"
+			],
 			"Clear search": [
 				"Очистити пошук"
 			],
@@ -282,6 +330,9 @@
 			"Decide which websites are protected by VPN.": [
 				"Вирішіть вебсайти, які захищаються VPN."
 			],
+			"Disable Secure Core": [
+				"Вимкнути Secure Core"
+			],
 			"Disconnected": [
 				"Від'єднано"
 			],
@@ -299,6 +350,9 @@
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Надсилати системні сповіщення про події з'єднання та від'єднання."
+			],
+			"Enable Secure Core": [
+				"Увімкнути Secure Core"
 			],
 			"Enjoying Proton VPN?": [
 				"Подобається Proton VPN?"
@@ -384,14 +438,23 @@
 			"Proton VPN Browser Extension": [
 				"Розширення браузера Proton VPN"
 			],
+			"Recent connections": [
+				"Недавні з'єднання"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"Зберігати недавні з'єднання локально і пропонувати для них швидке з'єднання"
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"Запам'ятовувати останні під'єднані країни/міста/сервери й показувати їх вгорі списку."
+			],
+			"Retired server": [
+				"Виведений сервер"
+			],
 			"Secure Core": [
 				"Secure Core"
 			],
 			"Selected websites": [
 				"Вибрані вебсайти"
-			],
-			"Share anonymous usage crash reports": [
-				"Надсилати анонімні звіти про використання під час збоїв"
 			],
 			"Share anonymous usage statistics": [
 				"Анонімна статистика використання"
@@ -408,8 +471,14 @@
 			"Thank you for installing Proton VPN": [
 				"Дякуємо вам за встановлення Proton VPN"
 			],
+			"The split tunneling options cannot be changed on this device": [
+				"Налаштування роздільного тунелювання не можна змінити на цьому пристрої"
+			],
 			"Then just click the Proton VPN icon to sign in.": [
 				"Потім просто натисніть піктограму Proton VPN, щоб увійти."
+			],
+			"This option cannot be changed on this device": [
+				"Це налаштування не можна змінити на цьому пристрої"
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"Ці дані не містять вашої IP-адреси та інформації, за допомогою якої можна вас ідентифікувати. Ми ніколи не передаємо ці дані третім сторонам"
@@ -563,11 +632,26 @@
 			]
 		},
 		"Title": {
+			"Closest server": [
+				"Найближчий сервер"
+			],
+			"Fastest country": [
+				"Найшвидша країна"
+			],
+			"Fastest server": [
+				"Найшвидший сервер"
+			],
 			"Features": [
 				"Функції"
 			],
 			"Proton VPN for Vivaldi": [
 				"Proton VPN для Vivaldi"
+			],
+			"Random server": [
+				"Випадковий сервер"
+			],
+			"Recents": [
+				"Нещодавні"
 			],
 			"Streaming": [
 				"Потокова трансляція"

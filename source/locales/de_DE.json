@@ -29,6 +29,9 @@
 			"Configure split tunneling": [
 				"Split-Tunneling konfigurieren"
 			],
+			"Confirm choices": [
+				"Auswahl bestätigen"
+			],
 			"Connect": [
 				"Verbinden"
 			],
@@ -315,6 +318,9 @@
 			"Crash": [
 				"Absturz"
 			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"Absturzberichte enthalten Diagnoseinformationen (Stack-Traces, Browsertyp, Versionsnummer der Erweiterung). Sie enthalten weder deine IP-Adresse noch eine Proton-Konto-ID. Wir geben diese Informationen niemals an Dritte weiter."
+			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Absturzberichte helfen uns Fehler zu beheben, Firewalls zu erkennen und VPN-Sperren zu vermeiden."
 			],
@@ -374,6 +380,9 @@
 			],
 			"Help us fight censorship": [
 				"Hilf uns dabei, Zensur zu bekämpfen"
+			],
+			"Help us improve Proton VPN": [
+				"Hilf uns, Proton VPN weiter zu verbessern"
 			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"Schweizer Hochgeschwindigkeits-VPN, das deine Privatsphäre schützt. Maximale Sicherheit, über ${count} Server und keine Einschränkungen.",
@@ -445,7 +454,7 @@
 			"Selected websites": [
 				"Ausgewählte Websites"
 			],
-			"Share anonymous usage crash reports": [
+			"Share anonymous crash reports": [
 				"Anonyme Absturzberichte teilen"
 			],
 			"Share anonymous usage statistics": [
@@ -501,6 +510,9 @@
 			],
 			"VPN Features": [
 				"VPN-Funktionen"
+			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"Deine Privatsphäre hat für uns oberste Priorität. Wir verfolgen weder dein Surfverhalten noch speichern wir Protokolle. Zur Authentifizierung deiner Verbindung wird die Sitzungs-ID deines Kontos an unsere Server gesendet; dies ist erforderlich, damit die Erweiterung funktioniert."
 			],
 			"You're signed in": [
 				"Du bist angemeldet"

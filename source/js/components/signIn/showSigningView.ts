@@ -2,6 +2,8 @@ import {getServersCount} from '../../vpn/getServersCount';
 import {c} from '../../tools/translate';
 import {openForkTab} from '../../account/openForkTab';
 import {triggerPromise} from '../../tools/triggerPromise';
+import {initOnboarding} from '../../vpn/initOnboarding';
+import {requiresToAskConsentForOptionalMetricsEarly} from './requiresToAskConsentForOptionalMetricsEarly';
 import {proxyPermission} from '../../vpn/proxyPermission';
 import {signupEnabled} from '../../config';
 import {sendMessageToBackground} from '../../tools/sendMessageToBackground';
@@ -111,6 +113,14 @@ export const showSigningViewAndWaitForItToBeLoaded = async (
 	};
 
 	prepareSigningView()?.catch(showUpdateError('prepareSigningView'));
+
+	if (await requiresToAskConsentForOptionalMetricsEarly()) {
+		await initOnboarding();
+
+		window?.close();
+
+		return;
+	}
 
 	setSignInButtonLabel(
 		hasPartnerOauth ? c('Action').t`Sign in with Vivaldi` : '',
