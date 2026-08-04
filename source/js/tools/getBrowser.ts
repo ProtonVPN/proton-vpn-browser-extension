@@ -1,7 +1,7 @@
 import {appId} from '../config';
 
 export const getBrowser = () =>
-	/^moz-extension:/.test(location.href)
+	typeof location !== 'undefined' && /^moz-extension:/.test(location.href)
 		? {
 				// moz-extension://
 				name: 'Firefox',

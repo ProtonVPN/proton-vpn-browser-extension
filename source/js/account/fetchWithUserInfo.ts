@@ -1,7 +1,11 @@
 import {loadCachedUser} from './user/loadCachedUser';
 import {fetchWithNetZone} from './getLocation';
+import type {ResponseResult} from '../api';
 
-export const fetchWithUserInfo = async <T, D = any>(
+export const fetchWithUserInfo = async <
+	T,
+	D extends ResponseResult = ResponseResult,
+>(
 	url: string,
 	init?: RequestInit,
 	resultBuilder?: (response: Response, data: D) => T,

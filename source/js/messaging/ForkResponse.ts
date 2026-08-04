@@ -1,3 +1,5 @@
+/* c8 ignore start */
+
 export interface ForkResponse {
 	token?: string;
 	type: 'error' | 'success';
@@ -7,3 +9,5 @@ export interface ForkResponse {
 		message?: string;
 	};
 }
+
+/* c8 ignore stop */

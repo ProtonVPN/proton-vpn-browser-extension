@@ -45,7 +45,7 @@
 				"Onemogoči obvestila"
 			],
 			"Disable Split tunneling": [
-				"Omogočiti razdeljeno tuneliranje"
+				"Onemogoči razdeljeno tuneliranje"
 			],
 			"Disable WebRTC leak protection": [
 				"Omogoči zaščito pred uhajanjem WebRTC"
@@ -60,7 +60,7 @@
 				"Omogoči obvestila"
 			],
 			"Enable Split tunneling": [
-				"Omogočiti razdeljeno tuneliranje"
+				"Omogoči razdeljeno tuneliranje"
 			],
 			"Enable WebRTC leak protection": [
 				"Omogoči zaščito pred uhajanjem WebRTC"
@@ -150,7 +150,7 @@
 		},
 		"Description": {
 			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Proton Free vas samodejno poveže z najhitrejšim razpoložljivim brezplačnim strežnikom iz naših 5 brezplačnih držav. To bo običajno strežnik, ki je najbližje vaši lokaciji."
+				"Proton Free vas samodejno poveže z najhitrejšim razpoložljivim brezplačnim strežnikom iz naših pet brezplačnih držav. To bo običajno strežnik, ki je najbližje vaši lokaciji."
 			]
 		},
 		"Error": {
@@ -403,7 +403,7 @@
 				"Pripnite Proton VPN v orodno vrstico"
 			],
 			"Please help us spread the word with a Web Store rating.": [
-				"Prosimo, pomagajte nam širiti glas z oceno spletne trgovine"
+				"Pomagajte nam širiti glas z oceno spletne trgovine"
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Pritisnite <b>Naprej</b>, nato kliknite <b>Dovoli</b> na pojavnem oknu v brskalniku."
@@ -422,9 +422,6 @@
 			],
 			"Selected websites": [
 				"Izbrana spletna mesta"
-			],
-			"Share anonymous usage crash reports": [
-				"Deli anonimna poročila o zrušitvah uporabe"
 			],
 			"Share anonymous usage statistics": [
 				"Deli anonimne podatke o uporabi?"
@@ -451,7 +448,7 @@
 				"Te možnosti ni mogoče spremeniti na tej napravi"
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
-				"Ti statistični podatki ne vsebujejo vašega naslova IP in jih ni mogoče uporabiti za vašo identifikacijo. Nikoli jih ne bomo dali v skupno rabo s tretjimi osebami"
+				"Ti statistični podatki ne vsebujejo vašega naslova IP in jih ni mogoče uporabiti za vašo identifikacijo. Nikoli jih ne bomo delili s tretjimi osebami"
 			],
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Če želite začeti, morate v brskalniku omogočiti dovoljenja VPN."
@@ -469,7 +466,7 @@
 				"Uporabnik"
 			],
 			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
-				"Z uporabo Brskalnika Brave so zahteve DNS morda nezaščitene, ko je aktiviran \"Način vključevanja\"."
+				"Z uporabo brskalnika Brave so zahteve DNS morda nezaščitene, ko je aktiviran \"način vključitve\"."
 			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
 				"VPN blokira zunanja programska oprema.\n\nNekatera orodja, kot so protivirusni programi ali posredniški strežniki, lahko motijo ​​delovanje Proton VPN. Onemogočite jih in poskusite znova."

@@ -29,6 +29,9 @@
 			"Configure split tunneling": [
 				"Määritä jaettu tunnelointi"
 			],
+			"Confirm choices": [
+				"Vavhista valinnat"
+			],
 			"Connect": [
 				"Yhdistä"
 			],
@@ -315,6 +318,9 @@
 			"Crash": [
 				"Kaatuminen"
 			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"Virheraportit sisältävät diagnostisia tietoja (pinonjäljitykset, selaimen tyyppi, laajennuksen versio). Ne eivät sisällä IP-osoitettasi, eikä niihin ole yhdistetty Proton-tilin tunnistetta. Emme koskaan jaa niitä kolmansille osapuolille."
+			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Virheraportit auttavat meitä korjaaman vikoja, havaitsemaan palomuureja ja kiertämään VPN-estoja."
 			],
@@ -374,6 +380,9 @@
 			],
 			"Help us fight censorship": [
 				"Auta meitä taistelemaan sensuuria vastaan"
+			],
+			"Help us improve Proton VPN": [
+				"Auta meitä parantamaan Proton VPN:ää"
 			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"Erittäin suorituskykyinen Sveitsiläinen VPN, joka suojaa yksityisyyttäsi. Parasta tietoturvaa ja yli ${count} palvelinta, rajoituksetta.",
@@ -445,8 +454,8 @@
 			"Selected websites": [
 				"Valitut verkkosivustot"
 			],
-			"Share anonymous usage crash reports": [
-				"Jaa anonyymejä kaatumisraportteja"
+			"Share anonymous crash reports": [
+				"Jaa anonyymejä virheraportteja"
 			],
 			"Share anonymous usage statistics": [
 				"Jaa anonyymejä käyttötilastoja"
@@ -501,6 +510,9 @@
 			],
 			"VPN Features": [
 				"VPN:n ominaisuudet"
+			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"Pidämme yksityisyyttäsi ensisijaisena tavoitteenamme. Emme seuraa selaustasi emmekä säilytä lokitietoja. Yhteyden todentamiseksi tilisi istuntotunnus lähetetään palvelimillemme; tämä on välttämätöntä laajennuksen toimimiseksi"
 			],
 			"You're signed in": [
 				"Olet kirjautunut"

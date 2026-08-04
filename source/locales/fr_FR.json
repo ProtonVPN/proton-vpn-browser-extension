@@ -29,6 +29,9 @@
 			"Configure split tunneling": [
 				"Configurer le split tunneling"
 			],
+			"Confirm choices": [
+				"Confirmer les choix"
+			],
 			"Connect": [
 				"Se connecter"
 			],
@@ -315,6 +318,9 @@
 			"Crash": [
 				"Erreur"
 			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"Les rapports d'erreur contiennent des informations de diagnostic (traces mémoire, type de navigateur, version de l'extension). Ils ne contiennent pas votre adresse IP et aucun identifiant de compte Proton n'y est associé. Nous ne les partagerons jamais avec des tiers."
+			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Les rapports de plantage nous aident à corriger les bugs, à détecter les pare-feux et à éviter les blocages du VPN."
 			],
@@ -374,6 +380,9 @@
 			],
 			"Help us fight censorship": [
 				"Aidez-nous à combattre la censure."
+			],
+			"Help us improve Proton VPN": [
+				"Aidez-nous à améliorer Proton VPN"
 			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"VPN suisse performant qui protège votre vie privée. Sécurité maximale, plus de ${count} serveur et aucune restriction.",
@@ -445,8 +454,8 @@
 			"Selected websites": [
 				"Les sites internet sélectionnés"
 			],
-			"Share anonymous usage crash reports": [
-				"Partager les rapports de plantage anonymes"
+			"Share anonymous crash reports": [
+				"Partager des rapports de plantage anonymes"
 			],
 			"Share anonymous usage statistics": [
 				"Partager des statistiques d'utilisation anonymes"
@@ -501,6 +510,9 @@
 			],
 			"VPN Features": [
 				"Fonctionnalités VPN"
+			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"Nous accordons la priorité absolue à la protection de votre vie privée. Nous ne suivons pas votre navigation et ne conservons aucun journal. Pour authentifier votre connexion, l'identifiant de session de votre compte est envoyé à nos serveurs. Cette opération est nécessaire au bon fonctionnement de l'extension."
 			],
 			"You're signed in": [
 				"Vous êtes connecté"

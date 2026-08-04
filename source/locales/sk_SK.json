@@ -29,6 +29,9 @@
 			"Configure split tunneling": [
 				"Nastaviť rozdelené tunelovanie"
 			],
+			"Confirm choices": [
+				"Potvrdiť výber"
+			],
 			"Connect": [
 				"Pripojiť"
 			],
@@ -321,6 +324,9 @@
 			"Crash": [
 				"Pád"
 			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"Správy o zlyhaní obsahujú diagnostické informácie (zápisy stacku, typ prehliadača, verziu rozšírenia). Neobsahujú vašu IP adresu a nie je k nim pripojený žiadny identifikátor Proton účtu. Nikdy ich neposkytneme tretím stranám."
+			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Hlásenia o pádoch nám pomáhajú opravovať chyby, detekovať firewally a vyhýbať sa blokovaniu VPN."
 			],
@@ -380,6 +386,9 @@
 			],
 			"Help us fight censorship": [
 				"Pomôžte nám bojovať s cenzúrou"
+			],
+			"Help us improve Proton VPN": [
+				"Pomôžte nám vylepšiť Proton VPN"
 			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"Vysoko výkonná švajčiarska VPN, ktorá chráni vaše súkromie. Maximálne zabezpečenie, viac než ${count} server a žiadne obmedzenia.",
@@ -453,8 +462,8 @@
 			"Selected websites": [
 				"Vybrané webové stránky"
 			],
-			"Share anonymous usage crash reports": [
-				"Zdieľajte anonymné hlásenia o chybách pri používaní"
+			"Share anonymous crash reports": [
+				"Zdieľať anonymné hlásenia o zlyhaniach"
 			],
 			"Share anonymous usage statistics": [
 				"Zdieľať anonymné štatistiky používania"
@@ -509,6 +518,9 @@
 			],
 			"VPN Features": [
 				"Funkcie VPN"
+			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"Vaše súkromie je pre nás na prvom mieste. Nesledujeme vaše prehliadanie a neuchovávame žiadne záznamy. Na overenie vášho pripojenia sa na naše servery odosiela identifikačný kód vašej relácie účtu; je to nevyhnutné na fungovanie rozšírenia"
 			],
 			"You're signed in": [
 				"Ste prihlásený"

@@ -48,6 +48,13 @@ const fetchServersCounts = async (): Promise<Counts> => {
 	}
 };
 
+const defaultServersCount = {
+	Servers: 20_427,
+	Countries: 145,
+	Locations: 191,
+	Capacity: 23_899.59,
+};
+
 export const getServersCount = async (): Promise<Counts> => {
 	const cache = await serversCount.get();
 	const age = getCacheAge(cache);
@@ -68,18 +75,14 @@ export const getServersCount = async (): Promise<Counts> => {
 	try {
 		const counts = await fetchServersCounts();
 
-		if (counts.Servers < 12_000 || counts.Countries < 110) {
+		if (counts.Servers < 15_000 || counts.Countries < 130) {
 			handleError(
 				new Error(
 					`Incorrect results from API: servers = ${counts.Servers}, countries = ${counts.Countries}`,
 				),
 			);
 
-			return {
-				Servers: 13_626,
-				Countries: 122,
-				Capacity: 15_942,
-			};
+			return defaultServersCount;
 		}
 
 		return counts;
@@ -88,6 +91,8 @@ export const getServersCount = async (): Promise<Counts> => {
 			return cache.value;
 		}
 
-		throw e;
+		handleError(e);
+
+		return defaultServersCount;
 	}
 };

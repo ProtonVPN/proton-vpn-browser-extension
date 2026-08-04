@@ -1,5 +1,7 @@
+'use background';
 import type {ProxyInfo} from '../proxy';
 import {getCurrentStateIfDefined} from '../state';
+import {initProxySettingsWatcher} from '../vpn/initProxySettingsWatcher';
 import OnRequestDetails = browser.proxy._OnRequestDetails;
 
 const handleProxyRequest = (
@@ -13,6 +15,8 @@ export const setupHandleProxyRequest = (): boolean => {
 	if (!proxy) {
 		return false;
 	}
+
+	initProxySettingsWatcher();
 
 	const onRequest = proxy.onRequest;
 

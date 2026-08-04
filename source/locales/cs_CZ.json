@@ -29,6 +29,9 @@
 			"Configure split tunneling": [
 				"Nastavit split tunneling"
 			],
+			"Confirm choices": [
+				"Potvrdit volby"
+			],
 			"Connect": [
 				"Připojit"
 			],
@@ -452,9 +455,6 @@
 			],
 			"Selected websites": [
 				"Vybrané webové stránky"
-			],
-			"Share anonymous usage crash reports": [
-				"Sdílejte anonymní hlášení o pádech"
 			],
 			"Share anonymous usage statistics": [
 				"Sdílejte anonymní statistiky o používání"

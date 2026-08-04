@@ -6,11 +6,12 @@ import {
 	defaultStackParser,
 } from '@sentry/browser';
 import {getFullAppVersion, hostname, sentryDsn} from '../config';
-import type {CacheWrappedValue} from '../tools/storage';
+import type {CacheItem, CacheWrappedValue} from '../tools/storage';
 import {storage} from '../tools/storage';
 import {getErrorAsString} from '../tools/getErrorMessage';
 import {milliSeconds} from '../tools/milliSeconds';
 import {CrashReports} from '../vpn/features/CrashReports';
+import type {Toggle} from '../vpn/features/Toggle';
 
 type FirstFetchParameter = Parameters<typeof fetch>[0];
 let scope: Scope | undefined = undefined;
@@ -21,51 +22,91 @@ export const crashReportOptOut = storage.item<{value: boolean}>(
 
 const reverseKey = 'crash-reports-enabled';
 
-export const crashReportOptIn = {
-	key: reverseKey,
-	async get(
-		defaultValue: CacheWrappedValue<boolean> | undefined = undefined,
-	): Promise<Partial<CacheWrappedValue<boolean>> | undefined> {
-		const data = (await crashReportOptOut.get(
-			defaultValue ? {value: !defaultValue.value} : undefined,
-		)) as CacheWrappedValue<boolean> | undefined;
-		const value = data?.value;
+export const crashReportOptIn: CacheItem<Toggle & CacheWrappedValue<boolean>> =
+	{
+		key: reverseKey,
+		async get(
+			defaultValue: CacheWrappedValue<boolean> | undefined = undefined,
+			concurrencyDelay = 0,
+		): Promise<CacheWrappedValue<boolean> | undefined> {
+			const data = (await crashReportOptOut.get(
+				defaultValue ? {value: !defaultValue.value} : undefined,
+				concurrencyDelay,
+			)) as CacheWrappedValue<boolean> | undefined;
+			const value = data?.value;
 
-		return typeof value === 'boolean'
-			? {
-					...(data || {}),
-					value: !value,
-				}
-			: undefined;
-	},
-	getDefined(
-		defaultValue: CacheWrappedValue<boolean>,
-	): Promise<Partial<CacheWrappedValue<boolean>>> {
-		return crashReportOptIn.get(defaultValue) as Promise<
-			Partial<CacheWrappedValue<boolean>>
-		>;
-	},
-	async load(
-		defaultValue: CacheWrappedValue<boolean> | undefined = undefined,
-	): Promise<Partial<CacheWrappedValue<boolean>>> {
-		try {
-			const value = (await crashReportOptOut.load(defaultValue)).value;
+			return typeof value === 'boolean'
+				? {
+						time: Date.now(),
+						...(data || {}),
+						value: !value,
+					}
+				: undefined;
+		},
+		getOnceNoLongerFetching(
+			concurrencyDelay = 5_000,
+			defaultValue: CacheWrappedValue<boolean>,
+		): Promise<CacheWrappedValue<boolean> | undefined> {
+			return this.get(defaultValue, concurrencyDelay) as Promise<
+				CacheWrappedValue<boolean> | undefined
+			>;
+		},
+		async load(
+			defaultValue: CacheWrappedValue<boolean> | undefined = undefined,
+		): Promise<Partial<CacheWrappedValue<boolean>>> {
+			try {
+				const value = (await crashReportOptOut.load(defaultValue)).value;
 
-			return typeof value === 'boolean' ? {value: !value} : {};
-		} catch {
-			return {};
-		}
-	},
-	set(value: {value: boolean}): Promise<void> {
-		return crashReportOptOut.set({value: !value.value});
-	},
-	setValue(value: boolean, extraData: Record<string, any> = {}): Promise<void> {
-		return crashReportOptOut.setValue(!value, extraData);
-	},
-	remove(): Promise<void> {
-		return crashReportOptOut.remove();
-	},
-};
+				return typeof value === 'boolean' ? {value: !value} : {};
+			} catch {
+				return {};
+			}
+		},
+		set(value: {value: boolean}): Promise<void> {
+			return crashReportOptOut.set({value: !value.value});
+		},
+		setValue(
+			value: boolean,
+			extraData: Record<string, any> = {},
+		): Promise<void> {
+			return crashReportOptOut.setValue(!value, extraData);
+		},
+		remove(): Promise<void> {
+			return crashReportOptOut.remove();
+		},
+		async transaction<
+			D extends CacheWrappedValue<boolean> | undefined =
+				| CacheWrappedValue<boolean>
+				| undefined,
+		>(
+			callback: (
+				value: CacheWrappedValue<boolean> | D,
+			) => CacheWrappedValue<boolean> | D | undefined,
+			defaultValue: D = undefined as D,
+		): Promise<void> {
+			return crashReportOptOut.transaction((valueWrap) => {
+				const invertedResult = callback({
+					time: Date.now(),
+					...(valueWrap ?? defaultValue),
+					value: !valueWrap?.value,
+				});
+
+				return {
+					...(invertedResult ?? defaultValue),
+					value: !invertedResult?.value,
+				};
+			});
+		},
+		async transactionValue<D extends boolean | undefined = boolean | undefined>(
+			callback: (value: boolean | D) => boolean | D | undefined,
+			defaultValue: D = undefined as D,
+		): Promise<void> {
+			return crashReportOptOut.transactionValue(
+				(value) => !callback(!value),
+				!defaultValue,
+			);
+		},
+	};
 
 const isCrashReportEnabled = async () =>
 	(await (await CrashReports.create()).getConfig()).value;
@@ -89,15 +130,12 @@ export const getContentTypeHeaders = (
 	return {};
 };
 
-const lastUid: string = '';
-
 const sentryFetch: typeof fetch = (input, init?) =>
 	globalThis.fetch(input, {
 		...init,
 		headers: {
 			...init?.headers,
 			...getContentTypeHeaders(input),
-			'x-pm-uid': lastUid,
 		},
 	});
 

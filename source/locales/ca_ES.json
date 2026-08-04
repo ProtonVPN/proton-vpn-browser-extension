@@ -29,6 +29,9 @@
 			"Configure split tunneling": [
 				"Configureu la tunelització dividida"
 			],
+			"Confirm choices": [
+				"Confirmeu les opcions"
+			],
 			"Connect": [
 				"Conecta"
 			],
@@ -315,6 +318,9 @@
 			"Crash": [
 				"Error"
 			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"Els informes d'error contenen informació de diagnòstic (traçats de pila, tipus de navegador, versió de l'extensió).\nNo contenen la vostra adreça IP i no s'hi adjunta cap identificador de compte de Proton.\nMai els compartirem amb tercers."
+			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Els informes d'errors ens ajuden a corregir errors, detectar tallafocs i evitar els bloquejos de VPN."
 			],
@@ -374,6 +380,9 @@
 			],
 			"Help us fight censorship": [
 				"Ajudeu-nos a lluitar contra la censura"
+			],
+			"Help us improve Proton VPN": [
+				"Ajudeu-nos a millorar Proton VPN"
 			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"La VPN suïssa d'alt rendiment que protegeix la vostra privacitat. Màxima seguretat, més d'${count} servidor i sense restriccions.",
@@ -445,8 +454,8 @@
 			"Selected websites": [
 				"Llocs web seleccionats"
 			],
-			"Share anonymous usage crash reports": [
-				"Compartiu informes d'error anònims"
+			"Share anonymous crash reports": [
+				"Compartiu informes anònims d'errors"
 			],
 			"Share anonymous usage statistics": [
 				"Comparteix estadístiques d'ús de forma anònima"
@@ -501,6 +510,9 @@
 			],
 			"VPN Features": [
 				"Característiques VPN"
+			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"Prioritzem la vostra privacitat per damunt de tot. No fem un seguiment de la vostra navegació ni en guardem cap registre. Per autenticar la vostra connexió, l'identificador de sessió del vostre compte s'envia als nostres servidors; això és necessari perquè l'extensió funcioni."
 			],
 			"You're signed in": [
 				"Has iniciat sessió"
@@ -620,7 +632,7 @@
 				"El servidor més proper"
 			],
 			"Fastest country": [
-				"El país més ràpid"
+				"País més ràpid"
 			],
 			"Fastest server": [
 				"El servidor més ràpid"

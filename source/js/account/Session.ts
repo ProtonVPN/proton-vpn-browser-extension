@@ -1,3 +1,5 @@
+/* c8 ignore start */
+
 export interface Session {
 	uid?: string;
 	selectorTime?: number;
@@ -11,3 +13,5 @@ export interface Session {
 	expiresAt?: number;
 	partnerId?: string;
 }
+
+/* c8 ignore stop */

@@ -29,6 +29,9 @@
 			"Configure split tunneling": [
 				"Сканфігурыраваць Split Tunneling"
 			],
+			"Confirm choices": [
+				"Пацвердзіць выбар"
+			],
 			"Connect": [
 				"Падключыцца"
 			],
@@ -321,6 +324,9 @@
 			"Crash": [
 				"Збой"
 			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"Справаздачы аб збоях змяшчаюць дыягнастычную інфармацыю (трасіроўку стэка, тып браўзера, версію пашырэння). Яны не змяшчаюць ваш IP-адрас і не далучаюць ідэнтыфікатар уліковага запісу Proton."
+			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Справаздачы аб збоях дапамагаюць нам выпраўляць памылкі, вызначаць міжсеткавыя экраны, а таксама пазбягаць блакіровак VPN."
 			],
@@ -380,6 +386,9 @@
 			],
 			"Help us fight censorship": [
 				"Дапамажыце нам змагацца з цэнзурай"
+			],
+			"Help us improve Proton VPN": [
+				"Дапамажыце нам палепшыць Proton VPN"
 			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"Высокапрадукцыйны швейцарскі VPN, які абараняе вашу прыватнасць. Максімум бяспекі, больш за ${count} сервер і ніякіх абмежаванняў.",
@@ -453,8 +462,8 @@
 			"Selected websites": [
 				"Выбраныя вэб-сайты"
 			],
-			"Share anonymous usage crash reports": [
-				"Абагульваць ананімныя справаздачы аб збоях"
+			"Share anonymous crash reports": [
+				"Абагульванне ананімных справаздач аб збоях"
 			],
 			"Share anonymous usage statistics": [
 				"Абагульваць ананімную статыстыку выкарыстання"
@@ -509,6 +518,9 @@
 			],
 			"VPN Features": [
 				"Функцыі VPN"
+			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"Наша каманда ставіць вашу прыватнасць вышэй за ўсё. Мы не сочым за тым, якія вэб-сайты вы наведваеце і не захоўваем журналы"
 			],
 			"You're signed in": [
 				"Вы ўвайшлі"

@@ -29,6 +29,9 @@
 			"Configure split tunneling": [
 				"Configurar tunelamento dividido"
 			],
+			"Confirm choices": [
+				"Confirmar escolhas"
+			],
 			"Connect": [
 				"Conectar"
 			],
@@ -143,6 +146,9 @@
 			],
 			"Connect to ${logical.Name}": [
 				"Conectar a ${logical.Name}"
+			],
+			"Connect to the fastest country": [
+				"Conecte-se ao país com a internet mais rápida"
 			]
 		},
 		"Action: Server-level button": {
@@ -369,6 +375,9 @@
 			"Help us fight censorship": [
 				"Ajude-nos a combater a censura"
 			],
+			"Help us improve Proton VPN": [
+				"Ajude nos melhor o Proton VPN"
+			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"VPN suíça de alto desempenho que protege sua privacidade. Segurança máxima, mais de ${count} servidor e sem restrições.",
 				"VPN suíça de alto desempenho que protege sua privacidade. Segurança máxima, mais de ${count} servidores e sem restrições."
@@ -433,8 +442,8 @@
 			"Selected websites": [
 				"Sites selecionados"
 			],
-			"Share anonymous usage crash reports": [
-				"Compartilhe relatórios de falhas de uso anônimos"
+			"Share anonymous crash reports": [
+				"Compartilhar relatórios de erros anônimos"
 			],
 			"Share anonymous usage statistics": [
 				"Compartilhar estatísticas anônimas de uso"
