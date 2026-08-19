@@ -166,11 +166,6 @@
 				"Logger du ud af programmet, afbrydes den aktive VPN-forbindelse. Vil du fortsætte?"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Proton Free forbinder dig automatisk til den hurtigste tilgængelige gratis server fra vores 5 gratis lande. Dette vil\nnormalt være den server, der er tættest på din placering."
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} land",
@@ -429,6 +424,10 @@
 			],
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Beskyt dig selv online med Protons gratis højhastigheds-VPN."
+			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"Proton Free forbinder dig automatisk til den hurtigste tilgængelige gratis server fra vores ${freeCountriesCount} gratis land. Dette vil normalt være den server, der er tættest på din placering.",
+				"Proton Free forbinder dig automatisk til den hurtigste tilgængelige gratis server fra vores ${freeCountriesCount} gratis lande. Dette vil normalt være den server, der er tættest på din placering."
 			],
 			"Proton VPN": [
 				"Proton VPN"

@@ -1,7 +1,14 @@
 import type {Logical} from './Logical';
 import type {CountryItem} from '../components/countryList';
+import type {UserContext} from '../account/user/UserContext';
 import {isLogicalUp} from './getLogicals';
 import {c} from '../tools/translate';
+
+const getAutoConnectableFilter =
+	(userContext: UserContext) => (logical: Logical) =>
+		(logical.AutoConnectable ?? true) &&
+		isLogicalUp(logical, userContext.country, userContext.location) &&
+		userContext.tier >= logical.Tier;
 
 export const getAllLogicals = (group: CountryItem | undefined): Logical[] =>
 	Object.values(group?.groups || {}).reduce(
@@ -11,16 +18,16 @@ export const getAllLogicals = (group: CountryItem | undefined): Logical[] =>
 
 export const getBestLogical = (
 	logicals: Logical[] | null | undefined,
-	userTier: number,
+	userContext: UserContext,
 ): Logical | undefined => {
 	const servers = (logicals || []).filter(
-		(logical) => isLogicalUp(logical) && userTier >= logical.Tier,
+		getAutoConnectableFilter(userContext),
 	);
 	let score = Infinity;
 	let bestServer: Logical | undefined = undefined;
 
 	servers.forEach((server) => {
-		if (server.Score < score) {
+		if (typeof server.Score !== 'undefined' && server.Score < score) {
 			score = server.Score;
 			bestServer = server;
 		}
@@ -31,22 +38,22 @@ export const getBestLogical = (
 
 export const getRandomLogical = (
 	logicals: Logical[] | null | undefined,
-	userTier: number,
+	userContext: UserContext,
 ): Logical | undefined => {
 	const servers = (logicals || []).filter(
-		(logical) => isLogicalUp(logical) && userTier >= logical.Tier,
+		getAutoConnectableFilter(userContext),
 	);
-
 	const index = Math.floor(Math.random() * servers.length);
+
 	return servers[index];
 };
 
 export const requireBestLogical = (
 	logicals: Logical[] | null | undefined,
-	userTier: number,
+	userContext: UserContext,
 	errorPreHandler?: (error: Error) => void,
 ): Logical => {
-	const bestServer = getBestLogical(logicals, userTier);
+	const bestServer = getBestLogical(logicals, userContext);
 
 	if (!bestServer) {
 		errorPreHandler?.(
@@ -64,10 +71,10 @@ export const requireBestLogical = (
 
 export const requireRandomLogical = (
 	logicals: Logical[] | null | undefined,
-	userTier: number,
+	userContext: UserContext,
 	errorPreHandler?: (error: Error) => void,
 ): Logical => {
-	const randomServer = getRandomLogical(logicals, userTier);
+	const randomServer = getRandomLogical(logicals, userContext);
 
 	if (!randomServer) {
 		errorPreHandler?.(

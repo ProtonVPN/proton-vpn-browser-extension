@@ -13,20 +13,19 @@ import {stopEvent} from './tools/stopEvent';
 import {createSession} from './account/createSession';
 import {forgetUser} from './account/user/forgetUser';
 import {forgetCredentials} from './account/credentials/removeCredentials';
+import {appendUpgradeParams as doAppendUpgradeParams} from './account/appendUpgradeParams';
 import {
 	c,
 	fetchTranslations,
-	getCountryName,
 	getCountryNameOrCode,
 	getHashSeed,
 	getQuerySeed,
 	getTranslation,
+	msgid,
 	translateArea,
 } from './tools/translate';
 import {escapeHtml} from './tools/escapeHtml';
-import {type ApiError, ErrorActionCode, isUnauthorizedError} from './api';
-import {saveSession} from './account/saveSession';
-import type {User} from './account/user/User';
+import {type ApiError, ErrorActionCode} from './api';
 import type {PmUser} from './account/user/PmUser';
 import {getUserMaxTier} from './account/user/getUserMaxTier';
 import {
@@ -39,13 +38,10 @@ import {
 	splitTunnelingEnabled,
 } from './config';
 import {refreshLocationSlots} from './account/refreshLocationSlots';
-import {
-	getAllLogicals,
-	requireBestLogical,
-	requireRandomLogical,
-} from './vpn/getLogical';
+import {requireBestLogical, requireRandomLogical} from './vpn/getLogical';
 import {getCities, mergeTranslations} from './vpn/getCities';
 import {setUpSearch} from './search/setUpSearch';
+import {getLogicalFromButton as doGetLogicalFromButton} from './components/getLogicalFromButton';
 import type {CountryList} from './components/countryList';
 import {recentLocations} from './components/recentLocations';
 import {aboutFreeConnections} from './components/aboutFreeConnections';
@@ -54,6 +50,7 @@ import {configureRemoveRecentButton} from './components/configureRemoveRecentBut
 import {configureServerGroups} from './components/configureServerGroups';
 import {configureLookupSearch} from './components/configureLookupSearch';
 import {showConnectedItemMarker} from './components/showConnectedItemMarker';
+import {setTheme} from './components/setTheme';
 import {storage} from './tools/storage';
 import {showNotifications} from './notifications/showNotifications';
 import {watchBroadcastMessages} from './tools/answering';
@@ -65,6 +62,7 @@ import type {
 	ServerSummary,
 } from './vpn/ConnectionState';
 import {Feature} from './vpn/Feature';
+import {attachLogicalIntoCountryList} from './vpn/attachLogicalIntoCountryList';
 import {getCountryFlag} from './tools/getCountryFlag';
 import {each} from './tools/each';
 import {logo} from './tools/logo';
@@ -74,7 +72,6 @@ import {
 	getLastChoices,
 	setLastChoice,
 } from './vpn/lastChoice';
-import {ucfirst} from './tools/ucfirst';
 import {toggleButtons} from './components/toggleButtons';
 import {triggerPromise} from './tools/triggerPromise';
 import {
@@ -106,9 +103,9 @@ import type {LocallyStoredFeature} from './vpn/features/LocallyStoredFeature';
 import type {Toggle} from './vpn/features/Toggle';
 import type {FeatureWrapper} from './vpn/features/FeatureWrapper';
 import {warn} from './log/log';
+import {getUserContext} from './account/user/getUserContext';
+import {loadUserForView} from './account/user/loadUserForView';
 import {canAccessPaidServers} from './account/user/canAccessPaidServers';
-import {RefreshTokenError} from './account/RefreshTokenError';
-import {requireUser} from './account/requireUser';
 import {getRegisteredLocaleFromUser} from './account/user/getRegisteredLocaleFromUser';
 import {getPmUserFromBackground} from './account/user/getPmUserFromBackground';
 import {pickServerInLogical} from './vpn/pickServerInLogical';
@@ -206,30 +203,10 @@ export const start = async (area: HTMLElement) => {
 
 	let theme: Theme = 'dark';
 
-	const setTheme = (theme: Theme) => {
-		const themes = ['dark', 'light', 'auto'];
-
-		themes.forEach((choice) => {
-			area
-				.querySelectorAll<HTMLInputElement>(
-					'[name="theme"][value="' + choice + '"]',
-				)
-				.forEach((input) => {
-					input.checked = choice === theme;
-				});
-		});
-
-		if (!area.classList.contains(theme + '-theme')) {
-			themes.forEach((choice) => {
-				area.classList[choice === theme ? 'add' : 'remove'](choice + '-theme');
-			});
-		}
-	};
-
 	const storedTheme = storage.item<{value: Theme}>('theme');
 	storedTheme.get().then((themeCache) => {
 		theme = themeCache?.value || theme;
-		setTheme(theme);
+		setTheme(area, theme);
 	});
 
 	if (!session.uid || !session.refreshToken) {
@@ -313,223 +290,18 @@ export const start = async (area: HTMLElement) => {
 		exitCountry?: Logical['ExitCountry'],
 	) => rawLogicals.filter((logical) => logical.ExitCountry !== exitCountry);
 
-	const getLogicalFromButton = (
-		button: HTMLButtonElement,
-	): {
-		getLogical: () => Logical | null | undefined;
-		choice: Omit<Choice, 'connected'>;
-	} => {
-		const id = button.getAttribute('data-id');
-
-		if (id) {
-			return {
-				getLogical: () => getLogicalById(id),
-				choice: {logicalId: id},
-			};
-		}
-
-		const exitCountry = button.getAttribute('data-exitCountry') || '';
-		const excludedFeatures = Number(
-			button.getAttribute('data-excludedFeatures') || 0,
+	const getLogicalFromButton = (button: HTMLButtonElement) =>
+		doGetLogicalFromButton(
+			button,
+			countries,
+			features,
+			userContext,
+			logicals,
+			setError,
 		);
-		const requiredFeatures = Number(
-			button.getAttribute('data-requiredFeatures') || 0,
-		);
-		const baseSecureCoreFilter = (() => {
-			if (excludedFeatures & Feature.SECURE_CORE) {
-				return {value: false};
-			}
 
-			if (requiredFeatures & Feature.SECURE_CORE) {
-				return {value: true};
-			}
-
-			return undefined;
-		})();
-
-		if (exitCountry) {
-			const logicals = getAllLogicals(countries[exitCountry]);
-			const subGroup = button.getAttribute('data-subGroup') || '';
-			const secureCoreFilter =
-				baseSecureCoreFilter ??
-				(button.hasAttribute('data-no-sc-filter')
-					? undefined
-					: features.secureCore.config);
-
-			if (subGroup) {
-				switch (subGroup.toLowerCase()) {
-					case 'other':
-						return {
-							getLogical: () =>
-								requireBestLogical(
-									filterLogicalsWithCurrentFeatures(
-										logicals.filter(
-											(logical) =>
-												(logical.Features & Feature.TOR) === 0 &&
-												!logical.City &&
-												logical.Tier > 0,
-										),
-										userTier,
-										secureCoreFilter,
-									),
-									userTier,
-									setError,
-								),
-							choice: {
-								exitCountry: exitCountry,
-								filter: 'other',
-							},
-						};
-
-					case 'tor':
-						return {
-							getLogical: () =>
-								requireBestLogical(
-									filterLogicalsWithCurrentFeatures(
-										logicals.filter(
-											(logical) => logical.Features & Feature.TOR,
-										),
-										userTier,
-										secureCoreFilter,
-										true,
-									),
-									userTier,
-									setError,
-								),
-							choice: {
-								exitCountry: exitCountry,
-								requiredFeatures: Feature.TOR,
-							},
-						};
-
-					case 'free':
-						return {
-							getLogical: () =>
-								requireBestLogical(
-									filterLogicalsWithCurrentFeatures(
-										logicals.filter((logical) => logical.Tier < 1),
-										userTier,
-										secureCoreFilter,
-									),
-									userTier,
-									setError,
-								),
-							choice: {
-								exitCountry: exitCountry,
-								tier: 0,
-							},
-						};
-
-					default:
-						return {
-							getLogical: () =>
-								requireBestLogical(
-									filterLogicalsWithCurrentFeatures(
-										logicals.filter((logical) => logical.City === subGroup),
-										userTier,
-										secureCoreFilter,
-									),
-									userTier,
-									setError,
-								),
-							choice: {
-								exitCountry: exitCountry,
-								city: subGroup,
-							},
-						};
-				}
-			}
-
-			const entryCountry = button.getAttribute('data-entryCountry') || '';
-
-			if (entryCountry) {
-				return {
-					getLogical: () =>
-						requireBestLogical(
-							filterLogicalsWithCurrentFeatures(
-								logicals.filter(
-									(logical) => logical.EntryCountry === entryCountry,
-								),
-								userTier,
-								secureCoreFilter,
-							),
-							userTier,
-							setError,
-						),
-					choice: {
-						exitCountry: exitCountry,
-						entryCountry: entryCountry,
-					},
-				};
-			}
-
-			return {
-				getLogical: () =>
-					requireBestLogical(
-						filterLogicalsWithCurrentFeatures(
-							logicals,
-							userTier,
-							secureCoreFilter,
-						),
-						userTier,
-						setError,
-					),
-				choice: {exitCountry: exitCountry},
-			};
-		}
-
-		const pick = button.getAttribute('data-pick') || '';
-
-		// For now "closest" is not anywhere in the UI, it can redirect to "fastest"
-		if (pick === 'fastest' || pick === 'closest') {
-			return {
-				getLogical: () =>
-					requireBestLogical(
-						filterLogicalsWithCurrentFeatures(
-							logicals.filter((logical) => logical.Tier > 0),
-							userTier,
-							baseSecureCoreFilter,
-						),
-						userTier,
-						setError,
-					),
-				choice: {pick},
-			};
-		}
-
-		if (pick === 'random') {
-			return {
-				getLogical: () =>
-					requireRandomLogical(
-						filterLogicalsWithCurrentFeatures(
-							logicals.filter((logical) => logical.Tier > 0),
-							userTier,
-							baseSecureCoreFilter,
-						),
-						userTier,
-						setError,
-					),
-				choice: {pick},
-			};
-		}
-
-		return {
-			getLogical: () => null,
-			choice: {},
-		};
-	};
-
-	const appendUpgradeParams = async (url: string) => {
-		const pmUser = await getPmUser();
-
-		return appendUrlParams(url, {
-			email: pmUser?.Email,
-			// Preselect VPN Plus plan if the user has no plan
-			// The user might have a plan without VPN entitlement
-			// In such case we don't select a plan and let user choose
-			plan: user?.Subscribed ? '' : 'vpn2024',
-		});
-	};
+	const appendUpgradeParams = (url: string) =>
+		doAppendUpgradeParams(url, user, getPmUser);
 
 	let isSecureCoreEnabled = () => false;
 
@@ -727,35 +499,25 @@ export const start = async (area: HTMLElement) => {
 		});
 	};
 
-	let user: User | undefined;
+	const user = await loadUserForView(
+		state,
+		(error) => {
+			setDisplayStyle(spinner, 'none');
+			setDisplayStyle(loggedView, 'block');
 
-	try {
-		user = await requireUser();
-	} catch (e) {
-		if (
-			e instanceof RefreshTokenError ||
-			(e as RefreshTokenError).logout ||
-			(!state.restarted && isUnauthorizedError(e))
-		) {
-			state.restarted = true;
-			await saveSession({});
-
+			setError(error);
+		},
+		() => {
 			triggerPromise(start(area));
-
-			return;
-		}
-
-		setDisplayStyle(spinner, 'none');
-		setDisplayStyle(loggedView, 'block');
-
-		setError(e as ApiError);
-
-		user = undefined;
-	}
+		},
+	);
 
 	if (!user) {
 		return;
 	}
+
+	const userTier = getUserMaxTier(user);
+	const userContext = await getUserContext(userTier);
 
 	let logicals: Logical[] = [];
 	const [logicalsInput, cities, features] = await Promise.all([
@@ -805,8 +567,6 @@ export const start = async (area: HTMLElement) => {
 			});
 	});
 
-	const userTier = getUserMaxTier(user);
-
 	/** `MaxTier 2` */
 	const hasAccessToPaidServers = canAccessPaidServers(user);
 
@@ -848,73 +608,11 @@ export const start = async (area: HTMLElement) => {
 			return;
 		}
 
-		const country = logical.ExitCountry;
-
 		if (logical.Tier <= 0) {
-			freeCountries[country] = true;
+			freeCountries[logical.ExitCountry] = true;
 		}
 
-		logical.EntryCountryName = getCountryName(logical.EntryCountry, 'en');
-
-		if (!logical.Translations) {
-			logical.Translations = {};
-		}
-
-		logical.Translations.EntryCountryName = getCountryName(
-			logical.EntryCountry,
-		);
-		const isSecureCore = logical.Features & Feature.SECURE_CORE;
-		const groupType = isSecureCore
-			? 'secureCore'
-			: logical.City
-				? 'city'
-				: logical.Features & Feature.TOR
-					? 'tor'
-					: logical.Tier < 1
-						? 'free'
-						: 'other';
-		const groupEnglishName =
-			(!isSecureCore && logical.City) || ucfirst(groupType);
-		const groupName = isSecureCore
-			? c('Info').t`Secure Core`
-			: logical.Translations?.City ||
-				logical.City ||
-				(
-					{
-						tor: 'TOR',
-						free: /* translator: it's for free servers that can be accessed without paid subscription */ c(
-							'Label',
-						).t`Free`,
-					} as Record<typeof groupType, string>
-				)[groupType] ||
-				/* translator: server fallback type */ c('Label').t`Other`;
-
-		const infos =
-			countries[country] ||
-			(countries[country] = {
-				englishName: getCountryNameOrCode(country, 'en'),
-				name: getCountryNameOrCode(country),
-				needUpgrade: true,
-				groups: {},
-			});
-
-		if (!infos.groups) {
-			infos.groups = {};
-		}
-
-		infos.needUpgrade = infos.needUpgrade && userTier < logical.Tier;
-
-		const group =
-			infos.groups[groupEnglishName] ||
-			(infos.groups[groupEnglishName] = {
-				type: groupType,
-				englishName: groupEnglishName,
-				name: groupName,
-				needUpgrade: true,
-				logicals: [],
-			});
-		group.needUpgrade = group.needUpgrade && userTier < logical.Tier;
-		(group.logicals || (group.logicals = [])).push(logical);
+		attachLogicalIntoCountryList(userTier, logical, countries);
 	});
 
 	const servers = area.querySelector('#servers') as HTMLDivElement;
@@ -939,11 +637,12 @@ export const start = async (area: HTMLElement) => {
 
 		configureLookupSearch(
 			servers,
-			userTier,
+			userContext,
 			(div) => {
 				configureButtons(div);
 				configureServerGroups(div);
 			},
+			countries,
 			search,
 		);
 	};
@@ -962,7 +661,7 @@ export const start = async (area: HTMLElement) => {
 	let refresh = () => {
 		locationList(
 			countries,
-			userTier,
+			userContext,
 			features.secureCore.config,
 			features.recents,
 		).then((list) => {
@@ -1023,6 +722,9 @@ export const start = async (area: HTMLElement) => {
 	) as HTMLDivElement;
 	const freeCountriesCountEl = area.querySelector(
 		'#free-server-countries-count',
+	) as HTMLSpanElement;
+	const freeCountriesDescriptionEl = area.querySelector(
+		'#free-server-description',
 	) as HTMLSpanElement;
 	const freeCountryItemTemplate = area.querySelector(
 		'#free-country-item-template',
@@ -1252,8 +954,19 @@ export const start = async (area: HTMLElement) => {
 				}
 			});
 
-			freeCountriesCountEl.textContent =
-				Object.keys(freeCountries).length.toString();
+			const freeCountriesCount = Object.keys(freeCountries).length;
+			freeCountriesCountEl.textContent = freeCountriesCount.toString();
+
+			if (freeCountriesDescriptionEl) {
+				/**
+				 * 	translator: this appears to free user clicking on the info button about their free connection.
+				 */
+				freeCountriesDescriptionEl.textContent = c('Info').plural(
+					freeCountriesCount,
+					msgid`Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.`,
+					`Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free countries. This will normally be the closest server to your location.`,
+				);
+			}
 		}
 
 		triggerPromise(refreshLocationSlots(area, true));
@@ -1316,7 +1029,7 @@ export const start = async (area: HTMLElement) => {
 			input.addEventListener('change', async () => {
 				if (input.checked) {
 					const value = input.value as Theme;
-					setTheme(value);
+					setTheme(area, value);
 					await storedTheme.set({value});
 				}
 			});
@@ -1479,7 +1192,7 @@ export const start = async (area: HTMLElement) => {
 			);
 			const logical = requireRandomLogical(
 				filteredLogicals,
-				userTier,
+				userContext,
 				setError,
 			);
 			setLastChoice({
@@ -1511,7 +1224,7 @@ export const start = async (area: HTMLElement) => {
 				userTier,
 				features.secureCore.config,
 			),
-			userTier,
+			userContext,
 			setError,
 		);
 		setLastChoice({
@@ -1660,7 +1373,12 @@ export const start = async (area: HTMLElement) => {
 			}
 
 			setServersHtml(
-				await locationListOrSearch(searchText, countries, userTier, features),
+				await locationListOrSearch(
+					searchText,
+					countries,
+					userContext,
+					features,
+				),
 				searchText,
 			);
 			configureArea(area);

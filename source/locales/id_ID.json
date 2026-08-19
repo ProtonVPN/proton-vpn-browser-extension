@@ -140,11 +140,6 @@
 				"Dengan keluar dari aplikasi, koneksi VPN yang sedang aktif akan terputus. Apakah Anda ingin melanjutkan?"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Proton Free akan menghubungkan Anda secara otomatis ke server tercepat yang tersedia dari 5 negara free kami. Pada umumnya,\nserver ini adalah server yang terletak paling dekat dengan lokasi Anda."
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} negara"

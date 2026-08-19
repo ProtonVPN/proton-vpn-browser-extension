@@ -166,11 +166,6 @@
 				"Tancar l'aplicació desconnectarà la connexió VPN activa. Voleu continuar?"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Proton Free us connectarà automàticament al servidor gratuït més ràpid disponible dels nostres 5 països gratuïts. Normalment\nserà el servidor més proper a la vostra ubicació."
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} país",
@@ -429,6 +424,10 @@
 			],
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Protegiu-vos en línia amb la VPN gratuïta d'alta velocitat de Proton."
+			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"Proton Free us connecta automàticament al servidor gratuït més ràpid disponible del nostre ${freeCountriesCount} país de franc. Aquest serà normalment el servidor més proper a la vostra ubicació.",
+				"Proton Free us connecta automàticament al servidor gratuït més ràpid disponible del nostres ${freeCountriesCount} països de franc. Aquest serà normalment el servidor més proper a la vostra ubicació."
 			],
 			"Proton VPN": [
 				"Proton VPN"

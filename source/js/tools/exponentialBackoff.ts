@@ -37,14 +37,18 @@ export const isSuspended = async (key: string): Promise<boolean> => {
 
 const getExpiration = (millisecondDelay: number, increment: number): number =>
 	Date.now() +
-	1000 * Math.min(300, Math.pow(millisecondDelay / 1000, (1 + increment) / 2));
+	1000 * Math.min(300, Math.pow(millisecondDelay / 1_000, (1 + increment) / 2));
 
 const getForget = (millisecondDelay: number, increment: number): number =>
 	Date.now() +
 	20000 +
-	1000 * clamp(15, Math.pow(millisecondDelay / 1000, (2 + increment) / 2), 600);
+	1000 *
+		clamp(15, Math.pow(millisecondDelay / 1_000, (2 + increment) / 2), 600);
 
-export const suspend = (key: string, millisecondDelay: number = 5000): void => {
+export const suspend = (
+	key: string,
+	millisecondDelay: number = 5_000,
+): void => {
 	triggerPromise(
 		(async () => {
 			const backoff = await getBackoff(key);

@@ -10,11 +10,12 @@ import {needUpgrade} from '../vpn/needUpgrade';
 import {expandButton} from './expendButton';
 import {paidOnly, simplifiedUi} from '../config';
 import {maintenanceIcon} from '../tools/maintenanceIcon';
+import type {UserContext} from '../account/user/UserContext';
 import {upgradeAttributes} from '../account/upgradeAttributes';
 import {via} from './via';
 
 export const countryBlock = (
-	userTier: number,
+	userContext: UserContext,
 	code: string,
 	group: CountryItem,
 	predicate: (servers: Logical[]) => Logical[],
@@ -22,9 +23,10 @@ export const countryBlock = (
 	extraConnectionAttributes: Record<string, string | number> = {},
 	showFlagOnGroups = false,
 ) => {
+	const userTier = userContext.tier;
 	const upgradeNeeded = needUpgrade(userTier, group);
 	const id = `expand-${code}-${`${Math.random()}`.substring(2)}`;
-	const up = isGroupUp(group);
+	const up = isGroupUp(group, userContext);
 	const exitCountryName = group.name;
 	const grayOutButton = simplifiedUi && userTier <= 0;
 	const canConnect = up && (simplifiedUi ? userTier > 0 : !upgradeNeeded);
@@ -32,7 +34,14 @@ export const countryBlock = (
 	const sectionBuilder =
 		(window as any).sectionBuilder || ((window as any).sectionBuilder = {});
 	sectionBuilder[id] = () =>
-		serverGroup(userTier, code, group, predicate, secureCore, showFlagOnGroups);
+		serverGroup(
+			userContext,
+			code,
+			group,
+			predicate,
+			secureCore,
+			showFlagOnGroups,
+		);
 
 	return `
 	<div class="country-block">

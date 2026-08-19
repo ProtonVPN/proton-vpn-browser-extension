@@ -47,6 +47,36 @@ export const getLocaleForLanguage = (language: string): string => {
 };
 /* eslint-enable */
 
+export const guessCountryFromLocale = () => {
+	if (registeredLocale) {
+		const registeredCountry = registeredLocale.split(/[_-]/)[1];
+
+		if (registeredCountry) {
+			return registeredCountry;
+		}
+	}
+
+	const navigator = getNavigator();
+
+	if (navigator) {
+		const navigatorCountry = navigator.language.split(/[_-]/)[1];
+
+		if (navigatorCountry) {
+			return navigatorCountry;
+		}
+
+		for (const language of navigator.languages) {
+			const country = language.split(/[_-]/)[1];
+
+			if (country) {
+				return country;
+			}
+		}
+	}
+
+	return undefined;
+};
+
 export const getLocale = (): string => {
 	if (registeredLocale && registeredLocale.length > 2) {
 		return registeredLocale;

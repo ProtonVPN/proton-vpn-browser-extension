@@ -166,11 +166,6 @@
 				"Uitloggen van de applicatie zal de actieve VPN-verbinding verbreken. Wilt u doorgaan?"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Proton Free verbindt u automatisch met de snelste beschikbare gratis server uit onze 5 gratis landen. Dit zal\nnormaal gesproken de dichtstbijzijnde server bij uw locatie zijn."
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} land",
@@ -429,6 +424,10 @@
 			],
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Bescherm uzelf online met Proton's gratis hoge snelheid VPN"
+			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"Proton Free verbindt u automatisch met de snelste beschikbare gratis server uit ons ${freeCountriesCount} gratis land. Meestal is dit de dichtstbijzijnde server bij uw locatie.",
+				"Proton Free verbindt u automatisch met de snelste beschikbare gratis server uit een van onze ${freeCountriesCount} gratis landen. Meestal is dit de dichtstbijzijnde server bij uw locatie."
 			],
 			"Proton VPN": [
 				"Proton VPN"

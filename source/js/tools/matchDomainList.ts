@@ -1,6 +1,9 @@
 import {isHostMatchedByIpMask} from './ip';
 import OnRequestDetails = browser.proxy._OnRequestDetails;
 
+const escapeDomain = (domain: string) =>
+	domain.replace(/\./g, '\\.').replace(/\*/g, '.*');
+
 /**
  * Return true when the domain of a request matches one of the domainList.
  *
@@ -13,7 +16,7 @@ export const matchDomainList = (
 ) =>
 	domainList.some((domain) => {
 		if (domain.startsWith('.')) {
-			return new RegExp(domain.replace('.', '\\.') + '$').test(callHostname);
+			return new RegExp(escapeDomain(domain) + '$').test(callHostname);
 		}
 
 		if (isHostMatchedByIpMask(callHostname, domain)) {
@@ -25,7 +28,7 @@ export const matchDomainList = (
 				return new RegExp(
 					'^' +
 						(domain.includes('//') ? '([^/]+\\.)?' : '') +
-						domain.replace(/\./g, '\\.').replace(/\*/g, '.*'),
+						escapeDomain(domain),
 				).test(
 					domain.startsWith('://')
 						? requestInfo.url.replace(/^[a-z]+(:\/\/)/, '$1')
@@ -35,9 +38,7 @@ export const matchDomainList = (
 				);
 			}
 
-			return new RegExp(
-				domain.replace(/\./g, '\\.').replace(/\*/g, '.*') + '$',
-			).test(callHostname);
+			return new RegExp(escapeDomain(domain) + '$').test(callHostname);
 		}
 
 		return callHostname === domain;

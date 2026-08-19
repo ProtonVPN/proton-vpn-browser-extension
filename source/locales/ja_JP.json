@@ -148,11 +148,6 @@
 				"アプリケーションからログアウトすると、現在有効な VPN 接続が解除されます。続行しますか？"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Proton Freeはお客様を弊社の5つの無料提供国の中から最も速い利用可能な無料サーバーに自動的に接続します。\n通常、これはお客様の所在地に最も近いサーバーになります。"
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} か国"

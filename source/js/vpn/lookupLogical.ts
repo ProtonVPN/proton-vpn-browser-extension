@@ -1,16 +1,22 @@
+import {isNotFoundError} from '../api';
 import {fetchWithUserInfo} from '../account/fetchWithUserInfo';
+import {getCountryAndCoordinates} from '../account/getLocation';
 import {warn} from '../log/log';
 import {triggerPromise} from '../tools/triggerPromise';
-import {isNotFoundError} from '../api';
+import type {Coordinates} from '../tools/Coordinates';
+import type {Logical} from './Logical';
+import {logicalServers} from './logicalServers';
 import {
 	getSortedLogicals,
 	isLogicalUp,
-	logicalServers,
 	lookups,
 	lookupsNotFound,
 	recordLogicalInMap,
 } from './getLogicals';
-import type {Logical} from './Logical';
+import {Feature} from './Feature';
+import {getLatestCachedStatuses} from './getLatestCachedStatuses';
+import {calculateLogicalScoreAndUpStatus} from './calculateLogicalScoreAndUpStatus';
+import {useLogicalsV2} from './useLogicalsV2';
 
 /**
  * Too much IDs stored would lead to longer loading and slower UI, so we cap it.
@@ -62,8 +68,12 @@ const recordOnLookupStorage = (
 	);
 };
 
-const pushLogicalToCache = (logical: Logical): void => {
-	isLogicalUp(logical); // Set _up status
+const pushLogicalToCache = (
+	logical: Logical,
+	country: string,
+	coordinates: Partial<Coordinates>,
+): void => {
+	isLogicalUp(logical, country, coordinates); // Set _up status
 	recordLogicalInMap(logical);
 
 	// Update cache asynchronously
@@ -93,14 +103,41 @@ const fetchLogicalLookup = async (name: string, init?: RequestInit) => {
 
 	try {
 		const {LogicalServer: logical} = await fetchWithUserInfo<{
-			LogicalServer: Logical;
+			LogicalServer: Logical & {Status?: number};
 		}>(`vpn/v1/logicals/lookup/${encodeURIComponent(name)}`, init);
 
 		if (!logical) {
 			return undefined;
 		}
 
-		pushLogicalToCache(logical);
+		const {country, coordinates} = await getCountryAndCoordinates();
+
+		if (await useLogicalsV2()) {
+			const enabled = Boolean(logical.Status);
+			delete logical.Status;
+			Object.assign(logical, {
+				Visible: true,
+				Enabled: enabled,
+				AutoConnectable:
+					enabled &&
+					(logical.Features & (Feature.TOR | Feature.RESTRICTED)) === 0,
+			});
+			const index = logical.StatusReference.Index;
+
+			if (typeof index === 'number') {
+				const loads = await getLatestCachedStatuses();
+
+				if (loads[index]) {
+					calculateLogicalScoreAndUpStatus(
+						Object.assign(logical, loads[index]),
+						country,
+						coordinates,
+					);
+				}
+			}
+		}
+
+		pushLogicalToCache(logical, country, coordinates);
 
 		return logical;
 	} catch (error) {

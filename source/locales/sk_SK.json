@@ -166,11 +166,6 @@
 				"Odhlásením z aplikácie sa odpojí aktívne VPN pripojenie. Chcete pokračovať?"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Proton Free vás automaticky pripojí k najrýchlejšiemu dostupnému bezplatnému serveru z našich 5 bezplatných krajín. Obvykle sa jedná o\\nserver, ktorý je najbližšie k vašej polohe."
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} krajina",
@@ -437,6 +432,12 @@
 			],
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Chráňte sa online pomocou bezplatnej vysokorýchlostnej VPN od Protonu."
+			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"Proton Free vás automaticky pripojí k najrýchlejšiemu dostupnému bezplatnému serveru z našej ${freeCountriesCount} bezplatnej krajiny. Obvykle sa jedná o server, ktorý je najbližšie k vašej polohe.",
+				"Proton Free vás automaticky pripojí k najrýchlejšiemu dostupnému bezplatnému serveru z našich ${freeCountriesCount} bezplatných krajín. Obvykle sa jedná o server, ktorý je najbližšie k vašej polohe.",
+				"Proton Free vás automaticky pripojí k najrýchlejšiemu dostupnému bezplatnému serveru z našich ${freeCountriesCount} bezplatných krajín. Obvykle sa jedná o server, ktorý je najbližšie k vašej polohe.",
+				"Proton Free vás automaticky pripojí k najrýchlejšiemu dostupnému bezplatnému serveru z našich ${freeCountriesCount} bezplatných krajín. Obvykle sa jedná o server, ktorý je najbližšie k vašej polohe."
 			],
 			"Proton VPN": [
 				"Proton VPN"

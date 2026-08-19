@@ -113,11 +113,6 @@
 				"Terminar a sessão na aplicação desliga a ligação VPN ativa. Deseja continuar?"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"O Proton Free conecta-o automaticamente ao servidor gratuito mais rápido disponível nos nossos 5 países gratuitos. Normalmente, será o servidor mais próximo da sua localização."
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} país",

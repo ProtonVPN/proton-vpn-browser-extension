@@ -1,23 +1,25 @@
-import {comp} from '../tools/comp';
+import type {UserContext} from '../account/user/UserContext';
 import type {Logical} from '../vpn/Logical';
+import {getSecureCorePredicate} from '../vpn/getSecureCorePredicate';
 import {
 	type CountryList,
 	type CountryItem,
 	getCountryFilteredKeys,
 	sortGroups,
 } from './countryList';
-import {getSecureCorePredicate} from '../vpn/getSecureCorePredicate';
 import {getServerGroups} from './serverGroup';
+import {comp} from '../tools/comp';
 import {getCountryFlag} from '../tools/getCountryFlag';
 import {each} from '../tools/each';
 import {via} from './via';
 
 export const cityList = (
 	countries: CountryList,
-	userTier: number,
+	userContext: UserContext,
 	secureCore = {value: false},
 	header?: (count: number) => string,
 ) => {
+	const userTier = userContext.tier;
 	const secureCorePredicate = getSecureCorePredicate(userTier, secureCore);
 	const countryCodes: string[] = getCountryFilteredKeys(
 		countries,
@@ -79,7 +81,7 @@ export const cityList = (
 
 		cities.push(
 			...getServerGroups(
-				userTier,
+				userContext,
 				countryCode,
 				item,
 				(logicals: Logical[]) =>

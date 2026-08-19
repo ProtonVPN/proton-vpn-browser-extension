@@ -166,11 +166,6 @@
 				"Hvis du logger av programmet, kobles den aktive VPN-tilkoblingen fra. Vil du fortsette?"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Proton Free kobler deg automatisk til den raskeste tilgjengelige tjeneren fra våre 5 gratis land. Dette vil normalt være den nærmeste tjeneren til din plassering."
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} land",
@@ -318,6 +313,9 @@
 			"Crash": [
 				"Krasj"
 			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"Krasjrapporter inneholder diagnostisk informasjon (stakkspor, nettlesertype, utvidelsesversjon). De inneholder ikke IP-adressen din, og ingen Proton-kontoidentifikator er tilknyttet. Vi deler dem aldri med tredjeparter."
+			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Krasjrapporter hjelper oss med å rette feil, oppdage brannmurer og unngå VPN-blokkeringer."
 			],
@@ -378,6 +376,9 @@
 			"Help us fight censorship": [
 				"Hjelp oss å bekjempe sensur"
 			],
+			"Help us improve Proton VPN": [
+				"Hjelp oss å forbedre Proton VPN"
+			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"Høyhastighets sveitsisk VPN som ivaretar personvernet ditt. Maksimum sikkerhet, mer enn ${count} tjener og ingen restriksjoner.",
 				"Høyhastighets sveitsisk VPN som ivaretar personvernet ditt. Maksimum sikkerhet, mer enn ${count} tjenere og ingen restriksjoner."
@@ -424,6 +425,10 @@
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Beskytt deg selv på nettet med Protons gratis høyhastighets-VPN."
 			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"Proton Free kobler deg automatisk til den raskeste tilgjengelige gratis serveren fra vårt ${freeCountriesCount} gratis land. Dette vil normalt være den nærmeste serveren til din plassering.",
+				"Proton Free kobler deg automatisk til den raskeste tilgjengelige serveren fra våre ${freeCountriesCount} gratis land. Dette vil normalt være den nærmeste serveren til din plassering."
+			],
 			"Proton VPN": [
 				"Proton VPN"
 			],
@@ -447,6 +452,9 @@
 			],
 			"Selected websites": [
 				"Valgte nettsteder"
+			],
+			"Share anonymous crash reports": [
+				"Del anonyme programkrasjrapporter"
 			],
 			"Share anonymous usage statistics": [
 				"Del anonym bruksstatistikk"
@@ -501,6 +509,9 @@
 			],
 			"VPN Features": [
 				"VPN-funksjoner"
+			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"Vi prioriterer personvernet ditt fremfor alt. Vi sporer ikke nettlesingen din og fører ingen logger. For å autentisere tilkoblingen din sendes kontoøkt-ID-en din til serverne våre. Dette er nødvendig for at utvidelsen skal fungere."
 			],
 			"You're signed in": [
 				"Du er logget på"

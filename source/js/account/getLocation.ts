@@ -1,6 +1,6 @@
 import type {ResponseResult} from '../api';
 import {fetchJson} from '../api';
-import type {IpLocation} from '../account/IpLocation';
+import type {IpLocation} from './IpLocation';
 import type {Coordinates} from '../tools/Coordinates';
 import {milliSeconds} from '../tools/milliSeconds';
 import type {Timed} from '../tools/storage';
@@ -12,6 +12,8 @@ import {RefreshTokenError} from './RefreshTokenError';
 import {excludeApiFromProxy} from '../config';
 import {isConnected} from '../vpn/connectedServer';
 import {getLocationRefreshInterval} from '../intervals';
+import {timezoneCountries} from '../tools/timezoneCountries';
+import {guessCountryFromLocale} from '../tools/locale';
 
 const storedLocation = storage.item<
 	Partial<Timed<{location: IpLocation | undefined}>>
@@ -90,9 +92,20 @@ export const getLocation = async (): Promise<IpLocation | undefined> => {
 	}
 };
 
+const guessCountryFromTimezoneName = () => {
+	try {
+		return (
+			timezoneCountries[Intl.DateTimeFormat().resolvedOptions().timeZone] ??
+			undefined
+		);
+	} catch {
+		return undefined;
+	}
+};
+
 export const getCountryAndCoordinates = async (): Promise<{
 	coordinates: Partial<Coordinates>;
-	country: string | undefined;
+	country: string;
 }> => {
 	const location = await getLocation();
 
@@ -101,7 +114,11 @@ export const getCountryAndCoordinates = async (): Promise<{
 			Latitude: location?.Lat,
 			Longitude: location?.Long,
 		},
-		country: location?.Country,
+		country:
+			location?.Country ??
+			guessCountryFromTimezoneName() ??
+			guessCountryFromLocale() ??
+			'XX',
 	};
 };
 

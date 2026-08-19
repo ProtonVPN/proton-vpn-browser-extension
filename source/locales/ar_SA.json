@@ -166,11 +166,6 @@
 				"بمجرد خروجك من الحساب، سيتوقف اتصال الـ VPN. هل تود الاستمرار؟"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"يختار لك Proton Free تلقائياً أسرع خادم متاح عبر 5 دول مجانية، وغالباً ما يكون الأقرب إليك لضمان أفضل أداء."
-			]
-		},
 		"Error": {
 			"${countries} countries": [
 				"${countries} دولة",

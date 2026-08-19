@@ -4,6 +4,7 @@ import {comp, Sorter} from '../tools/comp';
 import {getKeys} from '../tools/getKeys';
 import type {Logical} from '../vpn/Logical';
 import {getSecureCorePredicate} from '../vpn/getSecureCorePredicate';
+import type {UserContext} from '../account/user/UserContext';
 
 export type CountryList = Record<string, CountryItem>;
 
@@ -55,7 +56,7 @@ export const getCountryFilteredKeys = (
 
 export const countryFilteredList = (
 	countries: CountryList,
-	userTier: number,
+	userContext: UserContext,
 	predicate: (logical: Logical) => boolean,
 	header?: (count: number) => string,
 	secureCoreValue = false,
@@ -72,6 +73,7 @@ export const countryFilteredList = (
 	}
 
 	sorter.sort(keys, countries);
+	const userTier = userContext.tier;
 
 	return (
 		(header
@@ -81,7 +83,7 @@ export const countryFilteredList = (
 		keys
 			.map((country) =>
 				countryBlock(
-					userTier,
+					userContext,
 					country,
 					countries[country] as CountryItem,
 					(logicals: Logical[]) =>
@@ -104,19 +106,18 @@ export const countryFilteredList = (
 
 export const countryList = (
 	countries: CountryList,
-	userTier: number,
+	userContext: UserContext,
 	secureCore = {value: false},
 	header?: (count: number) => string,
 	withFastest = false,
-) => {
-	return countryFilteredList(
+) =>
+	countryFilteredList(
 		countries,
-		userTier,
-		getSecureCorePredicate(userTier, secureCore),
+		userContext,
+		getSecureCorePredicate(userContext.tier, secureCore),
 		header,
-		userTier > 0 && secureCore.value,
+		userContext.tier > 0 && secureCore.value,
 		{},
 		false,
 		withFastest,
 	);
-};

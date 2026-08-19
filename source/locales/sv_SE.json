@@ -166,11 +166,6 @@
 				"Att logga ut från applikationen kommer att koppla från den aktiva VPN-anslutningen. Vill du fortsätta?"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Proton Free ansluter dig automatiskt till den snabbaste tillgängliga gratisservern från våra 5 gratisländer. Detta kommer\nnormalt vara närmaste servern till din plats."
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} land",

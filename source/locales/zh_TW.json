@@ -124,11 +124,6 @@
 				"登出應用程式將中斷 VPN 連線。是否確定繼續？"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Proton Free 將自動連接至我們 5 個免費國家中最快的伺服器，通常為距離您最近的伺服器。"
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} 國家"

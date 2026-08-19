@@ -166,11 +166,6 @@
 				"Uygulama oturumunu kapatmak, etkin VPN bağlantısını kesecek. İlerlemek istiyor musunuz?"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Proton Free, otomatik olarak Free tarife ülkemizdeki en hızlı Free tarife sunucusuyla bağlantınızı kurar.\nBu sunucu normalde konumunuza en yakın sunucudur."
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} ülke",
@@ -304,10 +299,10 @@
 				"${city} içinde ${name} ile bağlantı kuruldu"
 			],
 			"Connecting servers such as ${logical.Name} is not currently supported in the browser extension": [
-				"${logical.Name} gibi sunucular ile bağlantı kurmak şu anda tarayıcı eklentisinde desteklenmiyor."
+				"Tarayıcı eklentisi şu anda ${logical.Name} gibi sunucular ile bağlantı kurulmasını desteklemiyor."
 			],
 			"Connecting to dedicated IPs such as ${logical.Name} is not currently supported in the browser extension": [
-				"${logical.Name} gibi özel IP adresleri ile bağlantı kurmak şu anda tarayıcı eklentisinde desteklenmiyor."
+				"Tarayıcı eklentisi şu anda ${logical.Name} gibi özel IP adresleri ile bağlantı kurulmasını desteklemiyor."
 			],
 			"Connecting...": [
 				"Bağlantı kuruluyor..."
@@ -422,13 +417,17 @@
 				"Araçlar menünüze Proton VPN ekleyin"
 			],
 			"Please help us spread the word with a Web Store rating.": [
-				"Lütfen, mağazada değerlendirerek bilirniliğimizi artırın."
+				"Lütfen, mağazada değerlendirerek herkese duyurmamıza yardımcı olun."
 			],
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"Tarayıcınızda açılan pencerede <b>Sonraki</b> ve <b>İzin ver</b> üzerine tıklayın."
 			],
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Ücretsiz ve yüksek-hızlı Proton VPN ile çevrim içi dünyada kendinizi koruyun"
+			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"Proton Free, otomatik olarak ${freeCountriesCount} Free tarife ülkemizdeki en hızlı Free tarife sunucusuyla bağlantınızı kurar. Bu sunucu normalde konumunuza en yakın sunucudur.",
+				"Proton Free otomatik olarak ${freeCountriesCount} Free ülkemizdeki en hızlı Free sunucusu ile bağlantınızı kurar. Bu sunucu normalde konumunuza en yakın sunucudur."
 			],
 			"Proton VPN": [
 				"Proton VPN"

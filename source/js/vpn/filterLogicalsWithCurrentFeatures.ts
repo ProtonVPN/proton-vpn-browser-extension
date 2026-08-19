@@ -8,13 +8,13 @@ export const filterLogicalsWithCurrentFeatures = (
 	withTor = false,
 ) =>
 	rawLogicals.filter(
-		(logicial) =>
-			(logicial.Features &
+		(logical) =>
+			(logical.Features &
 				((withTor ? 0 : Feature.TOR) |
 					Feature.RESTRICTED |
 					Feature.PARTNER)) ===
 				0 &&
 			(!secureCore ||
-				(logicial.Features & Feature.SECURE_CORE) ===
+				(logical.Features & Feature.SECURE_CORE) ===
 					(userTier > 0 && secureCore.value ? Feature.SECURE_CORE : 0)),
 	);

@@ -89,7 +89,10 @@ export const loadUser = async (
 
 		throw e;
 	} finally {
-		if (forceRefresh) {
+		if (
+			forceRefresh &&
+			getCacheAge(await loadCachedUser()) > milliSeconds.fromSeconds(2)
+		) {
 			triggerPromise(fetchPmUser());
 		}
 	}

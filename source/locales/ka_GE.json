@@ -166,11 +166,6 @@
 				"აპლიკაციიდან გასვლა VPN-ის აქტიურ სესიას გათიშავს. გნებავთ, გააგრძელოთ?"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Proton Free ავტომატურად მიუერთდება უსწრაფეს უფასო ხელმისაწვდომ სერვერს ჩვენი 5 უფასო ქვეყნიდან. ეს ჩვეულებრივ თქვენს მდებარეობასთან არსებული უახლოესი სერვერია."
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} ქვეყანა",
@@ -318,6 +313,9 @@
 			"Crash": [
 				"ავარია"
 			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"ავარიის ანგარიშები დიაგნოსტიკურ ინფორმაციას (სტეკის ტრეისები, ბრაუზერის ტიპი, გაფართოების ვერსია) შეიცავს. ის არ შეიცავს თქვენს IP მისამართს და ასევე არ ხდება თქვენი Proton-ის ანგარიშის იდენტიფიკატორის მიმაგრება. ამ ინფორმაციას მესამე პირებს არასდროს ვუზიარებთ."
+			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"ავარიის ანგარიშები გვეხმარება შეცდომების გამოსწორებაში, ფეიერვოლების აღმოჩენაში და VPN ბლოკების თავიდან აცილებაში."
 			],
@@ -378,6 +376,9 @@
 			"Help us fight censorship": [
 				"დაგვეხმარეთ, ვებრძოლოთ ცენზურას"
 			],
+			"Help us improve Proton VPN": [
+				"დაგვეხმარეთ Proton VPN-ის გაუმჯობესებაში"
+			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"მაღალი წარმადობის მქონე შვეიცარიული VPN-ი, რომელიც იცავს თქვენს კონფიდენციალობას. მაქსიმალური დაცვა, ${count}-ზე მეტი სერვერი, შეზღუდვების გარეშე.",
 				"მაღალი წარმადობის მქონე შვეიცარიული VPN-ი, რომელიც იცავს თქვენს კონფიდენციალობას. მაქსიმალური დაცვა, ${count}-ზე მეტი სერვერი, შეზღუდვების გარეშე."
@@ -424,6 +425,10 @@
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"დაიცავით თავი ინტერნეტში Proton-ის უფასო ჩქაროსნული VPN-ით."
 			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"Proton Free ავტომატურად მიუერთდება უსწრაფეს უფასო ხელმისაწვდომ სერვერს ჩვენი ${freeCountriesCount} უფასო ქვეყნიდან. ეს ჩვეულებრივ თქვენს მდებარეობასთან არსებული უახლოესი სერვერია.",
+				"Proton Free ავტომატურად მიუერთდება უსწრაფეს უფასო ხელმისაწვდომ სერვერს ჩვენი ${freeCountriesCount} უფასო ქვეყნიდან. ეს ჩვეულებრივ თქვენს მდებარეობასთან არსებული უახლოესი სერვერია."
+			],
 			"Proton VPN": [
 				"Proton VPN"
 			],
@@ -447,6 +452,9 @@
 			],
 			"Selected websites": [
 				"მონიშნული ვებსაიტები"
+			],
+			"Share anonymous crash reports": [
+				"ავარიის ანგარიშების ანონიმურად გაზიარება"
 			],
 			"Share anonymous usage statistics": [
 				"გამოყენების ანონიმური სტატისტიკის გაზიარება"
@@ -501,6 +509,9 @@
 			],
 			"VPN Features": [
 				"VPN-ის ფუნქციები"
+			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"ჩვენ თქვენს კონფიდენციალობას ყველაფერზე წინ ვაყენებთ. ჩვენ არ ვადევნებთ თვალყურს თქვენს ბრაუზერს და არ ვინახავთ ჟურნალს. იმისათვის, რომ კავშირისთვის ავთენტიკაცია გაიაროთ, ჩვენს სერვერებთან იგზავნება თქვენი აგანრიშის სესიის ID. ეს აუცილებელია, რომ გაფართოებამ იმუშაოს"
 			],
 			"You're signed in": [
 				"შესული ბრძანდებით"

@@ -1,3 +1,11 @@
+# 1.3.6
+
+- Fetch list of logical servers from a new version of the API that is faster to load
+- Fix connection token refresh race condition
+- Add Kosovo flag
+- Fix minor bugs of the Split-Tunneling feature
+- Update translations
+
 # 1.3.5
 
 - Update translations
