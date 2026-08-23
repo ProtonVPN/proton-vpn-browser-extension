@@ -8,6 +8,7 @@ import {defaultSplitTunnelingMode} from './SplitTunnelingDomainManager';
 export interface SplitTunnelingConfig {
 	mode: SplitTunnelingMode;
 	filteredDomains: string[];
+	proxyPreRequests: boolean;
 }
 
 export const getSplitTunnelingConfig = (
@@ -24,8 +25,10 @@ export const getSplitTunnelingConfig = (
 							(splitTunneling.mode || defaultSplitTunnelingMode),
 					),
 				),
+				proxyPreRequests: splitTunneling.proxyPreRequests ?? false,
 			}
 		: {
 				mode: defaultSplitTunnelingMode,
 				filteredDomains: [],
+				proxyPreRequests: false,
 			};

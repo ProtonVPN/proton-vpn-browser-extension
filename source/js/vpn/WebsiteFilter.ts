@@ -17,6 +17,7 @@ export interface StoredWebsiteFilterList {
 	enabled?: boolean;
 	value: WebsiteFilter[];
 	mode?: SplitTunnelingMode;
+	proxyPreRequests?: boolean;
 }
 
 /**
