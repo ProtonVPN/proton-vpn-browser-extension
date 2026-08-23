@@ -20,11 +20,17 @@
 			"Cancel": [
 				"Annulla"
 			],
+			"Change language": [
+				"Cambia lingua"
+			],
 			"Change server": [
 				"Cambia server"
 			],
 			"Configure split tunneling": [
 				"Configura lo split tunneling"
+			],
+			"Confirm choices": [
+				"Conferma scelte"
 			],
 			"Connect": [
 				"Connetti"
@@ -158,11 +164,6 @@
 		"Confirm": {
 			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
 				"Uscendo dall'applicazione, tutte le connessioni VPN attive verranno chiuse. Continuare?"
-			]
-		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Proton Free ti connette automaticamente al server gratuito più veloce disponibile nei nostri 5 Paesi Free. Solitamente sarà il server più vicino alla tua posizione."
 			]
 		},
 		"Error": {
@@ -312,6 +313,9 @@
 			"Crash": [
 				"Arresto anomalo"
 			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"I report di arresto anomalo contengono informazioni diagnostiche (stack trace, tipo di browser, versione dell'estensione). Non contengono il tuo indirizzo IP né alcun identificativo dell'account Proton. Non li condivideremo mai con terze parti."
+			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Le segnalazioni sugli arresti anomali ci aiutano a correggere bug, rilevare firewall ed evitare blocchi VPN."
 			],
@@ -372,6 +376,9 @@
 			"Help us fight censorship": [
 				"Aiutaci a combattere la censura"
 			],
+			"Help us improve Proton VPN": [
+				"Aiutaci a migliorare Proton VPN"
+			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"VPN svizzero ad alte prestazioni che protegge la tua privacy. Massima sicurezza, più di ${count} server e nessuna restrizione.",
 				"VPN svizzero ad alte prestazioni che protegge la tua privacy. Massima sicurezza, più di ${count} server e nessuna restrizione."
@@ -418,6 +425,10 @@
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Proteggiti online con la VPN gratuita ad alta velocità di Proton."
 			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"Proton Free ti connette automaticamente al server gratuito più veloce disponibile in ${freeCountriesCount} Paese gratuito. Solitamente è il server più vicino alla tua posizione.",
+				"Proton Free ti connette automaticamente al server gratuito più veloce disponibile in ${freeCountriesCount} Paesi gratuiti. Solitamente è il server più vicino alla tua posizione."
+			],
 			"Proton VPN": [
 				"Proton VPN"
 			],
@@ -442,6 +453,9 @@
 			"Selected websites": [
 				"Siti web selezionati"
 			],
+			"Share anonymous crash reports": [
+				"Condividi report anonimi sugli arresti anomali"
+			],
 			"Share anonymous usage statistics": [
 				"Condividi statistiche anonime sull'utilizzo"
 			],
@@ -457,8 +471,14 @@
 			"Thank you for installing Proton VPN": [
 				"Grazie per aver installato Proton VPN"
 			],
+			"The split tunneling options cannot be changed on this device": [
+				"Le opzioni di split tunneling non possono essere modificate su questo dispositivo."
+			],
 			"Then just click the Proton VPN icon to sign in.": [
 				"Quindi fai clic sull'icona di Proton VPN per accedere."
+			],
+			"This option cannot be changed on this device": [
+				"Questa opzione non può essere modificata su questo dispositivo."
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"Queste statistiche non contengono il tuo indirizzo IP e non possono essere utilizzate per identificarti. Non le condivideremo mai con terze parti"
@@ -489,6 +509,9 @@
 			],
 			"VPN Features": [
 				"Funzionalità VPN"
+			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"La tua privacy è la nostra priorità assoluta. Non tracciamo la tua navigazione e non conserviamo alcun registro. Per autenticare la tua connessione, l'ID di sessione del tuo account viene inviato ai nostri server; questo è necessario affinché l'estensione funzioni."
 			],
 			"You're signed in": [
 				"Hai effettuato l'accesso"

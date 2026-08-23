@@ -54,7 +54,7 @@ export const calculateScore = (
 	entryLocation: Coordinates,
 	exitLocation: Coordinates,
 	userLocation: Partial<Coordinates>,
-	userCountry: string | undefined,
+	userCountry: string,
 ): number => {
 	const distanceScore = isLocalizable(userLocation)
 		? computeDistanceScore(entryLocation, exitLocation, userLocation)

@@ -1,3 +1,4 @@
+import type {UserContext} from '../account/user/UserContext';
 import {lookupLogical} from '../vpn/lookupLogical';
 import {isLogicalConnectable} from '../vpn/isLogicalConnectable';
 import {Feature} from '../vpn/Feature';
@@ -6,6 +7,8 @@ import {c} from '../tools/translate';
 import {getExactMatchSearchResult} from '../search/getExactMatchSearchResult';
 import {getNoResultBlock} from '../search/getNoResultBlock';
 import type {Logical} from '../vpn/Logical';
+import type {CountryList} from './countryList';
+import {attachLogicalIntoCountryList} from '../vpn/attachLogicalIntoCountryList';
 
 class LookupRequest {
 	private timeout: NodeJS.Timeout | undefined;
@@ -13,7 +16,8 @@ class LookupRequest {
 	private divs: NodeListOf<HTMLDivElement> | HTMLDivElement[];
 
 	constructor(
-		private userTier: number = 0,
+		private userContext: UserContext = {country: 'XX', tier: 0},
+		private countries: CountryList = {},
 		private configurator: (div: HTMLDivElement) => void = () => {},
 		private search: string = '',
 		private area: HTMLElement | undefined = undefined,
@@ -21,23 +25,22 @@ class LookupRequest {
 		this.abort = new AbortController();
 		this.divs =
 			this.area?.querySelectorAll<HTMLDivElement>('.lookup-result') || [];
-		this.timeout =
-			search && this.divs.length
-				? setTimeout(() => {
-						this.timeout = undefined;
-
-						void this.lookup();
-					}, 400)
-				: undefined;
+		this.timeout = search && this.divs.length ? this.delayLookup() : undefined;
 	}
 
 	public has(
-		userTier: number,
+		userContext: UserContext,
+		countries: CountryList,
 		search: string,
 		area: HTMLElement | undefined,
 	): boolean {
 		return (
-			this.userTier === userTier && this.search === search && this.area === area
+			this.userContext.tier === userContext.tier &&
+			this.userContext.country === userContext.country &&
+			// Ignoring userContext.location is fine for lookup
+			this.countries === countries &&
+			this.search === search &&
+			this.area === area
 		);
 	}
 
@@ -56,8 +59,10 @@ class LookupRequest {
 	private async lookup(): Promise<void> {
 		try {
 			this.showResult(
-				getExactMatchSearchResult(this.userTier, await this.searchLogical()) ||
-					getNoResultBlock(),
+				getExactMatchSearchResult(
+					this.userContext,
+					await this.searchLogical(),
+				) || getNoResultBlock(),
 			);
 		} catch (e) {
 			this.showResult(
@@ -75,6 +80,14 @@ class LookupRequest {
 
 		if (result && !isLogicalConnectable(result)) {
 			throw new Error(this.getUnsupportedLogicalErrorMessage(result));
+		}
+
+		if (result) {
+			attachLogicalIntoCountryList(
+				this.userContext.tier,
+				result,
+				this.countries,
+			);
 		}
 
 		return result;
@@ -105,20 +118,35 @@ class LookupRequest {
 		return c('Info')
 			.t`Connecting servers such as ${logical.Name} is not currently supported in the browser extension`;
 	}
+
+	private delayLookup(): NodeJS.Timeout {
+		return setTimeout(() => {
+			this.timeout = undefined;
+
+			void this.lookup();
+		}, 400);
+	}
 }
 
 let currentRequest = new LookupRequest();
 
 export const configureLookupSearch = (
 	area: HTMLElement,
-	userTier: number,
+	userContext: UserContext,
 	configurator: (div: HTMLDivElement) => void = () => {},
+	countries: CountryList,
 	search = '',
 ) => {
-	if (currentRequest.has(userTier, search, area)) {
+	if (currentRequest.has(userContext, countries, search, area)) {
 		return;
 	}
 
 	currentRequest.cancel();
-	currentRequest = new LookupRequest(userTier, configurator, search, area);
+	currentRequest = new LookupRequest(
+		userContext,
+		countries,
+		configurator,
+		search,
+		area,
+	);
 };

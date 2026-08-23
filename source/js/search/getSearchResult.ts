@@ -17,18 +17,20 @@ import {getWords} from '../tools/getWords';
 import {getSearchWordsScore} from '../tools/getSearchScore';
 import {each} from '../tools/each';
 import {simplifiedUi} from '../config';
+import type {UserContext} from '../account/user/UserContext';
 
 const getTorResult = (
 	countries: CountryList,
-	userTier: number,
+	userContext: UserContext,
 	secureCoreValue = false,
 ) => {
 	const expectedFeature =
-		Feature.TOR | (userTier > 0 && secureCoreValue ? Feature.SECURE_CORE : 0);
+		Feature.TOR |
+		(userContext.tier > 0 && secureCoreValue ? Feature.SECURE_CORE : 0);
 
 	return countryFilteredList(
 		countries,
-		userTier,
+		userContext,
 		(logical: Logical) =>
 			(logical.Features & expectedFeature) === expectedFeature,
 		(count) =>
@@ -62,13 +64,13 @@ const flattenLogicalList = (countries: CountryList): Logical[] => {
 };
 
 const getLogicalListSearch = (
-	userTier: number,
+	userContext: UserContext,
 	countries: CountryList,
 	searchText: string,
 	exactMatch: Logical | undefined,
 	secureCore = false,
 ): string => {
-	if (simplifiedUi && userTier <= 0) {
+	if (simplifiedUi && userContext.tier <= 0) {
 		return '';
 	}
 
@@ -96,7 +98,7 @@ const getLogicalListSearch = (
 		);
 
 		return formatGroup(
-			userTier,
+			userContext,
 			logicals,
 			secureCore,
 			{},
@@ -106,7 +108,7 @@ const getLogicalListSearch = (
 	}
 
 	return formatGroup(
-		userTier,
+		userContext,
 		logicals,
 		secureCore,
 		{},
@@ -144,15 +146,15 @@ const getSearchAsynchronousResult =
 const getSearchSynchronousResult = (
 	countries: CountryList,
 	searchText: string,
-	userTier: number,
+	userContext: UserContext,
 	secureCore = {value: false},
 ): string => {
-	const secureCoreEnabled = userTier > 0 && secureCore.value;
+	const secureCoreEnabled = userContext.tier > 0 && secureCore.value;
 	const searchWords = getWords(searchText);
 	const withTor = searchWords.includes('tor');
 	const cityListContent = cityList(
 		getSearchedLogicals(countries, searchWords, false, true),
-		userTier,
+		userContext,
 		secureCore,
 		secureCoreEnabled
 			? undefined
@@ -173,10 +175,10 @@ const getSearchSynchronousResult = (
 		: undefined;
 
 	return (
-		getExactMatchSearchResult(userTier, exactMatch) +
+		getExactMatchSearchResult(userContext, exactMatch) +
 		(!secureCoreEnabled && couldBeServerName
 			? getLogicalListSearch(
-					userTier,
+					userContext,
 					countries,
 					searchText,
 					exactMatch,
@@ -185,14 +187,16 @@ const getSearchSynchronousResult = (
 			: '') +
 		countryList(
 			getSearchedLogicals(countries, searchWords, true, false),
-			userTier,
+			userContext,
 			secureCore,
 			countryListHeader,
 		) +
 		(secureCoreEnabled
 			? ''
 			: cityListBlock +
-				(withTor ? getTorResult(countries, userTier, secureCoreEnabled) : '')) +
+				(withTor
+					? getTorResult(countries, userContext, secureCoreEnabled)
+					: '')) +
 		(couldBeServerName && !exactMatch ? getSearchAsynchronousResult() : '')
 	);
 };
@@ -200,8 +204,8 @@ const getSearchSynchronousResult = (
 export const getSearchResult = (
 	countries: CountryList,
 	searchText: string,
-	userTier: number,
+	userContext: UserContext,
 	secureCore = {value: false},
 ): string =>
-	getSearchSynchronousResult(countries, searchText, userTier, secureCore) ||
+	getSearchSynchronousResult(countries, searchText, userContext, secureCore) ||
 	getNoResultBlock();

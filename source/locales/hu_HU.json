@@ -113,11 +113,6 @@
 				"Az alkalmazásból való kijelentkezés megszakítja az aktív VPN-kapcsolatot. Folytatja?"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"A Proton Free automatikusan a leggyorsabb elérhető ingyenes szerverhez csatlakozik az 5 ingyenes országunkból. Ez általában az Önhöz legközelebbi szerver lesz."
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} országban",

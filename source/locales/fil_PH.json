@@ -140,11 +140,6 @@
 				"Ang pag-log out sa application ay magdi-disconnect sa aktibong koneksyon ng VPN. Gusto mo bang magpatuloy?"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Awtomatiko kang ikinokonekta ng Proton Free sa pinakamabilis na available na libreng server mula sa aming 5 libreng bansa. Karaniwang ito ang pinakamalapit na server sa lokasyon mo."
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} bansa",

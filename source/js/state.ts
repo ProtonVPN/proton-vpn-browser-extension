@@ -23,6 +23,7 @@ import {
 	loadCredentials,
 } from './account/credentials/getConnectionCredentials';
 import type {Credentials} from './account/credentials/Credentials';
+import {getCountryAndCoordinates} from './account/getLocation';
 import {setButton} from './tools/browserAction';
 import {clearProxy, hasProxy, proxyToServer} from './tools/proxy';
 import {
@@ -40,12 +41,11 @@ import {isPending, markAsPending} from './tools/proxyAuth';
 import type {ProxyAuthentication} from './vpn/ProxyAuthentication';
 import {milliSeconds} from './tools/milliSeconds';
 import type {Logical} from './vpn/Logical';
-import {fetchWithUserInfo} from './account/fetchWithUserInfo';
 import {
 	forgetLogicals,
 	getLogicalById,
 	getSortedLogicals,
-	isLogicalUp,
+	shouldStayOnLogical,
 } from './vpn/getLogicals';
 import {c} from './tools/translate';
 import {Feature} from './vpn/Feature';
@@ -359,21 +359,19 @@ const onState = asConnectionStateSwitch({
 				return;
 			}
 
-			const encodedId = encodeURIComponent(id);
-			const {LogicalServers: logicals} = await fetchWithUserInfo<{
-				LogicalServers: Logical[];
-			}>(`vpn/v1/logicals?ID[]=${encodedId}&IncludeID[]=${encodedId}`);
+			const {country, coordinates} = await getCountryAndCoordinates();
 
-			if (!logicals[0] || !isLogicalUp(logicals[0])) {
+			if (!(await shouldStayOnLogical(id, country, coordinates))) {
 				const currentCredentials = credentials || (await getCredentials(true));
 
 				// No need to switch server before getting valid credentials, and if we don't get valid credentials
 				// soon, it will disconnect anyway
 				if (currentCredentials) {
-					const {server, logical} = await getAlternativeServer(
-						id,
-						guessTierFromCredentials(currentCredentials),
-					);
+					const {server, logical} = await getAlternativeServer(id, {
+						country,
+						location: coordinates,
+						tier: guessTierFromCredentials(currentCredentials),
+					});
 
 					if (
 						logical &&
@@ -761,14 +759,21 @@ export async function checkAutoConnect(): Promise<void> {
 		return;
 	}
 
-	const [initialChoice, logicals, autoConnect, splitTunneling, secureCore] =
-		await Promise.all([
-			getLastChoice(),
-			getSortedLogicals(),
-			AutoConnect.create().then((feature) => feature.getConfig()),
-			SplitTunneling.create().then((feature) => feature.getConfig()),
-			SecureCore.create().then((feature) => feature.getConfig()),
-		]);
+	const [
+		initialChoice,
+		logicals,
+		autoConnect,
+		splitTunneling,
+		secureCore,
+		{country, coordinates},
+	] = await Promise.all([
+		getLastChoice(),
+		getSortedLogicals(),
+		AutoConnect.create().then((feature) => feature.getConfig()),
+		SplitTunneling.create().then((feature) => feature.getConfig()),
+		SecureCore.create().then((feature) => feature.getConfig()),
+		getCountryAndCoordinates(),
+	]);
 
 	if (initialChoice?.connected && autoConnect?.value) {
 		// Quit auto-connect if there is no session
@@ -777,6 +782,7 @@ export async function checkAutoConnect(): Promise<void> {
 		}
 
 		const userTier = getUserMaxTier(user);
+		const userContext = {country, location: coordinates, tier: userTier};
 		const filteredList = getLogicalsFilteredByChoice(
 			logicals
 				.filter(getSecureCorePredicate(userTier, secureCore))
@@ -793,7 +799,7 @@ export async function checkAutoConnect(): Promise<void> {
 			const logical =
 				(initialChoice.pick === 'random'
 					? filteredList[Math.floor(Math.random() * filteredList.length)]
-					: requireBestLogical(filteredList, userTier)) || filteredList[0];
+					: requireBestLogical(filteredList, userContext)) || filteredList[0];
 			const server = pickServerInLogical(logical);
 
 			if (server?.Domain) {

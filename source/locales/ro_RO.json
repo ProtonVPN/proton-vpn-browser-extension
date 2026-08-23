@@ -166,11 +166,6 @@
 				"Deconectându-vă din aplicație veți opri conexiunea VPN activă. Continuați?"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Proton Free vă conectează automat la cel mai rapid server gratuit disponibil din cele 5 țări gratuite. De obicei acesta va fi cel mai apropiat server de locul de unde vă conectați."
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} țară",
@@ -433,6 +428,11 @@
 			],
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Protejați-vă online cu VPN-ul gratuit de mare viteză de la Proton."
+			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"Proton Free vă conectează automat la cel mai rapid server disponibil din ${freeCountriesCount} țară gratuită. Acesta va fi în mod normal cel mai apropiat server de locul de unde vă conectați.",
+				"Proton Free vă conectează automat la cel mai rapid server disponibil din cele ${freeCountriesCount} țări gratuite. De obicei acesta va fi cel mai apropiat server de locul de unde vă conectați.",
+				"Proton Free vă conectează automat la cel mai rapid server disponibil din cele ${freeCountriesCount} de țări gratuite. De obicei acesta va fi cel mai apropiat server de locul de unde vă conectați."
 			],
 			"Proton VPN": [
 				"Proton VPN"

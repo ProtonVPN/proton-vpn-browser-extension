@@ -55,6 +55,7 @@ module.exports = (_, argv, options) => {
 			manifest.web_accessible_resources[0].resources;
 		delete manifest.action;
 		delete manifest.host_permissions;
+		delete manifest.storage;
 	};
 
 	const adaptToFirefox = (manifest) => {

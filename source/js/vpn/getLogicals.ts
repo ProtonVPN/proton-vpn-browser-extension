@@ -1,82 +1,41 @@
 import type {Logical} from './Logical';
 import {isNotModified} from '../api';
+import type {Coordinates} from '../tools/Coordinates';
 import {comp} from '../tools/comp';
-import {fetchWithUserInfo} from '../account/fetchWithUserInfo';
 import {getCacheAge} from '../tools/getCacheAge';
 import {milliSeconds} from '../tools/milliSeconds';
 import {getElapsedMillisecondsSinceLastActivity} from '../tools/activity';
-import {getCities} from './getCities';
 import {triggerPromise} from '../tools/triggerPromise';
 import {type CacheWrappedValue, Storage, storage} from '../tools/storage';
 import type {BroadcastMessage} from '../tools/broadcastMessage';
-import {isServerUp} from './isServerUp';
-import {isLogicalConnectable} from './isLogicalConnectable';
+import {fetchWithUserInfo} from '../account/fetchWithUserInfo';
 import {
-	getLogicalLoadsRefreshInterval,
+	getLogicalCheckUpRefreshInterval,
 	getLogicalsBlockingUpdateTTL,
 	getLogicalsTTL,
 } from '../intervals';
-
-export const logicalServers = storage.item<LogicalServersCache>(
-	'logicals-servers',
-	Storage.LOCAL,
-);
+import {getCities} from './getCities';
+import type {LogicalServersCache} from './logicalServers';
+import {logicalServers} from './logicalServers';
+import {isLogicalConnectable} from './isLogicalConnectable';
+import {calculateLogicalScoreAndUpStatus} from './calculateLogicalScoreAndUpStatus';
+import {getLoadsMaxAge} from './getLoadsMaxAge';
+import {calculateLogicalUp} from './calculateLogicalUp';
+import {refreshLogicalLoadsV1} from './refreshLogicalLoadsV1';
+import {refreshLogicalLoadsV2} from './refreshLogicalLoadsV2';
+import {useLogicalsV2} from './useLogicalsV2';
+import {fetchLogicalsV2} from './fetchLogicalsV2';
+import {fetchLogicalsV1} from './fetchLogicalsV1';
 
 export const lookups = storage.item<CacheWrappedValue<Record<string, number>>>(
 	'lookups',
 	Storage.LOCAL,
 );
 
-type LogicalServersCache = CacheWrappedValue<Logical[]> & {
-	lastModified: string;
-	lastLoadUpdate?: number;
-};
-
-const calculateLogicalUp = (logical: Logical): void => {
-	logical._up = logical.Status > 0 && (logical.Servers || []).some(isServerUp);
-};
-
-const getLoadsMaxAge = async () => {
-	const baseInterval = getLogicalLoadsRefreshInterval();
-	const idleDuration = await getElapsedMillisecondsSinceLastActivity();
-
-	// Still connected or active during the last 3 hours
-	if (idleDuration < milliSeconds.fromHours(3)) {
-		return baseInterval / 2;
-	}
-
-	// Between 3 hours and 1 day
-	if (idleDuration < milliSeconds.fromHours(24)) {
-		return baseInterval * 2;
-	}
-
-	// More than 1 day
-	return baseInterval * 4;
-};
-
 const refreshLogicalLoads = async (cache: LogicalServersCache) => {
-	const {LogicalServers: logicals} = await fetchWithUserInfo<{
-		LogicalServers: Logical[];
-	}>('vpn/v1/loads');
-	const logicalsById: Record<string, Logical> = {};
-
-	logicals.forEach((logical) => {
-		logicalsById[logical.ID] = logical;
-	});
-
-	await logicalServers.transaction((newCache) => {
-		if (newCache) {
-			newCache.value.forEach((logical) => {
-				if (logicalsById[logical.ID]) {
-					calculateLogicalUp(Object.assign(logical, logicalsById[logical.ID]));
-				}
-			});
-			cache.value = newCache.value;
-			cache.lastLoadUpdate = Date.now();
-		}
-
-		return newCache;
-	});
+	return (await useLogicalsV2())
+		? refreshLogicalLoadsV2(cache)
+		: refreshLogicalLoadsV1(cache);
 };
 
 const getLookupIds = async () => {
@@ -105,38 +64,17 @@ const getLookupIds = async () => {
 	return usedIds;
 };
 
-const fetchLogicals = async (cache?: LogicalServersCache) => {
+const fetchLogicals = async (
+	cache?: LogicalServersCache,
+): Promise<Logical[]> => {
+	const useV2 = await useLogicalsV2();
+
 	try {
 		const ids = await getLookupIds();
 
-		// Use last raw string obtained from Last-Modified header if available
-		const ifModifiedSince = cache?.lastModified;
-		const {logicals, lastModified} = await fetchWithUserInfo<
-			{
-				logicals: Logical[]; // From LogicalServers in the JSON response
-				lastModified: string | null; // From Last-Modified response header
-			},
-			{LogicalServers: Logical[]}
-		>(
-			'vpn/v1/logicals' +
-				(ids.length
-					? `?${ids.map((id) => `IncludeID[]=${encodeURIComponent(id)}`).join('&')}`
-					: ''),
-			{
-				headers: {
-					'If-Modified-Since':
-						ifModifiedSince || 'Thu, 01 Jan 1970 00:00:00 GMT',
-					'x-pm-response-truncation-permitted': 'true',
-				},
-			},
-			(response, data: {LogicalServers: Logical[]}) => ({
-				logicals: data?.LogicalServers,
-				lastModified: response.headers.get('Last-Modified'),
-			}),
-		);
-		logicals.forEach(calculateLogicalUp);
-
-		triggerPromise(logicalServers.setValue(logicals, {lastModified}));
+		const logicals = await (useV2
+			? fetchLogicalsV2(cache, ids)
+			: fetchLogicalsV1(cache, ids));
 		triggerPromise(getCities());
 
 		return logicals;
@@ -148,10 +86,11 @@ const fetchLogicals = async (cache?: LogicalServersCache) => {
 				// Re-save the cached value with Last-Modified header
 				// (which normally is also the same as the one already in the cache).
 				// But the time: Date.now() called by .setValue() will stamp this value as
-				// fresh so the BEX won't call /vpn/v1/logicals at all for the next 6 hours.
+				// fresh so the BEX won't call /vpn/v2/logicals at all for the next 6 hours.
 				triggerPromise(
 					logicalServers.setValue(cache.value, {
 						lastModified: response.headers.get('Last-Modified'),
+						...(useV2 ? {statusId: cache.statusId} : {}),
 					}),
 				);
 			}
@@ -183,10 +122,16 @@ export interface BroadcastLogicals extends BroadcastMessage<'logicalUpdate'> {
 
 export const loadLoads = async (): Promise<Logical[]> => {
 	const cache = await logicalServers.get();
-	const logicalAge = getCacheAge(cache);
 
-	// If the list is obsolete (too old to display)
-	if (!cache || logicalAge > getLogicalsBlockingUpdateTTL()) {
+	if (!cache) {
+		return await fetchLogicals();
+	}
+
+	const logicalAge = getCacheAge(cache);
+	const cacheMissing = cache?.statusId ? false : await useLogicalsV2();
+
+	// If the list is obsolete (too old to display) or has not statusId (meaning it's v1)
+	if (cacheMissing || logicalAge > getLogicalsBlockingUpdateTTL()) {
 		// Then user will wait for request to complete
 		// and can only browse again the list when it succeeds
 		return await fetchLogicals(cache);
@@ -203,7 +148,7 @@ export const loadLoads = async (): Promise<Logical[]> => {
 	return cache.value;
 };
 
-const getLogicals = async () => {
+const getLogicals = async (): Promise<Logical[]> => {
 	const cache = await logicalServers.get();
 	const age = getCacheAge(cache);
 	const idleDuration = await getElapsedMillisecondsSinceLastActivity();
@@ -227,7 +172,7 @@ const getLogicals = async () => {
 	return await fetchLogicals(cache);
 };
 
-const sortLogicals = (logicals: Logical[]) => {
+const sortLogicals = (logicals: Logical[]): void => {
 	logicals.sort((a, b) => {
 		const aScore = a.SearchScore ?? 0;
 		const bScore = b.SearchScore ?? 0;
@@ -255,7 +200,7 @@ const sortLogicals = (logicals: Logical[]) => {
 	});
 };
 
-export const getSortedLogicals = async () => {
+export const getSortedLogicals = async (): Promise<Logical[]> => {
 	const logicals = (await getLogicals()).filter(isLogicalConnectable);
 	sortLogicals(logicals);
 
@@ -267,10 +212,54 @@ export const getSortedLogicals = async () => {
 export const getLogicalById = (id: Logical['ID']): Logical | undefined =>
 	map[id];
 
-export const isLogicalUp = (logical: Logical): boolean => {
+const isLogicalV2WithServerCapacity = (logical: Logical) =>
+	'StatusReference' in logical && 'ServerCapacity' in logical;
+
+export const isLogicalUp = (
+	logical: Logical,
+	userCountry: string,
+	userLocation?: Partial<Coordinates>,
+): boolean => {
 	if (typeof logical._up === 'undefined') {
-		calculateLogicalUp(logical);
+		const updateUp = isLogicalV2WithServerCapacity(logical)
+			? (logical: Logical) =>
+					calculateLogicalScoreAndUpStatus(logical, userCountry, userLocation) // for logicals v2
+			: calculateLogicalUp; // for logicals v1
+
+		updateUp(logical);
 	}
 
 	return logical._up as boolean;
+};
+
+/**
+ * Check from recent API data if a logical is still good to stay connected on it.
+ */
+export const shouldStayOnLogical = async (
+	id: Logical['ID'],
+	country: string,
+	coordinates: Partial<Coordinates>,
+): Promise<boolean> => {
+	const useV2 = await useLogicalsV2();
+
+	if (useV2) {
+		const cache = await logicalServers.get();
+		const loadAge = Date.now() - (cache?.lastLoadUpdate ?? 0);
+
+		if (loadAge <= getLogicalCheckUpRefreshInterval()) {
+			const logical = cache?.value?.find((l) => l.ID === id);
+
+			if (logical) {
+				return isLogicalUp(logical, country, coordinates);
+			}
+		}
+	}
+
+	const version = useV2 ? 2 : 1;
+	const encodedId = encodeURIComponent(id);
+	const {LogicalServers: logicals} = await fetchWithUserInfo<{
+		LogicalServers: Logical[];
+	}>(`vpn/v${version}/logicals?ID[]=${encodedId}&IncludeID[]=${encodedId}`);
+
+	return Boolean(logicals[0] && isLogicalUp(logicals[0], country, coordinates));
 };

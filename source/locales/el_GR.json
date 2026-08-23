@@ -166,11 +166,6 @@
 				"Η έξοδος από την εφαρμογή θα αποσυνδέσει την ενεργή συνεδρία VPN. Θέλετε να συνεχίσετε;"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Το Proton Free σας συνδέει αυτόματα με τον ταχύτερο διαθέσιμο δωρεάν διακομιστή από τις 5 δωρεάν χώρες μας. Αυτός θα\nείναι συνήθως ο πλησιέστερος διακομιστής στην τοποθεσία σας."
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} χώρα",
@@ -429,6 +424,10 @@
 			],
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Προστατέψτε τον εαυτό σας στο διαδίκτυο με το δωρεάν VPN υψηλής ταχύτητας της Proton."
+			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"Το Proton Free σας συνδέει αυτόματα με τον ταχύτερο διαθέσιμο δωρεάν διακομιστή από τη ${freeCountriesCount} δωρεάν χώρα μας. Αυτός θα είναι συνήθως ο πλησιέστερος διακομιστής στην τοποθεσία σας.",
+				"Το Proton Free σας συνδέει αυτόματα με τον ταχύτερο διαθέσιμο δωρεάν διακομιστή από τη ${freeCountriesCount} δωρεάν χώρες μας. Αυτός θα είναι συνήθως ο πλησιέστερος διακομιστής στην τοποθεσία σας."
 			],
 			"Proton VPN": [
 				"Proton VPN"

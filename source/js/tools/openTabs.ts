@@ -4,6 +4,7 @@ import type {ForkResponse} from '../messaging/ForkResponse';
 import {getPartnerById} from '../account/partner/partners';
 import {executeOnTab} from './executeOnTab';
 import {getTabs} from './getTabs';
+import {baseDomainURL} from '../config';
 
 const tabData = storage.item<Record<number, true>>('tabs', Storage.LOCAL);
 
@@ -28,7 +29,21 @@ export const connectTab = (id: number): void => {
 						return;
 					}
 
-					chrome.runtime.sendMessage({...event.data, tabId: ${JSON.stringify(id)}});
+					const [protocol, domain] = \`\${event.origin}://\`.split('://');
+
+					if (protocol !== 'https' || !domain) {
+						return;
+					}
+
+					const mainDomain = domain.replace(/^[^/]+\\.([^./]+\\.[^./]+)$/, '$1');
+					const baseDomain = ${JSON.stringify(baseDomainURL)}
+						.replace(/^[^/]+:\\/\\//, '')
+						.replace(/^[^/]+:\\/\\/([^/]+)\\/.*$/, '$1')
+						.replace(/^[^/]+\\.([^./]+\\.[^./]+)$/, '$1');
+
+					if (mainDomain === 'proton.me' || mainDomain === baseDomain) {
+						chrome.runtime.sendMessage({...event.data, tabId: ${JSON.stringify(id)}});
+					}
 				}, false);
 			`,
 		}),

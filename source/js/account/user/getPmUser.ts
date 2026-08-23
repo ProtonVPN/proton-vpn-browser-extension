@@ -1,35 +1,39 @@
+import {fetchJson, isUnauthorizedError} from '../../api';
+import {getPmUserTTL, getUserBlockingUpdateTTL} from '../../intervals';
+import {getCacheAge} from '../../tools/getCacheAge';
+import {GroupResponder} from '../../tools/GroupResponder';
+import {triggerPromise} from '../../tools/triggerPromise';
 import type {PmUser, PmUserResult} from './PmUser';
 import {isPmUserResult} from './PmUser';
-import {fetchJson, isUnauthorizedError} from '../../api';
 import {readSession} from '../readSession';
 import {refreshToken} from '../refreshToken';
 import {getAccessToken} from '../getAccessToken';
-import {getCacheAge} from '../../tools/getCacheAge';
 import {isLoggedIn, logIn} from '../../state';
-import {triggerPromise} from '../../tools/triggerPromise';
 import {storedPmUser} from './storedPmUser';
-import {getPmUserTTL, getUserBlockingUpdateTTL} from '../../intervals';
 
-export const fetchPmUser = async (): Promise<PmUser | undefined> => {
-	const user = await fetchJson<PmUser | PmUserResult | undefined>(
-		'core/v4/users?Locale=1',
-	);
+const userRequestsGroup = new GroupResponder<PmUser | undefined>();
 
-	if (user) {
-		if (!isLoggedIn()) {
-			logIn();
+export const fetchPmUser = (): Promise<PmUser | undefined> =>
+	userRequestsGroup.handle(async () => {
+		const user = await fetchJson<PmUser | PmUserResult | undefined>(
+			'core/v4/users?Locale=1',
+		);
+
+		if (user) {
+			if (!isLoggedIn()) {
+				logIn();
+			}
+
+			triggerPromise(
+				storedPmUser.set({
+					time: Date.now(),
+					user,
+				}),
+			);
 		}
 
-		triggerPromise(
-			storedPmUser.set({
-				time: Date.now(),
-				user,
-			}),
-		);
-	}
-
-	return isPmUserResult(user) ? user.User : user;
-};
+		return isPmUserResult(user) ? user.User : user;
+	});
 
 export const loadPmCachedUser = async () => {
 	const cache = await storedPmUser.load();

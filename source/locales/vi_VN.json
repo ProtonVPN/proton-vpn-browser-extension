@@ -140,11 +140,6 @@
 				"Đăng xuất khỏi ứng dụng sẽ hủy kết nối VPN đang hoạt động. Bạn có muốn tiếp tục?"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Proton Free tự động kết nối với máy chủ miễn phí nhanh nhất hiện có từ 5 quốc gia miễn phí. Đây thường sẽ là máy chủ gần nhất với vị trí của bạn."
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} quốc gia"

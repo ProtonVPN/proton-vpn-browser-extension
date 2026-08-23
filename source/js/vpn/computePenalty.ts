@@ -6,12 +6,8 @@ const normalizeCountry = (country: string) => {
 	return code === 'UK' ? 'GB' : code;
 };
 
-const isUserInServerCountry = (
-	serverCountry: string,
-	userCountry: string | undefined,
-) =>
-	userCountry &&
-	normalizeCountry(userCountry) === normalizeCountry(serverCountry);
+const isUserInServerCountry = (serverCountry: string, userCountry: string) =>
+	userCountry === normalizeCountry(serverCountry);
 
 export const computePenalty = (
 	visible: boolean,
@@ -20,7 +16,7 @@ export const computePenalty = (
 	cost: number,
 	penalty: number,
 	serverCountry: string,
-	userCountry: string | undefined,
+	userCountry: string,
 ) => {
 	const inSameCountry = isUserInServerCountry(serverCountry, userCountry);
 

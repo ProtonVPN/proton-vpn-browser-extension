@@ -13,11 +13,12 @@ import {paidOnly, simplifiedUi} from '../config';
 import {getCountryFlag} from '../tools/getCountryFlag';
 import {isLogicalUp} from '../vpn/getLogicals';
 import {maintenanceIcon} from '../tools/maintenanceIcon';
+import type {UserContext} from '../account/user/UserContext';
 import {upgradeAttributes} from '../account/upgradeAttributes';
 import {Feature} from '../vpn/Feature';
 
 export const formatGroup = (
-	userTier: number,
+	userContext: UserContext,
 	logicals: Logical[],
 	secureCore: boolean,
 	extraAttributes: Record<string, string | number> = {},
@@ -39,10 +40,10 @@ export const formatGroup = (
 	return `
 		<div
 			class="servers-group${hasStreamingLogical(logicals) ? ' with-tooltip' : ''} ${className || 'group-logicals'}"
-			${simplifiedUi && userTier <= 0 ? upgradeAttributes : connectionAttributes(extraAttributes)}
+			${simplifiedUi && userContext.tier <= 0 ? upgradeAttributes : connectionAttributes(extraAttributes)}
 		>
 			<div class="server-type group-section">${title}</div>
-			<div class="server-items">${serverList(userTier, logicals, title, secureCore, skipSorting)}</div>
+			<div class="server-items">${serverList(userContext, logicals, title, secureCore, skipSorting)}</div>
 		</div>
 	`;
 };
@@ -83,9 +84,13 @@ const getGroupIcon = (
 	</svg>`;
 };
 
-export const isGroupUp = (group: CountryItem): boolean =>
-	(group.logicals || []).some(isLogicalUp) ||
-	Object.values(group.groups || {}).some(isGroupUp);
+export const isGroupUp = (
+	group: CountryItem,
+	userContext: UserContext,
+): boolean =>
+	(group.logicals || []).some((l) =>
+		isLogicalUp(l, userContext.country, userContext.location),
+	) || Object.values(group.groups || {}).some((g) => isGroupUp(g, userContext));
 
 const hasStreamingLogical = (logicals: Logical[]) =>
 	logicals.some((logical) => (logical.Features & Feature.STREAMING) !== 0);
@@ -95,7 +100,7 @@ const hasGroupStreaming = (group: CountryItem): boolean =>
 	Object.values(group.groups || {}).some(hasGroupStreaming);
 
 const formatGroups = (
-	userTier: number,
+	userContext: UserContext,
 	countryCode: string,
 	predicate: (servers: Logical[]) => Logical[],
 	secureCore: boolean,
@@ -111,7 +116,7 @@ const formatGroups = (
 					? {
 							group,
 							list: serverGroup(
-								userTier,
+								userContext,
 								countryCode,
 								group,
 								predicate,
@@ -128,10 +133,11 @@ const formatGroups = (
 		}
 
 		const id = `expand-${countryCode}-${`${Math.random()}`.substring(2)}`;
-		const up = isGroupUp(group);
+		const up = isGroupUp(group, userContext);
 		const cityName = group.name;
-		const grayOutButton = simplifiedUi && userTier <= 0;
-		const subscriptionNeeded = (simplifiedUi && userTier <= 0) || upgradeNeeded;
+		const grayOutButton = simplifiedUi && userContext.tier <= 0;
+		const subscriptionNeeded =
+			(simplifiedUi && userContext.tier <= 0) || upgradeNeeded;
 		const unconnectable = subscriptionNeeded || !up;
 
 		return `
@@ -164,7 +170,7 @@ const formatGroups = (
 					<div class="button-box">
 						${
 							up
-								? (simplifiedUi && userTier <= 0) ||
+								? (simplifiedUi && userContext.tier <= 0) ||
 									(!paidOnly && upgradeNeeded)
 									? upgradeButton()
 									: '' // connectionButton({exitCountry: code})
@@ -210,7 +216,7 @@ const getGroupParts = (
 };
 
 export const getServerGroups = (
-	userTier: number,
+	userContext: UserContext,
 	countryCode: string,
 	group: CountryItem,
 	predicate: (servers: Logical[]) => Logical[],
@@ -221,11 +227,11 @@ export const getServerGroups = (
 	return getGroupParts(group).map(([section, list]) => {
 		const items = list.filter(Boolean) as CountryItem[];
 		const subGroups = formatGroups(
-			userTier,
+			userContext,
 			countryCode,
 			predicate,
 			secureCore,
-			items.every((g) => needUpgrade(userTier, g)),
+			items.every((g) => needUpgrade(userContext.tier, g)),
 			list,
 			showFlagOnGroups,
 		);
@@ -248,7 +254,7 @@ export const getServerGroups = (
 };
 
 export const serverGroup = (
-	userTier: number,
+	userContext: UserContext,
 	countryCode: string,
 	group: CountryItem,
 	predicate: (servers: Logical[]) => Logical[],
@@ -256,17 +262,17 @@ export const serverGroup = (
 	showFlagOnGroups = false,
 ): string => {
 	const logicals = predicate(group.logicals || []);
-	const secureCoreEnabled = userTier > 0 && secureCore;
+	const secureCoreEnabled = userContext.tier > 0 && secureCore;
 
 	if (logicals.length) {
-		return formatGroup(userTier, logicals, secureCoreEnabled, {
+		return formatGroup(userContext, logicals, secureCoreEnabled, {
 			tier: logicals.reduce((t, l) => Math.min(t, l.Tier), 2),
 			'country-code': countryCode,
 		});
 	}
 
 	return getServerGroups(
-		userTier,
+		userContext,
 		countryCode,
 		group,
 		predicate,

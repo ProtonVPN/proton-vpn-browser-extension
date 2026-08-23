@@ -134,11 +134,6 @@
 				"Wylogowanie z aplikacji spowoduje rozłączenie aktywnego połączenia VPN. Czy chcesz kontynuować?"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Plan Proton Free automatycznie łączy Cię z najszybszym dostępnym darmowym serwerem z naszych 5 darmowych krajów. Zazwyczaj będzie to serwer\nnajbliższy Twojej lokalizacji."
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} kraju",

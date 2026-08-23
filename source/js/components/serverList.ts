@@ -13,6 +13,7 @@ import {isLogicalUp} from '../vpn/getLogicals';
 import {Sorter} from '../tools/comp';
 import {maintenanceIcon} from '../tools/maintenanceIcon';
 import {upgradeAttributes} from '../account/upgradeAttributes';
+import type {UserContext} from '../account/user/UserContext';
 import {via} from './via';
 
 const getLoadColor = (load: number): string => {
@@ -49,7 +50,7 @@ const sortByScore = (logicals: Logical[]) => {
 };
 
 export const serverList = (
-	userTier: number,
+	userContext: UserContext,
 	logicals: Logical[],
 	upperTitle: string,
 	secureCore: boolean,
@@ -58,7 +59,12 @@ export const serverList = (
 ) =>
 	(skipSorting ? logicals : sortByScore(logicals))
 		.map((logical) => {
-			const up = isLogicalUp(logical);
+			const userTier = userContext.tier;
+			const up = isLogicalUp(
+				logical,
+				userContext.country,
+				userContext.location,
+			);
 			const serverName = logical.Name;
 			const connectionsAttributes: Record<string, string | number> = {
 				...(secureCore

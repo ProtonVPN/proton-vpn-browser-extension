@@ -140,11 +140,6 @@
 				"การออกจากระบบแอปพลิเคชันจะยกเลิกการเชื่อมต่อ VPN ที่ใช้งานอยู่ คุณต้องการดำเนินการต่อหรือไม่?"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Proton Free จะเชื่อมต่อคุณกับเซิร์ฟเวอร์ฟรีที่เร็วที่สุดที่มีอยู่จาก 5 ประเทศฟรีของเราโดยอัตโนมัติ โดยปกติแล้วจะเป็นเซิร์ฟเวอร์ที่ใกล้กับตำแหน่งของคุณที่สุด"
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} ประเทศ"

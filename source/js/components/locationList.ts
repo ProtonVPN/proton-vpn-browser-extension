@@ -6,18 +6,19 @@ import {getLastChoices} from '../vpn/lastChoice';
 import type {CountryList} from './countryList';
 import type {Recents} from '../vpn/features/Recents';
 import type {LoadedFeature} from '../vpn/features/loadAllFeatures';
+import type {UserContext} from '../account/user/UserContext';
 
 export const locationList = async (
 	countries: CountryList,
-	userTier: number,
+	userContext: UserContext,
 	secureCore: {value: boolean},
 	recents: LoadedFeature<Recents>,
 ) => {
 	return (
-		(userTier > 0 && recents.config.value
+		(userContext.tier > 0 && recents.config.value
 			? recentLocationsSlot(await getLastChoices(), countries)
 			: '') +
-		(countryList(countries, userTier, secureCore, countryListHeader, true) ||
+		(countryList(countries, userContext, secureCore, countryListHeader, true) ||
 			`<p class="not-found">
 				${c('Error').t`Unable to load the list`}<br />
 				<small>${

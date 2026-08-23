@@ -166,11 +166,6 @@
 				"Odhlášením z aplikace se odpojí aktivní připojení VPN. Chcete pokračovat?"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Proton Free vás automaticky připojí k nejrychlejšímu dostupnému bezplatnému serveru z našich 5 bezplatných zemí. Obvykle se jedná o server, který je nejblíže vaší poloze."
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} zemi",
@@ -324,6 +319,9 @@
 			"Crash": [
 				"Pád"
 			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"Zprávy o selhání obsahují diagnostické informace (výpis tras, typ prohlížeče, verzi rozšíření). Neobsahují vaši IP adresu a není k nim připojen žádný identifikátor účtu Proton. Nikdy je nebudeme sdílet s třetími stranami."
+			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Hlášení o pádech nám pomáhají opravovat chyby, rozpoznat firewally a předcházet blokování VPN."
 			],
@@ -384,6 +382,9 @@
 			"Help us fight censorship": [
 				"Pomozte nám v boji proti cenzuře"
 			],
+			"Help us improve Proton VPN": [
+				"Pomozte nám vylepšit Proton VPN"
+			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"Výkonná švýcarská VPN, která chrání vaše soukromí. Maximální zabezpečení, více než ${count} server a žádná omezení.",
 				"Výkonná švýcarská VPN, která chrání vaše soukromí. Maximální zabezpečení, více než ${count} servery a žádná omezení.",
@@ -432,6 +433,12 @@
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Chraňte se online s bezplatnou vysokorychlostní Proton VPN."
 			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"Proton Free vás automaticky připojí k nejrychlejšímu dostupnému bezplatnému serveru z naší ${freeCountriesCount} bezplatné země. Obvykle se jedná o server, který je nejblíže vaší poloze.",
+				"Proton Free vás automaticky připojí k nejrychlejšímu dostupnému bezplatnému serveru z našich ${freeCountriesCount} bezplatných zemí. Obvykle se jedná o server, který je nejblíže vaší poloze.",
+				"Proton Free vás automaticky připojí k nejrychlejšímu dostupnému bezplatnému serveru z našich ${freeCountriesCount} bezplatných zemí. Obvykle se jedná o server, který je nejblíže vaší poloze.",
+				"Proton Free vás automaticky připojí k nejrychlejšímu dostupnému bezplatnému serveru z našich ${freeCountriesCount} bezplatných zemí. Obvykle se jedná o server, který je nejblíže vaší poloze."
+			],
 			"Proton VPN": [
 				"Proton VPN"
 			],
@@ -455,6 +462,9 @@
 			],
 			"Selected websites": [
 				"Vybrané webové stránky"
+			],
+			"Share anonymous crash reports": [
+				"Sdílejte anonymní hlášení o pádech"
 			],
 			"Share anonymous usage statistics": [
 				"Sdílejte anonymní statistiky o používání"
@@ -509,6 +519,9 @@
 			],
 			"VPN Features": [
 				"VPN Funkce"
+			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"Vaše soukromí je pro nás na prvním místě. Nesledujeme vaši aktivitu při procházení webu a neuchováváme žádné logy. K ověření vašeho připojení se na naše servery odesílá ID relace vašeho účtu; to je nezbytné pro správnou funkci rozšíření."
 			],
 			"You're signed in": [
 				"Jste přihlášeni"

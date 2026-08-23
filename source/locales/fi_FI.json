@@ -166,11 +166,6 @@
 				"Sovelluksen uloskirjaaminen katkaisee aktiivisen VPN-yhteyden. Haluatko jatkaa?"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Proton Free yhdistää sinut automaattisesti nopeimpaan saatavilla olevaan ilmaispalvelimeen viidestä ilmaisesta maastamme. Yleensä tämä on lähinnä sijaintiasi oleva palvelin."
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} maasta",
@@ -429,6 +424,10 @@
 			],
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Suojaa itseäsi verkossa Protonin ilmaisella nopealla VPN:llä."
+			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"Proton Free yhdistää sinut automaattisesti nopeimpaan saatavilla olevaan ilmaiseen palvelimeen ${freeCountriesCount} ilmaisessa maassa. Yleensä tämä on lähinnä sijaintiasi oleva palvelin.",
+				"Proton Free yhdistää sinut automaattisesti nopeimpaan saatavilla olevaan ilmaiseen palvelimeen ${freeCountriesCount} ilmaisessa maassa. Tämä on yleensä lähinnä sijaintiasi oleva palvelin."
 			],
 			"Proton VPN": [
 				"Proton VPN"

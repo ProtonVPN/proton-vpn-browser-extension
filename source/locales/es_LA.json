@@ -166,11 +166,6 @@
 				"Cerrar la sesión de la aplicación desconectará la conexión VPN activa. ¿Quiere continuar?"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Proton Free le conecta automáticamente al servidor gratuito más rápido disponible de nuestros 5 países gratuitos. Normalmente será el servidor más cercano a su ubicación."
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} país",
@@ -429,6 +424,10 @@
 			],
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Protéjase en línea con la VPN gratuita y de alta velocidad de Proton."
+			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"Proton Free le conecta automáticamente al servidor gratuito más rápido disponible en nuestro ${freeCountriesCount} país gratuito. Normalmente es el servidor más cercano a su ubicación.",
+				"Proton Free le conecta automáticamente al servidor más rápido disponible en nuestros ${freeCountriesCount} países gratuitos. Normalmente es el servidor más cercano a su ubicación."
 			],
 			"Proton VPN": [
 				"Proton VPN"

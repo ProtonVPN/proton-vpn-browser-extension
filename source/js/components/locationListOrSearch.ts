@@ -2,17 +2,18 @@ import {getSearchResult} from '../search/getSearchResult';
 import {locationList} from './locationList';
 import type {AllFeatures} from '../vpn/features/AllFeatures';
 import type {CountryList} from './countryList';
+import type {UserContext} from '../account/user/UserContext';
 
 export const locationListOrSearch = async (
 	searchText: string,
 	countries: CountryList,
-	userTier: number,
+	userContext: UserContext,
 	features: AllFeatures,
 ) => {
 	if (searchText === '') {
 		return await locationList(
 			countries,
-			userTier,
+			userContext,
 			features.secureCore.config,
 			features.recents,
 		);
@@ -21,7 +22,7 @@ export const locationListOrSearch = async (
 	return getSearchResult(
 		countries,
 		searchText,
-		userTier,
+		userContext,
 		features.secureCore.config,
 	);
 };

@@ -166,11 +166,6 @@
 				"退出账户将断开当前 VPN 连接，确定要退出账户吗？"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Proton Free 会自动将您连接到 5 个免费国家的最快可用免费服务器上。这通常是离您最近的服务器。"
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} 个国家/地区"
@@ -425,6 +420,9 @@
 			],
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"使用 Proton 免费高速 VPN 保护您的上网安全。"
+			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"Proton Free 会从 ${freeCountriesCount} 个免费国家/地区中，自动为您选择速度最快的服务器，通常就是离您最近的那一台。"
 			],
 			"Proton VPN": [
 				"Proton VPN"

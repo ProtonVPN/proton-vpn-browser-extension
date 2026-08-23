@@ -29,6 +29,9 @@
 			"Configure split tunneling": [
 				"Konfiguriraj deljeno tuneliranje"
 			],
+			"Confirm choices": [
+				"Potrdi izbire"
+			],
 			"Connect": [
 				"Poveži"
 			],
@@ -80,6 +83,9 @@
 			"Quick connect": [
 				"Hitro povezovanje"
 			],
+			"Remove": [
+				"Odstrani"
+			],
 			"Remove ${domain}": [
 				"Odstrani ${domain}"
 			],
@@ -129,8 +135,20 @@
 			]
 		},
 		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"Povežite z \"${mode}\""
+			],
+			"Connect to ${countryName}": [
+				"Povežite z ${countryName}"
+			],
 			"Connect to ${exitCountryName}": [
 				"Povežite se z ${exitCountryName}"
+			],
+			"Connect to ${logical.Name}": [
+				"Povežite z ${logical.Name}"
+			],
+			"Connect to the fastest country": [
+				"Poveži se z najhitrejšo državo"
 			]
 		},
 		"Action: Server-level button": {
@@ -146,11 +164,6 @@
 		"Confirm": {
 			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
 				"Odjava iz aplikacije bo prekinila aktivno povezavo VPN. Želite nadaljevati?"
-			]
-		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Proton Free vas samodejno poveže z najhitrejšim razpoložljivim brezplačnim strežnikom iz naših pet brezplačnih držav. To bo običajno strežnik, ki je najbližje vaši lokaciji."
 			]
 		},
 		"Error": {
@@ -270,6 +283,9 @@
 			"Bypass censorship with advanced security and privacy features": [
 				"Zaobidite cenzuro z naprednimi funkcijami varnosti in zasebnosti"
 			],
+			"Clear all recent connections and don't keep local history": [
+				"Izbriši vse nedavne povezave in ne shranjuj lokalne zgodovine"
+			],
 			"Clear search": [
 				"Počisti iskanje"
 			],
@@ -302,6 +318,9 @@
 			],
 			"Crash": [
 				"Zrušitev"
+			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"Poročila o zrušitvah vsebujejo diagnostične podatke (sledi napak, vrsto brskalnika in različico razširitve). Ne vključujejo vašega naslova IP ali kakršnega koli identifikatorja računa Proton. Nikoli jih ne bomo posredovali tretjim osebam."
 			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Poročila o zrušitvah nam pomagajo odpraviti napake, zaznati požarne zidove in se izogniti blokadam VPN."
@@ -363,6 +382,9 @@
 			"Help us fight censorship": [
 				"Pomagajte nam v boju proti cenzuri"
 			],
+			"Help us improve Proton VPN": [
+				"Pomagajte nam izboljšati Proton VPN"
+			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"Hitri švicarski VPN, ki varuje vašo zasebnost. Največja varnost, več kot ${count} strežnik in brez omejitev.",
 				"Hitri švicarski VPN, ki varuje vašo zasebnost. Največja varnost, več kot ${count} strežnika in brez omejitev.",
@@ -411,17 +433,38 @@
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Zaščitite se na spletu z brezplačnim hitrim VPN-jem Proton."
 			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"Proton Free vas samodejno poveže z najhitrejšim razpoložljivim brezplačnim strežnikom iz naše ${freeCountriesCount} brezplačne države. To bo običajno najbližji strežnik vaši lokaciji.",
+				"Proton Free vas samodejno poveže z najhitrejšim razpoložljivim brezplačnim strežnikom iz ${freeCountriesCount} prostih držav. To bo običajno najbližji strežnik vaši lokaciji.",
+				"Proton Free vas samodejno poveže z najhitrejšim razpoložljivim brezplačnim strežnikom iz ${freeCountriesCount} prostih držav. To bo običajno najbližji strežnik vaši lokaciji.",
+				"Proton Free vas samodejno poveže z najhitrejšim razpoložljivim brezplačnim strežnikom iz ${freeCountriesCount} prostih držav. To bo običajno najbližji strežnik vaši lokaciji."
+			],
 			"Proton VPN": [
 				"Proton VPN"
 			],
 			"Proton VPN Browser Extension": [
 				"Proton VPN razširitev za spletni brskalnik"
 			],
+			"Recent connections": [
+				"Nedavne povezave"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"Shranite nedavne povezave lokalno in prikažite hitre povezave do njih"
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"Shrani zadnje države/mesta/strežnike, s katerimi sem se povezal, in jih prikaži na\nvrhu seznama."
+			],
+			"Retired server": [
+				"Strežnik, ki je bil umaknjen iz uporabe"
+			],
 			"Secure Core": [
 				"Secure Core"
 			],
 			"Selected websites": [
 				"Izbrana spletna mesta"
+			],
+			"Share anonymous crash reports": [
+				"Delite anonimna poročila o zrušitvah"
 			],
 			"Share anonymous usage statistics": [
 				"Deli anonimne podatke o uporabi?"
@@ -476,6 +519,9 @@
 			],
 			"VPN Features": [
 				"Funkcije VPN"
+			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"Vaša zasebnost nam je najpomembnejša. Ne spremljamo vašega brskanja in ne hranimo dnevnikov. Za preverjanje vaše povezave se našim strežnikom pošlje ID vaše uporabniške seje, kar je potrebno za delovanje razširitve."
 			],
 			"You're signed in": [
 				"Prijavljeni ste"
@@ -599,11 +645,26 @@
 			]
 		},
 		"Title": {
+			"Closest server": [
+				"Najbližji strežnik"
+			],
+			"Fastest country": [
+				"Najhitrejša država"
+			],
+			"Fastest server": [
+				"Najhitrejši strežnik"
+			],
 			"Features": [
 				"Funkcije"
 			],
 			"Proton VPN for Vivaldi": [
 				"Proton VPN za Vivaldi"
+			],
+			"Random server": [
+				"Naključni strežnik"
+			],
+			"Recents": [
+				"Nedavni"
 			],
 			"Streaming": [
 				"Pretočni prenos"

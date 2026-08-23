@@ -166,11 +166,6 @@
 				"Выхад з праграмы прывядзе да адключэння актыўнага падключэння па VPN. Вы сапраўды хочаце працягнуць?"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Proton Free аўтаматычна падключае вас да найхутчэйшага даступнага сервера з нашых 5 бясплатных краін. Звычайна гэта самы блізкі сервер адносна вашага месцазнаходжання."
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} краіне",
@@ -437,6 +432,12 @@
 			],
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Абараніце сябе ў інтэрнэце з бясплатным і высакахуткасным VPN ад Proton."
+			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"Proton Free аўтаматычна падключае вас да найхутчэйшага даступнага сервера з нашай ${freeCountriesCount} бясплатнай краіны. Звычайна гэта самы блізкі сервер адносна вашага месцазнаходжання.",
+				"Proton Free аўтаматычна падключае вас да найхутчэйшага даступнага сервера з нашых ${freeCountriesCount} бясплатных краін. Звычайна гэта самы блізкі сервер адносна вашага месцазнаходжання.",
+				"Proton Free аўтаматычна падключае вас да найхутчэйшага даступнага сервера з нашых ${freeCountriesCount} бясплатных краін. Звычайна гэта самы блізкі сервер адносна вашага месцазнаходжання.",
+				"Proton Free аўтаматычна падключае вас да найхутчэйшага даступнага сервера з нашых ${freeCountriesCount} бясплатных краін. Звычайна гэта самы блізкі сервер адносна вашага месцазнаходжання."
 			],
 			"Proton VPN": [
 				"Proton VPN"

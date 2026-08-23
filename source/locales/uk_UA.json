@@ -166,11 +166,6 @@
 				"Вихід із програми розірве активне VPN-з'єднання. Хочете продовжити?"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Proton Free автоматично під'єднує вас до найшвидшого доступного безплатного сервера з 5 країн. Зазвичай це буде найближчий до вас сервер."
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} країна",
@@ -324,6 +319,9 @@
 			"Crash": [
 				"Збій"
 			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"Звіти про збої містять діагностичну інформацію (трасування стеків, тип браузера, версія розширення). Вони не містять вашої IP-адреси чи ідентифікатора вашого облікового запису Proton. Ми ніколи не передаємо ці дані третім сторонам."
+			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"Звіти про збої допомагають нам виправляти помилки, виявляти мережеві екрани та уникати блокування VPN."
 			],
@@ -384,6 +382,9 @@
 			"Help us fight censorship": [
 				"Допоможіть нам протистояти цензурі"
 			],
+			"Help us improve Proton VPN": [
+				"Допоможіть нам покращити Proton VPN"
+			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"Високопродуктивна швейцарська VPN, що захищає вашу приватність. Максимальна безпека, понад ${count} сервер, і жодних обмежень.",
 				"Високопродуктивна швейцарська VPN, що захищає вашу приватність. Максимальна безпека, понад ${count} сервери, і жодних обмежень.",
@@ -432,6 +433,12 @@
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Захистіть себе онлайн за допомогою безплатної, високошвидкісної VPN."
 			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"Proton Free автоматично під'єднує вас до найшвидшого доступного сервера з нашої ${freeCountriesCount} безплатної країни. Зазвичай це буде найближчий до вас сервер.",
+				"Proton Free автоматично під'єднує вас до найшвидшого доступного безплатного сервера з наших ${freeCountriesCount} країн. Зазвичай це буде найближчий до вас сервер.",
+				"Proton Free автоматично під'єднує вас до найшвидшого доступного сервера з наших ${freeCountriesCount} безплатних країн. Зазвичай це буде найближчий до вас сервер.",
+				"Proton Free автоматично під'єднує вас до найшвидшого доступного сервера з наших ${freeCountriesCount} безплатних країн. Зазвичай це буде найближчий до вас сервер."
+			],
 			"Proton VPN": [
 				"Proton VPN"
 			],
@@ -455,6 +462,9 @@
 			],
 			"Selected websites": [
 				"Вибрані вебсайти"
+			],
+			"Share anonymous crash reports": [
+				"Ділитися анонімними звітами про збої"
 			],
 			"Share anonymous usage statistics": [
 				"Анонімна статистика використання"
@@ -509,6 +519,9 @@
 			],
 			"VPN Features": [
 				"Функції VPN"
+			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"Ми цінуємо вашу приватність понад усе. Ми не стежимо за вашими діями та не зберігаємо журнали. Щоб засвідчити ваше з'єднання, ID сеансу вашого облікового запису надсилається на наші сервери. Це потрібно для належної роботи розширення."
 			],
 			"You're signed in": [
 				"Ви увійшли до системи"

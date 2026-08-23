@@ -166,11 +166,6 @@
 				"Wenn du dich von der Anwendung abmeldest, wird die aktive VPN-Verbindung getrennt. Möchtest du fortfahren?"
 			]
 		},
-		"Description": {
-			"Proton Free automatically connects you to the fastest available free server from our 5 free countries. This will\nnormally be the closest server to your location.": [
-				"Proton Free verbindet Sie automatisch mit dem schnellsten verfügbaren freien Server aus unseren 5 freien Ländern. Dies ist normalerweise der Server, der Ihrem Standort am nächsten ist."
-			]
-		},
 		"Error": {
 			"${countries} country": [
 				"${countries} Land",
@@ -429,6 +424,10 @@
 			],
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Schütze dich online mit Protons kostenlosem Hochgeschwindigkeit-VPN"
+			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"Proton Free verbindet dich automatisch mit dem schnellsten verfügbaren kostenlosen Server aus einem unserem ${freeCountriesCount} kostenlosen Land. In der Regel ist dies der Server, der deinem Standort am nächsten liegt.",
+				"Proton Free verbindet dich automatisch mit dem schnellsten verfügbaren kostenlosen Server aus einem unserer ${freeCountriesCount} kostenlosen Länder. In der Regel ist dies der Server, der deinem Standort am nächsten liegt."
 			],
 			"Proton VPN": [
 				"Proton VPN"

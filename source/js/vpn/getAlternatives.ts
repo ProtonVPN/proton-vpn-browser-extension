@@ -1,5 +1,6 @@
 import type {Logical} from './Logical';
 import type {Server} from './Server';
+import type {UserContext} from '../account/user/UserContext';
 import {getSortedLogicals} from './getLogicals';
 import {Feature} from './Feature';
 import {getBestLogical} from './getLogical';
@@ -7,7 +8,7 @@ import {pickServerInLogical} from './pickServerInLogical';
 
 export const getAlternativeServer = async (
 	id: string | number,
-	userTier: number,
+	userContext: UserContext,
 ): Promise<{
 	logical?: Logical | undefined;
 	server?: Server | undefined;
@@ -33,7 +34,7 @@ export const getAlternativeServer = async (
 	while (filters.length > 2) {
 		const alternative = getBestLogical(
 			logicals.filter((logical) => filters.every((filter) => filter(logical))),
-			userTier,
+			userContext,
 		);
 
 		if (alternative) {
