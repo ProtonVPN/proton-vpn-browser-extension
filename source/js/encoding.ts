@@ -1,7 +1,12 @@
 export const encodeBase64 = (input: string) => btoa(input).trim();
 export const decodeBase64 = (input: string) => atob(input.trim());
 
-export const encodeBase64URL = (str: string, removePadding = true) => {
+/**
+ * Encodes given string in URL-safe Base64.
+ * @param str String that is to be encoded.
+ * @param removePadding Whether to remove padding (true by default);
+ */
+export const encodeBase64URL = (str: string, removePadding = true): string => {
 	const base64String = encodeBase64(str)
 		.replace(/\+/g, '-')
 		.replace(/\//g, '_');
@@ -9,7 +14,11 @@ export const encodeBase64URL = (str: string, removePadding = true) => {
 	return removePadding ? base64String.replace(/=/g, '') : base64String;
 };
 
-export const decodeBase64URL = (str: string) =>
+/**
+ * Decodes given Base64URL string.
+ * @param str String that is to be decoded.
+ */
+export const decodeBase64URL = (str: string): string =>
 	decodeBase64(str.replace(/-/g, '+').replace(/_/g, '/'));
 
 export const binaryStringToArray = (str: string) => {
@@ -20,7 +29,11 @@ export const binaryStringToArray = (str: string) => {
 	return result;
 };
 
-export const arrayToBinaryString = (bytes: Uint8Array) => {
+/**
+ * Converts Uint8Array (= Array of unsigned 8-bit integer bytes) into a binary string.
+ * @param bytes Uint8Array that is to be converted.
+ */
+export const arrayToBinaryString = (bytes: Uint8Array): string => {
 	const result = [];
 	const bs = 1 << 14;
 	const j = bytes.length;
