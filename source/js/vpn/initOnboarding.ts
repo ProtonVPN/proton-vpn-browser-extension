@@ -2,6 +2,7 @@ import {getTabs} from '../tools/getTabs';
 import {getRuntime} from '../tools/getRuntime';
 import type {CacheWrappedValue} from '../tools/storage';
 import {storage} from '../tools/storage';
+import {warn} from '../log/log';
 import Tab = browser.tabs.Tab;
 type TabId = Required<Tab>['id'];
 
@@ -14,17 +15,30 @@ export const initOnboarding = async () => {
 	const idsToRemove = (await onboardingTabIds.get())?.value ?? [];
 
 	if (idsToRemove.length) {
-		await tabs.remove(idsToRemove);
-		await onboardingTabIds.remove();
+		try {
+			await tabs.remove(idsToRemove);
+		} catch {
+			// Tab was already closed by the user
+		}
+		try {
+			await onboardingTabIds.remove();
+		} catch {
+			// Ignore storage removal errors
+		}
 	}
 
-	const tabId = (
-		await tabs.create({
-			url: getRuntime().getURL('/onboarding.html'),
-		})
-	).id;
+	try {
+		const tabId = (
+			await tabs.create({
+				url: getRuntime().getURL('/onboarding.html'),
+			})
+		)?.id;
 
-	if (typeof tabId !== 'undefined') {
-		await onboardingTabIds.transactionValue((ids) => [...(ids ?? []), tabId]);
+		if (typeof tabId !== 'undefined') {
+			await onboardingTabIds.transactionValue((ids) => [...(ids ?? []), tabId]);
+		}
+	} catch (e) {
+		warn('Failed to open onboarding tab', e);
 	}
 };
+
