@@ -63,6 +63,9 @@ module.exports = (_, argv, options) => {
 			gecko: {
 				id: 'vpn@proton.ch',
 				strict_min_version: '109.0',
+				data_collection_permissions: {
+					required: ['none'],
+				},
 			},
 		};
 		manifest.optional_permissions = ['proxy'];

@@ -451,6 +451,10 @@ const onState = asConnectionStateSwitch({
 	handleProxyRequest(
 		requestDetails: OnRequestDetails,
 	): ProxyInfo | Promise<ProxyInfo> {
+		if (!isCurrentStateConnected() || !currentState?.data?.server?.proxyHost) {
+			return {type: 'direct'};
+		}
+
 		// This is only to avoid proxy for localhost, but we might actually want to access the API via the proxy in normal cases
 		// We should extend this to prevent proxying for LAN addresses
 		const splitTunneling = currentState?.data?.server?.splitTunneling;

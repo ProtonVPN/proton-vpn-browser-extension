@@ -12,7 +12,7 @@ import type {ApiError} from '../api';
 import {updateLocation} from './updateLocation';
 import {updateLogicalLoad} from './updateLogicalLoad';
 import {recoverState} from './recoverState';
-import {watchWithSentry} from '../tools/sentry';
+import {handleError} from '../tools/sentry';
 import {clearProxy} from '../tools/proxy';
 
 const debug = bind(debug_, '[initState]');
@@ -39,16 +39,20 @@ export const initState = async () => {
 	}
 
 	if (!isCurrentStateConnected()) {
-		await clearProxy();
+		try {
+			await clearProxy();
+		} catch (e) {
+			debug('Error clearing proxy during init', e);
+		}
 	}
 
-	setInterval(
-		() =>
-			watchWithSentry(() => {
-				getCurrentState().refreshState?.();
-			}),
-		milliSeconds.fromSeconds(1),
-	);
+	setInterval(async () => {
+		try {
+			await getCurrentState().refreshState?.();
+		} catch (error) {
+			handleError(error);
+		}
+	}, milliSeconds.fromSeconds(1));
 
 	updateLocation();
 	updateLogicalLoad();

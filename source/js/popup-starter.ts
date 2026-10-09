@@ -82,7 +82,7 @@ import {
 } from './messaging/MessageType';
 import {showSigningView} from './components/signIn/showSigningView';
 import {delay, timeoutAfter} from './tools/delay';
-import {proxyPermission} from './vpn/proxyPermission';
+import {checkProxyPermission} from './vpn/proxyPermission';
 import {leaveWindowForTab, openTab} from './tools/openTab';
 import {upsell} from './tools/upsell';
 import {forgetAccount} from './account/forgetAccount';
@@ -166,7 +166,23 @@ export const start = async (area: HTMLElement) => {
 	const spinner = area.querySelector<HTMLElement>('#spinner');
 	const loggedView = area.querySelector<HTMLElement>('#logged-view');
 
-	if (!chrome.proxy) {
+	const hasProxyApi = !!(
+		chrome.proxy ||
+		(typeof browser !== 'undefined' && browser.proxy)
+	);
+	const hasPermission = await checkProxyPermission();
+	const proxySupported = hasPermission || hasProxyApi;
+
+	if (!hasPermission && !hasProxyApi) {
+		showSigningView(
+			area.querySelector('#sign-in-view'),
+			loggedView,
+			spinner,
+			false,
+		);
+	}
+
+	if (!hasProxyApi && !proxySupported && !session.uid) {
 		showSigningView(
 			area.querySelector('#sign-in-view'),
 			loggedView,
@@ -176,21 +192,6 @@ export const start = async (area: HTMLElement) => {
 
 		return;
 	}
-
-	const proxySupported: boolean = await new Promise((resolve) => {
-		chrome.permissions.contains(proxyPermission, (ok) => {
-			if (!ok) {
-				showSigningView(
-					area.querySelector('#sign-in-view'),
-					loggedView,
-					spinner,
-					false,
-				);
-			}
-
-			resolve(ok);
-		});
-	});
 
 	hideIf(area, {
 		'.secure-core-action-block': !secureCoreEnabled,

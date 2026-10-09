@@ -60,6 +60,18 @@ const withoutPersistentStorage = <T>(
 	return callback(root.bexStorage || (root.bexStorage = {}));
 };
 
+const getStorageArea = (storageType: Storage): any => {
+	if (typeof browser !== 'undefined' && browser.storage?.[storageType]) {
+		return browser.storage[storageType];
+	}
+
+	if (typeof chrome !== 'undefined' && chrome.storage?.[storageType]) {
+		return chrome.storage[storageType];
+	}
+
+	return undefined;
+};
+
 export const storage = {
 	async getItem<T extends object, D extends T | undefined = T | undefined>(
 		key: string,
@@ -69,27 +81,80 @@ export const storage = {
 		const prefixedKey = storagePrefix + key;
 
 		try {
+			const storageArea = getStorageArea(storage);
+
+			if (!storageArea) {
+				throw new Error(`Storage area ${storage} is not available`);
+			}
+
 			const data = await new Promise((resolve) => {
-				chrome.storage[storage].get(prefixedKey, resolve);
+				const timeoutId = setTimeout(() => {
+					resolve(undefined);
+				}, 1500);
+
+				try {
+					const res = storageArea.get(prefixedKey, (result: any) => {
+						clearTimeout(timeoutId);
+						resolve(result);
+					});
+
+					if (res && typeof res.then === 'function') {
+						res.then((result: any) => {
+							clearTimeout(timeoutId);
+							resolve(result);
+						}).catch(() => {
+							clearTimeout(timeoutId);
+							resolve(undefined);
+						});
+					}
+				} catch {
+					clearTimeout(timeoutId);
+					resolve(undefined);
+				}
 			});
 
 			if (
 				typeof data === 'object' &&
+				data !== null &&
 				Object.prototype.hasOwnProperty.call(data, prefixedKey)
 			) {
 				return (data as any)[prefixedKey];
 			}
 
-			if (storage === Storage.LOCAL && Storage.SESSION in chrome.storage) {
-				const data = await new Promise((resolve) => {
-					chrome.storage[Storage.SESSION].get(prefixedKey, resolve);
+			const sessionArea = getStorageArea(Storage.SESSION);
+			if (storage === Storage.LOCAL && sessionArea) {
+				const sessionData = await new Promise((resolve) => {
+					const timeoutId = setTimeout(() => {
+						resolve(undefined);
+					}, 1500);
+
+					try {
+						const res = sessionArea.get(prefixedKey, (result: any) => {
+							clearTimeout(timeoutId);
+							resolve(result);
+						});
+
+						if (res && typeof res.then === 'function') {
+							res.then((result: any) => {
+								clearTimeout(timeoutId);
+								resolve(result);
+							}).catch(() => {
+								clearTimeout(timeoutId);
+								resolve(undefined);
+							});
+						}
+					} catch {
+						clearTimeout(timeoutId);
+						resolve(undefined);
+					}
 				});
 
 				if (
-					typeof data === 'object' &&
-					Object.prototype.hasOwnProperty.call(data, prefixedKey)
+					typeof sessionData === 'object' &&
+					sessionData !== null &&
+					Object.prototype.hasOwnProperty.call(sessionData, prefixedKey)
 				) {
-					return (data as any)[prefixedKey];
+					return (sessionData as any)[prefixedKey];
 				}
 			}
 
@@ -122,7 +187,32 @@ export const storage = {
 		const prefixedKey = storagePrefix + key;
 
 		try {
-			await chrome.storage[storage].set({[prefixedKey]: value});
+			const storageArea = getStorageArea(storage);
+
+			if (!storageArea) {
+				throw new Error(`Storage area ${storage} is not available`);
+			}
+
+			await new Promise<void>((resolve, reject) => {
+				const timeoutId = setTimeout(resolve, 2000);
+
+				try {
+					const res = storageArea.set({[prefixedKey]: value}, () => {
+						clearTimeout(timeoutId);
+						resolve();
+					});
+
+					if (res && typeof res.then === 'function') {
+						res.then(() => {
+							clearTimeout(timeoutId);
+							resolve();
+						}).catch(reject);
+					}
+				} catch (err) {
+					clearTimeout(timeoutId);
+					reject(err);
+				}
+			});
 		} catch (firstError) {
 			const rawItem = JSON.stringify(value);
 
@@ -142,7 +232,32 @@ export const storage = {
 		const prefixedKey = storagePrefix + key;
 
 		try {
-			await chrome.storage[storage].remove(prefixedKey);
+			const storageArea = getStorageArea(storage);
+
+			if (!storageArea) {
+				throw new Error(`Storage area ${storage} is not available`);
+			}
+
+			await new Promise<void>((resolve, reject) => {
+				const timeoutId = setTimeout(resolve, 2000);
+
+				try {
+					const res = storageArea.remove(prefixedKey, () => {
+						clearTimeout(timeoutId);
+						resolve();
+					});
+
+					if (res && typeof res.then === 'function') {
+						res.then(() => {
+							clearTimeout(timeoutId);
+							resolve();
+						}).catch(reject);
+					}
+				} catch (err) {
+					clearTimeout(timeoutId);
+					reject(err);
+				}
+			});
 		} catch (firstError) {
 			try {
 				getFallbackStorage(storage).removeItem(prefixedKey);

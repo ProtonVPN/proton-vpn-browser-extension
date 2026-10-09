@@ -42,7 +42,7 @@ export const messageListener = (request: any) => {
 		}
 	});
 
-	return false;
+	return undefined;
 };
 
 getRuntime()?.onMessage.addListener(messageListener);

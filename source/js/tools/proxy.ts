@@ -52,28 +52,56 @@ let proxySet = false;
 
 let proxyErrorWatched = false;
 
-export const hasProxy = async (): Promise<boolean> =>
-	await timeoutAfter(
-		new Promise((resolve) => {
-			if (!chrome.proxy) {
-				resolve(false);
+const getProxyApi = (): any =>
+	(typeof browser !== 'undefined' && browser.proxy) || chrome.proxy;
 
-				return;
-			}
+export const hasProxy = async (): Promise<boolean> => {
+	const proxyApi = getProxyApi();
 
-			chrome.proxy.settings.get({}, async (details) => {
-				resolve(
-					details?.levelOfControl === 'controlled_by_this_extension' ||
-						(details?.value?.mode
-							? isFixedServersProxy(details?.value)
-							: details?.levelOfControl === 'controllable_by_this_extension' &&
-								(await isConnected())),
-				);
-			});
-		}),
-		milliSeconds.fromSeconds(5),
-		'Unable to check proxy settings',
-	);
+	if (!proxyApi) {
+		return false;
+	}
+
+	try {
+		return await timeoutAfter(
+			new Promise<boolean>(async (resolve) => {
+				try {
+					let details: any;
+					if (typeof browser !== 'undefined' && browser.proxy?.settings?.get) {
+						details = await browser.proxy.settings.get({});
+					} else if (proxyApi.settings?.get) {
+						details = await new Promise((res) => {
+							try {
+								const r = proxyApi.settings.get({}, (d: any) => res(d));
+								if (r && typeof r.then === 'function') {
+									r.then(res).catch(() => res(undefined));
+								}
+							} catch {
+								res(undefined);
+							}
+						});
+					}
+
+					resolve(
+						Boolean(
+							details?.levelOfControl === 'controlled_by_this_extension' ||
+								(details?.value?.mode
+									? isFixedServersProxy(details?.value)
+									: details?.levelOfControl === 'controllable_by_this_extension' &&
+										(await isConnected())),
+						),
+					);
+				} catch {
+					resolve(false);
+				}
+			}),
+			milliSeconds.fromSeconds(5),
+			'Unable to check proxy settings',
+		);
+	} catch {
+		return false;
+	}
+};
 
 const buildDomainMatchingCondition = (domain: string) => {
 	if (domain.startsWith('.')) {
@@ -151,59 +179,75 @@ export const getPacScript = (proxy: FixedServersProxy): PacScript => ({
 	},
 });
 
-const setProxy = (
+const setProxy = async (
 	value: FixedServersProxy | SystemProxy | PacScript,
-): Promise<boolean> =>
-	new Promise((resolve) => {
-		if (!chrome.proxy || !setupHandleProxyRequest()) {
-			resolve(false);
+): Promise<boolean> => {
+	const proxyApi = getProxyApi();
 
-			return;
+	if (!proxyApi || !setupHandleProxyRequest()) {
+		return false;
+	}
+
+	proxySet = true;
+	initAuthInterceptor();
+
+	if (!proxyErrorWatched) {
+		proxyErrorWatched = true;
+		proxyApi.onProxyError?.addListener?.(async (event: any) => {
+			switch (getErrorCode(event.error)) {
+				case ErrorCode.TIMED_OUT:
+				case ErrorCode.TUNNEL_CONNECTION_FAILED:
+				case ErrorCode.PROXY_CONNECTION_FAILED:
+					retryCredentials(true);
+					break;
+			}
+		});
+	}
+
+	triggerPromise(
+		isFixedServersProxy(value)
+			? preventLeak()
+			: setWebRTCState(WebRTCState.CLEAR),
+	);
+
+	// In Firefox, proxy routing is handled dynamically via browser.proxy.onRequest.
+	// Only Chromium requires chrome.proxy.settings.set with FixedServersProxy / PAC script.
+	if (proxyApi.onRequest) {
+		const promise = browser?.webRequest?.handlerBehaviorChanged?.();
+		if (promise) {
+			await promise.catch(() => {});
 		}
 
-		proxySet = true;
-		initAuthInterceptor();
-		chrome.proxy.settings.set(
-			{
-				value,
-				scope: 'regular',
-			},
-			() => {
-				hasProxy()
-					.then((result) => {
-						const promise = browser?.webRequest?.handlerBehaviorChanged?.();
+		return true;
+	}
 
-						if (!promise) {
-							return result;
-						}
+	return await new Promise<boolean>((resolve) => {
+		try {
+			proxyApi.settings.set(
+				{
+					value,
+					scope: 'regular',
+				},
+				() => {
+					hasProxy()
+						.then((result) => {
+							const promise = browser?.webRequest?.handlerBehaviorChanged?.();
 
-						return promise.then(() => result);
-					})
-					.then((result) => {
-						if (!proxyErrorWatched) {
-							proxyErrorWatched = true;
-							chrome.proxy.onProxyError?.addListener?.(async (event) => {
-								switch (getErrorCode(event.error)) {
-									case ErrorCode.TIMED_OUT:
-									case ErrorCode.TUNNEL_CONNECTION_FAILED:
-									case ErrorCode.PROXY_CONNECTION_FAILED:
-										retryCredentials(true);
-										break;
-								}
-							});
-						}
+							if (!promise) {
+								return result;
+							}
 
-						resolve(result);
-					});
-			},
-		);
-
-		triggerPromise(
-			isFixedServersProxy(value)
-				? preventLeak()
-				: setWebRTCState(WebRTCState.CLEAR),
-		);
+							return promise.then(() => result);
+						})
+						.then(resolve)
+						.catch(() => resolve(false));
+				},
+			);
+		} catch {
+			resolve(false);
+		}
 	});
+};
 
 export const getFixedServerConfig = (
 	host: string,
@@ -260,21 +304,44 @@ export const setProxyToWaiterHost = async (): Promise<boolean> =>
 		),
 	);
 
-export const clearProxy = (): Promise<boolean> =>
-	new Promise<boolean>((resolve) => {
-		if (!chrome.proxy) {
-			resolve(false);
+export const clearProxy = async (): Promise<boolean> => {
+	const proxyApi = getProxyApi();
 
-			return;
+	if (!proxyApi) {
+		return false;
+	}
+
+	proxySet = false;
+
+	if (!proxySet) {
+		clearAuthInterceptor();
+		triggerPromise(setWebRTCState(WebRTCState.CLEAR));
+	}
+
+	try {
+		if (typeof browser !== 'undefined' && browser.proxy?.settings?.clear) {
+			await browser.proxy.settings.clear({});
+
+			return true;
 		}
 
-		proxySet = false;
-		chrome.proxy.settings.clear({}, (success: boolean | void) => {
-			if (!proxySet) {
-				clearAuthInterceptor();
-				triggerPromise(setWebRTCState(WebRTCState.CLEAR));
-			}
+		if (proxyApi.settings?.clear) {
+			return await new Promise<boolean>((resolve) => {
+				try {
+					const r = proxyApi.settings.clear({}, (success: boolean | void) => {
+						resolve(success !== false);
+					});
+					if (r && typeof r.then === 'function') {
+						r.then((s: any) => resolve(s !== false)).catch(() => resolve(false));
+					}
+				} catch {
+					resolve(false);
+				}
+			});
+		}
+	} catch {
+		return false;
+	}
 
-			resolve(Boolean(success));
-		});
-	});
+	return true;
+};

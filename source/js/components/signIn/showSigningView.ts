@@ -4,7 +4,10 @@ import {openForkTab} from '../../account/openForkTab';
 import {triggerPromise} from '../../tools/triggerPromise';
 import {initOnboarding} from '../../vpn/initOnboarding';
 import {requiresToAskConsentForOptionalMetricsEarly} from './requiresToAskConsentForOptionalMetricsEarly';
-import {proxyPermission} from '../../vpn/proxyPermission';
+import {
+	checkProxyPermission,
+	requestProxyPermission,
+} from '../../vpn/proxyPermission';
 import {signupEnabled} from '../../config';
 import {sendMessageToBackground} from '../../tools/sendMessageToBackground';
 import {PermissionGrant} from '../../messaging/MessageType';
@@ -17,6 +20,7 @@ import {getErrorAsString} from '../../tools/getErrorMessage';
 import {handleError} from '../../tools/sentry';
 import {setDisplayStyle} from '../../tools/setDisplayStyle';
 import {getOauthConfig} from '../../account/partner/oauth';
+import {warn} from '../../log/log';
 import {
 	getServerCountLastCheck,
 	initializeInlineParagraph,
@@ -48,23 +52,25 @@ export const showSigningViewAndWaitForItToBeLoaded = async (
 		return openForkTab();
 	}
 
+	const hasProxy = !!(
+		chrome.proxy ||
+		(typeof browser !== 'undefined' && browser.proxy)
+	);
+
 	proxySupported = !!(typeof proxySupported === 'undefined'
-		? chrome.proxy
-		: proxySupported && chrome.proxy);
+		? hasProxy
+		: proxySupported && hasProxy);
 
 	if (proxySupported) {
-		chrome.permissions.contains(proxyPermission, (ok) => {
-			if (!ok) {
-				triggerPromise(
-					showSigningViewAndWaitForItToBeLoaded(
-						signInView,
-						loggedView,
-						spinner,
-						false,
-					),
-				);
-			}
-		});
+		const hasPermission = await checkProxyPermission();
+		if (!hasPermission) {
+			return showSigningViewAndWaitForItToBeLoaded(
+				signInView,
+				loggedView,
+				spinner,
+				false,
+			);
+		}
 	}
 
 	const signUp = signInView.querySelector(
@@ -115,11 +121,11 @@ export const showSigningViewAndWaitForItToBeLoaded = async (
 	prepareSigningView()?.catch(showUpdateError('prepareSigningView'));
 
 	if (await requiresToAskConsentForOptionalMetricsEarly()) {
-		await initOnboarding();
-
-		window?.close();
-
-		return;
+		try {
+			await initOnboarding();
+		} catch (e) {
+			warn(e);
+		}
 	}
 
 	setSignInButtonLabel(
@@ -175,20 +181,22 @@ export const showSigningViewAndWaitForItToBeLoaded = async (
 	setDisplayStyle(spinner, 'none');
 
 	const openSignInTab = async (partnerId: string | undefined) => {
-		const timer = setTimeout(() => {
-			window?.close();
-		}, 200);
+		let granted = false;
+		try {
+			granted = await requestProxyPermission();
+		} catch (e) {
+			warn(e);
+		}
 
-		if (!(await browser.permissions.request(proxyPermission))) {
+		if (!granted) {
 			return;
 		}
 
-		// If proxy has been just granted (was not granted before and request didn't make us quit the function
+		// If proxy has been just granted (was not granted before and request didn't make us quit the function)
 		if (!proxySupported) {
 			triggerPromise(sendMessageToBackground(PermissionGrant.PROXY));
 		}
 
-		clearTimeout(timer);
 		await openForkTab({
 			partnerId,
 		});
@@ -283,6 +291,15 @@ export const showSigningView = (
 			loggedView,
 			spinner,
 			proxySupported,
-		),
+		).catch((err) => {
+			if (spinner) {
+				spinner.style.display = 'none';
+			}
+			if (signInView) {
+				signInView.style.display = 'block';
+			}
+			handleError(err);
+		}),
 	);
 };
+

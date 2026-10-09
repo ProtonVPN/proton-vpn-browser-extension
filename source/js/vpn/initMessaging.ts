@@ -53,22 +53,30 @@ export const initMessaging = () => {
 
 		if (message.respondTo === 'broadcast') {
 			promise.then((response) => {
-				triggerPromise(
-					runtime.sendMessage(runtime.id, {
-						type: 'answer:' + message.requestId,
-						respondTo: 'none',
-						data: (() => {
-							try {
-								return JSON.parse(JSON.stringify(response));
-							} catch (error) {
-								return {result: {error: `${error}`}};
-							}
-						})(),
-					}),
-				);
+				const answerMessage = {
+					type: 'answer:' + message.requestId,
+					respondTo: 'none',
+					data: (() => {
+						try {
+							return JSON.parse(JSON.stringify(response));
+						} catch (error) {
+							return {result: {error: `${error}`}};
+						}
+					})(),
+				};
+
+				try {
+					if (typeof browser !== 'undefined' && browser.runtime?.sendMessage) {
+						triggerPromise(browser.runtime.sendMessage(answerMessage));
+					} else {
+						triggerPromise((runtime.sendMessage as any)(answerMessage));
+					}
+				} catch {
+					// Broadcast answer failed, caller can still resolve via returned promise
+				}
 			});
 
-			return undefined;
+			return promise;
 		}
 
 		return promise;

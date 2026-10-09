@@ -10,7 +10,7 @@ const handleProxyRequest = (
 	getCurrentStateIfDefined()?.handleProxyRequest?.(requestInfo);
 
 export const setupHandleProxyRequest = (): boolean => {
-	const proxy = chrome.proxy as any;
+	const proxy = ((typeof browser !== 'undefined' && browser.proxy) || chrome.proxy) as any;
 
 	if (!proxy) {
 		return false;

@@ -5,7 +5,19 @@ import {triggerPromise} from './tools/triggerPromise';
 import {handleError} from './tools/sentry';
 
 ((body) => {
-	triggerPromise(start(body));
+	triggerPromise(
+		start(body).catch((err) => {
+			const spinner = body.querySelector<HTMLElement>('#spinner');
+			if (spinner) {
+				spinner.style.display = 'none';
+			}
+			const signInView = body.querySelector<HTMLElement>('#sign-in-view');
+			if (signInView) {
+				signInView.style.display = 'block';
+			}
+			handleError(err);
+		}),
+	);
 
 	window.addEventListener(
 		'message',
