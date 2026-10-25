@@ -127,6 +127,9 @@
 			],
 			"Visit Support Center": [
 				"Obiščite center za podporo"
+			],
+			"Reconnect": [
+				"Ponovno poveži"
 			]
 		},
 		"Action: City-level button": {
@@ -238,6 +241,9 @@
 			],
 			"Unlock global streaming services": [
 				"Odklenite globalne storitve pretakanja"
+			],
+			"Unable to reconnect, please try again.": [
+				"Ponovna povezava ni uspela, poskusite znova."
 			]
 		},
 		"Info": {
@@ -525,6 +531,27 @@
 			],
 			"You're signed in": [
 				"Prijavljeni ste"
+			],
+			"Connection lost. To avoid leaks, browsing is blocked until you reconnect or disconnect.": [
+				"Povezava je bila prekinjena. Da preprečimo uhajanje, je brskanje blokirano, dokler se ne povežete znova ali prekinete povezave."
+			],
+			"Internet not working? Disconnect to restore it.": [
+				"Internet ne deluje? Prekinite povezavo, da ga obnovite."
+			],
+			"Reconnect to keep browsing safely, or disconnect to browse without VPN.": [
+				"Znova se povežite za nadaljevanje varnega brskanja ali prekinite povezavo za brskanje brez VPN."
+			],
+			"Reconnecting…": [
+				"Ponovno povezovanje…"
+			],
+			"The VPN connection was lost": [
+				"Povezava VPN je bila prekinjena"
+			],
+			"To avoid leaking your real IP address, the kill switch blocked this page.": [
+				"Da preprečimo razkritje vašega pravega naslova IP, je Kill Switch blokiral to stran."
+			],
+			"Traffic blocked - Proton VPN": [
+				"Promet blokiran - Proton VPN"
 			]
 		},
 		"Label": {
@@ -620,6 +647,12 @@
 			],
 			"WebRTC leak protection": [
 				"Zaščita pred uhajanjem WebRTC"
+			],
+			"Connection issue": [
+				"Težava s povezavo"
+			],
+			"Traffic blocked": [
+				"Promet blokiran"
 			]
 		},
 		"Menu": {

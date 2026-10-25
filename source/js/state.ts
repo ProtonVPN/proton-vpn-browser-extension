@@ -27,7 +27,12 @@ import {
 import type {Credentials} from './account/credentials/Credentials';
 import {getCountryAndCoordinates} from './account/getLocation';
 import {setButton} from './tools/browserAction';
-import {clearProxy, hasProxy, proxyToServer} from './tools/proxy';
+import {
+	clearProxy,
+	hasProxy,
+	proxyToServer,
+	setProxyToWaiterHost,
+} from './tools/proxy';
 import {
 	authCheck,
 	excludeApiFromProxy,
@@ -100,6 +105,7 @@ import {
 } from './vpn/reviewInfo';
 import {getBypassList} from './vpn/getBypassList';
 import {getIncludeOnlyList} from './vpn/getIncludeOnlyList';
+import {Storage, storage} from './tools/storage';
 import OnAuthRequiredDetails = chrome.webRequest.OnAuthRequiredDetails;
 import OnRequestDetails = browser.proxy._OnRequestDetails;
 
@@ -169,6 +175,60 @@ export function getAuthCredentials(
 	return undefined;
 }
 
+/**
+ * Kill switch: once the user got protected, failures (sleep, network loss, server down) must never
+ * fall back to direct traffic. Traffic stays blocked until the user explicitly disconnects or logs out.
+ * API and local network stay reachable (bypass list) so the extension can still reconnect.
+ */
+const killSwitch = storage.item<{value: boolean; server?: ProxyServer}>(
+	'killSwitch',
+	Storage.SESSION,
+);
+let protectionWanted = false;
+let killSwitchRestored = false;
+/** Last server the user was protected by, to offer reconnection while blocked. */
+let lastProtectedServer: ProxyServer | undefined;
+
+const setProtectionWanted = (wanted: boolean, server?: ProxyServer) => {
+	killSwitchRestored = true; // An explicit change wins over the stored value
+	protectionWanted = wanted;
+	lastProtectedServer = wanted ? server || lastProtectedServer : undefined;
+	triggerPromise(killSwitch.setValue(wanted, {server: lastProtectedServer}));
+};
+
+export const reconnectLastServer = async () => {
+	await restoreKillSwitch();
+	const server = lastProtectedServer || (await killSwitch.get())?.server;
+
+	if (server) {
+		await connect({server});
+	}
+};
+
+/** Requests fail because of the kill switch, not because of a passing proxy hiccup. */
+export const isKillSwitchBlocking = () =>
+	protectionWanted &&
+	(currentState?.name !== 'on' || !!currentState.data.error);
+
+/** Background may restart while blocked (e.g. Chrome service worker during sleep). */
+export const restoreKillSwitch = async () => {
+	if (killSwitchRestored) {
+		return;
+	}
+
+	const stored = !!(await killSwitch.get())?.value;
+
+	if (!killSwitchRestored) {
+		killSwitchRestored = true;
+		protectionWanted = stored;
+	}
+};
+
+export const isProtectionWanted = () => protectionWanted;
+
+/** Same dead end as setProxyToWaiterHost(): requests fail instead of leaking. */
+const blockedProxyInfo: ProxyInfo = {type: scheme, host: 'localhost', port: 9};
+
 // **** Logged in and connected ****
 const onState = asConnectionStateSwitch({
 	name: 'on',
@@ -236,6 +296,9 @@ const onState = asConnectionStateSwitch({
 		}
 
 		this.proxyEnabled = true;
+		setProtectionWanted(true, server);
+		// Every (re)connection path goes through here, keep the toolbar icon in sync
+		setButton('on', `${c('Label').t`Protected`} - ${server.name || ''}`);
 		triggerPromise(this.checkLogicalIsUp(credentials));
 
 		setReviewInfoStateLastSeenConnected();
@@ -511,11 +574,12 @@ const onState = asConnectionStateSwitch({
 						logOut(true);
 					}
 
-					return {type: 'direct'};
+					return protectionWanted ? blockedProxyInfo : {type: 'direct'};
 				});
 			});
 
-		return tryCredentials(3);
+		// Firefox falls back to direct traffic when this rejects (e.g. API timeout), block instead
+		return tryCredentials(3).catch(() => blockedProxyInfo);
 	},
 
 	async handleProxyAuthentication(
@@ -603,11 +667,33 @@ const offState: ConnectionStateSwitch = {
 					: error;
 		}
 
-		notifyStateChange('disconnected', {error});
+		await restoreKillSwitch();
+
+		// Reconnected in the meantime: don't put back the error icon or the blocking proxy
+		if (currentState !== this) {
+			return;
+		}
+
+		currentState.data.blocked = protectionWanted;
+		notifyStateChange('disconnected', {error, blocked: protectionWanted});
 
 		setButton(error ? 'error' : 'off', error && getErrorAsString(error));
 
-		await clearProxy();
+		await (protectionWanted ? setProxyToWaiterHost() : clearProxy());
+	},
+	handleProxyRequest(requestDetails: OnRequestDetails): ProxyInfo {
+		if (
+			!protectionWanted ||
+			isExcludedFromProxy(
+				requestDetails,
+				excludeApiFromProxy,
+				proxyLocalNetworkExclusion,
+			)
+		) {
+			return {type: 'direct'};
+		}
+
+		return blockedProxyInfo;
 	},
 	async refreshState(): Promise<void> {
 		if (
@@ -645,6 +731,7 @@ export function logIn() {
 }
 
 export function logOut(deleteSession: boolean) {
+	setProtectionWanted(false);
 	switchState(loggedoutState);
 	storedSession.get().then(async (session) => {
 		forgetUser();
@@ -667,6 +754,9 @@ export function logOut(deleteSession: boolean) {
 export function disconnect(error?: ApiError | Error | ErrorDump | undefined) {
 	if (error) {
 		setReviewInfoStateOnFailedConnection();
+	} else {
+		// Explicit disconnection: the only way (with logout) to lift the kill switch
+		setProtectionWanted(false);
 	}
 
 	emitNotification(

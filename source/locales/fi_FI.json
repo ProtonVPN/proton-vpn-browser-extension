@@ -127,6 +127,9 @@
 			],
 			"Visit Support Center": [
 				"Avaa Tukikeskus"
+			],
+			"Reconnect": [
+				"Yhdistä uudelleen"
 			]
 		},
 		"Action: City-level button": {
@@ -232,6 +235,9 @@
 			],
 			"Unlock global streaming services": [
 				"Käytä suoratoistopalveluita eri puolilta maailmaa"
+			],
+			"Unable to reconnect, please try again.": [
+				"Uudelleenyhdistäminen epäonnistui, yritä uudelleen."
 			]
 		},
 		"Info": {
@@ -515,6 +521,27 @@
 			],
 			"You're signed in": [
 				"Olet kirjautunut"
+			],
+			"Connection lost. To avoid leaks, browsing is blocked until you reconnect or disconnect.": [
+				"Yhteys katkesi. Vuotojen estämiseksi selaaminen on estetty, kunnes yhdistät uudelleen tai katkaiset yhteyden."
+			],
+			"Internet not working? Disconnect to restore it.": [
+				"Eikö internet toimi? Katkaise yhteys palauttaaksesi sen."
+			],
+			"Reconnect to keep browsing safely, or disconnect to browse without VPN.": [
+				"Yhdistä uudelleen jatkaaksesi turvallista selaamista tai katkaise yhteys selataksesi ilman VPN:ää."
+			],
+			"Reconnecting…": [
+				"Yhdistetään uudelleen…"
+			],
+			"The VPN connection was lost": [
+				"VPN-yhteys katkesi"
+			],
+			"To avoid leaking your real IP address, the kill switch blocked this page.": [
+				"Kill Switch esti tämän sivun, jotta todellinen IP-osoitteesi ei paljastuisi."
+			],
+			"Traffic blocked - Proton VPN": [
+				"Liikenne estetty - Proton VPN"
 			]
 		},
 		"Label": {
@@ -602,6 +629,12 @@
 			],
 			"WebRTC leak protection": [
 				"WebRTC-vuotosuojaus"
+			],
+			"Connection issue": [
+				"Yhteysongelma"
+			],
+			"Traffic blocked": [
+				"Liikenne estetty"
 			]
 		},
 		"Menu": {

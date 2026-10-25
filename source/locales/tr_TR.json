@@ -127,6 +127,9 @@
 			],
 			"Visit Support Center": [
 				"Destek merkezine git"
+			],
+			"Reconnect": [
+				"Yeniden bağlan"
 			]
 		},
 		"Action: City-level button": {
@@ -232,6 +235,9 @@
 			],
 			"Unlock global streaming services": [
 				"Tüm dünyaradaki yayın akışı hizmetlerine erişin"
+			],
+			"Unable to reconnect, please try again.": [
+				"Yeniden bağlanılamadı, lütfen tekrar deneyin."
 			]
 		},
 		"Info": {
@@ -515,6 +521,27 @@
 			],
 			"You're signed in": [
 				"Oturum açtınız"
+			],
+			"Connection lost. To avoid leaks, browsing is blocked until you reconnect or disconnect.": [
+				"Bağlantı koptu. Sızıntıları önlemek için yeniden bağlanana veya bağlantıyı kesene kadar gezinme engellendi."
+			],
+			"Internet not working? Disconnect to restore it.": [
+				"İnternet çalışmıyor mu? Geri getirmek için bağlantıyı kesin."
+			],
+			"Reconnect to keep browsing safely, or disconnect to browse without VPN.": [
+				"Güvenle gezinmeye devam etmek için yeniden bağlanın veya VPN olmadan gezinmek için bağlantıyı kesin."
+			],
+			"Reconnecting…": [
+				"Yeniden bağlanılıyor…"
+			],
+			"The VPN connection was lost": [
+				"VPN bağlantısı koptu"
+			],
+			"To avoid leaking your real IP address, the kill switch blocked this page.": [
+				"Gerçek IP adresinizin sızmasını önlemek için Kill Switch bu sayfayı engelledi."
+			],
+			"Traffic blocked - Proton VPN": [
+				"Trafik engellendi - Proton VPN"
 			]
 		},
 		"Label": {
@@ -602,6 +629,12 @@
 			],
 			"WebRTC leak protection": [
 				"WebRTC sızıntı koruması"
+			],
+			"Connection issue": [
+				"Bağlantı sorunu"
+			],
+			"Traffic blocked": [
+				"Trafik engellendi"
 			]
 		},
 		"Menu": {

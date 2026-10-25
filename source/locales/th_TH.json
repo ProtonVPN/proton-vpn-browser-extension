@@ -118,6 +118,9 @@
 			],
 			"Visit Support Center": [
 				"ไปที่ศูนย์บริการฝ่ายสนับสนุน"
+			],
+			"Reconnect": [
+				"เชื่อมต่อใหม่"
 			]
 		},
 		"Action: City-level button": {
@@ -203,6 +206,9 @@
 			],
 			"Unlock global streaming services": [
 				"ปลดล็อกบริการการสตรีมทั่วโลก"
+			],
+			"Unable to reconnect, please try again.": [
+				"ไม่สามารถเชื่อมต่อใหม่ได้ โปรดลองอีกครั้ง"
 			]
 		},
 		"Info": {
@@ -448,6 +454,27 @@
 			],
 			"You're signed in": [
 				"เข้าสู่ระบบแล้ว"
+			],
+			"Connection lost. To avoid leaks, browsing is blocked until you reconnect or disconnect.": [
+				"การเชื่อมต่อขาดหาย เพื่อป้องกันการรั่วไหล การท่องเว็บจะถูกบล็อกจนกว่าคุณจะเชื่อมต่อใหม่หรือยกเลิกการเชื่อมต่อ"
+			],
+			"Internet not working? Disconnect to restore it.": [
+				"อินเทอร์เน็ตใช้งานไม่ได้ใช่ไหม ยกเลิกการเชื่อมต่อเพื่อกู้คืน"
+			],
+			"Reconnect to keep browsing safely, or disconnect to browse without VPN.": [
+				"เชื่อมต่อใหม่เพื่อท่องเว็บอย่างปลอดภัยต่อไป หรือยกเลิกการเชื่อมต่อเพื่อท่องเว็บโดยไม่ใช้ VPN"
+			],
+			"Reconnecting…": [
+				"กำลังเชื่อมต่อใหม่…"
+			],
+			"The VPN connection was lost": [
+				"การเชื่อมต่อ VPN ขาดหาย"
+			],
+			"To avoid leaking your real IP address, the kill switch blocked this page.": [
+				"Kill Switch ได้บล็อกหน้านี้เพื่อป้องกันไม่ให้ที่อยู่ IP จริงของคุณรั่วไหล"
+			],
+			"Traffic blocked - Proton VPN": [
+				"การรับส่งข้อมูลถูกบล็อก - Proton VPN"
 			]
 		},
 		"Label": {
@@ -531,6 +558,12 @@
 			],
 			"WebRTC leak protection": [
 				"การป้องกันการรั่วไหลของ WebRTC"
+			],
+			"Connection issue": [
+				"ปัญหาการเชื่อมต่อ"
+			],
+			"Traffic blocked": [
+				"การรับส่งข้อมูลถูกบล็อก"
 			]
 		},
 		"Menu": {

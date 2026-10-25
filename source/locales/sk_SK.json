@@ -127,6 +127,9 @@
 			],
 			"Visit Support Center": [
 				"Navštíviť Centrum podpory"
+			],
+			"Reconnect": [
+				"Znova pripojiť"
 			]
 		},
 		"Action: City-level button": {
@@ -238,6 +241,9 @@
 			],
 			"Unlock global streaming services": [
 				"Odomknite globálne streamovacie služby"
+			],
+			"Unable to reconnect, please try again.": [
+				"Nepodarilo sa znova pripojiť, skúste to prosím znova."
 			]
 		},
 		"Info": {
@@ -525,6 +531,27 @@
 			],
 			"You're signed in": [
 				"Ste prihlásený"
+			],
+			"Connection lost. To avoid leaks, browsing is blocked until you reconnect or disconnect.": [
+				"Pripojenie sa stratilo. Aby nedošlo k úniku, prehliadanie je zablokované, kým sa znova nepripojíte alebo neodpojíte."
+			],
+			"Internet not working? Disconnect to restore it.": [
+				"Nefunguje internet? Odpojte sa a obnovte ho."
+			],
+			"Reconnect to keep browsing safely, or disconnect to browse without VPN.": [
+				"Znova sa pripojte a pokračujte v bezpečnom prehliadaní, alebo sa odpojte a prehliadajte bez VPN."
+			],
+			"Reconnecting…": [
+				"Opätovné pripájanie…"
+			],
+			"The VPN connection was lost": [
+				"Pripojenie VPN sa stratilo"
+			],
+			"To avoid leaking your real IP address, the kill switch blocked this page.": [
+				"Aby nedošlo k úniku vašej skutočnej IP adresy, Kill Switch zablokoval túto stránku."
+			],
+			"Traffic blocked - Proton VPN": [
+				"Prevádzka zablokovaná - Proton VPN"
 			]
 		},
 		"Label": {
@@ -620,6 +647,12 @@
 			],
 			"WebRTC leak protection": [
 				"Ochrana proti WebRTC úniku"
+			],
+			"Connection issue": [
+				"Problém s pripojením"
+			],
+			"Traffic blocked": [
+				"Prevádzka zablokovaná"
 			]
 		},
 		"Menu": {

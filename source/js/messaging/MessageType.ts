@@ -18,6 +18,7 @@ export enum BackgroundAction {
 	FORK = 'fork',
 	FORGET_ERROR = 'forgetError',
 	LOG = 'log',
+	RECONNECT = 'reconnect',
 }
 
 export enum BackgroundData {

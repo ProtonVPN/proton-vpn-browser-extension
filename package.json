@@ -46,7 +46,6 @@
 		"css-loader": "^7.0.0",
 		"css-minimizer-webpack-plugin": "^8.0.0",
 		"daily-version": "^2.0.0",
-		"decompress": "^4.2.1",
 		"eslint": "^10.0.0",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-import-resolver-typescript": "^4.4.4",

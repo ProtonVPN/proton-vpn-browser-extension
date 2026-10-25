@@ -3,6 +3,8 @@ import {
 	getCurrentState,
 	isCurrentStateConnected,
 	isLoggedIn,
+	isProtectionWanted,
+	restoreKillSwitch,
 	waitForReadyState,
 } from '../state';
 import {milliSeconds} from '../tools/milliSeconds';
@@ -20,6 +22,7 @@ const debug = bind(debug_, '[initState]');
 export const initState = async () => {
 	debug('Init state', new Error().stack);
 
+	await restoreKillSwitch();
 	await waitForReadyState();
 	const server = (await connectedServer.get())?.value;
 	debug(server);
@@ -34,11 +37,13 @@ export const initState = async () => {
 				state: 'disconnected',
 				server: undefined,
 				error: e as ApiError,
+				blocked: isProtectionWanted(),
 			});
 		}
 	}
 
-	if (!isCurrentStateConnected()) {
+	// Keep the waiter host proxy (traffic blocked) if the kill switch is on
+	if (!isCurrentStateConnected() && !isProtectionWanted()) {
 		await clearProxy();
 	}
 

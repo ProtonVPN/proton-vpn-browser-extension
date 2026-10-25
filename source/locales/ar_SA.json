@@ -127,6 +127,9 @@
 			],
 			"Visit Support Center": [
 				"مركز الدعم"
+			],
+			"Reconnect": [
+				"إعادة الاتصال"
 			]
 		},
 		"Action: City-level button": {
@@ -244,6 +247,9 @@
 			],
 			"Unlock global streaming services": [
 				"استمتع بالوصول إلى منصات المشاهدة العالمية"
+			],
+			"Unable to reconnect, please try again.": [
+				"تعذّرت إعادة الاتصال، يرجى المحاولة مرة أخرى."
 			]
 		},
 		"Info": {
@@ -527,6 +533,27 @@
 			],
 			"You're signed in": [
 				"تم تسجيل الدخول"
+			],
+			"Connection lost. To avoid leaks, browsing is blocked until you reconnect or disconnect.": [
+				"انقطع الاتصال. لتجنّب التسرّب، تم حظر التصفّح حتى تعيد الاتصال أو تقطع الاتصال."
+			],
+			"Internet not working? Disconnect to restore it.": [
+				"الإنترنت لا يعمل؟ اقطع الاتصال لاستعادته."
+			],
+			"Reconnect to keep browsing safely, or disconnect to browse without VPN.": [
+				"أعد الاتصال لمواصلة التصفّح بأمان، أو اقطع الاتصال للتصفّح بدون VPN."
+			],
+			"Reconnecting…": [
+				"جارٍ إعادة الاتصال…"
+			],
+			"The VPN connection was lost": [
+				"انقطع اتصال VPN"
+			],
+			"To avoid leaking your real IP address, the kill switch blocked this page.": [
+				"لتجنّب تسرّب عنوان IP الحقيقي الخاص بك، حظر Kill Switch هذه الصفحة."
+			],
+			"Traffic blocked - Proton VPN": [
+				"تم حظر حركة المرور - Proton VPN"
 			]
 		},
 		"Label": {
@@ -622,6 +649,12 @@
 			],
 			"WebRTC leak protection": [
 				"حماية WebRTC"
+			],
+			"Connection issue": [
+				"مشكلة في الاتصال"
+			],
+			"Traffic blocked": [
+				"تم حظر حركة المرور"
 			]
 		},
 		"Menu": {

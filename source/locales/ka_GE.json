@@ -127,6 +127,9 @@
 			],
 			"Visit Support Center": [
 				"ეწვიეთ მხარდაჭერის ცენტრს"
+			],
+			"Reconnect": [
+				"ხელახლა დაკავშირება"
 			]
 		},
 		"Action: City-level button": {
@@ -232,6 +235,9 @@
 			],
 			"Unlock global streaming services": [
 				"წვდომა გლობალური სტრიმინგის სერვისებთან"
+			],
+			"Unable to reconnect, please try again.": [
+				"ხელახლა დაკავშირება ვერ მოხერხდა, გთხოვთ, სცადოთ ხელახლა."
 			]
 		},
 		"Info": {
@@ -515,6 +521,27 @@
 			],
 			"You're signed in": [
 				"შესული ბრძანდებით"
+			],
+			"Connection lost. To avoid leaks, browsing is blocked until you reconnect or disconnect.": [
+				"კავშირი დაიკარგა. გაჟონვის თავიდან ასაცილებლად, დათვალიერება დაბლოკილია, სანამ ხელახლა არ დაუკავშირდებით ან არ გაითიშებით."
+			],
+			"Internet not working? Disconnect to restore it.": [
+				"ინტერნეტი არ მუშაობს? გაითიშეთ მის აღსადგენად."
+			],
+			"Reconnect to keep browsing safely, or disconnect to browse without VPN.": [
+				"ხელახლა დაუკავშირდით უსაფრთხოდ დათვალიერების გასაგრძელებლად, ან გაითიშეთ VPN-ის გარეშე დასათვალიერებლად."
+			],
+			"Reconnecting…": [
+				"ხელახლა დაკავშირება…"
+			],
+			"The VPN connection was lost": [
+				"VPN კავშირი დაიკარგა"
+			],
+			"To avoid leaking your real IP address, the kill switch blocked this page.": [
+				"თქვენი რეალური IP მისამართის გაჟონვის თავიდან ასაცილებლად, Kill Switch-მა ეს გვერდი დაბლოკა."
+			],
+			"Traffic blocked - Proton VPN": [
+				"ტრაფიკი დაბლოკილია - Proton VPN"
 			]
 		},
 		"Label": {
@@ -602,6 +629,12 @@
 			],
 			"WebRTC leak protection": [
 				"WebRTC-ის გაჟონვის უსაფრთხოება"
+			],
+			"Connection issue": [
+				"კავშირის პრობლემა"
+			],
+			"Traffic blocked": [
+				"ტრაფიკი დაბლოკილია"
 			]
 		},
 		"Menu": {

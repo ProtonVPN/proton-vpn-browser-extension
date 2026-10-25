@@ -118,6 +118,9 @@
 			],
 			"Visit Support Center": [
 				"Truy cập Trung tâm hỗ trợ"
+			],
+			"Reconnect": [
+				"Kết nối lại"
 			]
 		},
 		"Action: City-level button": {
@@ -203,6 +206,9 @@
 			],
 			"Unlock global streaming services": [
 				"Mở khóa các dịch vụ phát trực tuyến toàn cầu"
+			],
+			"Unable to reconnect, please try again.": [
+				"Không thể kết nối lại, vui lòng thử lại."
 			]
 		},
 		"Info": {
@@ -448,6 +454,27 @@
 			],
 			"You're signed in": [
 				"Bạn đã đăng nhập"
+			],
+			"Connection lost. To avoid leaks, browsing is blocked until you reconnect or disconnect.": [
+				"Mất kết nối. Để tránh rò rỉ, việc duyệt web bị chặn cho đến khi bạn kết nối lại hoặc ngắt kết nối."
+			],
+			"Internet not working? Disconnect to restore it.": [
+				"Internet không hoạt động? Ngắt kết nối để khôi phục."
+			],
+			"Reconnect to keep browsing safely, or disconnect to browse without VPN.": [
+				"Kết nối lại để tiếp tục duyệt web an toàn, hoặc ngắt kết nối để duyệt web không dùng VPN."
+			],
+			"Reconnecting…": [
+				"Đang kết nối lại…"
+			],
+			"The VPN connection was lost": [
+				"Kết nối VPN đã bị mất"
+			],
+			"To avoid leaking your real IP address, the kill switch blocked this page.": [
+				"Để tránh làm lộ địa chỉ IP thật của bạn, Kill Switch đã chặn trang này."
+			],
+			"Traffic blocked - Proton VPN": [
+				"Lưu lượng bị chặn - Proton VPN"
 			]
 		},
 		"Label": {
@@ -531,6 +558,12 @@
 			],
 			"WebRTC leak protection": [
 				"Bảo vệ chống rò rỉ WebRTC"
+			],
+			"Connection issue": [
+				"Sự cố kết nối"
+			],
+			"Traffic blocked": [
+				"Lưu lượng bị chặn"
 			]
 		},
 		"Menu": {

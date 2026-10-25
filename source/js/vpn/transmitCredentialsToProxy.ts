@@ -68,5 +68,11 @@ export const transmitCredentialsToProxy = (
 	username: string | undefined,
 	password: string | undefined,
 ): void => {
+	// Firefox sends credentials with each request (proxyAuthorizationHeader in proxy.onRequest),
+	// and its HTTPS-Only mode upgrades this plain HTTP request so the proxy can't read it (400).
+	if ((chrome.proxy as any)?.onRequest) {
+		return;
+	}
+
 	catchPromise(nudge(host, username, password, 1, 300));
 };

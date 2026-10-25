@@ -127,6 +127,9 @@
 			],
 			"Visit Support Center": [
 				"Відвідайте довідковий центр"
+			],
+			"Reconnect": [
+				"Перепідключитися"
 			]
 		},
 		"Action: City-level button": {
@@ -238,6 +241,9 @@
 			],
 			"Unlock global streaming services": [
 				"Розблокуйте глобальні сервіси потокової трансляції"
+			],
+			"Unable to reconnect, please try again.": [
+				"Не вдалося перепідключитися, спробуйте ще раз."
 			]
 		},
 		"Info": {
@@ -525,6 +531,27 @@
 			],
 			"You're signed in": [
 				"Ви увійшли до системи"
+			],
+			"Connection lost. To avoid leaks, browsing is blocked until you reconnect or disconnect.": [
+				"З'єднання втрачено. Щоб уникнути витоків, перегляд заблоковано, доки ви не перепідключитеся або не від'єднаєтеся."
+			],
+			"Internet not working? Disconnect to restore it.": [
+				"Інтернет не працює? Від'єднайтеся, щоб відновити його."
+			],
+			"Reconnect to keep browsing safely, or disconnect to browse without VPN.": [
+				"Перепідключіться, щоб продовжити безпечний перегляд, або від'єднайтеся, щоб переглядати без VPN."
+			],
+			"Reconnecting…": [
+				"Перепідключення…"
+			],
+			"The VPN connection was lost": [
+				"З'єднання VPN втрачено"
+			],
+			"To avoid leaking your real IP address, the kill switch blocked this page.": [
+				"Щоб уникнути витоку вашої справжньої IP-адреси, Kill Switch заблокував цю сторінку."
+			],
+			"Traffic blocked - Proton VPN": [
+				"Трафік заблоковано - Proton VPN"
 			]
 		},
 		"Label": {
@@ -620,6 +647,12 @@
 			],
 			"WebRTC leak protection": [
 				"Захист від витоку WebRTC"
+			],
+			"Connection issue": [
+				"Проблема з'єднання"
+			],
+			"Traffic blocked": [
+				"Трафік заблоковано"
 			]
 		},
 		"Menu": {

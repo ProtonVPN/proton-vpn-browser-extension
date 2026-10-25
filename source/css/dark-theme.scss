@@ -82,6 +82,16 @@
 		&.danger::after {
 			box-shadow: 0 0 $shadow-width $shadow-height rgb(240, 143, 164, 0.5);
 		}
+
+		&.warning .protection-icon,
+		&.warning .protection-status {
+			color: rgb(255, 176, 85);
+			fill: rgb(255, 176, 85);
+		}
+
+		&.warning::after {
+			box-shadow: 0 0 $shadow-width $shadow-height rgb(255, 176, 85, 0.5);
+		}
 	}
 
 	input[type="text"]:focus {

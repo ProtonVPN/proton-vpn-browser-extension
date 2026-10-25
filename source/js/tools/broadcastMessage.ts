@@ -14,6 +14,7 @@ export type ChangeStateMessage = BroadcastMessage<
 		state: 'connected' | 'connecting' | 'logged-out' | 'disconnected';
 		server?: ProxyServer;
 		error?: ApiError;
+		blocked?: boolean;
 	}
 >;
 

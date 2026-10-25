@@ -127,6 +127,9 @@
 			],
 			"Visit Support Center": [
 				"Επισκεφτείτε το Κέντρο Υποστήριξης"
+			],
+			"Reconnect": [
+				"Επανασύνδεση"
 			]
 		},
 		"Action: City-level button": {
@@ -232,6 +235,9 @@
 			],
 			"Unlock global streaming services": [
 				"Ξεκλειδώστε παγκόσμιες υπηρεσίες μετάδοσης"
+			],
+			"Unable to reconnect, please try again.": [
+				"Δεν ήταν δυνατή η επανασύνδεση, δοκιμάστε ξανά."
 			]
 		},
 		"Info": {
@@ -515,6 +521,27 @@
 			],
 			"You're signed in": [
 				"Είστε συνδεδεμένοι"
+			],
+			"Connection lost. To avoid leaks, browsing is blocked until you reconnect or disconnect.": [
+				"Η σύνδεση χάθηκε. Για αποφυγή διαρροών, η περιήγηση έχει αποκλειστεί μέχρι να επανασυνδεθείτε ή να αποσυνδεθείτε."
+			],
+			"Internet not working? Disconnect to restore it.": [
+				"Το διαδίκτυο δεν λειτουργεί; Αποσυνδεθείτε για να το επαναφέρετε."
+			],
+			"Reconnect to keep browsing safely, or disconnect to browse without VPN.": [
+				"Επανασυνδεθείτε για να συνεχίσετε την ασφαλή περιήγηση ή αποσυνδεθείτε για περιήγηση χωρίς VPN."
+			],
+			"Reconnecting…": [
+				"Επανασύνδεση…"
+			],
+			"The VPN connection was lost": [
+				"Η σύνδεση VPN χάθηκε"
+			],
+			"To avoid leaking your real IP address, the kill switch blocked this page.": [
+				"Για να αποφευχθεί η διαρροή της πραγματικής σας διεύθυνσης IP, το Kill Switch απέκλεισε αυτή τη σελίδα."
+			],
+			"Traffic blocked - Proton VPN": [
+				"Η κίνηση αποκλείστηκε - Proton VPN"
 			]
 		},
 		"Label": {
@@ -602,6 +629,12 @@
 			],
 			"WebRTC leak protection": [
 				"Προστασία από διαρροές WebRTC"
+			],
+			"Connection issue": [
+				"Πρόβλημα σύνδεσης"
+			],
+			"Traffic blocked": [
+				"Η κίνηση αποκλείστηκε"
 			]
 		},
 		"Menu": {

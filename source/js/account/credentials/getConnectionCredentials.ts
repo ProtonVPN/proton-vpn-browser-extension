@@ -1,6 +1,7 @@
 'use background';
 import type {Credentials} from './Credentials';
 import type {ApiError} from '../../api';
+import {broadcastMessage} from '../../tools/broadcastMessage';
 import {
 	isForbiddenError,
 	isInvalidTokenError,
@@ -127,6 +128,10 @@ const fetchConnectionCredentialsRequest = async (
 			const serverName = stateData.server?.name || '';
 
 			setButton('on', `${c('Label').t`Protected`} - ${serverName}`);
+			broadcastMessage('changeState', {
+				state: 'connected',
+				server: stateData.server,
+			});
 		}
 
 		return credentials;

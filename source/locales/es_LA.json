@@ -127,6 +127,9 @@
 			],
 			"Visit Support Center": [
 				"Visitar el centro de soporte"
+			],
+			"Reconnect": [
+				"Reconectar"
 			]
 		},
 		"Action: City-level button": {
@@ -232,6 +235,9 @@
 			],
 			"Unlock global streaming services": [
 				"Desbloquee servicios de transmisión global"
+			],
+			"Unable to reconnect, please try again.": [
+				"No se pudo reconectar. Inténtalo de nuevo."
 			]
 		},
 		"Info": {
@@ -515,6 +521,27 @@
 			],
 			"You're signed in": [
 				"Sesión iniciada"
+			],
+			"Connection lost. To avoid leaks, browsing is blocked until you reconnect or disconnect.": [
+				"Se perdió la conexión. Para evitar filtraciones, la navegación está bloqueada hasta que te reconectes o te desconectes."
+			],
+			"Internet not working? Disconnect to restore it.": [
+				"¿No funciona internet? Desconéctate para restablecerlo."
+			],
+			"Reconnect to keep browsing safely, or disconnect to browse without VPN.": [
+				"Reconéctate para seguir navegando de forma segura, o desconéctate para navegar sin VPN."
+			],
+			"Reconnecting…": [
+				"Reconectando…"
+			],
+			"The VPN connection was lost": [
+				"Se perdió la conexión VPN"
+			],
+			"To avoid leaking your real IP address, the kill switch blocked this page.": [
+				"Para evitar que se filtre tu dirección IP real, el Kill Switch bloqueó esta página."
+			],
+			"Traffic blocked - Proton VPN": [
+				"Tráfico bloqueado - Proton VPN"
 			]
 		},
 		"Label": {
@@ -602,6 +629,12 @@
 			],
 			"WebRTC leak protection": [
 				"Protección contra filtraciones de WebRTC"
+			],
+			"Connection issue": [
+				"Problema de conexión"
+			],
+			"Traffic blocked": [
+				"Tráfico bloqueado"
 			]
 		},
 		"Menu": {

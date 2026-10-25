@@ -82,6 +82,9 @@
 			],
 			"Visit Support Center": [
 				"मदद केंद्र पे जाएं"
+			],
+			"Reconnect": [
+				"फिर से कनेक्ट करें"
 			]
 		},
 		"Action: City-level button": {
@@ -167,6 +170,9 @@
 			],
 			"Unlock global streaming services": [
 				"दुनियाभर की स्ट्रीमिंग सेवाएं अनलॉक करें"
+			],
+			"Unable to reconnect, please try again.": [
+				"फिर से कनेक्ट नहीं हो सका, कृपया दोबारा कोशिश करें।"
 			]
 		},
 		"Info": {
@@ -329,6 +335,27 @@
 			],
 			"You're signed in": [
 				"आप साइनइन हैं"
+			],
+			"Connection lost. To avoid leaks, browsing is blocked until you reconnect or disconnect.": [
+				"कनेक्शन टूट गया। लीक से बचने के लिए, ब्राउज़िंग तब तक ब्लॉक है जब तक आप फिर से कनेक्ट या डिस्कनेक्ट नहीं करते।"
+			],
+			"Internet not working? Disconnect to restore it.": [
+				"इंटरनेट काम नहीं कर रहा? इसे बहाल करने के लिए डिस्कनेक्ट करें।"
+			],
+			"Reconnect to keep browsing safely, or disconnect to browse without VPN.": [
+				"सुरक्षित रूप से ब्राउज़ करते रहने के लिए फिर से कनेक्ट करें, या VPN के बिना ब्राउज़ करने के लिए डिस्कनेक्ट करें।"
+			],
+			"Reconnecting…": [
+				"फिर से कनेक्ट हो रहा है…"
+			],
+			"The VPN connection was lost": [
+				"VPN कनेक्शन टूट गया"
+			],
+			"To avoid leaking your real IP address, the kill switch blocked this page.": [
+				"आपका असली IP पता लीक होने से बचाने के लिए, Kill Switch ने यह पेज ब्लॉक कर दिया।"
+			],
+			"Traffic blocked - Proton VPN": [
+				"ट्रैफ़िक ब्लॉक किया गया - Proton VPN"
 			]
 		},
 		"Label": {
@@ -413,6 +440,12 @@
 			],
 			"WebRTC leak protection": [
 				"WebRTC लीक सुरक्षा"
+			],
+			"Connection issue": [
+				"कनेक्शन में समस्या"
+			],
+			"Traffic blocked": [
+				"ट्रैफ़िक ब्लॉक किया गया"
 			]
 		},
 		"Menu": {

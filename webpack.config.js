@@ -161,6 +161,7 @@ module.exports = (_, argv, options) => {
 			service: './source/js/service.ts',
 			background: './source/js/background.ts',
 			onboarding: './source/js/onboarding.ts',
+			blocked: './source/js/blocked.ts',
 			popup: './source/js/popup.ts',
 			transmit: './source/js/transmit.ts',
 			['css/popup']: './source/css/popup.scss',

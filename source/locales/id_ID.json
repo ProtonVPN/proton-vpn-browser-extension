@@ -118,6 +118,9 @@
 			],
 			"Visit Support Center": [
 				"Kunjungi Pusat Dukungan"
+			],
+			"Reconnect": [
+				"Hubungkan ulang"
 			]
 		},
 		"Action: City-level button": {
@@ -203,6 +206,9 @@
 			],
 			"Unlock global streaming services": [
 				"Akses berbagai layanan streaming global"
+			],
+			"Unable to reconnect, please try again.": [
+				"Tidak dapat menghubungkan ulang, silakan coba lagi."
 			]
 		},
 		"Info": {
@@ -448,6 +454,27 @@
 			],
 			"You're signed in": [
 				"Anda telah masuk"
+			],
+			"Connection lost. To avoid leaks, browsing is blocked until you reconnect or disconnect.": [
+				"Koneksi terputus. Untuk mencegah kebocoran, penjelajahan diblokir hingga Anda terhubung ulang atau memutuskan koneksi."
+			],
+			"Internet not working? Disconnect to restore it.": [
+				"Internet tidak berfungsi? Putuskan koneksi untuk memulihkannya."
+			],
+			"Reconnect to keep browsing safely, or disconnect to browse without VPN.": [
+				"Hubungkan ulang untuk terus menjelajah dengan aman, atau putuskan koneksi untuk menjelajah tanpa VPN."
+			],
+			"Reconnecting…": [
+				"Menghubungkan ulang…"
+			],
+			"The VPN connection was lost": [
+				"Koneksi VPN terputus"
+			],
+			"To avoid leaking your real IP address, the kill switch blocked this page.": [
+				"Untuk mencegah kebocoran alamat IP asli Anda, Kill Switch memblokir halaman ini."
+			],
+			"Traffic blocked - Proton VPN": [
+				"Lalu lintas diblokir - Proton VPN"
 			]
 		},
 		"Label": {
@@ -531,6 +558,12 @@
 			],
 			"WebRTC leak protection": [
 				"Perlindungan kebocoran WebRTC"
+			],
+			"Connection issue": [
+				"Masalah koneksi"
+			],
+			"Traffic blocked": [
+				"Lalu lintas diblokir"
 			]
 		},
 		"Menu": {

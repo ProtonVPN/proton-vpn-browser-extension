@@ -137,7 +137,45 @@ const state = {
 
 type Theme = 'dark' | 'light' | 'auto';
 
+/**
+ * When the background is stuck (e.g. after the computer wakes up), loading can
+ * take a while: explain it, then offer a way out so the user can get internet back.
+ */
+const showLoadingFallback = (area: HTMLElement) => {
+	const spinner = area.querySelector<HTMLElement>('#spinner');
+
+	if (!spinner) {
+		return;
+	}
+
+	setTimeout(() => spinner.classList.add('slow'), milliSeconds.fromSeconds(3));
+	setTimeout(
+		() => spinner.classList.add('stuck'),
+		milliSeconds.fromSeconds(10),
+	);
+
+	spinner
+		.querySelector('.spinner-disconnect-button')
+		?.addEventListener('click', () => {
+			// Chrome applies proxy settings on its own, clear them directly in case the background
+			// does not answer. Firefox routes each request through proxy.onRequest in the background.
+			if (!(chrome.proxy as any)?.onRequest) {
+				chrome.proxy?.settings.clear({});
+			}
+
+			timeoutAfter(
+				sendMessageToBackground(StateChange.DISCONNECT),
+				milliSeconds.fromSeconds(2),
+			)
+				.catch(() => {
+					// Background unreachable, nothing more we can do from here
+				})
+				.finally(() => window.close());
+		});
+};
+
 export const start = async (area: HTMLElement) => {
+	showLoadingFallback(area);
 	let pmUserCache: {user: PmUser | undefined} | null = null;
 	const session = await readSession();
 
@@ -739,6 +777,7 @@ export const start = async (area: HTMLElement) => {
 			: undefined;
 
 		state.connected = false;
+		connectionState.blocked = false;
 		refreshConnectionStatus();
 		setLastChoiceWithCurrentOptions({connected: false});
 
@@ -789,7 +828,10 @@ export const start = async (area: HTMLElement) => {
 			(server?.name || '').replace(new RegExp('^' + exitCountry + '#'), '#');
 		const exitIp = server?.exitIp || '';
 		const canDisconnectOrCancel = state.connected || connecting;
-		disconnectButton.style.display = canDisconnectOrCancel ? 'block' : 'none';
+		// Kill switch: disconnected by a failure, traffic blocked until explicit Disconnect
+		const blocked = !canDisconnectOrCancel && !!connectionState?.blocked;
+		disconnectButton.style.display =
+			canDisconnectOrCancel || blocked ? 'block' : 'none';
 		quickConnectButton.style.display =
 			canDisconnectOrCancel && hasAccessToPaidServers ? 'none' : 'block';
 		quickConnectButton.innerHTML = canDisconnectOrCancel
@@ -865,7 +907,12 @@ export const start = async (area: HTMLElement) => {
 
 		disconnectButton.innerHTML = c('Action').t`Disconnect`;
 		disconnectButton.classList.add('danger-hover');
+		// Connected but unable to renew credentials (e.g. after sleep): traffic is blocked, don't claim "Protected"
+		const networkIssue =
+			state.connected &&
+			(connectionState?.error as ApiError | undefined)?.Code === -1;
 		toggleClass(serverStatusSlot, state.connected, 'success', 'danger');
+		serverStatusSlot.classList.toggle('warning', networkIssue || blocked);
 
 		const baseCountries = ['US', 'NL', 'JP'];
 		const freeCountriesList = [
@@ -879,9 +926,14 @@ export const start = async (area: HTMLElement) => {
 			? `
 				<div class="status-title">
 					<svg role="img" focusable="false" aria-hidden="true" class="protection-icon medium-icon" viewBox="0 0 24 24">
-						<use xlink:href="img/icons.svg#protected"></use>
+						<use xlink:href="img/icons.svg#${networkIssue ? 'warning' : 'protected'}"></use>
 					</svg>
-					<div id="protected-label" class="protection-status">${c('Label').t`Protected`}</div>
+					<div id="protected-label" class="protection-status">${
+						networkIssue
+							? /* translator: shown instead of "Protected" when connected but the network/API can't be reached, e.g. after the computer wakes up */
+								c('Label').t`Connection issue`
+							: c('Label').t`Protected`
+					}</div>
 				</div>
 
 				<div class="current-server-description">
@@ -897,7 +949,24 @@ export const start = async (area: HTMLElement) => {
 					</div>
 				</div>
 			`
-			: `
+			: blocked
+				? `
+				<div class="status-title">
+					<svg role="img" focusable="false" aria-hidden="true" class="protection-icon medium-icon" viewBox="0 0 24 24">
+						<use xlink:href="img/icons.svg#warning"></use>
+					</svg>
+					<div id="unprotected-label" class="protection-status">${
+						/* translator: header when the VPN connection was lost and the kill switch blocks all traffic to avoid leaks */
+						c('Label').t`Traffic blocked`
+					}</div>
+				</div>
+				<p class="weak-text text-center">${
+					/* translator: explanation under "Traffic blocked" header, above Connect and Disconnect buttons */
+					c('Info')
+						.t`Connection lost. To avoid leaks, browsing is blocked until you reconnect or disconnect.`
+				}</p>
+			`
+				: `
 				<div class="status-title">
 					<svg role="img" focusable="false" aria-hidden="true" class="protection-icon medium-icon" viewBox="0 0 24 24">
 						<use xlink:href="img/icons.svg#unprotected"></use>
@@ -1461,6 +1530,7 @@ export const start = async (area: HTMLElement) => {
 				case 'connected':
 					state.connected = true;
 					connectionState.server = data.server;
+					connectionState.error = data.error;
 					refreshConnectionStatus(data.server);
 					setError(data.error);
 					break;
@@ -1484,6 +1554,7 @@ export const start = async (area: HTMLElement) => {
 				case 'disconnected':
 					state.connected = false;
 					connectionState.server = undefined;
+					connectionState.blocked = data.blocked;
 					refreshConnectionStatus(data.server);
 					setError(data.error);
 					break;

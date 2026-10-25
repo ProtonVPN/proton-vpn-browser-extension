@@ -1,3 +1,22 @@
+# 1.4.0
+
+- Add a kill switch: if the VPN connection is lost (e.g. when the computer wakes up),
+browsing is blocked instead of leaking your real IP address, until you reconnect or disconnect
+- Show a Proton VPN page with Reconnect and Disconnect buttons instead of the browser error
+when the kill switch blocks a page
+- Show "Connection issue" instead of "Protected" when the VPN server can no longer be reached
+- Fix the extension getting stuck after the computer wakes up from sleep
+(blank popup, no internet, unable to disconnect)
+- Show a Disconnect button when the popup takes too long to load
+- Keep the toolbar icon in sync with the connection state after reconnecting
+- Fix Split-Tunneling domains not being matched when typed with uppercase letters,
+"https://", a path, a port or "*."
+- Fix Split-Tunneling suggesting a too broad domain (e.g. "co.uk") for the current website
+- Fix invalid domains being added to Split-Tunneling with the Enter key
+- Fix the selected Split-Tunneling mode not being highlighted in the dropdown
+- Fix failing requests on Firefox when HTTPS-Only mode is enabled
+- Update dependencies to fix security vulnerabilities
+
 # 1.3.6
 
 - Fetch list of logical servers from a new version of the API that is faster to load

@@ -136,6 +136,21 @@ h5,
 	}
 }
 
+.button-primary.button-primary {
+	background-color: #6d4aff;
+	border-color: #6d4aff;
+	color: white;
+
+	&:hover {
+		background-color: #7e5eff;
+	}
+}
+
+.button:disabled {
+	opacity: 0.6;
+	cursor: default;
+}
+
 .action-block {
 	margin: 1.5em auto;
 	text-align: left;

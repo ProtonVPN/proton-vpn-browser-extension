@@ -3,7 +3,13 @@ import {getRegisteredLocaleFromUser} from '../account/user/getRegisteredLocaleFr
 import {readSession} from '../account/readSession';
 import {getFreshUser} from '../account/user/getUser';
 import {getPmUser} from '../account/user/getPmUser';
-import {connectLogical, disconnect, getCurrentState, logOut} from '../state';
+import {
+	connectLogical,
+	disconnect,
+	getCurrentState,
+	logOut,
+	reconnectLastServer,
+} from '../state';
 import {createSession} from '../account/createSession';
 import {
 	BackgroundAction,
@@ -104,6 +110,10 @@ export const routeMessage = async <T extends BackgroundMessage>(message: {
 
 		case BackgroundAction.FORGET_ERROR:
 			delete getCurrentState().data.error;
+			break;
+
+		case BackgroundAction.RECONNECT:
+			await reconnectLastServer();
 			break;
 
 		case BackgroundAction.LOG:

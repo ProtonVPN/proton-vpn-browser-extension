@@ -127,6 +127,9 @@
 			],
 			"Visit Support Center": [
 				"Vizitați centrul de asistență"
+			],
+			"Reconnect": [
+				"Reconectare"
 			]
 		},
 		"Action: City-level button": {
@@ -235,6 +238,9 @@
 			],
 			"Unlock global streaming services": [
 				"Deblocați serviciile globale de transmisii în flux."
+			],
+			"Unable to reconnect, please try again.": [
+				"Reconectarea nu a reușit, vă rugăm să încercați din nou."
 			]
 		},
 		"Info": {
@@ -520,6 +526,27 @@
 			],
 			"You're signed in": [
 				"V-ați autentificat"
+			],
+			"Connection lost. To avoid leaks, browsing is blocked until you reconnect or disconnect.": [
+				"Conexiunea s-a pierdut. Pentru a evita scurgerile, navigarea este blocată până când vă reconectați sau vă deconectați."
+			],
+			"Internet not working? Disconnect to restore it.": [
+				"Internetul nu funcționează? Deconectați-vă pentru a-l restabili."
+			],
+			"Reconnect to keep browsing safely, or disconnect to browse without VPN.": [
+				"Reconectați-vă pentru a continua să navigați în siguranță sau deconectați-vă pentru a naviga fără VPN."
+			],
+			"Reconnecting…": [
+				"Reconectare…"
+			],
+			"The VPN connection was lost": [
+				"Conexiunea VPN s-a pierdut"
+			],
+			"To avoid leaking your real IP address, the kill switch blocked this page.": [
+				"Pentru a evita expunerea adresei dvs. IP reale, Kill Switch a blocat această pagină."
+			],
+			"Traffic blocked - Proton VPN": [
+				"Trafic blocat - Proton VPN"
 			]
 		},
 		"Label": {
@@ -611,6 +638,12 @@
 			],
 			"WebRTC leak protection": [
 				"Protejare divulgare prin WebRTC"
+			],
+			"Connection issue": [
+				"Problemă de conexiune"
+			],
+			"Traffic blocked": [
+				"Trafic blocat"
 			]
 		},
 		"Menu": {

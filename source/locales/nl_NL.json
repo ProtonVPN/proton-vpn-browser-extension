@@ -127,6 +127,9 @@
 			],
 			"Visit Support Center": [
 				"Bezoek het helpcentrum"
+			],
+			"Reconnect": [
+				"Opnieuw verbinden"
 			]
 		},
 		"Action: City-level button": {
@@ -232,6 +235,9 @@
 			],
 			"Unlock global streaming services": [
 				"Ontgrendel wereldwijde streamingdiensten"
+			],
+			"Unable to reconnect, please try again.": [
+				"Kan niet opnieuw verbinden, probeer het opnieuw."
 			]
 		},
 		"Info": {
@@ -515,6 +521,27 @@
 			],
 			"You're signed in": [
 				"U bent ingelogd"
+			],
+			"Connection lost. To avoid leaks, browsing is blocked until you reconnect or disconnect.": [
+				"Verbinding verbroken. Om lekken te voorkomen, is surfen geblokkeerd totdat u opnieuw verbindt of de verbinding verbreekt."
+			],
+			"Internet not working? Disconnect to restore it.": [
+				"Werkt internet niet? Verbreek de verbinding om het te herstellen."
+			],
+			"Reconnect to keep browsing safely, or disconnect to browse without VPN.": [
+				"Maak opnieuw verbinding om veilig te blijven surfen, of verbreek de verbinding om zonder VPN te surfen."
+			],
+			"Reconnecting…": [
+				"Opnieuw verbinden…"
+			],
+			"The VPN connection was lost": [
+				"De VPN-verbinding is verbroken"
+			],
+			"To avoid leaking your real IP address, the kill switch blocked this page.": [
+				"Om te voorkomen dat uw echte IP-adres uitlekt, heeft de Kill Switch deze pagina geblokkeerd."
+			],
+			"Traffic blocked - Proton VPN": [
+				"Verkeer geblokkeerd - Proton VPN"
 			]
 		},
 		"Label": {
@@ -602,6 +629,12 @@
 			],
 			"WebRTC leak protection": [
 				"WebRTC-lekbescherming"
+			],
+			"Connection issue": [
+				"Verbindingsprobleem"
+			],
+			"Traffic blocked": [
+				"Verkeer geblokkeerd"
 			]
 		},
 		"Menu": {

@@ -97,6 +97,9 @@
 			],
 			"Visit Support Center": [
 				"前往支援中心"
+			],
+			"Reconnect": [
+				"重新連線"
 			]
 		},
 		"Action: City-level button": {
@@ -187,6 +190,9 @@
 			],
 			"Unlock global streaming services": [
 				"解鎖全球串流服務"
+			],
+			"Unable to reconnect, please try again.": [
+				"無法重新連線，請再試一次。"
 			]
 		},
 		"Info": {
@@ -399,6 +405,27 @@
 			],
 			"You're signed in": [
 				"您已登入"
+			],
+			"Connection lost. To avoid leaks, browsing is blocked until you reconnect or disconnect.": [
+				"連線已中斷。為避免洩漏，在您重新連線或中斷連線之前，瀏覽將被封鎖。"
+			],
+			"Internet not working? Disconnect to restore it.": [
+				"無法上網？中斷連線即可恢復。"
+			],
+			"Reconnect to keep browsing safely, or disconnect to browse without VPN.": [
+				"重新連線以繼續安全瀏覽，或中斷連線以在不使用 VPN 的情況下瀏覽。"
+			],
+			"Reconnecting…": [
+				"正在重新連線…"
+			],
+			"The VPN connection was lost": [
+				"VPN 連線已中斷"
+			],
+			"To avoid leaking your real IP address, the kill switch blocked this page.": [
+				"為避免洩漏您的真實 IP 位址，Kill Switch 已封鎖此頁面。"
+			],
+			"Traffic blocked - Proton VPN": [
+				"流量已被封鎖 - Proton VPN"
 			]
 		},
 		"Label": {
@@ -479,6 +506,12 @@
 			],
 			"WebRTC leak protection": [
 				"WebRTC 洩漏保護"
+			],
+			"Connection issue": [
+				"連線問題"
+			],
+			"Traffic blocked": [
+				"流量已被封鎖"
 			]
 		},
 		"Menu": {

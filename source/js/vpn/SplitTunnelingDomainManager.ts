@@ -39,7 +39,32 @@ export class SplitTunnelingDomainManager {
 		return this.list.value.filter((domain) => domain.mode === this.list.mode);
 	}
 
-	addDomain(domainName: string, withSubDomains: boolean): void {
+	/**
+	 * Reduces user input to the bare lowercase hostname the PAC script compares against.
+	 * IPv4 CIDR entries (e.g. 10.0.0.0/8) are kept as is.
+	 */
+	private normalizeDomain(domainName: string): string {
+		const name = domainName.trim().toLowerCase();
+
+		if (/^\d+\.\d+\.\d+\.\d+\/\d+$/.test(name)) {
+			return name;
+		}
+
+		return name
+			.replace(/^[a-z][a-z0-9+.-]*:\/\//, '')
+			.replace(/^\*\./, '')
+			.replace(/[/?#].*$/, '')
+			.replace(/:\d+$/, '')
+			.replace(/\.$/, '');
+	}
+
+	addDomain(rawDomainName: string, withSubDomains: boolean): void {
+		const domainName = this.normalizeDomain(rawDomainName);
+
+		if (!domainName) {
+			return;
+		}
+
 		// Check if domain already exists in current mode
 		const existsInCurrentMode = this.getDomainsForCurrentMode().some(
 			(domain) => domain.domain === domainName,

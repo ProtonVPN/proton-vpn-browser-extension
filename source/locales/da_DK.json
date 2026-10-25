@@ -127,6 +127,9 @@
 			],
 			"Visit Support Center": [
 				"Besøg supportcenter"
+			],
+			"Reconnect": [
+				"Forbind igen"
 			]
 		},
 		"Action: City-level button": {
@@ -232,6 +235,9 @@
 			],
 			"Unlock global streaming services": [
 				"Lås op for globale streaming-tjenester"
+			],
+			"Unable to reconnect, please try again.": [
+				"Kunne ikke forbinde igen, prøv venligst igen."
 			]
 		},
 		"Info": {
@@ -515,6 +521,27 @@
 			],
 			"You're signed in": [
 				"Du er logget ind"
+			],
+			"Connection lost. To avoid leaks, browsing is blocked until you reconnect or disconnect.": [
+				"Forbindelsen blev afbrudt. For at undgå lækager er browsing blokeret, indtil du forbinder igen eller afbryder."
+			],
+			"Internet not working? Disconnect to restore it.": [
+				"Virker internettet ikke? Afbryd for at gendanne det."
+			],
+			"Reconnect to keep browsing safely, or disconnect to browse without VPN.": [
+				"Forbind igen for at fortsætte sikker browsing, eller afbryd for at browse uden VPN."
+			],
+			"Reconnecting…": [
+				"Forbinder igen…"
+			],
+			"The VPN connection was lost": [
+				"VPN-forbindelsen blev afbrudt"
+			],
+			"To avoid leaking your real IP address, the kill switch blocked this page.": [
+				"For at undgå at lække din rigtige IP-adresse har Kill Switch blokeret denne side."
+			],
+			"Traffic blocked - Proton VPN": [
+				"Trafik blokeret - Proton VPN"
 			]
 		},
 		"Label": {
@@ -602,6 +629,12 @@
 			],
 			"WebRTC leak protection": [
 				"WebRTC-lækagebeskyttelse"
+			],
+			"Connection issue": [
+				"Forbindelsesproblem"
+			],
+			"Traffic blocked": [
+				"Trafik blokeret"
 			]
 		},
 		"Menu": {

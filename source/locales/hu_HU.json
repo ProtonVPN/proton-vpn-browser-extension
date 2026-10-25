@@ -91,6 +91,9 @@
 			],
 			"Visit Support Center": [
 				"Súgóközpont megnyitása"
+			],
+			"Reconnect": [
+				"Újracsatlakozás"
 			]
 		},
 		"Action: City-level button": {
@@ -179,6 +182,9 @@
 			],
 			"Unlock global streaming services": [
 				"Férjen hozzá globális videózási szolgáltatásokhoz"
+			],
+			"Unable to reconnect, please try again.": [
+				"Nem sikerült újracsatlakozni, kérjük, próbálja újra."
 			]
 		},
 		"Info": {
@@ -392,6 +398,27 @@
 			],
 			"You're signed in": [
 				"Sikeresen bejelentkezett"
+			],
+			"Connection lost. To avoid leaks, browsing is blocked until you reconnect or disconnect.": [
+				"A kapcsolat megszakadt. A szivárgás elkerülése érdekében a böngészés le van tiltva, amíg újra nem csatlakozik vagy bontja a kapcsolatot."
+			],
+			"Internet not working? Disconnect to restore it.": [
+				"Nem működik az internet? Bontsa a kapcsolatot a helyreállításhoz."
+			],
+			"Reconnect to keep browsing safely, or disconnect to browse without VPN.": [
+				"Csatlakozzon újra a biztonságos böngészés folytatásához, vagy bontsa a kapcsolatot a VPN nélküli böngészéshez."
+			],
+			"Reconnecting…": [
+				"Újracsatlakozás…"
+			],
+			"The VPN connection was lost": [
+				"A VPN-kapcsolat megszakadt"
+			],
+			"To avoid leaking your real IP address, the kill switch blocked this page.": [
+				"A valódi IP-címe kiszivárgásának elkerülése érdekében a Kill Switch letiltotta ezt az oldalt."
+			],
+			"Traffic blocked - Proton VPN": [
+				"Forgalom letiltva - Proton VPN"
 			]
 		},
 		"Label": {
@@ -476,6 +503,12 @@
 			],
 			"WebRTC leak protection": [
 				"WebRTC szivárgás védelem"
+			],
+			"Connection issue": [
+				"Kapcsolódási probléma"
+			],
+			"Traffic blocked": [
+				"Forgalom letiltva"
 			]
 		},
 		"Menu": {

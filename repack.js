@@ -4,7 +4,6 @@ const {
 	unlinkSync,
 	writeFileSync,
 } = require('node:fs');
-const decompress = require('decompress');
 const {execSync} = require('node:child_process');
 
 const source = process.argv[2];
@@ -23,8 +22,9 @@ const command = (input, options) => {
 	}
 };
 
-decompress(source, tempDir)
-	.then((files) => {
+Promise.resolve()
+	.then(() => {
+		command(`unzip -q -o ${source} -d ${tempDir}`);
 		const dest = process.argv[3] || source;
 
 		if (existsSync(dest)) {
@@ -51,12 +51,11 @@ decompress(source, tempDir)
 				},
 			},
 		);
-		const filePaths = [];
-		files.forEach((file) => {
-			if (file.type === 'file') {
-				filePaths.push(file.path);
-			}
-		});
+		const filePaths = command('find . -type f', {cwd: tempDir})
+			.toString()
+			.split('\n')
+			.filter(Boolean)
+			.map((filePath) => filePath.replace(/^\.\//, ''));
 		filePaths.sort();
 		filePaths.forEach((filePath) => {
 			command(

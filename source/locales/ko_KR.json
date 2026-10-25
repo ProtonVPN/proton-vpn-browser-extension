@@ -112,6 +112,9 @@
 			],
 			"Visit Support Center": [
 				"지원 센터 방문"
+			],
+			"Reconnect": [
+				"다시 연결"
 			]
 		},
 		"Action: City-level button": {
@@ -197,6 +200,9 @@
 			],
 			"Unlock global streaming services": [
 				"전 세계의 스트리밍 서비스에 접근하세요"
+			],
+			"Unable to reconnect, please try again.": [
+				"다시 연결할 수 없습니다. 다시 시도해 주세요."
 			]
 		},
 		"Info": {
@@ -439,6 +445,27 @@
 			],
 			"You're signed in": [
 				"로그인됨"
+			],
+			"Connection lost. To avoid leaks, browsing is blocked until you reconnect or disconnect.": [
+				"연결이 끊어졌습니다. 유출을 방지하기 위해 다시 연결하거나 연결을 해제할 때까지 브라우징이 차단됩니다."
+			],
+			"Internet not working? Disconnect to restore it.": [
+				"인터넷이 작동하지 않나요? 연결을 해제하면 복구됩니다."
+			],
+			"Reconnect to keep browsing safely, or disconnect to browse without VPN.": [
+				"안전하게 계속 브라우징하려면 다시 연결하고, VPN 없이 브라우징하려면 연결을 해제하세요."
+			],
+			"Reconnecting…": [
+				"다시 연결 중…"
+			],
+			"The VPN connection was lost": [
+				"VPN 연결이 끊어졌습니다"
+			],
+			"To avoid leaking your real IP address, the kill switch blocked this page.": [
+				"실제 IP 주소 유출을 방지하기 위해 킬 스위치가 이 페이지를 차단했습니다."
+			],
+			"Traffic blocked - Proton VPN": [
+				"트래픽 차단됨 - Proton VPN"
 			]
 		},
 		"Label": {
@@ -522,6 +549,12 @@
 			],
 			"WebRTC leak protection": [
 				"WebRTC 누출 방지"
+			],
+			"Connection issue": [
+				"연결 문제"
+			],
+			"Traffic blocked": [
+				"트래픽 차단됨"
 			]
 		},
 		"Menu": {

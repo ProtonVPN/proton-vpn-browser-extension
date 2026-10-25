@@ -97,6 +97,9 @@
 			],
 			"Visit Support Center": [
 				"Открыть Центр поддержки"
+			],
+			"Reconnect": [
+				"Переподключиться"
 			]
 		},
 		"Action: City-level button": {
@@ -191,6 +194,9 @@
 			],
 			"Unlock global streaming services": [
 				"Получите доступ к стриминговым сервисам всего мира"
+			],
+			"Unable to reconnect, please try again.": [
+				"Не удалось переподключиться, попробуйте ещё раз."
 			]
 		},
 		"Info": {
@@ -388,6 +394,27 @@
 			],
 			"You're signed in": [
 				"Вход выполнен"
+			],
+			"Connection lost. To avoid leaks, browsing is blocked until you reconnect or disconnect.": [
+				"Соединение потеряно. Чтобы избежать утечек, просмотр заблокирован, пока вы не переподключитесь или не отключитесь."
+			],
+			"Internet not working? Disconnect to restore it.": [
+				"Интернет не работает? Отключитесь, чтобы восстановить его."
+			],
+			"Reconnect to keep browsing safely, or disconnect to browse without VPN.": [
+				"Переподключитесь, чтобы продолжить безопасный просмотр, или отключитесь, чтобы просматривать без VPN."
+			],
+			"Reconnecting…": [
+				"Переподключение…"
+			],
+			"The VPN connection was lost": [
+				"VPN-соединение потеряно"
+			],
+			"To avoid leaking your real IP address, the kill switch blocked this page.": [
+				"Чтобы избежать утечки вашего реального IP-адреса, Kill Switch заблокировал эту страницу."
+			],
+			"Traffic blocked - Proton VPN": [
+				"Трафик заблокирован - Proton VPN"
 			]
 		},
 		"Label": {
@@ -480,6 +507,12 @@
 			],
 			"WebRTC leak protection": [
 				"Защита от утечки WebRTC"
+			],
+			"Connection issue": [
+				"Проблема с подключением"
+			],
+			"Traffic blocked": [
+				"Трафик заблокирован"
 			]
 		},
 		"Menu": {

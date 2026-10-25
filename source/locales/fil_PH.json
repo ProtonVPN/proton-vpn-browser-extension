@@ -118,6 +118,9 @@
 			],
 			"Visit Support Center": [
 				"Bisitahin ang Support Center"
+			],
+			"Reconnect": [
+				"Kumonekta muli"
 			]
 		},
 		"Action: City-level button": {
@@ -206,6 +209,9 @@
 			],
 			"Unlock global streaming services": [
 				"I-unlock ang mga pandaigdigang streaming service"
+			],
+			"Unable to reconnect, please try again.": [
+				"Hindi makakonekta muli, pakisubukan ulit."
 			]
 		},
 		"Info": {
@@ -452,6 +458,27 @@
 			],
 			"You're signed in": [
 				"Naka-sign in ka"
+			],
+			"Connection lost. To avoid leaks, browsing is blocked until you reconnect or disconnect.": [
+				"Nawala ang koneksyon. Para maiwasan ang leak, naka-block ang pag-browse hanggang kumonekta ka muli o mag-disconnect."
+			],
+			"Internet not working? Disconnect to restore it.": [
+				"Hindi gumagana ang internet? Mag-disconnect para maibalik ito."
+			],
+			"Reconnect to keep browsing safely, or disconnect to browse without VPN.": [
+				"Kumonekta muli para patuloy na mag-browse nang ligtas, o mag-disconnect para mag-browse nang walang VPN."
+			],
+			"Reconnecting…": [
+				"Kumokonekta muli…"
+			],
+			"The VPN connection was lost": [
+				"Nawala ang koneksyon sa VPN"
+			],
+			"To avoid leaking your real IP address, the kill switch blocked this page.": [
+				"Para hindi ma-leak ang iyong totoong IP address, na-block ng Kill Switch ang page na ito."
+			],
+			"Traffic blocked - Proton VPN": [
+				"Naka-block ang traffic - Proton VPN"
 			]
 		},
 		"Label": {
@@ -539,6 +566,12 @@
 			],
 			"WebRTC leak protection": [
 				"Proteksyon sa WebRTC leak"
+			],
+			"Connection issue": [
+				"Problema sa koneksyon"
+			],
+			"Traffic blocked": [
+				"Naka-block ang traffic"
 			]
 		},
 		"Menu": {

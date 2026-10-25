@@ -127,6 +127,9 @@
 			],
 			"Visit Support Center": [
 				"Visiteu el Centre de Suport"
+			],
+			"Reconnect": [
+				"Torna a connectar"
 			]
 		},
 		"Action: City-level button": {
@@ -232,6 +235,9 @@
 			],
 			"Unlock global streaming services": [
 				"Desbloquegeu els serveis globals d'estríming"
+			],
+			"Unable to reconnect, please try again.": [
+				"No s'ha pogut tornar a connectar, torneu-ho a provar."
 			]
 		},
 		"Info": {
@@ -515,6 +521,27 @@
 			],
 			"You're signed in": [
 				"Has iniciat sessió"
+			],
+			"Connection lost. To avoid leaks, browsing is blocked until you reconnect or disconnect.": [
+				"S'ha perdut la connexió. Per evitar filtracions, la navegació està bloquejada fins que torneu a connectar o desconnecteu."
+			],
+			"Internet not working? Disconnect to restore it.": [
+				"Internet no funciona? Desconnecteu per restaurar-lo."
+			],
+			"Reconnect to keep browsing safely, or disconnect to browse without VPN.": [
+				"Torneu a connectar per continuar navegant de forma segura, o desconnecteu per navegar sense VPN."
+			],
+			"Reconnecting…": [
+				"S'està tornant a connectar…"
+			],
+			"The VPN connection was lost": [
+				"S'ha perdut la connexió VPN"
+			],
+			"To avoid leaking your real IP address, the kill switch blocked this page.": [
+				"Per evitar filtrar la vostra adreça IP real, el Kill Switch ha bloquejat aquesta pàgina."
+			],
+			"Traffic blocked - Proton VPN": [
+				"Trànsit bloquejat - Proton VPN"
 			]
 		},
 		"Label": {
@@ -602,6 +629,12 @@
 			],
 			"WebRTC leak protection": [
 				"Protecció contra fuites de WebRTC"
+			],
+			"Connection issue": [
+				"Problema de connexió"
+			],
+			"Traffic blocked": [
+				"Trànsit bloquejat"
 			]
 		},
 		"Menu": {

@@ -218,7 +218,7 @@ export const configureSplitTunneling = (
 					!modeDropdownMenu ||
 					!modeOptions
 				) {
-					console.warn('Dropdown elements missing in split tunneling config');
+					warn('Dropdown elements missing in split tunneling config');
 					return;
 				}
 
@@ -240,7 +240,12 @@ export const configureSplitTunneling = (
 				// Handle mode selection
 				modeOptions.forEach((option) => {
 					const value = option.getAttribute('data-value');
-					option.classList.toggle('selected', value === currentModeText);
+					option.classList.toggle(
+						'selected',
+						value !== null &&
+							SplitTunnelingMode[value as keyof typeof SplitTunnelingMode] ===
+								currentMode,
+					);
 
 					if (!addHandler) {
 						return;
@@ -251,7 +256,7 @@ export const configureSplitTunneling = (
 							'data-value',
 						) as keyof typeof SplitTunnelingMode;
 						if (!selectedValue || !(selectedValue in SplitTunnelingMode)) {
-							console.warn('Invalid mode selected');
+							warn('Invalid mode selected');
 							return;
 						}
 
@@ -309,11 +314,11 @@ export const configureSplitTunneling = (
 			const domain = tab?.url && new URL(tab.url).hostname;
 
 			if (domain) {
-				const tld = domain.replace(/^.*\.([^.]+\.[a-z]+)$/, '$1');
+				const seed = domain.replace(/^www\./, '');
 
-				if (!domainManager.hasDomainInCurrentMode(tld)) {
-					input.value = tld;
-				} else if (input.value === tld) {
+				if (!domainManager.hasDomainInCurrentMode(seed)) {
+					input.value = seed;
+				} else if (input.value === seed) {
 					input.value = '';
 				}
 
@@ -345,7 +350,9 @@ export const configureSplitTunneling = (
 	input.onchange = checkValidity;
 	input.onkeyup = (e) => {
 		if (e.key === 'Enter' || e.keyCode === 13) {
-			addWebsite();
+			if (input.checkValidity()) {
+				addWebsite();
+			}
 		}
 	};
 

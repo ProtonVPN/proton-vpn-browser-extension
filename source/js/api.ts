@@ -92,9 +92,17 @@ const isObject = (value: unknown) =>
 export const isSuccessfulResponse = (response: Response): boolean =>
 	response.status >= 200 && response.status < 300;
 
+/** Dev only, see devCommands.ts: make requests hang like half-open connections after sleep. */
+let simulateHangingApi = false;
+
+export const setSimulateHangingApi = (hanging: boolean) => {
+	simulateHangingApi = hanging;
+};
+
 export const isNetworkError = (error: unknown): boolean =>
 	isObject(error) &&
 	((error as {name?: string}).name === 'NetworkError' ||
+		(error as {name?: string}).name === 'TimeoutError' ||
 		/^(NetworkError |(TypeError: )?Failed to fetch)/.test(
 			(error as {message?: string}).message || '',
 		));
@@ -263,6 +271,9 @@ export const fetchApi = async (
 		credentials: 'include',
 		redirect: 'follow',
 		method: 'GET',
+		// After sleep, half-open connections can make fetch hang for minutes,
+		// blocking credentials renewal and leaving the proxy unusable.
+		signal: AbortSignal.timeout(milliSeconds.fromSeconds(20)),
 		...init,
 		headers: {
 			'x-pm-appversion': getFullAppVersion(),
@@ -271,7 +282,13 @@ export const fetchApi = async (
 		},
 	} as RequestInit;
 
-	const response = await fetch(`${baseUrl || baseAPIURL}${url}`, options);
+	const response = await (simulateHangingApi
+		? new Promise<Response>((_, reject) => {
+				options.signal?.addEventListener('abort', () =>
+					reject(options.signal?.reason),
+				);
+			})
+		: fetch(`${baseUrl || baseAPIURL}${url}`, options));
 
 	// If 429 / 503, check the Retry-After header
 	// We don't handle the retry-logic here, it must be handled case by case if and
