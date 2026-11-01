@@ -20,12 +20,10 @@ const updateDropdownUI = (area: ParentNode) => {
 		modeDropdownMenu?.querySelector<HTMLDivElement>('#inlcude-mode-tick');
 	const excludeModeTick =
 		modeDropdownMenu?.querySelector<HTMLDivElement>('#exclude-mode-tick');
-	let isDropdownOpen = false;
 
 	selectedMode.addEventListener('click', (event) => {
 		event.stopPropagation();
-		isDropdownOpen = !isDropdownOpen;
-		modeDropdownMenu.classList[isDropdownOpen ? 'add' : 'remove']('open');
+		modeDropdownMenu.classList.toggle('open');
 		const isIncludeMode =
 			selectedMode.getAttribute('data-value') === SplitTunnelingMode.Include;
 		includeModeTick?.classList[isIncludeMode ? 'add' : 'remove']('show');
@@ -36,10 +34,7 @@ const updateDropdownUI = (area: ParentNode) => {
 		const target = event.target as HTMLElement;
 
 		if (!selectedMode.contains(target) && !modeDropdownMenu.contains(target)) {
-			if (isDropdownOpen) {
-				isDropdownOpen = false;
-				modeDropdownMenu.classList.remove('open');
-			}
+			modeDropdownMenu.classList.remove('open');
 		}
 	});
 };
@@ -94,7 +89,7 @@ export const configureSplitTunneling = (
 		storeList();
 	}
 
-	const renderDomainList = () => {
+	const renderDomainList = (addHandler = false) => {
 		const html = domainManager
 			.getDomainsForCurrentMode()
 			.map((exclusion, index) => {
@@ -126,6 +121,11 @@ export const configureSplitTunneling = (
 			)
 			.forEach((element) => {
 				element.innerHTML = html;
+
+				if (!addHandler) {
+					return;
+				}
+
 				element.addEventListener('click', (e) => {
 					const button = (e.target as Element).closest(
 						'[data-st-delete-index]',
@@ -140,12 +140,7 @@ export const configureSplitTunneling = (
 						if (targetItem && domainManager.removeDomain(targetItem.domain)) {
 							storeList();
 							refresh?.(domainManager.getRawList());
-							configureSplitTunneling(
-								feature,
-								domainManager.getRawList(),
-								area,
-								refresh,
-							);
+							renderDomainList();
 						}
 					}
 				});
@@ -180,12 +175,6 @@ export const configureSplitTunneling = (
 	};
 
 	const refreshEnabled = () => {
-		if (typeof area?.querySelectorAll !== 'function') {
-			warn('Passed area has no querySelectorAll function:', area);
-
-			return;
-		}
-
 		const isEnabled = domainManager.isEnabled();
 		const statusDiv = area.querySelector<HTMLDivElement>('.action-pretext')!;
 		statusDiv.textContent = isEnabled ? c('Info').t`On` : c('Info').t`Off`;
@@ -194,7 +183,20 @@ export const configureSplitTunneling = (
 			.querySelectorAll<HTMLDivElement>('.split-tunneling-configuration')
 			.forEach((configurationBlock) => {
 				configurationBlock.style.display = isEnabled ? 'block' : 'none';
+			});
 
+		area
+			.querySelectorAll<HTMLDivElement>('[data-st-action="toggle"]')
+			.forEach((toggle) => {
+				toggle.classList[isEnabled ? 'add' : 'remove']('activated');
+				translateToggleButtonTitle(toggle, isEnabled);
+			});
+	};
+
+	const refreshMode = (addHandler = false) => {
+		area
+			.querySelectorAll<HTMLDivElement>('.split-tunneling-configuration')
+			.forEach((configurationBlock) => {
 				// Initialize dropdown
 				const switchBar = configurationBlock.querySelector<HTMLDivElement>(
 					'.split-tunneling-mode-switch',
@@ -239,6 +241,11 @@ export const configureSplitTunneling = (
 				modeOptions.forEach((option) => {
 					const value = option.getAttribute('data-value');
 					option.classList.toggle('selected', value === currentModeText);
+
+					if (!addHandler) {
+						return;
+					}
+
 					option.addEventListener('click', () => {
 						const selectedValue = option.getAttribute(
 							'data-value',
@@ -252,31 +259,23 @@ export const configureSplitTunneling = (
 						const modeChanged = domainManager.switchMode(newMode);
 
 						if (modeChanged) {
-							selectedModeText.textContent = selectedValue;
-							option.classList.add('selected');
 							modeDropdownMenu.classList.remove('open');
 
 							storeList();
 							refresh?.(domainManager.getRawList());
 
 							// Refresh the UI to reflect the mode change
-							refreshEnabled();
+							refreshMode();
 							toggleAddForm(false);
 							renderDomainList();
 						}
 					});
 				});
 			});
-
-		area
-			.querySelectorAll<HTMLDivElement>('[data-st-action="toggle"]')
-			.forEach((toggle) => {
-				toggle.classList[isEnabled ? 'add' : 'remove']('activated');
-				translateToggleButtonTitle(toggle, isEnabled);
-			});
 	};
 
 	refreshEnabled();
+	refreshMode(true);
 
 	if (upgradeNeeded) {
 		document
@@ -291,7 +290,7 @@ export const configureSplitTunneling = (
 	}
 
 	toggleAddForm(false);
-	renderDomainList();
+	renderDomainList(true);
 
 	const input = area.querySelector<HTMLInputElement>(
 		'.split-tunneling-filter',
