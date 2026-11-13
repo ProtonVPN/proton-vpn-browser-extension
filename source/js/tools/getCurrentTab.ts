@@ -1,3 +1,4 @@
+'use popup';
 import {getTabs} from './getTabs';
 
 export const getCurrentTab = () =>

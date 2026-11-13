@@ -1,0 +1,58 @@
+// Embedded in Firefox about:addons (options_ui with open_in_tab: false),
+// so it follows the Firefox theme and blends with the page around it.
+:root {
+	color-scheme: light dark;
+
+	// Same values as about:addons in-content pages
+	--options-text-color: #15141a;
+	--options-link-color: #0061e0;
+	--options-link-hover-color: #0250bb;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--options-text-color: #fbfbfe;
+		--options-link-color: #0df;
+		--options-link-hover-color: #80ebff;
+	}
+}
+
+html,
+body {
+	// Let the about:addons card background show through
+	background: transparent;
+}
+
+body {
+	margin: 0;
+	padding: 4px 0;
+	font: message-box;
+	font-size: 15px;
+	line-height: 1.5;
+	color: var(--options-text-color);
+}
+
+.private-windows-steps {
+	padding: 1em;
+
+	p {
+		margin: 0 0 8px;
+	}
+
+	ol {
+		margin: 0;
+		padding-inline-start: 1.5em;
+	}
+
+	li + li {
+		margin-top: 4px;
+	}
+}
+
+a {
+	color: var(--options-link-color);
+
+	&:hover {
+		color: var(--options-link-hover-color);
+	}
+}

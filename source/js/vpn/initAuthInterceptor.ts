@@ -1,3 +1,4 @@
+'use background';
 import {clearPending} from '../tools/proxyAuth';
 import {authHandler} from './authHandler';
 import {getCurrentState} from '../state';
@@ -16,7 +17,7 @@ const keepCredentialsReady = () =>
 	});
 
 export const clearAuthInterceptor = () => {
-	const webRequest = (browser as any as typeof chrome).webRequest;
+	const webRequest = (browser as unknown as typeof chrome).webRequest;
 
 	if (!webRequest) {
 		return;
@@ -54,7 +55,7 @@ const initAuthInterceptorListeners = (webRequest: typeof chrome.webRequest) => {
 };
 
 export const initAuthInterceptor = () => {
-	const webRequest = (browser as any as typeof chrome).webRequest;
+	const webRequest = (browser as unknown as typeof chrome).webRequest;
 
 	if (!webRequest) {
 		return;

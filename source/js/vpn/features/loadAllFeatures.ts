@@ -1,3 +1,4 @@
+'use popup';
 import {SecureCore} from './SecureCore';
 import {Notification} from './Notification';
 import {AutoConnect} from './AutoConnect';

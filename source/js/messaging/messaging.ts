@@ -17,19 +17,36 @@ import {
 import {triggerPromise} from '../tools/triggerPromise';
 import {sendForkResponse} from '../tools/openTabs';
 import {setupHandleProxyRequest} from '../tools/setupHandleProxyRequest';
-import {sendMessageToBackground} from '../tools/sendMessageToBackground';
+import {registerLocale} from '../tools/locale';
+import {
+	type BroadcastMessage,
+	broadcastMessage,
+} from '../tools/broadcastMessage';
 import {record} from '../log/record';
 import {forkSession} from './forkSession';
 import type {Logical} from '../vpn/Logical';
 import type {Server} from '../vpn/Server';
 import type {SplitTunnelingConfig} from '../vpn/ConnectionState';
+import {
+	handleOpenPromotion,
+	handlePromotionDisplay,
+} from '../promotions/handlePromotionTelemetry';
+import type {
+	OpenPromotionData,
+	PromotionDisplayData,
+} from '../promotions/promotionTelemetry';
+
+type LocaleMessage = BroadcastMessage<
+	BackgroundData.LOCALE,
+	{locale: string | undefined}
+>;
 
 export const routeMessage = async <T extends BackgroundMessage>(message: {
 	type: T;
 	data: T extends keyof BackgroundExtraData
 		? BackgroundExtraData[T] | undefined
 		: unknown;
-}): Promise<any> => {
+}) => {
 	const {type, data} = message;
 
 	switch (type) {
@@ -54,16 +71,12 @@ export const routeMessage = async <T extends BackgroundMessage>(message: {
 			}
 
 			const user = await getPmUser(true);
+			const locale = getRegisteredLocaleFromUser(user);
 
-			try {
-				triggerPromise(
-					sendMessageToBackground(BackgroundData.LOCALE, {
-						locale: getRegisteredLocaleFromUser(user),
-					}),
-				);
-			} catch {
-				// Fallback to browser language
-			}
+			// Background can't receive its own messages, so update it directly
+			registerLocale(locale);
+			// Then notify the popup (if open)
+			broadcastMessage<LocaleMessage>(BackgroundData.LOCALE, {locale});
 
 			return user;
 		}
@@ -108,6 +121,14 @@ export const routeMessage = async <T extends BackgroundMessage>(message: {
 
 		case BackgroundAction.LOG:
 			record(data);
+			break;
+
+		case BackgroundAction.PROMOTION_DISPLAY:
+			triggerPromise(handlePromotionDisplay(data as PromotionDisplayData));
+			break;
+
+		case BackgroundAction.OPEN_PROMOTION:
+			handleOpenPromotion(data as OpenPromotionData);
 			break;
 
 		case PermissionGrant.PROXY:

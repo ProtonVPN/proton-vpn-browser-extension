@@ -1,5 +1,6 @@
 import {TransactionError} from './TransactionError';
 import {delay} from './delay';
+import {unsafeRandom} from './random';
 
 /** Browser Storage API https://developer.chrome.com/docs/extensions/reference/api/storage */
 export enum Storage {
@@ -35,8 +36,8 @@ export const storageConfig = {
 };
 
 const withoutPersistentStorage = <T>(
-	error: any,
-	callback: (lastStorage: Record<string, any>) => T,
+	error: unknown,
+	callback: (lastStorage: Record<string, unknown>) => T,
 ) => {
 	const root = (
 		typeof window === 'undefined'
@@ -44,13 +45,15 @@ const withoutPersistentStorage = <T>(
 				? undefined
 				: global
 			: window
-	) as any;
+	) as {bexStorage?: Record<string, unknown>} | undefined;
 
 	if (!root) {
 		throw error;
 	}
 
-	if (Math.random() < storageConfig.failureMeasureRatio) {
+	// Only send a sample of the errors, randomness for sampling doesn't need
+	// to be cryptographically secure.
+	if (unsafeRandom() < storageConfig.failureMeasureRatio) {
 		// Throw async so it does not block the fallback but can be collected by Sentry
 		setTimeout(() => {
 			throw error;
@@ -77,7 +80,7 @@ export const storage = {
 				typeof data === 'object' &&
 				Object.prototype.hasOwnProperty.call(data, prefixedKey)
 			) {
-				return (data as any)[prefixedKey];
+				return (data as Record<string, T>)[prefixedKey] as T;
 			}
 
 			if (storage === Storage.LOCAL && Storage.SESSION in chrome.storage) {
@@ -89,7 +92,7 @@ export const storage = {
 					typeof data === 'object' &&
 					Object.prototype.hasOwnProperty.call(data, prefixedKey)
 				) {
-					return (data as any)[prefixedKey];
+					return (data as Record<string, T>)[prefixedKey] as T;
 				}
 			}
 
@@ -108,7 +111,7 @@ export const storage = {
 			} catch {
 				return withoutPersistentStorage(firstError, (lastStorage) =>
 					Object.prototype.hasOwnProperty.call(lastStorage, key)
-						? lastStorage[key]
+						? (lastStorage[key] as T)
 						: defaultValue,
 				);
 			}
@@ -153,7 +156,13 @@ export const storage = {
 			}
 		}
 	},
-	item<T extends object>(
+	item<
+		T extends object,
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		AllowedValue = any,
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		AllowedMetadata extends Record<string, any> = Record<string, any>,
+	>(
 		key: string,
 		storage: Storage = defaultStorage,
 		valueKey: string = 'value',
@@ -170,8 +179,7 @@ export const storage = {
 			): Promise<T | undefined> {
 				if (concurrencyDelay > 0) {
 					let cache = (await this.get(defaultValue)) as
-						| (T & Partial<Fetching>)
-						| undefined;
+						(T & Partial<Fetching>) | undefined;
 
 					while (
 						typeof cache?.fetching === 'number' &&
@@ -204,12 +212,15 @@ export const storage = {
 			set(value: T): Promise<void> {
 				return self.setItem(key, value, storage);
 			},
-			setValue(value: any, extraData: Record<string, any> = {}): Promise<void> {
+			setValue(
+				value: AllowedValue,
+				extraData: AllowedMetadata = {} as AllowedMetadata,
+			): Promise<void> {
 				return this.set({
 					time: Date.now(),
 					[valueKey]: value,
 					...extraData,
-				} as T);
+				} as unknown as T);
 			},
 			remove(): Promise<void> {
 				return self.removeItem(key, storage);

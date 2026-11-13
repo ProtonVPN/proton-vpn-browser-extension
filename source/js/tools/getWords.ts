@@ -1,3 +1,4 @@
+'use popup';
 import {normalize} from './normalize';
 
 export const getWords = (sentence: string | null | undefined) =>

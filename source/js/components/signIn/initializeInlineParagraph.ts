@@ -13,7 +13,7 @@ const truncateBy = (number: number, factor: number): number => {
 };
 
 const refreshIncentiveParagraph = (area?: HTMLElement) => {
-	serverCount = serverCount || 13_626;
+	serverCount = serverCount || 20_522;
 
 	const truncatedCount = truncateBy(serverCount, serverTruncateFactor);
 	const count = getNumberFormatter().format(truncatedCount);

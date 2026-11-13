@@ -56,6 +56,9 @@
 			"Quick connect": [
 				"Быстрое подключение"
 			],
+			"Remove": [
+				"Удалить"
+			],
 			"Remove ${domain}": [
 				"Удалить ${domain}"
 			],
@@ -105,13 +108,24 @@
 			]
 		},
 		"Action: Country-level button": {
+			"Connect to ${countryName}": [
+				"Подключиться к ${countryName}"
+			],
 			"Connect to ${exitCountryName}": [
 				"Подключиться к ${exitCountryName}"
+			],
+			"Connect to ${logical.Name}": [
+				"Подключиться к ${logical.Name}"
 			]
 		},
 		"Action: Server-level button": {
 			"Connect to ${serverName}": [
 				"Подключиться к ${serverName}"
+			]
+		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"Поиск"
 			]
 		},
 		"Confirm": {
@@ -287,6 +301,9 @@
 			"Follow these simple steps to get the best experience using Proton VPN": [
 				"Следуйте этим простым шагам, чтобы получить лучший опыт, используя Proton VPN"
 			],
+			"Get the deal": [
+				"Воспользоваться предложением"
+			],
 			"Get unlimited server changes with VPN Plus": [
 				"Получите неограниченное количество изменений сервера с VPN Plus"
 			],
@@ -341,14 +358,26 @@
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Защитите себя в Интернете с помощью бесплатной высокоскоростной VPN от Proton."
 			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"Proton Free автоматически подключает вас к самому быстрому бесплатному серверу из нашей ${freeCountriesCount} бесплатной страны. Обычно это ближайший к вашему местоположению сервер.",
+				"Proton Free автоматически подключает вас к самому быстрому бесплатному серверу из наших ${freeCountriesCount} бесплатных стран. Обычно это ближайший к вашему местоположению сервер.",
+				"Proton Free автоматически подключает вас к самому быстрому бесплатному серверу из наших ${freeCountriesCount} бесплатных стран. Обычно это ближайший к вашему местоположению сервер.",
+				"Proton Free автоматически подключает вас к самому быстрому бесплатному серверу из наших ${freeCountriesCount} бесплатных стран. Обычно это ближайший к вашему местоположению сервер."
+			],
 			"Proton VPN": [
 				"Proton VPN"
 			],
 			"Proton VPN Browser Extension": [
 				"Расширение Proton VPN для браузера"
 			],
+			"Recent connections": [
+				"Недавние подключения"
+			],
 			"Secure Core": [
 				"Secure Core"
+			],
+			"Share anonymous crash reports": [
+				"Делиться анонимными сообщениями о сбоях"
 			],
 			"Share anonymous usage statistics": [
 				"Делиться анонимной статистикой использования"
@@ -404,7 +433,7 @@
 				"Город",
 				"Города",
 				"Городов",
-				"Городов"
+				"Города"
 			],
 			"Connecting": [
 				"Подключение"
@@ -444,9 +473,6 @@
 			],
 			"Notifications": [
 				"Уведомления"
-			],
-			"Offer": [
-				"Предложение"
 			],
 			"Other": [
 				"Другое"
@@ -505,11 +531,23 @@
 			]
 		},
 		"Title": {
+			"Fastest country": [
+				"Самая быстрая страна"
+			],
+			"Fastest server": [
+				"Самый быстрый сервер"
+			],
 			"Features": [
 				"Функции"
 			],
 			"Proton VPN for Vivaldi": [
 				"Proton VPN для Vivaldi"
+			],
+			"Random server": [
+				"Случайный сервер"
+			],
+			"Recents": [
+				"Недавние"
 			],
 			"Streaming": [
 				"Стриминг"

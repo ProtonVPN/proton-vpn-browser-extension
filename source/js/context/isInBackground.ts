@@ -1,10 +1,10 @@
 /**
  * Use `'use background';` or `'use popup';` directive at the top of the file to indicate the context in which the code should run.
  *
- * See `webpack-directive-loader.js` and `webpack.config.js` changes from this commit for more details.
+ * See `webpack-directive-loader.ts` and `webpack.config.ts` changes from this commit for more details.
  *
- * - [webpack-directive-loader.js](../../../webpack-directive-loader.js)
- * - [webpack.config.js](../../../webpack.config.js)
+ * - [webpack-directive-loader.ts](../../../webpack-directive-loader.ts)
+ * - [webpack.config.td](../../../webpack.config.ts)
  *
  * @example // file.ts
  * 'use background';

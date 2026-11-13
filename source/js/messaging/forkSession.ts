@@ -1,3 +1,4 @@
+'use background';
 import {consumeFork} from '../account/fork/consumeFork';
 import {saveSession} from '../account/saveSession';
 import type {ForkMessage} from './Message';
@@ -10,7 +11,7 @@ import type {ForkResponse} from './ForkResponse';
 import {getErrorAsString} from '../tools/getErrorMessage';
 
 export const forkSession = async (
-	message: any,
+	message: unknown,
 ): Promise<ForkResponse | undefined> => {
 	if (!message || typeof message !== 'object') {
 		return;

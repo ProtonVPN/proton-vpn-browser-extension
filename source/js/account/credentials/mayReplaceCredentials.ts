@@ -1,3 +1,4 @@
+'use background';
 import type {Credentials} from './Credentials';
 import {getCredentialsData} from './getCredentialsData';
 

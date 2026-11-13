@@ -2,6 +2,7 @@
 	"extends": "stylelint-config-standard-scss",
 	"rules": {
 		"alpha-value-notation": "number",
-		"color-function-notation": "legacy"
+		"color-function-notation": "legacy",
+		"value-no-invalid": null
 	}
 }

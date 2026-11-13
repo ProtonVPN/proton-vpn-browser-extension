@@ -1,5 +1,6 @@
-import type {ProxyInfo} from '../proxy';
-import type {ProxyAuthentication} from './ProxyAuthentication';
+/// <reference types="firefox-webext-browser"/>
+import type {ProxyInfo} from './proxy/ProxyInfo';
+import type {ProxyAuthentication} from './proxy/ProxyAuthentication';
 import type {ApiError} from '../api';
 import type {SettingChange} from '../messaging/MessageType';
 import type {Credentials} from '../account/credentials/Credentials';
@@ -41,11 +42,11 @@ export interface StateDefinition {
 	connectCurrentServer?(): Promise<boolean>;
 	handleProxyRequest?(
 		requestInfo: OnRequestDetails,
-	): ProxyInfo | Promise<ProxyInfo>;
+	): ProxyInfo | null | Promise<ProxyInfo>;
 	handleProxyAuthentication?(
 		requestInfo: OnAuthRequiredDetails,
 	): Promise<ProxyAuthentication | undefined>;
-	setOption?(type: SettingChange, data: any): void | Promise<void>;
+	setOption?(type: SettingChange, data: unknown): void | Promise<void>;
 }
 
 export interface ErrorDump {
@@ -74,7 +75,7 @@ export type ConnectionStateSwitch = StateDefinition & Partial<ConnectionState>;
 /**
  * Type guard to ensure contextual type compliance while still allowing custom properties and their type inference.
  */
-export function asConnectionStateSwitch<T extends Record<string, any>>(
+export function asConnectionStateSwitch<T extends Record<string, unknown>>(
 	value: T & ConnectionStateSwitch,
 ): T & ConnectionStateSwitch {
 	return value;

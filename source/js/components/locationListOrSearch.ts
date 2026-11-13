@@ -1,3 +1,4 @@
+'use popup';
 import {getSearchResult} from '../search/getSearchResult';
 import {locationList} from './locationList';
 import type {AllFeatures} from '../vpn/features/AllFeatures';

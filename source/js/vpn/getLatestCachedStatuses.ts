@@ -1,11 +1,15 @@
+'use popup';
 import {type CacheWrappedValue, storage} from '../tools/storage';
 import type {Logical} from './Logical';
-import {logicalServers} from './logicalServers';
+import {
+	logicalServers,
+	type LogicalServersCacheMetadata,
+} from './logicalServers';
 
-export const getLatestCachedStatuses = async (): Promise<
-	Partial<Logical>[]
-> => {
-	const statusId = (await logicalServers.get())?.statusId;
+export const getLatestCachedStatuses = async (
+	statusId?: LogicalServersCacheMetadata['statusId'],
+): Promise<Partial<Logical>[]> => {
+	statusId ||= (await logicalServers.get())?.statusId;
 
 	if (!statusId) {
 		return [];

@@ -1,5 +1,8 @@
 export interface WebsiteFilter {
+	/** Domain as matched against requests (ASCII, IDN in punycode) */
 	domain: string;
+	/** Domain as typed by the user when it differs from domain because of punycode conversion, for display only */
+	originalDomain?: string;
 	withSubDomains: boolean;
 	mode?: SplitTunnelingMode;
 }

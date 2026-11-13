@@ -1,3 +1,4 @@
+'use popup';
 const config = {
 	protected: {
 		radialGradientOpacity: 1,
@@ -52,10 +53,7 @@ export const logo = {
 		(
 			['x1', 'y1', 'x2', 'y2'] as (keyof typeof values.linearGradient)[]
 		).forEach((attribute) => {
-			gradient.setAttribute(
-				attribute,
-				`${values.linearGradient?.[attribute] as any}`,
-			);
+			gradient.setAttribute(attribute, `${values.linearGradient?.[attribute]}`);
 
 			gradient.querySelectorAll('stop').forEach((stop, index) => {
 				stop.setAttribute(

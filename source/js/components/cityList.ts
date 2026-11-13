@@ -1,3 +1,4 @@
+'use popup';
 import type {UserContext} from '../account/user/UserContext';
 import type {Logical} from '../vpn/Logical';
 import {getSecureCorePredicate} from '../vpn/getSecureCorePredicate';

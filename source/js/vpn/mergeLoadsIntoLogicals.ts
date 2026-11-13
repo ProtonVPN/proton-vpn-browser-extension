@@ -9,7 +9,7 @@ export const mergeLoadsIntoLogicals = (
 	userCountry: string,
 ): void => {
 	logicals.forEach((logical) => {
-		const index = logical.StatusReference.Index ?? undefined;
+		const index = logical.StatusReference?.Index ?? undefined;
 
 		if (typeof index === 'number' && loads[index]) {
 			calculateLogicalScoreAndUpStatus(

@@ -1,7 +1,14 @@
+'use background';
 import type {Credentials} from './Credentials';
 import type {CredentialsData} from './CredentialsData';
 
-const parseCredentialUsername = (username: any): any => {
+interface CredentialUsernameBody {
+	exp?: number;
+	grp?: string;
+	sid?: string;
+}
+
+const parseCredentialUsername = (username: unknown): CredentialUsernameBody => {
 	if (typeof username !== 'string') {
 		return {};
 	}

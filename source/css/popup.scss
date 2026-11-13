@@ -177,16 +177,23 @@ button {
 
 .page-view {
 	flex: 1;
-	flex-direction: row;
+	display: flex;
+	flex-direction: column;
 	max-height: calc(100vh - 44px);
+}
+
+.page-view-internal {
+	flex: 1;
+	flex-direction: row;
 	box-sizing: border-box;
 	overflow: hidden auto;
 	scrollbar-width: thin;
 	min-width: $page-width + 2 * $page-padding;
 	max-width: $page-width + 2 * $page-padding;
+	min-height: 0;
 }
 
-.page-view > * {
+.page-view-internal > * {
 	padding-right: 5px;
 }
 
@@ -320,11 +327,13 @@ input[type="checkbox"] {
 	}
 }
 
+.download-link,
 .sign-up-button {
 	font-size: 1em;
 	cursor: pointer;
 	background: none;
 	color: var(--primary-color-faded);
+	text-decoration: none;
 
 	&:hover {
 		text-decoration: underline;
@@ -579,7 +588,7 @@ input[type="text"]:invalid {
 	min-width: $page-width - $scrollbar-width;
 	min-height: 400px;
 	margin: 0;
-	padding-bottom: 20px;
+	padding-bottom: 10px;
 }
 
 #status {
@@ -916,6 +925,100 @@ input[type="text"]:invalid {
 
 .secure-core-container {
 	padding-left: 8px;
+}
+
+.promotion-banner {
+	flex-shrink: 0;
+	width: $page-width + 2 * $page-padding;
+	min-height: 88.25px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 4px;
+}
+
+.promotion-banner-internal {
+	position: relative;
+	border: 0.85px solid var(--border-border-norm, #4a4658);
+	border-radius: 7px;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 4px;
+
+	img {
+		max-width: 100%;
+		height: auto;
+		object-fit: cover;
+	}
+}
+
+.promotion-banner-internal button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: -4px;
+	right: -4px;
+	border-radius: 50%;
+	border: 0.85px solid var(--border-border-norm);
+	background-color: var(--background-background-weak, #292733);
+	fill: #A7A4B5;
+	width: 24px;
+	height: 24px;
+}
+
+.promotion-image-light,
+.promotion-banner-image-light {
+	display: block;
+}
+
+.promotion-banner-image-dark,
+.promotion-image-dark {
+	display: none;
+}
+
+.promotion-container {
+	margin: 0;
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	min-height: calc(100vh - #{$top-bar-height});
+}
+
+.promotion-asset {
+	flex: 1;
+
+	img {
+		width: 100%;
+	}
+}
+
+.get-promotion {
+	z-index: 1;
+	position: sticky;
+	bottom: 0;
+	flex-shrink: 0;
+	width: 100%;
+	height: 68px;
+	padding: 16px 8px;
+	text-decoration: none;
+	color: var(--text-norm);
+
+	button {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		border-radius: $border-radius;
+		background-color: var(--primary-color);
+	}
+}
+
+.get-promotion-fade {
+	box-shadow: 0 -10px 10px #eee;
+	background-color: #eee;
 }
 
 .enter-setting {
@@ -1453,6 +1556,22 @@ summary {
 	}
 }
 
+.error-message.info-message {
+	color: inherit;
+
+	a.text-link {
+		color: var(--primary-color);
+		text-decoration: none;
+		white-space: nowrap;
+	}
+}
+
+.offline-message > .text {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
 #modal-error {
 	position: absolute;
 	inset: 0;
@@ -1876,6 +1995,38 @@ details {
 			line-height: 1.4;
 			text-align: center;
 		}
+
+		> .censorship-warning {
+			position: relative;
+			margin: 20px 18px;
+			padding: 12px 14px 12px 44px;
+			text-align: left;
+			font-size: 0.95em;
+			background: rgb(255, 153, 0, 0.12);
+			border: 1px solid rgb(255, 153, 0, 0.5);
+			border-left: 4px solid var(--warning-color);
+			border-radius: $border-radius;
+
+			&::before {
+				content: "!";
+				position: absolute;
+				top: 12px;
+				left: 12px;
+				width: 20px;
+				height: 20px;
+				line-height: 20px;
+				border-radius: 50%;
+				text-align: center;
+				font-weight: bold;
+				color: #16141c;
+				background: var(--warning-color);
+			}
+
+			.download-link {
+				font-weight: bold;
+				text-decoration: underline;
+			}
+		}
 	}
 
 	&.partner {
@@ -1941,7 +2092,7 @@ body:not(.auto-theme, .light-theme) {
 	}
 }
 
-.page-view>[data-page="server-change-remaining-time"] {
+.page-view-internal > [data-page="server-change-remaining-time"] {
 	height: 100%;
 
 	.circle-modal-body {

@@ -1,3 +1,4 @@
+'use popup';
 import {countryBlock} from './countryBlock';
 import {fastestCountry} from './fastestCountry';
 import {comp, Sorter} from '../tools/comp';
@@ -79,7 +80,7 @@ export const countryFilteredList = (
 		(header
 			? `<div class="servers-group group-section">${header(count)}</div>`
 			: '') +
-		(withFastest ? fastestCountry(secureCoreValue) : '') +
+		(withFastest ? fastestCountry(userTier, secureCoreValue) : '') +
 		keys
 			.map((country) =>
 				countryBlock(

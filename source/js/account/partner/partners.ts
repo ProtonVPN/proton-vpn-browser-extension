@@ -7,12 +7,12 @@ interface PartnerConfig extends PartnerParameters {
 	name: string;
 }
 
-export const partners = {
+export const partners: Record<string, PartnerParameters> = {
 	vivaldi: {
 		id: '4',
 		welcomePage: 'https://vivaldi.com/protonvpn/welcome/',
 	},
-} as const;
+};
 
 const getPartnersByIds = ((
 	partnersById: Record<string, PartnerConfig> | undefined,
@@ -22,7 +22,7 @@ const getPartnersByIds = ((
 			partnersById = {};
 
 			for (const name in partners) {
-				const parameters = (partners as any)[name] as PartnerParameters;
+				const parameters = partners[name]!;
 				partnersById[`${parameters.id}`] = {name, ...parameters};
 			}
 		}

@@ -1,3 +1,4 @@
+/// <reference types="firefox-webext-browser"/>
 import {getTabs} from '../tools/getTabs';
 import {getRuntime} from '../tools/getRuntime';
 import type {CacheWrappedValue} from '../tools/storage';

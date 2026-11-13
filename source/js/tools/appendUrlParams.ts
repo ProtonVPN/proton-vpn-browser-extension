@@ -1,4 +1,5 @@
-const isNonEmptyString = (value: any): value is string => {
+'use popup';
+const isNonEmptyString = (value: unknown): value is string => {
 	return typeof value === 'string' && value !== '';
 };
 

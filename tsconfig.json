@@ -5,6 +5,7 @@
 		"lib": [
 			"ES2019",
 			"ES2020.String",
+			"ES2022.Error",
 			"DOM",
 			"DOM.Iterable",
 			"webworker"
@@ -12,8 +13,10 @@
 		"moduleResolution": "bundler",
 		"types": [
 			"chrome",
+			"firefox",
 			"firefox-webext-browser"
 		],
+		"typeRoots": ["node_modules/@types"],
 		"allowJs": true,
 		"allowSyntheticDefaultImports": true,
 		"resolveJsonModule": false,
@@ -38,7 +41,7 @@
 	},
 	"include": [
 		"./source/",
-		"./config.js"
+		"./config.ts"
 	],
 	"exclude": ["**/node_modules/*", "**/dist/*", "**/.*/"]
 }

@@ -43,7 +43,7 @@ export const getTextNode = (
 								const children = parentNodes[1].getChildren(sourceFile);
 
 								if (children.length === 2) {
-									return getNodeText(children[1] as any, sourceFile, context);
+									return getNodeText(children[1], sourceFile, context);
 								}
 							}
 

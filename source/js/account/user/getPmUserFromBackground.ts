@@ -2,7 +2,7 @@ import {timeoutAfter} from '../../tools/delay';
 import {getInfoFromBackground} from '../../tools/getInfoFromBackground';
 import {BackgroundData} from '../../messaging/MessageType';
 import {milliSeconds} from '../../tools/milliSeconds';
-import {InitUserError} from '../../account/InitUserError';
+import {InitUserError} from '../InitUserError';
 
 export const getPmUserFromBackground = async (maxMilliSeconds?: number) =>
 	await timeoutAfter(

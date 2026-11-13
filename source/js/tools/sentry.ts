@@ -6,10 +6,11 @@ import {
 	defaultStackParser,
 } from '@sentry/browser';
 import {getFullAppVersion, hostname, sentryDsn} from '../config';
-import type {CacheItem, CacheWrappedValue} from '../tools/storage';
-import {storage} from '../tools/storage';
-import {getErrorAsString} from '../tools/getErrorMessage';
-import {milliSeconds} from '../tools/milliSeconds';
+import type {CacheItem, CacheWrappedValue} from './storage';
+import {storage} from './storage';
+import {getErrorAsString} from './getErrorMessage';
+import {milliSeconds} from './milliSeconds';
+import {unsafeRandom} from './random';
 import {CrashReports} from '../vpn/features/CrashReports';
 import type {Toggle} from '../vpn/features/Toggle';
 
@@ -67,7 +68,7 @@ export const crashReportOptIn: CacheItem<Toggle & CacheWrappedValue<boolean>> =
 		},
 		setValue(
 			value: boolean,
-			extraData: Record<string, any> = {},
+			extraData: Record<string, unknown> = {},
 		): Promise<void> {
 			return crashReportOptOut.setValue(!value, extraData);
 		},
@@ -76,8 +77,7 @@ export const crashReportOptIn: CacheItem<Toggle & CacheWrappedValue<boolean>> =
 		},
 		async transaction<
 			D extends CacheWrappedValue<boolean> | undefined =
-				| CacheWrappedValue<boolean>
-				| undefined,
+				CacheWrappedValue<boolean> | undefined,
 		>(
 			callback: (
 				value: CacheWrappedValue<boolean> | D,
@@ -139,18 +139,16 @@ const sentryFetch: typeof fetch = (input, init?) =>
 		},
 	});
 
-const makeProtonFetchTransport = (options: any) =>
-	makeFetchTransport(options, sentryFetch);
+const makeProtonFetchTransport = (
+	options: Parameters<typeof makeFetchTransport>[0],
+) => makeFetchTransport(options, sentryFetch);
 
-const getErrorReport = (error: any, message: string): Error => {
+const getErrorReport = (error: unknown, message: string): Error => {
 	if (error instanceof Error) {
 		return error;
 	}
 
-	const report = new Error(message);
-	(report as any).previous = error;
-
-	return report;
+	return Object.assign(new Error(message), {previous: error});
 };
 
 const lastReport: Record<string, number> = {};
@@ -223,7 +221,7 @@ export const initSentry = (): Scope => {
 				) as number[]
 			).reduce((a, b) => Math.min(a, b), 1);
 
-			if (sampleRate < 1 && Math.random() > sampleRate) {
+			if (sampleRate < 1 && unsafeRandom() > sampleRate) {
 				return null;
 			}
 
@@ -254,10 +252,10 @@ export const initSentry = (): Scope => {
 	return scope;
 };
 
-export const handleError = (error: any, sampleRate?: number) => {
+export const handleError = (error: unknown, sampleRate?: number) => {
 	if (
 		!error ||
-		(typeof sampleRate !== 'undefined' && Math.random() >= sampleRate)
+		(typeof sampleRate !== 'undefined' && unsafeRandom() >= sampleRate)
 	) {
 		return;
 	}

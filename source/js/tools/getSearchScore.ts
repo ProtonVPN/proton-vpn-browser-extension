@@ -1,3 +1,4 @@
+'use popup';
 import {normalize} from './normalize';
 
 export const getSearchWordsScore = (

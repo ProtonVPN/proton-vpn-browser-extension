@@ -1,3 +1,4 @@
+'use popup';
 import {getCountryAndCoordinates} from '../getLocation';
 
 export const getUserContext = async (tier: number) => {

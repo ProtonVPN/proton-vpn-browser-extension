@@ -1,9 +1,17 @@
+'use popup';
 import {stopEvent} from '../tools/stopEvent';
 import {via} from './via';
 import {getCountryFlag} from '../tools/getCountryFlag';
 import {getCountryNameOrCode} from '../tools/translate';
 import type {Logical} from '../vpn/Logical';
 import type {Choice} from '../vpn/lastChoice';
+
+type SectionBuilderHandler = {sectionBuilder?: Record<string, () => string>};
+
+export type LogicalFromButtonGetter = (button: HTMLButtonElement) => {
+	getLogical: () => Logical | null | undefined;
+	choice: Omit<Choice, 'connected'>;
+};
 
 export const configureExpandButton = (
 	area: HTMLElement,
@@ -13,10 +21,7 @@ export const configureExpandButton = (
 		callback: (event: MouseEvent | KeyboardEvent) => void,
 	) => void,
 	goToRegion: (name: string, content: string) => void,
-	getLogicalFromButton: (button: HTMLButtonElement) => {
-		getLogical: () => Logical | null | undefined;
-		choice: Omit<Choice, 'connected'>;
-	},
+	getLogicalFromButton: LogicalFromButtonGetter,
 ) => {
 	area
 		.querySelectorAll<HTMLButtonElement>(
@@ -54,7 +59,7 @@ export const configureExpandButton = (
 				const code = `${choice.exitCountry}`;
 				const expandContent =
 					(id &&
-						((window as any).sectionBuilder?.[id]?.() ||
+						((window as SectionBuilderHandler).sectionBuilder?.[id]?.() ||
 							area.querySelector(`#${id}`)?.innerHTML)) ||
 					'';
 

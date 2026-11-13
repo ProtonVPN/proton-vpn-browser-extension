@@ -1,3 +1,4 @@
+'use popup';
 import {c, getCountryNameOrCode} from '../tools/translate';
 import {getCountryFlag} from '../tools/getCountryFlag';
 import {via} from './via';
@@ -8,39 +9,40 @@ import type {CountryItem, CountryList} from './countryList';
 import type {Choice} from '../vpn/lastChoice';
 import type {Logical} from '../vpn/Logical';
 
-const getLogicalFromItem = (
-	item: CountryItem,
-	id: Logical['ID'],
-): Logical | undefined => {
-	const logicals = item.logicals ?? [];
+const repository = {
+	getLogicalFromItem(
+		item: CountryItem,
+		id: Logical['ID'],
+	): Logical | undefined {
+		const logicals = item.logicals ?? [];
 
-	for (let i = 0; i < logicals.length; i++) {
-		const logical = logicals[i]!;
+		for (let i = 0; i < logicals.length; i++) {
+			const logical = logicals[i]!;
 
-		if (logical.ID === id) {
-			return logical;
+			if (logical.ID === id) {
+				return logical;
+			}
 		}
-	}
 
-	// eslint-disable-next-line @typescript-eslint/no-use-before-define
-	return item.groups ? getLogicalById(item.groups, id) : undefined;
-};
+		return item.groups ? this.getLogicalById(item.groups, id) : undefined;
+	},
 
-const getLogicalById = (
-	countries: CountryList,
-	id: Logical['ID'],
-): Logical | undefined => {
-	const items = Object.values(countries);
+	getLogicalById(
+		countries: CountryList,
+		id: Logical['ID'],
+	): Logical | undefined {
+		const items = Object.values(countries);
 
-	for (let i = 0; i < items.length; i++) {
-		const logical = getLogicalFromItem(items[i]!, id);
+		for (let i = 0; i < items.length; i++) {
+			const logical = this.getLogicalFromItem(items[i]!, id);
 
-		if (logical) {
-			return logical;
+			if (logical) {
+				return logical;
+			}
 		}
-	}
 
-	return undefined;
+		return undefined;
+	},
 };
 
 const getCountryBlock = (choice: Choice) => {
@@ -83,7 +85,7 @@ const getButtonBox = (choice: Choice) => `<div class="button-box">
 
 const formatChoice = (countries: CountryList) => (choice: Choice) => {
 	if (choice.logicalId) {
-		const logical = getLogicalById(countries, choice.logicalId);
+		const logical = repository.getLogicalById(countries, choice.logicalId);
 
 		if (!logical) {
 			return `<div class="server-type list-item-box gray-out recent-block">

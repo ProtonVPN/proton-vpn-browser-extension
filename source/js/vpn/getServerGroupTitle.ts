@@ -1,7 +1,7 @@
 import {c} from '../tools/translate';
 
 export function getServerGroupTitle(
-	tier: any,
+	tier: unknown,
 	count: number | null | undefined = 0,
 ): string {
 	if (typeof tier !== 'number' || tier < 1) {

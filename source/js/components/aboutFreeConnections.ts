@@ -1,3 +1,4 @@
+'use popup';
 import {c} from '../tools/translate';
 import {getCountryFlag} from '../tools/getCountryFlag';
 

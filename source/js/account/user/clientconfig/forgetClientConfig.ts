@@ -1,3 +1,4 @@
+'use background';
 import {triggerPromise} from '../../../tools/triggerPromise';
 import {clientConfigStore} from './storedClientConfig';
 

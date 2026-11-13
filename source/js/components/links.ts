@@ -1,3 +1,4 @@
+'use popup';
 import {each} from '../tools/each';
 import {getPrimaryLanguage} from '../tools/locale';
 import {c, getLocaleSupport} from '../tools/translate';

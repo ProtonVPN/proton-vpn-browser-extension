@@ -1,3 +1,4 @@
+'use background';
 import {fetchJson} from '../../api';
 import type {Session} from '../Session';
 import {Storage, storage} from '../../tools/storage';

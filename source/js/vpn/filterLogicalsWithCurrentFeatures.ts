@@ -1,3 +1,4 @@
+'use popup';
 import type {Logical} from './Logical';
 import {Feature} from './Feature';
 

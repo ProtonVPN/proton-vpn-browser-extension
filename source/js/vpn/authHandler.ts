@@ -1,6 +1,7 @@
+'use background';
 import {milliSeconds} from '../tools/milliSeconds';
 import {requestMaxAge} from '../config';
-import {getAuthCredentials, isProxyKnownHost} from '../state';
+import {getAuthCredentials, isProxyKnownHost} from './state/knownProxyHosts';
 import {isPending} from '../tools/proxyAuth';
 import {watchPromiseWithSentry, watchWithSentry} from '../tools/sentry';
 import {getCredentials} from '../account/credentials/getConnectionCredentials';

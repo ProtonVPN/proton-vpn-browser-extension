@@ -1,7 +1,8 @@
+'use background';
 import {setJitterInterval} from '../tools/delay';
 import {broadcastMessage} from '../tools/broadcastMessage';
 import type {BroadcastLogicals} from './getLogicals';
-import {loadLoads} from './getLogicals';
+import {loadLogicalLoads} from './getLogicals';
 import {warn} from '../log/log';
 import {getLogicalLoadsRefreshInterval} from '../intervals';
 
@@ -12,7 +13,10 @@ export const updateLogicalLoad = () => {
 
 	setJitterInterval(interval, interval / 5, async () => {
 		try {
-			broadcastMessage<BroadcastLogicals>('logicalUpdate', await loadLoads());
+			broadcastMessage<BroadcastLogicals>(
+				'logicalUpdate',
+				await loadLogicalLoads(),
+			);
 			lastUpdate = new Date(Date.now());
 			consecutiveLoadFailures = 0;
 		} catch (e) {

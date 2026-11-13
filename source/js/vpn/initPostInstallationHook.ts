@@ -1,3 +1,4 @@
+'use background';
 import {isOauthAllowed} from '../account/partner/oauth';
 import {getRuntime} from '../tools/getRuntime';
 import {initOnboarding} from './initOnboarding';

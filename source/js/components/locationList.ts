@@ -1,3 +1,4 @@
+'use popup';
 import {c} from '../tools/translate';
 import {countryList} from './countryList';
 import {recentLocationsSlot} from './recentLocations';

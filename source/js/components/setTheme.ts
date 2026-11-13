@@ -1,3 +1,4 @@
+'use popup';
 export type Theme = 'dark' | 'light' | 'auto';
 
 export const setTheme = (area: HTMLElement, theme: Theme) => {

@@ -1,5 +1,4 @@
-// TODO: Remove this when VPNBEX-238 is done.
-/* eslint-disable @typescript-eslint/no-use-before-define */
+'use popup';
 import {serverList} from './serverList';
 import type {Logical} from '../vpn/Logical';
 import type {CountryItem} from './countryList';
@@ -11,11 +10,15 @@ import {expandButton} from './expendButton';
 import {c, msgid} from '../tools/translate';
 import {paidOnly, simplifiedUi} from '../config';
 import {getCountryFlag} from '../tools/getCountryFlag';
-import {isLogicalUp} from '../vpn/getLogicals';
 import {maintenanceIcon} from '../tools/maintenanceIcon';
+import {unsafeRandom} from '../tools/random';
+import {isLogicalUp} from '../vpn/getLogicals';
 import type {UserContext} from '../account/user/UserContext';
 import {upgradeAttributes} from '../account/upgradeAttributes';
 import {Feature} from '../vpn/Feature';
+
+const hasStreamingLogical = (logicals: Logical[]) =>
+	logicals.some((logical) => (logical.Features & Feature.STREAMING) !== 0);
 
 export const formatGroup = (
 	userContext: UserContext,
@@ -92,18 +95,16 @@ export const isGroupUp = (
 		isLogicalUp(l, userContext.country, userContext.location),
 	) || Object.values(group.groups || {}).some((g) => isGroupUp(g, userContext));
 
-const hasStreamingLogical = (logicals: Logical[]) =>
-	logicals.some((logical) => (logical.Features & Feature.STREAMING) !== 0);
-
 const hasGroupStreaming = (group: CountryItem): boolean =>
 	hasStreamingLogical(group.logicals || []) ||
 	Object.values(group.groups || {}).some(hasGroupStreaming);
 
+type SubGroupRenderer = (group: CountryItem) => string;
+
 const formatGroups = (
 	userContext: UserContext,
 	countryCode: string,
-	predicate: (servers: Logical[]) => Logical[],
-	secureCore: boolean,
+	renderSubGroup: SubGroupRenderer,
 	upgradeNeeded: boolean,
 	groups: (CountryItem | undefined)[],
 	showFlag = false,
@@ -113,17 +114,7 @@ const formatGroups = (
 			.map((group) =>
 				group &&
 				(Object.values(group?.groups || {}).length || group?.logicals?.length)
-					? {
-							group,
-							list: serverGroup(
-								userContext,
-								countryCode,
-								group,
-								predicate,
-								secureCore,
-								showFlag,
-							),
-						}
+					? {group, list: renderSubGroup(group)}
 					: {},
 			)
 			.filter(({list}) => list) as {group: CountryItem; list: string}[]
@@ -132,7 +123,7 @@ const formatGroups = (
 			return list;
 		}
 
-		const id = `expand-${countryCode}-${`${Math.random()}`.substring(2)}`;
+		const id = `expand-${countryCode}-${`${unsafeRandom()}`.substring(2)}`;
 		const up = isGroupUp(group, userContext);
 		const cityName = group.name;
 		const grayOutButton = simplifiedUi && userContext.tier <= 0;
@@ -197,10 +188,10 @@ const getGroupParts = (
 	group: CountryItem,
 ): [string, (CountryItem | undefined)[]][] => {
 	const groups = group.groups || {};
-	const freeGroup = (groups as any).Free as CountryItem | undefined;
-	const torGroup = (groups as any).Tor as CountryItem | undefined;
-	const secureCoreGroup = (groups as any).SecureCore as CountryItem | undefined;
-	const otherGroup = (groups as any).Other as CountryItem | undefined;
+	const freeGroup = groups['Free'];
+	const torGroup = groups['Tor'];
+	const secureCoreGroup = groups['SecureCore'];
+	const otherGroup = groups['Other'];
 	const restGroups = getKeysAndValues(groups)
 		.filter(
 			({key}) => !{Free: true, Tor: true, SecureCore: true, Other: true}[key],
@@ -215,22 +206,21 @@ const getGroupParts = (
 	];
 };
 
-export const getServerGroups = (
+const formatSections = (
 	userContext: UserContext,
 	countryCode: string,
 	group: CountryItem,
-	predicate: (servers: Logical[]) => Logical[],
 	secureCore: boolean,
-	withTitle = false,
-	showFlagOnGroups = false,
-): string[] => {
-	return getGroupParts(group).map(([section, list]) => {
+	withTitle: boolean,
+	showFlagOnGroups: boolean,
+	renderSubGroup: SubGroupRenderer,
+): string[] =>
+	getGroupParts(group).map(([section, list]) => {
 		const items = list.filter(Boolean) as CountryItem[];
 		const subGroups = formatGroups(
 			userContext,
 			countryCode,
-			predicate,
-			secureCore,
+			renderSubGroup,
 			items.every((g) => needUpgrade(userContext.tier, g)),
 			list,
 			showFlagOnGroups,
@@ -251,7 +241,6 @@ export const getServerGroups = (
 				: '') + subGroups.join('')
 		);
 	});
-};
 
 export const serverGroup = (
 	userContext: UserContext,
@@ -271,13 +260,48 @@ export const serverGroup = (
 		});
 	}
 
-	return getServerGroups(
+	return formatSections(
 		userContext,
 		countryCode,
 		group,
-		predicate,
 		secureCoreEnabled,
 		true,
 		showFlagOnGroups,
+		(subGroup) =>
+			serverGroup(
+				userContext,
+				countryCode,
+				subGroup,
+				predicate,
+				secureCoreEnabled,
+				showFlagOnGroups,
+			),
 	).join('');
 };
+
+export const getServerGroups = (
+	userContext: UserContext,
+	countryCode: string,
+	group: CountryItem,
+	predicate: (servers: Logical[]) => Logical[],
+	secureCore: boolean,
+	withTitle = false,
+	showFlagOnGroups = false,
+): string[] =>
+	formatSections(
+		userContext,
+		countryCode,
+		group,
+		secureCore,
+		withTitle,
+		showFlagOnGroups,
+		(subGroup) =>
+			serverGroup(
+				userContext,
+				countryCode,
+				subGroup,
+				predicate,
+				secureCore,
+				showFlagOnGroups,
+			),
+	);

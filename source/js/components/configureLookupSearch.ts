@@ -1,3 +1,4 @@
+'use popup';
 import type {UserContext} from '../account/user/UserContext';
 import {lookupLogical} from '../vpn/lookupLogical';
 import {isLogicalConnectable} from '../vpn/isLogicalConnectable';
@@ -99,6 +100,7 @@ class LookupRequest {
 		}
 
 		this.divs.forEach((div) => {
+			// nosemgrep:insecure-innerhtml
 			div.innerHTML = html;
 			this.configurator(div);
 		});

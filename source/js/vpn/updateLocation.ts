@@ -1,3 +1,4 @@
+'use background';
 import {getLocation} from '../account/getLocation';
 import {setJitterInterval} from '../tools/delay';
 import {RefreshTokenError} from '../account/RefreshTokenError';
@@ -17,5 +18,7 @@ export const updateLocation = (): void => {
 	};
 	const interval = getLocationRefreshInterval();
 	setJitterInterval(interval, interval / 10, loadLocation);
-	(navigator as any).connection?.addEventListener('change', loadLocation);
+	(
+		navigator as unknown as {connection: EventTarget}
+	).connection?.addEventListener('change', loadLocation);
 };

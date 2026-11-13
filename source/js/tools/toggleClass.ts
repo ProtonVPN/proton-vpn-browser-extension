@@ -1,3 +1,4 @@
+'use popup';
 export const toggleClass = (
 	element: HTMLElement,
 	toggled: boolean,

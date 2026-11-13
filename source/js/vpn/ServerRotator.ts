@@ -1,3 +1,4 @@
+'use popup';
 import {milliSeconds} from '../tools/milliSeconds';
 import {RemainingTime} from '../tools/RemainingTime';
 import {triggerPromise} from '../tools/triggerPromise';
@@ -41,7 +42,7 @@ export class ServerRotator {
 	private _nextChange: number | undefined = undefined;
 
 	constructor(
-		public quickConnectButtonEl: HTMLDivElement,
+		public quickConnectButtonEl: HTMLButtonElement,
 		public modalEl: HTMLDivElement,
 		public openModal: () => void,
 	) {
@@ -252,6 +253,7 @@ export class ServerRotator {
 				milliSeconds.fromSeconds(offsetSeconds),
 			) * maxCircleCircumference
 		).toString();
+		// nosemgrep:insecure-innerhtml
 		this.modalTimeEl!.innerHTML = this._RemainingTime!.getChronometer();
 	}
 }

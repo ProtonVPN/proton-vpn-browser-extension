@@ -11,7 +11,10 @@ import {
 import {handleError} from '../tools/sentry';
 
 let countsFetching = false;
-let fetchPromises = [] as [(result: any) => void, (error: any) => void][];
+let fetchPromises = [] as [
+	(result: Counts) => void,
+	(error: unknown) => void,
+][];
 
 const serversCount = storage.item<CacheWrappedValue<Counts>>(
 	'servers-count',
@@ -49,11 +52,14 @@ const fetchServersCounts = async (): Promise<Counts> => {
 };
 
 const defaultServersCount = {
-	Servers: 20_427,
-	Countries: 145,
-	Locations: 191,
-	Capacity: 23_899.59,
+	Servers: 20_522,
+	Countries: 148,
+	Locations: 195,
+	Capacity: 24_010.74,
 };
+
+export const getCachedServersCount = async (): Promise<Counts | undefined> =>
+	(await serversCount.get())?.value;
 
 export const getServersCount = async (): Promise<Counts> => {
 	const cache = await serversCount.get();

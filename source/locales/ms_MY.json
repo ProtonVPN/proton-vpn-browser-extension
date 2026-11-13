@@ -1,0 +1,647 @@
+{
+	"headers": {
+		"plural-forms": "nplurals=1; plural=0;",
+		"language": "ms_MY"
+	},
+	"contexts": {
+		"Action": {
+			"${linkDescription} (New tab)": [
+				"${linkDescription} (Tab baharu)"
+			],
+			"Add": [
+				"Tambah"
+			],
+			"Add website": [
+				"Tambah tapak web"
+			],
+			"Already have a Proton Account?": [
+				"Sudah ada akaun Proton?"
+			],
+			"Cancel": [
+				"Batal"
+			],
+			"Change language": [
+				"Tukar bahasa"
+			],
+			"Change server": [
+				"Tukar pelayan"
+			],
+			"Configure split tunneling": [
+				"Konfigurasikan pemisahan terowong"
+			],
+			"Confirm choices": [
+				"Sahkan pilihan"
+			],
+			"Connect": [
+				"Sambung"
+			],
+			"Contact us": [
+				"Hubungi kami"
+			],
+			"Create an account": [
+				"Cipta akaun"
+			],
+			"Disable auto-connect": [
+				"Lumpuhkan sambungan automatik"
+			],
+			"Disable notifications": [
+				"Lumpuhkan pemberitahuan"
+			],
+			"Disable Split tunneling": [
+				"Lumpuhkan pemisahan terowong"
+			],
+			"Disable WebRTC leak protection": [
+				"Lumpuhkan perlindungan kebocoran WebRTC"
+			],
+			"Disconnect": [
+				"Putuskan sambungan"
+			],
+			"Enable auto-connect": [
+				"Dayakan sambungan automatik"
+			],
+			"Enable notifications": [
+				"Dayakan pemberitahuan"
+			],
+			"Enable Split tunneling": [
+				"Dayakan pemisahan terowong"
+			],
+			"Enable WebRTC leak protection": [
+				"Dayakan perlindungan kebocoran WebRTC"
+			],
+			"Log in with Proton": [
+				"Log masuk dengan Proton"
+			],
+			"Manage subscription": [
+				"Urus langganan"
+			],
+			"New to Proton?": [
+				"Baharu menggunakan Proton?"
+			],
+			"Next": [
+				"Seterusnya"
+			],
+			"Quick connect": [
+				"Sambung Pantas"
+			],
+			"Remove": [
+				"Alih keluar"
+			],
+			"Remove ${domain}": [
+				"Alih keluar ${domain}"
+			],
+			"Select a city in ${exitCountryName}": [
+				"Pilih bandar di ${exitCountryName}"
+			],
+			"Select a server in ${cityName}": [
+				"Pilih pelayan di ${cityName}"
+			],
+			"Select entry country with exit in ${exitCountryName}": [
+				"Pilih negara masuk dengan laluan keluar di ${exitCountryName}"
+			],
+			"Sign in": [
+				"Log masuk"
+			],
+			"Sign in with Vivaldi": [
+				"Log masuk dengan Vivaldi"
+			],
+			"Sign out": [
+				"Log keluar"
+			],
+			"Subscribe to connect more devices": [
+				"Langgan untuk menyambungkan lebih banyak peranti"
+			],
+			"Subscribe to enable Browser Extension": [
+				"Langgan untuk mendayakan sambungan pelayar"
+			],
+			"Switch account": [
+				"Tukar akaun"
+			],
+			"Update": [
+				"Kemas kini"
+			],
+			"Upgrade": [
+				"Naik taraf"
+			],
+			"Upgrade to Proton VPN Plus": [
+				"Naik taraf ke Proton VPN Plus"
+			],
+			"Visit Support Center": [
+				"Lawati Pusat Sokongan"
+			]
+		},
+		"Action: City-level button": {
+			"Connect to ${cityName}": [
+				"Sambung ke ${cityName}"
+			]
+		},
+		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"Sambung ke \"${mode}\""
+			],
+			"Connect to ${countryName}": [
+				"Sambung ke ${countryName}"
+			],
+			"Connect to ${exitCountryName}": [
+				"Sambung ke ${exitCountryName}"
+			],
+			"Connect to ${logical.Name}": [
+				"Sambung ke ${logical.Name}"
+			],
+			"Connect to the fastest country": [
+				"Sambung ke negara terpantas"
+			]
+		},
+		"Action: Server-level button": {
+			"Connect to ${serverName}": [
+				"Sambung ke ${serverName}"
+			]
+		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"Cari"
+			]
+		},
+		"Confirm": {
+			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
+				"Log keluar daripada aplikasi akan memutuskan sambungan VPN yang sedang aktif. Adakah anda ingin teruskan?"
+			]
+		},
+		"Error": {
+			"${countries} country": [
+				"${countries} negara"
+			],
+			"${serversCount} secure server": [
+				"${serversCount} pelayan selamat"
+			],
+			"${servers}+ secure server": [
+				"${servers}+ pelayan selamat"
+			],
+			"Access over ${servers} in ${countries}": [
+				"Akses lebih daripada ${servers} di ${countries}"
+			],
+			"Bypass online censorship with advanced security and privacy features": [
+				"Atasi penapisan dalam talian dengan ciri keselamatan dan privasi termaju"
+			],
+			"Connect from your browser with ${planName}": [
+				"Sambung dari pelayar anda dengan ${planName}"
+			],
+			"Network error.": [
+				"Ralat rangkaian."
+			],
+			"Network is unreachable": [
+				"Rangkaian tidak dapat dihubungi"
+			],
+			"No results found": [
+				"Tiada hasil ditemui"
+			],
+			"Not able to control the browser network settings, possibly a permission is missing": [
+				"Tidak dapat mengawal tetapan rangkaian pelayar, mungkin kebenaran tidak diberikan"
+			],
+			"Please check your connectivity": [
+				"Sila semak sambungan anda"
+			],
+			"Please try a different keyword": [
+				"Sila cuba kata kunci lain"
+			],
+			"Server not found": [
+				"Pelayan tidak ditemui"
+			],
+			"Service temporarily unavailable": [
+				"Perkhidmatan tidak tersedia buat sementara waktu"
+			],
+			"Something went wrong. If the problem persists, please try to re-install the extension": [
+				"Sesuatu masalah telah berlaku. Jika masalah berterusan, sila cuba pasang semula sambungan perisian"
+			],
+			"Unable to find appropriate server, try to logout and login again if it persists.": [
+				"Pelayan yang sesuai tidak ditemui, cuba log keluar dan log masuk semula jika masalah berterusan."
+			],
+			"Unable to load the list": [
+				"Senarai tidak dapat dimuatkan"
+			],
+			"Unable to login": [
+				"Tidak dapat log masuk"
+			],
+			"Unable to reach the server, please try to reconnect, or to log out and log in again if the problem persists": [
+				"Pelayan tidak dapat dihubungi, sila cuba sambung semula, atau log keluar dan log masuk semula jika masalah berterusan"
+			],
+			"Unlock ${servers} in ${countries}": [
+				"Buka akses kepada ${servers} di ${countries}"
+			],
+			"Unlock global streaming services": [
+				"Buka akses kepada perkhidmatan penstriman global"
+			]
+		},
+		"Info": {
+			"A subdomain URL includes a prefix before the main domain name. For example, account.proton.me is a subdomain of proton.me.": [
+				"URL subdomain mengandungi awalan sebelum nama domain utama. Contohnya, account.proton.me ialah subdomain bagi proton.me."
+			],
+			"About free connections": [
+				"Tentang sambungan percuma"
+			],
+			"Access over 13,000 secure servers in over 120 countries": [
+				"Akses lebih daripada 13,000 pelayan selamat di lebih daripada 120 negara"
+			],
+			"Access Proton VPN via this icon": [
+				"Akses Proton VPN melalui ikon ini"
+			],
+			"Allow VPN permissions": [
+				"Berikan kebenaran VPN"
+			],
+			"Also add subdomains": [
+				"Tambah subdomain juga"
+			],
+			"and more": [
+				"dan banyak lagi"
+			],
+			"Audited by independent security experts": [
+				"Diaudit oleh pakar keselamatan bebas"
+			],
+			"Auto-selected from": [
+				"Dipilih secara automatik daripada"
+			],
+			"Automatically reconnect to Proton VPN when you open your browser.": [
+				"Sambung semula ke Proton VPN secara automatik apabila anda membuka pelayar."
+			],
+			"Back": [
+				"Kembali"
+			],
+			"Browse through the Support Center and find answers to frequently asked questions.": [
+				"Layari Pusat Sokongan dan cari jawapan kepada soalan yang kerap ditanya."
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"Langkau penapisan dengan ciri keselamatan dan privasi yang termaju"
+			],
+			"Clear all recent connections and don't keep local history": [
+				"Kosongkan semua sambungan terbaharu dan jangan simpan sejarah setempat"
+			],
+			"Clear search": [
+				"Kosongkan carian"
+			],
+			"Close": [
+				"Tutup"
+			],
+			"Connect to a Plus server in this country to start streaming.\n\nHint: Clear the cache of the streaming apps to ensure new content appears.": [
+				"Sambung ke pelayan Plus di negara ini untuk mula menstrim.\n\nPembayang: Kosongkan cache apl penstriman untuk memastikan kandungan baharu muncul."
+			],
+			"Connected": [
+				"Disambungkan"
+			],
+			"Connected to ${name}": [
+				"Disambungkan ke ${name}"
+			],
+			"Connected to ${name} in ${city}": [
+				"Disambungkan ke ${name} di ${city}"
+			],
+			"Connecting servers such as ${logical.Name} is not currently supported in the browser extension": [
+				"Menyambung ke pelayan seperti ${logical.Name} tidak disokong buat masa ini dalam sambungan perisian pelayar"
+			],
+			"Connecting to dedicated IPs such as ${logical.Name} is not currently supported in the browser extension": [
+				"Menyambung ke IP berdedikasi seperti ${logical.Name} tidak disokong buat masa ini dalam sambungan perisian pelayar"
+			],
+			"Connecting...": [
+				"Menyambung..."
+			],
+			"Contact our Customer Support agents to help you out with Proton VPN.": [
+				"Hubungi ejen Sokongan Pelanggan kami untuk mendapatkan bantuan dengan Proton VPN."
+			],
+			"Crash": [
+				"Ranap"
+			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"Laporan ranap mengandungi maklumat diagnostik (jejak tindanan, jenis pelayar, versi sambungan perisian). Laporan ini tidak mengandungi alamat IP anda dan tiada pengecam akaun Proton dilampirkan. Kami tidak akan berkongsi laporan ini dengan pihak ketiga."
+			],
+			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
+				"Laporan ranap membantu kami membaiki pepijat, mengesan tembok api dan mengelakkan sekatan VPN."
+			],
+			"Decide which websites are protected by VPN.": [
+				"Tentukan tapak web yang dilindungi oleh VPN."
+			],
+			"Disable Secure Core": [
+				"Lumpuhkan Secure Core"
+			],
+			"Disconnected": [
+				"Sambungan terputus"
+			],
+			"Disconnected by another extension": [
+				"Sambungan diputuskan oleh sambungan perisian lain"
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"Sambungan diputuskan oleh sambungan perisian lain yang telah bersambung ke ${newProxyName}"
+			],
+			"Disconnected, settings were overridden": [
+				"Sambungan terputus, tetapan telah ditindih"
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"Sambungan terputus, tetapan telah ditindih kepada ${newProxyName}"
+			],
+			"Emit system notifications on connection and disconnection events.": [
+				"Hantar pemberitahuan sistem bagi acara sambungan dan pemutusan sambungan."
+			],
+			"Enable Secure Core": [
+				"Dayakan Secure Core"
+			],
+			"Enjoying Proton VPN?": [
+				"Berpuas hati dengan Proton VPN?"
+			],
+			"Exclude mode": [
+				"Mod pengecualian"
+			],
+			"Extra protection for people with advanced privacy needs": [
+				"Perlindungan tambahan untuk pengguna yang memerlukan privasi termaju"
+			],
+			"Fastest free server": [
+				"Pelayan percuma terpantas"
+			],
+			"Follow these simple steps to get the best experience using Proton VPN": [
+				"Ikuti langkah mudah ini untuk mendapatkan pengalaman terbaik menggunakan Proton VPN"
+			],
+			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
+				"Negara pelayan percuma (<span id=\"free-server-countries-count\">0</span>)"
+			],
+			"Get unlimited server changes with VPN Plus": [
+				"Dapatkan penukaran pelayan tanpa had dengan VPN Plus"
+			],
+			"Get worldwide coverage with VPN Plus": [
+				"Dapatkan liputan seluruh dunia dengan VPN Plus"
+			],
+			"Help": [
+				"Bantuan"
+			],
+			"Help us fight censorship": [
+				"Bantu kami melawan penapisan"
+			],
+			"Help us improve Proton VPN": [
+				"Bantu kami menambah baik Proton VPN"
+			],
+			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
+				"VPN Switzerland berprestasi tinggi yang melindungi privasi anda. Keselamatan maksimum, lebih daripada ${count} pelayan dan tiada sekatan."
+			],
+			"Include mode": [
+				"Mod kemasukan"
+			],
+			"Learn more": [
+				"Ketahui lebih lanjut"
+			],
+			"Leave a rating": [
+				"Berikan penarafan"
+			],
+			"Logged out": [
+				"Telah log keluar"
+			],
+			"Not now": [
+				"Tidak sekarang"
+			],
+			"Off": [
+				"Mati"
+			],
+			"On": [
+				"Hidup"
+			],
+			"Open source VPN": [
+				"VPN sumber terbuka"
+			],
+			"Open the Extensions menu": [
+				"Buka menu sambungan perisian"
+			],
+			"Open the Proton VPN browser extension to continue": [
+				"Buka sambungan perisian pelayar Proton VPN untuk teruskan"
+			],
+			"Pin Proton VPN to your toolbar": [
+				"Semat Proton VPN pada bar alat anda"
+			],
+			"Please help us spread the word with a Web Store rating.": [
+				"Bantu kami menyebarkan berita dengan memberikan penarafan di Web Store."
+			],
+			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
+				"Tekan <b>Seterusnya</b>, kemudian klik <b>Benarkan</b> pada tetingkap timbul daripada pelayar anda."
+			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"Lindungi diri anda dalam talian dengan VPN berkelajuan tinggi percuma daripada Proton."
+			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"Proton Free secara automatik menyambungkan anda ke pelayan percuma terpantas yang tersedia daripada ${freeCountriesCount} negara percuma kami. Biasanya, ini merupakan pelayan yang paling hampir dengan lokasi anda."
+			],
+			"Proton VPN": [
+				"Proton VPN"
+			],
+			"Proton VPN Browser Extension": [
+				"Sambungan perisian pelayar Proton VPN"
+			],
+			"Recent connections": [
+				"Sambungan terbaharu"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"Ingat sambungan terbaharu secara setempat dan papar pautan pantas kepadanya"
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"Ingat negara/bandar/pelayan yang terakhir saya sambungkan dan paparkannya di\natas senarai."
+			],
+			"Retired server": [
+				"Pelayan ditamatkan"
+			],
+			"Secure Core": [
+				"Secure Core"
+			],
+			"Selected websites": [
+				"Tapak web dipilih"
+			],
+			"Share anonymous crash reports": [
+				"Kongsi laporan ranap tanpa nama"
+			],
+			"Share anonymous usage statistics": [
+				"Kongsi statistik penggunaan tanpa nama"
+			],
+			"Split tunneling": [
+				"Pemisahan terowong"
+			],
+			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
+				"Menghalang pelayar anda daripada membocorkan alamat IP kepada tapak web dan apl yang menggunakan WebRTC. Ciri ini mungkin menjejaskan prestasi panggilan video atau penstriman langsung pada sesetengah tapak web."
+			],
+			"Telemetry": [
+				"Telemetri"
+			],
+			"Thank you for installing Proton VPN": [
+				"Terima kasih kerana memasang Proton VPN"
+			],
+			"The split tunneling options cannot be changed on this device": [
+				"Pilihan pemisahan terowong tidak dapat diubah pada peranti ini"
+			],
+			"Then just click the Proton VPN icon to sign in.": [
+				"Kemudian klik sahaja ikon Proton VPN untuk log masuk."
+			],
+			"This option cannot be changed on this device": [
+				"Pilihan ini tidak dapat diubah pada peranti ini"
+			],
+			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
+				"Statistik ini tidak mengandungi alamat IP anda dan tidak boleh digunakan untuk mengenal pasti anda. Kami tidak akan pernah mengongsinya dengan pihak ketiga"
+			],
+			"To get started, you’ll need to enable VPN permissions on your browser.": [
+				"Untuk bermula, anda perlu mendayakan kebenaran VPN pada pelayar anda."
+			],
+			"Tor servers such as ${logical.Name} are not currently supported in the browser extension": [
+				"Pelayan Tor seperti ${logical.Name} tidak disokong buat masa ini dalam sambungan perisian pelayar"
+			],
+			"Upgrade": [
+				"Naik taraf"
+			],
+			"Usage data helps us overcome VPN blocks and improve app performance.": [
+				"Data penggunaan membantu kami mengatasi sekatan VPN dan meningkatkan prestasi apl."
+			],
+			"User": [
+				"Pengguna"
+			],
+			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
+				"Apabila menggunakan Brave, permintaan DNS mungkin tidak dilindungi apabila \"Mod kemasukan\" aktif."
+			],
+			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
+				"VPN disekat oleh perisian luaran.\n\nSesetengah alat, seperti antivirus atau proksi, boleh mengganggu Proton VPN. Lumpuhkannya dan cuba lagi."
+			],
+			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.": [
+				"VPN disekat oleh perisian luaran: ${blockingSoftware}.\n\nSesetengah alat, seperti antivirus atau proksi, boleh mengganggu Proton VPN. Anda boleh cuba melumpuhkannya untuk mengesahkan."
+			],
+			"VPN Features": [
+				"Ciri VPN"
+			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"Kami mengutamakan privasi anda di atas segalanya. Kami tidak menjejak aktiviti pelayaran anda dan tidak menyimpan sebarang log. Untuk mengesahkan sambungan anda, ID sesi akaun anda dihantar ke pelayan kami, dan ini diperlukan agar sambungan perisian ini berfungsi"
+			],
+			"You're signed in": [
+				"Anda telah log masuk"
+			],
+			"Your network appears to be blocking Proton, and this extension can't bypass this block. The desktop app likely can, ${link}.": [
+				"Rangkaian anda kelihatan menyekat Proton, dan sambungan perisian ini tidak dapat memintas sekatan tersebut. Apl desktop mungkin dapat berbuat demikian, ${link}."
+			],
+			"Your network seems to be blocking Proton. The extension can't bypass this. Try the desktop app instead.": [
+				"Rangkaian anda kelihatan menyekat Proton. Sambungan perisian ini tidak dapat memintasnya. Cuba gunakan apl desktop sebagai gantinya."
+			]
+		},
+		"Label": {
+			"And all its subdomains": [
+				"Dan semua subdomainnya"
+			],
+			"Auto connect": [
+				"Sambung automatik"
+			],
+			"Cities": [
+				"Bandar"
+			],
+			"City": [
+				"Bandar"
+			],
+			"Connecting": [
+				"Menyambung"
+			],
+			"Countries, cities, servers": [
+				"Negara, bandar, pelayan"
+			],
+			"Country": [
+				"Negara"
+			],
+			"Entry country": [
+				"Negara kemasukan"
+			],
+			"Exact match": [
+				"Padanan tepat"
+			],
+			"Free": [
+				"Percuma"
+			],
+			"Free connections": [
+				"Sambungan percuma"
+			],
+			"Free servers": [
+				"Pelayan percuma"
+			],
+			"Free servers (${count})": [
+				"Pelayan percuma (${count})"
+			],
+			"Internal servers (${count})": [
+				"Pelayan dalaman (${count})"
+			],
+			"Need help?": [
+				"Perlukan bantuan?"
+			],
+			"Notifications": [
+				"Pemberitahuan"
+			],
+			"Other": [
+				"Lain-lain"
+			],
+			"Plus servers (${count})": [
+				"Pelayan Plus (${count})"
+			],
+			"Protected": [
+				"Dilindungi"
+			],
+			"Server": [
+				"Pelayan"
+			],
+			"Settings": [
+				"Tetapan"
+			],
+			"Split tunneling": [
+				"Pemisahan terowong"
+			],
+			"Unprotected": [
+				"Tidak dilindungi"
+			],
+			"Via": [
+				"Melalui"
+			],
+			"Want to know more?": [
+				"Mahu tahu lebih lanjut?"
+			],
+			"WebRTC leak protection": [
+				"Perlindungan kebocoran WebRTC"
+			]
+		},
+		"Menu": {
+			"Countries": [
+				"Negara"
+			],
+			"Features": [
+				"Ciri"
+			],
+			"Help": [
+				"Bantuan"
+			],
+			"Settings": [
+				"Tetapan"
+			]
+		},
+		"Status": {
+			"Connecting to ${serverName}": [
+				"Menyambung ke ${serverName}"
+			],
+			"Proton VPN: ${status}": [
+				"Proton VPN: ${status}"
+			]
+		},
+		"Title": {
+			"Closest server": [
+				"Pelayan terdekat"
+			],
+			"Fastest country": [
+				"Negara terpantas"
+			],
+			"Fastest server": [
+				"Pelayan terpantas"
+			],
+			"Features": [
+				"Ciri"
+			],
+			"Proton VPN for Vivaldi": [
+				"Proton VPN untuk Vivaldi"
+			],
+			"Random server": [
+				"Pelayan rawak"
+			],
+			"Recents": [
+				"Terbaharu"
+			],
+			"Streaming": [
+				"Penstriman"
+			]
+		}
+	}
+}

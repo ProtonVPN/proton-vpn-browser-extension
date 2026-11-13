@@ -1,3 +1,4 @@
+'use popup';
 const removeAccents = (text: string): string => {
 	try {
 		return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');

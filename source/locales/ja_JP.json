@@ -26,8 +26,14 @@
 			"Change server": [
 				"サーバーを変更する"
 			],
+			"Close the banner": [
+				"バナーを閉じる"
+			],
 			"Configure split tunneling": [
 				"スプリットトンネリングを設定"
+			],
+			"Confirm choices": [
+				"選択内容を確認"
 			],
 			"Connect": [
 				"接続"
@@ -80,6 +86,9 @@
 			"Quick connect": [
 				"クイック接続"
 			],
+			"Remove": [
+				"削除"
+			],
 			"Remove ${domain}": [
 				"${domain} を削除"
 			],
@@ -129,8 +138,20 @@
 			]
 		},
 		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"\"${mode}\" に接続"
+			],
+			"Connect to ${countryName}": [
+				"${countryName} に接続"
+			],
 			"Connect to ${exitCountryName}": [
 				"${exitCountryName} に接続"
+			],
+			"Connect to ${logical.Name}": [
+				"${logical.Name} に接続"
+			],
+			"Connect to the fastest country": [
+				"最速の国に接続"
 			]
 		},
 		"Action: Server-level button": {
@@ -214,9 +235,6 @@
 			]
 		},
 		"Info": {
-			"<div class=\"weak-text\">\n<span data-trans>About free connections</span>\n<svg width=\"15\" height=\"14\" viewBox=\"0 0 15 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path \t\t\t\t\t\t\t\t\t\tfill-rule=\"evenodd\"\nclip-rule=\"evenodd\"\nd=\"M7.5 13C10.8137 13 13.5 10.3137 13.5 7C13.5 3.68629 10.8137 1 7.5 1C4.18629 1 1.5 3.68629 1.5 7C1.5 10.3137 4.18629 13 7.5 13ZM7.5 14C11.366 14 14.5 10.866 14.5 7C14.5 3.13401 11.366 0 7.5 0C3.63401 0 0.5 3.13401 0.5 7C0.5 10.866 3.63401 14 7.5 14ZM9.24995 10C9.24995 10.3038 9.00371 10.55 8.69995 10.55H7.69995H6.69995C6.39619 10.55 6.14995 10.3038 6.14995 10C6.14995 9.69624 6.39619 9.45 6.69995 9.45H7.14995L7.14995 6.55H6.99994C6.69618 6.55 6.44994 6.30376 6.44994 6C6.44994 5.69624 6.69618 5.45 6.99994 5.45H7.69995C7.84582 5.45 7.98571 5.50795 8.08886 5.61109C8.19201 5.71424 8.24995 5.85413 8.24995 6L8.24995 9.45H8.69995C9.00371 9.45 9.24995 9.69624 9.24995 10ZM7.5 4.40002C7.8866 4.40002 8.2 4.08662 8.2 3.70002C8.2 3.31343 7.8866 3.00002 7.5 3.00002C7.1134 3.00002 6.8 3.31343 6.8 3.70002C6.8 4.08662 7.1134 4.40002 7.5 4.40002Z\"\nfill=\"#A7A4B5\" ></path>\n</svg>\n</div>": [
-				"<div class=\"weak-text\">\n<span data-trans>無料接続について</span>\n<svg width=\"15\" height=\"14\" viewBox=\"0 0 15 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path \t\t\t\t\t\t\t\t\t\tfill-rule=\"evenodd\"\nclip-rule=\"evenodd\"\nd=\"M7.5 13C10.8137 13 13.5 10.3137 13.5 7C13.5 3.68629 10.8137 1 7.5 1C4.18629 1 1.5 3.68629 1.5 7C1.5 10.3137 4.18629 13 7.5 13ZM7.5 14C11.366 14 14.5 10.866 14.5 7C14.5 3.13401 11.366 0 7.5 0C3.63401 0 0.5 3.13401 0.5 7C0.5 10.866 3.63401 14 7.5 14ZM9.24995 10C9.24995 10.3038 9.00371 10.55 8.69995 10.55H7.69995H6.69995C6.39619 10.55 6.14995 10.3038 6.14995 10C6.14995 9.69624 6.39619 9.45 6.69995 9.45H7.14995L7.14995 6.55H6.99994C6.69618 6.55 6.44994 6.30376 6.44994 6C6.44994 5.69624 6.69618 5.45 6.99994 5.45H7.69995C7.84582 5.45 7.98571 5.50795 8.08886 5.61109C8.19201 5.71424 8.24995 5.85413 8.24995 6L8.24995 9.45H8.69995C9.00371 9.45 9.24995 9.69624 9.24995 10ZM7.5 4.40002C7.8866 4.40002 8.2 4.08662 8.2 3.70002C8.2 3.31343 7.8866 3.00002 7.5 3.00002C7.1134 3.00002 6.8 3.31343 6.8 3.70002C6.8 4.08662 7.1134 4.40002 7.5 4.40002Z\"\nfill=\"#A7A4B5\" ></path>\n</svg>\n</div>"
-			],
 			"A subdomain URL includes a prefix before the main domain name. For example, account.proton.me is a subdomain of proton.me.": [
 				"サブドメインURLとは、ドメイン名の前に接頭辞がついたものです。例えば、「account.proton.me」は「proton.me」のサブドメインです。"
 			],
@@ -256,6 +274,9 @@
 			"Bypass censorship with advanced security and privacy features": [
 				"高度なセキュリティとプライバシー機能で検閲を回避"
 			],
+			"Clear all recent connections and don't keep local history": [
+				"最近の接続をすべて消去し、ローカルの履歴を保持しない"
+			],
 			"Clear search": [
 				"検索をクリア"
 			],
@@ -288,6 +309,9 @@
 			],
 			"Crash": [
 				"クラッシュ"
+			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"クラッシュレポートには診断情報（スタックトレース、ブラウザの種類、拡張機能のバージョン）が含まれます。お客様の IP アドレスは含まれず、Proton アカウントの識別情報が関連付けられることもありません。このデータを第三者に共有することは一切ありません。"
 			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"クラッシュレポートはバグを修正し、ファイアウォールを検出し、VPN 検閲を回避するために使用されます。"
@@ -337,6 +361,9 @@
 			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
 				"無料サーバーの国 (<span id=\"free-server-countries-count\">0</span>)"
 			],
+			"Get the deal": [
+				"お得な割引をゲット"
+			],
 			"Get unlimited server changes with VPN Plus": [
 				"VPN Plusで無制限のサーバー変更を入手"
 			],
@@ -348,6 +375,9 @@
 			],
 			"Help us fight censorship": [
 				"検閲への対抗を助ける"
+			],
+			"Help us improve Proton VPN": [
+				"Proton VPN の改善にご協力ください"
 			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"高パフォーマンスなスイスの VPN でプライバシーを保護します。最大限のセキュリティを備えた制限のない ${count} 台以上のサーバーがあります。"
@@ -391,8 +421,14 @@
 			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
 				"<b>次へ</b>を押し、ブラウザのポップアップで<b>許可</b>をクリックします。"
 			],
+			"Promotion": [
+				"プロモーション"
+			],
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Protonの無料の高速VPNでオンライン上で安全を確保。"
+			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"Proton Freeの場合は、${freeCountriesCount}の無料提供国の中から、最も速い無料サーバーに自動的に接続します。通常、これはあなたの位置に最も近いサーバーになります。"
 			],
 			"Proton VPN": [
 				"Proton VPN"
@@ -400,11 +436,26 @@
 			"Proton VPN Browser Extension": [
 				"Proton VPN ブラウザ拡張機能"
 			],
+			"Recent connections": [
+				"最近の接続"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"最近の接続をローカルに記憶し、クイックリンクを表示する"
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"最後に接続した国/都市/サーバーを記憶し、リストの先頭に表示する。"
+			],
+			"Retired server": [
+				"廃止されたサーバー"
+			],
 			"Secure Core": [
 				"Secure Core"
 			],
 			"Selected websites": [
 				"選択されたウェブサイト"
+			],
+			"Share anonymous crash reports": [
+				"匿名のクラッシュレポートを共有"
 			],
 			"Share anonymous usage statistics": [
 				"匿名の使用統計を共有"
@@ -460,8 +511,17 @@
 			"VPN Features": [
 				"VPN 機能"
 			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"私たちは何よりもお客様のプライバシーを最優先に考えています。ブラウジング履歴を追跡することはなく、ログも一切保持しません。接続を認証するためにアカウントのセッション ID がサーバーに送信されますが、これは拡張機能が動作するために必須の処理です。"
+			],
 			"You're signed in": [
 				"サインインしました"
+			],
+			"Your network appears to be blocking Proton, and this extension can't bypass this block. The desktop app likely can, ${link}.": [
+				"お使いのネットワークが Proton をブロックしているようで、この拡張機能ではその制限を回避できません。デスクトップアプリであれば回避できる可能性があります。${link}"
+			],
+			"Your network seems to be blocking Proton. The extension can't bypass this. Try the desktop app instead.": [
+				"お使いのネットワークが Proton をブロックしているようです。ブラウザ拡張機能ではこれを回避できません。代わりにデスクトップアプリをお試しください。"
 			]
 		},
 		"Label": {
@@ -512,9 +572,6 @@
 			],
 			"Notifications": [
 				"通知"
-			],
-			"Offer": [
-				"オファー"
 			],
 			"Other": [
 				"その他"
@@ -570,11 +627,26 @@
 			]
 		},
 		"Title": {
+			"Closest server": [
+				"最も近いサーバー"
+			],
+			"Fastest country": [
+				"最速の国"
+			],
+			"Fastest server": [
+				"最速のサーバー"
+			],
 			"Features": [
 				"機能"
 			],
 			"Proton VPN for Vivaldi": [
 				"Vivaldi用Proton VPN"
+			],
+			"Random server": [
+				"ランダムサーバー"
+			],
+			"Recents": [
+				"最近"
 			],
 			"Streaming": [
 				"ストリーミング"

@@ -1,3 +1,4 @@
+'use popup';
 import {
 	countryFilteredList,
 	type CountryList,

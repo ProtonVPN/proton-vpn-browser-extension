@@ -1,3 +1,4 @@
+/// <reference types="firefox-webext-browser"/>
 import {
 	apiDomainsExclusion,
 	baseAPIURL,
@@ -86,6 +87,8 @@ export type InvalidTokenError<T = DataResult> = UnauthorizedError<T, 401>;
 
 export type ResponseResult = DataResult | ArrayBuffer;
 
+export type WithResponse = {response?: Response};
+
 const isObject = (value: unknown) =>
 	typeof value === 'object' && value !== null;
 
@@ -98,6 +101,14 @@ export const isNetworkError = (error: unknown): boolean =>
 		/^(NetworkError |(TypeError: )?Failed to fetch)/.test(
 			(error as {message?: string}).message || '',
 		));
+
+/**
+ * Network failure, either raw (failed fetch) or as the "Network is unreachable"
+ * error the background stores in its state (see checkNetwork, `Code: -1`).
+ */
+export const isNetworkUnreachableError = (error: unknown): boolean =>
+	isNetworkError(error) ||
+	(isObject(error) && (error as {Code?: number}).Code === -1);
 
 export const hasErrorHttpStatus = (
 	error: unknown,
@@ -359,7 +370,9 @@ const getJsonContent = async <T extends ResponseResult = ResponseResult>(
 
 		warn(response.status, e);
 
-		throw new Error(c('Error').t`Service temporarily unavailable`);
+		throw new Error(c('Error').t`Service temporarily unavailable`, {
+			cause: e,
+		});
 	}
 };
 
@@ -406,7 +419,7 @@ export const fetchJson = async <T, D extends ResponseResult = ResponseResult>(
 	if (!isSuccessfulResponse(response)) {
 		const data = (await getResponseContent(response)) as unknown;
 		const error = (data as ApiError)?.Error ? data : new Error(data as string);
-		(error as {response?: Response}).response = response;
+		(error as WithResponse).response = response;
 
 		if (isObject(error)) {
 			(error as {httpStatus?: number}).httpStatus = response.status;

@@ -1,3 +1,4 @@
+'use popup';
 import {clamp} from './math';
 import {milliSeconds} from './milliSeconds';
 

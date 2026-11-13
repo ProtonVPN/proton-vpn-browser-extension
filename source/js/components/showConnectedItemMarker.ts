@@ -1,3 +1,4 @@
+'use popup';
 import type {ProxyServer} from '../vpn/ConnectionState';
 import {buttonMatchesSecureCore} from './buttonMatchesSecureCore';
 

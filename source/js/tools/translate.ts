@@ -41,6 +41,7 @@ export const getTranslation = (
 	context: string,
 	pluralFunction: (value: (string | undefined)[]) => string | undefined,
 	template: TemplateStringsArray | string[],
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	args: any[] = [],
 	plurals: string[] = [],
 ): string => {
@@ -83,6 +84,7 @@ export const getTranslation = (
  * via another way, such as values in data-tooltip-title attributes. If your
  * string is static, use c('Info').t`Your text`
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const translate = (context: string, id: string, args: any[] = []) =>
 	getTranslation(context, ([value]) => value, [id], args);
 
@@ -114,10 +116,12 @@ export const translateArea = (area: ParentNode): void => {
 export class MessageId {
 	constructor(
 		public readonly template: TemplateStringsArray,
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		public readonly args: any[],
 	) {}
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const msgid = (template: TemplateStringsArray, ...args: any[]) =>
 	new MessageId(template, args);
 
@@ -126,6 +130,7 @@ let currentPluralFunc: Function | undefined = undefined;
 export class Context {
 	constructor(private context: string) {}
 
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	t(template: TemplateStringsArray, ...args: any): string {
 		return getTranslation(this.context, ([value]) => value, template, args);
 	}

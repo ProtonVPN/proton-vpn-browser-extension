@@ -1,11 +1,13 @@
-export const setJitterTimeout = <TArgs extends any[]>(
+import {unsafeRandomFloat} from './random';
+
+export const setJitterTimeout = <TArgs extends unknown[]>(
 	milliSeconds: number,
 	jitterMilliSeconds: number,
 	callback: (...args: TArgs) => void,
 	...args: TArgs
 ): NodeJS.Timeout => {
 	if (jitterMilliSeconds) {
-		milliSeconds += Math.round(jitterMilliSeconds * (Math.random() * 2 - 1));
+		milliSeconds += Math.round(jitterMilliSeconds * unsafeRandomFloat(-1, 1));
 	}
 
 	return setTimeout(callback, milliSeconds, ...args);
@@ -20,7 +22,7 @@ export const timeoutAfter = <T>(
 	promise: Promise<T>,
 	maxMilliSeconds: number,
 	message?: string,
-	errorType: new (...args: any[]) => any = Error,
+	errorType: new (message: string) => Error = Error,
 ) =>
 	new Promise<T>((resolve, reject) => {
 		let timedOut = false;
@@ -39,7 +41,7 @@ export const timeoutAfter = <T>(
 			.catch(reject);
 	});
 
-export const setJitterInterval = <TArgs extends any[]>(
+export const setJitterInterval = <TArgs extends unknown[]>(
 	milliSeconds: number,
 	jitterMilliSeconds: number,
 	callback: (...args: TArgs) => void,

@@ -22,6 +22,8 @@ import {
 import type {ProxyServer, SplitTunnelingConfig} from '../vpn/ConnectionState';
 import {getIncludeOnlyList} from '../vpn/getIncludeOnlyList';
 import {getBypassList} from '../vpn/getBypassList';
+import {usesFirefoxProxySettings} from '../vpn/proxy/usesFirefoxProxySettings';
+import {warn} from '../log/log';
 
 interface PacScript {
 	mode: 'pac_script';
@@ -45,35 +47,93 @@ interface FixedServersProxy {
 	};
 }
 
-const isFixedServersProxy = (value: any): value is FixedServersProxy =>
-	value.mode === 'fixed_servers' || value.mode === 'pac_script';
+/**
+ * Shape of proxy.settings expected by Firefox, which ignores the Chrome
+ * one ({mode, rules}) and falls back to proxyType: 'system' instead.
+ */
+interface FirefoxManualProxy {
+	proxyType: 'manual';
+	http: string;
+	httpProxyAll: true;
+	passthrough: string;
+}
+
+type ProxySettings =
+	chrome.types.ChromeSettingGetResult<chrome.proxy.ProxyConfig> | undefined;
+
+const isFixedServersProxy = (value: object): value is FixedServersProxy =>
+	(
+		value as {
+			mode?: string;
+		}
+	).mode === 'fixed_servers' ||
+	(
+		value as {
+			mode?: string;
+		}
+	).mode === 'pac_script';
+
+const isFirefoxManualProxy = (value: object): value is FirefoxManualProxy =>
+	(
+		value as {
+			proxyType?: string;
+		}
+	).proxyType === 'manual';
 
 let proxySet = false;
 
 let proxyErrorWatched = false;
 
-export const hasProxy = async (): Promise<boolean> =>
+export const getProxySettings = async (): Promise<ProxySettings> =>
 	await timeoutAfter(
 		new Promise((resolve) => {
 			if (!chrome.proxy) {
-				resolve(false);
+				resolve(undefined);
 
 				return;
 			}
 
-			chrome.proxy.settings.get({}, async (details) => {
-				resolve(
-					details?.levelOfControl === 'controlled_by_this_extension' ||
-						(details?.value?.mode
-							? isFixedServersProxy(details?.value)
-							: details?.levelOfControl === 'controllable_by_this_extension' &&
-								(await isConnected())),
-				);
-			});
+			chrome.proxy.settings.get({}, resolve);
 		}),
 		milliSeconds.fromSeconds(5),
 		'Unable to check proxy settings',
 	);
+
+export const getProxyLevelOfControl = async (): Promise<
+	chrome.types.LevelOfControl | undefined
+> => (await getProxySettings())?.levelOfControl;
+
+/**
+ * True when another extension took precedence over the proxy settings,
+ * so what we set is ignored by the browser.
+ */
+export const isProxyControlledByOtherExtensions = async (): Promise<boolean> =>
+	(await getProxyLevelOfControl()) === 'controlled_by_other_extensions';
+
+export const isProxyControlledAndConnected = async (
+	details: ProxySettings,
+): Promise<boolean> => {
+	if (
+		!details ||
+		// Another extension took precedence, what we set is ignored
+		details.levelOfControl === 'controlled_by_other_extensions' ||
+		// Locked by browser configuration or policy, no extension can set it
+		details.levelOfControl === 'not_controllable'
+	) {
+		return false;
+	}
+
+	return (
+		details.levelOfControl === 'controlled_by_this_extension' ||
+		(details.value?.mode
+			? isFixedServersProxy(details.value)
+			: details.levelOfControl === 'controllable_by_this_extension' &&
+				(await isConnected()))
+	);
+};
+
+export const hasProxy = async (): Promise<boolean> =>
+	await isProxyControlledAndConnected(await getProxySettings());
 
 const buildDomainMatchingCondition = (domain: string) => {
 	if (domain.startsWith('.')) {
@@ -151,8 +211,22 @@ export const getPacScript = (proxy: FixedServersProxy): PacScript => ({
 	},
 });
 
+/**
+ * Only the proxy host and the bypass list can be expressed this way (no HTTPS
+ * proxy, no include-only list), it's enough for a dead-end, actual proxying
+ * in Firefox is done by handleProxyRequest().
+ */
+export const getFirefoxManualProxy = (
+	proxy: FixedServersProxy,
+): FirefoxManualProxy => ({
+	proxyType: 'manual',
+	http: `${proxy.rules.singleProxy.host}:${proxy.rules.singleProxy.port}`,
+	httpProxyAll: true,
+	passthrough: proxy.rules.bypassList.join(', '),
+});
+
 const setProxy = (
-	value: FixedServersProxy | SystemProxy | PacScript,
+	value: FixedServersProxy | SystemProxy | PacScript | FirefoxManualProxy,
 ): Promise<boolean> =>
 	new Promise((resolve) => {
 		if (!chrome.proxy || !setupHandleProxyRequest()) {
@@ -165,10 +239,27 @@ const setProxy = (
 		initAuthInterceptor();
 		chrome.proxy.settings.set(
 			{
-				value,
+				value: value as chrome.proxy.ProxyConfig,
 				scope: 'regular',
 			},
 			() => {
+				// Must be read in the callback, it is reset right after
+				const error = chrome.runtime.lastError?.message;
+
+				if (error) {
+					warn('Unable to set proxy settings: ' + error);
+
+					// In Chrome the settings are the routing itself, the previous
+					// value is still active, so the requested proxy is not applied.
+					// In Firefox routing is done by proxy.onRequest, settings are
+					// only the fail-closed fallback, so connection still works.
+					if (!usesFirefoxProxySettings()) {
+						resolve(false);
+
+						return;
+					}
+				}
+
 				hasProxy()
 					.then((result) => {
 						const promise = browser?.webRequest?.handlerBehaviorChanged?.();
@@ -199,7 +290,7 @@ const setProxy = (
 		);
 
 		triggerPromise(
-			isFixedServersProxy(value)
+			isFixedServersProxy(value) || isFirefoxManualProxy(value)
 				? preventLeak()
 				: setWebRTCState(WebRTCState.CLEAR),
 		);
@@ -235,10 +326,26 @@ export const getFixedServerConfig = (
 	return config;
 };
 
+const getWaiterHostConfig = (splitTunneling: SplitTunnelingConfig = {}) =>
+	getFixedServerConfig(
+		'localhost', // 127.0.0.1
+		9,
+		splitTunneling,
+	);
+
 export const proxyToServer = async (
 	server: ProxyServer,
 	splitTunneling: SplitTunnelingConfig = {},
 ) => {
+	if (usesFirefoxProxySettings()) {
+		// proxy.settings in Firefox cannot express an HTTPS proxy, actual routing
+		// is done by handleProxyRequest(), settings only keep the dead-end so
+		// that anything it does not handle fails closed instead of going direct
+		return await setProxy(
+			getFirefoxManualProxy(getWaiterHostConfig(splitTunneling)),
+		);
+	}
+
 	const config = getFixedServerConfig(
 		server.proxyHost,
 		server.proxyPort,
@@ -252,13 +359,13 @@ export const proxyToServer = async (
 	);
 };
 
-export const setProxyToWaiterHost = async (): Promise<boolean> =>
-	await setProxy(
-		getFixedServerConfig(
-			'localhost', // 127.0.0.1
-			9,
-		),
+export const setProxyToWaiterHost = async (): Promise<boolean> => {
+	const config = getWaiterHostConfig();
+
+	return await setProxy(
+		usesFirefoxProxySettings() ? getFirefoxManualProxy(config) : config,
 	);
+};
 
 export const clearProxy = (): Promise<boolean> =>
 	new Promise<boolean>((resolve) => {

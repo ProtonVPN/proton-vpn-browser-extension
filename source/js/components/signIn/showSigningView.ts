@@ -4,7 +4,7 @@ import {openForkTab} from '../../account/openForkTab';
 import {triggerPromise} from '../../tools/triggerPromise';
 import {initOnboarding} from '../../vpn/initOnboarding';
 import {requiresToAskConsentForOptionalMetricsEarly} from './requiresToAskConsentForOptionalMetricsEarly';
-import {proxyPermission} from '../../vpn/proxyPermission';
+import {proxyPermission} from '../../vpn/proxy/proxyPermission';
 import {signupEnabled} from '../../config';
 import {sendMessageToBackground} from '../../tools/sendMessageToBackground';
 import {PermissionGrant} from '../../messaging/MessageType';
@@ -23,6 +23,46 @@ import {
 	setServerCount,
 } from './initializeInlineParagraph';
 import type {ApiError} from '../../api';
+import {
+	getCensoredResponse,
+	getLastCensorshipDetectionResult,
+} from '../../vpn/detectCensorship';
+import type {CensorshipDetected} from '../../tools/broadcastMessage';
+import {getRuntime} from '../../tools/getRuntime';
+import {hasBrowserPermission} from '../../tools/hasBrowserPermission';
+import {escapeHtml} from '../../tools/escapeHtml';
+
+let censorshipListener:
+	((message: {type?: unknown} | undefined) => void) | undefined;
+
+/**
+ * Detection runs in the background and may complete after the popup
+ * is open (e.g. the background was idle and woken up by the popup,
+ * with expired reachability caches), so listen for its result.
+ *
+ * Uses `onMessage` directly rather than `watchBroadcastMessages` because
+ * this module is also loaded in background (via `createSession`).
+ */
+const watchCensorshipDetection = (
+	onDetected: (message: string) => void,
+): void => {
+	const runtime = getRuntime();
+
+	if (censorshipListener) {
+		runtime?.onMessage.removeListener(censorshipListener);
+	}
+
+	censorshipListener = (message) => {
+		if (
+			message?.type ===
+			('censorship-detected' satisfies CensorshipDetected['type'])
+		) {
+			onDetected(getCensoredResponse().message);
+		}
+	};
+
+	runtime?.onMessage.addListener(censorshipListener);
+};
 
 export const prepareSigningView = (): Promise<Counts> | undefined => {
 	const age = Date.now() - getServerCountLastCheck();
@@ -53,18 +93,16 @@ export const showSigningViewAndWaitForItToBeLoaded = async (
 		: proxySupported && chrome.proxy);
 
 	if (proxySupported) {
-		chrome.permissions.contains(proxyPermission, (ok) => {
-			if (!ok) {
-				triggerPromise(
-					showSigningViewAndWaitForItToBeLoaded(
-						signInView,
-						loggedView,
-						spinner,
-						false,
-					),
-				);
-			}
-		});
+		if (!(await hasBrowserPermission(proxyPermission))) {
+			await showSigningViewAndWaitForItToBeLoaded(
+				signInView,
+				loggedView,
+				spinner,
+				false,
+			);
+
+			return;
+		}
 	}
 
 	const signUp = signInView.querySelector(
@@ -77,7 +115,9 @@ export const showSigningViewAndWaitForItToBeLoaded = async (
 		'a.sign-in-link',
 	) as HTMLLinkElement;
 	signIn.classList.remove('update-extension');
-	const setSignInButtonLabel = (label = '') => {
+	/** @param {string} label A label text free of any HTML tag */
+	const setSignInButtonLabel = (label: string = '') => {
+		// nosemgrep:insecure-innerhtml
 		signIn.innerHTML =
 			label || (proxySupported ? c('Action').t`Sign in` : c('Action').t`Next`);
 	};
@@ -93,13 +133,21 @@ export const showSigningViewAndWaitForItToBeLoaded = async (
 		}
 
 		signIn.classList.add('update-extension');
+		// nosemgrep:insecure-innerhtml
 		signIn.innerHTML = c('Action').t`Update`;
 
-		const errorMessage = (error as ApiError)?.Error || getErrorAsString(error);
+		const errorMessage = String(
+			(error as ApiError)?.Error || getErrorAsString(error),
+		);
 
 		if (paragraphs[0]) {
-			paragraphs[0].classList.remove('incentive-paragraph');
-			paragraphs[0].innerHTML = '⚠️ ' + errorMessage;
+			paragraphs[0].classList.remove(
+				'incentive-paragraph',
+				'censorship-warning',
+			);
+			// nosemgrep:insecure-innerhtml
+			paragraphs[0].innerHTML =
+				'⚠️ ' + escapeHtml(errorMessage).replace(/\n/g, '<br>');
 		}
 
 		setDisplayStyle(paragraphs[1], 'none');
@@ -179,7 +227,7 @@ export const showSigningViewAndWaitForItToBeLoaded = async (
 			window?.close();
 		}, 200);
 
-		if (!(await browser.permissions.request(proxyPermission))) {
+		if (!(await chrome.permissions.request(proxyPermission))) {
 			return;
 		}
 
@@ -221,6 +269,7 @@ export const showSigningViewAndWaitForItToBeLoaded = async (
 	if (paragraphs[0]) {
 		if (!proxySupported) {
 			paragraphs[0].classList.remove('incentive-paragraph');
+			// nosemgrep:insecure-innerhtml
 			paragraphs[0].innerHTML =
 				`<b>${/* translator: title of the first install step */ c('Info').t`Allow VPN permissions`}</b><br><br>` +
 				c('Info')
@@ -237,6 +286,26 @@ export const showSigningViewAndWaitForItToBeLoaded = async (
 		}
 
 		initializeInlineParagraph(signInView, paragraphs[0], hasPartnerOauth);
+		const showCensorshipMessage = (message: string) => {
+			// A required update takes precedence
+			if (!paragraphs[0] || signIn.classList.contains('update-extension')) {
+				return;
+			}
+
+			// Not an incentive anymore, so it must not be refreshed with the server count
+			paragraphs[0].classList.remove('incentive-paragraph');
+			paragraphs[0].classList.add('censorship-warning');
+			// nosemgrep:insecure-innerhtml
+			paragraphs[0].innerHTML = message;
+		};
+		watchCensorshipDetection(showCensorshipMessage);
+		getLastCensorshipDetectionResult().then((result) => {
+			if (!result.likelyCensored) {
+				return;
+			}
+
+			showCensorshipMessage(result.message);
+		});
 	}
 
 	if (!proxySupported || !signupEnabled) {
@@ -248,6 +317,7 @@ export const showSigningViewAndWaitForItToBeLoaded = async (
 
 	if (!hasPartnerOauth && paragraphs[1]) {
 		paragraphs[1].style.display = '';
+		// nosemgrep:insecure-innerhtml
 		paragraphs[1].innerHTML = /* translator: this sentence is followed by a button [Create an account] */ c(
 			'Action',
 		).t`New to Proton?`;
@@ -255,6 +325,7 @@ export const showSigningViewAndWaitForItToBeLoaded = async (
 
 	if (signUp) {
 		signUp.style.display = '';
+		// nosemgrep:insecure-innerhtml
 		signUp.innerHTML = /* translator: this button is preceded by a sentence "New to Proton?" */ c(
 			'Action',
 		).t`Create an account`;

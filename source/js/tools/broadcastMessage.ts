@@ -3,7 +3,7 @@ import type {ApiError} from '../api';
 import type {ProxyServer} from '../vpn/ConnectionState';
 import {error} from '../log/log';
 
-export interface BroadcastMessage<T extends string = string, K = any> {
+export interface BroadcastMessage<T extends string = string, K = unknown> {
 	type: T;
 	data: K;
 }
@@ -24,14 +24,23 @@ export type ExtensionUpdate = BroadcastMessage<
 	}
 >;
 
+export type CensorshipDetected = BroadcastMessage<
+	'censorship-detected',
+	{url: string}
+>;
+
 export const broadcastMessage = <
 	T extends BroadcastMessage = ChangeStateMessage,
 >(
 	type: T['type'],
 	data: T['data'] | undefined = undefined,
 ): void => {
-	sendMessageTo(type, data).catch((e: any) => {
-		if (!`${e?.message || e}`.includes('Receiving end does not exist.')) {
+	sendMessageTo(type, data).catch((e: unknown) => {
+		if (
+			!`${(e as Error | undefined)?.message || e}`.includes(
+				'Receiving end does not exist.',
+			)
+		) {
 			error(e);
 		}
 	});

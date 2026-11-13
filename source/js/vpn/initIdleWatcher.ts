@@ -1,3 +1,4 @@
+'use background';
 import {connect, getCurrentState} from '../state';
 import {connectedServer} from './connectedServer';
 import {setCurrentIdleState} from '../tools/idle';
@@ -15,7 +16,8 @@ export const initIdleWatcher = (): void => {
 
 		if (
 			state?.name !== 'on' &&
-			(state?.data?.error as any)?.httpStatus === -1
+			(state?.data?.error as {httpStatus?: number} | undefined)?.httpStatus ===
+				-1
 		) {
 			const server = (await connectedServer.get())?.value;
 

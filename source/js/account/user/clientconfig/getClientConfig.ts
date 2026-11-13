@@ -1,3 +1,4 @@
+'use popup';
 import {fetchWithUserInfo} from '../../fetchWithUserInfo';
 import {
 	getClientConfigBlockingUpdateTTL,

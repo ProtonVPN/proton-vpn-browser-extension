@@ -1,0 +1,656 @@
+{
+	"headers": {
+		"plural-forms": "nplurals=2; plural=(n != 1);",
+		"language": "sw_KE"
+	},
+	"contexts": {
+		"Action": {
+			"${linkDescription} (New tab)": [
+				"${linkDescription} (kichupo kipya)"
+			],
+			"Add": [
+				"Ongeza"
+			],
+			"Add website": [
+				"Ongeza tovuti"
+			],
+			"Already have a Proton Account?": [
+				"Je, una akaunti ya Proton tayari?"
+			],
+			"Cancel": [
+				"Ghairi"
+			],
+			"Change language": [
+				"Badilisha lugha"
+			],
+			"Change server": [
+				"Badilisha seva"
+			],
+			"Configure split tunneling": [
+				"Sanidi mgawanyo wa trafiki"
+			],
+			"Confirm choices": [
+				"Thibitisha machaguo"
+			],
+			"Connect": [
+				"Unganisha"
+			],
+			"Contact us": [
+				"Wasiliana nasi"
+			],
+			"Create an account": [
+				"Fungua akaunti"
+			],
+			"Disable auto-connect": [
+				"Zima unganisho la kiotomatiki"
+			],
+			"Disable notifications": [
+				"Zima arifa"
+			],
+			"Disable Split tunneling": [
+				"Zima mgawanyo wa trafiki"
+			],
+			"Disable WebRTC leak protection": [
+				"Zima ulinzi wa uvujaji wa WebRTC"
+			],
+			"Disconnect": [
+				"Tenganisha"
+			],
+			"Enable auto-connect": [
+				"Washa unganisho la kiotomatiki"
+			],
+			"Enable notifications": [
+				"Washa arifa"
+			],
+			"Enable Split tunneling": [
+				"Washa mgawanyo wa trafiki"
+			],
+			"Enable WebRTC leak protection": [
+				"Washa ulinzi wa uvujaji wa WebRTC"
+			],
+			"Log in with Proton": [
+				"Ingia kwa kutumia Proton"
+			],
+			"Manage subscription": [
+				"Dhibiti usajili"
+			],
+			"New to Proton?": [
+				"Je, ni mpya kwa Proton?"
+			],
+			"Next": [
+				"Endelea"
+			],
+			"Quick connect": [
+				"Unganisha Haraka"
+			],
+			"Remove": [
+				"Ondoa"
+			],
+			"Remove ${domain}": [
+				"Ondoa ${domain}"
+			],
+			"Select a city in ${exitCountryName}": [
+				"Teua mji nchini ${exitCountryName}"
+			],
+			"Select a server in ${cityName}": [
+				"Teua seva mjini ${cityName}"
+			],
+			"Select entry country with exit in ${exitCountryName}": [
+				"Teua nchi ya kuingia yenye kituo nchini ${exitCountryName}"
+			],
+			"Sign in": [
+				"Ingia"
+			],
+			"Sign in with Vivaldi": [
+				"Ingia kwa kutumia Vivaldi"
+			],
+			"Sign out": [
+				"Ondoka"
+			],
+			"Subscribe to connect more devices": [
+				"Jisajili ili kuunganisha vifaa zaidi"
+			],
+			"Subscribe to enable Browser Extension": [
+				"Jisajili ili kuwasha kiendelezi cha kivinjari"
+			],
+			"Switch account": [
+				"Badilisha akaunti"
+			],
+			"Update": [
+				"Sasisha"
+			],
+			"Upgrade": [
+				"Pandisha daraja"
+			],
+			"Upgrade to Proton VPN Plus": [
+				"Pandisha daraja hadi Proton VPN Plus"
+			],
+			"Visit Support Center": [
+				"Tembelea Kituo cha Usaidizi"
+			]
+		},
+		"Action: City-level button": {
+			"Connect to ${cityName}": [
+				"Unganisha na ${cityName}"
+			]
+		},
+		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"Unganisha kwenye \"${mode}\""
+			],
+			"Connect to ${countryName}": [
+				"Unganisha kwenye ${countryName}"
+			],
+			"Connect to ${exitCountryName}": [
+				"Unganisha na ${exitCountryName}"
+			],
+			"Connect to ${logical.Name}": [
+				"Unganisha kwa ${logical.Name}"
+			],
+			"Connect to the fastest country": [
+				"Unganisha kwenye nchi yenye kasi zaidi"
+			]
+		},
+		"Action: Server-level button": {
+			"Connect to ${serverName}": [
+				"Unganisha na ${serverName}"
+			]
+		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"Tafuta"
+			]
+		},
+		"Confirm": {
+			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
+				"Kutoka kwenye programu kutatenganisha muunganisho hai wa VPN. Je, unataka kuendelea?"
+			]
+		},
+		"Error": {
+			"${countries} country": [
+				"${countries} nchi",
+				"${countries} nchi"
+			],
+			"${serversCount} secure server": [
+				"${serversCount} seva salama",
+				"${serversCount} seva salama"
+			],
+			"${servers}+ secure server": [
+				"${servers}+ seva salama",
+				"${servers}+ seva salama"
+			],
+			"Access over ${servers} in ${countries}": [
+				"Fikia zaidi ya ${servers} katika ${countries}"
+			],
+			"Bypass online censorship with advanced security and privacy features": [
+				"Kwepa udhibiti wa mtandaoni kwa kutumia vipengele vya hali ya juu vya usalama na faragha"
+			],
+			"Connect from your browser with ${planName}": [
+				"Unganisha kutoka kivinjari chako kwa ${planName}"
+			],
+			"Network error.": [
+				"Hitilafu ya mtandao."
+			],
+			"Network is unreachable": [
+				"Mtandao haufikiwi."
+			],
+			"No results found": [
+				"Matokeo hayakupatikana."
+			],
+			"Not able to control the browser network settings, possibly a permission is missing": [
+				"Haikuweza kudhibiti mipangilio ya mtandao ya kivinjari; huenda ruhusa imekosekana."
+			],
+			"Please check your connectivity": [
+				"Tafadhali angalia muunganisho wako."
+			],
+			"Please try a different keyword": [
+				"Tafadhali jaribu neno tofauti la utafutaji."
+			],
+			"Server not found": [
+				"Seva haikupatikana."
+			],
+			"Service temporarily unavailable": [
+				"Huduma haipatikani kwa muda mfupi."
+			],
+			"Something went wrong. If the problem persists, please try to re-install the extension": [
+				"Hitilafu imetokea. Ikiwa tatizo linaendelea, tafadhali jaribu kusakinisha upya kiendelezi."
+			],
+			"Unable to find appropriate server, try to logout and login again if it persists.": [
+				"Seva inayofaa haikupatikana, jaribu kutoka kwenye akaunti na kuingia tena ikiwa hitilafu itaendelea."
+			],
+			"Unable to load the list": [
+				"Orodha haikuweza kupakiwa."
+			],
+			"Unable to login": [
+				"Imeshindikana kuingia."
+			],
+			"Unable to reach the server, please try to reconnect, or to log out and log in again if the problem persists": [
+				"Seva haiwezi kufikiwa; tafadhali jaribu kuunganisha tena, au kutoka na kuingia tena ikiwa tatizo linaendelea."
+			],
+			"Unlock ${servers} in ${countries}": [
+				"Fungua ${servers} katika ${countries}"
+			],
+			"Unlock global streaming services": [
+				"Fungua huduma za utiririshaji za kimataifa"
+			]
+		},
+		"Info": {
+			"A subdomain URL includes a prefix before the main domain name. For example, account.proton.me is a subdomain of proton.me.": [
+				"URL ya kikoa kidogo ina kiambishi awali kabla ya jina kuu la kikoa. Kwa mfano, account.proton.me ni kikoa kidogo cha proton.me."
+			],
+			"About free connections": [
+				"Kuhusu miunganisho ya bila malipo"
+			],
+			"Access over 13,000 secure servers in over 120 countries": [
+				"Fikia seva zaidi ya 13,000 salama katika nchi zaidi ya 120."
+			],
+			"Access Proton VPN via this icon": [
+				"Fikia Proton VPN kwa ikoni hii"
+			],
+			"Allow VPN permissions": [
+				"Ruhusu ruhusa za VPN"
+			],
+			"Also add subdomains": [
+				"Ongeza pia vikoa vidogo"
+			],
+			"and more": [
+				"na mengine"
+			],
+			"Audited by independent security experts": [
+				"Imekaguliwa na wataalamu huru wa usalama."
+			],
+			"Auto-selected from": [
+				"Imechaguliwa kiotomatiki kutoka"
+			],
+			"Automatically reconnect to Proton VPN when you open your browser.": [
+				"Unganisha upya kiotomatiki kwenye Proton VPN unapofungua kivinjari chako."
+			],
+			"Back": [
+				"Nyuma"
+			],
+			"Browse through the Support Center and find answers to frequently asked questions.": [
+				"Tembelea Kituo cha Usaidizi na upate majibu ya maswali yanayoulizwa mara kwa mara."
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"Epuka udhibiti wa mtandao kwa vipengele vya hali ya juu vya usalama na faragha"
+			],
+			"Clear all recent connections and don't keep local history": [
+				"Futa miunganisho yote ya hivi karibuni na usihifadhi historia ya ndani"
+			],
+			"Clear search": [
+				"Safisha utafutaji"
+			],
+			"Close": [
+				"Funga"
+			],
+			"Connect to a Plus server in this country to start streaming.\n\nHint: Clear the cache of the streaming apps to ensure new content appears.": [
+				"Unganisha kwenye seva ya Plus katika nchi hii ili kuanza kutiririsha.\n\nDokezo: Futa akiba ya programu za utiririshaji ili kuhakikisha maudhui mapya yanaonekana."
+			],
+			"Connected": [
+				"Imeunganishwa"
+			],
+			"Connected to ${name}": [
+				"Imeunganishwa na ${name}"
+			],
+			"Connected to ${name} in ${city}": [
+				"Imeunganishwa na ${name} katika ${city}"
+			],
+			"Connecting servers such as ${logical.Name} is not currently supported in the browser extension": [
+				"Kuunganisha seva kama ${logical.Name} kwa sasa hakuungi mkono kwenye kiendelezi cha kivinjari."
+			],
+			"Connecting to dedicated IPs such as ${logical.Name} is not currently supported in the browser extension": [
+				"Kuunganisha kwa IP maalum kama ${logical.Name} kwa sasa hakuungi mkono kwenye kiendelezi cha kivinjari."
+			],
+			"Connecting...": [
+				"Inaunganisha..."
+			],
+			"Contact our Customer Support agents to help you out with Proton VPN.": [
+				"Wasiliana na wawakilishi wetu wa huduma kwa wateja kupata usaidizi kuhusu Proton VPN."
+			],
+			"Crash": [
+				"Hitilafu za programu"
+			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"Ripoti za hitilafu za programu zina maelezo ya uchunguzi (mifuatano ya rundo, aina ya kivinjari, toleo la kiendelezi). Hazina anwani yako ya IP na hakuna kitambulisho cha akaunti ya Proton kinachofungamana nazo. Hatutawahi kuzishiriki na watu wa tatu."
+			],
+			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
+				"Ripoti za hitilafu za programu hutusaidia kutatua kasoro, kutambua ngome na kuepuka vizingizi vya VPN."
+			],
+			"Decide which websites are protected by VPN.": [
+				"Amua ni tovuti zipi zinalindwa na VPN."
+			],
+			"Disable Secure Core": [
+				"Zima Secure Core"
+			],
+			"Disconnected": [
+				"Imetenganishwa"
+			],
+			"Disconnected by another extension": [
+				"Imetenganishwa na kiendelezi kingine"
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"Imetenganishwa na kiendelezi kingine, ambacho kimeunganishwa na ${newProxyName}"
+			],
+			"Disconnected, settings were overridden": [
+				"Imetenganishwa, mipangilio imebadilishwa"
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"Imetenganishwa, mipangilio imebadilishwa kuwa ${newProxyName}"
+			],
+			"Emit system notifications on connection and disconnection events.": [
+				"Tuma arifa za mfumo wakati wa tukio la muunganisho na utenganishaji."
+			],
+			"Enable Secure Core": [
+				"Washa Secure Core"
+			],
+			"Enjoying Proton VPN?": [
+				"Je, unafurahia Proton VPN?"
+			],
+			"Exclude mode": [
+				"Hali ya kutengaza"
+			],
+			"Extra protection for people with advanced privacy needs": [
+				"Ulinzi wa ziada kwa watu wanaohitaji faragha ya hali ya juu"
+			],
+			"Fastest free server": [
+				"Seva ya bure yenye kasi zaidi"
+			],
+			"Follow these simple steps to get the best experience using Proton VPN": [
+				"Fuatia hatua hizi rahisi ili kupata uzoefu bora zaidi unapotumia Proton VPN"
+			],
+			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
+				"Nchi za seva za bila malipo (<span id=\"free-server-countries-count\">0</span>)"
+			],
+			"Get unlimited server changes with VPN Plus": [
+				"Pata kubadilisha seva bila kikomo kwa VPN Plus"
+			],
+			"Get worldwide coverage with VPN Plus": [
+				"Pata ufunikaji wa kimataifa kwa VPN Plus"
+			],
+			"Help": [
+				"Msaada"
+			],
+			"Help us fight censorship": [
+				"Tusaidie kupambana na udhibiti wa mtandao"
+			],
+			"Help us improve Proton VPN": [
+				"Tusaidie kuboresha Proton VPN"
+			],
+			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
+				"VPN ya Uswisi yenye utendaji wa hali ya juu inayolinda faragha yako. Usalama wa kiwango cha juu kabisa, seva zaidi ya ${count} na hakuna vikwazo.",
+				"VPN ya Uswisi yenye utendaji wa hali ya juu inayolinda faragha yako. Usalama wa kiwango cha juu kabisa, seva zaidi ya ${count} na hakuna vikwazo."
+			],
+			"Include mode": [
+				"Hali ya kujumuisha"
+			],
+			"Learn more": [
+				"Pata maelezo zaidi"
+			],
+			"Leave a rating": [
+				"Weka ukadiriaji"
+			],
+			"Logged out": [
+				"Umetoka kwenye akaunti"
+			],
+			"Not now": [
+				"Si sasa"
+			],
+			"Off": [
+				"Imezimwa"
+			],
+			"On": [
+				"Imewashwa"
+			],
+			"Open source VPN": [
+				"VPN ya chanzo huria"
+			],
+			"Open the Extensions menu": [
+				"Fungua menyu ya viendelezi"
+			],
+			"Open the Proton VPN browser extension to continue": [
+				"Fungua kiendelezi cha Proton VPN kwenye kivinjari ili kuendelea"
+			],
+			"Pin Proton VPN to your toolbar": [
+				"Weka Proton VPN kwenye upau wa zana wako"
+			],
+			"Please help us spread the word with a Web Store rating.": [
+				"Tafadhali saidia kusambaza habari kwa kutoa ukadiriaji kwenye Web Store."
+			],
+			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
+				"Bonyeza <b>Ijayo</b>, kisha bonyeza <b>Ruhusu</b> kwenye kidirisha ibukizi kutoka kivinjari chako."
+			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"Jilinde mtandaoni kwa VPN ya Proton ya kasi ya juu bila malipo."
+			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"Proton Free inakuunganisha kiotomatiki na seva ya bure yenye kasi zaidi inayopatikana kutoka nchi yetu ${freeCountriesCount} ya bure. Kwa kawaida itakuwa seva iliyo karibu zaidi na eneo lako.",
+				"Proton Free inakuunganisha kiotomatiki na seva ya bure yenye kasi zaidi inayopatikana kutoka nchi zetu ${freeCountriesCount} za bure. Kwa kawaida itakuwa seva iliyo karibu zaidi na eneo lako."
+			],
+			"Proton VPN": [
+				"Proton VPN"
+			],
+			"Proton VPN Browser Extension": [
+				"Kiendelezi cha kivinjari cha Proton VPN"
+			],
+			"Recent connections": [
+				"Miunganisho ya hivi karibuni"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"Hifadhi miunganisho ya hivi karibuni kwenye kifaa na uonyeshe viungo vya haraka kwavyo"
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"Kumbuka nchi/miji/seva nilizounganisha nazo mara ya mwisho na kuzionyesha juu ya orodha."
+			],
+			"Retired server": [
+				"Seva iliyostaafu"
+			],
+			"Secure Core": [
+				"Secure Core"
+			],
+			"Selected websites": [
+				"Tovuti zilizochaguliwa"
+			],
+			"Share anonymous crash reports": [
+				"Shiriki ripoti za hitilafu za programu zisizojulisha utambulisho"
+			],
+			"Share anonymous usage statistics": [
+				"Shiriki takwimu za matumizi zisizojulisha utambulisho"
+			],
+			"Split tunneling": [
+				"Mgawanyo wa trafiki"
+			],
+			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
+				"Huzuia kivinjari chako kutoa anwani yako ya IP kwa tovuti na programu zinazotumia WebRTC. Hii inaweza kuathiri utendaji wa simu za video au utiririshaji wa moja kwa moja kwenye baadhi ya tovuti."
+			],
+			"Telemetry": [
+				"Telemetria"
+			],
+			"Thank you for installing Proton VPN": [
+				"Asante kwa kusakinisha Proton VPN"
+			],
+			"The split tunneling options cannot be changed on this device": [
+				"Chaguo za mgawanyo wa trafiki haziwezi kubadilishwa kwenye kifaa hiki."
+			],
+			"Then just click the Proton VPN icon to sign in.": [
+				"Kisha bonyeza tu aikoni ya Proton VPN ili kuingia."
+			],
+			"This option cannot be changed on this device": [
+				"Chaguo hili haliwezi kubadilishwa kwenye kifaa hiki."
+			],
+			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
+				"Takwimu hizo haziwi na anwani yako ya IP, na haziwezi kutumika kukutambulisha. Hatuzishiriki kamwe na wahusika wengine."
+			],
+			"To get started, you’ll need to enable VPN permissions on your browser.": [
+				"Ili kuanza, utahitaji kuwasha ruhusa za VPN kwenye kivinjari chako."
+			],
+			"Tor servers such as ${logical.Name} are not currently supported in the browser extension": [
+				"Seva za Tor kama ${logical.Name} kwa sasa haziungi mkono kwenye kiendelezi cha kivinjari."
+			],
+			"Upgrade": [
+				"Pandisha daraja"
+			],
+			"Usage data helps us overcome VPN blocks and improve app performance.": [
+				"Data ya matumizi hutusaidia kuzidi vizingizi vya VPN na kuboresha utendaji wa programu."
+			],
+			"User": [
+				"Mtumiaji"
+			],
+			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
+				"Ukitumia Brave, maombi ya DNS yanaweza kukosa ulinzi wakati \"Hali ya kujumuisha\" ipo hai."
+			],
+			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
+				"VPN imezuiwa na programu ya nje.\n\nBaadhi ya zana, kama vile programu za kukinga virusi au proksi, zinaweza kuingilia Proton VPN. Zizime na ujaribu tena."
+			],
+			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.": [
+				"VPN imezuiwa na programu ya nje: ${blockingSoftware}.\n\nBaadhi ya zana, kama vile programu za kukinga virusi au proksi, zinaweza kuingilia Proton VPN. Unaweza kujaribu kuizima ili kuthibitisha."
+			],
+			"VPN Features": [
+				"Vipengele vya VPN"
+			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"Tunaweka faragha yako mbele ya yote. Hatufuatili ulivyotembelea mtandao wala hatuhifadhi kumbukumbu. Ili kuthibitisha muunganisho wako, kitambulisho cha kipindi cha akaunti yako hutumwa kwa seva zetu, na hii ni lazima ili kiendelezi kifanye kazi."
+			],
+			"You're signed in": [
+				"Umeingia."
+			],
+			"Your network appears to be blocking Proton, and this extension can't bypass this block. The desktop app likely can, ${link}.": [
+				"Inaonekana mtandao wako unazuia Proton, na kiendelezi hiki hakiwezi kuzunguka kizuizi hiki. Programu ya kompyuta huenda ikaweza, ${link}."
+			],
+			"Your network seems to be blocking Proton. The extension can't bypass this. Try the desktop app instead.": [
+				"Inaonekana mtandao wako unazuia Proton. Kiendelezi hakiwezi kuzunguka hili. Badala yake, jaribu programu ya kompyuta."
+			]
+		},
+		"Label": {
+			"And all its subdomains": [
+				"Na vikoa vyake vyote vidogo"
+			],
+			"Auto connect": [
+				"Unganisha kiotomatiki"
+			],
+			"Cities": [
+				"Miji"
+			],
+			"City": [
+				"Mji",
+				"Miji"
+			],
+			"Connecting": [
+				"Inaunganisha"
+			],
+			"Countries, cities, servers": [
+				"Nchi, miji, seva"
+			],
+			"Country": [
+				"Nchi",
+				"Nchi"
+			],
+			"Entry country": [
+				"Nchi ya kuingia",
+				"Nchi za kuingia"
+			],
+			"Exact match": [
+				"Mlinganisho kamili"
+			],
+			"Free": [
+				"Bila malipo"
+			],
+			"Free connections": [
+				"Miunganisho ya bila malipo"
+			],
+			"Free servers": [
+				"Seva bila malipo"
+			],
+			"Free servers (${count})": [
+				"Seva bila malipo (${count})"
+			],
+			"Internal servers (${count})": [
+				"Seva za ndani (${count})"
+			],
+			"Need help?": [
+				"Unahitaji msaada?"
+			],
+			"Notifications": [
+				"Arifa"
+			],
+			"Other": [
+				"Nyingine"
+			],
+			"Plus servers (${count})": [
+				"Seva za Plus (${count})"
+			],
+			"Protected": [
+				"Imelindwa"
+			],
+			"Server": [
+				"Seva",
+				"Seva"
+			],
+			"Settings": [
+				"Mipangilio"
+			],
+			"Split tunneling": [
+				"Mgawanyo wa trafiki"
+			],
+			"Unprotected": [
+				"Haijalindwa"
+			],
+			"Via": [
+				"Kupitia"
+			],
+			"Want to know more?": [
+				"Unataka kujua zaidi?"
+			],
+			"WebRTC leak protection": [
+				"Ulinzi dhidi ya uvujaji wa WebRTC"
+			]
+		},
+		"Menu": {
+			"Countries": [
+				"Nchi"
+			],
+			"Features": [
+				"Vipengele"
+			],
+			"Help": [
+				"Msaada"
+			],
+			"Settings": [
+				"Mipangilio"
+			]
+		},
+		"Status": {
+			"Connecting to ${serverName}": [
+				"Inaunganisha kwenye ${serverName}"
+			],
+			"Proton VPN: ${status}": [
+				"Proton VPN: ${status}"
+			]
+		},
+		"Title": {
+			"Closest server": [
+				"Seva iliyo karibu zaidi"
+			],
+			"Fastest country": [
+				"Nchi yenye kasi zaidi"
+			],
+			"Fastest server": [
+				"Seva iliyo haraka zaidi"
+			],
+			"Features": [
+				"Vipengele"
+			],
+			"Proton VPN for Vivaldi": [
+				"Proton VPN kwa Vivaldi"
+			],
+			"Random server": [
+				"Seva nasibu"
+			],
+			"Recents": [
+				"Hivi karibuni"
+			],
+			"Streaming": [
+				"Utiririshaji"
+			]
+		}
+	}
+}

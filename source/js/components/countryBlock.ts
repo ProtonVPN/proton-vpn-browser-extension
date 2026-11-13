@@ -1,3 +1,4 @@
+'use popup';
 import {getCountryFlag} from '../tools/getCountryFlag';
 import type {Logical} from '../vpn/Logical';
 import {connectionAttributes, describeButton} from './connectionButton';
@@ -13,6 +14,9 @@ import {maintenanceIcon} from '../tools/maintenanceIcon';
 import type {UserContext} from '../account/user/UserContext';
 import {upgradeAttributes} from '../account/upgradeAttributes';
 import {via} from './via';
+import {unsafeRandom} from '../tools/random';
+
+type SectionBuilderHandler = {sectionBuilder?: Record<string, () => string>};
 
 export const countryBlock = (
 	userContext: UserContext,
@@ -25,14 +29,15 @@ export const countryBlock = (
 ) => {
 	const userTier = userContext.tier;
 	const upgradeNeeded = needUpgrade(userTier, group);
-	const id = `expand-${code}-${`${Math.random()}`.substring(2)}`;
+	const id = `expand-${code}-${`${unsafeRandom()}`.substring(2)}`;
 	const up = isGroupUp(group, userContext);
 	const exitCountryName = group.name;
 	const grayOutButton = simplifiedUi && userTier <= 0;
 	const canConnect = up && (simplifiedUi ? userTier > 0 : !upgradeNeeded);
 	const open = hasSearchScore(group);
 	const sectionBuilder =
-		(window as any).sectionBuilder || ((window as any).sectionBuilder = {});
+		(window as SectionBuilderHandler).sectionBuilder ||
+		((window as SectionBuilderHandler).sectionBuilder = {});
 	sectionBuilder[id] = () =>
 		serverGroup(
 			userContext,

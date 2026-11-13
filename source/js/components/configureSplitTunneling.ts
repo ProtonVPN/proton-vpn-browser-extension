@@ -1,12 +1,15 @@
+'use popup';
 import type {StoredWebsiteFilterList} from '../vpn/WebsiteFilter';
 import {SplitTunnelingMode} from '../vpn/WebsiteFilter';
 import {SplitTunnelingDomainManager} from '../vpn/SplitTunnelingDomainManager';
 import {getCurrentTab} from '../tools/getCurrentTab';
+import {getRegistrableDomain} from '../tools/getRegistrableDomain';
+import {parseFilterDomain} from '../tools/parseFilterDomain';
 import {triggerPromise} from '../tools/triggerPromise';
 import {escapeHtml} from '../tools/escapeHtml';
 import {c, translateToggleButtonTitle} from '../tools/translate';
 import {isBrave} from '../tools/getBrowserSubType';
-import {upgradeButton} from './upgradeButton';
+import {replaceWithUpgradeButton} from './upgradeButton';
 import {describeButton} from './connectionButton';
 import {warn} from '../log/log';
 import type {SplitTunneling} from '../vpn/features/SplitTunneling';
@@ -84,6 +87,14 @@ export const configureSplitTunneling = (
 		);
 	};
 
+	const applyListChange = () => {
+		storeList();
+		// The domain manager works on a copy, keep the loaded config in sync
+		// as it is what's sent to the background when connecting to a server
+		feature.config = domainManager.getRawList();
+		refresh?.(feature.config);
+	};
+
 	// Store the list if we are getting old data.
 	if (!('mode' in list) || !('enabled' in list) || !list.value) {
 		storeList();
@@ -93,7 +104,7 @@ export const configureSplitTunneling = (
 		const html = domainManager
 			.getDomainsForCurrentMode()
 			.map((exclusion, index) => {
-				const domain = escapeHtml(exclusion.domain);
+				const domain = escapeHtml(exclusion.originalDomain || exclusion.domain);
 				/* translator: this is a tooltip/vocalization for the button to remove an exclusion from split tunneling, domain can be "youtube.com" or "www.anysite.net" */
 				const title = c('Action').t`Remove ${domain}`;
 
@@ -120,6 +131,7 @@ export const configureSplitTunneling = (
 				'.split-tunneling-filters .domains-list',
 			)
 			.forEach((element) => {
+				// nosemgrep:insecure-innerhtml
 				element.innerHTML = html;
 
 				if (!addHandler) {
@@ -138,8 +150,7 @@ export const configureSplitTunneling = (
 						const targetItem = currentModeDomains[indexToDelete];
 
 						if (targetItem && domainManager.removeDomain(targetItem.domain)) {
-							storeList();
-							refresh?.(domainManager.getRawList());
+							applyListChange();
 							renderDomainList();
 						}
 					}
@@ -261,8 +272,7 @@ export const configureSplitTunneling = (
 						if (modeChanged) {
 							modeDropdownMenu.classList.remove('open');
 
-							storeList();
-							refresh?.(domainManager.getRawList());
+							applyListChange();
 
 							// Refresh the UI to reflect the mode change
 							refreshMode();
@@ -278,13 +288,9 @@ export const configureSplitTunneling = (
 	refreshMode(true);
 
 	if (upgradeNeeded) {
-		document
+		area
 			?.querySelectorAll<HTMLInputElement>('[data-go-to="split-tunneling"]')
-			.forEach((button) => {
-				const div = document.createElement('div');
-				div.innerHTML = upgradeButton();
-				button.parentNode?.replaceChild(div, button);
-			});
+			.forEach(replaceWithUpgradeButton);
 
 		return;
 	}
@@ -297,10 +303,13 @@ export const configureSplitTunneling = (
 	) as HTMLInputElement;
 
 	const checkValidity = () => {
+		const isValid = parseFilterDomain(input.value) !== undefined;
+		// Only flag non-empty values to style them with :invalid
+		input.setCustomValidity(isValid || input.value === '' ? '' : 'invalid');
 		area
 			.querySelectorAll<HTMLButtonElement>('[data-st-action="add"]')
 			.forEach((button) => {
-				button.disabled = !input.checkValidity();
+				button.disabled = !isValid;
 			});
 	};
 
@@ -309,11 +318,11 @@ export const configureSplitTunneling = (
 			const domain = tab?.url && new URL(tab.url).hostname;
 
 			if (domain) {
-				const tld = domain.replace(/^.*\.([^.]+\.[a-z]+)$/, '$1');
+				const registrableDomain = getRegistrableDomain(domain);
 
-				if (!domainManager.hasDomainInCurrentMode(tld)) {
-					input.value = tld;
-				} else if (input.value === tld) {
+				if (!domainManager.hasDomainInCurrentMode(registrableDomain)) {
+					input.value = registrableDomain;
+				} else if (input.value === registrableDomain) {
 					input.value = '';
 				}
 
@@ -331,12 +340,23 @@ export const configureSplitTunneling = (
 	) as HTMLInputElement;
 
 	const addWebsite = () => {
-		if (input.value !== '') {
-			domainManager.addDomain(input.value, checkbox.checked);
-			storeList();
-			refresh?.(domainManager.getRawList());
+		const parsedDomain = parseFilterDomain(input.value);
+
+		if (!parsedDomain) {
+			checkValidity();
+
+			return;
 		}
+
+		domainManager.addDomain(
+			parsedDomain.domain,
+			checkbox.checked,
+			parsedDomain.originalDomain,
+		);
+		applyListChange();
+
 		input.value = '';
+		input.setCustomValidity('');
 		checkbox.checked = true;
 		toggleAddForm(false);
 		renderDomainList();
@@ -363,8 +383,7 @@ export const configureSplitTunneling = (
 					case 'toggle':
 						domainManager.setEnabled(!domainManager.isEnabled());
 						refreshEnabled();
-						storeList();
-						refresh?.(domainManager.getRawList());
+						applyListChange();
 						break;
 
 					case 'add-website':

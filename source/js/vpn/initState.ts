@@ -1,3 +1,4 @@
+'use background';
 import {connectedServer} from './connectedServer';
 import {
 	getCurrentState,

@@ -25,3 +25,9 @@ export const readSession = async () => {
 
 	return persistentlySession;
 };
+
+export const hasSession = async () => {
+	const session = await readSession();
+
+	return getKeys(session).length > 0;
+};

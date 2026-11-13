@@ -1,11 +1,6 @@
-const {
-	existsSync,
-	readFileSync,
-	unlinkSync,
-	writeFileSync,
-} = require('node:fs');
-const decompress = require('decompress');
-const {execSync} = require('node:child_process');
+import {existsSync, readFileSync, unlinkSync, writeFileSync} from 'node:fs';
+import {execSync} from 'node:child_process';
+import decompress from '@xhmikosr/decompress';
 
 const source = process.argv[2];
 const tempDir = '__temp';
@@ -16,7 +11,7 @@ const command = (input, options) => {
 		return execSync(input, options);
 	} catch (error) {
 		if (error.stdout) {
-			throw new Error(error.stdout.toString());
+			throw new Error(error.stdout.toString(), {cause: error});
 		}
 
 		throw error;

@@ -1,0 +1,647 @@
+{
+	"headers": {
+		"plural-forms": "nplurals=2; plural=(n != 1);",
+		"language": "yo_NG"
+	},
+	"contexts": {
+		"Action": {
+			"${linkDescription} (New tab)": [
+				"${linkDescription} (táàbù tuntun)"
+			],
+			"Add": [
+				"Fi kún"
+			],
+			"Add website": [
+				"Fi wẹ́bsáìtì kún"
+			],
+			"Already have a Proton Account?": [
+				"Ṣé ẹ ti ní àkántì Proton tàn?"
+			],
+			"Cancel": [
+				"Fagi lé e"
+			],
+			"Change language": [
+				"Yí èdè padà"
+			],
+			"Change server": [
+				"Yí sáfà padà"
+			],
+			"Configure split tunneling": [
+				"Ṣètò ìkáàkiri tí a pín"
+			],
+			"Confirm choices": [
+				"Jẹ́rìísí àwọn àṣàyàn"
+			],
+			"Connect": [
+				"So ó pọ̀"
+			],
+			"Contact us": [
+				"Kàn sí wa"
+			],
+			"Create an account": [
+				"Ẹ ṣẹ̀dá àkántì"
+			],
+			"Disable auto-connect": [
+				"Paná ìsosò laifọwọ́yi"
+			],
+			"Disable notifications": [
+				"Paná ìwífúnni"
+			],
+			"Disable Split tunneling": [
+				"Paná ìkáàkiri tí a pín"
+			],
+			"Disable WebRTC leak protection": [
+				"Paná ààbò jíjò WebRTC"
+			],
+			"Disconnect": [
+				"Tú ìsopọ̀"
+			],
+			"Enable auto-connect": [
+				"Fi ààyè gba ìsosò laifọwọ́yi"
+			],
+			"Enable notifications": [
+				"Fi ààyè gba ìwífúnni"
+			],
+			"Enable Split tunneling": [
+				"Fi ààyè gba ìkáàkiri tí a pín"
+			],
+			"Enable WebRTC leak protection": [
+				"Fi ààyè gba ààbò jíjò WebRTC"
+			],
+			"Log in with Proton": [
+				"Kó wọlé pẹ̀lú Proton"
+			],
+			"Manage subscription": [
+				"Bójú tó ìforúkọsílẹ̀"
+			],
+			"New to Proton?": [
+				"Ṣé ẹ tuntun sí Proton?"
+			],
+			"Next": [
+				"Tẹ́síwájú"
+			],
+			"Quick connect": [
+				"So Pọ̀ Kíákíá"
+			],
+			"Remove": [
+				"Yọ ọ́ kúrò"
+			],
+			"Remove ${domain}": [
+				"Yọ ${domain} kúrò"
+			],
+			"Select a city in ${exitCountryName}": [
+				"Yan ìlú kan ní ${exitCountryName}"
+			],
+			"Select a server in ${cityName}": [
+				"Yan sáfà kan ní ${cityName}"
+			],
+			"Select entry country with exit in ${exitCountryName}": [
+				"Yan orílẹ̀ èdè ìwọlé tí ìjáde rẹ̀ wà ní ${exitCountryName}"
+			],
+			"Sign in": [
+				"Kó wọlé"
+			],
+			"Sign in with Vivaldi": [
+				"Kó wọlé pẹ̀lú Vivaldi"
+			],
+			"Sign out": [
+				"Kó jáde"
+			],
+			"Subscribe to connect more devices": [
+				"Fi orúkọ sílẹ̀ kí ẹ lè so àwọn irin iṣẹ́ mìíràn mọ́."
+			],
+			"Subscribe to enable Browser Extension": [
+				"Ẹ fi orúkọ sílẹ̀ láti fi ààyè gba àfikún bráósà."
+			],
+			"Switch account": [
+				"Yí àkántì padà"
+			],
+			"Update": [
+				"Mú u dé ojú ìwọ̀n"
+			],
+			"Upgrade": [
+				"Gbé e ga"
+			],
+			"Upgrade to Proton VPN Plus": [
+				"Ẹ gbé e ga sí Proton VPN Plus"
+			],
+			"Visit Support Center": [
+				"Ṣàbẹ̀wò sí Àárò Àtìlẹ́yìn"
+			]
+		},
+		"Action: City-level button": {
+			"Connect to ${cityName}": [
+				"So ${cityName} mọ́"
+			]
+		},
+		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"So pọ̀ mọ́ \"${mode}\""
+			],
+			"Connect to ${countryName}": [
+				"So pọ̀ mọ́ ${countryName}"
+			],
+			"Connect to ${exitCountryName}": [
+				"So ${exitCountryName} mọ́"
+			],
+			"Connect to ${logical.Name}": [
+				"So pọ̀ mọ́ ${logical.Name}"
+			],
+			"Connect to the fastest country": [
+				"So pọ̀ mọ́ orílẹ̀-èdè tí ó yára jù"
+			]
+		},
+		"Action: Server-level button": {
+			"Connect to ${serverName}": [
+				"So ${serverName} mọ́"
+			]
+		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"Wá a"
+			]
+		},
+		"Confirm": {
+			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
+				"Tí ẹ bá jáde nínú aplikéṣàn náà, yóò tú àsopọ̀ VPN tí ó ń ṣiṣẹ́. Ṣé ẹ fẹ́ tẹsíwájú?"
+			]
+		},
+		"Error": {
+			"${countries} country": [
+				"${countries} orílẹ̀-èdè"
+			],
+			"${serversCount} secure server": [
+				"${serversCount} sáfà tó ní ààbò"
+			],
+			"${servers}+ secure server": [
+				"${servers}+ sáfà tó ní ààbò"
+			],
+			"Access over ${servers} in ${countries}": [
+				"Ní ìráàyèsí sí ju ${servers} lọ ní ${countries}"
+			],
+			"Bypass online censorship with advanced security and privacy features": [
+				"Kọjá ìdèná lórí ayélujára pẹ̀lú àwọn àbùdá ààbò àti àṣírí tí ó ga jùlọ"
+			],
+			"Connect from your browser with ${planName}": [
+				"So pọ̀ láti inú bráósà yín pẹ̀lú ${planName}"
+			],
+			"Network error.": [
+				"Àṣìṣe nẹ́tíwọ́ọ̀kì."
+			],
+			"Network is unreachable": [
+				"A kò gbọ́ nẹ́tíwọ́ọ̀kì náà."
+			],
+			"No results found": [
+				"A kò rí àbájáde kankan."
+			],
+			"Not able to control the browser network settings, possibly a permission is missing": [
+				"A kò lè tó àwọn ààtò nẹ́tíwọ́ọ̀kì bráósà náà; ó ṣe é ṣe kí àṣẹ kan ti ṣubú."
+			],
+			"Please check your connectivity": [
+				"Ẹ ṣàyẹ̀wò ìsomọ́ yín."
+			],
+			"Please try a different keyword": [
+				"Ẹ gbiyànjú ọ̀rọ̀ ìwádìí mìíràn."
+			],
+			"Server not found": [
+				"A kò rí sáfà náà."
+			],
+			"Service temporarily unavailable": [
+				"Ìṣẹ́ náà kò wà ní àrówótó fún ìgbà díẹ̀."
+			],
+			"Something went wrong. If the problem persists, please try to re-install the extension": [
+				"Àṣìṣe kan wáyé. Tí ìṣòro náà bá máa wà, ẹ jọ̀wọ́ gbiyànjú láti tún fi àfikún náà sí ẹ̀rọ yín."
+			],
+			"Unable to find appropriate server, try to logout and login again if it persists.": [
+				"A kò lè rí sáfà tí ó yẹ; ẹ gbiyànjú láti jáde kí ẹ sì wọlé padà tí ìṣòro náà bá ṣi tún."
+			],
+			"Unable to load the list": [
+				"A kò lè gbé àkọsílẹ̀ náà kalẹ̀."
+			],
+			"Unable to login": [
+				"A kò lè wọlé."
+			],
+			"Unable to reach the server, please try to reconnect, or to log out and log in again if the problem persists": [
+				"A kò lè dé sáfà náà; ẹ jọ̀wọ́ gbiyànjú láti tún so mọ́, tàbí kí ẹ jáde kí ẹ sì tún wọlé padà tí ìṣòro náà bá máa wà."
+			],
+			"Unlock ${servers} in ${countries}": [
+				"Ṣí ${servers} ní ${countries}"
+			],
+			"Unlock global streaming services": [
+				"Ṣí àwọn iṣẹ́ gbígbé sórí afẹ́fẹ́ àgbáyé"
+			]
+		},
+		"Info": {
+			"A subdomain URL includes a prefix before the main domain name. For example, account.proton.me is a subdomain of proton.me.": [
+				"URL ojú òpó abẹ́ ní orúkọ-ìbẹ̀rẹ̀ kan kí a tó dé orúkọ ojú òpó àkọ́kọ́. Fún àpẹẹrẹ, account.proton.me jẹ́ ojú òpó abẹ́ fún proton.me."
+			],
+			"About free connections": [
+				"Nípa àwọn àsopọ̀ ọ̀fẹ́"
+			],
+			"Access over 13,000 secure servers in over 120 countries": [
+				"Ní ìráàyèsí sí sáfà ààbò tó ju 13,000 lọ ní orílẹ̀-èdè tó ju 120 lọ"
+			],
+			"Access Proton VPN via this icon": [
+				"Ní ìráàyèsí sí Proton VPN nípasẹ̀ ààmì yìí."
+			],
+			"Allow VPN permissions": [
+				"Fún VPN ní àṣẹ"
+			],
+			"Also add subdomains": [
+				"Fi àwọn dòméènì abẹ́ kún un náà"
+			],
+			"and more": [
+				"àti bẹ́ẹ̀ bẹ́ẹ̀ lọ"
+			],
+			"Audited by independent security experts": [
+				"Àwọn amòye ààbò òmìnira ni wọ́n ti ṣe àyẹ̀wò rẹ̀."
+			],
+			"Auto-selected from": [
+				"A yàn án láìfọwọ́ láti"
+			],
+			"Automatically reconnect to Proton VPN when you open your browser.": [
+				"Ó máa ń tún so pọ̀ mọ́ Proton VPN ní ìkọ̀ní nígbà tí ẹ bá ṣí bráósà yín."
+			],
+			"Back": [
+				"Padà"
+			],
+			"Browse through the Support Center and find answers to frequently asked questions.": [
+				"Ẹ kiri Àárò Àtìlẹ́yìn náà kí ẹ sì rí àwọn ẹ̀sì fún àwọn ìbéèrè tí ó wọ́pọ̀."
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"Bo ìdẹ̀kún ìgbóhùnsáfẹ́ẹ́ kọjá pẹ̀lú àwọn àbùdá ààbò àti àṣírí tó gbilẹ̀"
+			],
+			"Clear all recent connections and don't keep local history": [
+				"Kó gbogbo àsopọ̀ tó ṣẹ̀ṣẹ̀ kọjá kúrò, kí ẹ sì má pamọ́ ìtàn ní agbègbè."
+			],
+			"Clear search": [
+				"Kó ọ̀rọ̀ wíwá kúrò"
+			],
+			"Close": [
+				"Pa á dé"
+			],
+			"Connect to a Plus server in this country to start streaming.\n\nHint: Clear the cache of the streaming apps to ensure new content appears.": [
+				"Ẹ so pọ̀ mọ́ sáfà Plus kan ní orílẹ̀-èdè yìí láti bẹ̀rẹ̀ sí ní gbé nǹkan sórí afẹ́fẹ́.\n\nÌṣítí: Ẹ kó àkójọ àwọn áàpù gbígbé sórí afẹ́fẹ́ kúrò láti ríi dájú wípé àwọn ohun tuntun yóò hàn."
+			],
+			"Connected": [
+				"A ti so pọ̀."
+			],
+			"Connected to ${name}": [
+				"A ti so pọ̀ mọ́ ${name}."
+			],
+			"Connected to ${name} in ${city}": [
+				"A ti so pọ̀ mọ́ ${name} ní ${city}."
+			],
+			"Connecting servers such as ${logical.Name} is not currently supported in the browser extension": [
+				"A kò lè ṣe àtìlẹ́yìn fún sísopọ̀ mọ́ sáfà bíi ${logical.Name} nínú àfikún bráósà ní àsìkò yìí."
+			],
+			"Connecting to dedicated IPs such as ${logical.Name} is not currently supported in the browser extension": [
+				"A kò lè ṣe àtìlẹ́yìn fún ìsosò mọ́ IP amáyéderùn bíi ${logical.Name} nínú àfikún bráósà ní àsìkò yìí."
+			],
+			"Connecting...": [
+				"Ó ń so pọ̀..."
+			],
+			"Contact our Customer Support agents to help you out with Proton VPN.": [
+				"Kàn sí àwọn aṣojú ẹ̀ka àtìlẹ́yìn oníbàárà wa láti lè ràn yín lọ́wọ́ pẹ̀lú Proton VPN."
+			],
+			"Crash": [
+				"Ìwólulẹ̀"
+			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"Ìjábọ̀ àìṣiṣẹ́ ní àlàyé ìwádìí (àwọn ìtọ́kasí ìṣòro, irú bráósà, ẹ̀dà àfikún). Kò ní àdírẹ́sì IP yín nínú, kò sì ní ìdámọ̀ àkántì Proton kan tí a fi kún un. A kò ní ṣe alábàápín wọn pẹ̀lú ẹgbẹ́ kẹta rárá."
+			],
+			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
+				"Àwọn ìjábọ̀ àìṣiṣẹ́ ń ràn wa lọ́wọ́ láti tún àṣìṣe ẹ̀rọ ṣe, láti mọ àwọn ààbò orí kọ̀mpútà mọ́, àti láti ṣẹ́yìn ìdẹ̀kún VPN."
+			],
+			"Decide which websites are protected by VPN.": [
+				"Pinnu àwọn wẹ́bsáìtì tí yóò ní ààbò nípasẹ̀ VPN."
+			],
+			"Disable Secure Core": [
+				"Paná Secure Core"
+			],
+			"Disconnected": [
+				"A ti tú ìsopọ̀."
+			],
+			"Disconnected by another extension": [
+				"Àfikún míràn ni ó tú ìsopọ̀."
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"Àfikún míràn ni ó tú ìsopọ̀, ó sì so pọ̀ mọ́ ${newProxyName}."
+			],
+			"Disconnected, settings were overridden": [
+				"A ti tú ìsopọ̀, wọ́n sì ti yí àwọn ààtò padà."
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"A ti tú ìsopọ̀, wọ́n sì ti yí àwọn ààtò padà sí ${newProxyName}."
+			],
+			"Emit system notifications on connection and disconnection events.": [
+				"Ó máa ń fi ìwífúnni ètò hàn nígbà ìṣẹ̀lẹ̀ àsopọ̀ àti ìtú ìsopọ̀."
+			],
+			"Enable Secure Core": [
+				"Fi ààyè gba Secure Core"
+			],
+			"Enjoying Proton VPN?": [
+				"Ṣé ẹ ń gètè pẹ̀lú Proton VPN?"
+			],
+			"Exclude mode": [
+				"Ipò ìyọkúrò"
+			],
+			"Extra protection for people with advanced privacy needs": [
+				"Ààbò àfikún fún àwọn ènìyàn tí nílò àṣírí wọn ga jù"
+			],
+			"Fastest free server": [
+				"Sáfà ọ̀fẹ́ tó yára jù"
+			],
+			"Follow these simple steps to get the best experience using Proton VPN": [
+				"Tẹ̀lé àwọn ìgbésẹ̀ rọrùn yìí láti ní ìrírí tó pọ̀jù nígbà lílo Proton VPN"
+			],
+			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
+				"Àwọn orílẹ̀-èdè sáfà ọ̀fẹ́ (<span id=\"free-server-countries-count\">0</span>)"
+			],
+			"Get unlimited server changes with VPN Plus": [
+				"Ẹ gba àyípadà sáfà láìdídìwọ́n pẹ̀lú VPN Plus"
+			],
+			"Get worldwide coverage with VPN Plus": [
+				"Ẹ gba ààbò ní àgbáyé gbogbo pẹ̀lú VPN Plus"
+			],
+			"Help": [
+				"Ìrànlọ́wọ́"
+			],
+			"Help us fight censorship": [
+				"Ẹ ràn wa lọ́wọ́ láti tìjà kọ ìdẹ̀kún ìgbóhùnsáfẹ́ẹ́"
+			],
+			"Help us improve Proton VPN": [
+				"Ẹ ràn wá lọ́wọ́ láti mú Proton VPN dára sí i"
+			],
+			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
+				"VPN tí ó wá láti Swíìsì, tí ó ṣiṣẹ́ dáadáa, tí ó ń dá àṣírí yín mọ̀. Ààbò ti ó ga jùlọ, ju ${count} sáfà lọ, kò sí ìdènà."
+			],
+			"Include mode": [
+				"Ipò ìfikún"
+			],
+			"Learn more": [
+				"Mọ̀ síi"
+			],
+			"Leave a rating": [
+				"Fi àmì-ìpẹ̀lú sílẹ̀"
+			],
+			"Logged out": [
+				"A ti jáde."
+			],
+			"Not now": [
+				"Kì í se ìgbà yìí"
+			],
+			"Off": [
+				"Pa"
+			],
+			"On": [
+				"Tàn"
+			],
+			"Open source VPN": [
+				"VPN ti gbogbo ènìyàn"
+			],
+			"Open the Extensions menu": [
+				"Ṣí àtòjọ àwọn àfikún."
+			],
+			"Open the Proton VPN browser extension to continue": [
+				"Ṣí àfikún bráósà Proton VPN kí ẹ lè tẹ̀ síwájú."
+			],
+			"Pin Proton VPN to your toolbar": [
+				"Dì Proton VPN mọ́ túlbaà yín."
+			],
+			"Please help us spread the word with a Web Store rating.": [
+				"Jọ̀wọ́, ẹ ran wa lọ́wọ́ láti tan ìròyìn náà kálẹ̀ pẹ̀lú àmì-ìpẹ̀lú sí Web Store."
+			],
+			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
+				"Tẹ <b>Tẹ̀síwájú</b>, lẹ́yìn náà kí ẹ dì <b>Gbà láàyè</b> lórí ìbújáde láti ọ̀dọ̀ bráósà yín."
+			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"Ẹ dáàbò ara yín lórí ayélujára pẹ̀lú VPN ọ̀fẹ́ Proton tó yára."
+			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"Proton Free máa fúnra rẹ̀ so yín mọ́ sáfà ọ̀fẹ́ tí ó yára jù tí ó wà láwùjọ láti àwọn orílẹ̀-èdè ọ̀fẹ́ wa tí ó tó ${freeCountriesCount}. Èyí dáadáa máa ń jẹ́ sáfà tí ó súnmọ́ ibùdó yín jù."
+			],
+			"Proton VPN": [
+				"Proton VPN"
+			],
+			"Proton VPN Browser Extension": [
+				"Àfikún Bráósà Proton VPN"
+			],
+			"Recent connections": [
+				"Àwọn àsopọ̀ tó ṣẹ̀ṣẹ̀ kọjá"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"Rántí àwọn àsopọ̀ tó ṣẹ̀ṣẹ̀ kọjá ní agbègbè, kí ẹ sì fi àwọn ojú òpó kíákíá sí wọn hàn."
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"Rántí àwọn orílẹ̀-èdè/ìlú/sáfà tí mo ti so pọ̀ mọ́ nígbà kínrin, kí o sì fi hàn wọ́n ní\nòkè àkójọ náà."
+			],
+			"Retired server": [
+				"Sáfà tí wọ́n ti yọ kúrò"
+			],
+			"Secure Core": [
+				"Secure Core"
+			],
+			"Selected websites": [
+				"Àwọn wẹ́bsáìtì tí a yàn"
+			],
+			"Share anonymous crash reports": [
+				"Ṣe alábàápín ìjábọ̀ àìṣiṣẹ́ àìníorúkọ"
+			],
+			"Share anonymous usage statistics": [
+				"Ṣe alábàápín àwọn ìjábọ̀ lílo tí kò ní orúkọ"
+			],
+			"Split tunneling": [
+				"Ìkáàkiri tí a pín"
+			],
+			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
+				"Ó ń dúró bráósà yín lọ́wọ́ kí ó má jò àdírẹ́sì IP yín sí àwọn wẹ́bsáìtì àti àwọn áàpù tí ń lo WebRTC. Èyí lè kan iṣẹ́ ìpè fídíò tàbí gbígbé nǹkan sórí afẹ́fẹ́ láàyè lórí díẹ̀ nínú àwọn wẹ́bsáìtì."
+			],
+			"Telemetry": [
+				"Tẹlímẹ́trì"
+			],
+			"Thank you for installing Proton VPN": [
+				"Ẹ ṣé fún gbigbá Proton VPN kalẹ̀"
+			],
+			"The split tunneling options cannot be changed on this device": [
+				"A kò lè yí àwọn àṣàyàn ìkáàkiri tí a pín padà lórí irin iṣẹ́ yìí."
+			],
+			"Then just click the Proton VPN icon to sign in.": [
+				"Lẹ́yìn náà, ẹ kàn sí àmì Proton VPN láti wọlé."
+			],
+			"This option cannot be changed on this device": [
+				"A kò lè yí àṣàyàn yìí padà lórí irin iṣẹ́ yìí."
+			],
+			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
+				"Àwọn ìṣirò yìí kò ní àdírẹ́sì IP yín, wọ́n kò sì lè ṣe é lò láti mọ ẹ́ mọ. A kò ní ṣe alábàápín wọn pẹ̀lú àwọn ẹgbẹ́ kẹta nígbà kan rárá."
+			],
+			"To get started, you’ll need to enable VPN permissions on your browser.": [
+				"Kí ẹ bá lè bẹ̀rẹ̀, ẹ gbọ́dọ̀ fi ààyè gba àwọn àṣẹ VPN lórí bráósà yín."
+			],
+			"Tor servers such as ${logical.Name} are not currently supported in the browser extension": [
+				"A kò lè ṣe àtìlẹ́yìn fún sáfà Tor bíi ${logical.Name} nínú àfikún bráósà ní àsìkò yìí."
+			],
+			"Upgrade": [
+				"Gbé e ga"
+			],
+			"Usage data helps us overcome VPN blocks and improve app performance.": [
+				"Dátà lílo ń ràn wa lọ́wọ́ láti kọjá ìdẹ̀kún VPN kọjá àti láti mú iṣẹ́ áàpù ga."
+			],
+			"User": [
+				"Olùmúlò"
+			],
+			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
+				"Nígbà tí a bá ń lo Brave, àwọn àbéèbè DNS lè kò ní ààbò nígbà tí \"Ipò ìfikún\" bá ṣiṣẹ́."
+			],
+			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
+				"Sọ́fweà tí ó wá láti ìta ti dè VPN.\n\nÀwọn irinṣẹ́ kan, bíi àwọn anti-virus tàbí próksì, lè bá Proton VPN jagun. Ẹ paná wọn kí ẹ sì tún gbìyànjú."
+			],
+			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.": [
+				"Sọ́fweà tí ó wá láti ìta ti dè VPN: ${blockingSoftware}.\n\nÀwọn irinṣẹ́ kan, bíi àwọn anti-virus tàbí próksì, lè bá Proton VPN jagun. Ẹ lè gbiyànjú láti pa á láti jẹ́rìísí."
+			],
+			"VPN Features": [
+				"Àwọn àbùdá VPN"
+			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"Àṣírí yín ni a fi wànílẹ́kùn jùlọ. A kò tọ́ yín tẹ́lẹ̀ nígbà tí ẹ bá ń wákiri ayélujára, a kò sì pamọ́ àkọsílẹ̀ kankan. Láti fọwọ́sí àsopọ̀ yín, a máa ń fi ID sáà àkántì yín ránṣẹ́ sí àwọn sáfà wa, èyí ni ó ṣe pàtàkì kí àfikún náà lè ṣiṣẹ́."
+			],
+			"You're signed in": [
+				"Ẹ ti wọlé."
+			],
+			"Your network appears to be blocking Proton, and this extension can't bypass this block. The desktop app likely can, ${link}.": [
+				"Ó dà gẹ́gẹ́ bí ẹni pé nẹ́tíwọ́ọ̀kì yín ń dẹ̀nà Proton, àfikún yìí kò sì lè kọjá dẹ̀nà yìí. Ṣùgbọ́n áàpù dẹ́sìtọ́pù lè kọjá rẹ̀, ${link}."
+			],
+			"Your network seems to be blocking Proton. The extension can't bypass this. Try the desktop app instead.": [
+				"Ó dà bí ẹni pé nẹ́tíwọ́ọ̀kì yín ń dẹ̀nà Proton. Àfikún náà kò lè kọjá dẹ̀nà yìí. Ẹ gbìyànjú áàpù dẹ́sìtọ́pù dínkù."
+			]
+		},
+		"Label": {
+			"And all its subdomains": [
+				"Àti gbogbo àwọn subdomain rẹ̀"
+			],
+			"Auto connect": [
+				"Ìsomọ́ ara-ẹni"
+			],
+			"Cities": [
+				"Àwọn ìlú"
+			],
+			"City": [
+				"Àwọn ìlú"
+			],
+			"Connecting": [
+				"Ó ń so pọ̀"
+			],
+			"Countries, cities, servers": [
+				"Àwọn orílẹ̀-èdè, àwọn ìlú, àwọn sáfà"
+			],
+			"Country": [
+				"Àwọn orílẹ̀-èdè"
+			],
+			"Entry country": [
+				"Àwọn orílẹ̀-èdè ìwọlé"
+			],
+			"Exact match": [
+				"Ìbámu pẹ̀lúpẹ̀lú"
+			],
+			"Free": [
+				"Ọ̀fẹ́"
+			],
+			"Free connections": [
+				"Àwọn àsopọ̀ ọ̀fẹ́"
+			],
+			"Free servers": [
+				"Àwọn sáfà ọ̀fẹ́"
+			],
+			"Free servers (${count})": [
+				"Àwọn sáfà ọ̀fẹ́ (${count})"
+			],
+			"Internal servers (${count})": [
+				"Àwọn sáfà inú (${count})"
+			],
+			"Need help?": [
+				"Ṣe ẹ nílò ìrànlọ́wọ́?"
+			],
+			"Notifications": [
+				"Àwọn ìwífúnni"
+			],
+			"Other": [
+				"Àwọn mìíràn"
+			],
+			"Plus servers (${count})": [
+				"Àwọn sáfà Plus (${count})"
+			],
+			"Protected": [
+				"Ti dá ààbò"
+			],
+			"Server": [
+				"Àwọn sáfà"
+			],
+			"Settings": [
+				"Àwọn ààtò"
+			],
+			"Split tunneling": [
+				"Ìkáàkiri tí a pín"
+			],
+			"Unprotected": [
+				"Kò ní ààbò"
+			],
+			"Via": [
+				"Nípasẹ̀"
+			],
+			"Want to know more?": [
+				"Ṣe ẹ fẹ́ mọ̀ síwájú?"
+			],
+			"WebRTC leak protection": [
+				"Ààbò lódì jíjò WebRTC"
+			]
+		},
+		"Menu": {
+			"Countries": [
+				"Àwọn orílẹ̀-èdè"
+			],
+			"Features": [
+				"Àwọn àbùdá"
+			],
+			"Help": [
+				"Ìrànlọ́wọ́"
+			],
+			"Settings": [
+				"Àwọn ààtò"
+			]
+		},
+		"Status": {
+			"Connecting to ${serverName}": [
+				"Ó ń so pọ̀ mọ́ ${serverName}"
+			],
+			"Proton VPN: ${status}": [
+				"Proton VPN: ${status}"
+			]
+		},
+		"Title": {
+			"Closest server": [
+				"Sáfà tí ó súnmọ́ jù"
+			],
+			"Fastest country": [
+				"Orílẹ̀-èdè tí ó yára jù"
+			],
+			"Fastest server": [
+				"Sáfà tí ó yára jù"
+			],
+			"Features": [
+				"Àwọn àbùdá"
+			],
+			"Proton VPN for Vivaldi": [
+				"Proton VPN fún Vivaldi"
+			],
+			"Random server": [
+				"Sáfà tí a yàn láìpínnu"
+			],
+			"Recents": [
+				"Àwọn tó ṣẹ̀ṣẹ̀ kọjá"
+			],
+			"Streaming": [
+				"Gbígbé sórí afẹ́fẹ́"
+			]
+		}
+	}
+}

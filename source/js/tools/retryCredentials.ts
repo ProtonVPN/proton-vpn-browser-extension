@@ -1,3 +1,4 @@
+'use background';
 import {getCredentials} from '../account/credentials/getConnectionCredentials';
 import {c} from '../tools/translate';
 import {disconnect, getCurrentState} from '../state';

@@ -1,0 +1,1133 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ProtonTech API\n"
+"POT-Creation-Date: 2026-08-31 19:31+0000\n"
+"Language-Team: ProtonMail <contact@protonmail.ch>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: ProtonTranslator 1.1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#. translator: explain that the link opens in a new tab
+#: js\components\links.ts:49
+msgctxt "Action"
+msgid "${linkDescription} (New tab)"
+msgstr ""
+
+#: popup.html
+msgctxt "Action"
+msgid "Add"
+msgstr ""
+
+#: popup.html
+msgctxt "Action"
+msgid "Add website"
+msgstr ""
+
+#: popup.html
+msgctxt "Action"
+msgid "Already have a Proton Account?"
+msgstr ""
+
+#: popup.html
+msgctxt "Action"
+msgid "Cancel"
+msgstr ""
+
+#. Button to go to account dashboard language section
+#: popup.html
+msgctxt "Action"
+msgid "Change language"
+msgstr ""
+
+#: js\popup-starter.ts:795
+msgctxt "Action"
+msgid "Change server"
+msgstr ""
+
+#. Tooltip of the Split tunneling setting
+#: popup.html
+msgctxt "Action"
+msgid "Configure split tunneling"
+msgstr ""
+
+#. Button
+#: onboarding.html
+msgctxt "Action"
+msgid "Confirm choices"
+msgstr ""
+
+#: js\components\connectionButton.ts:32
+msgctxt "Action"
+msgid "Connect"
+msgstr ""
+
+#: popup.html
+msgctxt "Action"
+msgid "Contact us"
+msgstr ""
+
+#. this button is preceded by a sentence 'New to Proton?'
+#: onboarding.html
+msgctxt "Action"
+msgid "Create an account"
+msgstr ""
+
+#. Tooltip of the toggle to auto-connect
+#: popup.html
+msgctxt "Action"
+msgid "Disable auto-connect"
+msgstr ""
+
+#. Tooltip of system notifications setting toggle
+#: popup.html
+msgctxt "Action"
+msgid "Disable notifications"
+msgstr ""
+
+#. Tooltip of the toggle for Split Tunneling
+#: popup.html
+msgctxt "Action"
+msgid "Disable Split tunneling"
+msgstr ""
+
+#. Tooltip of the WebRTC setting toggle
+#: popup.html
+msgctxt "Action"
+msgid "Disable WebRTC leak protection"
+msgstr ""
+
+#: js\popup-starter.ts:865
+msgctxt "Action"
+msgid "Disconnect"
+msgstr ""
+
+#. Tooltip of the toggle to auto-connect
+#: popup.html
+msgctxt "Action"
+msgid "Enable auto-connect"
+msgstr ""
+
+#. Tooltip of system notifications setting toggle
+#: popup.html
+msgctxt "Action"
+msgid "Enable notifications"
+msgstr ""
+
+#. Tooltip of the toggle for Split Tunneling
+#: popup.html
+msgctxt "Action"
+msgid "Enable Split tunneling"
+msgstr ""
+
+#. Tooltip of the WebRTC setting toggle
+#: popup.html
+msgctxt "Action"
+msgid "Enable WebRTC leak protection"
+msgstr ""
+
+#. Button
+#: onboarding.html
+msgctxt "Action"
+msgid "Log in with Proton"
+msgstr ""
+
+#. Button to go to account dashboard
+#: popup.html
+msgctxt "Action"
+msgid "Manage subscription"
+msgstr ""
+
+#. this sentence is followed by a button [Create an account]
+#: onboarding.html
+msgctxt "Action"
+msgid "New to Proton?"
+msgstr ""
+
+#: js\components\signIn\showSigningView.ts:82
+msgctxt "Action"
+msgid "Next"
+msgstr ""
+
+#: js\popup-starter.ts:1172
+msgctxt "Action"
+msgid "Quick connect"
+msgstr ""
+
+#: js\components\recentLocations.ts:73
+msgctxt "Action"
+msgid "Remove"
+msgstr ""
+
+#: js\components\configureSplitTunneling.ts:102
+msgctxt "Action"
+msgid "Remove ${domain}"
+msgstr ""
+
+#. translator: exitCountryName is the country user is about to connect to: "Germany", "United States", "Sweden"
+#: js\components\countryBlock.ts:94
+msgctxt "Action"
+msgid "Select a city in ${exitCountryName}"
+msgstr ""
+
+#: js\components\serverGroup.ts:185
+msgctxt "Action"
+msgid "Select a server in ${cityName}"
+msgstr ""
+
+#. translator: exitCountryName is the exit of a Secure-Core entry-exit pair: "Germany", "United States", "Sweden"
+#: js\components\countryBlock.ts:91
+msgctxt "Action"
+msgid "Select entry country with exit in ${exitCountryName}"
+msgstr ""
+
+#: js\components\signIn\showSigningView.ts:82
+msgctxt "Action"
+msgid "Sign in"
+msgstr ""
+
+#: js\components\signIn\showSigningView.ts:126
+msgctxt "Action"
+msgid "Sign in with Vivaldi"
+msgstr ""
+
+#: popup.html
+msgctxt "Action"
+msgid "Sign out"
+msgstr ""
+
+#. translator: This sentence is followed by an Upgrade button
+#: js\tools\getErrorMessage.ts:163
+msgctxt "Action"
+msgid "Subscribe to connect more devices"
+msgstr ""
+
+#. translator: This sentence is followed by an Upgrade button
+#: js\tools\getErrorMessage.ts:160
+msgctxt "Action"
+msgid "Subscribe to enable Browser Extension"
+msgstr ""
+
+#: popup.html
+msgctxt "Action"
+msgid "Switch account"
+msgstr ""
+
+#: js\components\signIn\showSigningView.ts:96
+msgctxt "Action"
+msgid "Update"
+msgstr ""
+
+#: js\tools\getErrorMessage.ts:52
+msgctxt "Action"
+msgid "Upgrade"
+msgstr ""
+
+#: js\components\upgradeButton.ts:6
+msgctxt "Action"
+msgid "Upgrade to Proton VPN Plus"
+msgstr ""
+
+#. Link to support center
+#: popup.html
+msgctxt "Action"
+msgid "Visit Support Center"
+msgstr ""
+
+#: js\components\recentLocations.ts:135
+msgctxt "Action: City-level button"
+msgid "Connect to ${cityName}"
+msgstr ""
+
+#: js\components\recentLocations.ts:193
+msgctxt "Action: Country-level button"
+msgid "Connect to \"${mode}\""
+msgstr ""
+
+#: js\components\recentLocations.ts:162
+msgctxt "Action: Country-level button"
+msgid "Connect to ${countryName}"
+msgstr ""
+
+#: js\components\countryBlock.ts:52
+msgctxt "Action: Country-level button"
+msgid "Connect to ${exitCountryName}"
+msgstr ""
+
+#: js\components\recentLocations.ts:107
+msgctxt "Action: Country-level button"
+msgid "Connect to ${logical.Name}"
+msgstr ""
+
+#: js\components\fastestCountry.ts:13
+msgctxt "Action: Country-level button"
+msgid "Connect to the fastest country"
+msgstr ""
+
+#: js\components\serverList.ts:86
+msgctxt "Action: Server-level button"
+msgid "Connect to ${serverName}"
+msgstr ""
+
+#: popup.html
+msgctxt "Alternative text for the search (magnifying glass) icon"
+msgid "Search"
+msgstr ""
+
+#: js\popup-starter.ts:1110
+msgctxt "Confirm"
+msgid "Logging out of the application will disconnect the active VPN connection. Do you want to continue?"
+msgstr ""
+
+#. translator: ${countries} is a number so output is like "63 countries" and this goes in sentence such as "Access over 5000 secure servers in 63 countries"
+#: js\components\accessSentence.ts:28
+msgctxt "Error"
+msgid "${countries} country"
+msgid_plural "${countries} countries"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translator: ${servers} is a number so output is like "1900+ secure servers" and this goes in sentence such as "Unlock 1900+ secure servers in 60 countries"
+#: js\tools\upsell.ts:33
+msgctxt "Error"
+msgid "${servers}+ secure server"
+msgid_plural "${servers}+ secure servers"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translator: ${serversCount} is a number so output is like "1900 secure servers" and this goes in sentence such as "Access over 5000 secure servers in 63 countries"
+#: js\components\accessSentence.ts:20
+msgctxt "Error"
+msgid "${serversCount} secure server"
+msgid_plural "${serversCount} secure servers"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translator: ${servers} is "5000 secure servers"
+#. translator: ${countries} is "63 countries"
+#: js\tools\upsell.ts:10
+msgctxt "Error"
+msgid "Access over ${servers} in ${countries}"
+msgstr ""
+
+#: js\tools\upsell.ts:60
+msgctxt "Error"
+msgid "Bypass online censorship with advanced security and privacy features"
+msgstr ""
+
+#: js\tools\upsell.ts:28
+msgctxt "Error"
+msgid "Connect from your browser with ${planName}"
+msgstr ""
+
+#: js\tools\browserAction.ts:33
+msgctxt "Error"
+msgid "Network error."
+msgstr ""
+
+#: js\vpn\checkNetwork.ts:20
+msgctxt "Error"
+msgid "Network is unreachable"
+msgstr ""
+
+#: js\search\getNoResultBlock.ts:3
+msgctxt "Error"
+msgid "No results found"
+msgstr ""
+
+#: js\state.ts:260
+msgctxt "Error"
+msgid "Not able to control the browser network settings, possibly a permission is missing"
+msgstr ""
+
+#. translator: maybe internet connection is unstable, Wi-Fi too far, or API domain got censored by the ISP or country
+#: js\components\locationList.ts:23
+msgctxt "Error"
+msgid "Please check your connectivity"
+msgstr ""
+
+#: js\search\getNoResultBlock.ts:4
+msgctxt "Error"
+msgid "Please try a different keyword"
+msgstr ""
+
+#: js\state.ts:508
+msgctxt "Error"
+msgid "Server not found"
+msgstr ""
+
+#: js\api.ts:361
+msgctxt "Error"
+msgid "Service temporarily unavailable"
+msgstr ""
+
+#: js\tools\getErrorMessage.ts:77
+msgctxt "Error"
+msgid "Something went wrong. If the problem persists, please try to re-install the extension"
+msgstr ""
+
+#: js\vpn\getLogical.ts:80
+msgctxt "Error"
+msgid "Unable to find appropriate server, try to logout and login again if it persists."
+msgstr ""
+
+#: js\components\locationList.ts:22
+msgctxt "Error"
+msgid "Unable to load the list"
+msgstr ""
+
+#: js\account\requireUser.ts:16
+msgctxt "Error"
+msgid "Unable to login"
+msgstr ""
+
+#: js\tools\retryCredentials.ts:31
+msgctxt "Error"
+msgid "Unable to reach the server, please try to reconnect, or to log out and log in again if the problem persists"
+msgstr ""
+
+#. translator: ${servers} is "1900+ secure servers"
+#. translator: ${countries} is "60 countries"
+#: js\tools\upsell.ts:4
+msgctxt "Error"
+msgid "Unlock ${servers} in ${countries}"
+msgstr ""
+
+#: js\tools\upsell.ts:55
+msgctxt "Error"
+msgid "Unlock global streaming services"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "A subdomain URL includes a prefix before the main domain name. For example, account.proton.me is a subdomain of proton.me."
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "About free connections"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Access over 13,000 secure servers in over 120 countries"
+msgstr ""
+
+#: onboarding.html
+msgctxt "Info"
+msgid "Access Proton VPN via this icon"
+msgstr ""
+
+#. translator: title of the first install step
+#: js\components\signIn\showSigningView.ts:225
+msgctxt "Info"
+msgid "Allow VPN permissions"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Also add subdomains"
+msgstr ""
+
+#. translator: this comes after a list of Streaming platforms
+#: js\components\configureServerGroups.ts:73
+msgctxt "Info"
+msgid "and more"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Audited by independent security experts"
+msgstr ""
+
+#: js\components\aboutFreeConnections.ts:24
+msgctxt "Info"
+msgid "Auto-selected from"
+msgstr ""
+
+#. Description for the Auto connect option toggle
+#: popup.html
+msgctxt "Info"
+msgid "Automatically reconnect to Proton VPN when you open your browser."
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Back"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Browse through the Support Center and find answers to frequently asked questions."
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Bypass censorship with advanced security and privacy features"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Clear all recent connections and don't keep local history"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Clear search"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Close"
+msgstr ""
+
+#: js\components\configureServerGroups.ts:58
+msgctxt "Info"
+msgid "Connect to a Plus server in this country to start streaming.\n"
+  "\n"
+  "Hint: Clear the cache of the streaming apps to ensure new content appears."
+msgstr ""
+
+#: js\state.ts:734
+msgctxt "Info"
+msgid "Connected"
+msgstr ""
+
+#. translator: ${name} is a server, example: Connected to US-NY#1
+#: js\state.ts:731
+msgctxt "Info"
+msgid "Connected to ${name}"
+msgstr ""
+
+#. translator: ${name} is a server, example: Connected to US-NY#1 in New York
+#: js\state.ts:728
+msgctxt "Info"
+msgid "Connected to ${name} in ${city}"
+msgstr ""
+
+#: js\components\configureLookupSearch.ts:117
+msgctxt "Info"
+msgid "Connecting servers such as ${logical.Name} is not currently supported in the browser extension"
+msgstr ""
+
+#: js\components\configureLookupSearch.ts:113
+msgctxt "Info"
+msgid "Connecting to dedicated IPs such as ${logical.Name} is not currently supported in the browser extension"
+msgstr ""
+
+#: js\popup-starter.ts:841
+msgctxt "Info"
+msgid "Connecting..."
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Contact our Customer Support agents to help you out with Proton VPN."
+msgstr ""
+
+#. Toggle button to opt-in to share anonymous crash reports
+#: onboarding.html
+msgctxt "Info"
+msgid "Crash"
+msgstr ""
+
+#: onboarding.html
+msgctxt "Info"
+msgid "Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties."
+msgstr ""
+
+#: onboarding.html
+msgctxt "Info"
+msgid "Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks."
+msgstr ""
+
+#. Description for the Split tunneling option toggle
+#: popup.html
+msgctxt "Info"
+msgid "Decide which websites are protected by VPN."
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Disable Secure Core"
+msgstr ""
+
+#: js\state.ts:673
+msgctxt "Info"
+msgid "Disconnected"
+msgstr ""
+
+#: js\vpn\initProxySettingsWatcher.ts:21
+msgctxt "Info"
+msgid "Disconnected by another extension"
+msgstr ""
+
+#: js\vpn\initProxySettingsWatcher.ts:17
+msgctxt "Info"
+msgid "Disconnected by another extension, it connected to ${newProxyName}"
+msgstr ""
+
+#: js\vpn\initProxySettingsWatcher.ts:29
+msgctxt "Info"
+msgid "Disconnected, settings were overridden"
+msgstr ""
+
+#: js\vpn\initProxySettingsWatcher.ts:25
+msgctxt "Info"
+msgid "Disconnected, settings were overridden to ${newProxyName}"
+msgstr ""
+
+#. Description for the system notifications option toggle
+#: popup.html
+msgctxt "Info"
+msgid "Emit system notifications on connection and disconnection events."
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Enable Secure Core"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Enjoying Proton VPN?"
+msgstr ""
+
+#: js\components\configureSplitTunneling.ts:226
+msgctxt "Info"
+msgid "Exclude mode"
+msgstr ""
+
+#. Description for the Secure Core option toggle
+#: popup.html
+msgctxt "Info"
+msgid "Extra protection for people with advanced privacy needs"
+msgstr ""
+
+#: js\components\aboutFreeConnections.ts:22
+msgctxt "Info"
+msgid "Fastest free server"
+msgstr ""
+
+#: onboarding.html
+msgctxt "Info"
+msgid "Follow these simple steps to get the best experience using Proton VPN"
+msgstr ""
+
+#. The count of free server countries
+#: popup.html
+msgctxt "Info"
+msgid "Free server countries (<span id=\"free-server-countries-count\">0</span>)"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Get unlimited server changes with VPN Plus"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Get worldwide coverage with VPN Plus"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Help"
+msgstr ""
+
+#. Title for telemetry option
+#: popup.html
+msgctxt "Info"
+msgid "Help us fight censorship"
+msgstr ""
+
+#. Title for crash reports option
+#: popup.html
+msgctxt "Info"
+msgid "Help us improve Proton VPN"
+msgstr ""
+
+#: js\components\signIn\initializeInlineParagraph.ts:27
+msgctxt "Info"
+msgid "High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions."
+msgid_plural "High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} servers and no restrictions."
+msgstr[0] ""
+msgstr[1] ""
+
+#: js\components\configureSplitTunneling.ts:225
+msgctxt "Info"
+msgid "Include mode"
+msgstr ""
+
+#: onboarding.html
+msgctxt "Info"
+msgid "Learn more"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Leave a rating"
+msgstr ""
+
+#: js\state.ts:662
+msgctxt "Info"
+msgid "Logged out"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Not now"
+msgstr ""
+
+#: js\components\configureSplitTunneling.ts:190
+msgctxt "Info"
+msgid "Off"
+msgstr ""
+
+#: js\components\configureSplitTunneling.ts:190
+msgctxt "Info"
+msgid "On"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Open source VPN"
+msgstr ""
+
+#: onboarding.html
+msgctxt "Info"
+msgid "Open the Extensions menu"
+msgstr ""
+
+#: js\messaging\forkSession.ts:57
+msgctxt "Info"
+msgid "Open the Proton VPN browser extension to continue"
+msgstr ""
+
+#: onboarding.html
+msgctxt "Info"
+msgid "Pin Proton VPN to your toolbar"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Please help us spread the word with a Web Store rating."
+msgstr ""
+
+#: js\components\signIn\showSigningView.ts:228
+msgctxt "Info"
+msgid "Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser."
+msgstr ""
+
+#: js\components\signIn\initializeInlineParagraph.ts:51
+msgctxt "Info"
+msgid "Protect yourself online with Proton's free high‑speed VPN."
+msgstr ""
+
+#: js\popup-starter.ts:963
+msgctxt "Info"
+msgid "Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location."
+msgid_plural "Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free countries. This will normally be the closest server to your location."
+msgstr[0] ""
+msgstr[1] ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Proton VPN"
+msgstr ""
+
+#: background.html
+msgctxt "Info"
+msgid "Proton VPN Browser Extension"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Recent connections"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Remember recent connections locally and show quick links to them"
+msgstr ""
+
+#. Description for the Recent connections option toggle
+#: popup.html
+msgctxt "Info"
+msgid "Remember the last countries/cities/servers I connected to and show them at the\n"
+  "top of the list."
+msgstr ""
+
+#: js\components\recentLocations.ts:95
+msgctxt "Info"
+msgid "Retired server"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Secure Core"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Selected websites"
+msgstr ""
+
+#: onboarding.html
+msgctxt "Info"
+msgid "Share anonymous crash reports"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Share anonymous usage statistics"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Split tunneling"
+msgstr ""
+
+#. Description for the WebRTC leak protection option toggle
+#: popup.html
+msgctxt "Info"
+msgid "Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites."
+msgstr ""
+
+#. Toggle button to opt-in to share anonymous usage statistics
+#: popup.html
+msgctxt "Info"
+msgid "Telemetry"
+msgstr ""
+
+#: onboarding.html
+msgctxt "Info"
+msgid "Thank you for installing Proton VPN"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "The split tunneling options cannot be changed on this device"
+msgstr ""
+
+#. translator: previous sentence is "then click <b>Allow</b> on the pop-up from your browser."
+#: js\components\signIn\showSigningView.ts:231
+msgctxt "Info"
+msgid "Then just click the Proton VPN icon to sign in."
+msgstr ""
+
+#: js\vpn\features\FeatureWrapper.ts:38
+msgctxt "Info"
+msgid "This option cannot be changed on this device"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties"
+msgstr ""
+
+#: js\components\signIn\showSigningView.ts:225
+msgctxt "Info"
+msgid "To get started, you’ll need to enable VPN permissions on your browser."
+msgstr ""
+
+#: js\components\configureLookupSearch.ts:108
+msgctxt "Info"
+msgid "Tor servers such as ${logical.Name} are not currently supported in the browser extension"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Upgrade"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Usage data helps us overcome VPN blocks and improve app performance."
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "User"
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "Using Brave, DNS requests might be unprotected when \"Include mode\" is active."
+msgstr ""
+
+#: js\api.ts:310
+msgctxt "Info"
+msgid "VPN blocked by external software: ${blockingSoftware}.\n"
+  "\n"
+  "Some tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm."
+msgstr ""
+
+#: js\api.ts:324
+msgctxt "Info"
+msgid "VPN blocked by external software.\n"
+  "\n"
+  "Some tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry."
+msgstr ""
+
+#: popup.html
+msgctxt "Info"
+msgid "VPN Features"
+msgstr ""
+
+#: onboarding.html
+msgctxt "Info"
+msgid "We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work"
+msgstr ""
+
+#: js\messaging\forkSession.ts:56
+msgctxt "Info"
+msgid "You're signed in"
+msgstr ""
+
+#: js\vpn\detectCensorship.ts:67
+msgctxt "Info"
+msgid "Your network appears to be blocking Proton, and this extension can't bypass this block. The desktop app likely can, ${link}."
+msgstr ""
+
+#: js\vpn\detectCensorship.ts:174
+msgctxt "Info"
+msgid "Your network seems to be blocking Proton. The extension can't bypass this. Try the desktop app instead."
+msgstr ""
+
+#. translator: mention added after a domain such as "example.com" in the Split-tunneling exclusion list to explain that subdomains will also be excluded.
+#: js\components\configureSplitTunneling.ts:107
+msgctxt "Label"
+msgid "And all its subdomains"
+msgstr ""
+
+#. Title above the toggle to auto-connect
+#: popup.html
+msgctxt "Label"
+msgid "Auto connect"
+msgstr ""
+
+#: js\components\serverGroup.ts:211
+msgctxt "Label"
+msgid "Cities"
+msgstr ""
+
+#. translator: Header of a list of cities
+#: js\search\getSearchResult.ts:160
+msgctxt "Label"
+msgid "City"
+msgid_plural "Cities"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translator: Connection in progress to a VPN server (hover tooltip)
+#: js\tools\browserAction.ts:34
+msgctxt "Label"
+msgid "Connecting"
+msgstr ""
+
+#. translator: Search placeholder
+#: js\search\setUpSearch.ts:6
+msgctxt "Label"
+msgid "Countries, cities, servers"
+msgstr ""
+
+#. translator: Header of a list of countries
+#: js\components\countryListHeader.ts:2
+msgctxt "Label"
+msgid "Country"
+msgid_plural "Countries"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translator: Header of a list of entry counties once Secure Core exit country has been selected
+#: js\components\serverGroup.ts:29
+msgctxt "Label"
+msgid "Entry country"
+msgid_plural "Entry countries"
+msgstr[0] ""
+msgstr[1] ""
+
+#: js\search\getExactMatchSearchResult.ts:12
+msgctxt "Label"
+msgid "Exact match"
+msgstr ""
+
+#. translator: it's for free servers that can be accessed without paid subscription
+#: js\vpn\attachLogicalIntoCountryList.ts:39
+msgctxt "Label"
+msgid "Free"
+msgstr ""
+
+#: popup.html
+msgctxt "Label"
+msgid "Free connections"
+msgstr ""
+
+#: js\components\serverGroup.ts:210
+msgctxt "Label"
+msgid "Free servers"
+msgstr ""
+
+#: js\vpn\getServerGroupTitle.ts:7
+msgctxt "Label"
+msgid "Free servers (${count})"
+msgstr ""
+
+#: js\vpn\getServerGroupTitle.ts:14
+msgctxt "Label"
+msgid "Internal servers (${count})"
+msgstr ""
+
+#. Title above contact button
+#: popup.html
+msgctxt "Label"
+msgid "Need help?"
+msgstr ""
+
+#. Title of the setting to enable or disable system notifications on connection/disconnection event
+#: popup.html
+msgctxt "Label"
+msgid "Notifications"
+msgstr ""
+
+#. translator: Fallback link text when an offer is available but has no icon, clicking on it open a page showing the offer
+#: js\notifications\showNotifications.ts:12
+msgctxt "Label"
+msgid "Offer"
+msgstr ""
+
+#: js\components\serverGroup.ts:213
+msgctxt "Label"
+msgid "Other"
+msgstr ""
+
+#: js\vpn\getServerGroupTitle.ts:11
+msgctxt "Label"
+msgid "Plus servers (${count})"
+msgstr ""
+
+#: js\account\credentials\getConnectionCredentials.ts:128
+msgctxt "Label"
+msgid "Protected"
+msgstr ""
+
+#. translator: Header of a list of servers
+#: js\components\serverGroup.ts:33
+msgctxt "Label"
+msgid "Server"
+msgid_plural "Servers"
+msgstr[0] ""
+msgstr[1] ""
+
+#: popup.html
+msgctxt "Label"
+msgid "Settings"
+msgstr ""
+
+#. Title above the toggle to auto-connect
+#: popup.html
+msgctxt "Label"
+msgid "Split tunneling"
+msgstr ""
+
+#: js\tools\browserAction.ts:30
+msgctxt "Label"
+msgid "Unprotected"
+msgstr ""
+
+#. translator: Tooltip/vocalization for the >> symbol between the entry country flag and the exit country flag when using Secure Core, for instance to connect to Sweden via Switzerland
+#: js\components\via.ts:5
+msgctxt "Label"
+msgid "Via"
+msgstr ""
+
+#. Title above support link
+#: popup.html
+msgctxt "Label"
+msgid "Want to know more?"
+msgstr ""
+
+#. Title above the toggle for the WebRTC setting
+#: popup.html
+msgctxt "Label"
+msgid "WebRTC leak protection"
+msgstr ""
+
+#: popup.html
+msgctxt "Menu"
+msgid "Countries"
+msgstr ""
+
+#: popup.html
+msgctxt "Menu"
+msgid "Features"
+msgstr ""
+
+#: popup.html
+msgctxt "Menu"
+msgid "Help"
+msgstr ""
+
+#: popup.html
+msgctxt "Menu"
+msgid "Settings"
+msgstr ""
+
+#. translator: connection in progress to the server, for instance "Connecting to Paris #12"
+#: js\state.ts:418
+msgctxt "Status"
+msgid "Connecting to ${serverName}"
+msgstr ""
+
+#. translator: This is the hover tooltip of the browser extension button, ${status} can be "Unprotected", "Protected - Paris #12", etc.
+#: js\tools\browserAction.ts:47
+msgctxt "Status"
+msgid "Proton VPN: ${status}"
+msgstr ""
+
+#: js\components\recentLocations.ts:184
+msgctxt "Title"
+msgid "Closest server"
+msgstr ""
+
+#: js\components\fastestCountry.ts:27
+msgctxt "Title"
+msgid "Fastest country"
+msgstr ""
+
+#: js\components\recentLocations.ts:187
+msgctxt "Title"
+msgid "Fastest server"
+msgstr ""
+
+#: js\components\configureServerGroups.ts:49
+msgctxt "Title"
+msgid "Features"
+msgstr ""
+
+#: js\components\signIn\showSigningView.ts:159
+msgctxt "Title"
+msgid "Proton VPN for Vivaldi"
+msgstr ""
+
+#: js\components\recentLocations.ts:180
+msgctxt "Title"
+msgid "Random server"
+msgstr ""
+
+#. translator: caption above the list of recent countries/cities/servers the user last connected to
+#: js\components\recentLocations.ts:214
+msgctxt "Title"
+msgid "Recents"
+msgstr ""
+
+#: js\components\configureServerGroups.ts:57
+msgctxt "Title"
+msgid "Streaming"
+msgstr ""
+

@@ -21,7 +21,7 @@ export const setWebRTCState = (state: WebRTCState) =>
 		chrome.privacy.network.webRTCIPHandlingPolicy.set({value: state}, () => {
 			chrome.privacy.network.webRTCIPHandlingPolicy.get(
 				{},
-				(setting?: ChromeSettingGetResult<any>) => {
+				(setting?: ChromeSettingGetResult<unknown>) => {
 					resolve(getControlledValue(setting) === state);
 				},
 			);

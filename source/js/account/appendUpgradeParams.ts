@@ -1,3 +1,4 @@
+'use popup';
 import type {PmUser} from './user/PmUser';
 import type {User} from './user/User';
 import {appendUrlParams} from '../tools/appendUrlParams';

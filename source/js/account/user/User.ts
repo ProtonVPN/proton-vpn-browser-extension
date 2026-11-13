@@ -1,11 +1,3 @@
-export interface UserResult {
-	Code: number;
-	User: User;
-}
-
-export const isUserResult = (result: unknown): result is UserResult =>
-	typeof (result as UserResult | undefined)?.User?.VPN === 'object';
-
 export interface User {
 	VPN: {
 		Name: string;

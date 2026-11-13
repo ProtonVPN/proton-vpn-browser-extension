@@ -1,3 +1,4 @@
+'use background';
 import type {ApiError} from '../api';
 import {isNetworkError} from '../api';
 import {setButton} from '../tools/browserAction';
@@ -7,7 +8,7 @@ import {broadcastMessage} from '../tools/broadcastMessage';
 import {warn} from '../log/log';
 import {handleError} from '../tools/sentry';
 
-export const checkNetwork = (error: any, rethrow = false): void => {
+export const checkNetwork = (error: unknown, rethrow = false): void => {
 	if (isNetworkError(error)) {
 		warn(error);
 		const currentState = getCurrentState();

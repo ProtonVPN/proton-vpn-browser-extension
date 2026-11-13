@@ -1,3 +1,4 @@
+'use popup';
 import type {Logical} from '../vpn/Logical';
 import {
 	connectionAttributes,

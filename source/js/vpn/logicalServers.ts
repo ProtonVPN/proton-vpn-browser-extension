@@ -2,13 +2,17 @@ import type {CacheWrappedValue} from '../tools/storage';
 import {Storage, storage} from '../tools/storage';
 import type {Logical} from './Logical';
 
-export type LogicalServersCache = CacheWrappedValue<Logical[]> & {
-	lastModified: string;
+export type LogicalServersCacheMetadata = {
+	lastModified: string | null;
 	lastLoadUpdate?: number;
-	statusId: string;
+	statusId: string | null;
 };
 
-export const logicalServers = storage.item<LogicalServersCache>(
-	'logicals-servers',
-	Storage.LOCAL,
-);
+export type LogicalServersCache = CacheWrappedValue<Logical[]> &
+	LogicalServersCacheMetadata;
+
+export const logicalServers = storage.item<
+	LogicalServersCache,
+	Logical[],
+	LogicalServersCacheMetadata
+>('logicals-servers', Storage.LOCAL);

@@ -1,3 +1,4 @@
+'use background';
 import type {ProxyServer} from './ConnectionState';
 import {setButton} from '../tools/browserAction';
 import {cancelNextCredentialFetch} from '../account/credentials/getConnectionCredentials';

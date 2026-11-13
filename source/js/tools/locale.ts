@@ -1,11 +1,8 @@
 import {BackgroundData} from '../messaging/MessageType';
 import {getRuntime} from './getRuntime';
+import {getNavigator} from './getNavigator';
 
-const root = global || window;
 let registeredLocale: string | undefined = undefined;
-
-const getNavigator = (): (Navigator & {userLanguage?: string}) | undefined =>
-	root.navigator;
 
 export const getLanguage = () =>
 	registeredLocale?.substring(0, 2) ||
@@ -101,8 +98,10 @@ export const registerLocale = (locale: string | undefined) => {
 	registeredLocale = locale;
 };
 
-getRuntime()?.onMessage.addListener((message: any) => {
-	if (message?.type === BackgroundData.LOCALE) {
-		registeredLocale = message.data?.locale;
-	}
-});
+getRuntime()?.onMessage.addListener(
+	(message: {type?: unknown; data?: {locale?: string}} | undefined) => {
+		if (message?.type === BackgroundData.LOCALE) {
+			registeredLocale = message.data?.locale;
+		}
+	},
+);

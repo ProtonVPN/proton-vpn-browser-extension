@@ -1,3 +1,4 @@
+/// <reference types="firefox-webext-browser"/>
 import {delay} from './delay';
 import {triggerPromise} from './triggerPromise';
 import {getTabs} from './getTabs';

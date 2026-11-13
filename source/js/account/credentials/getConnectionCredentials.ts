@@ -20,6 +20,7 @@ import {checkNetwork} from '../../vpn/checkNetwork';
 import {triggerPromise} from '../../tools/triggerPromise';
 import {getErrorAsString} from '../../tools/getErrorMessage';
 import {delay, setJitterTimeout} from '../../tools/delay';
+import {unsafeRandom, unsafeRandomFloat} from '../../tools/random';
 import type {CredentialsCacheItem} from './storedCredentials';
 import {storedCredentials} from './storedCredentials';
 import {debug, warn} from '../../log/log';
@@ -32,7 +33,7 @@ import {fetchWithUserInfo} from '../fetchWithUserInfo';
 let credentialsFetching = false;
 let waitingCredentialsPromises = [] as [
 	(session: Credentials | undefined) => void,
-	(error: any) => void,
+	(error: unknown) => void,
 ][];
 let credentialsFetchingRetries = 0;
 let credentialNextFetching: NodeJS.Timeout | null = null;
@@ -84,7 +85,7 @@ const fetchConnectionCredentialsRequest = async (
 		if (credentialsFetchingRetries > 1) {
 			await delay(
 				Math.pow(2, credentialsFetchingRetries - 2) *
-					(500 + 1500 * Math.random()),
+					unsafeRandomFloat(500, 2_000),
 			);
 		}
 
@@ -131,7 +132,7 @@ const fetchConnectionCredentialsRequest = async (
 
 		return credentials;
 	} catch (error) {
-		(error as ApiError)._id = Date.now() + '-' + Math.random();
+		(error as ApiError)._id = Date.now() + '-' + unsafeRandom();
 
 		if (retryable && isInvalidTokenError(error)) {
 			credentialsFetchingRetries--;
@@ -190,9 +191,7 @@ const fetchConnectionCredentials = async (
 
 		if (credentials?.Code !== 1000) {
 			throw new Error(
-				getErrorAsString(
-					(credentials || {error: 'No credentials found'}) as any,
-				),
+				getErrorAsString(credentials || {error: 'No credentials found'}),
 			);
 		}
 

@@ -1,3 +1,4 @@
+'use popup';
 import {c, getCountryName, getCountryNameOrCode} from '../tools/translate';
 import {ucfirst} from '../tools/ucfirst';
 import type {Logical} from './Logical';

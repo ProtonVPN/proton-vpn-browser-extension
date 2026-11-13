@@ -1,0 +1,18 @@
+# Only install package versions published at least 3 days ago (value in minutes)
+# to limit exposure to compromised releases (supply-chain attacks).
+minimumReleaseAge: 4320
+
+# Packages allowed to run install scripts (pnpm blocks them by default).
+allowBuilds:
+  # Ships prebuilt binaries as optional dependencies, no build needed.
+  '@parcel/watcher': false
+
+catalog:
+  typescript: ^6.0.3
+
+overrides:
+  # Force every package to use the same TypeScript version as the project.
+  typescript: 'catalog:'
+  # stylelint-config-standard-scss@17 still pins stylelint-config-standard@40, which
+  # uses a rule removed in stylelint 18. Remove once it supports stylelint 18.
+  stylelint-config-standard-scss>stylelint-config-standard: ^41.0.0

@@ -1,3 +1,4 @@
+'use popup';
 import {Feature} from '../vpn/Feature';
 
 export const buttonMatchesSecureCore = (

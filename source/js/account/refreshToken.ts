@@ -1,4 +1,4 @@
-import {sendMessageToBackground} from '../tools/sendMessageToBackground';
+import {dispatchToBackground} from '../tools/dispatchToBackground';
 import {triggerPromise} from '../tools/triggerPromise';
 import {getErrorAsString} from '../tools/getErrorMessage';
 import {GroupResponder} from '../tools/GroupResponder';
@@ -90,15 +90,12 @@ export const refreshToken = async (session?: Session): Promise<Session> => {
 				await saveSession(nextSession);
 			}
 
-			if ((error as any).Code === 10013) {
+			if ((error as {Code: number}).Code === 10013) {
 				warn(error, new Error().stack);
 				error = new RefreshTokenError(getErrorAsString(error));
 
-				try {
-					triggerPromise(sendMessageToBackground(StateChange.SIGN_OUT));
-				} catch {
-					// Let the initial error throw
-				}
+				// Let the initial error throw, sign-out failure is only logged
+				triggerPromise(dispatchToBackground(StateChange.SIGN_OUT));
 			}
 
 			throw error;

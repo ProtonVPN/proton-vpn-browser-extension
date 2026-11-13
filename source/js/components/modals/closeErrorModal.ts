@@ -1,3 +1,4 @@
+'use popup';
 import {triggerPromise} from '../../tools/triggerPromise';
 import {storage} from '../../tools/storage';
 import {showSigningViewAndWaitForItToBeLoaded} from '../signIn/showSigningView';
@@ -29,4 +30,25 @@ export const closeErrorModal = async (
 			proxySupported,
 		);
 	}
+};
+
+export const initErrorModalCloseButtons = (
+	errorModal: HTMLElement,
+	area: HTMLElement,
+	loggedView: HTMLElement | null,
+	spinner: HTMLElement | null,
+	proxySupported: boolean,
+) => {
+	errorModal.querySelector('.close-button')?.addEventListener('click', () => {
+		triggerPromise(
+			closeErrorModal(
+				errorModal,
+				undefined,
+				area,
+				loggedView,
+				spinner,
+				proxySupported,
+			),
+		);
+	});
 };

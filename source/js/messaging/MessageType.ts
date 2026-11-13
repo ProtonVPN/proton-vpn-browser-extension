@@ -18,6 +18,8 @@ export enum BackgroundAction {
 	FORK = 'fork',
 	FORGET_ERROR = 'forgetError',
 	LOG = 'log',
+	PROMOTION_DISPLAY = 'promotionDisplay',
+	OPEN_PROMOTION = 'openPromotion',
 }
 
 export enum BackgroundData {

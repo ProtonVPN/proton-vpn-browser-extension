@@ -1,3 +1,4 @@
+'use popup';
 import type {StreamingService} from '../vpn/getStreamingConfig';
 import {getStreamingConfig} from '../vpn/getStreamingConfig';
 import {c, getCountryNameOrCode} from '../tools/translate';
@@ -33,16 +34,17 @@ export const configureServerGroups = (area: HTMLElement) => {
 				values[service.Name] = service;
 			});
 
-			group.querySelectorAll('.group-tooltip').forEach((tooltip: any) => {
+			group.querySelectorAll('.group-tooltip').forEach((tooltip) => {
 				group.removeChild(tooltip);
 			});
 			const newTooltip = document.createElement('div');
+			// nosemgrep:insecure-innerhtml
 			newTooltip.innerHTML = `
 				<svg class="open-button" height="16" viewBox="0 0 16 16" width="16">
 					<use xlink:href="img/icons.svg#open-button"></use>
 				</svg>
 				<div class="expanded-tooltip">
-					<div class="close-button">
+					<div class="close-button" aria-label="Close">
 						<svg width="24" height="24" viewBox="0 0 24 24">
 							<use xlink:href="img/icons.svg#close-button"></use>
 						</svg>

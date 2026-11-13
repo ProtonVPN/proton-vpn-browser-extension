@@ -1,4 +1,5 @@
 import type {
+	Node,
 	NoSubstitutionTemplateLiteral,
 	StringLiteral,
 	TaggedTemplateExpression,
@@ -12,7 +13,7 @@ import {
 } from 'typescript';
 
 export const isTranslatableString = (
-	value: any,
+	value: Node,
 ): value is
 	| StringLiteral
 	| TemplateExpression

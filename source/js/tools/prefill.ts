@@ -1,3 +1,4 @@
+'use popup';
 import type {PmUser} from '../account/user/PmUser';
 import {getBrowser} from './getBrowser';
 import {getFullAppVersion} from '../config';

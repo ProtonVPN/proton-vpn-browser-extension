@@ -1,3 +1,4 @@
+'use popup';
 import {c, msgid} from '../tools/translate';
 
 export const countryListHeader = (count: number) =>

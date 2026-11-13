@@ -1,3 +1,4 @@
+'use background';
 import {triggerPromise} from './triggerPromise';
 import {c} from './translate';
 import {getRuntime} from './getRuntime';

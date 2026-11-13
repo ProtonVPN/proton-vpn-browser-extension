@@ -1,6 +1,7 @@
 import type {ResponseResult} from '../api';
 import {fetchJson} from '../api';
 import type {IpLocation} from './IpLocation';
+import {isConnected} from '../vpn/connectedServer';
 import type {Coordinates} from '../tools/Coordinates';
 import {milliSeconds} from '../tools/milliSeconds';
 import type {Timed} from '../tools/storage';
@@ -10,7 +11,6 @@ import {isSuspended, suspend} from '../tools/exponentialBackoff';
 import {delay} from '../tools/delay';
 import {RefreshTokenError} from './RefreshTokenError';
 import {excludeApiFromProxy} from '../config';
-import {isConnected} from '../vpn/connectedServer';
 import {getLocationRefreshInterval} from '../intervals';
 import {timezoneCountries} from '../tools/timezoneCountries';
 import {guessCountryFromLocale} from '../tools/locale';

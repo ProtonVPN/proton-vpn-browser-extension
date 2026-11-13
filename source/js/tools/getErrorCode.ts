@@ -1,3 +1,4 @@
+'use background';
 export enum ErrorCode {
 	FAILED = 'FAILED',
 	ABORTED = 'ABORTED',

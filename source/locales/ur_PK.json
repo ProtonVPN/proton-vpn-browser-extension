@@ -1,0 +1,656 @@
+{
+	"headers": {
+		"plural-forms": "nplurals=2; plural=(n != 1);",
+		"language": "ur_PK"
+	},
+	"contexts": {
+		"Action": {
+			"${linkDescription} (New tab)": [
+				"${linkDescription} (نیا ٹیب)"
+			],
+			"Add": [
+				"شامل کریں"
+			],
+			"Add website": [
+				"ویب سائٹ شامل کریں"
+			],
+			"Already have a Proton Account?": [
+				"کیا آپ کے پاس پہلے سے Proton اکاؤنٹ موجود ہے؟"
+			],
+			"Cancel": [
+				"منسوخ کریں"
+			],
+			"Change language": [
+				"زبان تبدیل کریں"
+			],
+			"Change server": [
+				"سرور تبدیل کریں"
+			],
+			"Configure split tunneling": [
+				"اسپلٹ ٹنلنگ ترتیب دیں"
+			],
+			"Confirm choices": [
+				"انتخابات کی تصدیق کریں"
+			],
+			"Connect": [
+				"کنیکٹ کریں"
+			],
+			"Contact us": [
+				"ہم سے رابطہ کریں"
+			],
+			"Create an account": [
+				"مفت اکاؤنٹ بنائیں"
+			],
+			"Disable auto-connect": [
+				"آٹو کنیکٹ غیر فعال کریں"
+			],
+			"Disable notifications": [
+				"اطلاعات غیر فعال کریں"
+			],
+			"Disable Split tunneling": [
+				"اسپلٹ ٹنلنگ غیر فعال کریں"
+			],
+			"Disable WebRTC leak protection": [
+				"WebRTC رساؤ پروٹیکشن غیر فعال کریں"
+			],
+			"Disconnect": [
+				"ڈسکنیکٹ کریں"
+			],
+			"Enable auto-connect": [
+				"آٹو کنیکٹ فعال کریں"
+			],
+			"Enable notifications": [
+				"اطلاعات فعال کریں"
+			],
+			"Enable Split tunneling": [
+				"اسپلٹ ٹنلنگ فعال کریں"
+			],
+			"Enable WebRTC leak protection": [
+				"WebRTC رساؤ پروٹیکشن فعال کریں"
+			],
+			"Log in with Proton": [
+				"Proton سے لاگ ان کریں"
+			],
+			"Manage subscription": [
+				"سبسکرپشن کا انتظام کریں"
+			],
+			"New to Proton?": [
+				"کیا آپ نے پہلے کبھی Proton استعمال نہیں کیا؟"
+			],
+			"Next": [
+				"آگے بڑھیں"
+			],
+			"Quick connect": [
+				"فوری کنیکٹ"
+			],
+			"Remove": [
+				"ہٹائیں"
+			],
+			"Remove ${domain}": [
+				"${domain} ہٹائیں"
+			],
+			"Select a city in ${exitCountryName}": [
+				"${exitCountryName} میں ایک شہر منتخب کریں"
+			],
+			"Select a server in ${cityName}": [
+				"${cityName} میں ایک سرور منتخب کریں"
+			],
+			"Select entry country with exit in ${exitCountryName}": [
+				"انٹری ملک منتخب کریں جس کا ایگزٹ ${exitCountryName} میں ہو"
+			],
+			"Sign in": [
+				"سائن ان کریں"
+			],
+			"Sign in with Vivaldi": [
+				"Vivaldi سے سائن ان کریں"
+			],
+			"Sign out": [
+				"سائن آؤٹ کریں"
+			],
+			"Subscribe to connect more devices": [
+				"مزید ڈیوائسز کنیکٹ کرنے کے لیے سبسکرائب کریں"
+			],
+			"Subscribe to enable Browser Extension": [
+				"براؤزر ایکسٹینشن فعال کرنے کے لیے سبسکرائب کریں"
+			],
+			"Switch account": [
+				"اکاؤنٹ سوئچ کریں"
+			],
+			"Update": [
+				"اپ ڈیٹ کریں"
+			],
+			"Upgrade": [
+				"اپ گریڈ کریں"
+			],
+			"Upgrade to Proton VPN Plus": [
+				"Proton VPN Plus میں اپ گریڈ کریں"
+			],
+			"Visit Support Center": [
+				"سپورٹ سینٹر پر جائیں"
+			]
+		},
+		"Action: City-level button": {
+			"Connect to ${cityName}": [
+				"${cityName} سے کنیکٹ کریں"
+			]
+		},
+		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"\"${mode}\" سے کنیکٹ کریں"
+			],
+			"Connect to ${countryName}": [
+				"${countryName} سے کنیکٹ کریں"
+			],
+			"Connect to ${exitCountryName}": [
+				"${exitCountryName} سے کنیکٹ کریں"
+			],
+			"Connect to ${logical.Name}": [
+				"${logical.Name} سے کنیکٹ کریں"
+			],
+			"Connect to the fastest country": [
+				"تیز ترین ملک سے کنیکٹ کریں"
+			]
+		},
+		"Action: Server-level button": {
+			"Connect to ${serverName}": [
+				"${serverName} سے کنیکٹ کریں"
+			]
+		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"تلاش کریں"
+			]
+		},
+		"Confirm": {
+			"Logging out of the application will disconnect the active VPN connection. Do you want to continue?": [
+				"ایپلیکیشن سے سائن آؤٹ کرنے پر فعال VPN کنکشن ڈسکنیکٹ ہو جائے گی۔ کیا آپ جاری رکھنا چاہتے ہیں؟"
+			]
+		},
+		"Error": {
+			"${countries} country": [
+				"${countries} ملک",
+				"${countries} ممالک"
+			],
+			"${serversCount} secure server": [
+				"${serversCount} محفوظ سرور",
+				"${serversCount} محفوظ سرورز"
+			],
+			"${servers}+ secure server": [
+				"${servers}+ محفوظ سرور",
+				"${servers}+ محفوظ سرورز"
+			],
+			"Access over ${servers} in ${countries}": [
+				"${countries} میں ${servers} تک رسائی حاصل کریں"
+			],
+			"Bypass online censorship with advanced security and privacy features": [
+				"جدید سیکیورٹی اور رازداری کی خصوصیات کے ساتھ آن لائن سینسرشپ سے بچیں"
+			],
+			"Connect from your browser with ${planName}": [
+				"${planName} کے ساتھ اپنے براؤزر سے کنیکٹ کریں"
+			],
+			"Network error.": [
+				"نیٹ ورک کا نقص۔"
+			],
+			"Network is unreachable": [
+				"نیٹ ورک تک رسائی حاصل نہیں ہو سکتی۔"
+			],
+			"No results found": [
+				"کوئی نتیجہ نہیں ملا۔"
+			],
+			"Not able to control the browser network settings, possibly a permission is missing": [
+				"براؤزر کی نیٹ ورک سیٹنگز کنٹرول نہیں کی جا سکیں، غالباً کوئی اجازت موجود نہیں ہے۔"
+			],
+			"Please check your connectivity": [
+				"براہِ کرم اپنا انٹرنیٹ کنکشن چیک کریں۔"
+			],
+			"Please try a different keyword": [
+				"براہِ کرم کوئی اور لفظ آزمائیں۔"
+			],
+			"Server not found": [
+				"سرور نہیں ملا۔"
+			],
+			"Service temporarily unavailable": [
+				"سروس عارضی طور پر دستیاب نہیں ہے۔"
+			],
+			"Something went wrong. If the problem persists, please try to re-install the extension": [
+				"کچھ غلط ہو گیا۔ اگر مسئلہ برقرار رہے تو ایکسٹینشن دوبارہ انسٹال کرنے کی کوشش کریں۔"
+			],
+			"Unable to find appropriate server, try to logout and login again if it persists.": [
+				"مناسب سرور تلاش نہیں کیا جا سکا، اگر مسئلہ برقرار رہے تو لاگ آؤٹ کر کے دوبارہ لاگ ان کریں۔"
+			],
+			"Unable to load the list": [
+				"فہرست لوڈ نہیں ہو سکی۔"
+			],
+			"Unable to login": [
+				"لاگ ان نہیں ہو سکا۔"
+			],
+			"Unable to reach the server, please try to reconnect, or to log out and log in again if the problem persists": [
+				"سرور تک رسائی حاصل نہیں ہو سکی، براہِ کرم دوبارہ کنیکٹ کرنے کی کوشش کریں، یا اگر مسئلہ برقرار رہے تو سائن آؤٹ کر کے دوبارہ سائن ان کریں۔"
+			],
+			"Unlock ${servers} in ${countries}": [
+				"${countries} میں ${servers} تک رسائی حاصل کریں"
+			],
+			"Unlock global streaming services": [
+				"عالمی اسٹریمنگ سروسز کو ان لاک کریں"
+			]
+		},
+		"Info": {
+			"A subdomain URL includes a prefix before the main domain name. For example, account.proton.me is a subdomain of proton.me.": [
+				"سب ڈومین URL میں مرکزی ڈومین کے نام سے پہلے ایک اضافی حصہ شامل ہوتا ہے۔ مثال کے طور پر، account.proton.me، proton.me کا سب ڈومین ہے۔"
+			],
+			"About free connections": [
+				"مفت کنکشنز کے بارے میں"
+			],
+			"Access over 13,000 secure servers in over 120 countries": [
+				"120 سے زیادہ ممالک میں 13,000 سے زیادہ محفوظ سرورز تک رسائی حاصل کریں"
+			],
+			"Access Proton VPN via this icon": [
+				"اس آئیکن کے ذریعے Proton VPN تک رسائی حاصل کریں"
+			],
+			"Allow VPN permissions": [
+				"VPN کی اجازتیں دیں"
+			],
+			"Also add subdomains": [
+				"سب ڈومینز بھی شامل کریں"
+			],
+			"and more": [
+				"…اور دیگر"
+			],
+			"Audited by independent security experts": [
+				"آزاد سیکیورٹی ماہرین کی آڈٹ کردہ"
+			],
+			"Auto-selected from": [
+				"درج ذیل میں سے خود کار طور پر منتخب"
+			],
+			"Automatically reconnect to Proton VPN when you open your browser.": [
+				"براؤزر کھولتے ہی Proton VPN سے خود کار طور پر دوبارہ کنیکٹ ہو جائیں۔"
+			],
+			"Back": [
+				"واپس"
+			],
+			"Browse through the Support Center and find answers to frequently asked questions.": [
+				"سپورٹ سینٹر دیکھیں اور کثرت سے پوچھے جانے والے سوالوں کے جوابات تلاش کریں۔"
+			],
+			"Bypass censorship with advanced security and privacy features": [
+				"جدید سیکیورٹی اور رازداری کی خصوصیات کے ساتھ سنسر شپ سے بچیں"
+			],
+			"Clear all recent connections and don't keep local history": [
+				"تمام حالیہ کنکشنز صاف کریں اور مقامی ہسٹری نہ رکھیں"
+			],
+			"Clear search": [
+				"تلاش صاف کریں"
+			],
+			"Close": [
+				"بند کریں"
+			],
+			"Connect to a Plus server in this country to start streaming.\n\nHint: Clear the cache of the streaming apps to ensure new content appears.": [
+				"اسٹریمنگ شروع کرنے کے لیے اس ملک کے کسی Plus سرور سے کنیکٹ کریں۔\n\nاشارہ: نئے مواد کے ظاہر ہونے کو یقینی بنانے کے لیے اسٹریمنگ ایپس کا کیشے صاف کریں۔"
+			],
+			"Connected": [
+				"کنیکٹ ہو گیا"
+			],
+			"Connected to ${name}": [
+				"${name} سے کنیکٹ ہو گیا"
+			],
+			"Connected to ${name} in ${city}": [
+				"${city} میں ${name} سے کنیکٹ ہو گیا"
+			],
+			"Connecting servers such as ${logical.Name} is not currently supported in the browser extension": [
+				"${logical.Name} جیسے کنیکٹنگ سرورز فی الحال براؤزر ایکسٹینشن میں سپورٹ نہیں ہیں۔"
+			],
+			"Connecting to dedicated IPs such as ${logical.Name} is not currently supported in the browser extension": [
+				"${logical.Name} جیسے ڈیڈیکیٹڈ IP سے کنیکٹ ہونا فی الحال براؤزر ایکسٹینشن میں سپورٹ نہیں ہے۔"
+			],
+			"Connecting...": [
+				"کنیکٹ ہو رہا ہے..."
+			],
+			"Contact our Customer Support agents to help you out with Proton VPN.": [
+				"Proton VPN کے حوالے سے مدد کے لیے ہماری کسٹمر سپورٹ کے نمائندوں سے رابطہ کریں۔"
+			],
+			"Crash": [
+				"کریش"
+			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"کریش رپورٹس میں تشخیصی معلومات ہوتی ہیں (اسٹیک ٹریس، براؤزر کی قسم، ایکسٹینشن کا ورژن)۔ ان میں آپ کا IP پتہ شامل نہیں ہوتا اور نہ ہی ان کے ساتھ کوئی Proton اکاؤنٹ شناخت کنندہ منسلک ہوتا ہے۔ ہم انہیں کبھی بھی کسی تیسرے فریق کے ساتھ شیئر نہیں کریں گے۔"
+			],
+			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
+				"کریش رپورٹس ہمیں بگز ٹھیک کرنے، فائر وال کا پتہ لگانے اور VPN بلاکس سے بچنے میں مدد دیتی ہیں۔"
+			],
+			"Decide which websites are protected by VPN.": [
+				"یہ فیصلہ کریں کہ کون سی ویب سائٹس VPN کے ذریعے محفوظ رہیں گی۔"
+			],
+			"Disable Secure Core": [
+				"Secure Core غیر فعال کریں"
+			],
+			"Disconnected": [
+				"ڈسکنیکٹ ہو گیا"
+			],
+			"Disconnected by another extension": [
+				"کسی دیگر ایکسٹینشن کی وجہ سے ڈسکنیکٹ ہو گیا"
+			],
+			"Disconnected by another extension, it connected to ${newProxyName}": [
+				"کسی دیگر ایکسٹینشن کی وجہ سے ڈسکنیکٹ ہو گیا، جس نے ${newProxyName} سے کنیکٹ کیا"
+			],
+			"Disconnected, settings were overridden": [
+				"ڈسکنیکٹ ہو گیا، سیٹنگز اوور رائیڈ کر دی گئیں"
+			],
+			"Disconnected, settings were overridden to ${newProxyName}": [
+				"ڈسکنیکٹ ہو گیا، سیٹنگز ${newProxyName} پر اوور رائیڈ کر دی گئیں"
+			],
+			"Emit system notifications on connection and disconnection events.": [
+				"کنکشن اور ڈسکنیکٹ ہونے کے ایونٹس پر سسٹم کی اطلاعات بھیجیں۔"
+			],
+			"Enable Secure Core": [
+				"Secure Core فعال کریں"
+			],
+			"Enjoying Proton VPN?": [
+				"کیا آپ کو Proton VPN پسند آ رہا ہے؟"
+			],
+			"Exclude mode": [
+				"خارج کرنے کا موڈ"
+			],
+			"Extra protection for people with advanced privacy needs": [
+				"جدید رازداری کی ضروریات رکھنے والے لوگوں کے لیے اضافی تحفظ"
+			],
+			"Fastest free server": [
+				"تیز ترین مفت سرور"
+			],
+			"Follow these simple steps to get the best experience using Proton VPN": [
+				"Proton VPN کا بہترین تجربہ حاصل کرنے کے لیے یہ آسان اقدامات اپنائیں"
+			],
+			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
+				"مفت سرور ممالک (<span id=\"free-server-countries-count\">0</span>)"
+			],
+			"Get unlimited server changes with VPN Plus": [
+				"VPN Plus کے ساتھ لامحدود سرور تبدیلیاں حاصل کریں"
+			],
+			"Get worldwide coverage with VPN Plus": [
+				"VPN Plus کے ساتھ دنیا بھر میں کوریج حاصل کریں"
+			],
+			"Help": [
+				"مدد"
+			],
+			"Help us fight censorship": [
+				"ہمیں سنسر شپ کے خلاف لڑنے میں مدد کریں"
+			],
+			"Help us improve Proton VPN": [
+				"Proton VPN کو بہتر بنانے میں ہماری مدد کریں"
+			],
+			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
+				"اعلیٰ کارکردگی والا سوئس VPN جو آپ کی رازداری کا تحفظ کرتا ہے۔ زیادہ سے زیادہ سیکیورٹی، ${count} سے زیادہ سرور اور کوئی پابندی نہیں۔",
+				"اعلیٰ کارکردگی والا سوئس VPN جو آپ کی رازداری کا تحفظ کرتا ہے۔ زیادہ سے زیادہ سیکیورٹی، ${count} سے زیادہ سرورز اور کوئی پابندی نہیں۔"
+			],
+			"Include mode": [
+				"شامل کرنے کا موڈ"
+			],
+			"Learn more": [
+				"مزید جانیں"
+			],
+			"Leave a rating": [
+				"ریٹنگ دیں"
+			],
+			"Logged out": [
+				"لاگ آؤٹ ہو گیا"
+			],
+			"Not now": [
+				"ابھی نہیں"
+			],
+			"Off": [
+				"آف"
+			],
+			"On": [
+				"آن"
+			],
+			"Open source VPN": [
+				"اوپن سورس VPN"
+			],
+			"Open the Extensions menu": [
+				"Extensions مینو کھولیں"
+			],
+			"Open the Proton VPN browser extension to continue": [
+				"جاری رکھنے کے لیے Proton VPN براؤزر ایکسٹینشن کھولیں"
+			],
+			"Pin Proton VPN to your toolbar": [
+				"Proton VPN کو ٹول بار پر پن کریں"
+			],
+			"Please help us spread the word with a Web Store rating.": [
+				"براہِ کرم Web Store پر ریٹنگ دے کر دوسروں تک ہماری بات پہنچانے میں ہماری مدد کریں۔"
+			],
+			"Press <b>Next</b>, then click <b>Allow</b> on the pop-up from your browser.": [
+				"<b>آگے</b> دبائیں، پھر اپنے براؤزر کے پاپ اپ پر <b>Allow</b> پر کلک کریں۔"
+			],
+			"Protect yourself online with Proton's free high‑speed VPN.": [
+				"Proton کے مفت ہائی اسپیڈ VPN سے آن لائن خود کو محفوظ رکھیں۔"
+			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"Proton Free آپ کو خود بخود ${freeCountriesCount} مفت ملک میں دستیاب تیز ترین مفت سرور سے کنیکٹ کر دیتا ہے۔ یہ عام طور پر آپ کے مقام کے قریب ترین سرور ہوتا ہے۔",
+				"Proton Free آپ کو خود بخود ${freeCountriesCount} مفت ملکوں میں سے دستیاب تیز ترین مفت سرور سے کنیکٹ کر دیتا ہے۔ یہ عام طور پر آپ کے مقام کے قریب ترین سرور ہوتا ہے۔"
+			],
+			"Proton VPN": [
+				"Proton VPN"
+			],
+			"Proton VPN Browser Extension": [
+				"Proton VPN براؤزر ایکسٹینشن"
+			],
+			"Recent connections": [
+				"حالیہ کنکشنز"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"حالیہ کنکشنز کو مقامی طور پر یاد رکھیں اور ان تک فوری لنکس دکھائیں"
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"آخری بار کنیکٹ کیے گئے ملکوں/شہروں/سرورز کو یاد رکھیں اور انہیں فہرست کے\nسب سے اوپر دکھائیں۔"
+			],
+			"Retired server": [
+				"متروک سرور"
+			],
+			"Secure Core": [
+				"Secure Core"
+			],
+			"Selected websites": [
+				"منتخب کردہ ویب سائٹس"
+			],
+			"Share anonymous crash reports": [
+				"گمنام کریش رپورٹس شیئر کریں"
+			],
+			"Share anonymous usage statistics": [
+				"گمنام استعمال کے اعداد و شمار شیئر کریں"
+			],
+			"Split tunneling": [
+				"اسپلٹ ٹنلنگ"
+			],
+			"Stops your browser from leaking your IP address to websites and apps using WebRTC. This may affect video calling or live-streaming performance on some websites.": [
+				"یہ آپ کے براؤزر کے ذریعے WebRTC استعمال کرنے والی ویب سائٹس اور ایپس تک آپ کے IP پتے کا رساؤ روکتا ہے۔ اس سے کچھ ویب سائٹس پر ویڈیو کالنگ یا لائیو اسٹریمنگ کی کارکردگی متاثر ہو سکتی ہے۔"
+			],
+			"Telemetry": [
+				"ٹیلی میٹری"
+			],
+			"Thank you for installing Proton VPN": [
+				"Proton VPN انسٹال کرنے کا شکریہ"
+			],
+			"The split tunneling options cannot be changed on this device": [
+				"اس ڈیوائس پر اسپلٹ ٹنلنگ کے اختیارات تبدیل نہیں کیے جا سکتے"
+			],
+			"Then just click the Proton VPN icon to sign in.": [
+				"پھر صرف Proton VPN آئیکن پر کلک کریں اور سائن ان کریں۔"
+			],
+			"This option cannot be changed on this device": [
+				"یہ اختیار اس ڈیوائس پر تبدیل نہیں کیا جا سکتا"
+			],
+			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
+				"ان اعداد و شمار میں آپ کا IP پتہ شامل نہیں ہوتا اور نہ ہی ان کا استعمال آپ کی شناخت کے لیے کیا جا سکتا ہے۔ ہم انہیں کبھی بھی تیسرے فریق کے ساتھ شیئر نہیں کریں گے۔"
+			],
+			"To get started, you’ll need to enable VPN permissions on your browser.": [
+				"شروع کرنے کے لیے آپ کو اپنے براؤزر پر VPN کی اجازتیں فعال کرنی ہوں گی۔"
+			],
+			"Tor servers such as ${logical.Name} are not currently supported in the browser extension": [
+				"${logical.Name} جیسے Tor سرورز فی الحال براؤزر ایکسٹینشن میں سپورٹ نہیں ہیں۔"
+			],
+			"Upgrade": [
+				"اپ گریڈ کریں"
+			],
+			"Usage data helps us overcome VPN blocks and improve app performance.": [
+				"استعمال کا ڈیٹا ہمیں VPN بلاکس پر قابو پانے اور ایپ کی کارکردگی بہتر بنانے میں مدد دیتا ہے۔"
+			],
+			"User": [
+				"صارف"
+			],
+			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
+				"\"شامل کرنے کا موڈ\" فعال ہونے کی صورت میں Brave پر DNS درخواستیں غیر محفوظ ہو سکتی ہیں۔"
+			],
+			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
+				"بیرونی سافٹ ویئر کی جانب سے VPN بلاک کیا گیا ہے۔\n\nکچھ ٹولز، جیسے اینٹی وائرس یا پراکسیز، Proton VPN میں مداخلت کر سکتے ہیں۔ انہیں غیر فعال کریں اور دوبارہ کوشش کریں۔"
+			],
+			"VPN blocked by external software: ${blockingSoftware}.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. You can try disabling it to confirm.": [
+				"بیرونی سافٹ ویئر کی جانب سے VPN بلاک کیا گیا ہے: ${blockingSoftware}۔\n\nکچھ ٹولز، جیسے اینٹی وائرس یا پراکسیز، Proton VPN میں مداخلت کر سکتے ہیں۔ تصدیق کے لیے آپ اسے غیر فعال کرنے کی کوشش کر سکتے ہیں۔"
+			],
+			"VPN Features": [
+				"VPN کی خصوصیات"
+			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"ہم آپ کی رازداری کو سب سے زیادہ اہمیت دیتے ہیں۔ ہم آپ کی براؤزنگ کی نگرانی نہیں کرتے اور نہ کوئی لاگ محفوظ رکھتے ہیں۔ آپ کے کنکشن کی توثیق کے لیے آپ کا اکاؤنٹ سیشن ID ہمارے سرورز کو بھیجا جاتا ہے، یہ ایکسٹینشن کے کام کرنے کے لیے ضروری ہے۔"
+			],
+			"You're signed in": [
+				"آپ سائن ان ہو چکے ہیں۔"
+			],
+			"Your network appears to be blocking Proton, and this extension can't bypass this block. The desktop app likely can, ${link}.": [
+				"لگتا ہے کہ آپ کا نیٹ ورک Proton کو بلاک کر رہا ہے اور یہ ایکسٹینشن اس بلاک کو بائی پاس نہیں کر سکتی۔ غالباً ڈیسک ٹاپ ایپ ایسا کر سکتی ہے، ${link}۔"
+			],
+			"Your network seems to be blocking Proton. The extension can't bypass this. Try the desktop app instead.": [
+				"لگتا ہے کہ آپ کا نیٹ ورک Proton کو بلاک کر رہا ہے۔ ایکسٹینشن اسے بائی پاس نہیں کر سکتی۔ اس کے بجائے ڈیسک ٹاپ ایپ آزمائیں۔"
+			]
+		},
+		"Label": {
+			"And all its subdomains": [
+				"اور اس کے تمام سب ڈومینز"
+			],
+			"Auto connect": [
+				"خودکار کنیکٹ"
+			],
+			"Cities": [
+				"شہر"
+			],
+			"City": [
+				"شہر",
+				"شہر"
+			],
+			"Connecting": [
+				"کنیکٹ کیا جا رہا ہے"
+			],
+			"Countries, cities, servers": [
+				"ممالک، شہر، سرورز"
+			],
+			"Country": [
+				"ملک",
+				"ممالک"
+			],
+			"Entry country": [
+				"داخلے کا ملک",
+				"داخلے کے ممالک"
+			],
+			"Exact match": [
+				"عین مطابق"
+			],
+			"Free": [
+				"مفت"
+			],
+			"Free connections": [
+				"مفت کنکشنز"
+			],
+			"Free servers": [
+				"مفت سرورز"
+			],
+			"Free servers (${count})": [
+				"مفت سرورز (${count})"
+			],
+			"Internal servers (${count})": [
+				"اندرونی سرورز (${count})"
+			],
+			"Need help?": [
+				"مدد درکار ہے؟"
+			],
+			"Notifications": [
+				"اطلاعات"
+			],
+			"Other": [
+				"دیگر"
+			],
+			"Plus servers (${count})": [
+				"Plus سرورز (${count})"
+			],
+			"Protected": [
+				"محفوظ"
+			],
+			"Server": [
+				"سرور",
+				"سرورز"
+			],
+			"Settings": [
+				"سیٹنگز"
+			],
+			"Split tunneling": [
+				"اسپلٹ ٹنلنگ"
+			],
+			"Unprotected": [
+				"غیر محفوظ"
+			],
+			"Via": [
+				"کے ذریعے"
+			],
+			"Want to know more?": [
+				"مزید جاننا چاہتے ہیں؟"
+			],
+			"WebRTC leak protection": [
+				"WebRTC رساؤ کا تحفظ"
+			]
+		},
+		"Menu": {
+			"Countries": [
+				"ممالک"
+			],
+			"Features": [
+				"خصوصیات"
+			],
+			"Help": [
+				"مدد"
+			],
+			"Settings": [
+				"سیٹنگز"
+			]
+		},
+		"Status": {
+			"Connecting to ${serverName}": [
+				"${serverName} سے کنیکٹ کیا جا رہا ہے"
+			],
+			"Proton VPN: ${status}": [
+				"Proton VPN: ${status}"
+			]
+		},
+		"Title": {
+			"Closest server": [
+				"قریب ترین سرور"
+			],
+			"Fastest country": [
+				"تیز ترین ملک"
+			],
+			"Fastest server": [
+				"تیز ترین سرور"
+			],
+			"Features": [
+				"خصوصیات"
+			],
+			"Proton VPN for Vivaldi": [
+				"Vivaldi کے لیے Proton VPN"
+			],
+			"Random server": [
+				"بے ترتیب سرور"
+			],
+			"Recents": [
+				"حالیہ"
+			],
+			"Streaming": [
+				"اسٹریمنگ"
+			]
+		}
+	}
+}

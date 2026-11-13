@@ -1,3 +1,5 @@
+'use background';
+/// <reference types="firefox-webext-browser"/>
 type IdleState = browser.idle.IdleState;
 
 let idle: IdleState = 'active';

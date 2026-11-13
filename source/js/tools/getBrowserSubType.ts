@@ -23,8 +23,7 @@ interface BrowserSubTypeWindowCheck {
 }
 
 type BrowserSubTypeCheck =
-	| BrowserSubTypeNavigatorCheck
-	| BrowserSubTypeWindowCheck;
+	BrowserSubTypeNavigatorCheck | BrowserSubTypeWindowCheck;
 
 const canBeCheckedInBackgroundService = (
 	check: BrowserSubTypeCheck,

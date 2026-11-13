@@ -1,8 +1,13 @@
+/// <reference types="firefox-webext-browser"/>
 import {isHostMatchedByIpMask} from './ip';
 import OnRequestDetails = browser.proxy._OnRequestDetails;
 
-const escapeDomain = (domain: string) =>
-	domain.replace(/\./g, '\\.').replace(/\*/g, '.*');
+/**
+ * Turn a domain filter into a RegExp source where "*" is the only wildcard,
+ * every other RegExp metacharacter is matched literally.
+ */
+export const escapeDomain = (domain: string) =>
+	domain.replace(/[.+?^${}()|[\]\\]/g, '\\$&').replace(/\*/g, '.*');
 
 /**
  * Return true when the domain of a request matches one of the domainList.

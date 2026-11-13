@@ -16,6 +16,7 @@ const getBrowserUserState = async (
 	key: keyof typeof partners,
 ): Promise<BrowserUserState> =>
 	new Promise((resolve) => {
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		const getStatus = (global as any)[key]?.protonvpn?.getStatus;
 
 		if (typeof getStatus === 'function') {

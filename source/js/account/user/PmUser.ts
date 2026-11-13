@@ -1,10 +1,3 @@
-export interface PmUserResult {
-	User: PmUser;
-}
-
-export const isPmUserResult = (result: any): result is PmUserResult =>
-	result?.User?.Name !== undefined;
-
 export interface PmUser {
 	ID: string;
 	Name: string;

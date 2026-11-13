@@ -2,7 +2,7 @@ export const makeResponseReplayable = (response: Response): Response => {
 	const copy = response.clone();
 
 	copy.text().then((text) => {
-		let json: any;
+		let json: unknown;
 
 		Object.assign(copy, {
 			clone: () => copy,

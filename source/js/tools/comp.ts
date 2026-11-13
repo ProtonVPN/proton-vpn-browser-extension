@@ -21,16 +21,16 @@ export class Sorter<V, S> {
 		[];
 
 	constructor(
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		private readonly transformer?: (value: V, ...args: any[]) => S | undefined,
 	) {}
 
-	private getField(value: V, ...args: any[]): S | undefined {
+	private getField(value: V, ...args: unknown[]): S | undefined {
 		return (this.transformer ? this.transformer(value, ...args) : value) as
-			| S
-			| undefined;
+			S | undefined;
 	}
 
-	public sort(list: V[], ...args: any[]): void {
+	public sort(list: V[], ...args: unknown[]): void {
 		if (this.sortingCallbacks.length) {
 			list.sort((a, b) => {
 				const aValue = this.getField(a, ...args);

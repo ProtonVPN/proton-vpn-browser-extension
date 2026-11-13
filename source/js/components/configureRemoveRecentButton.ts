@@ -1,3 +1,4 @@
+'use popup';
 import {stopEvent} from '../tools/stopEvent';
 import {forgetChoice} from '../vpn/lastChoice';
 

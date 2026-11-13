@@ -1,4 +1,5 @@
-import {isCurrentStateConnected} from '../state';
+'use background';
+import {isCurrentStateConnected} from '../vpn/state/stateStore';
 import {ErrorCode, getErrorCode} from './getErrorCode';
 import {retryCredentials} from './retryCredentials';
 import CreateResponseDetails = chrome.webAuthenticationProxy.CreateResponseDetails;
@@ -18,10 +19,10 @@ export const clearPending = (
 		return;
 	}
 
-	const error = (request as CreateResponseDetails).error;
+	const error = (request as OnErrorOccurredDetails).error;
 
 	if (error) {
-		switch (getErrorCode(error as any)) {
+		switch (getErrorCode(error)) {
 			case ErrorCode.NETWORK_CHANGED:
 			case ErrorCode.NETWORK_IO_SUSPENDED:
 				retryCredentials();

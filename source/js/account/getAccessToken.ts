@@ -1,3 +1,4 @@
+'use background';
 import {readSession} from './readSession';
 import {refreshToken} from './refreshToken';
 

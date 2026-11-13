@@ -1,8 +1,10 @@
+'use popup';
 import {getRuntime} from './getRuntime';
 
-export const allWatchers: Record<string, (...args: any[]) => void>[] = [];
+export const allWatchers: Record<string, (...args: unknown[]) => void>[] = [];
 
 export const watchBroadcastMessages = (
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	watchers: Record<string, (...args: any[]) => void>,
 ) => {
 	allWatchers.push(watchers);
@@ -12,20 +14,7 @@ export const watchBroadcastMessages = (
 	};
 };
 
-export const watchOnceBroadcastMessage = (
-	name: string,
-	callback: (...args: any[]) => void,
-) => {
-	let unwatch: (() => void) | undefined = undefined;
-
-	unwatch = watchBroadcastMessages({
-		[name](...args: any[]) {
-			callback(...args);
-			unwatch?.();
-		},
-	});
-};
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const messageListener = (request: any) => {
 	allWatchers.forEach((watchers) => {
 		const type = request.type;
@@ -37,7 +26,9 @@ export const messageListener = (request: any) => {
 			return;
 		}
 
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		if (watchers['error'] && (request as any).error) {
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			watchers['error']((request as any).error);
 		}
 	});

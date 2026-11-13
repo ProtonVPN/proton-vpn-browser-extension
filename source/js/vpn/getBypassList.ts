@@ -1,3 +1,4 @@
+'use background';
 import {SplitTunnelingMode} from './WebsiteFilter';
 import type {SplitTunnelingConfig} from './ConnectionState';
 

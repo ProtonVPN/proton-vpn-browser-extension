@@ -1,3 +1,4 @@
+'use popup';
 import {isNotFoundError} from '../api';
 import {fetchWithUserInfo} from '../account/fetchWithUserInfo';
 import {getCountryAndCoordinates} from '../account/getLocation';
@@ -9,19 +10,16 @@ import {logicalServers} from './logicalServers';
 import {
 	getSortedLogicals,
 	isLogicalUp,
-	lookups,
-	lookupsNotFound,
 	recordLogicalInMap,
 } from './getLogicals';
 import {Feature} from './Feature';
 import {getLatestCachedStatuses} from './getLatestCachedStatuses';
 import {calculateLogicalScoreAndUpStatus} from './calculateLogicalScoreAndUpStatus';
-import {useLogicalsV2} from './useLogicalsV2';
-
-/**
- * Too much IDs stored would lead to longer loading and slower UI, so we cap it.
- */
-const maxLookupIdsStored = 1_000;
+import {
+	recordLookupIdFound,
+	recordLookupNameNotFound,
+	wasLookupNameRecentlyNotFound,
+} from './lookups';
 
 /**
  * Should not happen because we called getSortedLogicals() before that builds the cache
@@ -30,42 +28,6 @@ const maxLookupIdsStored = 1_000;
  */
 const warnMissingCache = () => {
 	warn('Missing cache');
-};
-
-const recordOnLookupStorage = (
-	store: typeof lookupsNotFound | typeof lookups,
-	id: string,
-) => {
-	triggerPromise(
-		store.transaction(
-			(cache) => {
-				// If ID is not yet in cache
-				if (!cache.value[id]) {
-					const ids = Object.keys(cache.value);
-
-					if (ids.length >= maxLookupIdsStored) {
-						// Sort IDs from oldest to newest
-						ids.sort((a, b) => cache.value[a]! - cache.value[b]!);
-						// We remove older IDs so when we'll add the new ID, it's still exactly maxLookupIdsStored stored
-						ids
-							.slice(0, ids.length + 1 - maxLookupIdsStored)
-							.forEach((oldId) => {
-								delete cache.value[oldId];
-							});
-					}
-				}
-
-				cache.value[id] = Date.now();
-				cache.time = Date.now();
-
-				return cache;
-			},
-			{
-				value: {} as Record<string, number>,
-				time: Date.now(),
-			},
-		),
-	);
 };
 
 const pushLogicalToCache = (
@@ -90,21 +52,22 @@ const pushLogicalToCache = (
 			return cache;
 		}),
 	);
-	recordOnLookupStorage(lookups, `${logical.ID}`);
+	recordLookupIdFound(logical.ID);
 };
 
 const fetchLogicalLookup = async (name: string, init?: RequestInit) => {
 	const upperName = name.toUpperCase();
-	const notFounds = await lookupsNotFound.get();
 
-	if (notFounds?.value[upperName]) {
+	if (await wasLookupNameRecentlyNotFound(upperName)) {
 		return undefined;
 	}
 
 	try {
-		const {LogicalServer: logical} = await fetchWithUserInfo<{
-			LogicalServer: Logical & {Status?: number};
-		}>(`vpn/v1/logicals/lookup/${encodeURIComponent(name)}`, init);
+		const {LogicalServer: logical, StatusID: statusId} =
+			await fetchWithUserInfo<{
+				LogicalServer: Logical & {Status?: number};
+				StatusID: string;
+			}>(`vpn/v1/logicals/lookup/${encodeURIComponent(name)}`, init);
 
 		if (!logical) {
 			return undefined;
@@ -112,28 +75,26 @@ const fetchLogicalLookup = async (name: string, init?: RequestInit) => {
 
 		const {country, coordinates} = await getCountryAndCoordinates();
 
-		if (await useLogicalsV2()) {
-			const enabled = Boolean(logical.Status);
-			delete logical.Status;
-			Object.assign(logical, {
-				Visible: true,
-				Enabled: enabled,
-				AutoConnectable:
-					enabled &&
-					(logical.Features & (Feature.TOR | Feature.RESTRICTED)) === 0,
-			});
-			const index = logical.StatusReference.Index;
+		const enabled = Boolean(logical.Status);
+		delete logical.Status;
+		Object.assign(logical, {
+			Visible: true,
+			Enabled: enabled,
+			AutoConnectable:
+				enabled &&
+				(logical.Features & (Feature.TOR | Feature.RESTRICTED)) === 0,
+		});
+		const index = logical.StatusReference.Index;
 
-			if (typeof index === 'number') {
-				const loads = await getLatestCachedStatuses();
+		if (typeof index === 'number') {
+			const loads = await getLatestCachedStatuses(statusId);
 
-				if (loads[index]) {
-					calculateLogicalScoreAndUpStatus(
-						Object.assign(logical, loads[index]),
-						country,
-						coordinates,
-					);
-				}
+			if (loads[index]) {
+				calculateLogicalScoreAndUpStatus(
+					Object.assign(logical, loads[index]),
+					country,
+					coordinates,
+				);
 			}
 		}
 
@@ -147,7 +108,7 @@ const fetchLogicalLookup = async (name: string, init?: RequestInit) => {
 			throw error;
 		}
 
-		recordOnLookupStorage(lookupsNotFound, upperName);
+		recordLookupNameNotFound(upperName);
 
 		return undefined;
 	}

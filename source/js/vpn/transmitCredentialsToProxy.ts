@@ -1,8 +1,9 @@
+'use background';
 import {catchPromise} from '../tools/triggerPromise';
 import {delay} from '../tools/delay';
 import {milliSeconds} from '../tools/milliSeconds';
 import {isSuccessfulResponse} from '../api';
-import {setReviewInfoStateLastSeenConnected} from '../vpn/reviewInfo';
+import {setReviewInfoStateLastSeenConnected} from './reviewInfo';
 
 const lastForbiddenResponses: Record<string, number> = {};
 

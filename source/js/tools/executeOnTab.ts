@@ -3,18 +3,18 @@ import {getTabs} from './getTabs';
 import {getGlobalBrowser} from './getGlobalBrowser';
 
 type ScriptInjection<
-	Args extends any[],
+	Args extends unknown[],
 	Result,
 > = chrome.scripting.ScriptInjection<Args, Result>;
 
-export const executeOnTab = async <Args extends any[], Result>(
+export const executeOnTab = async <Args extends unknown[], Result>(
 	tabId: number,
 	getFuncAndArgs: () => Partial<ScriptInjection<Args, Result>>,
 	getCode: () => string,
 ) => {
 	try {
-		const executeScript = (getGlobalBrowser() as any as typeof chrome).scripting
-			?.executeScript;
+		const executeScript = (getGlobalBrowser() as unknown as typeof chrome)
+			.scripting?.executeScript;
 
 		await (executeScript
 			? executeScript({

@@ -1,5 +1,6 @@
+'use popup';
 import {getCachedLocation, getLocation} from './getLocation';
-import {escapeHtml} from '../tools/escapeHtml';
+import {setText} from '../components/setText';
 
 export const refreshLocationSlots = async (
 	area: HTMLElement,
@@ -22,7 +23,7 @@ export const refreshLocationSlots = async (
 
 	slots.forEach((ipSlot) => {
 		if (ipSlot.innerText !== ip) {
-			ipSlot.innerHTML = escapeHtml(ip);
+			setText(ipSlot, ip);
 		}
 	});
 };

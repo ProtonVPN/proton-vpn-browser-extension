@@ -35,6 +35,9 @@
 			"Disconnect": [
 				"Kapcsolat bontása"
 			],
+			"Enable notifications": [
+				"Értesítések engedélyezése"
+			],
 			"Log in with Proton": [
 				"Bejelentkezés Protonnal"
 			],
@@ -49,6 +52,9 @@
 			],
 			"Quick connect": [
 				"Gyors kapcsolódás"
+			],
+			"Remove": [
+				"Eltávolítás"
 			],
 			"Remove ${domain}": [
 				"${domain} eltávolítása"
@@ -99,13 +105,24 @@
 			]
 		},
 		"Action: Country-level button": {
+			"Connect to ${countryName}": [
+				"Kapcsolódás: ${countryName}"
+			],
 			"Connect to ${exitCountryName}": [
 				"Kapcsolódás: ${exitCountryName}"
+			],
+			"Connect to ${logical.Name}": [
+				"Kapcsolódás: ${logical.Name}"
 			]
 		},
 		"Action: Server-level button": {
 			"Connect to ${serverName}": [
 				"Kapcsolódás: ${serverName}"
+			]
+		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"Keresés"
 			]
 		},
 		"Confirm": {
@@ -281,6 +298,9 @@
 			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
 				"Ingyenes szerver országok (<span id=\"free-server-countries-count\">0</span>)"
 			],
+			"Get the deal": [
+				"Ajánlat elfogadása"
+			],
 			"Get unlimited server changes with VPN Plus": [
 				"Tegyen szert korlátlan szerverváltásra a VPN Plus-szal"
 			],
@@ -339,14 +359,24 @@
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Védje magát online a Proton ingyenes, nagy sebességű VPN-jével."
 			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"A Proton Free automatikusan a leggyorsabb elérhető ingyenes szerverhez csatlakozik az ${freeCountriesCount} ingyenes országunkból. Ez általában az Önhöz legközelebbi szerver lesz.",
+				"A Proton Free automatikusan a leggyorsabb elérhető ingyenes szerverhez csatlakozik a ${freeCountriesCount} ingyenes országunkból. Ez általában az Önhöz legközelebbi szerver lesz."
+			],
 			"Proton VPN": [
 				"Proton VPN"
 			],
 			"Proton VPN Browser Extension": [
 				"Proton VPN böngésző bővítmény"
 			],
+			"Recent connections": [
+				"Legutóbbi kapcsolatok"
+			],
 			"Secure Core": [
 				"Secure Core"
+			],
+			"Share anonymous crash reports": [
+				"Névtelen összeomlási jelentések beküldése"
 			],
 			"Share anonymous usage statistics": [
 				"Anonim használati statisztikák beküldése"
@@ -443,9 +473,6 @@
 			"Notifications": [
 				"Értesítések"
 			],
-			"Offer": [
-				"Ajánlat"
-			],
 			"Other": [
 				"Egyéb"
 			],
@@ -501,11 +528,20 @@
 			]
 		},
 		"Title": {
+			"Fastest country": [
+				"Leggyorsabb ország"
+			],
+			"Fastest server": [
+				"Leggyorsabb szerver"
+			],
 			"Features": [
 				"Funkciók"
 			],
 			"Proton VPN for Vivaldi": [
 				"Proton VPN a Vivaldihoz"
+			],
+			"Recents": [
+				"Előzmények"
 			],
 			"Streaming": [
 				"Videózás"

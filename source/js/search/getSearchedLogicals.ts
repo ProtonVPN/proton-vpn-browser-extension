@@ -1,8 +1,10 @@
+'use popup';
 import {getSearchWordsScore} from '../tools/getSearchScore';
 import type {CountryList} from '../components/countryList';
 import {each} from '../tools/each';
 import {withSearchScore} from '../vpn/withSearchScore';
 import {getWords} from '../tools/getWords';
+import {dedupe} from '../tools/dedupe';
 
 export const getSearchedLogicals = (
 	countries: CountryList,
@@ -15,15 +17,14 @@ export const getSearchedLogicals = (
 
 	each(countries, (countryCode, source) => {
 		const countryScore = useCountryScore
-			? getSearchWordsScore(searchWords, [
-					...Array.from(
-						new Set([
-							countryCode,
-							...getWords(source.name),
-							...getWords(source.englishName),
-						]),
-					),
-				])
+			? getSearchWordsScore(
+					searchWords,
+					dedupe([
+						countryCode,
+						...getWords(source.name),
+						...getWords(source.englishName),
+					]),
+				)
 			: 0;
 
 		const filteredSource = useCityScore

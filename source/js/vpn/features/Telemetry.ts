@@ -1,3 +1,4 @@
+'use popup';
 import {telemetryEnabled} from '../../config';
 import {telemetryOptIn} from '../../tools/telemetry';
 import {getBrowser} from '../../tools/getBrowser';

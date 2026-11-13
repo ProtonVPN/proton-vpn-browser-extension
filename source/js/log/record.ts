@@ -5,10 +5,10 @@ import {triggerPromise} from '../tools/triggerPromise';
 import type {CacheWrappedValue} from '../tools/storage';
 import {storage} from '../tools/storage';
 
-const records: any[][] = [];
+const records: unknown[][] = [];
 let recordReady = false;
 
-const storedRecords = storage.item<CacheWrappedValue<any[][]>>('logs');
+const storedRecords = storage.item<CacheWrappedValue<unknown[][]>>('logs');
 storedRecords.get().then((previousRecords) => {
 	if (previousRecords?.value) {
 		records.push(...previousRecords.value);
@@ -17,9 +17,9 @@ storedRecords.get().then((previousRecords) => {
 	}
 });
 
-(global as any).getLogs = () => records.slice();
+(global as {getLogs?: () => unknown[]}).getLogs = () => records.slice();
 
-export const record = (...params: any[]) => {
+export const record = (...params: unknown[]) => {
 	if (isInBackground()) {
 		records.unshift([Date.now(), ...params]);
 		records.splice(100, 1000);

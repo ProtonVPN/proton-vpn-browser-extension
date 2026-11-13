@@ -1,3 +1,4 @@
+'use background';
 // import {initState} from './initState';
 
 export const initFocusWatcher = (): void => {

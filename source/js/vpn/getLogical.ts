@@ -3,6 +3,7 @@ import type {CountryItem} from '../components/countryList';
 import type {UserContext} from '../account/user/UserContext';
 import {isLogicalUp} from './getLogicals';
 import {c} from '../tools/translate';
+import {unsafeRandomPick} from '../tools/random';
 
 const getAutoConnectableFilter =
 	(userContext: UserContext) => (logical: Logical) =>
@@ -39,14 +40,10 @@ export const getBestLogical = (
 export const getRandomLogical = (
 	logicals: Logical[] | null | undefined,
 	userContext: UserContext,
-): Logical | undefined => {
-	const servers = (logicals || []).filter(
-		getAutoConnectableFilter(userContext),
+): Logical | undefined =>
+	unsafeRandomPick(
+		(logicals || []).filter(getAutoConnectableFilter(userContext)),
 	);
-	const index = Math.floor(Math.random() * servers.length);
-
-	return servers[index];
-};
 
 export const requireBestLogical = (
 	logicals: Logical[] | null | undefined,

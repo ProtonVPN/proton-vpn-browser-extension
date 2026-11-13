@@ -1,10 +1,10 @@
-import type {SourceFile} from 'typescript';
+import type {Node, SourceFile} from 'typescript';
 import {isTaggedTemplateExpression} from 'typescript';
 import {isTranslatableString} from './isTranslatableString';
 import {ContextualizedTranslation} from './ContextualizedTranslation';
 
 export const getNodeText = (
-	textNode: any,
+	textNode: Node | ContextualizedTranslation | undefined,
 	sourceFile?: SourceFile,
 	context = 'messages',
 ): ContextualizedTranslation | undefined => {

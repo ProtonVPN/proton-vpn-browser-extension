@@ -42,6 +42,11 @@ const computeDistanceScore = (
 	return normalize(bandwidth);
 };
 
+/**
+ * Small random offset to break ties between servers with similar scores,
+ * from -0.005 (exclusive) to 0.005 (inclusive)
+ */
+// nosemgrep:rules_lgpl_javascript_crypto_rule-node-insecure-random-generator
 const getJitter = (): number => (0.5 - Math.random()) * 0.01;
 
 export const calculateScore = (

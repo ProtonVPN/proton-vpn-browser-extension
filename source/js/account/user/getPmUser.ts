@@ -1,22 +1,26 @@
+'use background';
 import {fetchJson, isUnauthorizedError} from '../../api';
 import {getPmUserTTL, getUserBlockingUpdateTTL} from '../../intervals';
 import {getCacheAge} from '../../tools/getCacheAge';
 import {GroupResponder} from '../../tools/GroupResponder';
 import {triggerPromise} from '../../tools/triggerPromise';
-import type {PmUser, PmUserResult} from './PmUser';
-import {isPmUserResult} from './PmUser';
+import type {PmUser} from './PmUser';
 import {readSession} from '../readSession';
 import {refreshToken} from '../refreshToken';
 import {getAccessToken} from '../getAccessToken';
-import {isLoggedIn, logIn} from '../../state';
+import {isLoggedIn, logIn} from '../../vpn/state/stateStore';
 import {storedPmUser} from './storedPmUser';
+import type {WrappedUser} from './UserWrapper';
+import {unwrapUser} from './UserWrapper';
 
 const userRequestsGroup = new GroupResponder<PmUser | undefined>();
 
 export const fetchPmUser = (): Promise<PmUser | undefined> =>
 	userRequestsGroup.handle(async () => {
-		const user = await fetchJson<PmUser | PmUserResult | undefined>(
-			'core/v4/users?Locale=1',
+		const user = unwrapUser(
+			await fetchJson<WrappedUser<PmUser> | undefined>(
+				'core/v4/users?Locale=1',
+			),
 		);
 
 		if (user) {
@@ -32,15 +36,13 @@ export const fetchPmUser = (): Promise<PmUser | undefined> =>
 			);
 		}
 
-		return isPmUserResult(user) ? user.User : user;
+		return user;
 	});
 
 export const loadPmCachedUser = async () => {
 	const cache = await storedPmUser.load();
 
-	if (isPmUserResult(cache?.user)) {
-		cache.user = cache.user.User;
-	}
+	cache.user = unwrapUser(cache.user);
 
 	return cache as {
 		time?: number;

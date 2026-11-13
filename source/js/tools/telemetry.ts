@@ -8,12 +8,15 @@ import {fetchApi, jsonRequest} from '../api';
 import {storage} from './storage';
 import {telemetryEnabled} from '../config';
 import {getBrowser} from './getBrowser';
+import {planTierDimensionMapper} from './planTierDimensionMapper';
 
 const NO_VALUE = 'n/a';
 
 export enum Event {
 	VPN_CONNECTION = 'vpn_connection',
 	VPN_DISCONNECTION = 'vpn_disconnection',
+	UPSELL_DISPLAY = 'upsell_display',
+	UPSELL_UPGRADE_ATTEMPT = 'upsell_upgrade_attempt',
 }
 
 export enum EventOutcome {
@@ -24,6 +27,7 @@ export enum EventOutcome {
 
 export enum MeasurementGroup {
 	CONNECTION = 'vpn.any.connection',
+	UPSELL = 'vpn.any.upsell',
 }
 
 export const telemetryOptIn = storage.item<{value: boolean}>('telemetry');
@@ -80,9 +84,9 @@ export const recordEvent = (
 		loadCachedUser(),
 		getLastChoice(),
 	]).then(async ([{value: optIn}, {location}, {user}, lastChoice]) => {
-		const tier = user?.VPN?.MaxTier;
+		const userTier = planTierDimensionMapper(user?.VPN?.MaxTier);
 		const formattedDimensions: Record<string, string> = {};
-		const rawDimensions: Record<string, any> = {
+		const rawDimensions: Record<string, unknown> = {
 			vpn_trigger: getVpnTrigger(lastChoice),
 			...(logical
 				? {
@@ -93,7 +97,7 @@ export const recordEvent = (
 				: {}),
 			user_country: location?.Country || null,
 			isp: location?.ISP || null,
-			user_tier: tier,
+			user_tier: userTier,
 			...dimensions,
 		};
 

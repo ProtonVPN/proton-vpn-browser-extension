@@ -1,3 +1,5 @@
+'use background';
+/// <reference types="firefox-webext-browser"/>
 import {routeMessage} from '../messaging/messaging';
 import {RefreshTokenError} from '../account/RefreshTokenError';
 import {logOut} from '../state';
@@ -5,11 +7,11 @@ import {createSession} from '../account/createSession';
 import {BackgroundAction} from '../messaging/MessageType';
 import type {ForkMessage, MessageBase} from '../messaging/Message';
 import {forkSession} from '../messaging/forkSession';
-import {triggerPromise} from '../tools/triggerPromise';
 import {executeOnTab} from '../tools/executeOnTab';
 import {getPartnerById} from '../account/partner/partners';
 import {delay} from '../tools/delay';
 import {getRuntime} from '../tools/getRuntime';
+import {setBackgroundRouter} from '../tools/dispatchToBackground';
 import Tab = browser.tabs.Tab;
 
 type WorkerExternalMessage = MessageBase &
@@ -20,6 +22,7 @@ type WorkerExternalMessage = MessageBase &
 		| ForkMessage
 	);
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getMessageResponse = async (message: any) => {
 	try {
 		return await routeMessage(message);
@@ -38,40 +41,19 @@ const getMessageResponse = async (message: any) => {
 export const initMessaging = () => {
 	const runtime = getRuntime();
 
-	runtime?.onMessage.addListener((message: any) => {
-		// eslint-disable-next-line no-async-promise-executor
-		const promise = new Promise(async (resolve) => {
-			const result = await getMessageResponse(message);
+	// Background can't receive its own messages, so route them locally
+	setBackgroundRouter(routeMessage);
 
-			resolve({
-				received: true,
-				success:
-					!result || !(typeof result === 'object' && (result as any).error),
-				result,
-			});
-		});
+	runtime?.onMessage.addListener(async (message: unknown) => {
+		const result = await getMessageResponse(message);
 
-		if (message.respondTo === 'broadcast') {
-			promise.then((response) => {
-				triggerPromise(
-					runtime.sendMessage(runtime.id, {
-						type: 'answer:' + message.requestId,
-						respondTo: 'none',
-						data: (() => {
-							try {
-								return JSON.parse(JSON.stringify(response));
-							} catch (error) {
-								return {result: {error: `${error}`}};
-							}
-						})(),
-					}),
-				);
-			});
-
-			return undefined;
-		}
-
-		return promise;
+		return {
+			received: true,
+			success:
+				!result ||
+				!(typeof result === 'object' && (result as {error: unknown}).error),
+			result,
+		};
 	});
 
 	/**

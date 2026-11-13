@@ -8,7 +8,9 @@ const getUnsupportedFeatures = () =>
 
 /** Only servers up to tier 2 support HTTP proxy */
 const isLogicalAuthorized = (logical: Logical) => {
-	return logical.Tier <= ((global as any).logicalMaxTier || 2);
+	return (
+		logical.Tier <= ((global as {logicalMaxTier?: number}).logicalMaxTier || 2)
+	);
 };
 
 const isLogicalSupported = (logical: Logical) => {

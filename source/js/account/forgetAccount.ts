@@ -1,3 +1,4 @@
+'use popup';
 import {forgetUser} from './user/forgetUser';
 import {forgetCredentials} from './credentials/removeCredentials';
 import {forgetLogicals} from '../vpn/getLogicals';

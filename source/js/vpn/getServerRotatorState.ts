@@ -1,5 +1,5 @@
+'use popup';
 import {Storage, storage} from '../tools/storage';
-import {triggerPromise} from '../tools/triggerPromise';
 
 /**
  * The transitive state that needs to be synchronized across tabs for the "Change Server" functionality for free users.
@@ -32,7 +32,7 @@ export async function setServerRotatorState(
 		...partialState,
 	};
 
-	triggerPromise(await serverRotatorStore.set(mergedState));
+	await serverRotatorStore.set(mergedState);
 
 	return mergedState;
 }

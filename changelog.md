@@ -1,3 +1,24 @@
+# 1.3.7
+
+- Improve user plan change detection
+- Show a clear error when another extension, the browser configuration or the
+organization controls the proxy settings and blocks the connection
+- Show a message when the device is offline
+- Fix reconnection to the last selected server
+- Fix proxy permission handling at sign-in and onboarding
+- Fix the proxy settings watcher
+- Fix the Split-Tunneling mode dropdown and domain removal
+- Apply Split-Tunneling rules immediately after a change
+- Fix Split-Tunneling for domains containing special characters
+- Fix domain suffix (TLD) detection in Split-Tunneling
+- - Support Punycode (internationalized) domains in Split-Tunneling
+- Fix broken "Fastest country" button on the free user UI
+- Show a notice if browser permission is missing to protect traffic in private windows
+- Add labels to close buttons for screen readers
+- Add a link to open browser settings for private windows
+- Make the startup waiting proxy compatible with Firefox
+- Update translations
+
 # 1.3.6
 
 - Fetch list of logical servers from a new version of the API that is faster to load

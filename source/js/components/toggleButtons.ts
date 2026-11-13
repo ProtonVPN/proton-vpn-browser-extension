@@ -1,4 +1,5 @@
-import {upgradeButton} from '../components/upgradeButton';
+'use popup';
+import {replaceWithUpgradeButton} from '../components/upgradeButton';
 import {describeButton} from '../components/connectionButton';
 import {translateToggleButtonTitle} from '../tools/translate';
 import {stopEvent} from '../tools/stopEvent';
@@ -30,6 +31,7 @@ const configureLock = (
 
 	const div = document.createElement('div');
 	div.setAttribute('class', 'locked-feature');
+	// nosemgrep:insecure-innerhtml
 	div.innerHTML = `
 		<a href="#" ${describeButton(feature.getControlMessage())}>
 			<svg
@@ -63,9 +65,7 @@ export const toggleButtons = <T extends {value: boolean}>(
 	);
 	buttons.forEach((button) => {
 		if (options?.upgradeNeeded) {
-			const div = document.createElement('div');
-			div.innerHTML = upgradeButton();
-			button.parentNode?.replaceChild(div, button);
+			replaceWithUpgradeButton(button);
 
 			return;
 		}

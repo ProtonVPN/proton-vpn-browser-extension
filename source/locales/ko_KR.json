@@ -20,11 +20,17 @@
 			"Cancel": [
 				"취소"
 			],
+			"Change language": [
+				"언어 변경"
+			],
 			"Change server": [
 				"서버 변경"
 			],
 			"Configure split tunneling": [
 				"분할 터널링 구성 설정하기"
+			],
+			"Confirm choices": [
+				"선택 확인"
 			],
 			"Connect": [
 				"연결"
@@ -41,6 +47,9 @@
 			"Disable notifications": [
 				"알림 끄기"
 			],
+			"Disable Split tunneling": [
+				"분할 터널링 비활성화"
+			],
 			"Disable WebRTC leak protection": [
 				"WebRTC 누출 방지 비활성화"
 			],
@@ -52,6 +61,9 @@
 			],
 			"Enable notifications": [
 				"알림 켜기"
+			],
+			"Enable Split tunneling": [
+				"분할 터널링 활성화"
 			],
 			"Enable WebRTC leak protection": [
 				"WebRTC 누출 방지 활성화"
@@ -70,6 +82,9 @@
 			],
 			"Quick connect": [
 				"빠른 연결"
+			],
+			"Remove": [
+				"삭제"
 			],
 			"Remove ${domain}": [
 				"${domain} 삭제"
@@ -120,13 +135,30 @@
 			]
 		},
 		"Action: Country-level button": {
+			"Connect to \"${mode}\"": [
+				"\"${mode}\"(으)로 연결"
+			],
+			"Connect to ${countryName}": [
+				"${countryName}에 연결"
+			],
 			"Connect to ${exitCountryName}": [
 				"${exitCountryName} 에 연결"
+			],
+			"Connect to ${logical.Name}": [
+				"${logical.Name}에 연결"
+			],
+			"Connect to the fastest country": [
+				"가장 빠른 국가에 연결"
 			]
 		},
 		"Action: Server-level button": {
 			"Connect to ${serverName}": [
 				"${serverName} 에 연결"
+			]
+		},
+		"Alternative text for the search (magnifying glass) icon": {
+			"Search": [
+				"검색"
 			]
 		},
 		"Confirm": {
@@ -200,9 +232,6 @@
 			]
 		},
 		"Info": {
-			"<div class=\"weak-text\">\n<span data-trans>About free connections</span>\n<svg width=\"15\" height=\"14\" viewBox=\"0 0 15 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path \t\t\t\t\t\t\t\t\t\tfill-rule=\"evenodd\"\nclip-rule=\"evenodd\"\nd=\"M7.5 13C10.8137 13 13.5 10.3137 13.5 7C13.5 3.68629 10.8137 1 7.5 1C4.18629 1 1.5 3.68629 1.5 7C1.5 10.3137 4.18629 13 7.5 13ZM7.5 14C11.366 14 14.5 10.866 14.5 7C14.5 3.13401 11.366 0 7.5 0C3.63401 0 0.5 3.13401 0.5 7C0.5 10.866 3.63401 14 7.5 14ZM9.24995 10C9.24995 10.3038 9.00371 10.55 8.69995 10.55H7.69995H6.69995C6.39619 10.55 6.14995 10.3038 6.14995 10C6.14995 9.69624 6.39619 9.45 6.69995 9.45H7.14995L7.14995 6.55H6.99994C6.69618 6.55 6.44994 6.30376 6.44994 6C6.44994 5.69624 6.69618 5.45 6.99994 5.45H7.69995C7.84582 5.45 7.98571 5.50795 8.08886 5.61109C8.19201 5.71424 8.24995 5.85413 8.24995 6L8.24995 9.45H8.69995C9.00371 9.45 9.24995 9.69624 9.24995 10ZM7.5 4.40002C7.8866 4.40002 8.2 4.08662 8.2 3.70002C8.2 3.31343 7.8866 3.00002 7.5 3.00002C7.1134 3.00002 6.8 3.31343 6.8 3.70002C6.8 4.08662 7.1134 4.40002 7.5 4.40002Z\"\nfill=\"#A7A4B5\" ></path>\n</svg>\n</div>": [
-				"<div class=\"weak-text\">\n<span data-trans>무료 연결 정보</span>\n<svg width=\"15\" height=\"14\" viewBox=\"0 0 15 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path \t\t\t\t\t\t\t\t\t\tfill-rule=\"evenodd\"\nclip-rule=\"evenodd\"\nd=\"M7.5 13C10.8137 13 13.5 10.3137 13.5 7C13.5 3.68629 10.8137 1 7.5 1C4.18629 1 1.5 3.68629 1.5 7C1.5 10.3137 4.18629 13 7.5 13ZM7.5 14C11.366 14 14.5 10.866 14.5 7C14.5 3.13401 11.366 0 7.5 0C3.63401 0 0.5 3.13401 0.5 7C0.5 10.866 3.63401 14 7.5 14ZM9.24995 10C9.24995 10.3038 9.00371 10.55 8.69995 10.55H7.69995H6.69995C6.39619 10.55 6.14995 10.3038 6.14995 10C6.14995 9.69624 6.39619 9.45 6.69995 9.45H7.14995L7.14995 6.55H6.99994C6.69618 6.55 6.44994 6.30376 6.44994 6C6.44994 5.69624 6.69618 5.45 6.99994 5.45H7.69995C7.84582 5.45 7.98571 5.50795 8.08886 5.61109C8.19201 5.71424 8.24995 5.85413 8.24995 6L8.24995 9.45H8.69995C9.00371 9.45 9.24995 9.69624 9.24995 10ZM7.5 4.40002C7.8866 4.40002 8.2 4.08662 8.2 3.70002C8.2 3.31343 7.8866 3.00002 7.5 3.00002C7.1134 3.00002 6.8 3.31343 6.8 3.70002C6.8 4.08662 7.1134 4.40002 7.5 4.40002Z\"\nfill=\"#A7A4B5\" ></path>\n</svg>\n</div>"
-			],
 			"A subdomain URL includes a prefix before the main domain name. For example, account.proton.me is a subdomain of proton.me.": [
 				"서브도메인 URL은 기본 도메인 이름 앞에 접두사를 포함합니다. 예를 들어, account.proton.me는 proton.me의 서브도메인입니다."
 			],
@@ -242,6 +271,9 @@
 			"Bypass censorship with advanced security and privacy features": [
 				"향상된 보안과 개인정보 보호 기능으로 검열을 벗어나세요"
 			],
+			"Clear all recent connections and don't keep local history": [
+				"최근 연결 모두 삭제 및 로컬 기록 저장 해제"
+			],
 			"Clear search": [
 				"검색 지우기"
 			],
@@ -274,6 +306,9 @@
 			],
 			"Crash": [
 				"충돌"
+			],
+			"Crash reports contain diagnostic information (stack traces, browser type, extension version). They do not contain your IP address and no Proton account identifier is attached. We'll never share them with third parties.": [
+				"충돌보고서에는 분석 정보 (스택 추적, 브라우저 유형, 확장 프로그램 버전)이 포함되며 사용자의 IP 주소나 Proton 계정의 신원 정보는 첨부되지 않습니다. 또한 충돌보고서의 내용은 제 3자와 공유되지 않습니다."
 			],
 			"Crash reports help us fix bugs, detect firewalls, and avoid VPN blocks.": [
 				"충돌 보고서는 버그를 수정하고 방화벽을 감지하며 VPN 차단을 방지하는 데 도움이 됩니다."
@@ -323,6 +358,9 @@
 			"Free server countries (<span id=\"free-server-countries-count\">0</span>)": [
 				"무료 서버 국가 (<span id=\"free-server-countries-count\">0</span>)"
 			],
+			"Get the deal": [
+				"특가로 구매"
+			],
 			"Get unlimited server changes with VPN Plus": [
 				"VPN Plus로 무제한으로 서버 변경하기"
 			],
@@ -334,6 +372,9 @@
 			],
 			"Help us fight censorship": [
 				"검열에 맞서도록 도와주세요"
+			],
+			"Help us improve Proton VPN": [
+				"Proton VPN 향상 돕기"
 			],
 			"High performance Swiss VPN that protects your privacy. Maximum security, more than ${count} server and no restrictions.": [
 				"당신의 프라이버시를 보호하는 고성능 스위스 VPN입니다. 최대한의 보안과 ${count}개 이상의 서버를 제공하며, 제한이 없습니다."
@@ -380,17 +421,35 @@
 			"Protect yourself online with Proton's free high‑speed VPN.": [
 				"Proton의 무료 고속 VPN으로 온라인상의 나 자신을 보호하세요."
 			],
+			"Proton Free automatically connects you to the fastest available free server from our ${freeCountriesCount} free country. This will normally be the closest server to your location.": [
+				"Proton Free가 ${freeCountriesCount}개 무료 국가 중 가능한 빠른 서버로 자동으로 연결합니다. 사용자의 위치에서 가장 가까운 곳으로 연결됩니다."
+			],
 			"Proton VPN": [
 				"Proton VPN"
 			],
 			"Proton VPN Browser Extension": [
 				"Proton VPN 브라우저 확장 프로그램"
 			],
+			"Recent connections": [
+				"최근 연결"
+			],
+			"Remember recent connections locally and show quick links to them": [
+				"최근 연결 기억 및 빠른 링크 보이기"
+			],
+			"Remember the last countries/cities/servers I connected to and show them at the\ntop of the list.": [
+				"마지막으로 연결한 국가/도시/서버를 기억하고 목록 최상단에서 볼 수 있습니다."
+			],
+			"Retired server": [
+				"오래된 서버"
+			],
 			"Secure Core": [
 				"Secure Core"
 			],
 			"Selected websites": [
 				"선택된 웹 사이트"
+			],
+			"Share anonymous crash reports": [
+				"익명 충돌 보고서 공유"
 			],
 			"Share anonymous usage statistics": [
 				"익명 사용 통계 공유"
@@ -407,8 +466,14 @@
 			"Thank you for installing Proton VPN": [
 				"Proton VPN을 설치해 주셔서 감사합니다"
 			],
+			"The split tunneling options cannot be changed on this device": [
+				"분할 터널링 옵션은 이 기기에서 변경할 수 없습니다."
+			],
 			"Then just click the Proton VPN icon to sign in.": [
 				"다음 로그인 하기 위해 Proton VPN 아이콘을 클릭하세요."
+			],
+			"This option cannot be changed on this device": [
+				"이 옵션은 현재 기기에서 변경할 수 없습니다."
 			],
 			"Those statistics do not contain your IP address, and they cannot be used to identify you. We'll never share them with third parties": [
 				"이러한 통계에는 IP 주소가 포함되어 있지 않으며 사용자 식별에 사용할 수 없습니다. 이 정보는 제3자에게 공유되지 않습니다."
@@ -428,6 +493,9 @@
 			"User": [
 				"사용자"
 			],
+			"Using Brave, DNS requests might be unprotected when \"Include mode\" is active.": [
+				"Brave 사용 시 DNS 요청이 \"모드 포함\"인 경우에는 보호되지 않을 수 있습니다."
+			],
 			"VPN blocked by external software.\n\nSome tools, like anti-viruses or proxies, can interfere with Proton VPN. Disable them and retry.": [
 				"외부 소프트웨어에 의해 VPN이 차단되었습니다.\n\n일부 백신 또는 프록시와 같은 도구는 Proton VPN에 간섭할 수 있습니다. 비활성화 후 재시도 해주세요."
 			],
@@ -437,8 +505,17 @@
 			"VPN Features": [
 				"VPN 기능"
 			],
+			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
+				"Proton은 회원님의 프라이버시를 최우선으로 합니다. 당사는 회원님의 브라우징을 추적하지 않으며 로그를 보관하지 않습니다. 연결을 인증하기 위해 계정 세션 ID가 당사 서버로 전송됩니다. 이는 확장 프로그램이 작동하기 위해 필요합니다."
+			],
 			"You're signed in": [
 				"로그인됨"
+			],
+			"Your network appears to be blocking Proton, and this extension can't bypass this block. The desktop app likely can, ${link}.": [
+				"현재 네트워크가 Proton 연결을 차단하고 있으며 확장 프로그램으로는 연결 차단을 우회할 수 없습니다. 데스크톱 앱은 우회할 수 있습니다. ${link}."
+			],
+			"Your network seems to be blocking Proton. The extension can't bypass this. Try the desktop app instead.": [
+				"현재 네트워크가 Proton 연결을 차단하고 있으며 확장 프로그램으로는 연결 차단을 우회할 수 없습니다. 데스크톱 앱은 우회할 수 있습니다."
 			]
 		},
 		"Label": {
@@ -489,9 +566,6 @@
 			],
 			"Notifications": [
 				"알림"
-			],
-			"Offer": [
-				"제안"
 			],
 			"Other": [
 				"기타"
@@ -547,11 +621,26 @@
 			]
 		},
 		"Title": {
+			"Closest server": [
+				"가장 가까운 서버"
+			],
+			"Fastest country": [
+				"가장 빠른 국가"
+			],
+			"Fastest server": [
+				"가장 빠른 서버"
+			],
 			"Features": [
 				"기능"
 			],
 			"Proton VPN for Vivaldi": [
 				"Vivaldi용 Proton VPN"
+			],
+			"Random server": [
+				"무작위 서버"
+			],
+			"Recents": [
+				"최근"
 			],
 			"Streaming": [
 				"스트리밍"

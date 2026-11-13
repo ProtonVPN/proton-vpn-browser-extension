@@ -1,3 +1,4 @@
+'use popup';
 import {c} from '../tools/translate';
 
 export const setUpSearch = (

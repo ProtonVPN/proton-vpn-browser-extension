@@ -1,3 +1,4 @@
+'use popup';
 import type {User} from '../../account/user/User';
 import {getBrowser} from '../../tools/getBrowser';
 import {milliSeconds} from '../../tools/milliSeconds';
@@ -75,14 +76,14 @@ const shouldShowRatingModal = async (user: User): Promise<boolean> => {
 
 export const maybeShowRatingModal = (
 	rateUsModal: HTMLDialogElement | null,
-	user: User,
-) =>
+	user: User | undefined,
+) => {
+	if (!rateUsModal || !user) {
+		return;
+	}
+
 	triggerPromise(
 		(async () => {
-			if (!rateUsModal) {
-				return;
-			}
-
 			await delay(1000);
 
 			if ((await shouldShowRatingModal(user)) && !rateUsModal.open) {
@@ -90,6 +91,7 @@ export const maybeShowRatingModal = (
 			}
 		})(),
 	);
+};
 
 export const configureRatingModalButtons = (
 	rateUsModal: HTMLDialogElement | null,

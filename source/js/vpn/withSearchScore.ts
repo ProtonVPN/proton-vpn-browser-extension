@@ -1,22 +1,23 @@
+'use popup';
 import type {CountryItem} from '../components/countryList';
 import {getSearchWordsScore} from '../tools/getSearchScore';
 import {each} from '../tools/each';
 import {Feature} from './Feature';
 import {getWords} from '../tools/getWords';
+import {dedupe} from '../tools/dedupe';
 
 const getSearchScoreForWords = (
 	searchWords: string[],
 	searchIn: unknown[],
 ): number =>
-	getSearchWordsScore(searchWords, [
-		...Array.from(
-			new Set(
-				searchIn.filter(
-					(item) => typeof item === 'string' && item !== '',
-				) as string[],
-			),
+	getSearchWordsScore(
+		searchWords,
+		dedupe(
+			searchIn.filter(
+				(item) => typeof item === 'string' && item !== '',
+			) as string[],
 		),
-	]);
+	);
 
 export const withSearchScore = (
 	source: CountryItem,

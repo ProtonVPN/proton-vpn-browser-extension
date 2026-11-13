@@ -4,12 +4,28 @@ import {Storage, storage} from '../tools/storage';
 import {getCacheAge} from '../tools/getCacheAge';
 import {triggerPromise} from '../tools/triggerPromise';
 import {getNotificationsRefreshInterval} from '../intervals';
+import {milliSeconds} from '../tools/milliSeconds';
+
+export enum NotificationType {
+	ICON = 0,
+	SPLASH = 1,
+	BANNER = 2,
+	PROMINENT_BANNER = 3,
+	NPS_SURVEY = 4,
+	IAP_POPUP = 5,
+	PAYWALL = 6,
+	PADLOCK = 7,
+}
 
 export interface Notification {
+	NotificationID: string;
 	StartTime: number;
 	EndTime: number;
-	Type: number;
+	Type: NotificationType;
+	Reference?: string;
 	Offer: {
+		Action?: string;
+		Behaviors?: string[];
 		URL?: string;
 		Icon?: string;
 		Label?: string;
@@ -27,6 +43,8 @@ export interface Notification {
 			Button?: {
 				URL: string;
 				Text: string;
+				Action?: string;
+				Behaviors?: string[];
 			};
 			PageFooter?: string;
 			FullScreenImage?: {
@@ -37,6 +55,7 @@ export interface Notification {
 					Width?: number;
 					Height?: number;
 					Ratio?: number;
+					URLLight?: string;
 				}[];
 			};
 		};
@@ -49,9 +68,9 @@ const storedNotifications = storage.item<CacheWrappedValue<Notification[]>>(
 );
 
 const fetchNotifications = async (): Promise<Notification[]> => {
-	const data = await fetchJson('core/v4/notifications');
-	const {Notifications: notifications}: {Notifications: Notification[]} =
-		data as any;
+	const {Notifications: notifications} = await fetchJson<{
+		Notifications: Notification[];
+	}>('core/v4/notifications');
 
 	if (notifications) {
 		triggerPromise(storedNotifications.setValue(notifications));
@@ -62,16 +81,15 @@ const fetchNotifications = async (): Promise<Notification[]> => {
 	return [];
 };
 
-export const getNotifications = async (
-	forceReload = false,
-): Promise<Notification[]> => {
-	if (!forceReload) {
-		const cacheItem = await storedNotifications.load();
-		const age = getCacheAge(cacheItem);
+export const clearNotificationsCache = (): Promise<void> =>
+	storedNotifications.remove();
 
-		if (age < getNotificationsRefreshInterval()) {
-			return cacheItem?.value || [];
-		}
+export const getNotifications = async (): Promise<Notification[]> => {
+	const cacheItem = await storedNotifications.load();
+	const age = getCacheAge(cacheItem);
+
+	if (age < getNotificationsRefreshInterval()) {
+		return cacheItem?.value || [];
 	}
 
 	try {
@@ -79,4 +97,15 @@ export const getNotifications = async (
 	} catch {
 		return [];
 	}
+};
+
+export const getActiveNotifications = async (): Promise<Notification[]> => {
+	const now = Date.now();
+	return (await getNotifications()).filter(
+		(notification) =>
+			(!notification.StartTime ||
+				now >= milliSeconds.fromSeconds(notification.StartTime)) &&
+			(!notification.EndTime ||
+				now < milliSeconds.fromSeconds(notification.EndTime)),
+	);
 };

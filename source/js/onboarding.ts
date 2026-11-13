@@ -1,7 +1,8 @@
 import {openForkTab} from './account/openForkTab';
-import {proxyPermission} from './vpn/proxyPermission';
-import {triggerPromise} from './tools/triggerPromise';
+import {proxyPermission} from './vpn/proxy/proxyPermission';
+import {hasBrowserPermission} from './tools/hasBrowserPermission';
 import {fetchTranslations, translateArea} from './tools/translate';
+import {triggerPromise} from './tools/triggerPromise';
 import {stopEvent} from './tools/stopEvent';
 import type {RequestForkAction} from './account/fork/requestFork';
 import {signupEnabled} from './config';
@@ -55,15 +56,9 @@ onClick('.login-button, .signup-link', async (button, event) => {
 	}
 
 	const action = (button.getAttribute('data-action') || undefined) as
-		| RequestForkAction
-		| undefined;
-	const proxySupported: boolean = !!(
-		chrome.proxy &&
-		(await new Promise((resolve) => {
-			chrome.permissions.contains(proxyPermission, (ok) => {
-				resolve(ok);
-			});
-		}))
+		RequestForkAction | undefined;
+	const proxySupported: boolean = Boolean(
+		chrome.proxy && (await hasBrowserPermission(proxyPermission)),
 	);
 
 	if (!proxySupported) {

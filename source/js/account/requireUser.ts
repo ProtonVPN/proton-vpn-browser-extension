@@ -1,3 +1,4 @@
+'use popup';
 import {timeoutAfter} from '../tools/delay';
 import {getInfoFromBackground} from '../tools/getInfoFromBackground';
 import {BackgroundData} from '../messaging/MessageType';

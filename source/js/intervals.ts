@@ -1,24 +1,14 @@
 import {milliSeconds} from './tools/milliSeconds';
-import {getRuntime} from './tools/getRuntime';
 import {BackgroundData} from './messaging/MessageType';
-import type {User} from './account/user/User';
+import {onRuntimeMessage} from './messaging/onRuntimeMessage';
 import {canAccessPaidServers} from './account/user/canAccessPaidServers';
 
 /** We use this to prioritize / increase frequency of updates for paid users. */
 const useSlowFrequency = (() => {
 	let paidServersAccessible = false;
 
-	const listeners = {
-		[BackgroundData.USER]({user}: {user: User | undefined}): void {
-			paidServersAccessible = canAccessPaidServers(user);
-		},
-	} as Record<BackgroundData, (...args: any[]) => void>;
-
-	getRuntime()?.onMessage.addListener((message: any) => {
-		const type = message?.event as BackgroundData;
-		listeners[type]?.(message as any);
-
-		return false;
+	onRuntimeMessage(BackgroundData.USER, ({user}) => {
+		paidServersAccessible = canAccessPaidServers(user);
 	});
 
 	return () => !paidServersAccessible;

@@ -1,3 +1,4 @@
+'use popup';
 import {stopEvent} from '../tools/stopEvent';
 
 export const configureGoToButtons = (

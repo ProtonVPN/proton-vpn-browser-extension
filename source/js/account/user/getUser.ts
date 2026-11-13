@@ -1,5 +1,5 @@
-import type {User, UserResult} from './User';
-import {isUserResult} from './User';
+'use background';
+import type {User} from './User';
 import {fetchJson, isUnauthorizedError} from '../../api';
 import {readSession} from '../readSession';
 import {refreshToken} from '../refreshToken';
@@ -8,23 +8,58 @@ import {getCacheAge} from '../../tools/getCacheAge';
 import {getElapsedMillisecondsSinceLastActivity} from '../../tools/activity';
 import {getRuntime} from '../../tools/getRuntime';
 import {milliSeconds} from '../../tools/milliSeconds';
-import {isLoggedIn, logIn} from '../../state';
+import {isLoggedIn, logIn} from '../../vpn/state/stateStore';
 import {fetchPmUser} from './getPmUser';
 import {catchPromise, triggerPromise} from '../../tools/triggerPromise';
 import {checkNetwork} from '../../vpn/checkNetwork';
 import {storedUser} from './storedUser';
 import {loadCachedUser} from './loadCachedUser';
+import {getUserMaxTier} from './getUserMaxTier';
 import {
 	getIdleThreshold,
 	getUserBlockingUpdateTTL,
 	getUserTTL,
 } from '../../intervals';
 import {BackgroundData} from '../../messaging/MessageType';
+import {clearNotificationsCache} from '../../notifications/getNotifications';
+import {clearLogicalsCache} from '../../vpn/getLogicals';
 
 let tries: number[] = [];
+let lastUserMessageDispatched = 0;
 
-const fetchUser = async (): Promise<User | UserResult | undefined> => {
-	const user = await fetchJson<User | UserResult | undefined>('vpn/v2');
+const dispatchUserDataEvent = (
+	user: User | undefined,
+	planChanged = false,
+): void => {
+	lastUserMessageDispatched = Date.now();
+	catchPromise(
+		getRuntime()?.sendMessage({
+			event: BackgroundData.USER,
+			user,
+			planChanged,
+		}),
+	);
+};
+
+const dispatchUserDataEventIfNotYet = async (
+	getUser: () => Promise<User | undefined>,
+): Promise<void> => {
+	const start = Date.now();
+	const user = await getUser();
+
+	// If no other user data event were dispatched
+	// while waiting for the promise result
+	if (lastUserMessageDispatched < start) {
+		dispatchUserDataEvent(user);
+	}
+};
+
+const fetchUser = async (): Promise<User | undefined> => {
+	const cachedUser = await loadCachedUser();
+	const prevMaxTier = getUserMaxTier(cachedUser?.user);
+	const prevPlanName = cachedUser?.user?.VPN?.PlanName;
+
+	const user = await fetchJson<User | undefined>('vpn/v2');
 
 	if (user) {
 		if (!isLoggedIn()) {
@@ -32,6 +67,17 @@ const fetchUser = async (): Promise<User | UserResult | undefined> => {
 		}
 
 		triggerPromise(storedUser.setValue(user));
+
+		const currentMaxTier = getUserMaxTier(user);
+		const currentPlanName = user?.VPN?.PlanName;
+
+		// Tier or plan name differ: user's plan has changed. Drop cached notifications
+		// so the next getNotifications() call is forced to re-fetch them.
+		// Awaited so that callers awaiting fetchUser() (e.g. popup opening) see an empty cache.
+		if (prevMaxTier !== currentMaxTier || prevPlanName !== currentPlanName) {
+			await Promise.all([clearNotificationsCache(), clearLogicalsCache()]);
+			dispatchUserDataEvent(user, true);
+		}
 	}
 
 	return user;
@@ -39,7 +85,7 @@ const fetchUser = async (): Promise<User | UserResult | undefined> => {
 
 export const loadUser = async (
 	forceRefresh?: boolean,
-): Promise<User | UserResult | undefined> => {
+): Promise<User | undefined> => {
 	const savedUser = await loadCachedUser();
 	const age = getCacheAge(savedUser);
 	const refresh = forceRefresh && (savedUser.user?.VPN.MaxTier || 0) < 1;
@@ -57,11 +103,13 @@ export const loadUser = async (
 			(async () => {
 				try {
 					await getAccessToken();
-					await fetchUser();
+					await dispatchUserDataEventIfNotYet(fetchUser);
 				} catch (e) {
 					if (isUnauthorizedError(e)) {
 						await refreshToken();
-						await Promise.all([fetchUser(), fetchPmUser()]);
+						await dispatchUserDataEventIfNotYet(
+							async () => (await Promise.all([fetchUser(), fetchPmUser()]))[0],
+						);
 
 						return;
 					}
@@ -119,7 +167,7 @@ const calculateUser = async (
 		const user = await loadUser(fresh && canRetry());
 
 		if (user || !tryReAuthentication) {
-			return isUserResult(user) ? user.User : user;
+			return user;
 		}
 	} catch (e) {
 		if (!tryReAuthentication || !isUnauthorizedError(e)) {
@@ -129,9 +177,7 @@ const calculateUser = async (
 
 	await refreshToken(); // Refresh the token and re-try if it expired
 
-	const result = await loadUser();
-
-	return isUserResult(result) ? result.User : result;
+	return await loadUser();
 };
 
 export const getUser = async (
@@ -140,12 +186,7 @@ export const getUser = async (
 ): Promise<User | undefined> => {
 	const user = await calculateUser(tryReAuthentication, fresh);
 
-	catchPromise(
-		getRuntime()?.sendMessage({
-			event: BackgroundData.USER,
-			user,
-		}),
-	);
+	dispatchUserDataEvent(user);
 
 	return user;
 };

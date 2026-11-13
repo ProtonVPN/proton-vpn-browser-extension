@@ -39,7 +39,11 @@ export class SplitTunnelingDomainManager {
 		return this.list.value.filter((domain) => domain.mode === this.list.mode);
 	}
 
-	addDomain(domainName: string, withSubDomains: boolean): void {
+	addDomain(
+		domainName: string,
+		withSubDomains: boolean,
+		originalDomain?: string,
+	): void {
 		// Check if domain already exists in current mode
 		const existsInCurrentMode = this.getDomainsForCurrentMode().some(
 			(domain) => domain.domain === domainName,
@@ -48,6 +52,7 @@ export class SplitTunnelingDomainManager {
 		if (!existsInCurrentMode) {
 			this.list.value.push({
 				domain: domainName,
+				...(originalDomain ? {originalDomain} : {}),
 				withSubDomains,
 				mode: this.getCurrentMode(),
 			});

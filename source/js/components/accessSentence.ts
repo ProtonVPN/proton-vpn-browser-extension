@@ -1,3 +1,4 @@
+'use popup';
 import {c, msgid} from '../tools/translate';
 import {getServersCount} from '../vpn/getServersCount';
 import {getAccessSentence} from '../tools/upsell';
