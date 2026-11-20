@@ -322,12 +322,6 @@
 			"Disconnected": [
 				"已断开"
 			],
-			"Disconnected by another extension": [
-				"被其他扩展断开连接"
-			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"被其他扩展断开连接，现已连接到 ${newProxyName}"
-			],
 			"Disconnected, settings were overridden": [
 				"断开连接，设置已被覆盖"
 			],

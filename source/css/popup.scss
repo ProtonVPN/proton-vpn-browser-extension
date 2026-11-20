@@ -1,7 +1,8 @@
-@import "./colors";
-@import "./sizes";
-@import "./dark-theme";
-@import "./spinner";
+@use "sass:math";
+@use "./colors";
+@use "./sizes" as *;
+@use "./dark-theme" as *;
+@use "./spinner";
 
 * {
 	font-family: sans-serif;
@@ -102,7 +103,7 @@ button {
 }
 
 #spinner {
-	padding: ($body-height / 2 - 40px) 50px;
+	padding: (math.div($body-height, 2) - 40px) 50px;
 	min-width: $body-width;
 	min-height: $body-height;
 	width: 100%;
@@ -466,7 +467,7 @@ input[type="checkbox"] {
 	border-bottom: 1px solid #343140;
 
 	svg {
-		width: $brand-logo-height * 98 / 18;
+		width: math.div($brand-logo-height * 98, 18);
 		height: $brand-logo-height;
 
 		* {
@@ -1035,7 +1036,7 @@ input[type="text"]:invalid {
 	width: $toggle-width;
 	height: $toggle-height;
 	position: relative;
-	border-radius: $toggle-width / 2;
+	border-radius: math.div($toggle-width, 2);
 	background: rgb(127, 127, 127, 0.3);
 	transition: background-color 0.2s;
 
@@ -1047,7 +1048,7 @@ input[type="text"]:invalid {
 		left: $toggle-padding;
 		width: $toggle-height - (2 * $toggle-padding);
 		height: $toggle-height - (2 * $toggle-padding);
-		border-radius: $toggle-height / 2 - $toggle-padding;
+		border-radius: math.div($toggle-height, 2) - $toggle-padding;
 		background: var(--middle-gray);
 		transition: background-color 0.2s, left 0.2s;
 	}
@@ -1057,8 +1058,13 @@ input[type="text"]:invalid {
 
 		&::after {
 			background: var(--primary-contrast);
-			left: $toggle-width / 2 + $toggle-padding;
+			left: math.div($toggle-width, 2) + $toggle-padding;
 		}
+	}
+
+	&:disabled {
+		cursor: not-allowed;
+		opacity: 0.5;
 	}
 }
 
@@ -1566,6 +1572,45 @@ summary {
 	}
 }
 
+.error-message.fingerprint-suggestion {
+	--suggestion-color: rgb(35, 158, 206);
+
+	background: rgb(35, 158, 206, 0.1);
+	border: 1px solid rgb(35, 158, 206, 0.35);
+	color: var(--dark-gray);
+	padding: 4px 12px;
+
+	> .icon {
+		align-items: flex-start;
+		padding-top: 8px;
+		color: var(--suggestion-color);
+	}
+
+	> .text {
+		padding: 6px 8px;
+	}
+
+	a.text-link {
+		display: inline-block;
+		margin-top: 4px;
+		color: var(--suggestion-color);
+		font-weight: bold;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.close-button {
+		background: var(--suggestion-color);
+		fill: var(--primary-contrast);
+
+		&:hover {
+			background: rgb(28, 128, 168);
+		}
+	}
+}
+
 .offline-message > .text {
 	display: flex;
 	flex-direction: column;
@@ -1983,7 +2028,7 @@ details {
 
 	.welcome-background {
 		width: $body-width;
-		height: $body-width * 177 / 300;
+		height: math.div($body-width * 177, 300);
 	}
 
 	.content {
@@ -2031,7 +2076,7 @@ details {
 
 	&.partner {
 		.welcome-background {
-			height: $body-width * 220 / 328;
+			height: math.div($body-width * 220, 328);
 		}
 
 		h1 {
@@ -2288,4 +2333,12 @@ body:not(.auto-theme, .light-theme) {
 			}
 		}
 	}
+}
+
+.fingerprint-intro {
+	margin: 0 0 0.75em;
+}
+
+.fingerprint-unsupported-slot > .error-message {
+	margin: 0 0 0.75em;
 }

@@ -271,12 +271,6 @@
 			"Disconnected": [
 				"Отключено"
 			],
-			"Disconnected by another extension": [
-				"Отключен другим расширением"
-			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Отключено другим расширением, подключено к ${newProxyName}"
-			],
 			"Disconnected, settings were overridden": [
 				"Отключено, настройки были отменены"
 			],

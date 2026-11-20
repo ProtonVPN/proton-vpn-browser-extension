@@ -194,6 +194,9 @@
 			"Connect from your browser with ${planName}": [
 				"Під'єднуйтеся в браузері з ${planName}"
 			],
+			"Disconnection detected: another extension took control over the proxy parameters. Proton VPN will reconnect automatically once the other VPN or proxy extension is disabled.": [
+				"Виявлено відключення: інше розширення взяло під контроль параметри проксі. Proton VPN відновить підключення автоматично, коли інше розширення VPN або проксі буде вимкнено."
+			],
 			"Network error.": [
 				"Помилка мережі."
 			],
@@ -331,11 +334,11 @@
 			"Disconnected": [
 				"Від'єднано"
 			],
-			"Disconnected by another extension": [
-				"Від'єднано іншим розширенням"
+			"Disconnected by another extension, it connected to ${newProxyName}. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Оскільки зв’язок було розірвано через інше розширення, з’єднання було встановлено з ${newProxyName}. Proton VPN автоматично відновить з’єднання після вимкнення цього розширення."
 			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Від’єднано іншим розширенням, яке під'єднано до ${newProxyName}"
+			"Disconnected by another extension. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"З'єднання розірвано через інше розширення. Proton VPN автоматично відновить з'єднання, щойно це розширення буде вимкнено."
 			],
 			"Disconnected, settings were overridden": [
 				"Від'єднано, налаштування перевизначено"

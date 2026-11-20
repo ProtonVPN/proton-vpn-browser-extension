@@ -194,8 +194,8 @@
 			"Connect from your browser with ${planName}": [
 				"Conéctate desde tu navegador con ${planName}"
 			],
-			"Disconnection detected: another extension took control over the proxy parameters, disable other VPN or proxy extensions and retry": [
-				"Se ha detectado una desconexión: otra extensión ha tomado el control de los parámetros del proxy. Desactiva el resto de extensiones de VPN o proxy y vuelve a intentarlo"
+			"Disconnection detected: another extension took control over the proxy parameters. Proton VPN will reconnect automatically once the other VPN or proxy extension is disabled.": [
+				"Desconexión detectada: otra extensión ha tomado el control de los parámetros proxy. Proton VPN se reconectará automáticamente una vez la otra VPN o extensión proxy se encuentren desactivadas."
 			],
 			"Disconnection detected: proxy parameters have been locked by your browser configuration or your organization": [
 				"Desconexión detectada: los parámetros del proxy han sido bloqueados por la configuración de su navegador o por su organización"
@@ -349,11 +349,11 @@
 			"Disconnected": [
 				"Desconectado"
 			],
-			"Disconnected by another extension": [
-				"Desconectado por otra extensión"
+			"Disconnected by another extension, it connected to ${newProxyName}. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Desconexión causada por otra extensión. Se ha conectado a ${newProxyName}. Proton VPN se reconectará automáticamente una vez la extensión esté desactivada."
 			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Desconectado por otra extensión. Estabas conectado a ${newProxyName}."
+			"Disconnected by another extension. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Desconexión causada por otra extensión. Proton VPN se reconectará automáticamente una vez la extensión esté desactivada."
 			],
 			"Disconnected, settings were overridden": [
 				"Estás desconectado. Se han anulado los ajustes."
@@ -435,7 +435,7 @@
 				"VPN de código abierto"
 			],
 			"Open the Details tab above": [
-				"Abre la pestaña Detalles arriba"
+				"Abra la pestaña Detalles de arriba"
 			],
 			"Open the Extensions menu": [
 				"Abre el menú de extensiones"
@@ -551,6 +551,12 @@
 			],
 			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
 				"Se prioriza tu privacidad por encima de todo. No se rastrea tu navegación ni se guardan registros. Para autenticar tu conexión, el ID de sesión de tu cuenta se envía a los servidores. Esto es necesario para que la extensión funcione."
+			],
+			"Websites won't load until your device is back online. This isn't caused by the VPN: your settings are kept and you'll be protected as soon as your internet connection returns.": [
+				"Los sitios web no se cargarán hasta que tu dispositivo vuelva a tener conexión. No se debe a la VPN: tus ajustes se mantienen y estarás protegido en cuanto vuelva la conexión a internet."
+			],
+			"You're offline": [
+				"Estás sin conexión"
 			],
 			"You're signed in": [
 				"Has iniciado sesión"

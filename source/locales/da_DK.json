@@ -194,8 +194,8 @@
 			"Connect from your browser with ${planName}": [
 				"Forbind fra din browser med ${planName}"
 			],
-			"Disconnection detected: another extension took control over the proxy parameters, disable other VPN or proxy extensions and retry": [
-				"Afbrydelse registreret: en anden udvidelse overtog kontrollen af proxy-parametrene. Deaktiver anden VPN eller proxy-udvidelser og prøv igen"
+			"Disconnection detected: another extension took control over the proxy parameters. Proton VPN will reconnect automatically once the other VPN or proxy extension is disabled.": [
+				"Afbrydelse registreret: en anden udvidelse tog kontrol over proxy-parametre. Proton VPN forbinder igen automatisk så snart den anden VPN- eller proxy-udvidelse deaktiveres."
 			],
 			"Disconnection detected: proxy parameters have been locked by your browser configuration or your organization": [
 				"Afbrydelse registreret: proxy-parametre er blevet låst af dine browserindstillinger eller din organisation"
@@ -349,11 +349,11 @@
 			"Disconnected": [
 				"Afbrudt"
 			],
-			"Disconnected by another extension": [
-				"Afbrudt af en anden udvidelse"
+			"Disconnected by another extension, it connected to ${newProxyName}. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Da den blev afbrudt af en anden udvidelse, blev den forbundet til ${newProxyName}. Proton VPN forbinder igen automatisk så snart den udvidelse deaktiveres."
 			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Afbrudt af en anden udvidelse, den er forbundet til ${newProxyName}"
+			"Disconnected by another extension. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Afbrudt af en anden udvidelse. Proton VPN forbinder igen automatisk så snart den udvidelse deaktiveres."
 			],
 			"Disconnected, settings were overridden": [
 				"Forbindelsen afbrudt, indstillinger blev tilsidesat"
@@ -551,6 +551,12 @@
 			],
 			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
 				"Vi sætter dit privatliv højere end alt andet. Vi sporer ikke din browsing og fører ingen logfiler. For at godkende din forbindelse bliver dit kontosessions-ID sendt til vores severe, hvilket kræves for at udvidelsen virker"
+			],
+			"Websites won't load until your device is back online. This isn't caused by the VPN: your settings are kept and you'll be protected as soon as your internet connection returns.": [
+				"Websider bliver ikke indlæst før du er online igen. Dette skyldes ikke VPN-forbindelsen: dine indstillinger bevares og du bliver beskyttet så snart din internetforbindelse er tilbage."
+			],
+			"You're offline": [
+				"Du er offline"
 			],
 			"You're signed in": [
 				"Du er logget ind"

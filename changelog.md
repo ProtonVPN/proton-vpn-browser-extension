@@ -1,3 +1,7 @@
+# 1.3.9
+
+- Fix handling of token refresh race condition
+
 # 1.3.8
 
 - Firefox: hold page loading until the proxy is ready
@@ -15,7 +19,7 @@ organization controls the proxy settings and blocks the connection
 - Apply Split-Tunneling rules immediately after a change
 - Fix Split-Tunneling for domains containing special characters
 - Fix domain suffix (TLD) detection in Split-Tunneling
-- - Support Punycode (internationalized) domains in Split-Tunneling
+- Support Punycode (internationalized) domains in Split-Tunneling
 - Fix broken "Fastest country" button on the free user UI
 - Show a notice if browser permission is missing to protect traffic in private windows
 - Add labels to close buttons for screen readers

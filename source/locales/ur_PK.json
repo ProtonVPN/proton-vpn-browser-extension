@@ -325,12 +325,6 @@
 			"Disconnected": [
 				"ڈسکنیکٹ ہو گیا"
 			],
-			"Disconnected by another extension": [
-				"کسی دیگر ایکسٹینشن کی وجہ سے ڈسکنیکٹ ہو گیا"
-			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"کسی دیگر ایکسٹینشن کی وجہ سے ڈسکنیکٹ ہو گیا، جس نے ${newProxyName} سے کنیکٹ کیا"
-			],
 			"Disconnected, settings were overridden": [
 				"ڈسکنیکٹ ہو گیا، سیٹنگز اوور رائیڈ کر دی گئیں"
 			],

@@ -325,11 +325,11 @@
 			"Disconnected": [
 				"接続解除されました"
 			],
-			"Disconnected by another extension": [
-				"別の拡張機能によって切断されました"
+			"Disconnected by another extension, it connected to ${newProxyName}. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"別の拡張機能が  ${newProxyName}  に接続したため切断されました。その拡張機能を無効にするとProton VPN は自動的に再接続します。"
 			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"別の拡張機能によって切断され、 ${newProxyName} に接続されました"
+			"Disconnected by another extension. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"別の拡張機能によって接続が切断されました。その拡張機能を無効にすると、Proton VPNが自動的に再接続します。"
 			],
 			"Disconnected, settings were overridden": [
 				"切断されました。設定は上書きされました"
@@ -513,6 +513,12 @@
 			],
 			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
 				"私たちは何よりもお客様のプライバシーを最優先に考えています。ブラウジング履歴を追跡することはなく、ログも一切保持しません。接続を認証するためにアカウントのセッション ID がサーバーに送信されますが、これは拡張機能が動作するために必須の処理です。"
+			],
+			"Websites won't load until your device is back online. This isn't caused by the VPN: your settings are kept and you'll be protected as soon as your internet connection returns.": [
+				"デバイスがオンラインに戻るまで、ウェブサイトを読み込むことはできません。これはVPNが原因ではありません。設定は保持されており、インターネット接続が復旧するとすぐに保護が再開されます。"
+			],
+			"You're offline": [
+				"オフラインです"
 			],
 			"You're signed in": [
 				"サインインしました"

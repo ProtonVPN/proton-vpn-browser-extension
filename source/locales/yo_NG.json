@@ -322,12 +322,6 @@
 			"Disconnected": [
 				"A ti tú ìsopọ̀."
 			],
-			"Disconnected by another extension": [
-				"Àfikún míràn ni ó tú ìsopọ̀."
-			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Àfikún míràn ni ó tú ìsopọ̀, ó sì so pọ̀ mọ́ ${newProxyName}."
-			],
 			"Disconnected, settings were overridden": [
 				"A ti tú ìsopọ̀, wọ́n sì ti yí àwọn ààtò padà."
 			],

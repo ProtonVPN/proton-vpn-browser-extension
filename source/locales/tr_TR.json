@@ -194,8 +194,8 @@
 			"Connect from your browser with ${planName}": [
 				"${planName} ile tarayıcınızdan bağlantı kurun"
 			],
-			"Disconnection detected: another extension took control over the proxy parameters, disable other VPN or proxy extensions and retry": [
-				"Bağlantı kesintisi bulundu: Başka bir eklenti vekil sunucu parametrelerinin denetimini devraldı. Diğer VPN veya vekil sunucu eklentilerini kapatıp yeniden deneyin"
+			"Disconnection detected: another extension took control over the proxy parameters. Proton VPN will reconnect automatically once the other VPN or proxy extension is disabled.": [
+				"Bağlantı kesildi: Başka bir eklenti vekil sunucu parametrelerini denetlemeye başladı. Proton VPN, diğer VPN veya vekil sunucu eklentisi kullanımdan kaldırıldığında otomatik olarak yeniden bağlanacak."
 			],
 			"Disconnection detected: proxy parameters have been locked by your browser configuration or your organization": [
 				"Bağlantı kesintisi bulundu: Vekil sunucu parametreleri, tarayıcı yapılandırmanız veya kuruluşunuz tarafından kilitlenmiş"
@@ -349,11 +349,11 @@
 			"Disconnected": [
 				"Bağlı değil"
 			],
-			"Disconnected by another extension": [
-				"Başka bir eklenti tarafından bağlantı kesildi"
+			"Disconnected by another extension, it connected to ${newProxyName}. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Bağlantı başka bir eklenti tarafından kesildi. ${newProxyName} ile bağlantı kuruldu. Proton VPN, eklenti kullanımdan kaldırıldığında otomatik olarak yeniden bağlanacak."
 			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Başka bir eklenti tarafından bağlantı kesildi. ${newProxyName} ile bağlantı kuruldu"
+			"Disconnected by another extension. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Bağlantı başka bir eklenti tarafından kesildi. Proton VPN, eklenti kullanımdan kaldırıldığında otomatik olarak yeniden bağlanacak."
 			],
 			"Disconnected, settings were overridden": [
 				"Bağlantı kesildi. Ayarlar değiştirildi"
@@ -551,6 +551,12 @@
 			],
 			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
 				"Gizliliğinizi her şeyin önüne koyuyoruz. Gezinme etkinliklerinizi izlemiyoruz ve herhangi bir kayıt tutmuyoruz. Bağlantınızı doğrulamak için hesap oturum kimliğiniz sunucularımıza gönderilir. Bu işlem eklentinin çalışması için gereklidir"
+			],
+			"Websites won't load until your device is back online. This isn't caused by the VPN: your settings are kept and you'll be protected as soon as your internet connection returns.": [
+				"Aygtınız yeniden çevrim içi olana kadar siteler yüklenmeyecek. Bunun nedeni VPN değil: Ayarlarınız korunur ve internet bağlantınız yeniden kurulduğunda korunmayı sürdürürsünüz."
+			],
+			"You're offline": [
+				"Çevrim dışısınız"
 			],
 			"You're signed in": [
 				"Oturum açtınız"

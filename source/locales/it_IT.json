@@ -194,8 +194,8 @@
 			"Connect from your browser with ${planName}": [
 				"Connettiti dal tuo browser con ${planName}"
 			],
-			"Disconnection detected: another extension took control over the proxy parameters, disable other VPN or proxy extensions and retry": [
-				"Rilevata disconnessione: un'altra estensione ha assunto il controllo dei parametri del proxy; disattiva le altre estensioni VPN o proxy e riprova"
+			"Disconnection detected: another extension took control over the proxy parameters. Proton VPN will reconnect automatically once the other VPN or proxy extension is disabled.": [
+				"Disconnessione rilevata: un'altra estensione ha preso il controllo dei parametri del serviente intermediario. Proton VPN si riconnetterà automaticamente una volta che l'altra estensione VPN o il serviente intermediario verranno disabilitati."
 			],
 			"Disconnection detected: proxy parameters have been locked by your browser configuration or your organization": [
 				"Rilevata disconnessione: i parametri del proxy sono stati bloccati dalla configurazione del browser o dalla tua organizzazione"
@@ -349,11 +349,11 @@
 			"Disconnected": [
 				"Disconnesso"
 			],
-			"Disconnected by another extension": [
-				"Disconnesso da un'altra estensione"
+			"Disconnected by another extension, it connected to ${newProxyName}. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Disconnesso da un'altra estensione. Connesso a ${newProxyName}. Proton VPN si riconnetterà automaticamente una volta che l'estensione verrà disabilitata."
 			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Disconnesso da un'altra estensione, si è connesso a ${newProxyName}"
+			"Disconnected by another extension. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Disconnesso da un'altra estensione. Proton VPN si riconnetterà automaticamente una volta che l'estensione verrà disabilitata."
 			],
 			"Disconnected, settings were overridden": [
 				"Disconnesso, le impostazioni sono state sovrascritte"
@@ -551,6 +551,12 @@
 			],
 			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
 				"La tua privacy è la nostra priorità assoluta. Non tracciamo la tua navigazione e non conserviamo alcun registro. Per autenticare la tua connessione, l'ID di sessione del tuo account viene inviato ai nostri server; questo è necessario affinché l'estensione funzioni."
+			],
+			"Websites won't load until your device is back online. This isn't caused by the VPN: your settings are kept and you'll be protected as soon as your internet connection returns.": [
+				"I siti web non si caricheranno finché il tuo dispositivo non tornerà in linea. Non è un problema della VPN: le tue impostazioni vengono mantenute e sarai protetto non appena tornerà la connessione."
+			],
+			"You're offline": [
+				"Non sei in linea"
 			],
 			"You're signed in": [
 				"Hai effettuato l'accesso"

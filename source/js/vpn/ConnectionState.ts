@@ -5,6 +5,7 @@ import type {ApiError} from '../api/ApiError';
 import type {SettingChange} from '../messaging/MessageType';
 import type {Credentials} from '../account/credentials/Credentials';
 import type {SplitTunnelingMode} from './WebsiteFilter';
+import type {Coordinates} from '../tools/Coordinates';
 import OnAuthRequiredDetails = chrome.webRequest.OnAuthRequiredDetails;
 import OnRequestDetails = browser.proxy._OnRequestDetails;
 
@@ -18,6 +19,8 @@ export interface ServerSummary {
 	exitCountry: string;
 	exitCity: string | null | undefined;
 	exitEnglishCity: string | null | undefined;
+	/** Approximate exit location, used to guess the server timezone */
+	exitLocation?: Coordinates;
 	secureCore: boolean | undefined;
 }
 

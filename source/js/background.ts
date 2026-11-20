@@ -15,6 +15,7 @@ import {initSentry} from './tools/sentry';
 import {setProxyToWaiterHost} from './tools/proxy';
 import {usesFirefoxProxySettings} from './vpn/proxy/usesFirefoxProxySettings';
 import {initPrivateWindowsNotification} from './vpn/privateWindows/initPrivateWindowsNotification';
+import {initFingerprintProtection} from './fingerprint/initFingerprintProtection';
 
 // In Firefox, proxy.onRequest holds requests until the state is restored
 // (see setupHandleProxyRequest), a dead-end would make them fail instead
@@ -36,3 +37,4 @@ initProxySettingsWatcher();
 initIdleWatcher();
 initPageNetworkErrorWatcher();
 detectCensorship();
+initFingerprintProtection();

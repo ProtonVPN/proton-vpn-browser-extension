@@ -307,12 +307,6 @@
 			"Disconnected": [
 				"Na-disconnect"
 			],
-			"Disconnected by another extension": [
-				"Na-disconnect ng ibang extension"
-			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Na-disconnect ng ibang extension. Kumonekta ito sa ${newProxyName}."
-			],
 			"Disconnected, settings were overridden": [
 				"Na-disconnect. Na-override ang mga setting."
 			],

@@ -7,7 +7,8 @@ import {useCache} from '../tools/useCache';
 type FeatureRecord = Record<string, {enabled: boolean}>;
 type FeatureRecordCache = CacheWrappedValue<FeatureRecord> & Fetching;
 
-const featureFlagCache = storage.item<FeatureRecordCache>('feature-flag');
+export const featureFlagCache =
+	storage.item<FeatureRecordCache>('feature-flag');
 
 const fetchFeatureFlag = async (): Promise<FeatureRecord> => {
 	const data = await fetchJson<{

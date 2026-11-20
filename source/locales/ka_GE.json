@@ -325,12 +325,6 @@
 			"Disconnected": [
 				"გათიშულია"
 			],
-			"Disconnected by another extension": [
-				"გათიშულია სხვა გაფართოების მიერ"
-			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"გათიშულია სხვა გაფართოების მიერ. დაკავშირებულია პროქსისთან ${newProxyName}"
-			],
 			"Disconnected, settings were overridden": [
 				"გათიშულია. პარამეტრები გადაიფარა"
 			],

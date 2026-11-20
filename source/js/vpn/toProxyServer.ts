@@ -29,6 +29,7 @@ export const toProxyServer = (
 		exitCountry: logical.ExitCountry,
 		exitCity: logical.Translations?.City || logical.City,
 		exitEnglishCity: logical.City,
+		exitLocation: logical.ExitLocation,
 		secureCore: secureCoreLogical,
 		proxyHost: proxyHost || server.Domain,
 		proxyPort: secureCoreLogical

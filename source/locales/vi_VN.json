@@ -304,12 +304,6 @@
 			"Disconnected": [
 				"Ngắt kết nối"
 			],
-			"Disconnected by another extension": [
-				"Đã bị ngắt kết nối bởi phần mở rộng khác"
-			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Đã bị ngắt kết nối bởi phần mở rộng khác kết nối với ${newProxyName}"
-			],
 			"Disconnected, settings were overridden": [
 				"Đã ngắt kết nối, các cài đặt đã bị ghi đè"
 			],
@@ -468,6 +462,12 @@
 			],
 			"VPN Features": [
 				"Tính năng VPN"
+			],
+			"Websites won't load until your device is back online. This isn't caused by the VPN: your settings are kept and you'll be protected as soon as your internet connection returns.": [
+				"Trang web sẽ không tải cho đến khi thiết bị của bạn có kết nối trở lại. Việc này không do VPN gây ra: cài đặt của bạn vẫn được giữ nguyên và bạn sẽ được bảo vệ ngay khi có kết nối internet trở lại."
+			],
+			"You're offline": [
+				"Bạn đang ngoại tuyến"
 			],
 			"You're signed in": [
 				"Bạn đã đăng nhập"

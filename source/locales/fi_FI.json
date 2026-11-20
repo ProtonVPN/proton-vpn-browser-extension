@@ -331,12 +331,6 @@
 			"Disconnected": [
 				"Ei yhdistetty"
 			],
-			"Disconnected by another extension": [
-				"Yhteys katkaistiin toisen laajennuksen toimesta"
-			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Toinen laajennus katkaisi yhteyden ja yhdistyi kohteeseen ${newProxyName}"
-			],
 			"Disconnected, settings were overridden": [
 				"Yhteys katkaistu, asetukset korvattiin"
 			],

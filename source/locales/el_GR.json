@@ -194,8 +194,8 @@
 			"Connect from your browser with ${planName}": [
 				"Συνδεθείτε από το πρόγραμμα περιήγησής σας με το ${planName}"
 			],
-			"Disconnection detected: another extension took control over the proxy parameters, disable other VPN or proxy extensions and retry": [
-				"Εντοπίστηκε αποσύνδεση: μια άλλη επέκταση ανέλαβε τον έλεγχο των παραμέτρων διακομιστή μεσολάβησης · απενεργοποιήστε άλλες επεκτάσεις VPN ή διακομιστή μεσολάβησης και δοκιμάστε ξανά."
+			"Disconnection detected: another extension took control over the proxy parameters. Proton VPN will reconnect automatically once the other VPN or proxy extension is disabled.": [
+				"Εντοπίστηκε αποσύνδεση: μια άλλη προέκταση ανέλαβε τον έλεγχο των παραμέτρων διακομιστή μεσολάβησης. Το Proton VPN θα επανασυνδεθεί αυτόματα μόλις απενεργοποιηθεί η άλλη προέκταση VPN ή ο διακομιστής μεσολάβησης."
 			],
 			"Disconnection detected: proxy parameters have been locked by your browser configuration or your organization": [
 				"Εντοπίστηκε αποσύνδεση: οι παράμετροι διακομιστή μεσολάβησης έχουν κλειδωθεί από τη διαμόρφωση του προγράμματος περιήγησής σας ή από τον οργανισμό σας."
@@ -349,11 +349,11 @@
 			"Disconnected": [
 				"Αποσυνδεδεμένο"
 			],
-			"Disconnected by another extension": [
-				"Αποσυνδέθηκε από άλλη προέκταση"
+			"Disconnected by another extension, it connected to ${newProxyName}. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Αποσυνδέθηκε λόγω μιας άλλης προέκτασης και συνδέθηκε στο ${newProxyName}. Το Proton VPN θα επανασυνδεθεί αυτόματα μόλις απενεργοποιηθεί η εν λόγω προέκταση."
 			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Αποσυνδέθηκε από άλλη προέκταση, συνδέθηκε στο ${newProxyName}"
+			"Disconnected by another extension. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Η σύνδεση διακόπηκε από άλλη προέκταση. Το Proton VPN θα επανασυνδεθεί αυτόματα μόλις απενεργοποιηθεί η εν λόγω προέκταση."
 			],
 			"Disconnected, settings were overridden": [
 				"Αποσυνδέθηκε, οι ρυθμίσεις παρακάμφθηκαν"
@@ -551,6 +551,12 @@
 			],
 			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
 				"Δίνουμε προτεραιότητα στο απόρρητό σας πάνω απ' όλα. Δεν παρακολουθούμε την περιήγησή σας και δεν διατηρούμε αρχεία καταγραφής. Για τον έλεγχο ταυτότητας της σύνδεσής σας, το αναγνωριστικό περιόδου σύνδεσης του λογαριασμού σας αποστέλλεται στους διακομιστές μας, κάτι που απαιτείται για να λειτουργήσει η προέκταση."
+			],
+			"Websites won't load until your device is back online. This isn't caused by the VPN: your settings are kept and you'll be protected as soon as your internet connection returns.": [
+				"Οι ιστοσελίδες δε θα φορτώσουν μέχρι να ξανά συνδεθείτε στο διαδίκτυο. Αυτό δεν οφείλεται στο VPN: οι ρυθμίσεις σας διατηρούνται και θα είστε προστατευμένοι μόλις επανέλθει η σύνδεσή σας στο διαδίκτυο."
+			],
+			"You're offline": [
+				"Είστε εκτός σύνδεσης"
 			],
 			"You're signed in": [
 				"Είστε συνδεδεμένοι"

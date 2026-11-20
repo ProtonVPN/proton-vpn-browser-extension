@@ -325,12 +325,6 @@
 			"Disconnected": [
 				"कनेक्शन टूटा"
 			],
-			"Disconnected by another extension": [
-				"दूसरे एक्सटेंशन के कारण डिस्कनेक्ट हो गया।"
-			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"दूसरे एक्सटेंशन के कारण डिस्कनेक्ट हो गया, वो ${newProxyName} से कनेक्ट हो गया।"
-			],
 			"Disconnected, settings were overridden": [
 				"डिस्कनेक्ट हो गया, सेटिंग ओवरराइड कर दी गईं।"
 			],
@@ -512,6 +506,9 @@
 			],
 			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
 				"हम आपकी प्राइवेसी को सबसे ऊपर रखते हैं। हम आपकी ब्राउज़िंग को ट्रैक नहीं करते और कोई लॉग नहीं रखते। आपके कनेक्शन की पुष्टि के लिए आपका खाता सत्र ID हमारे सर्वरों को भेजा जाता है, एक्सटेंशन के चलने के लिए ये ज़रूरी है"
+			],
+			"You're offline": [
+				"आप ऑफलाइन हैं"
 			],
 			"You're signed in": [
 				"आप साइनइन हैं"

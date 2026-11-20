@@ -265,12 +265,6 @@
 			"Disconnected": [
 				"Kapcsolat bontva"
 			],
-			"Disconnected by another extension": [
-				"Kapcsolat bontva egy másik bővítmény által"
-			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Kapcsolat bontva egy másik bővítmény által, kapcsolódva: ${newProxyName}"
-			],
 			"Disconnected, settings were overridden": [
 				"Kapcsolat bontva, beállítások felülírva"
 			],

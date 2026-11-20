@@ -5,12 +5,14 @@ import {getFreshUser} from '../account/user/getUser';
 import {getPmUser} from '../account/user/getPmUser';
 import {connectLogical, disconnect, getCurrentState, logOut} from '../state';
 import {createSession} from '../account/createSession';
+import {isSessionStillUsingRefreshToken} from '../account/refreshTokenFingerprint';
 import {
 	BackgroundAction,
 	BackgroundData,
 	type BackgroundExtraData,
 	type BackgroundMessage,
 	PermissionGrant,
+	type SessionExpiredData,
 	SettingChange,
 	StateChange,
 } from './MessageType';
@@ -87,6 +89,21 @@ export const routeMessage = async <T extends BackgroundMessage>(message: {
 			break;
 
 		case StateChange.SWITCH_ACCOUNT:
+			logOut(false);
+			await createSession();
+			break;
+
+		case StateChange.SESSION_EXPIRED:
+			// The rejected refresh token was replaced in the meantime:
+			// another refresh won the race, the session is valid.
+			if (
+				!(await isSessionStillUsingRefreshToken(
+					(data as SessionExpiredData | undefined)?.refreshTokenFingerprint,
+				))
+			) {
+				break;
+			}
+
 			logOut(false);
 			await createSession();
 			break;

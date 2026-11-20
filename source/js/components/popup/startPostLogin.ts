@@ -39,6 +39,7 @@ import {getConnectToServer} from './connectToServer';
 import {getConnectionStatusRefresher} from './refreshConnectionStatus';
 import {configureCentralView} from './configureCentralView';
 import {configureSearch} from './configureSearch';
+import {configureFingerprintProtection} from './configureFingerprintProtection';
 import {configureDebugTools} from './configureDebugTools';
 import {loadPopupElements} from './loadPopupElements';
 import {onUserPlanChange} from './onUserPlanChange';
@@ -390,6 +391,7 @@ export const startPostLogin = async (
 					// parent for each sub-page
 					region: 'world',
 					'split-tunneling': 'features',
+					fingerprint: 'features',
 				}[page]) ||
 			page;
 
@@ -439,6 +441,9 @@ export const startPostLogin = async (
 		refresh,
 		setRefresher,
 		configureArea,
+	);
+	triggerPromise(
+		configureFingerprintProtection(area, () => state.connected, goTo),
 	);
 	configureModalButtons(area.querySelector<HTMLDivElement>('#modals')!);
 	configureRatingModalButtons(rateUsModal);

@@ -126,7 +126,7 @@ export const loadUser = async (
 	}
 
 	const now = Date.now();
-	tries = tries.filter((time) => time < now - refreshInterval);
+	tries = tries.filter((time) => time >= now - refreshInterval);
 	tries.push(now);
 
 	try {
@@ -149,7 +149,7 @@ export const loadUser = async (
 
 const canRetry = () => {
 	const now = Date.now();
-	tries = tries.filter((time) => time < now - getUserTTL());
+	tries = tries.filter((time) => time >= now - getUserTTL());
 
 	return tries.length < 20;
 };

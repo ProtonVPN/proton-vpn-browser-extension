@@ -322,12 +322,6 @@
 			"Disconnected": [
 				"연결 해제됨"
 			],
-			"Disconnected by another extension": [
-				"다른 확장 프로그램에 의해 연결이 해제되었습니다"
-			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"다른 확장 프로그램에 의해 연결이 해제되었습니다. ${newProxyName}에 연결되였습니다."
-			],
 			"Disconnected, settings were overridden": [
 				"연결이 끊김, 설정이 재정의되었습니다"
 			],

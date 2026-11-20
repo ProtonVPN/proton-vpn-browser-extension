@@ -140,6 +140,7 @@
 								<div class="offline-slot" aria-live="polite"></div>
 								<div class="error-slot"></div>
 								<div class="notice-slot"></div>
+								<div class="fingerprint-suggestion-slot"></div>
 							</div>
 							<div id="menu">
 								<div class="filters-bar">
@@ -256,6 +257,29 @@
 								</div>
 							</div>
 
+							<div class="action-block fingerprint-protection-action-block" style="display: none">
+								<div class="action-description">
+									<svg class="action-icon small-icon" viewBox="0 0 24 24" role="img" focusable="false" aria-hidden="true">
+										<path fill-rule="evenodd" d="M12 3a9 9 0 0 0-9 9 .75.75 0 0 1-1.5 0C1.5 6.201 6.201 1.5 12 1.5S22.5 6.201 22.5 12a.75.75 0 0 1-1.5 0 9 9 0 0 0-9-9Zm0 3a6 6 0 0 0-6 6c0 2.4-.5 4.6-1.4 6.6a.75.75 0 1 1-1.37-.6C4.05 16.2 4.5 14.2 4.5 12a7.5 7.5 0 0 1 15 0c0 2.6-.3 5.2-1 7.6a.75.75 0 1 1-1.44-.42c.6-2.27.94-4.7.94-7.18a6 6 0 0 0-6-6Zm0 3a3 3 0 0 0-3 3c0 3.3-.8 6.4-2.2 9.1a.75.75 0 1 1-1.33-.7C6.75 18.9 7.5 16 7.5 12a4.5 4.5 0 0 1 9 0c0 3.7-.6 6.9-1.7 9.6a.75.75 0 1 1-1.39-.57C14.43 18.6 15 15.6 15 12a3 3 0 0 0-3-3Zm0 2.25a.75.75 0 0 1 .75.75c0 4-.9 7.2-2.6 9.9a.75.75 0 1 1-1.27-.8c1.5-2.4 2.37-5.3 2.37-9.1a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd"/>
+									</svg>
+
+									<div class="action-text">
+										<div><strong data-trans data-context="Label" data-comment="Title of the page to configure fingerprint spoofing">
+											Fingerprint protection
+										</strong></div>
+										<div class="weak-text" data-trans data-comment="Description for the Fingerprint protection option button">
+											While connected, blend in with the crowd: timezone, language, screen and more.
+										</div>
+									</div>
+									<div class="action-pretext fingerprint-protection-count"></div>
+									<button data-go-to="fingerprint" title="Configure fingerprint protection" data-context="Action" data-comment="Tooltip of the Fingerprint protection setting" class="enter-setting" tabindex="0">
+										<svg class="sm-icon" aria-hidden="true" viewBox="0 0 32 32" fill="currentColor">
+											<path fill-rule="evenodd" d="M7.745 20.805a.75.75 0 0 1-.05-1.06L14.736 12 7.695 4.255a.75.75 0 1 1 1.11-1.01l7.5 8.25a.75.75 0 0 1 0 1.01l-7.5 8.25a.75.75 0 0 1-1.06.05Z" clip-rule="evenodd"/>
+										</svg>
+									</button>
+								</div>
+							</div>
+
 							<div class="action-block prevent-webrtc-leak-action-block">
 								<div class="action-description">
 									<svg class="action-icon small-icon" viewBox="0 0 24 24" role="img" focusable="false" aria-hidden="true">
@@ -315,6 +339,129 @@
 									</div>
 
 									<button class="toggle recents-button" data-tooltip-title='{"enable":"Remember recent connections locally and show quick links to them", "disable":"Clear all recent connections and don&#39;t keep local history"}'></button>
+								</div>
+							</div>
+						</div>
+
+						<div data-page="fingerprint">
+							<h1 class="page-title flex items-center mt-small">
+								<button data-go-to="features" title="Back" class="back-button button-light-hover"><svg class="sm-icon" aria-label="Back" viewBox="0 0 24 24" fill="currentColor">
+									<path fill-rule="evenodd" d="M16.255 20.805a.75.75 0 0 0 .05-1.06L9.264 12l7.041-7.745a.75.75 0 0 0-1.11-1.01l-7.5 8.25a.75.75 0 0 0 0 1.01l7.5 8.25a.75.75 0 0 0 1.06.05Z" clip-rule="evenodd"/>
+								</svg></button>
+								<div class="name flex items-center" data-trans>Fingerprint protection</div>
+							</h1>
+
+							<div class="fingerprint-unsupported-slot"></div>
+
+							<p class="weak-text fingerprint-intro" data-trans data-comment="Introduction of the fingerprint protection page">
+								Websites can recognize your browser from a combination of small details, even behind a VPN. Make those details look like the ones of many other users.
+							</p>
+							<p class="weak-text fingerprint-intro" data-trans data-comment="Explanation of when fingerprint protection applies">
+								Only applied while connected, real values are restored when you disconnect. Pages opened before connecting need to be reloaded.
+							</p>
+
+							<div class="action-block spoof-timezone-action-block">
+								<div class="action-description">
+									<div class="action-text">
+										<div><strong data-trans data-context="Label" data-comment="Title of a fingerprint protection toggle">
+											Timezone
+										</strong></div>
+										<div class="weak-text" data-trans data-comment="Description of a fingerprint protection toggle">
+											Use the timezone of the VPN server location instead of your real one.
+										</div>
+									</div>
+
+									<button class="toggle spoof-timezone-button" data-context="Action" data-comment="Tooltip of a fingerprint protection toggle" data-tooltip-title='{"enable":"Spoof timezone","disable":"Stop spoofing timezone"}'></button>
+								</div>
+							</div>
+
+							<div class="action-block spoof-language-action-block">
+								<div class="action-description">
+									<div class="action-text">
+										<div><strong data-trans data-context="Label" data-comment="Title of a fingerprint protection toggle">
+											Language
+										</strong></div>
+										<div class="weak-text" data-trans data-comment="Description of a fingerprint protection toggle">
+											Present the main language of the VPN server country. Websites may then be displayed in that language.
+										</div>
+									</div>
+
+									<button class="toggle spoof-language-button" data-context="Action" data-comment="Tooltip of a fingerprint protection toggle" data-tooltip-title='{"enable":"Spoof language","disable":"Stop spoofing language"}'></button>
+								</div>
+							</div>
+
+							<div class="action-block spoof-user-agent-action-block">
+								<div class="action-description">
+									<div class="action-text">
+										<div><strong data-trans data-context="Label" data-comment="Title of a fingerprint protection toggle">
+											Operating system
+										</strong></div>
+										<div class="weak-text" data-trans data-comment="Description of a fingerprint protection toggle">
+											Report the most common operating system (Windows) for your browser.
+										</div>
+									</div>
+
+									<button class="toggle spoof-user-agent-button" data-context="Action" data-comment="Tooltip of a fingerprint protection toggle" data-tooltip-title='{"enable":"Spoof operating system","disable":"Stop spoofing operating system"}'></button>
+								</div>
+							</div>
+
+							<div class="action-block spoof-screen-action-block">
+								<div class="action-description">
+									<div class="action-text">
+										<div><strong data-trans data-context="Label" data-comment="Title of a fingerprint protection toggle">
+											Screen
+										</strong></div>
+										<div class="weak-text" data-trans data-comment="Description of a fingerprint protection toggle">
+											Report a single, common screen (1920×1080) instead of your real resolution and number of screens.
+										</div>
+									</div>
+
+									<button class="toggle spoof-screen-button" data-context="Action" data-comment="Tooltip of a fingerprint protection toggle" data-tooltip-title='{"enable":"Spoof screen","disable":"Stop spoofing screen"}'></button>
+								</div>
+							</div>
+
+							<div class="action-block spoof-hardware-action-block">
+								<div class="action-description">
+									<div class="action-text">
+										<div><strong data-trans data-context="Label" data-comment="Title of a fingerprint protection toggle">
+											Hardware
+										</strong></div>
+										<div class="weak-text" data-trans data-comment="Description of a fingerprint protection toggle">
+											Report a common number of processor cores and amount of memory.
+										</div>
+									</div>
+
+									<button class="toggle spoof-hardware-button" data-context="Action" data-comment="Tooltip of a fingerprint protection toggle" data-tooltip-title='{"enable":"Spoof hardware","disable":"Stop spoofing hardware"}'></button>
+								</div>
+							</div>
+
+							<div class="action-block spoof-webgl-action-block">
+								<div class="action-description">
+									<div class="action-text">
+										<div><strong data-trans data-context="Label" data-comment="Title of a fingerprint protection toggle">
+											Graphics card
+										</strong></div>
+										<div class="weak-text" data-trans data-comment="Description of a fingerprint protection toggle">
+											Report a common graphics card for your operating system instead of your real one.
+										</div>
+									</div>
+
+									<button class="toggle spoof-webgl-button" data-context="Action" data-comment="Tooltip of a fingerprint protection toggle" data-tooltip-title='{"enable":"Spoof graphics card","disable":"Stop spoofing graphics card"}'></button>
+								</div>
+							</div>
+
+							<div class="action-block spoof-canvas-action-block">
+								<div class="action-description">
+									<div class="action-text">
+										<div><strong data-trans data-context="Label" data-comment="Title of a fingerprint protection toggle">
+											Canvas
+										</strong></div>
+										<div class="weak-text" data-trans data-comment="Description of a fingerprint protection toggle">
+											Add invisible noise to images websites read from your browser, different for each site and each server, so they can't be used to follow you.
+										</div>
+									</div>
+
+									<button class="toggle spoof-canvas-button" data-context="Action" data-comment="Tooltip of a fingerprint protection toggle" data-tooltip-title='{"enable":"Spoof canvas","disable":"Stop spoofing canvas"}'></button>
 								</div>
 							</div>
 						</div>

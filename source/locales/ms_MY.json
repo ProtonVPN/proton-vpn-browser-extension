@@ -322,12 +322,6 @@
 			"Disconnected": [
 				"Sambungan terputus"
 			],
-			"Disconnected by another extension": [
-				"Sambungan diputuskan oleh sambungan perisian lain"
-			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Sambungan diputuskan oleh sambungan perisian lain yang telah bersambung ke ${newProxyName}"
-			],
 			"Disconnected, settings were overridden": [
 				"Sambungan terputus, tetapan telah ditindih"
 			],

@@ -298,12 +298,6 @@
 			"Disconnected": [
 				"Rozłączono"
 			],
-			"Disconnected by another extension": [
-				"Rozłączono przez inne rozszerzenie"
-			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Rozłączono przez inne rozszerzenie. Połączono z ${newProxyName}"
-			],
 			"Disconnected, settings were overridden": [
 				"Rozłączono. Ustawienia zostały nadpisane"
 			],

@@ -328,12 +328,6 @@
 			"Disconnected": [
 				"Verbinding verbroken"
 			],
-			"Disconnected by another extension": [
-				"Verbinding verbroken door een andere extensie"
-			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Verbinding verbroken door een andere extensie, die verbinding maakte met ${newProxyName}"
-			],
 			"Disconnected, settings were overridden": [
 				"Verbinding verbroken, instellingen zijn overschreven"
 			],
@@ -518,6 +512,12 @@
 			],
 			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
 				"Wij geven bovenal prioriteit aan uw privacy. We volgen uw surfgedrag niet en houden geen logbestanden bij. Om uw verbinding te verifiëren, wordt uw accountsessie-ID naar onze servers verzonden. Dit is nodig om de extensie te laten werken"
+			],
+			"Websites won't load until your device is back online. This isn't caused by the VPN: your settings are kept and you'll be protected as soon as your internet connection returns.": [
+				"Websites worden pas geladen zodra uw apparaat weer online is. Dit wordt niet veroorzaakt door de VPN: uw instellingen blijven behouden en u bent weer beschermd zodra uw internetverbinding is hersteld."
+			],
+			"You're offline": [
+				"U bent offline"
 			],
 			"You're signed in": [
 				"U bent ingelogd"

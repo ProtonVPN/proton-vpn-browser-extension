@@ -194,6 +194,9 @@
 			"Connect from your browser with ${planName}": [
 				"Connectez-vous depuis votre navigateur en passant à l'abonnement ${planName}."
 			],
+			"Disconnection detected: another extension took control over the proxy parameters. Proton VPN will reconnect automatically once the other VPN or proxy extension is disabled.": [
+				"Nous avons détecté une déconnexion : une autre extension a outrepassé les paramètres du proxy. Proton VPN se reconnectera automatiquement une fois ce VPN ou cette extension de proxy désactivés."
+			],
 			"Network error.": [
 				"Erreur réseau."
 			],
@@ -331,11 +334,11 @@
 			"Disconnected": [
 				"Déconnecté"
 			],
-			"Disconnected by another extension": [
-				"Vous avez été déconnecté par une autre extension."
+			"Disconnected by another extension, it connected to ${newProxyName}. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Vous avez été déconnecté.e par une autre extension de navigateur. Celui-ci s'est connecté à ${newProxyName}. Proton VPN se reconnectera automatiquement une fois cette extension désactivée."
 			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Vous avez été déconnecté par une autre extension. Vous étiez connecté à ${newProxyName}."
+			"Disconnected by another extension. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Vous avez été déconnecté.e par une autre extension. Proton VPN se reconnectera automatiquement une fois cette extension désactivée."
 			],
 			"Disconnected, settings were overridden": [
 				"Vous avez été déconnecté. Les paramètres ont été remplacés."
@@ -521,6 +524,12 @@
 			],
 			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
 				"Nous accordons la priorité absolue à la protection de votre vie privée. Nous ne suivons pas votre navigation et ne conservons aucun journal. Pour authentifier votre connexion, l'identifiant de session de votre compte est envoyé à nos serveurs. Cette opération est nécessaire au bon fonctionnement de l'extension."
+			],
+			"Websites won't load until your device is back online. This isn't caused by the VPN: your settings are kept and you'll be protected as soon as your internet connection returns.": [
+				"Les sites internet ne chargeront pas tant que votre appareil ne sera pas en ligne. Cela n'est pas dû au VPN : vos paramètres sont conservés et vous serez protégé dès que votre connexion internet sera de nouveau active."
+			],
+			"You're offline": [
+				"Vous êtes hors ligne."
 			],
 			"You're signed in": [
 				"Vous êtes connecté"

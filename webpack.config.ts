@@ -11,6 +11,9 @@ import type {Compiler} from 'webpack';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import {baseDomainURL} from './config.ts';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import * as specTokens from './source/js/fingerprint/specTokens.ts';
 
 type ManifestV3 = chrome.runtime.ManifestV3;
 type WebExtensionManifest = browser._manifest.WebExtensionManifest;
@@ -136,6 +139,33 @@ export default function (
 		new CopyWebpackPlugin({
 			patterns: copy,
 		}),
+		{
+			// Static files encoding the fingerprint spec (see specEncoding.ts)
+			apply(compiler: Compiler) {
+				compiler.hooks.thisCompilation.tap(
+					'FingerprintTokens',
+					(compilation) => {
+						compilation.hooks.processAssets.tap(
+							{
+								name: 'FingerprintTokens',
+								stage:
+									compiler.webpack.Compilation.PROCESS_ASSETS_STAGE_ADDITIONAL,
+							},
+							() => {
+								(specTokens.getAllSpecTokens() as string[]).forEach((token) => {
+									compilation.emitAsset(
+										`${specTokens.specTokenDirectory}${token}.js`,
+										new compiler.webpack.sources.RawSource(
+											specTokens.getSpecTokenSource(token),
+										),
+									);
+								});
+							},
+						);
+					},
+				);
+			},
+		},
 		new MiniCssExtractPlugin({
 			filename: '[name].css',
 			chunkFilename: '[id].css',
@@ -170,6 +200,8 @@ export default function (
 			onboarding: './source/js/onboarding.ts',
 			options: './source/js/options.ts',
 			popup: './source/js/popup.ts',
+			fingerprint: './source/js/fingerprint.ts',
+			'fingerprint-relay': './source/js/fingerprint-relay.ts',
 			transmit: './source/js/transmit.ts',
 			['css/popup']: './source/css/popup.scss',
 			['css/onboarding']: './source/css/onboarding.scss',
@@ -205,6 +237,13 @@ export default function (
 					test: /\.(js|jsx|ts|tsx)$/,
 					loader: 'ts-loader',
 					exclude: /node_modules/,
+					options: {
+						compilerOptions: {
+							// Bundles need no .d.ts, and with noEmitOnError, declaration
+							// diagnostics run for each file (~3 min vs ~30 s per build)
+							declaration: false,
+						},
+					},
 				},
 				{
 					test: /\.js$/,

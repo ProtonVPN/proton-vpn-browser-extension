@@ -234,13 +234,17 @@ export const storage = {
 				}
 
 				transactionStart = Date.now();
-				const result = callback(
-					await self.getItem<T, D>(key, defaultValue, storage),
-				);
-				await (typeof result === 'undefined'
-					? self.removeItem(key, storage)
-					: self.setItem(key, result, storage));
-				transactionStart = undefined;
+
+				try {
+					const result = callback(
+						await self.getItem<T, D>(key, defaultValue, storage),
+					);
+					await (typeof result === 'undefined'
+						? self.removeItem(key, storage)
+						: self.setItem(key, result, storage));
+				} finally {
+					transactionStart = undefined;
+				}
 			},
 			async transactionValue<
 				D extends CacheValue<T> | undefined = CacheValue<T> | undefined,

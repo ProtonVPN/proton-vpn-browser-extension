@@ -304,12 +304,6 @@
 			"Disconnected": [
 				"Terputus"
 			],
-			"Disconnected by another extension": [
-				"Koneksi diputuskan oleh ekstensi lain"
-			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Koneksi diputuskan oleh ekstensi lain yang menghubungkan ke ${newProxyName}"
-			],
 			"Disconnected, settings were overridden": [
 				"Koneksi terputus, pengaturan telah ditimpa"
 			],

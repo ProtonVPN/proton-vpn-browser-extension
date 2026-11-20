@@ -234,7 +234,7 @@ export const initSentry = (): Scope => {
 			sendings = sendings.filter((time) => time >= minus10Minutes);
 
 			// Maximum 5 errors per 10 minutes
-			if (sendings.length > 5) {
+			if (sendings.length >= 5) {
 				return null;
 			}
 
@@ -252,7 +252,17 @@ export const initSentry = (): Scope => {
 	return scope;
 };
 
-export const handleError = (error: unknown, sampleRate?: number) => {
+/** Data attached to the Sentry event, never put personal data or secrets in it */
+export type ErrorContext = {
+	tags?: Record<string, string>;
+	extra?: Record<string, unknown>;
+};
+
+export const handleError = (
+	error: unknown,
+	sampleRate?: number,
+	context?: ErrorContext,
+) => {
 	if (
 		!error ||
 		(typeof sampleRate !== 'undefined' && unsafeRandom() >= sampleRate)
@@ -284,7 +294,10 @@ export const handleError = (error: unknown, sampleRate?: number) => {
 
 	lastReport[message] = now;
 
-	initSentry().captureException(getErrorReport(error, message));
+	initSentry().captureException(
+		getErrorReport(error, message),
+		context ? {captureContext: context} : undefined,
+	);
 };
 
 export const watchWithSentry = <T>(action: () => T): T => {

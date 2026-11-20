@@ -194,8 +194,8 @@
 			"Connect from your browser with ${planName}": [
 				"Verbinde dich über deinen Browser mit ${planName}"
 			],
-			"Disconnection detected: another extension took control over the proxy parameters, disable other VPN or proxy extensions and retry": [
-				"Verbindungsabbruch festgestellt: Eine andere Erweiterung hat die Kontrolle über die Proxy-Einstellungen übernommen. Deaktiviere die anderen VPN- oder Proxy-Erweiterungen und versuche es erneut."
+			"Disconnection detected: another extension took control over the proxy parameters. Proton VPN will reconnect automatically once the other VPN or proxy extension is disabled.": [
+				"Verbindungsabbruch festgestellt: Eine andere Erweiterung hat die Kontrolle über die Proxy-Einstellungen übernommen. Proton VPN stellt die Verbindung automatisch wieder her, sobald die andere VPN- oder Proxy-Erweiterung deaktiviert wird."
 			],
 			"Disconnection detected: proxy parameters have been locked by your browser configuration or your organization": [
 				"Verbindungsabbruch festgestellt: Die Proxy-Einstellungen wurden durch deine Browser-Einstellungen oder deine Organisation gesperrt."
@@ -349,11 +349,11 @@
 			"Disconnected": [
 				"Getrennt"
 			],
-			"Disconnected by another extension": [
-				"Getrennt durch eine andere Erweiterung"
+			"Disconnected by another extension, it connected to ${newProxyName}. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Die Verbindung wurde durch eine andere Erweiterung getrennt und mit ${newProxyName} wiederhergestellt. Proton VPN stellt die Verbindung automatisch wieder her, sobald diese Erweiterung deaktiviert wird."
 			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Getrennt durch eine andere Erweiterung, es wurde eine Verbindung zu ${newProxyName} hergestellt"
+			"Disconnected by another extension. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Die Verbindung wurde durch eine andere Erweiterung getrennt. Proton VPN stellt die Verbindung automatisch wieder her, sobald diese Erweiterung deaktiviert wird."
 			],
 			"Disconnected, settings were overridden": [
 				"Getrennt, Einstellungen wurden überschrieben"
@@ -551,6 +551,12 @@
 			],
 			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
 				"Deine Privatsphäre hat für uns oberste Priorität. Wir verfolgen weder dein Surfverhalten noch speichern wir Protokolle. Zur Authentifizierung deiner Verbindung wird die Sitzungs-ID deines Kontos an unsere Server gesendet; dies ist erforderlich, damit die Erweiterung funktioniert."
+			],
+			"Websites won't load until your device is back online. This isn't caused by the VPN: your settings are kept and you'll be protected as soon as your internet connection returns.": [
+				"Websites werden erst geladen, wenn dein Gerät wieder mit dem Internet verbunden ist. Dies liegt nicht am VPN: Deine Einstellungen bleiben erhalten, und du bist wieder geschützt, sobald deine Internetverbindung wiederhergestellt ist."
+			],
+			"You're offline": [
+				"Du bist offline"
 			],
 			"You're signed in": [
 				"Du bist angemeldet"

@@ -1,5 +1,7 @@
 export enum StateChange {
 	SIGN_OUT = 'signOut',
+	/** Session no longer usable (e.g. invalid refresh token), sign out without revoking it */
+	SESSION_EXPIRED = 'sessionExpired',
 	SWITCH_ACCOUNT = 'switchAccount',
 	DISCONNECT = 'disconnect',
 	CONNECT = 'connect',
@@ -31,6 +33,12 @@ export enum BackgroundData {
 
 export type BackgroundExtraData = {
 	[BackgroundData.PM_USER]: object;
+	[StateChange.SESSION_EXPIRED]: SessionExpiredData;
+};
+
+export type SessionExpiredData = {
+	/** Fingerprint of the rejected refresh token, see getRefreshTokenFingerprint() */
+	refreshTokenFingerprint?: string;
 };
 
 export type BackgroundMessage =

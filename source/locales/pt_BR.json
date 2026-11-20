@@ -83,6 +83,9 @@
 			"Next": [
 				"Próximo"
 			],
+			"Open settings": [
+				"Abrir configurações"
+			],
 			"Quick connect": [
 				"Conexão rápida"
 			],
@@ -191,6 +194,12 @@
 			"Connect from your browser with ${planName}": [
 				"Conecte-se de seu navegador com ${planName}"
 			],
+			"Disconnection detected: another extension took control over the proxy parameters. Proton VPN will reconnect automatically once the other VPN or proxy extension is disabled.": [
+				"Desconexão detectada: outra extensão assumiu o controle das configurações de proxy. O Proton VPN se reconectará automaticamente assim que a outra extensão de VPN ou proxy for desativada."
+			],
+			"Disconnection detected: proxy parameters have been locked by your browser configuration or your organization": [
+				"Desconexão detectada: Parâmetros da proxy foram bloqueados pelas configurações do seu navegador ou da sua organização"
+			],
 			"Network error.": [
 				"Erro de rede."
 			],
@@ -217,6 +226,12 @@
 			],
 			"Something went wrong. If the problem persists, please try to re-install the extension": [
 				"Ocorreu um erro. Se o problema persistir tente reinstalar a extensão"
+			],
+			"Unable to connect as another extension controls the proxy parameters, disable other VPN or proxy extensions and retry": [
+				"Não foi possível conectar porque outra extensão controla os parâmetros de proxy. Desative outras extensões de VPN ou proxy e tente novamente."
+			],
+			"Unable to connect as the proxy parameters are locked by your browser configuration or your organization": [
+				"Não foi possível conectar porque os parâmetros de proxy estão bloqueados pela configuração do navegador ou pela sua organização"
 			],
 			"Unable to find appropriate server, try to logout and login again if it persists.": [
 				"Não é possível encontrar o servidor apropriado. Tente fazer desconectar e iniciar a sessão novamente se o problema persistir"
@@ -249,6 +264,12 @@
 			],
 			"Access Proton VPN via this icon": [
 				"Acesse a VPN Proton através deste ícone"
+			],
+			"Allow Proton VPN to protect your traffic in incognito windows. Open the menu → Extensions → Manage Extensions → Proton VPN → Details → Allow in Incognito.": [
+				"Permita a Proton VPN a proteger o seu tráfego em janelas anônimas. Abra o menu → Extensões → Gerenciar Extensões → Proton VPN → Detalhes → Permitir em Janelas Anônimas"
+			],
+			"Allow Proton VPN to protect your traffic in private windows. Open the menu → Add-ons and themes → Proton VPN → Details → Run in Private Windows: Allow.": [
+				"Permita que o Proton VPN proteja seu tráfego em janelas privativas. Abra o menu → Extensões e temas → Proton VPN → Detalhes → Executar em janelas privativas: Permitir."
 			],
 			"Allow VPN permissions": [
 				"Conceder permissões da VPN"
@@ -328,17 +349,20 @@
 			"Disconnected": [
 				"Desconectado"
 			],
-			"Disconnected by another extension": [
-				"Desconectado por outra extensão"
+			"Disconnected by another extension, it connected to ${newProxyName}. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Desconectado por outra extensão, que se conectou a ${newProxyName}. O Proton VPN se reconectará automaticamente assim que essa extensão for desativada."
 			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Desconectado por outra extensão. Conectou a ${newProxyName}."
+			"Disconnected by another extension. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Desconectado por outra extensão. O Proton VPN se reconectará automaticamente assim que essa extensão for desativada."
 			],
 			"Disconnected, settings were overridden": [
 				"Desconectado, as configurações foram substituídas"
 			],
 			"Disconnected, settings were overridden to ${newProxyName}": [
 				"Desconectado, as configurações foram substituídas por ${newProxyName}"
+			],
+			"Disconnection detected: the proxy parameters were locked by your browser configuration or your organization": [
+				"Desconexão detectada: os parâmetros de proxy foram bloqueados pela configuração do navegador ou pela sua organização"
 			],
 			"Emit system notifications on connection and disconnection events.": [
 				"Emitir notificações de sistema em eventos de conexão e desconexão."
@@ -409,6 +433,9 @@
 			],
 			"Open source VPN": [
 				"Uma VPN de código aberto"
+			],
+			"Open the Details tab above": [
+				"Abra a aba Detalhes acima"
 			],
 			"Open the Extensions menu": [
 				"Abrir o menu de extensões"
@@ -492,8 +519,14 @@
 			"To get started, you’ll need to enable VPN permissions on your browser.": [
 				"Para começar, terá de ativar as permissões VPN no seu navegador."
 			],
+			"To protect traffic in private windows too:": [
+				"Para proteger também o tráfego em janelas privativas:"
+			],
 			"Tor servers such as ${logical.Name} are not currently supported in the browser extension": [
 				"Servidores Tor como ${logical.Name} não são atualmente suportados na extensão do navegador."
+			],
+			"Under Run in Private Windows, select Allow": [
+				"Em Executar em janelas privativas, selecione Permitir"
 			],
 			"Upgrade": [
 				"Fazer upgrade"
@@ -518,6 +551,12 @@
 			],
 			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
 				"Priorizamos sua privacidade acima de tudo. Não rastreamos a sua navegação e não guardamos registos. Para autenticar sua conexão, o ID da sessão da sua conta é enviado para nossos servidores, isso é necessário para que a extensão funcione"
+			],
+			"Websites won't load until your device is back online. This isn't caused by the VPN: your settings are kept and you'll be protected as soon as your internet connection returns.": [
+				"Os sites não carregarão até que seu dispositivo volte a ficar online. Isso não é causado pela VPN: suas configurações foram mantidas, e você estará protegido assim que a conexão com a internet voltar."
+			],
+			"You're offline": [
+				"Você está desconectado"
 			],
 			"You're signed in": [
 				"Você iniciou sessão"

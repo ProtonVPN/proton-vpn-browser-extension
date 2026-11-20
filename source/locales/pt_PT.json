@@ -265,12 +265,6 @@
 			"Disconnected": [
 				"Desligado"
 			],
-			"Disconnected by another extension": [
-				"Desligado por outra extensão"
-			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Foi desligado por outra extensão. Ligou-se a ${newProxyName}."
-			],
 			"Disconnected, settings were overridden": [
 				"Está desconectado. As definições foram canceladas."
 			],
@@ -410,6 +404,12 @@
 			],
 			"VPN Features": [
 				"Funcionalidades VPN"
+			],
+			"Websites won't load until your device is back online. This isn't caused by the VPN: your settings are kept and you'll be protected as soon as your internet connection returns.": [
+				"Os sites não carregarão até que o seu dispositivo volte a ficar online. Isto não é causado pela VPN: as suas definições são mantidas e estará protegido assim que a sua ligação à internet for restabelecida."
+			],
+			"You're offline": [
+				"Não está ligado"
 			],
 			"You're signed in": [
 				"Iniciou sessão"

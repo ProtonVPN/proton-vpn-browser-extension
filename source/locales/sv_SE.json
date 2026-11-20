@@ -194,6 +194,9 @@
 			"Connect from your browser with ${planName}": [
 				"Anslut från din webbläsare med ${planName}"
 			],
+			"Disconnection detected: another extension took control over the proxy parameters. Proton VPN will reconnect automatically once the other VPN or proxy extension is disabled.": [
+				"Frånkoppling upptäcktes: ett annat tillägg tog kontroll över proxy-parametrarna. Proton VPN kommer att återansluta automatiskt då det tillägget är inaktiverat."
+			],
 			"Network error.": [
 				"Nätverksfel."
 			],
@@ -328,11 +331,11 @@
 			"Disconnected": [
 				"Frånkopplad"
 			],
-			"Disconnected by another extension": [
-				"Bortkopplad av annan utökning"
+			"Disconnected by another extension, it connected to ${newProxyName}. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Frånkopplad av ett annat tillägg, det kopplade till  ${newProxyName}. Proton VPN kommer att återkoppla automatiskt då det tillägget är inaktiverat."
 			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Frånkopplad av en annan anknytning, kopplades den till ${newProxyName}"
+			"Disconnected by another extension. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Frånkopplad av ett annat tillägg. Proton VPN kommer att återansluta automatiskt när det tillägget är inaktiverat."
 			],
 			"Disconnected, settings were overridden": [
 				"Frånkopplad, inställningar åsidosattes"
@@ -512,6 +515,12 @@
 			],
 			"VPN Features": [
 				"VPN-funktioner"
+			],
+			"Websites won't load until your device is back online. This isn't caused by the VPN: your settings are kept and you'll be protected as soon as your internet connection returns.": [
+				"Hemsidor kommer inte att laddas förrän din enhet är tillbaka online. Detta är inte orsakat av din VPN: dina inställningar behålls och du kommer att skyddas så snart din internetuppkoppling kommer tlllbaka."
+			],
+			"You're offline": [
+				"Du är offline"
 			],
 			"You're signed in": [
 				"Du är inloggad"

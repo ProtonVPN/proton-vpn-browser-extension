@@ -148,9 +148,11 @@ export const getLogicalsFilteredByChoice = (
 					return false;
 				}
 
+				// The logical must have all the required features (extra ones are fine)
 				if (
 					choice.requiredFeatures &&
-					(logicial.Features & choice.requiredFeatures) === 0
+					(logicial.Features & choice.requiredFeatures) !==
+						choice.requiredFeatures
 				) {
 					return false;
 				}

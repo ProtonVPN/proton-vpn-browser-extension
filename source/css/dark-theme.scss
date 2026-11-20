@@ -1,4 +1,4 @@
-@import "./sizes";
+@use "./sizes" as *;
 
 @mixin dark-theme {
 	#modal-error,
@@ -58,6 +58,22 @@
 
 			&:hover {
 				background: var(--middle-gray);
+			}
+		}
+	}
+
+	.error-message.fingerprint-suggestion {
+		--suggestion-color: rgb(94, 196, 238);
+
+		background: rgb(35, 158, 206, 0.12);
+		border-color: rgb(94, 196, 238, 0.3);
+		color: var(--text-weak);
+
+		.close-button {
+			background: rgb(35, 158, 206);
+
+			&:hover {
+				background: rgb(94, 196, 238);
 			}
 		}
 	}

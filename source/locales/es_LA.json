@@ -194,8 +194,8 @@
 			"Connect from your browser with ${planName}": [
 				"Conéctese desde el navegador con ${planName}"
 			],
-			"Disconnection detected: another extension took control over the proxy parameters, disable other VPN or proxy extensions and retry": [
-				"Desconexión detectada: otra extensión tomó el control de los parámetros del proxy. Desactive otras extensiones de VPN o proxy e intente de nuevo."
+			"Disconnection detected: another extension took control over the proxy parameters. Proton VPN will reconnect automatically once the other VPN or proxy extension is disabled.": [
+				"Desconexión detectada: otra extensión tomó el control de los parámetros del proxy. Proton VPN se reconectará automáticamente una vez que se desactive la otra VPN o extensión proxy."
 			],
 			"Disconnection detected: proxy parameters have been locked by your browser configuration or your organization": [
 				"Desconexión detectada: los parámetros del proxy han sido bloqueados por la configuración de su navegador u organización"
@@ -349,11 +349,11 @@
 			"Disconnected": [
 				"Desconectado"
 			],
-			"Disconnected by another extension": [
-				"Desconectado por otra extensión"
+			"Disconnected by another extension, it connected to ${newProxyName}. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Desconectado por otra extensión, se conectó a ${newProxyName}. Proton VPN se reconectará automáticamente una vez que se desactive esa extensión."
 			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Desconectado por otra extensión. Estaba conectado a ${newProxyName}."
+			"Disconnected by another extension. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Desconectado por otra extensión. Proton VPN se reconectará automáticamente una vez que se desactive esa extensión."
 			],
 			"Disconnected, settings were overridden": [
 				"No hay conexión, se anularon los ajustes"
@@ -551,6 +551,12 @@
 			],
 			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
 				"Se prioriza su privacidad por encima de todo. No rastreamos su navegación ni guardamos registros. Para autenticar su conexión, el ID de sesión de su cuenta se envía a los servidores. Esto es necesario para que la extensión funcione."
+			],
+			"Websites won't load until your device is back online. This isn't caused by the VPN: your settings are kept and you'll be protected as soon as your internet connection returns.": [
+				"Los sitios web no se cargarán hasta que su dispositivo vuelva a estar en línea. Esto no se debe a la VPN: sus ajustes se mantienen y estará protegido en cuanto se restablezca la conexión a internet."
+			],
+			"You're offline": [
+				"Está sin conexión"
 			],
 			"You're signed in": [
 				"Sesión iniciada"

@@ -325,12 +325,6 @@
 			"Disconnected": [
 				"Imetenganishwa"
 			],
-			"Disconnected by another extension": [
-				"Imetenganishwa na kiendelezi kingine"
-			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Imetenganishwa na kiendelezi kingine, ambacho kimeunganishwa na ${newProxyName}"
-			],
 			"Disconnected, settings were overridden": [
 				"Imetenganishwa, mipangilio imebadilishwa"
 			],

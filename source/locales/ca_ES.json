@@ -194,8 +194,8 @@
 			"Connect from your browser with ${planName}": [
 				"Connecteu-vos des del vostre navegador amb ${planName}"
 			],
-			"Disconnection detected: another extension took control over the proxy parameters, disable other VPN or proxy extensions and retry": [
-				"S'ha detectat una desconnexió: una altra extensió ha pres el control dels paràmetres del servidor intermediari. Desactiveu les altres extensions de la VPN o del servidor intermediari i torneu-ho a intentar."
+			"Disconnection detected: another extension took control over the proxy parameters. Proton VPN will reconnect automatically once the other VPN or proxy extension is disabled.": [
+				"S'ha detectat una desconnexió: una altra extensió ha pres el control dels paràmetres del servidor intermediari. Proton VPN es tornarà a connectar automàticament un cop deshabilitada l'altra extensió de la VPN o del servidor intermediari."
 			],
 			"Disconnection detected: proxy parameters have been locked by your browser configuration or your organization": [
 				"S'ha detectat una desconnexió: els paràmetres del servidor intermediari han estat bloquejats per la configuració del vostre navegador o la vostra organització"
@@ -349,11 +349,11 @@
 			"Disconnected": [
 				"Desconnectat"
 			],
-			"Disconnected by another extension": [
-				"Desconnectat per una altra extensió"
+			"Disconnected by another extension, it connected to ${newProxyName}. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Una altra extensió l'ha desconnectat i s'ha connectat a ${newProxyName}. Proton VPN es tornarà a connectar automàticament un cop es deshabiliti aquesta extensió."
 			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Si us ha desconnectat per una altra extensió, que connectava a ${newProxyName}."
+			"Disconnected by another extension. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Una altra extensió l'ha desconnectat. Proton VPN es tornarà a connectar automàticament un cop es deshabiliti aquesta extensió."
 			],
 			"Disconnected, settings were overridden": [
 				"S'ha tancat la sessió. Les preferències s'han substituït."
@@ -551,6 +551,12 @@
 			],
 			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
 				"Prioritzem la vostra privacitat per damunt de tot. No fem un seguiment de la vostra navegació ni en guardem cap registre. Per autenticar la vostra connexió, l'identificador de sessió del vostre compte s'envia als nostres servidors; això és necessari perquè l'extensió funcioni."
+			],
+			"Websites won't load until your device is back online. This isn't caused by the VPN: your settings are kept and you'll be protected as soon as your internet connection returns.": [
+				"Els llocs web no es carregaran fins que el vostre dispositiu torni a estar en línia. Això no ho provoca la VPN: es mantenen les vostres preferències i estareu protegits tan aviat com torni la vostra connexió a internet."
+			],
+			"You're offline": [
+				"Esteu fora de línia"
 			],
 			"You're signed in": [
 				"Has iniciat sessió"

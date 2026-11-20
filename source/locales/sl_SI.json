@@ -331,12 +331,6 @@
 			"Disconnected": [
 				"Povezava je prekinjena"
 			],
-			"Disconnected by another extension": [
-				"Prekinitev zaradi druge razširitve"
-			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Povezavo je prekinila druga razširitev, povezala pa se je z ${newProxyName}"
-			],
 			"Disconnected, settings were overridden": [
 				"Prekinjena povezava, nastavitve so bile prepisane"
 			],

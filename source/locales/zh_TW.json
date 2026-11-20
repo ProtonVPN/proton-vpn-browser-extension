@@ -268,12 +268,6 @@
 			"Disconnected": [
 				"已中斷連線"
 			],
-			"Disconnected by another extension": [
-				"由其他擴充功能中斷連線"
-			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"由其他擴充功能中斷連線，其已連線至 ${newProxyName}"
-			],
 			"Disconnected, settings were overridden": [
 				"已中斷連線，設定值已被覆寫"
 			],
@@ -417,6 +411,9 @@
 			],
 			"VPN Features": [
 				"VPN 功能"
+			],
+			"You're offline": [
+				"您處於離線狀態"
 			],
 			"You're signed in": [
 				"您已登入"

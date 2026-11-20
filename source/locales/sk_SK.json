@@ -200,8 +200,8 @@
 			"Connect from your browser with ${planName}": [
 				"Prihláste sa z vášho prehliadača zmenou predplatného na ${planName}."
 			],
-			"Disconnection detected: another extension took control over the proxy parameters, disable other VPN or proxy extensions and retry": [
-				"Zistené prerušenie spojenia: iné rozšírenie prevzalo kontrolu nad parametrami proxy; deaktivujte ostatné rozšírenia VPN alebo proxy a skúste to znova"
+			"Disconnection detected: another extension took control over the proxy parameters. Proton VPN will reconnect automatically once the other VPN or proxy extension is disabled.": [
+				"Zistené prerušenie spojenia: iné rozšírenie prevzalo kontrolu nad parametrami proxy. Proton VPN sa automaticky opäť pripojí, akonáhle bude druhé rozšírenie VPN alebo proxy deaktivované."
 			],
 			"Disconnection detected: proxy parameters have been locked by your browser configuration or your organization": [
 				"Zistené prerušenie spojenia: parametre proxy boli zablokované nastaveniami vášho prehliadača alebo vašou organizáciou"
@@ -355,11 +355,11 @@
 			"Disconnected": [
 				"Odpojené"
 			],
-			"Disconnected by another extension": [
-				"Odpojené iným rozšírením"
+			"Disconnected by another extension, it connected to ${newProxyName}. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Po odpojení spôsobenom iným rozšírením sa pripojilo k ${newProxyName}. Akonáhle bude toto rozšírenie deaktivované, Proton VPN sa automaticky opäť pripojí."
 			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Odpojené iným rozšírením, pripojené k ${newProxyName}"
+			"Disconnected by another extension. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Pripojenie bolo prerušené iným rozšírením. Proton VPN sa automaticky opäť pripojí, akonáhle bude toto rozšírenie deaktivované."
 			],
 			"Disconnected, settings were overridden": [
 				"Odpojené, nastavenia boli prepísané"
@@ -561,6 +561,12 @@
 			],
 			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
 				"Vaše súkromie je pre nás na prvom mieste. Nesledujeme vaše prehliadanie a neuchovávame žiadne záznamy. Na overenie vášho pripojenia sa na naše servery odosiela identifikačný kód vašej relácie účtu; je to nevyhnutné na fungovanie rozšírenia"
+			],
+			"Websites won't load until your device is back online. This isn't caused by the VPN: your settings are kept and you'll be protected as soon as your internet connection returns.": [
+				"Webové stránky sa nebudú načítať, kým sa vaše zariadenie opäť nepripojí k internetu. Nie je to spôsobené VPN: vaše nastavenia zostanú zachované a hneď, ako sa obnoví vaše internetové pripojenie, ste opäť v bezpečí."
+			],
+			"You're offline": [
+				"Ste v režime offline"
 			],
 			"You're signed in": [
 				"Ste prihlásený"

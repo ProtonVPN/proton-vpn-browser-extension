@@ -54,6 +54,9 @@ export const authCheck = false;
 
 export const splitTunnelingEnabled = true;
 
+/** Proof of concept: spoof fingerprinting values while connected */
+export const fingerprintProtectionEnabled = true;
+
 export const secureCoreEnabled = true;
 
 export const autoConnectEnabled = true;

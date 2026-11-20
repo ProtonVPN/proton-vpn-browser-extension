@@ -304,12 +304,6 @@
 			"Disconnected": [
 				"ยกเลิกการเชื่อมต่อแล้ว"
 			],
-			"Disconnected by another extension": [
-				"ถูกยกเลิกการเชื่อมต่อโดยส่วนขยายอื่น"
-			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"ถูกยกเลิกการเชื่อมต่อโดยส่วนขยายอื่น ซึ่งเชื่อมต่อไปยัง ${newProxyName}"
-			],
 			"Disconnected, settings were overridden": [
 				"ยกเลิกการเชื่อมต่อแล้ว การตั้งค่าถูกแทนที่"
 			],

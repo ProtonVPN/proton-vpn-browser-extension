@@ -200,8 +200,8 @@
 			"Connect from your browser with ${planName}": [
 				"Падключайцеся з браўзера пры дапамозе ${planName}"
 			],
-			"Disconnection detected: another extension took control over the proxy parameters, disable other VPN or proxy extensions and retry": [
-				"Выяўлена адключэнне: іншае пашырэнне ўзяло кантроль над параметрамі проксі. Адключыце староннія пашырэнні VPN або проксі і паўтарыце спробу"
+			"Disconnection detected: another extension took control over the proxy parameters. Proton VPN will reconnect automatically once the other VPN or proxy extension is disabled.": [
+				"Выяўлена адключэнне: іншае пашырэнне ўзяло пад кантроль параметры проксі. Proton VPN аўтаматычна адновіць падключэнне пасля таго, як іншы VPN або проксі будуць адключаны."
 			],
 			"Disconnection detected: proxy parameters have been locked by your browser configuration or your organization": [
 				"Выяўлена адключэнне: параметры проксі былі заблакіраваны канфігурацыяй вашага браўзера або вашай арганізацыяй"
@@ -355,11 +355,11 @@
 			"Disconnected": [
 				"Адключана"
 			],
-			"Disconnected by another extension": [
-				"Адключана іншым пашырэннем"
+			"Disconnected by another extension, it connected to ${newProxyName}. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Падключэнне было адноўлена з дапамогай ${newProxyName}, паколькі сетка была адключана іншым пашырэннем. Proton VPN аўтаматычна адновіць падключэнне пасля адключэння гэтага пашырэння."
 			],
-			"Disconnected by another extension, it connected to ${newProxyName}": [
-				"Адключана іншым пашырэннем, а падключана да ${newProxyName}"
+			"Disconnected by another extension. Proton VPN will reconnect automatically once that extension is disabled.": [
+				"Падключэнне разарвана іншым пашырэннем. Proton VPN аўтаматычна адновіць падключэнне пасля адключэння гэтага пашырэння."
 			],
 			"Disconnected, settings were overridden": [
 				"Адключана. Налады былі перавызначаны"
@@ -561,6 +561,12 @@
 			],
 			"We prioritize your privacy above all. We don't track your browsing and keep no logs. To authenticate your connection, your account session ID is sent to our servers, this is required for the extension to work": [
 				"Наша каманда ставіць вашу прыватнасць вышэй за ўсё. Мы не сочым за тым, якія вэб-сайты вы наведваеце і не захоўваем журналы"
+			],
+			"Websites won't load until your device is back online. This isn't caused by the VPN: your settings are kept and you'll be protected as soon as your internet connection returns.": [
+				"Вэб-сайты не будуць грузіцца пакуль ваша прылада не будзе зноў падключана да інтэрнэту. Гэта не звязана з VPN: вашы налады захоўваюцца, а абаронена будзе адноўлена пасля аднаўлення падключэння."
+			],
+			"You're offline": [
+				"Вы па-за сеткай"
 			],
 			"You're signed in": [
 				"Вы ўвайшлі"
