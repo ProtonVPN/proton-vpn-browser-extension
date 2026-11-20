@@ -8,7 +8,7 @@ import type {Logical} from '../../vpn/Logical';
 import type {LogicalBag} from './getLogicalsCitiesAndFeatures';
 import type {PopupConnectionState} from './loadConnectionState';
 import type {ErrorDump, ServerSummary} from '../../vpn/ConnectionState';
-import type {ApiError} from '../../api';
+import type {ApiError} from '../../api/ApiError';
 
 export const handleMessagesForPopup = (
 	logicals: LogicalBag,

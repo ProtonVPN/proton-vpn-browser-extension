@@ -1,6 +1,7 @@
 'use background';
 import type {User} from './User';
-import {fetchJson, isUnauthorizedError} from '../../api';
+import {fetchJson} from '../../api/fetchJson';
+import {isUnauthorizedError} from '../../api/errorGuards';
 import {readSession} from '../readSession';
 import {refreshToken} from '../refreshToken';
 import {getAccessToken} from '../getAccessToken';

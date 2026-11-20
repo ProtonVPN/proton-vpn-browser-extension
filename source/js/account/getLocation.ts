@@ -1,5 +1,5 @@
-import type {ResponseResult} from '../api';
-import {fetchJson} from '../api';
+import type {ResponseResult} from '../api/ApiError';
+import {fetchJson} from '../api/fetchJson';
 import type {IpLocation} from './IpLocation';
 import {isConnected} from '../vpn/connectedServer';
 import type {Coordinates} from '../tools/Coordinates';

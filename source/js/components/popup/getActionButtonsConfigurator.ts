@@ -3,7 +3,7 @@ import {onClick} from '../onClick';
 import {leaveWindowForTab} from '../../tools/openTab';
 import {forgetAccount} from '../../account/forgetAccount';
 import {manageAccountURL} from '../../config';
-import {ErrorActionCode} from '../../api';
+import {ErrorActionCode} from '../../api/ApiError';
 import {BackgroundAction, StateChange} from '../../messaging/MessageType';
 import {setDisplayStyle} from '../../tools/setDisplayStyle';
 import {sendMessageToBackground} from '../../tools/sendMessageToBackground';

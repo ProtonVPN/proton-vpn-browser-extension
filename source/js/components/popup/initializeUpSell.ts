@@ -1,7 +1,7 @@
 'use popup';
 import {upsell} from '../../tools/upsell';
 import {getUpdateError} from '../../tools/update';
-import type {ApiError} from '../../api';
+import type {ApiError} from '../../api/ApiError';
 import type {ErrorDump} from '../../vpn/ConnectionState';
 import type {User} from '../../account/user/User';
 import type {PopupConnectionState} from './loadConnectionState';

@@ -3,7 +3,7 @@ import {getLogicalById} from '../../vpn/getLogicals';
 import type {ErrorDump} from '../../vpn/ConnectionState';
 import {sendMessageToBackground} from '../../tools/sendMessageToBackground';
 import {appendUpgradeParams as doAppendUpgradeParams} from '../../account/appendUpgradeParams';
-import type {ApiError} from '../../api';
+import type {ApiError} from '../../api/ApiError';
 import type {User} from '../../account/user/User';
 import {storage} from '../../tools/storage';
 import {triggerPromise} from '../../tools/triggerPromise';

@@ -4,7 +4,7 @@ import {loadCachedUser} from '../account/user/loadCachedUser';
 import {fetchWithUserInfo} from '../account/fetchWithUserInfo';
 import {Feature} from '../vpn/Feature';
 import {type Choice, getLastChoice} from '../vpn/lastChoice';
-import {fetchApi, jsonRequest} from '../api';
+import {fetchApi, jsonRequest} from '../api/fetchApi';
 import {storage} from './storage';
 import {telemetryEnabled} from '../config';
 import {getBrowser} from './getBrowser';

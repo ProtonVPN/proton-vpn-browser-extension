@@ -1,6 +1,6 @@
 'use popup';
 import {handleError} from '../../tools/sentry';
-import type {ApiError} from '../../api';
+import type {ApiError} from '../../api/ApiError';
 import {storage} from '../../tools/storage';
 import {getErrorMessage} from '../../tools/getErrorMessage';
 import type {ErrorDump} from '../../vpn/ConnectionState';

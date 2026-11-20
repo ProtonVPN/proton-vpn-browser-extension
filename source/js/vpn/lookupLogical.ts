@@ -1,5 +1,5 @@
 'use popup';
-import {isNotFoundError} from '../api';
+import {isNotFoundError} from '../api/errorGuards';
 import {fetchWithUserInfo} from '../account/fetchWithUserInfo';
 import {getCountryAndCoordinates} from '../account/getLocation';
 import {warn} from '../log/log';

@@ -1,5 +1,5 @@
-import type {WithResponse} from '../api';
-import {isNotModified} from '../api';
+import type {WithResponse} from '../api/ApiError';
+import {isNotModified} from '../api/errorGuards';
 import {triggerPromise} from '../tools/triggerPromise';
 import {fetchWithUserInfo} from '../account/fetchWithUserInfo';
 import {getCountryAndCoordinates} from '../account/getLocation';

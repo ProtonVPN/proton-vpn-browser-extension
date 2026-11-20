@@ -1,4 +1,4 @@
-import {fetchJson} from '../api';
+import {fetchJson} from '../api/fetchJson';
 import {type CacheWrappedValue, Storage, storage} from '../tools/storage';
 import type {Logical} from './Logical';
 import {getCacheAge} from '../tools/getCacheAge';

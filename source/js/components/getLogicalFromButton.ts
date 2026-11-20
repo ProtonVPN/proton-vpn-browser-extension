@@ -13,7 +13,7 @@ import {
 	requireRandomLogical,
 } from '../vpn/getLogical';
 import {filterLogicalsWithCurrentFeatures} from '../vpn/filterLogicalsWithCurrentFeatures';
-import type {ApiError} from '../api';
+import type {ApiError} from '../api/ApiError';
 import type {ErrorDump} from '../vpn/ConnectionState';
 
 type HandleableError = ApiError | Error | ErrorDump;

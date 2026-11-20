@@ -1,6 +1,6 @@
 'use popup';
 import {configureCallbackOnce} from '../../tools/configureCallbackOnce';
-import type {ApiError} from '../../api';
+import type {ApiError} from '../../api/ApiError';
 import type {ErrorDump} from '../../vpn/ConnectionState';
 
 export const getErrorHandler = () => {

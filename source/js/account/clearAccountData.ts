@@ -1,5 +1,5 @@
 'use background';
-import {fetchApi} from '../api';
+import {fetchApi} from '../api/fetchApi';
 import {triggerPromise} from '../tools/triggerPromise';
 import {persistentlyStoredSession, storedSession} from './readSession';
 import {forgetUser} from './user/forgetUser';

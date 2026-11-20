@@ -1,7 +1,7 @@
 import type {CacheWrappedValue, Fetching} from '../tools/storage';
 import {storage} from '../tools/storage';
 import {getFeatureFlagTTL} from '../intervals';
-import {fetchJson} from '../api';
+import {fetchJson} from '../api/fetchJson';
 import {useCache} from '../tools/useCache';
 
 type FeatureRecord = Record<string, {enabled: boolean}>;

@@ -22,7 +22,7 @@ import {
 	initializeInlineParagraph,
 	setServerCount,
 } from './initializeInlineParagraph';
-import type {ApiError} from '../../api';
+import type {ApiError} from '../../api/ApiError';
 import {
 	getCensoredResponse,
 	getLastCensorshipDetectionResult,

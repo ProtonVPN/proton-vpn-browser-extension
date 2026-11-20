@@ -1,7 +1,8 @@
 'use popup';
 import {requireUser} from '../requireUser';
 import {RefreshTokenError} from '../RefreshTokenError';
-import {type ApiError, isUnauthorizedError} from '../../api';
+import type {ApiError} from '../../api/ApiError';
+import {isUnauthorizedError} from '../../api/errorGuards';
 import {saveSession} from '../saveSession';
 
 export const loadUserForView = async (

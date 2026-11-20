@@ -1,5 +1,5 @@
 'use background';
-import {fetchJson} from '../../api';
+import {fetchJson} from '../../api/fetchJson';
 import type {Session} from '../Session';
 import {Storage, storage} from '../../tools/storage';
 import {triggerPromise} from '../../tools/triggerPromise';

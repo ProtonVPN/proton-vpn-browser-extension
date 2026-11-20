@@ -31,6 +31,12 @@ export const defineState = <
 export const getCurrentStateIfDefined = (): ConnectionState | undefined =>
 	currentState;
 
+/**
+ * Current state, typed as defined: it is created by getCurrentState()
+ * before any state definition reads it.
+ */
+export const current = (): ConnectionState => currentState as ConnectionState;
+
 /** Placeholder state until the actual one is restored from storage */
 export const createInitialState = (): ConnectionState => {
 	currentState = {data: {}} as ConnectionState;

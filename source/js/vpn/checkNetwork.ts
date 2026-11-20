@@ -1,9 +1,9 @@
 'use background';
-import type {ApiError} from '../api';
-import {isNetworkError} from '../api';
+import type {ApiError} from '../api/ApiError';
+import {isNetworkError} from '../api/errorGuards';
 import {setButton} from '../tools/browserAction';
 import {c} from '../tools/translate';
-import {getCurrentState} from '../state';
+import {getCurrentState} from './state/bootstrap';
 import {broadcastMessage} from '../tools/broadcastMessage';
 import {warn} from '../log/log';
 import {handleError} from '../tools/sentry';

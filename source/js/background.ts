@@ -13,9 +13,15 @@ import {detectCensorship} from './vpn/detectCensorship';
 import {initPageNetworkErrorWatcher} from './vpn/initPageNetworkErrorWatcher';
 import {initSentry} from './tools/sentry';
 import {setProxyToWaiterHost} from './tools/proxy';
+import {usesFirefoxProxySettings} from './vpn/proxy/usesFirefoxProxySettings';
 import {initPrivateWindowsNotification} from './vpn/privateWindows/initPrivateWindowsNotification';
 
-triggerPromise(setProxyToWaiterHost());
+// In Firefox, proxy.onRequest holds requests until the state is restored
+// (see setupHandleProxyRequest), a dead-end would make them fail instead
+if (!usesFirefoxProxySettings()) {
+	triggerPromise(setProxyToWaiterHost());
+}
+
 initSentry();
 initAuthInterceptor();
 initMessaging();

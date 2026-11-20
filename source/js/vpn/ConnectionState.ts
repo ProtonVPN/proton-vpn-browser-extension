@@ -1,7 +1,7 @@
 /// <reference types="firefox-webext-browser"/>
 import type {ProxyInfo} from './proxy/ProxyInfo';
 import type {ProxyAuthentication} from './proxy/ProxyAuthentication';
-import type {ApiError} from '../api';
+import type {ApiError} from '../api/ApiError';
 import type {SettingChange} from '../messaging/MessageType';
 import type {Credentials} from '../account/credentials/Credentials';
 import type {SplitTunnelingMode} from './WebsiteFilter';

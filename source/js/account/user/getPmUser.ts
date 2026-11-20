@@ -1,5 +1,6 @@
 'use background';
-import {fetchJson, isUnauthorizedError} from '../../api';
+import {fetchJson} from '../../api/fetchJson';
+import {isUnauthorizedError} from '../../api/errorGuards';
 import {getPmUserTTL, getUserBlockingUpdateTTL} from '../../intervals';
 import {getCacheAge} from '../../tools/getCacheAge';
 import {GroupResponder} from '../../tools/GroupResponder';

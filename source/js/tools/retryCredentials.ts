@@ -1,9 +1,10 @@
 'use background';
-import {getCredentials} from '../account/credentials/getConnectionCredentials';
 import {c} from '../tools/translate';
-import {disconnect, getCurrentState} from '../state';
-import type {ApiError} from '../api';
 import {milliSeconds} from '../tools/milliSeconds';
+import {getCredentials} from '../account/credentials/getConnectionCredentials';
+import {disconnect} from '../vpn/state/actions';
+import {getCurrentState} from '../vpn/state/bootstrap';
+import type {ApiError} from '../api/ApiError';
 
 let checkingCredentials = false;
 let lastRetry = 0;

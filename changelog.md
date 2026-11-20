@@ -1,3 +1,7 @@
+# 1.3.8
+
+- Firefox: hold page loading until the proxy is ready
+
 # 1.3.7
 
 - Improve user plan change detection

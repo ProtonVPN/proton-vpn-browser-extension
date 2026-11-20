@@ -1,7 +1,7 @@
 'use popup';
 import {c, msgid} from './translate';
 import {getServersCount} from '../vpn/getServersCount';
-import type {ApiError} from '../api';
+import type {ApiError} from '../api/ApiError';
 
 const getUnlockSentence = (servers: string, countries: string) =>
 	/*

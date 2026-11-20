@@ -1,7 +1,7 @@
 'use background';
 import {clearPending} from '../tools/proxyAuth';
 import {authHandler} from './authHandler';
-import {getCurrentState} from '../state';
+import {getCurrentState} from './state/bootstrap';
 import {getCredentials} from '../account/credentials/getConnectionCredentials';
 import {triggerPromise} from '../tools/triggerPromise';
 import {watchWithSentry} from '../tools/sentry';

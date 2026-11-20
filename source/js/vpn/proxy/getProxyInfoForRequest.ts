@@ -5,7 +5,7 @@ import {
 	proxyLocalNetworkExclusion,
 	scheme,
 } from '../../config';
-import {isExcludedFromProxy, isIncludedIntoProxy} from '../../api';
+import {isExcludedFromProxy, isIncludedIntoProxy} from './proxyExclusion';
 import type {Credentials} from '../../account/credentials/Credentials';
 import {
 	getCredentials,

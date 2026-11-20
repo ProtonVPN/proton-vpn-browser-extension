@@ -1,21 +1,21 @@
 'use background';
 import type {Credentials} from './Credentials';
-import type {ApiError} from '../../api';
+import type {ApiError} from '../../api/ApiError';
 import {
 	isForbiddenError,
 	isInvalidTokenError,
 	isRetriableError,
 	isUnauthorizedError,
 	needsLogout,
-} from '../../api';
+} from '../../api/errorGuards';
 import {readSession} from '../readSession';
 import {refreshToken} from '../refreshToken';
 import {getAccessToken} from '../getAccessToken';
 import {milliSeconds} from '../../tools/milliSeconds';
 import {saveSession} from '../saveSession';
-import {disconnect, getCurrentState, logOut} from '../../state';
-import {setButton} from '../../tools/browserAction';
-import {c} from '../../tools/translate';
+import {disconnect, logOut} from '../../vpn/state/actions';
+import {getCurrentState} from '../../vpn/state/bootstrap';
+import {setConnectedButton} from '../../vpn/state/notifyConnection';
 import {checkNetwork} from '../../vpn/checkNetwork';
 import {triggerPromise} from '../../tools/triggerPromise';
 import {getErrorAsString} from '../../tools/getErrorMessage';
@@ -125,9 +125,7 @@ const fetchConnectionCredentialsRequest = async (
 
 		if (currentState.proxyEnabled && (stateData.error as ApiError)?.Warning) {
 			delete stateData.error;
-			const serverName = stateData.server?.name || '';
-
-			setButton('on', `${c('Label').t`Protected`} - ${serverName}`);
+			setConnectedButton(stateData.server?.name);
 		}
 
 		return credentials;

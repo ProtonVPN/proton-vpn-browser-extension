@@ -24,6 +24,7 @@ import {getIncludeOnlyList} from '../vpn/getIncludeOnlyList';
 import {getBypassList} from '../vpn/getBypassList';
 import {usesFirefoxProxySettings} from '../vpn/proxy/usesFirefoxProxySettings';
 import {warn} from '../log/log';
+import {waiterHost, waiterPort} from '../vpn/proxy/waiterHost';
 
 interface PacScript {
 	mode: 'pac_script';
@@ -186,6 +187,9 @@ const getIncludeCondition = (proxy: FixedServersProxy): string => {
 	return exclusion ? `!(${exclusion}) && (${inclusion})` : inclusion;
 };
 
+const getPacScriptProxyRoute = (proxy: FixedServersProxy) =>
+	`${proxy.rules.singleProxy.scheme.toUpperCase()} ${proxy.rules.singleProxy.host}:${proxy.rules.singleProxy.port}`;
+
 /**
  * PAC Script is for Chrome, in Firefox, logic is overridden by handleProxyRequest()
  */
@@ -203,7 +207,7 @@ export const getPacScript = (proxy: FixedServersProxy): PacScript => ({
 			}
 
 			if (${getIncludeCondition(proxy)}) {
-				return "${proxy.rules.singleProxy.scheme.toUpperCase()} ${proxy.rules.singleProxy.host}:${proxy.rules.singleProxy.port}";
+				return ${JSON.stringify(getPacScriptProxyRoute(proxy))};
 			}
 
 			return "DIRECT";
@@ -327,11 +331,7 @@ export const getFixedServerConfig = (
 };
 
 const getWaiterHostConfig = (splitTunneling: SplitTunnelingConfig = {}) =>
-	getFixedServerConfig(
-		'localhost', // 127.0.0.1
-		9,
-		splitTunneling,
-	);
+	getFixedServerConfig(waiterHost, waiterPort, splitTunneling);
 
 export const proxyToServer = async (
 	server: ProxyServer,

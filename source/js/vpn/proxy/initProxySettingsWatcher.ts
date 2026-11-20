@@ -1,10 +1,7 @@
 'use background';
 /// <reference types="firefox-webext-browser"/>
-import {
-	disconnect,
-	disconnectByProxyTakeover,
-	isCurrentStateConnected,
-} from '../../state';
+import {disconnect, disconnectByProxyTakeover} from '../state/actions';
+import {isCurrentStateConnected} from '../state/stateStore';
 import {isConnected} from '../connectedServer';
 import {c} from '../../tools/translate';
 import LevelOfControl = browser.types.LevelOfControl;

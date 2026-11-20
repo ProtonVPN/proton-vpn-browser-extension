@@ -1,4 +1,4 @@
-import type {ApiError} from '../api';
+import type {ApiError} from '../api/ApiError';
 
 export class InitUserError extends Error {
 	constructor(

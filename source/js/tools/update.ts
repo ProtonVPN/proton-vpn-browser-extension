@@ -2,7 +2,7 @@ import {Storage, storage} from './storage';
 import {appVersion} from '../config';
 import {catchPromise} from './triggerPromise';
 import {milliSeconds} from './milliSeconds';
-import type {ApiError} from '../api';
+import type {ApiError} from '../api/ApiError';
 
 type UpgradeErrorCachedItem = {
 	version: string;

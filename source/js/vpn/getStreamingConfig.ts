@@ -1,5 +1,5 @@
 'use popup';
-import {fetchJson} from '../api';
+import {fetchJson} from '../api/fetchJson';
 import {getCacheAge} from '../tools/getCacheAge';
 import type {CacheWrappedValue} from '../tools/storage';
 import {Storage, storage} from '../tools/storage';

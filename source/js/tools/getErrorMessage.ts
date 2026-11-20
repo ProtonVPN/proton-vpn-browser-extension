@@ -1,10 +1,10 @@
-import type {ApiError, DeviceLimitErrorDetails, ErrorAction} from '../api';
-import {
-	ErrorActionCategory,
-	ErrorActionCode,
-	isDeviceLimitError,
-	needsUpdate,
-} from '../api';
+import type {
+	ApiError,
+	DeviceLimitErrorDetails,
+	ErrorAction,
+} from '../api/ApiError';
+import {ErrorActionCategory, ErrorActionCode} from '../api/ApiError';
+import {isDeviceLimitError, needsUpdate} from '../api/errorGuards';
 import type {ErrorDump} from '../vpn/ConnectionState';
 import {c} from './translate';
 import {escapeHtml} from './escapeHtml';

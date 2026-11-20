@@ -99,6 +99,12 @@ export default function (
 	};
 
 	const adaptToChromium = (manifest: ManifestV3) => {
+		// Chrome only gates Tab.url/title/favIconUrl behind "tabs", and our
+		// host_permissions already expose them for web pages.
+		manifest.permissions = manifest.permissions!.filter(
+			(permission) => permission !== 'tabs',
+		);
+
 		const matches = (manifest.externally_connectable || {}).matches || [];
 
 		if (matches.length && matches.indexOf(baseDomainURL + '/*') === -1) {

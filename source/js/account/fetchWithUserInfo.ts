@@ -1,6 +1,6 @@
 import {loadCachedUser} from './user/loadCachedUser';
 import {fetchWithNetZone} from './getLocation';
-import type {ResponseResult} from '../api';
+import type {ResponseResult} from '../api/ApiError';
 
 export const fetchWithUserInfo = async <
 	T,

@@ -9,7 +9,7 @@ import type {
 	ErrorDump,
 	ProxyServer,
 } from '../../vpn/ConnectionState';
-import type {ApiError} from '../../api';
+import type {ApiError} from '../../api/ApiError';
 
 export type PopupConnectionState = {
 	error?: ApiError | Error | ErrorDump;

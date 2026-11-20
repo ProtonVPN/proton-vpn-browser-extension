@@ -1,5 +1,5 @@
 import {sendMessageTo} from './sendMessageTo';
-import type {ApiError} from '../api';
+import type {ApiError} from '../api/ApiError';
 import type {ProxyServer} from '../vpn/ConnectionState';
 import {error} from '../log/log';
 

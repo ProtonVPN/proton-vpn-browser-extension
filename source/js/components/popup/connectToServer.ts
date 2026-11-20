@@ -1,6 +1,6 @@
 'use popup';
 import type {User} from '../../account/user/User';
-import type {ApiError} from '../../api';
+import type {ApiError} from '../../api/ApiError';
 import type {ErrorDump, ServerSummary} from '../../vpn/ConnectionState';
 import type {Logical} from '../../vpn/Logical';
 import {connectEventHandler} from '../../tools/connectEventHandler';

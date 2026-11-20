@@ -1,5 +1,5 @@
 'use popup';
-import {isNetworkUnreachableError} from '../../api';
+import {isNetworkUnreachableError} from '../../api/errorGuards';
 import {triggerPromise} from '../../tools/triggerPromise';
 import {
 	type OfflineStatusWatcherOptions,

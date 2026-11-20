@@ -86,7 +86,7 @@ export class ServerRotator {
 		}
 
 		const nextChange = await this.setNextChange(wait);
-		this._RemainingTime = new RemainingTime(nextChange, wait);
+		this._RemainingTime = new RemainingTime(nextChange, this._wait);
 		this.startCountdownRefreshing();
 	}
 
@@ -198,9 +198,8 @@ export class ServerRotator {
 	): Promise<number> {
 		const changesCount = 1 + ((await getState()).changesCount ?? 0);
 		this._wait =
-			(wait ?? changesCount % this._changesLimit)
-				? this._waitShort
-				: this._waitLong;
+			wait ??
+			(changesCount % this._changesLimit ? this._waitShort : this._waitLong);
 		this._nextChange = Date.now() + this._wait;
 		triggerPromise(setState({changesCount, nextChange: this._nextChange}));
 		return this._nextChange;
