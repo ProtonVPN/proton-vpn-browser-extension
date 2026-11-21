@@ -16,6 +16,8 @@ export const isSuccessfulResponse = (response: Response): boolean =>
 export const isNetworkError = (error: unknown): boolean =>
 	isObject(error) &&
 	((error as {name?: string}).name === 'NetworkError' ||
+		// fetchApi() request timeout
+		(error as {name?: string}).name === 'TimeoutError' ||
 		/^(NetworkError |(TypeError: )?Failed to fetch)/.test(
 			(error as {message?: string}).message || '',
 		));

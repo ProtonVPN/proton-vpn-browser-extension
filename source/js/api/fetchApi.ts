@@ -71,6 +71,13 @@ const readSessionOnceRefreshed = async (): Promise<Session> => {
 	return session;
 };
 
+/**
+ * Without it, fetch() can hang for minutes on half-open connections (e.g.
+ * after the computer wakes from sleep), blocking everything waiting for the
+ * API (credentials renewal, state restoration, popup).
+ */
+const requestTimeout = milliSeconds.fromSeconds(20);
+
 export const fetchApi = async (
 	url: string,
 	init?: RequestInit,
@@ -99,6 +106,7 @@ export const fetchApi = async (
 		redirect: 'follow',
 		method: 'GET',
 		...init,
+		signal: init?.signal || AbortSignal.timeout(requestTimeout),
 		headers: {
 			'x-pm-appversion': getFullAppVersion(),
 			'x-pm-browser-type': await getBrowserSubType(),
