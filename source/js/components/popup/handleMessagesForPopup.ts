@@ -30,6 +30,7 @@ export const handleMessagesForPopup = (
 				case 'connected':
 					state.connected = true;
 					connectionState.server = data.server;
+					connectionState.error = data.error;
 					refreshConnectionStatus(data.server);
 					setError(data.error);
 					break;

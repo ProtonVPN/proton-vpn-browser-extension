@@ -198,6 +198,7 @@ export default function (
 			service: './source/js/service.ts',
 			background: './source/js/background.ts',
 			onboarding: './source/js/onboarding.ts',
+			blocked: './source/js/blocked.ts',
 			options: './source/js/options.ts',
 			popup: './source/js/popup.ts',
 			fingerprint: './source/js/fingerprint.ts',

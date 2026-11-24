@@ -22,6 +22,7 @@ export enum BackgroundAction {
 	LOG = 'log',
 	PROMOTION_DISPLAY = 'promotionDisplay',
 	OPEN_PROMOTION = 'openPromotion',
+	RECONNECT = 'reconnect',
 }
 
 export enum BackgroundData {

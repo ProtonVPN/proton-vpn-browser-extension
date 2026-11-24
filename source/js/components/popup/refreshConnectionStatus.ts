@@ -16,6 +16,7 @@ import {recentLocations} from '../recentLocations';
 import type {PopupConnectionState} from './loadConnectionState';
 import type {ServerRotator} from '../../vpn/ServerRotator';
 import type {CountryList} from '../countryList';
+import {isNetworkUnreachableError} from '../../api/errorGuards';
 
 export const getConnectionStatusRefresher = (
 	state: {
@@ -145,10 +146,18 @@ export const getConnectionStatusRefresher = (
 		// nosemgrep:insecure-innerhtml
 		disconnectButton.innerHTML = c('Action').t`Disconnect`;
 		disconnectButton.classList.add('danger-hover');
+		// Connected but the API/server can't be reached (e.g. after sleep): don't
+		// claim "Protected", back to it as soon as credentials are renewed
+		const networkIssue =
+			state.connected && isNetworkUnreachableError(connectionState?.error);
 		// Not "danger" when blocked: themed danger colors would win over warning
 		serverStatusSlot.classList.remove('success', 'danger', 'warning');
 		serverStatusSlot.classList.add(
-			state.connected ? 'success' : blocked ? 'warning' : 'danger',
+			networkIssue || blocked
+				? 'warning'
+				: state.connected
+					? 'success'
+					: 'danger',
 		);
 
 		const baseCountries = ['US', 'NL', 'JP'];
@@ -164,9 +173,14 @@ export const getConnectionStatusRefresher = (
 			? `
 				<div class="status-title">
 					<svg role="img" focusable="false" aria-hidden="true" class="protection-icon medium-icon" viewBox="0 0 24 24">
-						<use xlink:href="img/icons.svg#protected"></use>
+						<use xlink:href="img/icons.svg#${networkIssue ? 'warning' : 'protected'}"></use>
 					</svg>
-					<div id="protected-label" class="protection-status">${c('Label').t`Protected`}</div>
+					<div id="protected-label" class="protection-status">${
+						networkIssue
+							? /* translator: shown instead of "Protected" when connected but the network/API can't be reached, e.g. after the computer wakes up */
+								c('Label').t`Connection issue`
+							: c('Label').t`Protected`
+					}</div>
 				</div>
 
 				<div class="current-server-description">
@@ -186,7 +200,7 @@ export const getConnectionStatusRefresher = (
 				? `
 				<div class="status-title">
 					<svg role="img" focusable="false" aria-hidden="true" class="protection-icon medium-icon" viewBox="0 0 24 24">
-						<use xlink:href="img/icons.svg#unprotected"></use>
+						<use xlink:href="img/icons.svg#warning"></use>
 					</svg>
 					<div id="blocked-label" class="protection-status">${
 						/* translator: header when the VPN connection was lost and the kill switch blocks all traffic to avoid leaks */

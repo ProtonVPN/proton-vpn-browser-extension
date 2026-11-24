@@ -1,6 +1,7 @@
 'use background';
 import {Storage, storage} from '../../tools/storage';
 import {triggerPromise} from '../../tools/triggerPromise';
+import type {ProxyServer} from '../ConnectionState';
 
 /**
  * Kill switch: once the user got protected, a disconnection caused by a
@@ -12,7 +13,7 @@ import {triggerPromise} from '../../tools/triggerPromise';
  * Persisted in session storage, so it survives a background restart (such as
  * a Chrome service worker restarted during sleep).
  */
-const killSwitch = storage.item<{value: boolean}>(
+const killSwitch = storage.item<{value: boolean; server?: ProxyServer}>(
 	'killSwitch',
 	Storage.SESSION,
 );
@@ -20,16 +21,23 @@ const killSwitch = storage.item<{value: boolean}>(
 /** undefined until restored from storage or explicitly set */
 let armed: boolean | undefined;
 
-const setArmed = (value: boolean): void => {
+const setArmed = (value: boolean, server?: ProxyServer): void => {
 	armed = value;
-	triggerPromise(killSwitch.setValue(value));
+	triggerPromise(killSwitch.setValue(value, {server}));
 };
 
-/** The user got protected (proxy successfully set) */
-export const armKillSwitch = (): void => setArmed(true);
+/** The user got protected (proxy successfully set) by this server */
+export const armKillSwitch = (server: ProxyServer): void =>
+	setArmed(true, server);
 
 /** Explicit disconnection or logout, the only ways to lift the block */
 export const disarmKillSwitch = (): void => setArmed(false);
+
+/** Last server the user was protected by, to reconnect while blocked */
+export const getKillSwitchServer = async (): Promise<
+	ProxyServer | undefined
+> =>
+	(await isKillSwitchArmed()) ? (await killSwitch.get())?.server : undefined;
 
 export const isKillSwitchArmed = async (): Promise<boolean> => {
 	if (armed === undefined) {

@@ -15,8 +15,8 @@ const {stored, proxy, notify} = vi.hoisted(() => ({
 vi.mock('../../tools/storage', () => {
 	const item = (key: string) => ({
 		get: async () => stored.get(key),
-		setValue: async (value: unknown) => {
-			stored.set(key, {value});
+		setValue: async (value: unknown, extra: object = {}) => {
+			stored.set(key, {value, ...extra});
 		},
 	});
 
@@ -64,6 +64,8 @@ vi.mock('../proxy/proxyTakeoverReconnection', () => ({
 	getProxyTakeoverReconnectionServer: async () => undefined,
 }));
 
+const server = {name: 'NL#1', proxyHost: 'nl1.example', proxyPort: 4443};
+
 const flush = () => new Promise((resolve) => setTimeout(resolve, 0));
 
 /** Fresh modules, as after a background restart (storage is kept) */
@@ -102,7 +104,7 @@ describe('kill switch', () => {
 
 	it('blocks traffic on a failure after being protected', async () => {
 		const {disconnect, armKillSwitch, current} = await load();
-		armKillSwitch();
+		armKillSwitch(server as never);
 		disconnect(new Error('Server down'));
 		await flush();
 
@@ -114,7 +116,7 @@ describe('kill switch', () => {
 
 	it('blocks on involuntary switch to off (no disconnect() call)', async () => {
 		const {switchState, armKillSwitch} = await load();
-		armKillSwitch();
+		armKillSwitch(server as never);
 		switchState('off');
 		await flush();
 
@@ -124,7 +126,7 @@ describe('kill switch', () => {
 
 	it('lifts the block on explicit disconnect', async () => {
 		const {disconnect, armKillSwitch, isKillSwitchArmed} = await load();
-		armKillSwitch();
+		armKillSwitch(server as never);
 		disconnect(new Error('Server down'));
 		await flush();
 		vi.clearAllMocks();
@@ -140,7 +142,7 @@ describe('kill switch', () => {
 
 	it('lifts the block on logout', async () => {
 		const {logOut, armKillSwitch, isKillSwitchArmed} = await load();
-		armKillSwitch();
+		armKillSwitch(server as never);
 		logOut(false);
 		await flush();
 
@@ -150,7 +152,7 @@ describe('kill switch', () => {
 
 	it('stays blocked after a background restart', async () => {
 		const first = await load();
-		first.armKillSwitch();
+		first.armKillSwitch(server as never);
 		first.disconnect(new Error('Server down'));
 		await flush();
 		vi.clearAllMocks();
@@ -167,11 +169,34 @@ describe('kill switch', () => {
 	it('does not claim blocked when the proxy is controlled elsewhere', async () => {
 		const {disconnect, armKillSwitch} = await load();
 		proxy.setProxyToWaiterHost.mockResolvedValueOnce(false);
-		armKillSwitch();
+		armKillSwitch(server as never);
 		disconnect(new Error('Taken over'));
 		await flush();
 
 		expect(proxy.clearProxy).toHaveBeenCalled();
 		expect(lastDisconnected()).toMatchObject({blocked: false});
+	});
+
+	it('exposes the blocking state and the server to reconnect to', async () => {
+		const {
+			disconnect,
+			armKillSwitch,
+			isKillSwitchBlocking,
+			getKillSwitchServer,
+		} = await load();
+		armKillSwitch(server as never);
+		expect(isKillSwitchBlocking()).toBe(false);
+
+		disconnect(new Error('Server down'));
+		await flush();
+
+		expect(isKillSwitchBlocking()).toBe(true);
+		expect(await getKillSwitchServer()).toEqual(server);
+
+		disconnect();
+		await flush();
+
+		expect(isKillSwitchBlocking()).toBe(false);
+		expect(await getKillSwitchServer()).toBeUndefined();
 	});
 });

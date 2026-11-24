@@ -33,7 +33,7 @@ import {
 	cancelProxyTakeoverReconnection,
 	scheduleProxyTakeoverReconnection,
 } from '../proxy/proxyTakeoverReconnection';
-import {disarmKillSwitch} from './killSwitch';
+import {disarmKillSwitch, getKillSwitchServer} from './killSwitch';
 
 const info = bind(info_, '[state]');
 
@@ -85,6 +85,19 @@ export async function checkAutoConnect(): Promise<void> {
 		await connectLogical(target.logical, target.server, target.splitTunneling);
 	}
 }
+
+/** Reconnect to the server the kill switch is protecting (Reconnect button) */
+export async function reconnectKillSwitchServer(): Promise<void> {
+	const server = await getKillSwitchServer();
+
+	if (server) {
+		await connect({server});
+	}
+}
+
+/** The kill switch is blocking the traffic (disconnected by a failure) */
+export const isKillSwitchBlocking = (): boolean =>
+	current()?.name === 'off' && !!current().data.blocked;
 
 // Let bootstrap.ts restore the state without importing this module
 defineRestorationActions({connectAfter, checkAutoConnect});

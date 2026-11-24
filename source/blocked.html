@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title data-trans>Traffic blocked - Proton VPN</title>
+	<link href="css/onboarding.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+
+<div class="w100 h100v flex mw">
+	<div class="mauto w100 text-center p4"><img
+		src="img/icon-256.png"
+		width="90"
+		height="90"
+		class="w90p mxauto mb2" alt="Proton VPN">
+		<h1 class="h2 mb2" data-trans data-context="Info" data-comment="Title of the page shown instead of a website when the VPN connection is lost and the kill switch blocks traffic">The VPN connection was lost</h1>
+		<p class="h5 mb2" data-trans data-context="Info" data-comment="Explanation on the kill switch page">To avoid leaking your real IP address, the kill switch blocked this page.</p>
+		<p class="mb3" data-trans data-context="Info" data-comment="Instructions on the kill switch page, above Reconnect and Disconnect buttons">Reconnect to keep browsing safely, or disconnect to browse without VPN.</p>
+		<div class="mb2">
+			<button class="button button-primary max-w-custom w100 reconnect-button" type="button" data-trans data-context="Action">Reconnect</button>
+		</div>
+		<div class="mb2">
+			<button class="button max-w-custom w100 disconnect-button" type="button" data-trans data-context="Action">Disconnect</button>
+		</div>
+		<p class="status-text" role="status"></p>
+	</div>
+</div>
+
+<script src="js/blocked.js"></script>
+</body>
+</html>

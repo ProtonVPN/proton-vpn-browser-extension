@@ -107,6 +107,20 @@ button {
 	min-width: $body-width;
 	min-height: $body-height;
 	width: 100%;
+
+	.spinner-slow-info,
+	.spinner-stuck-info {
+		display: none;
+	}
+
+	&.slow .spinner-slow-info,
+	&.stuck .spinner-stuck-info {
+		display: block;
+	}
+
+	.spinner-slow-info {
+		margin-top: 16px;
+	}
 }
 
 .feature-row {
