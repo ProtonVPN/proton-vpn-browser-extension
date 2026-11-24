@@ -44,6 +44,7 @@ import {setReviewInfoStateLastSeenConnected} from '../reviewInfo';
 import {sanitizeSplitTunnelingConfig} from '../sanitizeSplitTunnelingConfig';
 import {getProxyInfoForRequest} from '../proxy/getProxyInfoForRequest';
 import {getProxyAuthentication} from '../proxy/getProxyAuthentication';
+import {armKillSwitch} from './killSwitch';
 import {
 	getProxyControlledByOtherError,
 	getProxyLevelOfControlError,
@@ -143,6 +144,7 @@ export const onState = defineState(
 			}
 
 			this.proxyEnabled = true;
+			armKillSwitch();
 			triggerPromise(checkLogicalIsUp(this, credentials));
 
 			setReviewInfoStateLastSeenConnected();

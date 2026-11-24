@@ -39,8 +39,20 @@ export const markProxyRoutingReady = (): void => {
  * undefined (as returned when the state does not handle proxy requests)
  * makes Firefox use proxy.settings, which are cleared when not connected.
  */
-const routeRequest = (requestInfo: OnRequestDetails): ProxyRequestResult =>
-	getCurrentStateIfDefined()?.handleProxyRequest?.(requestInfo);
+const routeRequest = (requestInfo: OnRequestDetails): ProxyRequestResult => {
+	// A failure (such as an API timeout while fetching credentials) must not
+	// leave Firefox pick a route on its own, the request fails closed instead
+	try {
+		const result =
+			getCurrentStateIfDefined()?.handleProxyRequest?.(requestInfo);
+
+		return result instanceof Promise
+			? result.catch(() => waiterHostProxyInfo)
+			: result;
+	} catch {
+		return waiterHostProxyInfo;
+	}
+};
 
 const handleProxyRequest = (
 	requestInfo: OnRequestDetails,

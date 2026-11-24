@@ -68,6 +68,8 @@ export interface ConnectionState extends StateDefinition {
 			Password: string;
 		};
 		starting?: boolean;
+		/** Disconnected by a failure, kill switch blocks the traffic */
+		blocked?: boolean;
 	};
 }
 

@@ -48,6 +48,7 @@ export const handleMessagesForPopup = (
 				case 'disconnected':
 					state.connected = false;
 					connectionState.server = undefined;
+					connectionState.blocked = data.blocked;
 					refreshConnectionStatus(data.server);
 					setError(data.error);
 					break;

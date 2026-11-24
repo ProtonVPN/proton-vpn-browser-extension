@@ -33,6 +33,7 @@ import {
 	cancelProxyTakeoverReconnection,
 	scheduleProxyTakeoverReconnection,
 } from '../proxy/proxyTakeoverReconnection';
+import {disarmKillSwitch} from './killSwitch';
 
 const info = bind(info_, '[state]');
 
@@ -101,8 +102,15 @@ export function disconnect(error?: ApiError | Error | ErrorDump | undefined) {
 	const [disconnectionHook, disconnectionMessage] = error
 		? // There is an error, it's not voluntary
 			[setReviewInfoStateOnFailedConnection, `${getErrorAsString(error)}`]
-		: // Disconnection requested by the user, don't reconnect behind their back
-			[cancelProxyTakeoverReconnection, c('Info').t`Disconnected`];
+		: // Disconnection requested by the user, don't reconnect behind their back,
+			// and lift the kill switch: the user chose to browse without VPN
+			[
+				() => {
+					disarmKillSwitch();
+					cancelProxyTakeoverReconnection();
+				},
+				c('Info').t`Disconnected`,
+			];
 
 	disconnectionHook();
 

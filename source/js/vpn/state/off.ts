@@ -4,13 +4,19 @@ import {current, defineState} from './stateStore';
 import {connect} from './actions';
 import {cancelNextCredentialFetch} from '../../account/credentials/getConnectionCredentials';
 import {setButton} from '../../tools/browserAction';
-import {clearProxy, getProxyLevelOfControl, hasProxy} from '../../tools/proxy';
+import {
+	clearProxy,
+	getProxyLevelOfControl,
+	hasProxy,
+	setProxyToWaiterHost,
+} from '../../tools/proxy';
 import {milliSeconds} from '../../tools/milliSeconds';
 import {catchPromise} from '../../tools/triggerPromise';
 import {notifyStateChange} from '../../tools/notifyStateChange';
 import {getErrorAsString} from '../../tools/getErrorMessage';
 import {bind, info as info_} from '../../log/log';
 import {getProxyTakeoverReconnectionServer} from '../proxy/proxyTakeoverReconnection';
+import {isKillSwitchArmed} from './killSwitch';
 
 const info = bind(info_, '[state]');
 
@@ -68,11 +74,12 @@ export const offState = defineState({
 	initializedAt: 0,
 	async init(config?: ConnectionState): Promise<void> {
 		cancelNextCredentialFetch();
-		current().data = {};
+		const state = current();
+		state.data = {};
 		const error = config?.data?.error;
 
 		if (error) {
-			current().data.error =
+			state.data.error =
 				error instanceof Error
 					? {
 							message: error.message,
@@ -81,11 +88,26 @@ export const offState = defineState({
 					: error;
 		}
 
-		notifyStateChange('disconnected', {error});
+		// Kill switch: keep the dead-end instead of going direct. If it can't be
+		// set (proxy controlled by another extension or locked) nothing is blocked.
+		const blocked =
+			(await isKillSwitchArmed()) &&
+			state === current() &&
+			(await setProxyToWaiterHost());
+
+		// Connected again meanwhile, its proxy must not be cleared
+		if (state !== current()) {
+			return;
+		}
+
+		state.data.blocked = blocked;
+		notifyStateChange('disconnected', {error, blocked});
 
 		setButton(error ? 'error' : 'off', error && getErrorAsString(error));
 
-		await clearProxy();
+		if (!blocked) {
+			await clearProxy();
+		}
 	},
 	async refreshState(): Promise<void> {
 		catchPromise(reconnectAfterProxyTakeover(current()));

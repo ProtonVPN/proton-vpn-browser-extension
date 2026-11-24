@@ -5,6 +5,7 @@ import {setButton} from '../../tools/browserAction';
 import {clearProxy} from '../../tools/proxy';
 import {milliSeconds} from '../../tools/milliSeconds';
 import {notifyStateChange} from '../../tools/notifyStateChange';
+import {disarmKillSwitch} from './killSwitch';
 
 // **** Logged out state ****
 export const loggedOutState = defineState({
@@ -14,6 +15,8 @@ export const loggedOutState = defineState({
 		cancelNextCredentialFetch();
 		//Always start clean
 		current().data = {};
+		// Can't reconnect without a session, don't keep the traffic blocked
+		disarmKillSwitch();
 
 		setButton('loggedOut');
 

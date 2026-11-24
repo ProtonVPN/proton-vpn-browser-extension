@@ -278,6 +278,11 @@ const setProxy = (
 						if (!proxyErrorWatched) {
 							proxyErrorWatched = true;
 							chrome.proxy.onProxyError?.addListener?.(async (event) => {
+								// Expected on the waiter host dead-end (kill switch)
+								if (!(await isConnected())) {
+									return;
+								}
+
 								switch (getErrorCode(event.error)) {
 									case ErrorCode.TIMED_OUT:
 									case ErrorCode.TUNNEL_CONNECTION_FAILED:

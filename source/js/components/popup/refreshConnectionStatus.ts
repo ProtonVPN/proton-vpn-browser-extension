@@ -7,7 +7,6 @@ import {sendMessageToBackground} from '../../tools/sendMessageToBackground';
 import {StateChange} from '../../messaging/MessageType';
 import {getCountryFlag} from '../../tools/getCountryFlag';
 import {connectEventHandler} from '../../tools/connectEventHandler';
-import {toggleClass} from '../../tools/toggleClass';
 import {via} from '../via';
 import {aboutFreeConnections} from '../aboutFreeConnections';
 import {triggerPromise} from '../../tools/triggerPromise';
@@ -62,7 +61,11 @@ export const getConnectionStatusRefresher = (
 			(server?.name || '').replace(new RegExp('^' + exitCountry + '#'), '#');
 		const exitIp = server?.exitIp || '';
 		const canDisconnectOrCancel = state.connected || connecting;
-		disconnectButton.style.display = canDisconnectOrCancel ? 'block' : 'none';
+		// Kill switch: disconnected by a failure, traffic blocked until the user
+		// reconnects or explicitly disconnects
+		const blocked = !canDisconnectOrCancel && !!connectionState?.blocked;
+		disconnectButton.style.display =
+			canDisconnectOrCancel || blocked ? 'block' : 'none';
 		quickConnectButton.style.display =
 			canDisconnectOrCancel && hasAccessToPaidServers ? 'none' : 'block';
 		// nosemgrep:insecure-innerhtml
@@ -142,7 +145,11 @@ export const getConnectionStatusRefresher = (
 		// nosemgrep:insecure-innerhtml
 		disconnectButton.innerHTML = c('Action').t`Disconnect`;
 		disconnectButton.classList.add('danger-hover');
-		toggleClass(serverStatusSlot, state.connected, 'success', 'danger');
+		// Not "danger" when blocked: themed danger colors would win over warning
+		serverStatusSlot.classList.remove('success', 'danger', 'warning');
+		serverStatusSlot.classList.add(
+			state.connected ? 'success' : blocked ? 'warning' : 'danger',
+		);
 
 		const baseCountries = ['US', 'NL', 'JP'];
 		const freeCountriesList = [
@@ -175,7 +182,25 @@ export const getConnectionStatusRefresher = (
 					</div>
 				</div>
 			`
-			: `
+			: blocked
+				? `
+				<div class="status-title">
+					<svg role="img" focusable="false" aria-hidden="true" class="protection-icon medium-icon" viewBox="0 0 24 24">
+						<use xlink:href="img/icons.svg#unprotected"></use>
+					</svg>
+					<div id="blocked-label" class="protection-status">${
+						/* translator: header when the VPN connection was lost and the kill switch blocks all traffic to avoid leaks */
+						c('Label').t`Traffic blocked`
+					}</div>
+				</div>
+
+				<p class="blocked-description">${
+					/* translator: explanation under "Traffic blocked" header, above Connect and Disconnect buttons */
+					c('Info')
+						.t`Connection lost. To avoid leaks, browsing is blocked until you reconnect or disconnect.`
+				}</p>
+			`
+				: `
 				<div class="status-title">
 					<svg role="img" focusable="false" aria-hidden="true" class="protection-icon medium-icon" viewBox="0 0 24 24">
 						<use xlink:href="img/icons.svg#unprotected"></use>

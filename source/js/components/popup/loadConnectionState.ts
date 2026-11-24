@@ -17,6 +17,7 @@ export type PopupConnectionState = {
 	credsTry?: number;
 	credsData?: {Username: string; Password: string};
 	starting?: boolean;
+	blocked?: boolean;
 };
 
 export const loadConnectionState = async (): Promise<PopupConnectionState> => {
