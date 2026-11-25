@@ -1,3 +1,4 @@
+'use background';
 import {dispatchToBackground} from '../tools/dispatchToBackground';
 import {triggerPromise} from '../tools/triggerPromise';
 import {getErrorAsString} from '../tools/getErrorMessage';
@@ -8,10 +9,12 @@ import {handleError} from '../tools/sentry';
 import {readSession} from './readSession';
 import {fetchJson} from '../api/fetchJson';
 import {jsonRequest} from '../api/fetchApi';
+import {getPriorityHeaders, RequestPriority} from '../api/RequestPriority';
 import {saveSession} from './saveSession';
 import type {Session} from './Session';
 import {RefreshTokenError} from './RefreshTokenError';
 import {getRefreshTokenFingerprint} from './refreshTokenFingerprint';
+import {keepBackgroundAliveDuring} from '../tools/keepBackgroundAlive';
 
 const tokenRequestsGroup = new GroupResponder<
 	Session,
@@ -58,12 +61,17 @@ const reportInvalidRefreshTokenSignOut = (
 	);
 };
 
+/**
+ * Get new tokens from the API and save them.
+ *
+ * The API keeps the previous refresh token valid until the new tokens are
+ * used: if the response is lost (network failure, background suspended...),
+ * the refresh can safely be sent again with the same refresh token.
+ */
 export const refreshToken = async (
 	callerSession?: Session,
 ): Promise<Session> => {
-	if (!callerSession) {
-		callerSession = await readSession();
-	}
+	callerSession ||= await readSession();
 
 	const uid = callerSession.uid;
 	const usedRefreshToken = callerSession.refreshToken;
@@ -80,7 +88,8 @@ export const refreshToken = async (
 		// The caller's session may be outdated: another refresh may have rotated
 		// the tokens (or a logout emptied the session) since it was read.
 		// Never send nor save an outdated session, as it would overwrite
-		// the fresh tokens and use a refresh token the API already rejects.
+		// the fresh tokens and use a refresh token the API rejects once the new
+		// tokens are used.
 		const session = await readSession();
 
 		if (!isStillUsing(session)) {
@@ -92,24 +101,29 @@ export const refreshToken = async (
 		try {
 			session.expiresAt = now;
 			await saveSession(session);
-			const auth = await fetchJson<{
-				RefreshToken: string;
-				AccessToken: string;
-			}>(
-				'auth/refresh',
-				jsonRequest(
-					'POST',
-					{
-						UID: uid,
-						ResponseType: 'token',
-						GrantType: 'refresh_token',
-						RefreshToken: session.refreshToken,
-						RedirectURI: session.redirectURI || 'https://protonvpn.com',
-					},
-					{
-						'x-pm-uid': uid,
-					},
-				),
+			const auth = await keepBackgroundAliveDuring(() =>
+				fetchJson<{
+					RefreshToken: string;
+					AccessToken: string;
+				}>('auth/refresh', {
+					...jsonRequest(
+						'POST',
+						{
+							UID: uid,
+							ResponseType: 'token',
+							GrantType: 'refresh_token',
+							RefreshToken: session.refreshToken,
+							RedirectURI: session.redirectURI || 'https://protonvpn.com',
+						},
+						{
+							'x-pm-uid': uid,
+							// Every other authenticated request waits for this one
+							...getPriorityHeaders(RequestPriority.INTERACTIVE),
+						},
+					),
+					// Safe to replay, see refreshToken() doc
+					retryOnNetworkError: true,
+				}),
 			);
 
 			const sessionAfterApiCall = await readSession();
@@ -119,9 +133,9 @@ export const refreshToken = async (
 				return sessionAfterApiCall;
 			}
 
-			// Save the rotated tokens even if another context (with its own
-			// refresh group) started a refresh in the meantime: the refresh token
-			// it sent is no longer valid, so these tokens are the only usable ones.
+			// Save the rotated tokens even if a refresh marker of another refresh
+			// replaced ours in the meantime: both got valid tokens from the same
+			// refresh token, the first ones to be used invalidate the others.
 			delete sessionAfterApiCall.expiresAt;
 			sessionAfterApiCall.refreshToken = auth.RefreshToken;
 			sessionAfterApiCall.accessToken = auth.AccessToken;
@@ -171,3 +185,28 @@ export const refreshToken = async (
 		}
 	});
 };
+
+/**
+ * Refresh the stored session if it still uses the refresh token with the
+ * given fingerprint. Otherwise, tokens were already rotated (or the session
+ * emptied) since the caller read them, so there is nothing to refresh.
+ */
+export const refreshTokenByFingerprint = async (
+	fingerprint: string | undefined,
+): Promise<void> => {
+	const session = await readSession();
+
+	if (
+		fingerprint &&
+		session?.refreshToken &&
+		(await getRefreshTokenFingerprint(session.refreshToken)) === fingerprint
+	) {
+		await refreshToken(session);
+	}
+};
+
+/**
+ * Resolve once the token refresh in progress (if any) completes or fails.
+ */
+export const waitForRefresh = (): Promise<void> =>
+	tokenRequestsGroup.whenSettled();

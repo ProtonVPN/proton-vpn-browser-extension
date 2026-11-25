@@ -6,9 +6,17 @@ import {getRegisteredLocale} from '../account/user/getRegisteredLocale';
 import {getLocale} from '../tools/locale';
 import {milliSeconds} from '../tools/milliSeconds';
 import {delay} from '../tools/delay';
+import {dispatchToBackground} from '../tools/dispatchToBackground';
+import {BackgroundAction} from '../messaging/MessageType';
+import {warn} from '../log/log';
 import {getBrowserSubType} from '../tools/getBrowserSubType';
-import {isRetriableResponse} from './errorGuards';
+import {isNetworkError, isRetriableResponse} from './errorGuards';
 import {getRoute, getThrottledResponse, rememberRetryAfter} from './retryAfter';
+import {
+	getPriorityHeaders,
+	priorityHeaderName,
+	RequestPriority,
+} from './RequestPriority';
 
 export const jsonRequest = (
 	method: string,
@@ -47,7 +55,6 @@ const addSessionHeaders = async (
  * service worker stopped mid-refresh) and is ignored.
  */
 const refreshWaitLimit = milliSeconds.fromSeconds(8);
-const refreshPollInterval = 200; // milliseconds
 
 const isRefreshInProgress = (session: Session | undefined): boolean =>
 	typeof session?.expiresAt === 'number' &&
@@ -55,32 +62,92 @@ const isRefreshInProgress = (session: Session | undefined): boolean =>
 
 /**
  * Read the stored session, waiting (up to refreshWaitLimit) for a token
- * refresh in progress, possibly in another context, to complete. So that the
- * request uses the new tokens instead of the old ones (or no auth at all),
- * which would fail with 401 and start a competing refresh.
+ * refresh in progress to complete. So that the request uses the new tokens
+ * instead of the old ones (or no auth at all), which would fail with 401.
+ *
+ * Only the background refreshes tokens, and it knows (in memory) if a refresh
+ * is actually in progress. The stored marker only avoids asking it when
+ * there is obviously none.
  */
-const readSessionOnceRefreshed = async (): Promise<Session> => {
-	const deadline = Date.now() + refreshWaitLimit;
-	let session = await readSession();
+export const readSessionOnceRefreshed = async (): Promise<Session> => {
+	const session = await readSession();
 
-	while (isRefreshInProgress(session) && Date.now() < deadline) {
-		await delay(refreshPollInterval);
-		session = await readSession();
+	if (!isRefreshInProgress(session)) {
+		return session;
 	}
 
-	return session;
+	await Promise.race([
+		dispatchToBackground(BackgroundAction.WAIT_FOR_REFRESH).catch(warn),
+		delay(refreshWaitLimit),
+	]);
+
+	return await readSession();
+};
+
+export type ApiRequestInit = RequestInit & {
+	/**
+	 * Retry if the request fails on network level (see fetchWithNetworkRetries).
+	 * Default: only for methods which can safely be sent again (GET, HEAD,
+	 * DELETE), set it to true for other requests the API handles safely when
+	 * replayed (e.g. auth/refresh), false to fail fast.
+	 */
+	retryOnNetworkError?: boolean;
+};
+
+/** Delays before each retry of a request failing on network level */
+const networkRetryDelays = [
+	milliSeconds.fromSeconds(1),
+	milliSeconds.fromSeconds(3),
+];
+
+const idempotentMethods = ['GET', 'HEAD', 'DELETE'];
+
+const isOffline = () =>
+	typeof navigator !== 'undefined' && navigator.onLine === false;
+
+/** Low urgency requests (BACKGROUND, OPTIONAL) are not worth retrying */
+const isUrgent = (headers: HeadersInit | undefined): boolean => {
+	const urgency = /u=(\d+)/.exec(
+		(headers as Record<string, string> | undefined)?.[priorityHeaderName] || '',
+	)?.[1];
+
+	return !urgency || Number(urgency) < RequestPriority.BACKGROUND;
 };
 
 /**
- * Without it, fetch() can hang for minutes on half-open connections (e.g.
- * after the computer wakes from sleep), blocking everything waiting for the
- * API (credentials renewal, state restoration, popup).
+ * fetch() retrying (a few times, quickly) when the request fails on network
+ * level, e.g. the network not being ready yet on browser start or when waking
+ * up the computer, or a network change. HTTP errors are never retried here.
  */
-const requestTimeout = milliSeconds.fromSeconds(20);
+const fetchWithNetworkRetries = async (
+	input: string,
+	options: RequestInit,
+	retryable: boolean,
+): Promise<Response> => {
+	for (let attempt = 0; ; attempt++) {
+		try {
+			return await fetch(input, options);
+		} catch (error) {
+			const retryDelay = networkRetryDelays[attempt];
+
+			if (
+				!retryable ||
+				retryDelay === undefined ||
+				!isNetworkError(error) ||
+				!isUrgent(options.headers) ||
+				isOffline()
+			) {
+				throw error;
+			}
+
+			await delay(retryDelay);
+		}
+	}
+};
 
 export const fetchApi = async (
 	url: string,
-	init?: RequestInit,
+	init?: ApiRequestInit,
 	baseUrl?: string,
 	inputSession?: Session,
 ): Promise<Response> => {
@@ -91,7 +158,9 @@ export const fetchApi = async (
 		return throttledResponse;
 	}
 
-	const headers = (init?.headers || {}) as Record<string, string>;
+	const headers = {
+		...(init?.headers as Record<string, string> | undefined),
+	};
 
 	if (!headers['x-pm-uid']) {
 		await addSessionHeaders(
@@ -100,21 +169,29 @@ export const fetchApi = async (
 		);
 	}
 
+	const {retryOnNetworkError, ...requestInit} = init || {};
 	const options = {
 		mode: 'cors',
 		credentials: 'include',
 		redirect: 'follow',
 		method: 'GET',
-		...init,
-		signal: init?.signal || AbortSignal.timeout(requestTimeout),
+		...requestInit,
 		headers: {
 			'x-pm-appversion': getFullAppVersion(),
 			'x-pm-browser-type': await getBrowserSubType(),
+			// Callers should set their own priority (see withPriority),
+			// this is only the fallback for calls not specifying any
+			...getPriorityHeaders(RequestPriority.NORMAL),
 			...headers,
 		},
 	} as RequestInit;
 
-	const response = await fetch(`${baseUrl || baseAPIURL}${url}`, options);
+	const response = await fetchWithNetworkRetries(
+		`${baseUrl || baseAPIURL}${url}`,
+		options,
+		retryOnNetworkError ??
+			idempotentMethods.includes(`${options.method}`.toUpperCase()),
+	);
 
 	// If 429 / 503, check the Retry-After header
 	// We don't handle the retry-logic here, it must be handled case by case if and

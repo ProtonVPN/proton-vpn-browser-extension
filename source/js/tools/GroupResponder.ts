@@ -30,6 +30,20 @@ export class GroupResponder<R, E = object | string> {
 		}
 	}
 
+	/**
+	 * Resolve once the callback in progress (if any) settles, whether it
+	 * succeeds or fails.
+	 */
+	async whenSettled(): Promise<void> {
+		if (!this.refreshing) {
+			return;
+		}
+
+		await new Promise<void>((resolve) => {
+			this.waitingPromises.push([() => resolve(), () => resolve()]);
+		});
+	}
+
 	respond(callback: (handler: Responder<R, E>) => void) {
 		this.waitingPromises.forEach(callback);
 		this.waitingPromises = [];

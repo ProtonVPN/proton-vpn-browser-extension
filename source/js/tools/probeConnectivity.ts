@@ -1,4 +1,5 @@
 import {baseAPIURL} from '../config';
+import {getPriorityHeaders, RequestPriority} from '../api/RequestPriority';
 import {milliSeconds} from './milliSeconds';
 import {hasSession} from '../account/readSession';
 import {isGitHubReachable} from '../vpn/detectCensorship';
@@ -32,6 +33,7 @@ export const probeConnectivity = async (
 			method: 'GET',
 			cache: 'no-store',
 			credentials: 'omit',
+			headers: getPriorityHeaders(RequestPriority.NORMAL),
 			signal: controller.signal,
 		});
 

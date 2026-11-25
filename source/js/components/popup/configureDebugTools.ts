@@ -1,4 +1,6 @@
 'use popup';
+import {appVersion} from '../../config';
+
 export const configureDebugTools = (
 	area: HTMLElement,
 	start: (area: HTMLElement) => Promise<void>,
@@ -35,5 +37,9 @@ export const configureDebugTools = (
 
 		root.logicalMaxTier = newValue;
 		await start(area);
+	});
+
+	area.querySelectorAll('.version-slot').forEach((slot) => {
+		slot.textContent = appVersion;
 	});
 };

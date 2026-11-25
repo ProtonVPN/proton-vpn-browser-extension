@@ -1,5 +1,6 @@
 'use background';
 import {fetchJson} from '../../api/fetchJson';
+import {RequestPriority, withPriority} from '../../api/RequestPriority';
 import {isUnauthorizedError} from '../../api/errorGuards';
 import {getPmUserTTL, getUserBlockingUpdateTTL} from '../../intervals';
 import {getCacheAge} from '../../tools/getCacheAge';
@@ -16,11 +17,14 @@ import {unwrapUser} from './UserWrapper';
 
 const userRequestsGroup = new GroupResponder<PmUser | undefined>();
 
-export const fetchPmUser = (): Promise<PmUser | undefined> =>
+export const fetchPmUser = (
+	priority = RequestPriority.NORMAL,
+): Promise<PmUser | undefined> =>
 	userRequestsGroup.handle(async () => {
 		const user = unwrapUser(
 			await fetchJson<WrappedUser<PmUser> | undefined>(
 				'core/v4/users?Locale=1',
+				withPriority(priority),
 			),
 		);
 
@@ -61,7 +65,7 @@ export const loadPmUser = async (): Promise<PmUser | undefined> => {
 	}
 
 	if (age < getUserBlockingUpdateTTL()) {
-		triggerPromise(fetchPmUser());
+		triggerPromise(fetchPmUser(RequestPriority.BACKGROUND));
 
 		return savedUser?.user;
 	}

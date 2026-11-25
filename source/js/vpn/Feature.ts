@@ -5,5 +5,5 @@ export enum Feature {
 	STREAMING = 8,
 	IPV6 = 16,
 	RESTRICTED = 32,
-	PARTNER = 64,
+	ULTRA = 64,
 }

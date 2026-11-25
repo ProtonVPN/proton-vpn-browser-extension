@@ -1,3 +1,11 @@
+# 1.3.11
+
+- Fix a rare issue that could sign you out unexpectedly
+
+# 1.3.10
+
+- Fix a rare issue that could sign you out unexpectedly
+
 # 1.3.9
 
 - Fix handling of token refresh race condition

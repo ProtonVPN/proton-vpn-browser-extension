@@ -1,5 +1,6 @@
 'use popup';
 import {fetchJson} from '../api/fetchJson';
+import {RequestPriority, withPriority} from '../api/RequestPriority';
 import {getCacheAge} from '../tools/getCacheAge';
 import type {CacheWrappedValue} from '../tools/storage';
 import {Storage, storage} from '../tools/storage';
@@ -32,8 +33,11 @@ const streamingServers = storage.item<StreamingConfigCache>(
 	Storage.LOCAL,
 );
 
-const fetchStreamingConfig = async () => {
-	const config = await fetchJson<StreamingConfig>('vpn/v1/streamingservices');
+const fetchStreamingConfig = async (priority = RequestPriority.OPTIONAL) => {
+	const config = await fetchJson<StreamingConfig>(
+		'vpn/v1/streamingservices',
+		withPriority(priority),
+	);
 	streamingConfig = {time: Date.now(), value: config};
 	triggerPromise(streamingServers.set(streamingConfig));
 

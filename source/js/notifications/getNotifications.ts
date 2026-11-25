@@ -1,4 +1,5 @@
 import {fetchJson} from '../api/fetchJson';
+import {RequestPriority, withPriority} from '../api/RequestPriority';
 import type {CacheWrappedValue} from '../tools/storage';
 import {Storage, storage} from '../tools/storage';
 import {getCacheAge} from '../tools/getCacheAge';
@@ -70,7 +71,7 @@ const storedNotifications = storage.item<CacheWrappedValue<Notification[]>>(
 const fetchNotifications = async (): Promise<Notification[]> => {
 	const {Notifications: notifications} = await fetchJson<{
 		Notifications: Notification[];
-	}>('core/v4/notifications');
+	}>('core/v4/notifications', withPriority(RequestPriority.OPTIONAL));
 
 	if (notifications) {
 		triggerPromise(storedNotifications.setValue(notifications));

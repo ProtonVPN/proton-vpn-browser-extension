@@ -59,16 +59,16 @@ folder then run:
 
 Firefox:
 ```
-npx --yes pnpm@12.20.0 install --frozen-lockfile
-npx --yes pnpm@12.20.0 run pack-ff
+npx --yes pnpm@12.21.0 install --frozen-lockfile
+npx --yes pnpm@12.21.0 run pack-ff
 ```
 
 Will generate: `vpn-proton-firefox.zip`
 
 Chrome:
 ```
-npx --yes pnpm@12.20.0 install --frozen-lockfile
-npx --yes pnpm@12.20.0 run pack
+npx --yes pnpm@12.21.0 install --frozen-lockfile
+npx --yes pnpm@12.21.0 run pack
 ```
 
 Will generate: `vpn-proton-chrome.zip`
@@ -78,8 +78,8 @@ All steps including unzipping and dependencies install (Debian/Ubuntu):
 apt-get install zip unzip
 unzip source.zip -d vpn-bex
 cd vpn-bex
-npx --yes pnpm@12.20.0 install --frozen-lockfile
-npx --yes pnpm@12.20.0 run pack-ff
+npx --yes pnpm@12.21.0 install --frozen-lockfile
+npx --yes pnpm@12.21.0 run pack-ff
 mv vpn-proton-firefox.zip ../vpn-proton-firefox.zip
 cd ..
 rm -rf vpn-bex

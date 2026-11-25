@@ -1,34 +1,35 @@
 'use background';
-import type {Credentials} from './Credentials';
-import type {ApiError} from '../../api/ApiError';
-import {
-	isForbiddenError,
-	isInvalidTokenError,
-	isRetriableError,
-	isUnauthorizedError,
-	needsLogout,
-} from '../../api/errorGuards';
-import {readSession} from '../readSession';
-import {refreshToken} from '../refreshToken';
-import {getAccessToken} from '../getAccessToken';
+import {tokenDuration} from '../../config';
+import {isIdle} from '../../tools/idle';
+import {handleError} from '../../tools/sentry';
+import {debug, warn} from '../../log/log';
 import {milliSeconds} from '../../tools/milliSeconds';
-import {saveSession} from '../saveSession';
-import {disconnect, logOut} from '../../vpn/state/actions';
-import {getCurrentState} from '../../vpn/state/bootstrap';
-import {notifyConnected} from '../../vpn/state/notifyConnection';
-import {checkNetwork} from '../../vpn/checkNetwork';
 import {triggerPromise} from '../../tools/triggerPromise';
 import {getErrorAsString} from '../../tools/getErrorMessage';
 import {delay, setJitterTimeout} from '../../tools/delay';
 import {unsafeRandom, unsafeRandomFloat} from '../../tools/random';
+import {
+	isForbiddenError,
+	isInvalidTokenError,
+	isNetworkError,
+	isRetriableError,
+	isUnauthorizedError,
+} from '../../api/errorGuards';
+import {RequestPriority, withPriority} from '../../api/RequestPriority';
+import type {ApiError} from '../../api/ApiError';
+import type {Credentials} from './Credentials';
 import type {CredentialsCacheItem} from './storedCredentials';
-import {storedCredentials} from './storedCredentials';
-import {debug, warn} from '../../log/log';
-import {tokenDuration} from '../../config';
-import {isIdle} from '../../tools/idle';
-import {initAuthInterceptor} from '../../vpn/initAuthInterceptor';
-import {getCredentialsData} from './getCredentialsData';
+import {readSession} from '../readSession';
+import {refreshToken} from '../refreshToken';
+import {getAccessToken} from '../getAccessToken';
 import {fetchWithUserInfo} from '../fetchWithUserInfo';
+import {disconnect} from '../../vpn/state/actions';
+import {getCurrentState} from '../../vpn/state/bootstrap';
+import {notifyConnected} from '../../vpn/state/notifyConnection';
+import {initAuthInterceptor} from '../../vpn/initAuthInterceptor';
+import {checkNetwork} from '../../vpn/checkNetwork';
+import {storedCredentials} from './storedCredentials';
+import {getCredentialsData} from './getCredentialsData';
 
 let credentialsFetching = false;
 let waitingCredentialsPromises = [] as [
@@ -56,16 +57,18 @@ const updateLastCredentials = (
 	credentials: Credentials,
 	sessionUid: string | undefined,
 ) => {
-	const expiration =
+	const jwtExpiration =
 		getCredentialsData(lastCredentials?.credentials).expiration * 1000;
 	const now = Date.now();
-	const time = milliSeconds.fromSeconds(credentials.Expire, now);
+	const jsonExpiration = milliSeconds.fromSeconds(credentials.Expire, now);
 	const halfTime = milliSeconds.fromSeconds(credentials.Expire / 2, now);
 
 	lastCredentials = {
-		time: expiration ? Math.min(expiration, time) : time,
-		halfLife: expiration
-			? Math.min((now + expiration) / 2, halfTime)
+		time: jwtExpiration
+			? Math.min(jwtExpiration, jsonExpiration)
+			: jsonExpiration,
+		halfLife: jwtExpiration
+			? Math.min((now + jwtExpiration) / 2, halfTime)
 			: halfTime,
 		credentials,
 		sessionUid,
@@ -74,8 +77,30 @@ const updateLastCredentials = (
 	triggerPromise(storedCredentials.set(lastCredentials));
 };
 
+/**
+ * Despite many items stored where "time" is the creation time of the cached data, for credentials
+ * it's actually the timestamp of the planned expiration.
+ *
+ * As it's a bit misleading, accessing this property directly is deprecated.
+ */
+const getCachedCredentialsExpirationTimeOf = (
+	credentials?: CredentialsCacheItem,
+) => credentials?.time || 0;
+
+/**
+ * Credentials are wiped when the session changes (see saveSession), so cached
+ * ones not expired yet belong to the current session.
+ */
+const hasValidCachedCredentials = async (): Promise<boolean> =>
+	getCachedCredentialsExpirationTimeOf(await storedCredentials.load()) >
+	Date.now();
+
+/** Delay (+ up to the same jitter) to try again a renewal failing on network level */
+const renewalRetryDelay = milliSeconds.fromSeconds(30);
+
 const fetchConnectionCredentialsRequest = async (
 	sessionUid: string | undefined,
+	priority: RequestPriority,
 	retryable = true,
 ): Promise<Credentials | undefined> => {
 	credentialsFetching = true;
@@ -91,11 +116,11 @@ const fetchConnectionCredentialsRequest = async (
 
 		const credentials = await fetchWithUserInfo<Credentials | undefined>(
 			'vpn/v1/browser/token?Duration=' + tokenDuration,
-			{
+			withPriority(priority, {
 				headers: {
 					'x-pm-try-number': `${credentialsFetchingRetries}`,
 				},
-			},
+			}),
 		);
 		await browser?.webRequest?.handlerBehaviorChanged?.();
 		credentialsFetchingRetries = 0;
@@ -117,7 +142,8 @@ const fetchConnectionCredentialsRequest = async (
 				'Fetch at ' +
 					Date.now() +
 					', expires at ' +
-					(lastCredentials?.time || 'unknown time'),
+					(getCachedCredentialsExpirationTimeOf(lastCredentials) ||
+						'unknown time'),
 			);
 		}
 
@@ -137,7 +163,18 @@ const fetchConnectionCredentialsRequest = async (
 			credentialsFetchingRetries--;
 			await refreshToken();
 
-			return fetchConnectionCredentialsRequest(sessionUid, false);
+			return fetchConnectionCredentialsRequest(sessionUid, priority, false);
+		}
+
+		// Renewal failing on network level (after a few quick retries, see
+		// fetchApi) while the current credentials are still valid: the connection
+		// keeps working, so don't warn the user (fetchConnectionCredentials()
+		// schedules another try). If it still fails once they expire, the
+		// user-blocking fetch will report it.
+		if (isNetworkError(error) && (await hasValidCachedCredentials())) {
+			warn(error);
+
+			throw error;
 		}
 
 		try {
@@ -146,10 +183,7 @@ const fetchConnectionCredentialsRequest = async (
 			return undefined;
 		}
 
-		if (needsLogout(error)) {
-			warn(error, new Error().stack);
-			logOut(true);
-		} else if (
+		if (
 			!isIdle() &&
 			(isForbiddenError(error) ||
 				credentialsFetchingRetries > 2 ||
@@ -167,8 +201,12 @@ const fetchConnectionCredentialsRequest = async (
 
 export const loadCachedCredentials = () => storedCredentials.load();
 
+export const getCachedCredentialsExpirationTime = async () =>
+	getCachedCredentialsExpirationTimeOf(await loadCachedCredentials());
+
 const fetchConnectionCredentials = async (
 	sessionUid: string | undefined,
+	priority: RequestPriority,
 ): Promise<Credentials | undefined> => {
 	if (credentialsFetching) {
 		return new Promise((resolve, reject) => {
@@ -185,12 +223,41 @@ const fetchConnectionCredentials = async (
 		return lastCredentials.credentials;
 	}
 
+	const scheduleRenewal = (renewalDelay: number, jitter: number) => {
+		cancelNextCredentialFetch();
+
+		credentialNextFetching = setJitterTimeout(
+			renewalDelay,
+			jitter,
+			async () => {
+				credentialNextFetching = null;
+
+				if (
+					(await getCachedCredentialsExpirationTime()) >=
+						Date.now() - 2 * jitter &&
+					!credentialsFetching &&
+					sessionUid === (await readSession())?.uid
+				) {
+					// Current credentials are still valid, but BACKGROUND is not used
+					// as the proxy connection breaks if they expire before refresh succeeds
+					// This could become BACKGROUND, once we'll make token 1-day long
+					triggerPromise(
+						fetchConnectionCredentials(sessionUid, RequestPriority.NORMAL),
+					);
+				}
+			},
+		);
+	};
+
 	try {
-		const credentials = await fetchConnectionCredentialsRequest(sessionUid);
+		const credentials = await fetchConnectionCredentialsRequest(
+			sessionUid,
+			priority,
+		);
 
 		if (credentials?.Code !== 1000) {
 			throw new Error(
-				getErrorAsString(credentials || {error: 'No credentials found'}),
+				getErrorAsString(credentials || {message: 'No credentials found'}),
 			);
 		}
 
@@ -202,24 +269,9 @@ const fetchConnectionCredentials = async (
 		updateLastCredentials(credentials, sessionUid);
 
 		const margin = milliSeconds.fromSeconds(credentials.Expire) * 0.1;
-		cancelNextCredentialFetch();
-
-		credentialNextFetching = setJitterTimeout(
+		scheduleRenewal(
 			milliSeconds.fromSeconds(credentials.Expire) - margin,
 			margin,
-			async () => {
-				credentialNextFetching = null;
-
-				const savedCredentials = await loadCachedCredentials();
-
-				if (
-					(savedCredentials?.time || 0) >= Date.now() - 2 * margin &&
-					!credentialsFetching &&
-					sessionUid === (await readSession())?.uid
-				) {
-					triggerPromise(fetchConnectionCredentials(sessionUid));
-				}
-			},
 		);
 
 		return credentials;
@@ -230,24 +282,61 @@ const fetchConnectionCredentials = async (
 		waitingCredentialsPromises = [];
 		credentialsFetching = false;
 
+		// Other network errors are reported (checkNetwork) and end with no
+		// credentials: this one is a renewal postponed while current credentials
+		// are still valid (see fetchConnectionCredentialsRequest)
+		if (isNetworkError(error)) {
+			scheduleRenewal(renewalRetryDelay, renewalRetryDelay);
+		}
+
 		throw error;
 	}
 };
 
 export const loadCredentials = async (): Promise<Credentials | undefined> => {
 	const savedCredentials = await loadCachedCredentials();
-	const age = (savedCredentials?.time || 0) - Date.now();
+	// negative if not yet expired, positive if expired
+	const expiredSince = milliSeconds.diffInMilliSeconds(
+		getCachedCredentialsExpirationTimeOf(savedCredentials),
+	);
 	const credentials = savedCredentials?.credentials;
 
-	if (age < 0 && !credentialsFetching) {
-		if (age < milliSeconds.fromSeconds(-20) || !credentials) {
-			return fetchConnectionCredentials((await readSession())?.uid);
+	if (expiredSince > 0 && !credentialsFetching) {
+		if (expiredSince > milliSeconds.fromSeconds(20) || !credentials) {
+			return fetchConnectionCredentials(
+				(await readSession())?.uid,
+				RequestPriority.INTERACTIVE,
+			);
 		}
 
-		triggerPromise(fetchConnectionCredentials((await readSession())?.uid));
+		triggerPromise(
+			fetchConnectionCredentials(
+				(await readSession())?.uid,
+				RequestPriority.NORMAL,
+			),
+		);
 	}
 
 	return credentials;
+};
+
+/**
+ * Report to Sentry (if crash reports are enabled) how often fetching connection
+ * credentials fails with 401 despite the refresh-and-retry of the request
+ * (it used to wipe the session, then log out once credentials expired).
+ */
+const reportCredentialsUnauthorized = (error: unknown) => {
+	handleError(
+		new Error('Unauthorized credentials fetch, re-authenticating'),
+		undefined,
+		{
+			tags: {reAuthentication: 'unauthorizedCredentials'},
+			extra: {
+				apiError: getErrorAsString(error),
+				code: (error as {Code?: number}).Code,
+			},
+		},
+	);
 };
 
 export const getCredentials = async (
@@ -265,8 +354,11 @@ export const getCredentials = async (
 		const credentials = await (async () => {
 			const savedCredentials = await loadCachedCredentials();
 
-			if ((savedCredentials?.time || 0) < Date.now()) {
-				return fetchConnectionCredentials(sessionUid);
+			if (getCachedCredentialsExpirationTimeOf(savedCredentials) < Date.now()) {
+				return fetchConnectionCredentials(
+					sessionUid,
+					RequestPriority.INTERACTIVE,
+				);
 			}
 
 			return savedCredentials?.credentials;
@@ -280,7 +372,10 @@ export const getCredentials = async (
 			throw e;
 		}
 
-		await saveSession({});
+		// Don't wipe the session: a 401 here can be transient (e.g. a token
+		// rotation race), refreshToken() decides if the session is really dead
+		// (10013 → SESSION_EXPIRED → logOut + createSession)
+		reportCredentialsUnauthorized(e);
 	}
 
 	await refreshToken(); // Refresh the token and re-try if it expired
@@ -289,7 +384,7 @@ export const getCredentials = async (
 };
 
 export const getSynchronousCredentials = (): Credentials | undefined => {
-	const time = lastCredentials?.time || 0;
+	const time = getCachedCredentialsExpirationTimeOf(lastCredentials);
 	const now = Date.now();
 
 	if (time > now) {
@@ -304,9 +399,7 @@ export const getSynchronousCredentials = (): Credentials | undefined => {
 };
 
 export const checkCredentials = async (sessionUid: string): Promise<void> => {
-	const savedCredentials = await loadCachedCredentials();
-
-	if ((savedCredentials?.time || 0) < Date.now()) {
-		await fetchConnectionCredentials(sessionUid);
+	if ((await getCachedCredentialsExpirationTime()) < Date.now()) {
+		await fetchConnectionCredentials(sessionUid, RequestPriority.INTERACTIVE);
 	}
 };

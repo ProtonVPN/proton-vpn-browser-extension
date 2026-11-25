@@ -8,6 +8,7 @@ import {
 	sendOpenPromotion,
 	sendPromotionDisplay,
 } from './promotionTelemetry';
+import {getPromotionUrl} from './getPromotionUrl';
 import {renderThemeAssets} from './renderThemeAssets';
 import {selectBestAsset} from './selectBestAsset';
 
@@ -84,7 +85,12 @@ export const renderPromotionBanner = async (
 
 	if (promotionUrl) {
 		anchor.addEventListener('click', () => {
-			sendOpenPromotion(promotionUrl, notification, 'banner', getVpnStatus());
+			sendOpenPromotion(
+				getPromotionUrl(promotionUrl, notification),
+				notification,
+				'banner',
+				getVpnStatus(),
+			);
 		});
 	}
 
