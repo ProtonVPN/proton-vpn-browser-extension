@@ -1,4 +1,5 @@
 import {getRuntime} from './getRuntime';
+import {deserializeError} from '../messaging/errorSerialization';
 
 const runtime = getRuntime();
 
@@ -25,7 +26,7 @@ export const sendMessageTo = async <K>(
 	const error = result?.error;
 
 	if (error && !error.Warning) {
-		throw error;
+		throw deserializeError(error);
 	}
 
 	return result;

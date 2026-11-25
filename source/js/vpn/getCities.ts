@@ -1,4 +1,5 @@
 import {fetchJson} from '../api/fetchJson';
+import {RequestPriority, withPriority} from '../api/RequestPriority';
 import {type CacheWrappedValue, Storage, storage} from '../tools/storage';
 import type {Logical} from './Logical';
 import {getCacheAge} from '../tools/getCacheAge';
@@ -17,9 +18,11 @@ const localCitiesCaching = {} as Record<string, CitiesCacheItem>;
 const fetchCities = async (
 	languageKey: string,
 	cacheKey: string,
+	priority: RequestPriority,
 ): Promise<Cities> => {
 	const {Cities: cities} = await fetchJson<{Cities: Cities}>(
 		'vpn/v1/cities/names',
+		withPriority(priority),
 	);
 
 	if (cities) {
@@ -62,6 +65,7 @@ const loadCitiesCacheItem = async (
 export const getCities = async (
 	sessionUid?: string,
 	forceReload = false,
+	priority = RequestPriority.NORMAL,
 ): Promise<Cities> => {
 	lastSessionUid = sessionUid;
 	const languages = getLanguages();
@@ -84,7 +88,7 @@ export const getCities = async (
 	}
 
 	try {
-		return await fetchCities(languageKey, cacheKey);
+		return await fetchCities(languageKey, cacheKey, priority);
 	} catch {
 		// Not a big deal, let's just keep them in English
 		return {};
@@ -126,9 +130,11 @@ export const mergeTranslations = (logicals: Logical[], cities: Cities) => {
 
 		if (time - lastMissingCheck > getCityTranslationMissingNamesTTL()) {
 			lastMissingCheck = time;
-			getCities(lastSessionUid, true).then((newCities) => {
-				mergeTranslations(logicals, newCities);
-			});
+			getCities(lastSessionUid, true, RequestPriority.BACKGROUND).then(
+				(newCities) => {
+					mergeTranslations(logicals, newCities);
+				},
+			);
 		}
 	}
 };

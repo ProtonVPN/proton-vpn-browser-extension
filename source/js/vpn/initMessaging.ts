@@ -12,6 +12,7 @@ import {getPartnerById} from '../account/partner/partners';
 import {delay} from '../tools/delay';
 import {getRuntime} from '../tools/getRuntime';
 import {setBackgroundRouter} from '../tools/dispatchToBackground';
+import {serializeError} from '../messaging/errorSerialization';
 import Tab = browser.tabs.Tab;
 
 type WorkerExternalMessage = MessageBase &
@@ -27,14 +28,16 @@ const getMessageResponse = async (message: any) => {
 	try {
 		return await routeMessage(message);
 	} catch (error) {
-		if (error instanceof RefreshTokenError) {
+		// For REFRESH_TOKEN, refreshToken() already signs out (SESSION_EXPIRED)
+		if (
+			error instanceof RefreshTokenError &&
+			message?.type !== BackgroundAction.REFRESH_TOKEN
+		) {
 			logOut(false);
 			await createSession();
-
-			return {error};
 		}
 
-		return {error};
+		return {error: serializeError(error)};
 	}
 };
 

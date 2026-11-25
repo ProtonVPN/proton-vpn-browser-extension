@@ -11,9 +11,7 @@ export const filterLogicalsWithCurrentFeatures = (
 	rawLogicals.filter(
 		(logical) =>
 			(logical.Features &
-				((withTor ? 0 : Feature.TOR) |
-					Feature.RESTRICTED |
-					Feature.PARTNER)) ===
+				((withTor ? 0 : Feature.TOR) | Feature.RESTRICTED)) ===
 				0 &&
 			(!secureCore ||
 				(logical.Features & Feature.SECURE_CORE) ===

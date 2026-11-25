@@ -1,4 +1,4 @@
-export const appVersion = '1.3.9';
+export const appVersion = '1.3.11';
 export const appId = 'jplgfhpmjnbigmhklmmbgecoobifkmpa';
 export const baseDomainURL = 'https://account.proton.me';
 export const tokenDuration = 1200; // seconds

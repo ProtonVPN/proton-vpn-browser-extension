@@ -120,11 +120,7 @@ export const getLogicalsFilteredByChoice = (
 			? getById(choice.logicalId)
 			: logicals.filter((logicial) => logicial.ID === choice.logicalId)
 		: logicals.filter((logicial) => {
-				if (
-					(logicial.Features &
-						(Feature.TOR | Feature.RESTRICTED | Feature.PARTNER)) !==
-					0
-				) {
+				if ((logicial.Features & (Feature.TOR | Feature.RESTRICTED)) !== 0) {
 					return false;
 				}
 

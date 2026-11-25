@@ -2,6 +2,7 @@ import type {CacheWrappedValue, Fetching} from '../tools/storage';
 import {storage} from '../tools/storage';
 import {getFeatureFlagTTL} from '../intervals';
 import {fetchJson} from '../api/fetchJson';
+import {RequestPriority, withPriority} from '../api/RequestPriority';
 import {useCache} from '../tools/useCache';
 
 type FeatureRecord = Record<string, {enabled: boolean}>;
@@ -10,10 +11,12 @@ type FeatureRecordCache = CacheWrappedValue<FeatureRecord> & Fetching;
 export const featureFlagCache =
 	storage.item<FeatureRecordCache>('feature-flag');
 
-const fetchFeatureFlag = async (): Promise<FeatureRecord> => {
+const fetchFeatureFlag = async (
+	priority = RequestPriority.NORMAL,
+): Promise<FeatureRecord> => {
 	const data = await fetchJson<{
 		toggles?: {name: string; enabled: boolean}[];
-	}>('feature/v2/frontend');
+	}>('feature/v2/frontend', withPriority(priority));
 
 	const record = {} as FeatureRecord;
 

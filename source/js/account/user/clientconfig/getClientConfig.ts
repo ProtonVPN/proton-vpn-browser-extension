@@ -1,5 +1,6 @@
 'use popup';
 import {fetchWithUserInfo} from '../../fetchWithUserInfo';
+import {RequestPriority, withPriority} from '../../../api/RequestPriority';
 import {
 	getClientConfigBlockingUpdateTTL,
 	getClientConfigTTL,
@@ -18,8 +19,11 @@ import type {
 
 let cache: ClientConfigCache | undefined = undefined;
 
-const fetchClientConfig = async () => {
-	const value = await fetchWithUserInfo<ClientConfig>('vpn/v2/clientconfig');
+const fetchClientConfig = async (priority = RequestPriority.NORMAL) => {
+	const value = await fetchWithUserInfo<ClientConfig>(
+		'vpn/v2/clientconfig',
+		withPriority(priority),
+	);
 
 	triggerPromise(
 		clientConfigStore.set({
@@ -50,7 +54,7 @@ const getClientConfig = async () => {
 
 	// Use cache but refresh in the background if it's a bit old but still good to use
 	if (cache && age < getClientConfigBlockingUpdateTTL()) {
-		triggerPromise(fetchClientConfig());
+		triggerPromise(fetchClientConfig(RequestPriority.BACKGROUND));
 
 		return cache.value;
 	}

@@ -12,8 +12,8 @@ import {disconnect, disconnectByProxyTakeover, logOut} from './actions';
 import type {ApiError} from '../../api/ApiError';
 import type {ProxyInfo} from '../proxy/ProxyInfo';
 import {
+	getCachedCredentialsExpirationTime,
 	getCredentials,
-	loadCachedCredentials,
 	loadCredentials,
 } from '../../account/credentials/getConnectionCredentials';
 import type {Credentials} from '../../account/credentials/Credentials';
@@ -131,7 +131,7 @@ export const onState = defineState(
 
 			if (
 				!credentials ||
-				((await loadCachedCredentials())?.time || 0) < Date.now()
+				(await getCachedCredentialsExpirationTime()) < Date.now()
 			) {
 				warn(credentials ? 'Expired token' : 'No token');
 
@@ -335,13 +335,17 @@ export const onState = defineState(
 				requestDetails,
 				() => current()?.data,
 				(hasSession) => {
+					if (this !== current()) {
+						return;
+					}
+
 					if (hasSession) {
 						disconnect(new Error(c('Error').t`Server not found`));
 
 						return;
 					}
 
-					logOut(true);
+					logOut(false);
 				},
 			);
 		},

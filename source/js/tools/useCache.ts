@@ -2,10 +2,11 @@ import {getCacheAge} from './getCacheAge';
 import {watchWithSentry} from './sentry';
 import {triggerPromise} from './triggerPromise';
 import type {CacheItem, CacheWrappedValue, Fetching} from './storage';
+import {RequestPriority} from '../api/RequestPriority';
 
 export const useCache = async <T>(
 	cacheItem: CacheItem<CacheWrappedValue<T> & Fetching>,
-	fetcher: () => Promise<T> | T,
+	fetcher: (priority: RequestPriority) => Promise<T> | T,
 	ttl: number,
 ) => {
 	const cache = await cacheItem.getOnceNoLongerFetching();
@@ -16,7 +17,7 @@ export const useCache = async <T>(
 		await cacheItem.setValue(value, {fetching: Date.now()});
 
 		try {
-			value = await watchWithSentry(fetcher);
+			value = await watchWithSentry(() => fetcher(RequestPriority.NORMAL));
 		} catch {
 			// Keep cached value
 		}
@@ -25,7 +26,7 @@ export const useCache = async <T>(
 	} else if (age > ttl / 2) {
 		cacheItem
 			.setValue(value, {fetching: Date.now()})
-			.then(fetcher)
+			.then(() => fetcher(RequestPriority.BACKGROUND))
 			.then((newValue) => cacheItem.setValue(newValue, {fetching: null}));
 	}
 

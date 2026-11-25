@@ -1,31 +1,26 @@
-/// <reference types="firefox-webext-browser"/>
 import {getTabs} from '../tools/getTabs';
 import {getRuntime} from '../tools/getRuntime';
-import type {CacheWrappedValue} from '../tools/storage';
-import {storage} from '../tools/storage';
-import Tab = browser.tabs.Tab;
-type TabId = Required<Tab>['id'];
-
-const onboardingTabIds =
-	storage.item<CacheWrappedValue<TabId[]>>('onboarding-tab-ids');
+import {warn} from '../log/log';
 
 export const initOnboarding = async () => {
 	const tabs = getTabs();
+	const url = getRuntime().getURL('/onboarding.html');
 
-	const idsToRemove = (await onboardingTabIds.get())?.value ?? [];
+	try {
+		const existingTabIds = (await tabs.query({url}))
+			.map((tab) => tab.id)
+			.filter((id): id is number => typeof id === 'number');
 
-	if (idsToRemove.length) {
-		await tabs.remove(idsToRemove);
-		await onboardingTabIds.remove();
+		await Promise.all(
+			existingTabIds.map((id) =>
+				tabs.remove(id).catch(() => {
+					// Tab closed in the meantime, nothing to do
+				}),
+			),
+		);
+	} catch (error) {
+		warn(error);
 	}
 
-	const tabId = (
-		await tabs.create({
-			url: getRuntime().getURL('/onboarding.html'),
-		})
-	).id;
-
-	if (typeof tabId !== 'undefined') {
-		await onboardingTabIds.transactionValue((ids) => [...(ids ?? []), tabId]);
-	}
+	await tabs.create({url});
 };

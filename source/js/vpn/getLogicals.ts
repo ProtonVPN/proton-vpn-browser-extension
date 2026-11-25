@@ -21,6 +21,7 @@ import {refreshLogicalLoads} from './refreshLogicalLoads';
 import {fetchLogicalsByIds} from './fetchLogicals';
 import {handleError} from '../tools/sentry';
 import {fetchLogicalsWithIncludedIds} from './fetchLogicalsWithIncludedIds';
+import {RequestPriority} from '../api/RequestPriority';
 
 const map: Record<string, Logical> = {};
 
@@ -59,7 +60,7 @@ export const loadLogicalLoads = async (): Promise<Logical[]> => {
 
 	getLoadsMaxAge().then(async (maxAge) => {
 		if (loadAge > maxAge) {
-			await refreshLogicalLoads(cache);
+			await refreshLogicalLoads(cache, RequestPriority.BACKGROUND);
 		}
 	});
 
@@ -82,7 +83,9 @@ const getLogicals = async (): Promise<Logical[]> => {
 	// then we return it but asynchronously trigger a request
 	// to update it
 	if (cache && age < getLogicalsBlockingUpdateTTL()) {
-		triggerPromise(fetchLogicalsWithIncludedIds(cache));
+		triggerPromise(
+			fetchLogicalsWithIncludedIds(cache, RequestPriority.BACKGROUND),
+		);
 
 		return cache.value;
 	}

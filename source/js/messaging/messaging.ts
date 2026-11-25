@@ -1,4 +1,5 @@
 'use background';
+import {isObject} from '../tools/isObject';
 import {getRegisteredLocaleFromUser} from '../account/user/getRegisteredLocaleFromUser';
 import {readSession} from '../account/readSession';
 import {getFreshUser} from '../account/user/getUser';
@@ -7,11 +8,16 @@ import {connectLogical, disconnect, getCurrentState, logOut} from '../state';
 import {createSession} from '../account/createSession';
 import {isSessionStillUsingRefreshToken} from '../account/refreshTokenFingerprint';
 import {
+	refreshTokenByFingerprint,
+	waitForRefresh,
+} from '../account/refreshToken';
+import {
 	BackgroundAction,
 	BackgroundData,
 	type BackgroundExtraData,
 	type BackgroundMessage,
 	PermissionGrant,
+	type RefreshTokenData,
 	type SessionExpiredData,
 	SettingChange,
 	StateChange,
@@ -43,6 +49,28 @@ type LocaleMessage = BroadcastMessage<
 	{locale: string | undefined}
 >;
 
+const expectSession = async () => {
+	if (!(await readSession())?.uid) {
+		throw new Error('No session');
+	}
+};
+
+const getConnectionAttemptTime = (data: unknown): number => {
+	const connectionAttemptTime = isObject(data)
+		? (
+				data as {
+					connectionAttemptTime?: number;
+				}
+			).connectionAttemptTime
+		: undefined;
+
+	if (typeof connectionAttemptTime !== 'number') {
+		throw new Error('connectionAttemptTime must be a number');
+	}
+
+	return connectionAttemptTime;
+};
+
 export const routeMessage = async <T extends BackgroundMessage>(message: {
 	type: T;
 	data: T extends keyof BackgroundExtraData
@@ -57,20 +85,15 @@ export const routeMessage = async <T extends BackgroundMessage>(message: {
 				(message as {tabId?: number}).tabId,
 				await forkSession(message),
 			);
-
-			return null;
+			break;
 
 		case BackgroundData.USER:
-			if (!(await readSession())?.uid) {
-				throw new Error('No session');
-			}
+			await expectSession();
 
 			return await getFreshUser();
 
 		case BackgroundData.PM_USER: {
-			if (!(await readSession())?.uid) {
-				throw new Error('No session');
-			}
+			await expectSession();
 
 			const user = await getPmUser(true);
 			const locale = getRegisteredLocaleFromUser(user);
@@ -116,9 +139,7 @@ export const routeMessage = async <T extends BackgroundMessage>(message: {
 			break;
 
 		case StateChange.CONNECTING:
-			getCurrentState().checkConnectingState?.(
-				(data as {connectionAttemptTime: number}).connectionAttemptTime,
-			);
+			getCurrentState().checkConnectingState?.(getConnectionAttemptTime(data));
 			break;
 
 		case StateChange.CONNECT:
@@ -137,7 +158,7 @@ export const routeMessage = async <T extends BackgroundMessage>(message: {
 			break;
 
 		case BackgroundAction.LOG:
-			record(data);
+			record(...(data as unknown[]));
 			break;
 
 		case BackgroundAction.PROMOTION_DISPLAY:
@@ -146,6 +167,17 @@ export const routeMessage = async <T extends BackgroundMessage>(message: {
 
 		case BackgroundAction.OPEN_PROMOTION:
 			handleOpenPromotion(data as OpenPromotionData);
+			break;
+
+		case BackgroundAction.REFRESH_TOKEN:
+			// Tokens are not sent back, the caller reads the stored session
+			await refreshTokenByFingerprint(
+				(data as RefreshTokenData | undefined)?.refreshTokenFingerprint,
+			);
+			break;
+
+		case BackgroundAction.WAIT_FOR_REFRESH:
+			await waitForRefresh();
 			break;
 
 		case PermissionGrant.PROXY:

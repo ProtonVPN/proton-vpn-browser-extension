@@ -1,4 +1,5 @@
 import {fetchJson} from '../api/fetchJson';
+import {RequestPriority, withPriority} from '../api/RequestPriority';
 import {getCacheAge} from '../tools/getCacheAge';
 import type {CacheWrappedValue} from '../tools/storage';
 import {Storage, storage} from '../tools/storage';
@@ -21,7 +22,9 @@ const serversCount = storage.item<CacheWrappedValue<Counts>>(
 	Storage.LOCAL,
 );
 
-const fetchServersCounts = async (): Promise<Counts> => {
+const fetchServersCounts = async (
+	priority = RequestPriority.NORMAL,
+): Promise<Counts> => {
 	if (countsFetching) {
 		return new Promise((resolve, reject) => {
 			fetchPromises.push([resolve, reject]);
@@ -31,7 +34,10 @@ const fetchServersCounts = async (): Promise<Counts> => {
 	countsFetching = true;
 
 	try {
-		const counts = await fetchJson<Counts>('vpn/servers-count');
+		const counts = await fetchJson<Counts>(
+			'vpn/servers-count',
+			withPriority(priority),
+		);
 
 		triggerPromise(serversCount.setValue(counts));
 		fetchPromises.forEach(([resolve]) => {
@@ -72,7 +78,7 @@ export const getServersCount = async (): Promise<Counts> => {
 
 	// Use cache but refresh in the background if it's a bit old but still good to use
 	if (cache && age < getServerCountsBlockingUpdateTTL()) {
-		triggerPromise(fetchServersCounts());
+		triggerPromise(fetchServersCounts(RequestPriority.BACKGROUND));
 
 		return cache.value;
 	}

@@ -71,7 +71,7 @@ export class ServerRotator {
 	public async isPending(): Promise<boolean> {
 		const nextChange = this._nextChange ?? (await getState()).nextChange ?? 0;
 
-		return nextChange - Date.now() > 0;
+		return nextChange > Date.now();
 	}
 
 	/**

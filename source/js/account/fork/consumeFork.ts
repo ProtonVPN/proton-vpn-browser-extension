@@ -1,5 +1,6 @@
 'use background';
 import {fetchJson} from '../../api/fetchJson';
+import {RequestPriority, withPriority} from '../../api/RequestPriority';
 import type {Session} from '../Session';
 import {Storage, storage} from '../../tools/storage';
 import {triggerPromise} from '../../tools/triggerPromise';
@@ -33,6 +34,8 @@ export const consumeFork = async ({
 
 	const {UID, AccessToken, RefreshToken} = await fetchJson<ConsumeForkResponse>(
 		`auth/sessions/forks/${selector}`,
+		// User is waiting to be signed in
+		withPriority(RequestPriority.INTERACTIVE),
 	);
 
 	return {

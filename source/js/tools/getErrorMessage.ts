@@ -10,7 +10,7 @@ import {c} from './translate';
 import {escapeHtml} from './escapeHtml';
 import {accountURL} from '../config';
 import {getKeys} from './getKeys';
-import {warn} from '../log/log';
+import {info, warn} from '../log/log';
 
 function getActionAttributes(action: ErrorAction): string | null {
 	if (action.URL) {
@@ -75,6 +75,8 @@ export function getErrorAsString(error: unknown, allowHtml = false): string {
 		const keys = getKeys(message);
 
 		if (!allowHtml || keys.length === 0 || keys.join(',') === '_id') {
+			info(error, keys);
+
 			return c('Error')
 				.t`Something went wrong. If the problem persists, please try to re-install the extension`;
 		}

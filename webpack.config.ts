@@ -193,7 +193,7 @@ export default function (
 
 	return {
 		target: ['web', 'es5'],
-		stats: 'errors-only',
+		stats: dev ? 'minimal' : 'errors-only',
 		entry: {
 			service: './source/js/service.ts',
 			background: './source/js/background.ts',
@@ -218,7 +218,7 @@ export default function (
 		},
 		plugins: plugins,
 		optimization: {
-			minimize: true,
+			minimize: !dev,
 			minimizer: minimizers,
 		},
 		module: {
