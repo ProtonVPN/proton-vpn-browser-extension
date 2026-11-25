@@ -8,6 +8,7 @@ import {
 	sendOpenPromotion,
 	sendPromotionDisplay,
 } from './promotionTelemetry';
+import {getPromotionUrl} from './getPromotionUrl';
 
 const renderSidebarIcon = (
 	sidebar: HTMLElement,
@@ -99,7 +100,12 @@ export const renderPromotionContainer = (
 
 	if (promotionUrl) {
 		getPromotionButton.addEventListener('click', () => {
-			sendOpenPromotion(promotionUrl, notification, 'popup', getVpnStatus());
+			sendOpenPromotion(
+				getPromotionUrl(promotionUrl, notification),
+				notification,
+				'popup',
+				getVpnStatus(),
+			);
 		});
 	}
 

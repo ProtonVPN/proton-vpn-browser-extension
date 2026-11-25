@@ -3,6 +3,7 @@ import type {LogicalLoad} from './Logical';
 import {getCacheAge} from '../tools/getCacheAge';
 import {milliSeconds} from '../tools/milliSeconds';
 import {fetchWithUserInfo} from '../account/fetchWithUserInfo';
+import {RequestPriority, withPriority} from '../api/RequestPriority';
 import {extractLoadsAndStatuses} from './extractLoadsAndStatuses';
 import {getLoadsMaxAge} from './getLoadsMaxAge';
 
@@ -11,7 +12,10 @@ export type Loads = {
 	time: number;
 };
 
-export const getLoads = async (statusId: string): Promise<Loads> => {
+export const getLoads = async (
+	statusId: string,
+	priority = RequestPriority.NORMAL,
+): Promise<Loads> => {
 	const cacheKey = 'server-status-' + statusId;
 	const cache =
 		await storage.getItem<CacheWrappedValue<LogicalLoad[]>>(cacheKey);
@@ -29,6 +33,7 @@ export const getLoads = async (statusId: string): Promise<Loads> => {
 	const loads = extractLoadsAndStatuses(
 		await fetchWithUserInfo<ArrayBuffer>(
 			`vpn/v2/status/${encodeURIComponent(statusId)}/binary`,
+			withPriority(priority),
 		),
 	);
 

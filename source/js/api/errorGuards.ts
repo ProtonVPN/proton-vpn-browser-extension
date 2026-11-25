@@ -1,3 +1,4 @@
+import {isObject} from '../tools/isObject';
 import type {
 	ApiError,
 	DeviceLimitErrorDetails,
@@ -7,17 +8,12 @@ import type {
 	UnauthorizedError,
 } from './ApiError';
 
-export const isObject = (value: unknown) =>
-	typeof value === 'object' && value !== null;
-
 export const isSuccessfulResponse = (response: Response): boolean =>
 	response.status >= 200 && response.status < 300;
 
 export const isNetworkError = (error: unknown): boolean =>
 	isObject(error) &&
 	((error as {name?: string}).name === 'NetworkError' ||
-		// fetchApi() request timeout
-		(error as {name?: string}).name === 'TimeoutError' ||
 		/^(NetworkError |(TypeError: )?Failed to fetch)/.test(
 			(error as {message?: string}).message || '',
 		));
@@ -61,11 +57,6 @@ export const isDeviceLimitError = (
 	error: unknown,
 ): error is ApiError<DeviceLimitErrorDetails> =>
 	((error as ApiError)?.Details as {Type?: string})?.Type === 'DeviceLimit';
-
-export const needsLogout = (error: unknown): error is ApiError =>
-	isObject(error) &&
-	((error as {Code?: number}).Code === 2028 ||
-		(error as {Code?: number}).Code === 2027);
 
 export const needsUpdate = (error: unknown): error is ApiError =>
 	isObject(error) && (error as {Code?: number}).Code === 5003;

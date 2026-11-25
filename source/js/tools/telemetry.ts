@@ -5,6 +5,7 @@ import {fetchWithUserInfo} from '../account/fetchWithUserInfo';
 import {Feature} from '../vpn/Feature';
 import {type Choice, getLastChoice} from '../vpn/lastChoice';
 import {fetchApi, jsonRequest} from '../api/fetchApi';
+import {getPriorityHeaders, RequestPriority} from '../api/RequestPriority';
 import {storage} from './storage';
 import {telemetryEnabled} from '../config';
 import {getBrowser} from './getBrowser';
@@ -37,7 +38,7 @@ export const getFeatureNames = (tier: number, features: number): string =>
 		tier ? null : 'free',
 		features & Feature.TOR ? 'tor' : null,
 		features & Feature.P2P ? 'p2p' : null,
-		features & Feature.PARTNER ? 'partnership' : null,
+		features & Feature.ULTRA ? 'ultra' : null,
 		features & Feature.STREAMING ? 'streaming' : null,
 	]
 		.filter(Boolean)
@@ -114,14 +115,18 @@ export const recordEvent = (
 			Dimensions: formattedDimensions,
 		};
 		const calls = [];
+		const headers = getPriorityHeaders(RequestPriority.OPTIONAL);
 
 		if (optIn) {
-			calls.push(fetchApi('data/v1/stats', jsonRequest('POST', body)));
+			calls.push(fetchApi('data/v1/stats', jsonRequest('POST', body, headers)));
 		}
 
 		if (isTelemetryAllowed && user?.VPN?.BusinessEvents) {
 			calls.push(
-				fetchWithUserInfo('vpn/v1/business/events', jsonRequest('POST', body)),
+				fetchWithUserInfo(
+					'vpn/v1/business/events',
+					jsonRequest('POST', body, headers),
+				),
 			);
 		}
 

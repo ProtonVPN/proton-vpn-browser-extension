@@ -2,6 +2,7 @@ import type {WithResponse} from '../api/ApiError';
 import {isNotModified} from '../api/errorGuards';
 import {triggerPromise} from '../tools/triggerPromise';
 import {fetchWithUserInfo} from '../account/fetchWithUserInfo';
+import {RequestPriority, withPriority} from '../api/RequestPriority';
 import {getCountryAndCoordinates} from '../account/getLocation';
 import type {Logical} from './Logical';
 import {getLoads} from './getLoads';
@@ -55,16 +56,21 @@ const formatResponse = (
  * Return the options for the fetching of logical such as the specific
  * headers expected for this endpoint.
  */
-const getRequestOptions = (ifModifiedSince: string | undefined) => ({
-	headers: {
-		'If-Modified-Since': ifModifiedSince || 'Thu, 01 Jan 1970 00:00:00 GMT',
-		'x-pm-response-truncation-permitted': 'true',
-	},
-});
+const getRequestOptions = (
+	ifModifiedSince: string | undefined,
+	priority: RequestPriority,
+) =>
+	withPriority(priority, {
+		headers: {
+			'If-Modified-Since': ifModifiedSince || 'Thu, 01 Jan 1970 00:00:00 GMT',
+			'x-pm-response-truncation-permitted': 'true',
+		},
+	});
 
 const fetchLogicalsOrReadCache = async (
 	cache: LogicalServersCache | undefined,
 	includedIds: (string | number)[],
+	priority: RequestPriority,
 	onlyIds?: NonEmptyList<string | number>,
 ): Promise<{
 	logicals: Logical[];
@@ -82,13 +88,13 @@ const fetchLogicalsOrReadCache = async (
 			RawResponseData
 		>(
 			'vpn/v2/logicals' + (parameters.length ? `?${parameters.join('&')}` : ''),
-			getRequestOptions(ifModifiedSince),
+			getRequestOptions(ifModifiedSince, priority),
 			formatResponse,
 		);
 		// Keep city translations up to date after logical list is refreshed,
 		// Translation get refreshed only if the cache for the current language
 		// is outdated
-		triggerPromise(getCities());
+		triggerPromise(getCities(undefined, false, RequestPriority.BACKGROUND));
 
 		return {
 			logicals,
@@ -143,13 +149,14 @@ const fetchLogicalsOrReadCache = async (
 const fetchLogicalsWithoutWritingCache = async (
 	cache: LogicalServersCache | undefined,
 	includedIds: (string | number)[],
+	priority: RequestPriority,
 	onlyIds?: NonEmptyList<string | number>,
 ) => {
 	// Use last raw string obtained from Last-Modified header if available
 	const {logicals, lastModified, statusId, success} =
-		await fetchLogicalsOrReadCache(cache, includedIds, onlyIds);
+		await fetchLogicalsOrReadCache(cache, includedIds, priority, onlyIds);
 	const {coordinates, country} = await getCountryAndCoordinates();
-	const {loads, time} = await getLoads(statusId);
+	const {loads, time} = await getLoads(statusId, priority);
 
 	return {
 		logicals,
@@ -176,9 +183,10 @@ const fetchLogicalsWithoutWritingCache = async (
 export const fetchLogicals = async (
 	cache: LogicalServersCache | undefined,
 	includedIds: (string | number)[],
+	priority = RequestPriority.NORMAL,
 ) => {
 	const {logicals, mergeLoadsIntoLogicals, storeLogicalListInCache} =
-		await fetchLogicalsWithoutWritingCache(cache, includedIds);
+		await fetchLogicalsWithoutWritingCache(cache, includedIds, priority);
 
 	mergeLoadsIntoLogicals(logicals);
 	storeLogicalListInCache(logicals);
@@ -195,6 +203,7 @@ export const fetchLogicals = async (
 export const fetchLogicalsByIds = async (
 	ids: (string | number)[],
 	cache?: LogicalServersCache,
+	priority = RequestPriority.NORMAL,
 ) => {
 	if (ids.length === 0) {
 		return [];
@@ -204,6 +213,7 @@ export const fetchLogicalsByIds = async (
 		await fetchLogicalsWithoutWritingCache(
 			cache,
 			ids,
+			priority,
 			ids as NonEmptyList<string | number>,
 		);
 

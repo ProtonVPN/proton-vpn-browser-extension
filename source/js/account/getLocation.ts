@@ -1,5 +1,6 @@
 import type {ResponseResult} from '../api/ApiError';
 import {fetchJson} from '../api/fetchJson';
+import {RequestPriority, withPriority} from '../api/RequestPriority';
 import type {IpLocation} from './IpLocation';
 import {isConnected} from '../vpn/connectedServer';
 import type {Coordinates} from '../tools/Coordinates';
@@ -69,7 +70,10 @@ export const getLocation = async (): Promise<IpLocation | undefined> => {
 
 	try {
 		await locationFetching.setValue(null);
-		const location = await fetchJson<IpLocation | undefined>('vpn/v1/location');
+		const location = await fetchJson<IpLocation | undefined>(
+			'vpn/v1/location',
+			withPriority(RequestPriority.NORMAL),
+		);
 
 		if (location) {
 			await storedLocation.set({

@@ -1,5 +1,6 @@
 'use background';
 import {fetchApi} from '../api/fetchApi';
+import {RequestPriority, withPriority} from '../api/RequestPriority';
 import {triggerPromise} from '../tools/triggerPromise';
 import {persistentlyStoredSession, storedSession} from './readSession';
 import {forgetUser} from './user/forgetUser';
@@ -28,6 +29,13 @@ export const clearAccountData = async (
 	forgetClientConfig();
 
 	if (deleteSession && session?.uid) {
-		triggerPromise(fetchApi('auth', {method: 'DELETE'}, undefined, session));
+		triggerPromise(
+			fetchApi(
+				'auth',
+				withPriority(RequestPriority.NORMAL, {method: 'DELETE'}),
+				undefined,
+				session,
+			),
+		);
 	}
 };

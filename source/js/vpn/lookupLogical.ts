@@ -1,6 +1,7 @@
 'use popup';
 import {isNotFoundError} from '../api/errorGuards';
 import {fetchWithUserInfo} from '../account/fetchWithUserInfo';
+import {RequestPriority, withPriority} from '../api/RequestPriority';
 import {getCountryAndCoordinates} from '../account/getLocation';
 import {warn} from '../log/log';
 import {triggerPromise} from '../tools/triggerPromise';
@@ -67,7 +68,11 @@ const fetchLogicalLookup = async (name: string, init?: RequestInit) => {
 			await fetchWithUserInfo<{
 				LogicalServer: Logical & {Status?: number};
 				StatusID: string;
-			}>(`vpn/v1/logicals/lookup/${encodeURIComponent(name)}`, init);
+			}>(
+				`vpn/v1/logicals/lookup/${encodeURIComponent(name)}`,
+				// User is waiting for search results
+				withPriority(RequestPriority.INTERACTIVE, init),
+			);
 
 		if (!logical) {
 			return undefined;

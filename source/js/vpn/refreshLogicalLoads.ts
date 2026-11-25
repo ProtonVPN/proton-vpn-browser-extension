@@ -1,16 +1,20 @@
 import type {LogicalServersCache} from './logicalServers';
 import {logicalServers} from './logicalServers';
 import {getLoads} from './getLoads';
+import {RequestPriority} from '../api/RequestPriority';
 import {getCountryAndCoordinates} from '../account/getLocation';
 import {mergeLoadsIntoLogicals} from './mergeLoadsIntoLogicals';
 
-export const refreshLogicalLoads = async (cache: LogicalServersCache) => {
+export const refreshLogicalLoads = async (
+	cache: LogicalServersCache,
+	priority = RequestPriority.NORMAL,
+) => {
 	if (!cache.statusId || !cache.value?.length) {
 		// We'll wait for logical server list to be fetched first
 		return;
 	}
 
-	const {loads, time} = await getLoads(cache.statusId);
+	const {loads, time} = await getLoads(cache.statusId, priority);
 	const {coordinates, country} = await getCountryAndCoordinates();
 	// Propagate the new loads/statuses immediately to the current cache object
 	mergeLoadsIntoLogicals(cache.value, loads, coordinates, country);

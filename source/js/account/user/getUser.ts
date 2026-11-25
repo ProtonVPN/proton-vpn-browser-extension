@@ -1,6 +1,7 @@
 'use background';
 import type {User} from './User';
 import {fetchJson} from '../../api/fetchJson';
+import {RequestPriority, withPriority} from '../../api/RequestPriority';
 import {isUnauthorizedError} from '../../api/errorGuards';
 import {readSession} from '../readSession';
 import {refreshToken} from '../refreshToken';
@@ -55,12 +56,17 @@ const dispatchUserDataEventIfNotYet = async (
 	}
 };
 
-const fetchUser = async (): Promise<User | undefined> => {
+const fetchUser = async (
+	priority = RequestPriority.NORMAL,
+): Promise<User | undefined> => {
 	const cachedUser = await loadCachedUser();
 	const prevMaxTier = getUserMaxTier(cachedUser?.user);
 	const prevPlanName = cachedUser?.user?.VPN?.PlanName;
 
-	const user = await fetchJson<User | undefined>('vpn/v2');
+	const user = await fetchJson<User | undefined>(
+		'vpn/v2',
+		withPriority(priority),
+	);
 
 	if (user) {
 		if (!isLoggedIn()) {
@@ -104,12 +110,20 @@ export const loadUser = async (
 			(async () => {
 				try {
 					await getAccessToken();
-					await dispatchUserDataEventIfNotYet(fetchUser);
+					await dispatchUserDataEventIfNotYet(() =>
+						fetchUser(RequestPriority.BACKGROUND),
+					);
 				} catch (e) {
 					if (isUnauthorizedError(e)) {
 						await refreshToken();
 						await dispatchUserDataEventIfNotYet(
-							async () => (await Promise.all([fetchUser(), fetchPmUser()]))[0],
+							async () =>
+								(
+									await Promise.all([
+										fetchUser(RequestPriority.BACKGROUND),
+										fetchPmUser(RequestPriority.BACKGROUND),
+									])
+								)[0],
 						);
 
 						return;
@@ -130,7 +144,10 @@ export const loadUser = async (
 	tries.push(now);
 
 	try {
-		return await fetchUser();
+		// Forced refresh is requested when user is waiting for an up-to-date plan
+		return await fetchUser(
+			refresh ? RequestPriority.INTERACTIVE : RequestPriority.NORMAL,
+		);
 	} catch (e) {
 		if (savedUser?.user) {
 			return savedUser.user;
@@ -142,7 +159,7 @@ export const loadUser = async (
 			forceRefresh &&
 			getCacheAge(await loadCachedUser()) > milliSeconds.fromSeconds(2)
 		) {
-			triggerPromise(fetchPmUser());
+			triggerPromise(fetchPmUser(RequestPriority.BACKGROUND));
 		}
 	}
 };
