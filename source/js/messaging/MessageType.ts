@@ -26,6 +26,7 @@ export enum BackgroundAction {
 	REFRESH_TOKEN = 'refreshToken',
 	/** Respond once the token refresh in progress (if any) settles */
 	WAIT_FOR_REFRESH = 'waitForRefresh',
+	RECONNECT = 'reconnect',
 }
 
 export enum BackgroundData {

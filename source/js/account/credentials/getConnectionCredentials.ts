@@ -25,7 +25,7 @@ import {getAccessToken} from '../getAccessToken';
 import {fetchWithUserInfo} from '../fetchWithUserInfo';
 import {disconnect} from '../../vpn/state/actions';
 import {getCurrentState} from '../../vpn/state/bootstrap';
-import {setConnectedButton} from '../../vpn/state/notifyConnection';
+import {notifyConnected} from '../../vpn/state/notifyConnection';
 import {initAuthInterceptor} from '../../vpn/initAuthInterceptor';
 import {checkNetwork} from '../../vpn/checkNetwork';
 import {storedCredentials} from './storedCredentials';
@@ -151,7 +151,8 @@ const fetchConnectionCredentialsRequest = async (
 
 		if (currentState.proxyEnabled && (stateData.error as ApiError)?.Warning) {
 			delete stateData.error;
-			setConnectedButton(stateData.server?.name);
+			// Also tells an open popup the connection issue is over
+			notifyConnected(stateData.server, undefined);
 		}
 
 		return credentials;

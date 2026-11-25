@@ -4,7 +4,13 @@ import {getRegisteredLocaleFromUser} from '../account/user/getRegisteredLocaleFr
 import {readSession} from '../account/readSession';
 import {getFreshUser} from '../account/user/getUser';
 import {getPmUser} from '../account/user/getPmUser';
-import {connectLogical, disconnect, getCurrentState, logOut} from '../state';
+import {
+	connectLogical,
+	disconnect,
+	getCurrentState,
+	logOut,
+	reconnectKillSwitchServer,
+} from '../state';
 import {createSession} from '../account/createSession';
 import {isSessionStillUsingRefreshToken} from '../account/refreshTokenFingerprint';
 import {
@@ -136,6 +142,10 @@ export const routeMessage = async <T extends BackgroundMessage>(message: {
 
 		case StateChange.DISCONNECT:
 			disconnect();
+			break;
+
+		case BackgroundAction.RECONNECT:
+			await reconnectKillSwitchServer();
 			break;
 
 		case StateChange.CONNECTING:

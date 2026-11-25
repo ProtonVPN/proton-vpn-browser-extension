@@ -30,7 +30,11 @@ import type {ProxyAuthentication} from '../proxy/ProxyAuthentication';
 import {milliSeconds} from '../../tools/milliSeconds';
 import {c} from '../../tools/translate';
 import {catchPromise, triggerPromise} from '../../tools/triggerPromise';
-import {notifyConnected, notifyConnecting} from './notifyConnection';
+import {
+	notifyConnected,
+	notifyConnecting,
+	setConnectedButton,
+} from './notifyConnection';
 import {checkLogicalIsUp, postponeLogicalCheckUp} from './logicalCheckUp';
 import {
 	type BackgroundExtraData,
@@ -44,6 +48,7 @@ import {setReviewInfoStateLastSeenConnected} from '../reviewInfo';
 import {sanitizeSplitTunnelingConfig} from '../sanitizeSplitTunnelingConfig';
 import {getProxyInfoForRequest} from '../proxy/getProxyInfoForRequest';
 import {getProxyAuthentication} from '../proxy/getProxyAuthentication';
+import {armKillSwitch} from './killSwitch';
 import {
 	getProxyControlledByOtherError,
 	getProxyLevelOfControlError,
@@ -143,6 +148,10 @@ export const onState = defineState(
 			}
 
 			this.proxyEnabled = true;
+			armKillSwitch(server);
+			// Every (re)connection path goes through here, keep the toolbar icon
+			// in sync (it could stay on the error icon while connected)
+			setConnectedButton(server.name);
 			triggerPromise(checkLogicalIsUp(this, credentials));
 
 			setReviewInfoStateLastSeenConnected();

@@ -97,6 +97,7 @@ export const configureSearch = (
 	});
 	setUpToggleButtonForFeature(features.notification);
 	setUpToggleButtonForFeature(features.autoConnect);
+	setUpToggleButtonForFeature(features.killSwitch);
 	setUpToggleButtonForFeature(features.telemetry);
 	setUpToggleButtonForFeature(features.recents, {
 		upgradeNeeded: isFreeTier,

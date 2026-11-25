@@ -30,7 +30,9 @@ export {
 	connectLogical,
 	disconnect,
 	disconnectByProxyTakeover,
+	isKillSwitchBlocking,
 	logOut,
+	reconnectKillSwitchServer,
 } from './vpn/state/actions';
 export {getCurrentState, waitForReadyState} from './vpn/state/bootstrap';
 

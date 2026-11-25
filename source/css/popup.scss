@@ -107,6 +107,20 @@ button {
 	min-width: $body-width;
 	min-height: $body-height;
 	width: 100%;
+
+	.spinner-slow-info,
+	.spinner-stuck-info {
+		display: none;
+	}
+
+	&.slow .spinner-slow-info,
+	&.stuck .spinner-stuck-info {
+		display: block;
+	}
+
+	.spinner-slow-info {
+		margin-top: 16px;
+	}
 }
 
 .feature-row {
@@ -808,6 +822,22 @@ input[type="text"]:invalid {
 
 	&.danger::after {
 		box-shadow: 0 0 $shadow-width $shadow-height rgb(166, 89, 106, 0.5);
+	}
+
+	&.warning .protection-icon,
+	&.warning .protection-status {
+		color: var(--warning-color);
+		fill: var(--warning-color);
+	}
+
+	&.warning::after {
+		box-shadow: 0 0 $shadow-width $shadow-height rgb(255, 153, 0, 0.5);
+	}
+
+	.blocked-description {
+		margin: 0.5em 1em 0;
+		text-align: center;
+		font-size: 0.85em;
 	}
 
 	.incentive {

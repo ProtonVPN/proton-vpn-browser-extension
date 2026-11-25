@@ -16,6 +16,7 @@ import {recoverState} from './recoverState';
 import {watchWithSentry} from '../tools/sentry';
 import {clearProxy} from '../tools/proxy';
 import {markProxyRoutingReady} from '../tools/setupHandleProxyRequest';
+import {isKillSwitchArmed} from './state/killSwitch';
 
 const debug = bind(debug_, '[initState]');
 
@@ -44,8 +45,9 @@ export const initState = async () => {
 		// Even if the restoration failed, requests held by proxy.onRequest since
 		// startup must be released, and must not end up on the waiter host
 		// dead-end left in proxy.settings unless we are actually connected
+		// or the kill switch blocks the traffic
 		try {
-			if (!isCurrentStateConnected()) {
+			if (!isCurrentStateConnected() && !(await isKillSwitchArmed())) {
 				await clearProxy();
 			}
 		} finally {

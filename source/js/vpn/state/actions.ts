@@ -33,6 +33,7 @@ import {
 	cancelProxyTakeoverReconnection,
 	scheduleProxyTakeoverReconnection,
 } from '../proxy/proxyTakeoverReconnection';
+import {disarmKillSwitch, getKillSwitchServer} from './killSwitch';
 
 const info = bind(info_, '[state]');
 
@@ -85,6 +86,19 @@ export async function checkAutoConnect(): Promise<void> {
 	}
 }
 
+/** Reconnect to the server the kill switch is protecting (Reconnect button) */
+export async function reconnectKillSwitchServer(): Promise<void> {
+	const server = await getKillSwitchServer();
+
+	if (server) {
+		await connect({server});
+	}
+}
+
+/** The kill switch is blocking the traffic (disconnected by a failure) */
+export const isKillSwitchBlocking = (): boolean =>
+	current()?.name === 'off' && !!current().data.blocked;
+
 // Let bootstrap.ts restore the state without importing this module
 defineRestorationActions({connectAfter, checkAutoConnect});
 
@@ -101,8 +115,15 @@ export function disconnect(error?: ApiError | Error | ErrorDump | undefined) {
 	const [disconnectionHook, disconnectionMessage] = error
 		? // There is an error, it's not voluntary
 			[setReviewInfoStateOnFailedConnection, `${getErrorAsString(error)}`]
-		: // Disconnection requested by the user, don't reconnect behind their back
-			[cancelProxyTakeoverReconnection, c('Info').t`Disconnected`];
+		: // Disconnection requested by the user, don't reconnect behind their back,
+			// and lift the kill switch: the user chose to browse without VPN
+			[
+				() => {
+					disarmKillSwitch();
+					cancelProxyTakeoverReconnection();
+				},
+				c('Info').t`Disconnected`,
+			];
 
 	disconnectionHook();
 
