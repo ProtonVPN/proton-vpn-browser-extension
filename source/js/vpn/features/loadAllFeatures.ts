@@ -7,6 +7,7 @@ import {SplitTunneling} from './SplitTunneling';
 import {Telemetry} from './Telemetry';
 import {CrashReports} from './CrashReports';
 import {Recents} from './Recents';
+import {KillSwitch} from './KillSwitch';
 import type {FeatureWrapper} from './FeatureWrapper';
 import type {AllFeatures} from './AllFeatures';
 
@@ -27,6 +28,7 @@ export const loadAllFeatures = async () => {
 		crashReport: CrashReports.create(),
 		splitTunneling: SplitTunneling.create(),
 		recents: Recents.create(),
+		killSwitch: KillSwitch.create(),
 	};
 
 	const [
@@ -38,6 +40,7 @@ export const loadAllFeatures = async () => {
 		crashReport,
 		splitTunneling,
 		recents,
+		killSwitch,
 	] = await Promise.all(
 		Object.values(loaders).map(async (featureLoader) => {
 			const feature = await featureLoader;
@@ -58,5 +61,6 @@ export const loadAllFeatures = async () => {
 		crashReport,
 		splitTunneling,
 		recents,
+		killSwitch,
 	} as AllFeatures;
 };

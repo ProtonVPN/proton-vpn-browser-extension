@@ -2,6 +2,7 @@
 import {Storage, storage} from '../../tools/storage';
 import {triggerPromise} from '../../tools/triggerPromise';
 import type {ProxyServer} from '../ConnectionState';
+import {isKillSwitchEnabled} from '../features/KillSwitch';
 
 /**
  * Kill switch: once the user got protected, a disconnection caused by a
@@ -12,6 +13,8 @@ import type {ProxyServer} from '../ConnectionState';
  *
  * Persisted in session storage, so it survives a background restart (such as
  * a Chrome service worker restarted during sleep).
+ *
+ * Only active when the user enabled it in the features panel (off by default).
  */
 const killSwitch = storage.item<{value: boolean; server?: ProxyServer}>(
 	'killSwitch',
@@ -46,5 +49,5 @@ export const isKillSwitchArmed = async (): Promise<boolean> => {
 		armed ??= stored;
 	}
 
-	return armed;
+	return armed && (await isKillSwitchEnabled());
 };

@@ -6,6 +6,7 @@ import type {Telemetry} from './Telemetry';
 import type {CrashReports} from './CrashReports';
 import type {SplitTunneling} from './SplitTunneling';
 import type {Recents} from './Recents';
+import type {KillSwitch} from './KillSwitch';
 import type {LoadedFeature} from './loadAllFeatures';
 
 export interface AllFeatures {
@@ -17,4 +18,5 @@ export interface AllFeatures {
 	crashReport: LoadedFeature<CrashReports>;
 	splitTunneling: LoadedFeature<SplitTunneling>;
 	recents: LoadedFeature<Recents>;
+	killSwitch: LoadedFeature<KillSwitch>;
 }

@@ -1,6 +1,8 @@
 import {beforeEach, describe, expect, it, vi} from 'vitest';
 
-const {stored, proxy, notify} = vi.hoisted(() => ({
+const {stored, proxy, notify, setting} = vi.hoisted(() => ({
+	/** Kill switch toggle in the features panel */
+	setting: {enabled: true},
 	/** Session storage, kept across vi.resetModules() like a background restart */
 	stored: new Map<string, unknown>(),
 	proxy: {
@@ -58,6 +60,9 @@ vi.mock('../toProxyServer', () => ({toProxyServer: vi.fn()}));
 vi.mock('../getAutoConnectTarget', () => ({
 	getAutoConnectTarget: async () => undefined,
 }));
+vi.mock('../features/KillSwitch', () => ({
+	isKillSwitchEnabled: async () => setting.enabled,
+}));
 vi.mock('../proxy/proxyTakeoverReconnection', () => ({
 	cancelProxyTakeoverReconnection: vi.fn(),
 	scheduleProxyTakeoverReconnection: vi.fn(),
@@ -90,6 +95,20 @@ describe('kill switch', () => {
 	beforeEach(() => {
 		stored.clear();
 		vi.clearAllMocks();
+		setting.enabled = true;
+	});
+
+	it('never blocks when disabled in the settings (default)', async () => {
+		setting.enabled = false;
+		const {disconnect, armKillSwitch, isKillSwitchBlocking} = await load();
+		armKillSwitch(server as never);
+		disconnect(new Error('Server down'));
+		await flush();
+
+		expect(proxy.setProxyToWaiterHost).not.toHaveBeenCalled();
+		expect(proxy.clearProxy).toHaveBeenCalled();
+		expect(isKillSwitchBlocking()).toBe(false);
+		expect(lastDisconnected()).toMatchObject({blocked: false});
 	});
 
 	it('does not block when the user was never protected', async () => {

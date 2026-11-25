@@ -51,6 +51,16 @@
 						"config": {"$ref": "toggle"}
 					}
 				},
+				"kill-switch": {
+					"title": "Kill switch",
+					"description": "If toggled, browsing is blocked when the VPN connection is lost after being connected, until the user reconnects or explicitly disconnects. Off by default.",
+					"type": "object",
+					"properties": {
+						"controllable": {"$ref": "controllable"},
+						"controlMessage": {"$ref": "controlMessage"},
+						"config": {"$ref": "toggle"}
+					}
+				},
 				"prevent-webrtc-leak": {
 					"title": "Prevent IP leak via WebRTC",
 					"description": "If toggled, policy disable_non_proxied_udp will be used so IP cannot be discovered via WebRTC peer-to-peer, however some website using this feature without any fallback may cease to work.",
